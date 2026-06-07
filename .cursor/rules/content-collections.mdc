@@ -1,0 +1,16 @@
+---
+description: Kotei content collections — Zod schemas, frontmatter, image() paths
+globs: src/content/**
+alwaysApply: false
+---
+
+# Content (`src/content/**`)
+
+- Schemas are defined only in **`src/content.config.ts`**. Collections: **`work`** (`src/content/work/*.md`), **`store`** (`src/content/store/*.md`), **`posts`** (`src/content/posts/*.{md,mdx}`).
+- **Schema changes:** do not rename or restructure fields without updating every consumer. If you **add** fields (widen the schema), update layouts and components that should show them (`WorkLayout`, `StoreLayout`, `BlogLayout`, `WorkCard*`, `StoreCard*`, `BlogCard*`, `Search.astro`) so pages stay consistent.
+- **`image()` fields:** required shapes are `url: image()` and `alt: string` (and arrays of those where defined). Sample entries use paths like `/src/images/work/...`, `/src/images/store/...`, `/src/images/blog/...`. Keep URLs compatible with `astro:assets` `<Image src={...} />` usage in cards.
+- **Templates for new entries:**
+  - Work → mirror `src/content/work/1.md`
+  - Store → mirror `src/content/store/1.md`
+  - Posts → mirror `src/content/posts/1.md`
+- **URLs:** entry IDs come from filenames; cards and dynamic routes use `/work/{id}`, `/store/{id}`, `/blog/posts/{id}`.

@@ -1,0 +1,16 @@
+---
+description: Coordinated edits for astro.config and content.config only when necessary
+globs:
+  - astro.config.*
+  - src/content.config.ts
+alwaysApply: false
+---
+
+# Astro + content config
+
+- **`astro.config.mjs`:** `site` must stay consistent with production URL (sitemap, RSS `context.site`, absolute OG URLs if you wire them). Integrations: `sitemap()`, `mdx()`; Vite plugin `@tailwindcss/vite`. Changing `markdown` / `shikiConfig` affects all Markdown and MDX.
+- **`src/content.config.ts`:** defines **`work`**, **`store`**, **`posts`** only. Any schema change must be reflected in:
+  - All three layout files that consume that collection’s `data`
+  - Card components and `Search.astro` that serialize URLs or read fields
+- **Coordinate edits:** if you add a collection or loader pattern, add matching pages under `src/pages/` (or extend `getStaticPaths`) and document the URL pattern in `AGENTS.md` if project docs are maintained.
+- **Do not add** npm packages in config comments or integrations without adding them to `package.json` first.

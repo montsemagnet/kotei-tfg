@@ -1,0 +1,14 @@
+---
+description: Global Lexington Kotei theme conventions — imports, fundations path, minimal changes
+alwaysApply: true
+---
+
+# Lexington Kotei — global rules
+
+- **Publisher:** Lexington Themes (https://lexingtonthemes.com/). Theme name in-repo: **Kotei**, package `@lexington/kotei` per `package.json`.
+- **Imports:** use the `@/*` alias → `src/*` (`tsconfig.json`). Prefer `@/components/...`, `@/layouts/...` over deep relative paths unless matching an existing file’s pattern.
+- **Foundations folder:** the directory is spelled **`fundations`** (`src/components/fundations/`). Do **not** rename to “foundations”; update imports and paths only if the whole tree is migrated deliberately.
+- **Layouts:** most pages use `BaseLayout` from `@/layouts/BaseLayout.astro`. Section layouts: `BlogLayout`, `WorkLayout`, `StoreLayout` for MDX/Markdown-rendered content from collections.
+- **Scope of edits:** make the smallest change that satisfies the task. Avoid drive-by refactors, new dependencies not in `package.json`, or renaming public APIs (routes, collection names `work` | `store` | `posts`) without updating all consumers.
+- **Stack truth:** Astro 6, Tailwind 4 via `@tailwindcss/vite`, MDX + sitemap integrations, `@lexingtonthemes/seo` for `Seo.astro`. Do not assume other `@lexingtonthemes/*` packages unless added to `package.json`.
+- **Docs links:** see root `README.md` / `AGENTS.md` for documentation, support, and changelog URLs.

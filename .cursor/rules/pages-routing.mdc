@@ -1,0 +1,15 @@
+---
+description: Kotei pages — file routes, layouts, dynamic [...slug] vs tag params
+globs: src/pages/**
+alwaysApply: false
+---
+
+# Pages & routing (`src/pages/**`)
+
+- **File-based routing:** each `.astro` / `rss.xml.js` under `src/pages/` maps to a URL path. Nested folders become path segments (e.g. `blog/posts/[...slug].astro` → `/blog/posts/*`).
+- **Dynamic detail routes:** `work/[...slug].astro`, `store/[...slug].astro`, and `blog/posts/[...slug].astro` use `getStaticPaths` with `getCollection`, passing **`params.slug` = entry `id`** (filename stem). Links in components use `/work/` + id, `/store/` + id, `/blog/posts/` + id.
+- **Blog tags:** `blog/tags/[tag].astro` — `tag` is a string from post frontmatter `tags`; listing at `blog/tags/index.astro`.
+- **Alternate list UIs:** `work/index-2.astro`, `work/index-3.astro`, same pattern for `store/` and `blog/` — same content collections, different card components.
+- **Layouts:** wrap marketing pages in `BaseLayout`. Collection detail pages should use `WorkLayout` / `StoreLayout` / `BlogLayout` as the existing files do; do not switch to `BaseLayout` for those unless you migrate slot/props.
+- **RSS:** `rss.xml.js` emits `/rss.xml`; it currently globs `./blog/*.{md,mdx}` relative to `src/pages/`, while posts live under `src/content/posts/`. If touching RSS, align with the `posts` collection or document why not.
+- **No legal/changelog** page tree in this repo—do not assume those routes exist.

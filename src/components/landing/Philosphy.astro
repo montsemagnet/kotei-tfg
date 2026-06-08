@@ -2,37 +2,38 @@
 // Fundations
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
-// Array
+
+// Array actualitzat amb el contingut per al TFG de Biologia
 const philosphy = [
   {
-    title: "Create with Purpose",
+    title: "Itineraris de camp",
     description:
-      "At Vestal, we believe design should inspire and elevate. We craft 3D experiences that spark imagination and drive innovation.",
+      "Recorreguts geològics per la comarca d’Osona per preparar i ampliar les sortides pràctiques de l'assignatura de geologia.",
   },
   {
-    title: "Collaborative Spirit",
+    title: "Parades interpretatives",
     description:
-      "Our team of artists, technologists, and innovators work together to push boundaries and deliver exceptional results.",
+      "Punts específics -parades- de cada itinerari on s’explica el context geològic i els elements d’interès de cada indret.",
   },
   {
-    title: "Creative Process",
+    title: "Relació geologia-botànica",
     description:
-      "We embrace curiosity and iteration, constantly exploring new techniques and technologies to stay ahead of the curve.",
+      "Anàlisi de com el substrat geològic influeix en la vegetació present .",
   },
   {
-    title: "Quality Obsessed",
+    title: "Anàlisi de roques",
     description:
-      "Meticulous attention to detail ensures our 3D designs and textures meet the highest standards of quality and realism.",
+      "Estudi de mostres i observació petrogràfica amb làmina prima per caracteritzar els materials.",
   },
   {
-    title: "Innovative Culture",
+    title: "Cartografia amb QGIS",
     description:
-      "Vestal fosters a culture of continuous learning, encouraging experimentation and embracing emerging technologies.",
+      "Mapes temàtics per visualitzar la geologia, la vegetació i la distribució espacial dels punts d’estudi.",
   },
   {
-    title: "Client Partnerships",
+    title: "Suport a l’aprenentatge",
     description:
-      "We collaborate closely with clients, listening to their needs and delivering tailored solutions that exceed expectations.",
+      "Un recurs digital pensat perquè l’alumnat pugui estudiar i revisar els continguts de les sortides.",
   },
 ];
 ---
@@ -48,14 +49,14 @@ const philosphy = [
         data-aos="fade-up"
         data-aos-duration="1000"
         class="dark:text-white text-base-900 font-medium tracking-tighter text-balance"
-        >philosphy
+        >Què hi trobaràs
       </Text>
       <div
         class="flex flex-col sm:col-span-2 lg:col-span-3 divide-y divide-base-200 dark:divide-base-800 border-y border-base-200 dark:border-base-800"
       >
         {
           philosphy.map((process, index) => (
-            <div class="  grid grid-cols-1 lg:grid-cols-3 py-4">
+            <div class="grid grid-cols-1 lg:grid-cols-3 py-4">
               <Text
                 tag="h4"
                 variant="textBase"
@@ -72,7 +73,7 @@ const philosphy = [
                   variant="textBase"
                   data-aos="fade-up"
                   data-aos-duration="2000"
-                  class="dark:text-base-400  text-base-700  "
+                  class="dark:text-base-400 text-base-700"
                 >
                   {process.description}
                 </Text>

@@ -62,7 +62,7 @@ const navigationItems = [
           <span id="clock"></span>
         </Text>
         <Text tag="span" variant="textSM" class="text-base-700 dark:text-base-400 mt-1">
-          Helsinki, Finland
+          VIC, Catalunya
         </Text>
       </div>
     </div>
@@ -71,7 +71,7 @@ const navigationItems = [
 
 <script type="module">
   function updateClock() {
-    const now = new Date().toLocaleString("en-US", { timeZone: "Europe/Helsinki" });
+    const now = new Date().toLocaleString("en-US", { timeZone: "Europe/Madrid" });
     const dateObj = new Date(now);
     let hours = dateObj.getHours();
     const minutes = dateObj.getMinutes();

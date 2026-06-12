@@ -2,7 +2,7 @@
 // Assets
 import { Image } from "astro:assets";
 
-// Importa els logos (ara en format .png)
+// Importa els logos (del 1 al 25)
 import logo1 from "@/images/brands/1.png";
 import logo2 from "@/images/brands/2.png";
 import logo3 from "@/images/brands/3.png";
@@ -15,6 +15,19 @@ import logo9 from "@/images/brands/9.png";
 import logo10 from "@/images/brands/10.png";
 import logo11 from "@/images/brands/11.png";
 import logo12 from "@/images/brands/12.png";
+import logo13 from "@/images/brands/13.png";
+import logo14 from "@/images/brands/14.png";
+import logo15 from "@/images/brands/15.png";
+import logo16 from "@/images/brands/16.png";
+import logo17 from "@/images/brands/17.png";
+import logo18 from "@/images/brands/18.png";
+import logo19 from "@/images/brands/19.png";
+import logo20 from "@/images/brands/20.png";
+import logo21 from "@/images/brands/21.png";
+import logo22 from "@/images/brands/22.png";
+import logo23 from "@/images/brands/23.png";
+import logo24 from "@/images/brands/24.png";
+import logo25 from "@/images/brands/25.png";
 
 const logos = [
   { src: logo1, alt: "Logo 1" },
@@ -29,6 +42,19 @@ const logos = [
   { src: logo10, alt: "Logo 10" },
   { src: logo11, alt: "Logo 11" },
   { src: logo12, alt: "Logo 12" },
+  { src: logo13, alt: "Logo 13" },
+  { src: logo14, alt: "Logo 14" },
+  { src: logo15, alt: "Logo 15" },
+  { src: logo16, alt: "Logo 16" },
+  { src: logo17, alt: "Logo 17" },
+  { src: logo18, alt: "Logo 18" },
+  { src: logo19, alt: "Logo 19" },
+  { src: logo20, alt: "Logo 20" },
+  { src: logo21, alt: "Logo 21" },
+  { src: logo22, alt: "Logo 22" },
+  { src: logo23, alt: "Logo 23" },
+  { src: logo24, alt: "Logo 24" },
+  { src: logo25, alt: "Logo 25" },
 ];
 ---
 
@@ -37,10 +63,8 @@ const logos = [
     {
       logos.map((logo) => (
         <Image
-          // He augmentat la mida d'exportació recomanada perquè no pixelin (això no canvia la mida visual)
           width={400} 
           height={200}
-          // He canviat 'h-8' per 'h-16' perquè es vegin visualment molt més grans
           class="h-16 w-auto dark:invert object-contain"
           src={logo.src}
           alt={logo.alt}

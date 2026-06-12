@@ -1,6 +1,8 @@
 ---
-import logoUvic from '../../images/work/logo_bn_uvic.png';
-import logoUvic from '../../images/work/uvic-p.png';
+// Importa els logos amb noms diferents
+import logoUvicBN from '../../images/work/logo_bn_uvic.png';
+import logoUvicP from '../../images/work/uvic-p.png';
+
 // Assets
 import Logo from "@/components/assets/Logo.astro";
 import ThemeToggle from "@/components/assets/ThemeToggle.astro";
@@ -9,7 +11,7 @@ import Search from "@/components/global/Search.astro";
 ---
 
 <a href="/" class="fixed top-8 left-8 z-50">
-  <img src={logoUvic.src} alt="Logo UVic" class="logo-nav" />
+  <img src={logoUvicBN.src} alt="Logo UVic B&N" class="logo-nav" />
 </a>
 
 <div class="fixed bottom-8 left-0 right-0 flex justify-center z-50">
@@ -34,15 +36,15 @@ import Search from "@/components/global/Search.astro";
       <Search />
 
       <a href="https://www.uvic.cat/" class="px-2 py-1 h-14 flex items-center bg-base-50 outline outline-base-900 dark:outline-base-100 hover:bg-base-950 duration-300 rounded-[calc(var(--card-radius)-var(--card-padding))] dark:bg-base-900 dark:hover:bg-base-800">
-  <img src={logoUvic.src} alt="Logo UVic" class="h-6 w-auto" />
-</a>
+        <img src={logoUvicP.src} alt="Logo UVic P" class="h-6 w-auto" />
+      </a>
     </div>
   </div>
 </div>
 
 <style>
   .logo-nav {
-    width: 200px; /* Ajusta la mida segons el disseny */
+    width: 200px;
     height: auto;
     display: block;
     transition: opacity 0.3s ease;

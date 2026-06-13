@@ -1,20 +1,32 @@
 ---
+// Assets
 import { Image } from "astro:assets";
+// Layouts i Components
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import ItinerariSau from "@/components/itinerari/itinerari-sau.astro";
+
 const { frontmatter } = Astro.props;
 ---
 
 <BaseLayout>
   <section>
+    {/* Títol i Imatge Principal */}
     <Wrapper variant="standard" class="py-24 lg:py-48">
       <Text tag="h1" variant="display5XL" data-aos="fade-up" data-aos-duration="1000" class="dark:text-white text-base-900 font-medium tracking-tighter mb-8">
         {frontmatter.title}
       </Text>
 
-      <div data-aos="fade-up" data-aos-duration="1000" class="relative overflow-hidden">
+      <div data-aos="fade-up" data-aos-duration="1000" class="relative overflow-hidden mb-12">
         <Image width={1000} height={500} src={frontmatter.thumbnail.url} alt={frontmatter.thumbnail.alt} class="w-full object-cover" />
+      </div>
+
+      {/* Mapa d'Itinerari (Ajustat a max-w-2xl per a una mida més manejable) */}
+      <div data-aos="fade-up" data-aos-duration="1000" class="w-full flex justify-center mt-8">
+        <div class="max-w-2xl w-full">
+           <ItinerariSau />
+        </div>
       </div>
     </Wrapper>
 

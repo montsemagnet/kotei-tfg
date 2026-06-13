@@ -1,20 +1,26 @@
 ---
 import { getCollection, render } from 'astro:content';
 import WorkLayout from '../../layouts/WorkLayout.astro';
+import ItinerariSau from '../../components/itinerari/itinerari-sau.astro';
+
 export async function getStaticPaths() {
   const work = await getCollection('work');
-  const paths = work.map(page => {
-    return {
-      params: { slug: page.id },
-      props: { page },
-      trailingSlash: false,
-    };
-  });
-  return paths;
+  return work.map(page => ({
+    params: { slug: page.id },
+    props: { page },
+  }));
 }
+
 const { page } = Astro.props;
 const { Content } = await render(page);
 ---
 <WorkLayout frontmatter={page.data}>
-  <Content>
+  <Content />
+  
+  {/* El mapa només es mostrarà si l'ID és '1' */}
+  {page.id === '1' && (
+    <div class="mapa-container" style="margin: 3rem auto; max-width: 900px;">
+      <ItinerariSau />
+    </div>
+  )}
 </WorkLayout>

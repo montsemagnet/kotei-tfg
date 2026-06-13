@@ -1,158 +1,71 @@
 ---
-// Assets
 import { Image } from "astro:assets";
-// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
-// Content
 const { frontmatter } = Astro.props;
-// This layout is not using the <slot/> feature, it's getting content from the markdown file frontmatter.
-// The <slot/> feature is used to allow for dynamic content to be inserted into the layout by writing the content in the markdown file outsite the frontmatter.
-//
-// You can add the <slot/> where you want the content to be inserted by using the following syntax:
-// <slot/> and use the Wrapper component with variant="prose" to style the content, the styles are already defined in the Wrapper component.
 ---
 
 <BaseLayout>
   <section>
     <Wrapper variant="standard" class="py-24 lg:py-48">
-      <Text
-        tag="h1"
-        variant="display5XL"
-        data-aos="fade-up"
-        data-aos-duration="1000"
-        class="dark:text-white text-base-900 font-medium tracking-tighter "
-      >
-                <div class="relative overflow-hidden lg:col-span-3">
-          <Image
-            width={1000}
-            height={100}
-            src={frontmatter.thumbnail.url}
-            alt={frontmatter.thumbnail.alt}
-            data-aos="fade-up"
-            data-aos-duration="2000"
-            class="w-full object-none"
-          />
-        </div>
+      <Text tag="h1" variant="display5XL" data-aos="fade-up" data-aos-duration="1000" class="dark:text-white text-base-900 font-medium tracking-tighter mb-8">
+        {frontmatter.title}
+      </Text>
+
+      <div data-aos="fade-up" data-aos-duration="1000" class="relative overflow-hidden">
+        <Image width={1000} height={500} src={frontmatter.thumbnail.url} alt={frontmatter.thumbnail.alt} class="w-full object-cover" />
       </div>
     </Wrapper>
+
     <Wrapper variant="standard" class="py-8">
-      <div class="grid grid-cols-1 lg:grid-cols-4 gap-2">
-        <Text
-          tag="h4"
-          variant="displayXL"
-          data-aos="fade-up"
-          data-aos-duration="1000"
-          class="dark:text-white text-base-900 font-medium tracking-tighter"
-        >
-          intro
-        </Text>
-        <Wrapper variant="prose" class="-mt-8 lg:col-span-3">
-          {
-            frontmatter.intro &&
-              frontmatter.intro.map((item) => (
-                <div>
-                  {item.paragraphs &&
-                    item.paragraphs.map((paragraph) => (
-                      <Text
-                        tag="p"
-                        variant="displayMD"
-                        class="dark:text-white  tracking-tight font-medium text-black"
-                      >
-                        {paragraph}
-                      </Text>
-                    ))}
-                </div>
-              ))
-          }
-        </Wrapper>
-      </div>
-      <div>
-        {
-          frontmatter.projectData.map((credit) => (
-            <div class="flex flex-col   divide-y divide-base-200 dark:divide-base-800 border-t border-base-200 dark:border-base-800">
-              {Object.keys(credit).map((key) => (
-                <div class="grid grid-cols-1 lg:grid-cols-4 items-baseline gap-2 py-4">
-                  <Text
-                    tag="h4"
-                    variant="displayXL"
-                    data-aos="fade-up"
-                    data-aos-duration="1000"
-                    class="dark:text-white text-base-900 font-medium tracking-tighter"
-                  >
-                    {key === 'client' ? 'ubicació' : 
-                    key === 'service' ? 'mapa ' :  
-                    key === 'sector' ? 'sòcol' : 
-                     key === 'year' ? 'historia' : 
-                         key} 
-                  </Text>
-                  <Text
-                    tag="p"
-                    variant="textXL"
-                    class="text-base-500  dark:text-base-400  lg:col-span-3"
-                  >
-                    {credit[key]}
-                  </Text>
-                </div>
-              ))}
-            </div>
-          ))
-        }
-      </div>
-            </div>
-      <div
-        class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-y-12 gap-2 mt-2"
-      >
-        {
-          frontmatter.images.map((image, index) => (
-            <Image
-              src={image.url}
-              alt={image.alt}
-              width={1000}
-              height={1000}
-              class="size-full object-cover object-center "
-            />
-          ))
-        }
-      </div>
-                 
-           
-          </div>
-        </div>
-        <div class="mt-12 grid grid-cols-1 lg:grid-cols-4 gap-2">
-          <Text
-            tag="h4"
-            variant="displayXL"
-            data-aos="fade-up"
-            data-aos-duration="1000"
-            class="dark:text-white text-base-900 font-medium tracking-tighter"
-            >Credits</Text
-          >
-          <div class="flex flex-col w-full gap-8 lg:col-span-3">
-            {
-              frontmatter.credits.map((credit) => (
-                <div class=" grid grid-cols-1 sm:grid-cols-2 items-end gap-2">
-                  <Text
-                    tag="p"
-                    variant="displaySM"
-                    class="dark:text-white text-base-900 font-medium tracking-tighter"
-                  >
-                    {credit.name}
-                  </Text>
-                  <Text
-                    tag="p"
-                    variant="textXL"
-                    class="text-base-500  dark:text-base-400 text-balance"
-                  >
-                    {credit.role}
-                  </Text>
-                </div>
-              ))
-            }
-          </div>
+      
+      {/* Intro */}
+      <div data-aos="fade-up" data-aos-duration="1000" class="grid grid-cols-1 lg:grid-cols-4 gap-2 mb-12">
+        <Text tag="h4" variant="displayXL" class="dark:text-white text-base-900 font-medium tracking-tighter">intro</Text>
+        <div class="lg:col-span-3">
+          {frontmatter.intro.map((item) => (
+             item.paragraphs.map((p) => <Text tag="p" variant="displayMD" class="dark:text-white text-black mb-4">{p}</Text>)
+          ))}
         </div>
       </div>
+
+      {/* Dades */}
+      <div class="flex flex-col border-t border-base-200 dark:border-base-800 mb-12">
+        {frontmatter.projectData.map((credit) => (
+          Object.entries(credit).map(([key, value]) => (
+            <div data-aos="fade-up" data-aos-duration="1000" class="grid grid-cols-1 lg:grid-cols-4 items-baseline gap-2 py-4 border-b border-base-200 dark:border-base-800">
+              <Text tag="h4" variant="displayXL" class="dark:text-white text-base-900 font-medium tracking-tighter capitalize">
+                 {key === 'client' ? 'ubicació' : key === 'service' ? 'mapa' : key === 'sector' ? 'sòcol' : key === 'year' ? 'historia' : key}
+              </Text>
+              <Text tag="p" variant="textXL" class="text-base-500 dark:text-base-400 lg:col-span-3">{value}</Text>
+            </div>
+          ))
+        ))}
+      </div>
+
+      {/* Galeria */}
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-2 mb-12">
+        {frontmatter.images.map((image) => (
+          <div data-aos="fade-up" data-aos-duration="1000">
+            <Image src={image.url} alt={image.alt} width={600} height={600} class="w-full h-full object-cover" />
+          </div>
+        ))}
+      </div>
+
+      {/* Credits */}
+      <div data-aos="fade-up" data-aos-duration="1000" class="grid grid-cols-1 lg:grid-cols-4 gap-2 mt-12">
+        <Text tag="h4" variant="displayXL" class="dark:text-white text-base-900 font-medium tracking-tighter">Credits</Text>
+        <div class="lg:col-span-3 flex flex-col gap-4">
+          {frontmatter.credits.map((credit) => (
+            <div class="flex justify-between border-b border-base-200 dark:border-base-800 py-4">
+              <Text tag="p" variant="displaySM" class="dark:text-white font-medium">{credit.name}</Text>
+              <Text tag="p" variant="textXL" class="text-base-500 dark:text-base-400">{credit.role}</Text>
+            </div>
+          ))}
+        </div>
+      </div>
+
     </Wrapper>
   </section>
 </BaseLayout>

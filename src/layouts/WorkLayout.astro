@@ -22,12 +22,14 @@ const { frontmatter } = Astro.props;
         <Image width={1000} height={500} src={frontmatter.thumbnail.url} alt={frontmatter.thumbnail.alt} class="w-full object-cover" />
       </div>
 
-      {/* Mapa d'Itinerari (Ajustat a max-w-2xl per a una mida més manejable) */}
-      <div data-aos="fade-up" data-aos-duration="1000" class="w-full flex justify-center mt-8">
-        <div class="max-w-2xl w-full">
-           <ItinerariSau />
+      {/* Mapa d'Itinerari - Condicional flexible per títol */}
+      {frontmatter.title.includes("Sau") && (
+        <div data-aos="fade-up" data-aos-duration="1000" class="w-full flex justify-center mt-8">
+          <div class="max-w-2xl w-full">
+            <ItinerariSau />
+          </div>
         </div>
-      </div>
+      )}
     </Wrapper>
 
     <Wrapper variant="standard" class="py-8">

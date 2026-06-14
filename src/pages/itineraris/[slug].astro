@@ -1,0 +1,19 @@
+---
+import { getCollection, render } from "astro:content";
+import ItinerariLayout from "@/layouts/ItinerariLayout.astro";
+
+export async function getStaticPaths() {
+  const itineraris = await getCollection("itineraris");
+  return itineraris.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<ItinerariLayout frontmatter={entry.data}>
+  <Content />
+</ItinerariLayout>

@@ -118,8 +118,47 @@ const posts = defineCollection({
     }),
 });
 
+const itineraris = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/itineraris" }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      description: z.string(),
+      tipus: z.string().optional(),
+      mapa: z.string().optional(),
+      intro: z.array(
+        z.object({
+          paragraphs: z.array(z.string()).optional(),
+        }),
+      ),
+      dades: z.object({
+        ubicacio: z.string(),
+        mapa: z.string(),
+        socle: z.string(),
+        historia: z.string(),
+      }),
+      credits: z.array(
+        z.object({
+          name: z.string(),
+          role: z.string(),
+        }),
+      ),
+      images: z.array(
+        z.object({
+          url: image(),
+          alt: z.string(),
+        }),
+      ),
+      thumbnail: z.object({
+        url: image(),
+        alt: z.string(),
+      }),
+    }),
+});
+
 export const collections = {
   work,
   store,
   posts,
+  itineraris,
 };

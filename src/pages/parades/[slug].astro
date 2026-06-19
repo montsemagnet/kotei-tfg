@@ -1,0 +1,23 @@
+---
+import { getCollection, render } from "astro:content";
+import ParadaLayout from "@/layouts/ParadaLayout.astro";
+import { getParadaSlug } from "@/utils/paradaSlug";
+
+export async function getStaticPaths() {
+  const parades = await getCollection("parades");
+  return parades.map((entry) => {
+    const slug = getParadaSlug(entry);
+    return {
+      params: { slug },
+      props: { entry, slug },
+    };
+  });
+}
+
+const { entry, slug } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<ParadaLayout frontmatter={entry.data} slug={slug}>
+  <Content />
+</ParadaLayout>

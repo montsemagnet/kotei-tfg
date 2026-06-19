@@ -156,9 +156,50 @@ const itineraris = defineCollection({
     }),
 });
 
+const parades = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/parades" }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      itinerari: z.string(),
+      ordre: z.number(),
+      coordenades: z.string(),
+      media: z.discriminatedUnion("tipus", [
+        z.object({
+          tipus: z.literal("foto"),
+          foto: z.object({
+            url: image(),
+            alt: z.string(),
+          }),
+        }),
+        z.object({
+          tipus: z.literal("video"),
+          videoUrl: z.string(),
+        }),
+      ]),
+      fotos: z
+        .array(
+          z.object({
+            url: image(),
+            alt: z.string(),
+          }),
+        )
+        .length(8),
+      mapaUrl: z.string().url(),
+      materials: z.array(
+        z.object({
+          nom: z.string(),
+          enllaç: z.string(),
+        }),
+      ),
+      paisatgeUrl: z.string(),
+    }),
+});
+
 export const collections = {
   work,
   store,
   posts,
   itineraris,
+  parades,
 };

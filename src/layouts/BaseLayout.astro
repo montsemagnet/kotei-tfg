@@ -17,10 +17,10 @@ const { hideNav = false, hideFooter = false } = Astro.props;
   <head>
     <BaseHead />
   </head>
-  <body class="dark:bg-base-900 bg-base-100">
+  <body class="dark:bg-base-900 bg-base-100 min-h-screen">
     {!hideNav && <Navigation />}
 
-    <main class="grow"><slot /></main>
+    <main class="grow pb-32"><slot /></main>
         <AOSBody />
   </body>
 </html>

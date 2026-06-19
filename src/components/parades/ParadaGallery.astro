@@ -1,0 +1,146 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  fotos: { url: ImageMetadata; alt: string }[];
+  galleryId: string;
+}
+
+const { fotos, galleryId } = Astro.props;
+---
+
+<div data-aos="fade-up" data-aos-duration="1000">
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+    {
+      fotos.map((foto, index) => (
+        <button
+          type="button"
+          class="parada-gallery-thumb cursor-pointer overflow-hidden border-0 p-0 bg-transparent"
+          data-gallery={galleryId}
+          data-index={index}
+          aria-label={`Ampliar foto ${index + 1}: ${foto.alt}`}
+        >
+          <Image
+            src={foto.url}
+            alt={foto.alt}
+            width={400}
+            height={400}
+            class="w-full aspect-square object-cover hover:opacity-90 transition-opacity"
+          />
+        </button>
+      ))
+    }
+  </div>
+
+  <dialog
+    id={`gallery-${galleryId}`}
+    class="parada-gallery-dialog fixed inset-0 z-[110] m-0 size-full max-h-none max-w-none border-0 bg-base-950/90 p-4 backdrop:bg-transparent open:flex open:items-center open:justify-center"
+  >
+    <button
+      type="button"
+      class="parada-gallery-close absolute top-4 right-4 z-10 rounded-full bg-white/10 px-4 py-2 text-white hover:bg-white/20"
+      aria-label="Tancar galeria"
+    >
+      Tancar
+    </button>
+    <button
+      type="button"
+      class="parada-gallery-prev absolute left-4 z-10 rounded-full bg-white/10 px-4 py-2 text-white hover:bg-white/20"
+      aria-label="Foto anterior"
+    >
+      ←
+    </button>
+    <button
+      type="button"
+      class="parada-gallery-next absolute right-4 z-10 rounded-full bg-white/10 px-4 py-2 text-white hover:bg-white/20"
+      aria-label="Foto següent"
+    >
+      →
+    </button>
+    <figure class="max-w-5xl w-full">
+      <img
+        class="parada-gallery-image w-full max-h-[85vh] object-contain mx-auto"
+        src=""
+        alt=""
+      />
+      <figcaption
+        class="parada-gallery-caption mt-4 text-center text-white text-sm"
+      />
+    </figure>
+  </dialog>
+</div>
+
+<script>
+  function initParadaGalleries() {
+    document.querySelectorAll("[data-gallery]").forEach((thumb) => {
+      if (thumb.dataset.bound) return;
+      thumb.dataset.bound = "true";
+
+      thumb.addEventListener("click", () => {
+        const galleryId = thumb.dataset.gallery;
+        const index = Number(thumb.dataset.index);
+        const dialog = document.getElementById(`gallery-${galleryId}`);
+        if (!(dialog instanceof HTMLDialogElement)) return;
+
+        dialog.dataset.currentIndex = String(index);
+        updateGalleryImage(dialog, galleryId, index);
+        dialog.showModal();
+      });
+    });
+
+    document.querySelectorAll(".parada-gallery-dialog").forEach((dialogEl) => {
+      if (!(dialogEl instanceof HTMLDialogElement)) return;
+      if (dialogEl.dataset.bound) return;
+      dialogEl.dataset.bound = "true";
+
+      const galleryId = dialogEl.id.replace("gallery-", "");
+
+      dialogEl
+        .querySelector(".parada-gallery-close")
+        ?.addEventListener("click", () => dialogEl.close());
+
+      dialogEl.addEventListener("click", (event) => {
+        if (event.target === dialogEl) dialogEl.close();
+      });
+
+      dialogEl.querySelector(".parada-gallery-prev")?.addEventListener("click", () => {
+        const current = Number(dialogEl.dataset.currentIndex ?? 0);
+        const total = dialogEl.querySelectorAll(`[data-gallery="${galleryId}"]`).length;
+        const next = (current - 1 + total) % total;
+        dialogEl.dataset.currentIndex = String(next);
+        updateGalleryImage(dialogEl, galleryId, next);
+      });
+
+      dialogEl.querySelector(".parada-gallery-next")?.addEventListener("click", () => {
+        const current = Number(dialogEl.dataset.currentIndex ?? 0);
+        const total = dialogEl.querySelectorAll(`[data-gallery="${galleryId}"]`).length;
+        const next = (current + 1) % total;
+        dialogEl.dataset.currentIndex = String(next);
+        updateGalleryImage(dialogEl, galleryId, next);
+      });
+    });
+  }
+
+  function updateGalleryImage(
+    dialog: HTMLDialogElement,
+    galleryId: string,
+    index: number,
+  ) {
+    const thumb = document.querySelector(
+      `[data-gallery="${galleryId}"][data-index="${index}"] img`,
+    );
+    const image = dialog.querySelector(".parada-gallery-image");
+    const caption = dialog.querySelector(".parada-gallery-caption");
+
+    if (!(thumb instanceof HTMLImageElement)) return;
+    if (!(image instanceof HTMLImageElement)) return;
+    if (!(caption instanceof HTMLElement)) return;
+
+    image.src = thumb.currentSrc || thumb.src;
+    image.alt = thumb.alt;
+    caption.textContent = thumb.alt;
+  }
+
+  initParadaGalleries();
+  document.addEventListener("astro:after-swap", initParadaGalleries);
+</script>

@@ -1,0 +1,40 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  media: {
+    tipus: "foto" | "video";
+    foto?: { url: ImageMetadata; alt: string };
+    videoUrl?: string;
+  };
+}
+
+const { media } = Astro.props;
+---
+
+<div data-aos="fade-up" data-aos-duration="1000" class="relative overflow-hidden">
+  {
+    media.tipus === "foto" && media.foto && (
+      <Image
+        src={media.foto.url}
+        alt={media.foto.alt}
+        width={1200}
+        height={675}
+        class="w-full aspect-[16/9] object-cover"
+      />
+    )
+  }
+  {
+    media.tipus === "video" && media.videoUrl && (
+      <div class="aspect-video w-full">
+        <iframe
+          src={media.videoUrl}
+          title="Vídeo de la parada"
+          class="size-full border-0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        />
+      </div>
+    )
+  }
+</div>

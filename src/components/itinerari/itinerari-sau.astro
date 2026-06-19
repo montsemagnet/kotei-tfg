@@ -1,8 +1,31 @@
-<svg
-  viewBox="0 0 366.61359 347.3323"
-  xmlns="http://www.w3.org/2000/svg"
-  class="itinerari-sau"
->
+---
+/** Previsualització hover: public/images/parades/I1-P1-hover.jpg */
+---
+
+<div class="itinerari-sau-map relative w-full" data-itinerari-map>
+  <div
+    class="parada-preview pointer-events-none absolute z-30 hidden w-64 overflow-hidden rounded-lg border border-base-200 bg-white shadow-xl dark:border-base-700 dark:bg-base-900"
+    role="tooltip"
+    aria-hidden="true"
+  >
+    <img
+      width="640"
+      height="480"
+      src=""
+      alt=""
+      class="block h-auto w-full object-cover"
+    />
+    <p
+      class="parada-preview-label px-3 py-2 text-sm text-base-700 dark:text-base-300"
+    >
+    </p>
+  </div>
+
+  <svg
+    viewBox="0 0 366.61359 347.3323"
+    xmlns="http://www.w3.org/2000/svg"
+    class="itinerari-sau w-full h-auto"
+  >
     <defs
      id="defs1">
     <linearGradient
@@ -572,6 +595,12 @@
      id="layer4"
      inkscape:label="NOMS"
      style="display:inline;fill:#1f5a45;fill-opacity:1">
+    <a
+       href="/parades/I1-P1"
+       class="parada-hotspot"
+       data-preview="/images/parades/I1-P1-hover.jpg"
+       data-label="Parada 1 — Presa de Sau"
+       aria-label="Parada 1 — Presa de Sau">
     <g
        id="P1">
       <title
@@ -607,6 +636,13 @@
            x="314.68649"
            y="300.09418">Parada 1</tspan></text>
     </g>
+    </a>
+    <a
+       href="/parades/I1-P2"
+       class="parada-hotspot"
+       data-preview="/images/parades/I1-P2-hover.jpg"
+       data-label="Parada 2 — Cantera"
+       aria-label="Parada 2 — Cantera">
     <g
        id="P2">
       <title
@@ -640,6 +676,7 @@
            x="309.40549"
            y="155.35867">Parada 2</tspan></text>
     </g>
+    </a>
     <g
        id="P3">
       <title
@@ -872,4 +909,93 @@
            y="87.614632">Parada 9</tspan></text>
     </g>
   </g>
-</svg>
+  </svg>
+</div>
+
+<style>
+  .itinerari-sau-map :global(.parada-hotspot) {
+    cursor: pointer;
+    outline: none;
+  }
+
+  .itinerari-sau-map :global(.parada-hotspot #P1 path) {
+    transition:
+      fill 0.2s ease,
+      opacity 0.2s ease;
+  }
+
+  .itinerari-sau-map :global(.parada-hotspot:hover #P1 path),
+  .itinerari-sau-map :global(.parada-hotspot:focus-visible #P1 path) {
+    opacity: 0.92;
+  }
+
+  .itinerari-sau-map :global(.parada-hotspot:hover #path67),
+  .itinerari-sau-map :global(.parada-hotspot:focus-visible #path67),
+  .itinerari-sau-map :global(.parada-hotspot:hover #path23),
+  .itinerari-sau-map :global(.parada-hotspot:focus-visible #path23) {
+    fill: #c2a4f8;
+  }
+</style>
+
+<script>
+  function initItinerariSauMap() {
+    document.querySelectorAll("[data-itinerari-map]").forEach((mapRoot) => {
+      if (mapRoot.dataset.bound) return;
+      mapRoot.dataset.bound = "true";
+
+      const preview = mapRoot.querySelector(".parada-preview");
+      const previewImage = preview?.querySelector("img");
+      const previewLabel = preview?.querySelector(".parada-preview-label");
+
+      if (
+        !(preview instanceof HTMLElement) ||
+        !(previewImage instanceof HTMLImageElement) ||
+        !(previewLabel instanceof HTMLElement)
+      ) {
+        return;
+      }
+
+      const showPreview = (hotspot, event) => {
+        const src = hotspot.dataset.preview;
+        const label = hotspot.dataset.label ?? "";
+        if (!src) return;
+
+        previewImage.src = src;
+        previewImage.alt = label;
+        previewLabel.textContent = label;
+        preview.classList.remove("hidden");
+
+        positionPreview(mapRoot, preview, event);
+      };
+
+      const hidePreview = () => {
+        preview.classList.add("hidden");
+        previewImage.removeAttribute("src");
+      };
+
+      mapRoot.querySelectorAll(".parada-hotspot[data-preview]").forEach((hotspot) => {
+        hotspot.addEventListener("mouseenter", (event) => showPreview(hotspot, event));
+        hotspot.addEventListener("mousemove", (event) =>
+          positionPreview(mapRoot, preview, event),
+        );
+        hotspot.addEventListener("mouseleave", hidePreview);
+        hotspot.addEventListener("focus", (event) => showPreview(hotspot, event));
+        hotspot.addEventListener("blur", hidePreview);
+      });
+    });
+  }
+
+  function positionPreview(mapRoot, preview, event) {
+    const mapRect = mapRoot.getBoundingClientRect();
+    const x = event.clientX - mapRect.left + 16;
+    const y = event.clientY - mapRect.top + 16;
+    const maxX = mapRect.width - preview.offsetWidth - 8;
+    const maxY = mapRect.height - preview.offsetHeight - 8;
+
+    preview.style.left = `${Math.max(8, Math.min(x, maxX))}px`;
+    preview.style.top = `${Math.max(8, Math.min(y, maxY))}px`;
+  }
+
+  initItinerariSauMap();
+  document.addEventListener("astro:after-swap", initItinerariSauMap);
+</script>

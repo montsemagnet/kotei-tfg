@@ -1,0 +1,159 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import ParadaMedia from "@/components/parades/ParadaMedia.astro";
+import ParadaGallery from "@/components/parades/ParadaGallery.astro";
+
+const { frontmatter, slug } = Astro.props;
+
+const sectionGrid =
+  "grid grid-cols-1 lg:grid-cols-4 gap-3 lg:gap-8 items-start";
+const sectionLabel =
+  "dark:text-white text-base-900 font-medium tracking-tighter lg:max-w-full";
+const sectionContent = "lg:col-span-3 min-w-0 w-full";
+---
+
+<BaseLayout>
+  <section>
+    <Wrapper variant="standard" class="py-24 lg:py-48">
+      <Text
+        tag="a"
+        variant="textXS"
+        href={`/itineraris/${frontmatter.itinerari}`}
+        class="uppercase text-base-500 hover:text-base-900 dark:hover:text-white mb-6 inline-block"
+      >
+        ← Tornar a l'itinerari
+      </Text>
+
+      <Text
+        tag="h1"
+        variant="display3XL"
+        data-aos="fade-up"
+        data-aos-duration="1000"
+        class="dark:text-white text-base-900 font-medium tracking-tighter mb-8"
+      >
+        {frontmatter.title}
+      </Text>
+
+      <ParadaMedia media={frontmatter.media} />
+
+      <div
+        data-aos="fade-up"
+        data-aos-duration="1000"
+        class:list={[sectionGrid, "mt-8 border-t border-base-200 dark:border-base-800 pt-8"]}
+      >
+        <Text tag="h4" variant="displayMD" class={sectionLabel}>
+          Coordenades
+        </Text>
+        <div class={sectionContent}>
+          <Text
+            tag="p"
+            variant="textXL"
+            class="text-base-500 dark:text-base-400 font-mono break-words"
+          >
+            {frontmatter.coordenades}
+          </Text>
+        </div>
+      </div>
+    </Wrapper>
+
+    <Wrapper variant="standard" class="py-8 border-t border-base-200 dark:border-base-800">
+      <div
+        data-aos="fade-up"
+        data-aos-duration="1000"
+        class:list={[sectionGrid, "mb-12"]}
+      >
+        <Text tag="h4" variant="displayMD" class={sectionLabel}>
+          Fotos
+        </Text>
+        <div class={sectionContent}>
+          <ParadaGallery fotos={frontmatter.fotos} galleryId={slug} />
+        </div>
+      </div>
+
+      <div
+        data-aos="fade-up"
+        data-aos-duration="1000"
+        class:list={[sectionGrid, "mb-12 border-t border-base-200 dark:border-base-800 pt-8"]}
+      >
+        <Text tag="h4" variant="displayMD" class={sectionLabel}>
+          Mapa
+        </Text>
+        <div class={sectionContent}>
+          <Text
+            tag="a"
+            variant="textXL"
+            href={frontmatter.mapaUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-accent-600 dark:text-accent-400 hover:underline break-all"
+          >
+            {frontmatter.mapaUrl}
+          </Text>
+        </div>
+      </div>
+
+      {
+        frontmatter.materials.length > 0 && (
+          <div
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            class:list={[sectionGrid, "mb-12 border-t border-base-200 dark:border-base-800 pt-8"]}
+          >
+            <Text tag="h4" variant="displayMD" class={sectionLabel}>
+              Materials
+            </Text>
+            <ul class:list={[sectionContent, "flex flex-col gap-3"]}>
+              {frontmatter.materials.map((material) => (
+                <li class="border-b border-base-200 dark:border-base-800 pb-3">
+                  <Text
+                    tag="a"
+                    variant="textXL"
+                    href={material.enllaç}
+                    class="text-base-900 dark:text-white hover:text-accent-600 dark:hover:text-accent-400"
+                  >
+                    {material.nom} →
+                  </Text>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
+
+      <div
+        data-aos="fade-up"
+        data-aos-duration="1000"
+        class:list={[sectionGrid, "mb-12 border-t border-base-200 dark:border-base-800 pt-8"]}
+      >
+        <Text tag="h4" variant="displayMD" class={sectionLabel}>
+          Context litològic i evolució paleogeogràfica
+        </Text>
+        <Wrapper variant="prose" class:list={[sectionContent, "-mt-2"]}>
+          <slot />
+        </Wrapper>
+      </div>
+
+      <div
+        data-aos="fade-up"
+        data-aos-duration="1000"
+        class:list={[sectionGrid, "border-t border-base-200 dark:border-base-800 pt-8"]}
+      >
+        <Text tag="h4" variant="displayMD" class={sectionLabel}>
+          Anàlisi del paisatge i de la flora associada
+        </Text>
+        <div class={sectionContent}>
+          <Text
+            tag="a"
+            variant="textXL"
+            href={frontmatter.paisatgeUrl}
+            class="inline-flex items-center gap-2 text-accent-600 dark:text-accent-400 hover:underline"
+          >
+            Veure l'anàlisi botànica i del paisatge →
+          </Text>
+        </div>
+      </div>
+    </Wrapper>
+  </section>
+</BaseLayout>

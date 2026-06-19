@@ -15,7 +15,9 @@ import ItinerariCard1 from "@/components/itinerari/ItinerariCard1.astro";
 import BlogCard1 from "@/components/blog/BlogCard1.astro";
 // Content
 import { getCollection } from "astro:content";
-const allItineraris = await getCollection("itineraris");
+const allItineraris = (await getCollection("itineraris"))
+  .filter((entry) => !entry.data.draft)
+  .sort((a, b) => (a.data.ordre ?? 999) - (b.data.ordre ?? 999));
 // Sort posts by date
 const allPosts = await getCollection("posts");
 allPosts.sort((a, b) => {

@@ -1,6 +1,7 @@
 ---
 title: "Sau - Tavertet"
 description: "Itinerari geològic UVIC Sau–Tavertet"
+ordre: 1
 tipus: "Geològic"
 mapa: "sau-tavertet"
 intro:

@@ -153,6 +153,9 @@ const itineraris = defineCollection({
         url: image(),
         alt: z.string(),
       }),
+      ordre: z.number().optional(),
+      draft: z.boolean().optional(),
+      enConstruccio: z.boolean().optional(),
     }),
 });
 

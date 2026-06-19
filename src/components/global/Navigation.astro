@@ -41,7 +41,13 @@ import Search from "@/components/global/Search.astro";
       
       <Search />
 
-      <a href="https://www.uvic.cat/" class="px-2 py-1 h-14 flex items-center bg-base-50 outline outline-base-900 dark:outline-base-100 hover:bg-base-950 duration-300 rounded-[calc(var(--card-radius)-var(--card-padding))] dark:bg-base-900 dark:hover:bg-base-800">
+      <a
+        href="https://www.uvic.cat/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Universitat de Vic — obre en una pestanya nova"
+        class="px-2 py-1 h-14 flex items-center bg-base-50 outline outline-base-900 dark:outline-base-100 hover:bg-base-950 duration-300 rounded-[calc(var(--card-radius)-var(--card-padding))] dark:bg-base-900 dark:hover:bg-base-800"
+      >
         <img src={logoUvicP.src} alt="Logo UVic P" class="h-6 w-auto" />
       </a>
     </div>

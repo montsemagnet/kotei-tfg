@@ -1,0 +1,212 @@
+---
+import { Image } from "astro:assets";
+
+interface Imatge {
+  url: ImageMetadata;
+  alt: string;
+}
+
+interface Fila {
+  electronica?: Imatge;
+  espectre?: Imatge;
+}
+
+interface Props {
+  optica: Imatge;
+  fileres: Fila[];
+  galleryId: string;
+}
+
+const { optica, fileres, galleryId } = Astro.props;
+
+const rowCount = Math.max(fileres.length, 1);
+let imageIndex = 0;
+---
+
+<div data-aos="fade-up" data-aos-duration="1000" class="w-full">
+  <div
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2"
+    style={`--roca-rows: ${rowCount}`}
+  >
+    {
+      (() => {
+        const idx = imageIndex++;
+        return (
+          <button
+            type="button"
+            class="roca-gallery-thumb cursor-pointer overflow-hidden border-0 p-0 bg-transparent md:col-span-2 lg:col-span-1 min-h-48"
+            style={`grid-row: span ${rowCount}`}
+            data-gallery={galleryId}
+            data-index={idx}
+            data-full-src={optica.url.src}
+            aria-label={`Ampliar: ${optica.alt}`}
+          >
+            <Image
+              src={optica.url}
+              alt={optica.alt}
+              width={900}
+              height={1200}
+              class="size-full min-h-48 lg:min-h-[420px] object-cover hover:opacity-90 transition-opacity"
+            />
+          </button>
+        );
+      })()
+    }
+
+    {
+      fileres.map((fila) => (
+        <>
+          {fila.electronica &&
+            (() => {
+              const idx = imageIndex++;
+              return (
+                <button
+                  type="button"
+                  class="roca-gallery-thumb cursor-pointer overflow-hidden border-0 p-0 bg-transparent"
+                  data-gallery={galleryId}
+                  data-index={idx}
+                  data-full-src={fila.electronica!.url.src}
+                  aria-label={`Ampliar: ${fila.electronica!.alt}`}
+                >
+                  <Image
+                    src={fila.electronica!.url}
+                    alt={fila.electronica!.alt}
+                    width={500}
+                    height={400}
+                    class="w-full aspect-[5/4] object-cover hover:opacity-90 transition-opacity"
+                  />
+                </button>
+              );
+            })()}
+          {fila.espectre &&
+            (() => {
+              const idx = imageIndex++;
+              return (
+                <button
+                  type="button"
+                  class="roca-gallery-thumb cursor-pointer overflow-hidden border-0 p-2 bg-base-100 dark:bg-base-900 flex items-center justify-center w-full aspect-[5/4]"
+                  data-gallery={galleryId}
+                  data-index={idx}
+                  data-full-src={fila.espectre!.url.src}
+                  aria-label={`Ampliar: ${fila.espectre!.alt}`}
+                >
+                  <Image
+                    src={fila.espectre!.url}
+                    alt={fila.espectre!.alt}
+                    width={500}
+                    height={250}
+                    class="w-full h-full object-contain hover:opacity-90 transition-opacity"
+                  />
+                </button>
+              );
+            })()}
+        </>
+      ))
+    }
+  </div>
+
+  <dialog
+    id={`gallery-${galleryId}`}
+    class="roca-gallery-dialog fixed inset-0 z-[110] m-0 size-full max-h-none max-w-none border-0 bg-base-950/90 p-4 backdrop:bg-transparent open:flex open:items-center open:justify-center"
+  >
+    <button
+      type="button"
+      class="roca-gallery-close absolute top-4 right-4 z-10 rounded-full bg-white/10 px-4 py-2 text-white hover:bg-white/20"
+      aria-label="Tancar galeria"
+    >
+      Tancar
+    </button>
+    <button
+      type="button"
+      class="roca-gallery-prev absolute left-4 z-10 rounded-full bg-white/10 px-4 py-2 text-white hover:bg-white/20"
+      aria-label="Imatge anterior"
+    >
+      ←
+    </button>
+    <button
+      type="button"
+      class="roca-gallery-next absolute right-4 z-10 rounded-full bg-white/10 px-4 py-2 text-white hover:bg-white/20"
+      aria-label="Imatge següent"
+    >
+      →
+    </button>
+    <figure class="max-w-6xl w-full">
+      <img
+        class="roca-gallery-image w-full max-h-[85vh] object-contain mx-auto"
+        src=""
+        alt=""
+      />
+      <figcaption
+        class="roca-gallery-caption mt-4 text-center text-white text-sm"
+      />
+    </figure>
+  </dialog>
+</div>
+
+<script>
+  function initRocaGalleries() {
+    document.querySelectorAll(".roca-gallery-dialog").forEach((dialogEl) => {
+      if (!(dialogEl instanceof HTMLDialogElement)) return;
+      if (dialogEl.dataset.bound) return;
+      dialogEl.dataset.bound = "true";
+
+      const galleryId = dialogEl.id.replace("gallery-", "");
+      const mapRoot = dialogEl.parentElement;
+      if (!mapRoot) return;
+
+      const previewImage = dialogEl.querySelector(".roca-gallery-image");
+      const previewCaption = dialogEl.querySelector(".roca-gallery-caption");
+
+      if (
+        !(previewImage instanceof HTMLImageElement) ||
+        !(previewCaption instanceof HTMLElement)
+      ) {
+        return;
+      }
+
+      const showImage = (index) => {
+        const btn = mapRoot.querySelector(
+          `[data-gallery="${galleryId}"][data-index="${index}"]`,
+        );
+        if (!(btn instanceof HTMLButtonElement)) return;
+
+        const thumb = btn.querySelector("img");
+        if (!(thumb instanceof HTMLImageElement)) return;
+
+        dialogEl.dataset.currentIndex = String(index);
+        previewImage.src =
+          btn.dataset.fullSrc || thumb.currentSrc || thumb.src;
+        previewImage.alt = thumb.alt;
+        previewCaption.textContent = thumb.alt;
+        dialogEl.showModal();
+      };
+
+      mapRoot.querySelectorAll(`[data-gallery="${galleryId}"]`).forEach((btn) => {
+        btn.addEventListener("click", () => showImage(btn.dataset.index));
+      });
+
+      dialogEl.querySelector(".roca-gallery-close")?.addEventListener("click", () =>
+        dialogEl.close(),
+      );
+
+      dialogEl.addEventListener("click", (event) => {
+        if (event.target === dialogEl) dialogEl.close();
+      });
+
+      dialogEl.querySelector(".roca-gallery-prev")?.addEventListener("click", () => {
+        const total = mapRoot.querySelectorAll(`[data-gallery="${galleryId}"]`).length;
+        const current = Number(dialogEl.dataset.currentIndex ?? 0);
+        showImage((current - 1 + total) % total);
+      });
+
+      dialogEl.querySelector(".roca-gallery-next")?.addEventListener("click", () => {
+        const total = mapRoot.querySelectorAll(`[data-gallery="${galleryId}"]`).length;
+        const current = Number(dialogEl.dataset.currentIndex ?? 0);
+        showImage((current + 1) % total);
+      });
+    });
+  }
+
+  initRocaGalleries();
+  document.addEventListener("astro:after-swap", initRocaGalleries);
+</script>

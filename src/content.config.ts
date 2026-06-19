@@ -196,10 +196,52 @@ const parades = defineCollection({
     }),
 });
 
+const roques = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/roques" }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      parada: z.string(),
+      ordre: z.number(),
+      composicioQuimica: z.string(),
+      composicioMineralogica: z.string(),
+      textura: z.string(),
+      imatges: z.object({
+        optica: z.object({
+          url: image(),
+          alt: z.string(),
+        }),
+        fileres: z.array(
+          z.object({
+            electronica: z
+              .object({
+                url: image(),
+                alt: z.string(),
+              })
+              .optional(),
+            espectre: z
+              .object({
+                url: image(),
+                alt: z.string(),
+              })
+              .optional(),
+          }),
+        ),
+      }),
+      composicions: z.array(
+        z.object({
+          nom: z.string(),
+          valor: z.string(),
+        }),
+      ),
+    }),
+});
+
 export const collections = {
   work,
   store,
   posts,
   itineraris,
   parades,
+  roques,
 };

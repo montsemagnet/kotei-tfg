@@ -1,7 +1,23 @@
 ---
+import { getCollection, render } from "astro:content";
+import RocaLayout from "@/layouts/RocaLayout.astro";
+import { getRocaSlug } from "@/utils/rocaSlug";
+
 export async function getStaticPaths() {
-  return [];
+  const roques = await getCollection("roques");
+  return roques.map((entry) => {
+    const slug = getRocaSlug(entry);
+    return {
+      params: { slug },
+      props: { entry, slug },
+    };
+  });
 }
+
+const { entry, slug } = Astro.props;
+const { Content } = await render(entry);
 ---
 
-<!-- Pàgines de roques: pendent d'implementar -->
+<RocaLayout frontmatter={entry.data} slug={slug}>
+  <Content />
+</RocaLayout>

@@ -3,6 +3,7 @@ import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
 import mdx from "@astrojs/mdx";
 export default defineConfig({
+  output: "static",
   vite: {
     plugins: [tailwindcss()],
   },

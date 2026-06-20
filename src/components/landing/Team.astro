@@ -5,22 +5,18 @@ import { Image } from "astro:assets";
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import equipGrup from "@/images/equip/equip-grup.png";
+import { teamMembers, teamPhotoOrder } from "@/data/project";
 
-// Order matches the group photo: left → right
-const team = [
-  {
-    name: "Dra. Núria Ferrer Ramos",
-    url: "https://mon.uvic.cat/fcte/nuria-ferrer-ramos/",
-  },
-  {
-    name: "Montserrat Magnet Sabata",
-    url: undefined,
-  },
-  {
-    name: "Dra. Judit Molera Marimon",
-    url: "https://mon.uvic.cat/fcte/judit-molera-marimon/",
-  },
-];
+const team = teamPhotoOrder.map((name) => {
+  const member = teamMembers.find((m) => m.name === name);
+  return {
+    name,
+    url: member?.profileUrl,
+    email: member?.email ?? "",
+    roles: member?.roles ?? [],
+    qualifications: member?.qualifications,
+  };
+});
 ---
 
 <section>
@@ -37,7 +33,7 @@ const team = [
           equip
         </Text>
       </div>
-      <div class="lg:col-span-3 flex flex-col gap-4 max-w-xs">
+      <div class="lg:col-span-3 flex flex-col gap-4 max-w-sm">
         <Image
           src={equipGrup}
           alt="Dra. Núria Ferrer Ramos, Montserrat Magnet Sabata i Dra. Judit Molera Marimon"
@@ -45,38 +41,61 @@ const team = [
           height={240}
           class="w-full rounded-sm object-cover object-center"
         />
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <div class="flex flex-col gap-5">
           {
             team.map((member, index) => (
-              <div
-                class:list={[
-                  index === 0 && "sm:text-left",
-                  index === 1 && "sm:text-center",
-                  index === 2 && "sm:text-right",
-                ]}
-              >
+              <div class="min-w-0">
+                <Text
+                  tag="p"
+                  variant="textSM"
+                  class="leading-snug text-base-900 dark:text-white"
+                >
+                  (0{index + 1}){" "}
+                  {
+                    member.url ? (
+                      <a
+                        href={member.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="hover:text-base-500"
+                      >
+                        {member.name}
+                      </a>
+                    ) : (
+                      member.name
+                    )
+                  }
+                </Text>
                 {
-                  member.url ? (
-                    <Text
-                      tag="a"
-                      variant="textSM"
-                      href={member.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="leading-snug text-base-900 dark:text-white hover:text-base-500"
-                    >
-                      (0{index + 1}) {member.name}
-                    </Text>
-                  ) : (
+                  member.roles.length > 0 && (
                     <Text
                       tag="p"
-                      variant="textSM"
-                      class="leading-snug text-base-900 dark:text-white"
+                      variant="textXS"
+                      class="mt-0.5 text-base-600 dark:text-base-300 font-medium"
                     >
-                      (0{index + 1}) {member.name}
+                      {member.roles.join(" · ")}
                     </Text>
                   )
                 }
+                {
+                  member.qualifications && (
+                    <ul class="mt-1 space-y-0.5">
+                      {
+                        member.qualifications.map((item) => (
+                          <li class="text-xs text-base-500 dark:text-base-400 leading-snug">
+                            {item}
+                          </li>
+                        ))
+                      }
+                    </ul>
+                  )
+                }
+                <a
+                  href={`mailto:${member.email}`}
+                  class="mt-1 block text-xs text-base-500 dark:text-base-400 hover:text-accent-500 dark:hover:text-accent-300 duration-300 break-all"
+                >
+                  {member.email}
+                </a>
               </div>
             ))
           }

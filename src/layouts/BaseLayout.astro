@@ -21,6 +21,7 @@ const { hideNav = false, hideFooter = false } = Astro.props;
     {!hideNav && <Navigation />}
 
     <main class="grow pb-32"><slot /></main>
-        <AOSBody />
+    {!hideFooter && <Footer />}
+    <AOSBody />
   </body>
 </html>

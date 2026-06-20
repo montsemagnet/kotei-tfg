@@ -597,7 +597,7 @@
      style="display:inline;fill:#1f5a45;fill-opacity:1">
     <a
        href="/parades/I1-P1"
-       class="parada-hotspot"
+       class="parada-hotspot parada-hotspot--disponible"
        data-preview="/images/parades/I1-P1-hover.jpg"
        data-label="Parada 1 — Presa de Sau"
        aria-label="Parada 1 — Presa de Sau">
@@ -639,7 +639,7 @@
     </a>
     <a
        href="/parades/I1-P2"
-       class="parada-hotspot"
+       class="parada-hotspot parada-hotspot--disponible"
        data-preview="/images/parades/I1-P2-hover.jpg"
        data-label="Parada 2 — Cantera"
        aria-label="Parada 2 — Cantera">
@@ -672,7 +672,7 @@
          id="text174-8"
          mask="none"><tspan
            id="tspan174-6"
-           style="font-size:11.0933px;fill:#ff00ff;fill-opacity:1;stroke:#6b693b;stroke-width:1.28;stroke-dasharray:none;stroke-opacity:1"
+           style="font-size:11.0933px;stroke:#6b693b;stroke-width:1.28;stroke-dasharray:none;stroke-opacity:1"
            x="309.40549"
            y="155.35867">Parada 2</tspan></text>
     </g>
@@ -913,19 +913,52 @@
 </div>
 
 <style>
+  @keyframes parada-pin-pulse {
+    0%,
+    100% {
+      fill: #1f5a45;
+    }
+    50% {
+      fill: #ca8a04;
+    }
+  }
+
+  @keyframes parada-label-pulse {
+    0%,
+    100% {
+      fill: #1f5a45;
+    }
+    50% {
+      fill: #ca8a04;
+    }
+  }
+
   .itinerari-sau-map :global(.parada-hotspot) {
     cursor: pointer;
     outline: none;
   }
 
-  .itinerari-sau-map :global(.parada-hotspot #P1 path) {
+  .itinerari-sau-map :global(.parada-hotspot--disponible #path67),
+  .itinerari-sau-map :global(.parada-hotspot--disponible #path23) {
+    animation: parada-pin-pulse 2.4s ease-in-out infinite;
+  }
+
+  .itinerari-sau-map :global(.parada-hotspot--disponible text tspan) {
+    animation: parada-label-pulse 2.4s ease-in-out infinite;
+    fill: #1f5a45;
+  }
+
+  .itinerari-sau-map :global(.parada-hotspot #P1 path),
+  .itinerari-sau-map :global(.parada-hotspot #P2 path) {
     transition:
       fill 0.2s ease,
       opacity 0.2s ease;
   }
 
   .itinerari-sau-map :global(.parada-hotspot:hover #P1 path),
-  .itinerari-sau-map :global(.parada-hotspot:focus-visible #P1 path) {
+  .itinerari-sau-map :global(.parada-hotspot:focus-visible #P1 path),
+  .itinerari-sau-map :global(.parada-hotspot:hover #P2 path),
+  .itinerari-sau-map :global(.parada-hotspot:focus-visible #P2 path) {
     opacity: 0.92;
   }
 
@@ -933,7 +966,27 @@
   .itinerari-sau-map :global(.parada-hotspot:focus-visible #path67),
   .itinerari-sau-map :global(.parada-hotspot:hover #path23),
   .itinerari-sau-map :global(.parada-hotspot:focus-visible #path23) {
-    fill: #c2a4f8;
+    animation: none;
+    fill: #ca8a04;
+  }
+
+  .itinerari-sau-map :global(.parada-hotspot:hover text tspan),
+  .itinerari-sau-map :global(.parada-hotspot:focus-visible text tspan) {
+    animation: none;
+    fill: #ca8a04;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .itinerari-sau-map :global(.parada-hotspot--disponible #path67),
+    .itinerari-sau-map :global(.parada-hotspot--disponible #path23) {
+      animation: none;
+      fill: #ca8a04;
+    }
+
+    .itinerari-sau-map :global(.parada-hotspot--disponible text tspan) {
+      animation: none;
+      fill: #ca8a04;
+    }
   }
 </style>
 

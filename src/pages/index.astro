@@ -8,23 +8,16 @@ import Hero from "@/components/landing/Hero.astro";
 import Services from "@/components/landing/Services.astro";
 import Philosphy from "@/components/landing/Philosphy.astro";
 import HowWeWork from "@/components/landing/HowWeWork.astro";
+import Team from "@/components/landing/Team.astro";
 
 // Components
 import LogoCloud from "@/components/assets/LogoCloud.astro";
 import ItinerariCard1 from "@/components/itinerari/ItinerariCard1.astro";
-import BlogCard1 from "@/components/blog/BlogCard1.astro";
 // Content
 import { getCollection } from "astro:content";
 const allItineraris = (await getCollection("itineraris"))
   .filter((entry) => !entry.data.draft)
   .sort((a, b) => (a.data.ordre ?? 999) - (b.data.ordre ?? 999));
-// Sort posts by date
-const allPosts = await getCollection("posts");
-allPosts.sort((a, b) => {
-  const dateA = new Date(a.data.pubDate).getTime(); // Convert to timestamp
-  const dateB = new Date(b.data.pubDate).getTime(); // Convert to timestamp
-  return dateB - dateA; // Compare timestamps
-});
 ---
 
 <BaseLayout>
@@ -73,40 +66,5 @@ allPosts.sort((a, b) => {
   </section>
   <Philosphy />
   <HowWeWork />
-  <section>
-    <Wrapper variant="standard" class="py-24">
-      <div class="grid grid-cols-1 lg:grid-cols-4 gap-4">
-        <div class="flex flex-col">
-          <Text
-            tag="h3"
-            variant="displayXL"
-            data-aos="fade-up"
-            data-aos-duration="1000"
-            class="dark:text-white text-base-900 font-medium tracking-tighter"
-          >
-            insights
-          </Text>
-          <Text
-            tag="a"
-            variant="textXS"
-            data-aos="fade-up"
-            data-aos-duration="1500"
-            href="/blog"
-            class="uppercase text-black dark:text-white hover:text-base-500"
-          >
-            view all
-          </Text>
-        </div>
-        <div
-          class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-y-12 gap-2 lg:col-span-3"
-        >
-          {
-            allPosts
-              .slice(0, 3)
-              .map((post, index) => <BlogCard1 post={post} index={index + 1} />)
-          }
-        </div>
-      </div>
-    </Wrapper>
-  </section>
+  <Team />
 </BaseLayout>

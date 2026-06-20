@@ -5,20 +5,38 @@ import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 ---
 
 <section>
-  <Wrapper variant="standard" class="py-24   lg:py-48">
-    <div class="overflow-hidden">
-      <Text
-        tag="h1"
-        variant="displayMD"
-        data-aos="fade-down"
-        data-aos-duration="1500"
-        class="dark:text-white xl:text-6xl tracking-tight font-medium text-black text-balance"
-      >
-        GeoTransectes UVic. 
-        Plataforma web interactiva per a l'aprenentatge de la geologia de camp 
-        i la microscòpia petrogràfica en el Grau de Biologia  
-
-      </Text>
-    </div>
+  <Wrapper variant="standard" class="py-24 lg:py-48">
+    <Text
+      tag="h1"
+      variant="displayXL"
+      data-aos="fade-down"
+      data-aos-duration="1500"
+      class="hero-title dark:text-white font-medium text-black w-full max-w-none"
+    >
+      GeoTransectes UVic. Plataforma web interactiva per a l'aprenentatge de la
+      geologia de camp i la microscòpia petrogràfica en el Grau de Biologia
+    </Text>
   </Wrapper>
 </section>
+
+<style>
+  .hero-title {
+    width: 100%;
+    text-wrap: pretty;
+    letter-spacing: -0.01em;
+  }
+
+  @media (min-width: 1024px) {
+    .hero-title {
+      text-align: justify;
+      word-spacing: 0.14em;
+      hyphens: auto;
+    }
+
+    .hero-title::after {
+      content: "";
+      display: inline-block;
+      width: 100%;
+    }
+  }
+</style>

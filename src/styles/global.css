@@ -104,3 +104,19 @@
   --astro-code-token-italic: italic;
   --astro-code-token-underline: underline;
 }
+
+/* Google Translate — amaga la barra per defecte */
+.goog-te-banner-frame.skiptranslate,
+iframe.skiptranslate,
+#goog-gt-tt {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+
+.goog-text-highlight {
+  background: none !important;
+  box-shadow: none !important;
+}

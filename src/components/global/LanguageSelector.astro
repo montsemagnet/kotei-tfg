@@ -1,0 +1,210 @@
+---
+const navButtonClass =
+  "px-2 py-1 h-14 flex bg-base-800 dark:bg-base-50 items-center outline outline-base-900 dark:outline-base-100 dark:text-base-900 hover:bg-base-950 duration-300 rounded-[calc(var(--card-radius)-var(--card-padding))] text-white dark:hover:bg-base-300";
+
+const languages = [
+  { code: "ca", label: "Català" },
+  { code: "es", label: "Español" },
+  { code: "fr", label: "Français" },
+  { code: "en", label: "English" },
+];
+---
+
+<div class="relative" data-lang-selector>
+  <button
+    type="button"
+    class:list={[navButtonClass, "size-14 justify-center gap-1 min-w-14"]}
+    aria-label="Triar idioma"
+    aria-haspopup="listbox"
+    aria-expanded="false"
+    data-lang-toggle
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.75"
+      class="size-5 shrink-0"
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="12" r="10"></circle>
+      <path
+        d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+      ></path>
+    </svg>
+    <span class="text-xs font-medium sr-only sm:not-sr-only" data-lang-current>CA</span>
+  </button>
+
+  <div
+    class="lang-menu pointer-events-none absolute bottom-[calc(100%+0.75rem)] left-1/2 z-[120] w-64 -translate-x-1/2 rounded-lg border border-base-700 bg-base-800 p-3 opacity-0 shadow-xl transition-all duration-200 dark:border-base-300 dark:bg-base-50 invisible"
+    role="listbox"
+    aria-label="Idiomes disponibles"
+    data-lang-menu
+  >
+    <p class="mb-3 text-xs leading-relaxed text-base-400 dark:text-base-500">
+      Traducció automàtica. El contingut original és en català.
+    </p>
+    <ul class="flex flex-col gap-1">
+      {
+        languages.map(({ code, label }) => (
+          <li>
+            <button
+              type="button"
+              role="option"
+              class="lang-option w-full rounded-md px-3 py-2 text-left text-sm text-white hover:bg-base-950 dark:text-base-900 dark:hover:bg-base-200 transition-colors"
+              data-lang={code}
+            >
+              {label}
+            </button>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>
+
+<div id="google_translate_element" class="hidden" aria-hidden="true"></div>
+
+<script>
+  const LANG_LABELS: Record<string, string> = {
+    ca: "CA",
+    es: "ES",
+    fr: "FR",
+    en: "EN",
+  };
+
+  function getActiveLang() {
+    const match = document.cookie.match(/(?:^|;\s*)googtrans=\/ca\/([a-z]{2})/);
+    return match?.[1] ?? "ca";
+  }
+
+  function setGoogTransCookie(lang: string) {
+    if (lang === "ca") {
+      document.cookie = "googtrans=;path=/;expires=Thu, 01 Jan 1970 00:00:00 UTC";
+    } else {
+      document.cookie = `googtrans=/ca/${lang};path=/`;
+    }
+  }
+
+  function googleTranslateElementInit() {
+    const google = (window as Window & { google?: { translate: { TranslateElement: new (
+      options: object,
+      id: string,
+    ) => void; InlineLayout: { SIMPLE: number } } } }).google;
+    if (!google?.translate?.TranslateElement) return;
+
+    new google.translate.TranslateElement(
+      {
+        pageLanguage: "ca",
+        includedLanguages: "ca,es,fr,en",
+        autoDisplay: false,
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+      },
+      "google_translate_element",
+    );
+  }
+
+  function loadGoogleTranslate() {
+    const win = window as Window & { googleTranslateElementInit?: () => void };
+    if (win.googleTranslateElementInit) return;
+
+    win.googleTranslateElementInit = googleTranslateElementInit;
+    const script = document.createElement("script");
+    script.src =
+      "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+    script.async = true;
+    document.head.appendChild(script);
+  }
+
+  function markActiveLang(root: HTMLElement) {
+    const active = getActiveLang();
+    const currentLabel = root.querySelector("[data-lang-current]");
+    if (currentLabel) currentLabel.textContent = LANG_LABELS[active] ?? "CA";
+
+    root.querySelectorAll("[data-lang]").forEach((button) => {
+      if (!(button instanceof HTMLButtonElement)) return;
+      const isActive = button.dataset.lang === active;
+      button.setAttribute("aria-selected", isActive ? "true" : "false");
+      button.classList.toggle("bg-base-950", isActive);
+      button.classList.toggle("dark:bg-base-200", isActive);
+      button.classList.toggle("font-medium", isActive);
+    });
+  }
+
+  function closeMenu(root: HTMLElement) {
+    const toggle = root.querySelector("[data-lang-toggle]");
+    const menu = root.querySelector("[data-lang-menu]");
+    if (!(toggle instanceof HTMLButtonElement) || !(menu instanceof HTMLElement)) return;
+
+    toggle.setAttribute("aria-expanded", "false");
+    menu.classList.add("pointer-events-none", "invisible", "opacity-0");
+    menu.classList.remove("pointer-events-auto", "visible", "opacity-100");
+  }
+
+  function openMenu(root: HTMLElement) {
+    const toggle = root.querySelector("[data-lang-toggle]");
+    const menu = root.querySelector("[data-lang-menu]");
+    if (!(toggle instanceof HTMLButtonElement) || !(menu instanceof HTMLElement)) return;
+
+    toggle.setAttribute("aria-expanded", "true");
+    menu.classList.remove("pointer-events-none", "invisible", "opacity-0");
+    menu.classList.add("pointer-events-auto", "visible", "opacity-100");
+  }
+
+  function initLanguageSelector() {
+    loadGoogleTranslate();
+
+    document.querySelectorAll("[data-lang-selector]").forEach((root) => {
+      if (!(root instanceof HTMLElement)) return;
+      if (root.dataset.bound) return;
+      root.dataset.bound = "true";
+
+      markActiveLang(root);
+
+      const toggle = root.querySelector("[data-lang-toggle]");
+      toggle?.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const menu = root.querySelector("[data-lang-menu]");
+        if (!(menu instanceof HTMLElement)) return;
+
+        if (menu.classList.contains("visible")) {
+          closeMenu(root);
+        } else {
+          openMenu(root);
+        }
+      });
+
+      root.querySelectorAll("[data-lang]").forEach((button) => {
+        button.addEventListener("click", () => {
+          if (!(button instanceof HTMLButtonElement)) return;
+          const lang = button.dataset.lang;
+          if (!lang || lang === getActiveLang()) {
+            closeMenu(root);
+            return;
+          }
+
+          setGoogTransCookie(lang);
+          window.location.reload();
+        });
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      document.querySelectorAll("[data-lang-selector]").forEach((root) => {
+        if (!(root instanceof HTMLElement)) return;
+        if (!root.contains(event.target as Node)) closeMenu(root);
+      });
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape") return;
+      document.querySelectorAll("[data-lang-selector]").forEach((root) => {
+        if (root instanceof HTMLElement) closeMenu(root);
+      });
+    });
+  }
+
+  initLanguageSelector();
+  document.addEventListener("astro:after-swap", initLanguageSelector);
+</script>

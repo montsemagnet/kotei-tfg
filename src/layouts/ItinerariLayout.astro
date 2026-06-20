@@ -136,6 +136,18 @@ const dadesLabels: Record<string, string> = {
                         +
                       </span>
                     </button>
+                  ) : key === "mapa" && frontmatter.mapaUrl ? (
+                    <Text
+                      tag="a"
+                      variant="displayXL"
+                      href={frontmatter.mapaUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="Obrir mapa interactiu (nova pestanya)"
+                      class="capitalize font-medium tracking-tighter text-accent-700 dark:text-accent-400 underline decoration-accent-700/30 dark:decoration-accent-400/40 underline-offset-[6px] hover:decoration-accent-700 dark:hover:decoration-accent-400 transition-colors"
+                    >
+                      {label}
+                    </Text>
                   ) : (
                     <Text
                       tag="h4"
@@ -146,13 +158,29 @@ const dadesLabels: Record<string, string> = {
                     </Text>
                   )
                 }
-                <Text
-                  tag="p"
-                  variant="textXL"
-                  class="text-base-500 dark:text-base-400 lg:col-span-3"
-                >
-                  {value}
-                </Text>
+                {
+                  key === "mapa" && frontmatter.mapaUrl ? (
+                    <Text
+                      tag="a"
+                      variant="textXL"
+                      href={frontmatter.mapaUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="Obrir mapa interactiu (nova pestanya)"
+                      class="text-base-500 dark:text-base-400 lg:col-span-3 hover:text-accent-700 dark:hover:text-accent-400 transition-colors"
+                    >
+                      {value}
+                    </Text>
+                  ) : (
+                    <Text
+                      tag="p"
+                      variant="textXL"
+                      class="text-base-500 dark:text-base-400 lg:col-span-3"
+                    >
+                      {value}
+                    </Text>
+                  )
+                }
                 {
                   modal && (
                     <ItinerariDadaModal

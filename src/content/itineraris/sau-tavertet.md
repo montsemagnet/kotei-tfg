@@ -4,6 +4,7 @@ description: "Itinerari geològic UVIC Sau–Tavertet"
 ordre: 1
 tipus: "Geològic"
 mapa: "sau-tavertet"
+mapaUrl: "https://qgiscloud.com/mmagnet/Sau-Tavertet/"
 intro:
   - paragraphs:
       - "L'objectiu científic és observar in situ la successió de materials (granit, gresos i argiles vermells, conglomerats, calcàries nummulítiques, margues) i correlacionar-los amb canvis en la coberta vegetal i en el paisatge."

@@ -188,6 +188,7 @@ const itineraris = defineCollection({
       description: z.string(),
       tipus: z.string().optional(),
       mapa: z.string().optional(),
+      mapaUrl: z.string().url().optional(),
       intro: z.array(
         z.object({
           paragraphs: z.array(z.string()).optional(),

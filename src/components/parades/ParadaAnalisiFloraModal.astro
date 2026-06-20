@@ -1,0 +1,255 @@
+---
+import { Image } from "astro:assets";
+import Text from "@/components/fundations/elements/Text.astro";
+import ItinerariZoom from "@/components/itinerari/ItinerariZoom.astro";
+
+interface FloraImage {
+  url: ImageMetadata;
+  alt: string;
+  caption?: string;
+}
+
+interface AnalisiFlora {
+  nomCodi: string;
+  contextGeologic: string;
+  posicioRelleu: string;
+  orientacioMicroclima: string;
+  comunitatsVegetals: string;
+  estructuraVegetacio: string;
+  especiesArbories: string[];
+  especiesArbustivesHerbacies: string[];
+  floraRupicola?: string;
+  relacioFloraSubstrat: string;
+  relacioFloraRelleu: string;
+  observacionsEcologiques: string;
+  images?: FloraImage[];
+}
+
+interface Props {
+  modalId: string;
+  data: AnalisiFlora;
+}
+
+const { modalId, data } = Astro.props;
+const zoomId = `${modalId}-zoom`;
+const zoomThumbClass =
+  "w-full cursor-pointer overflow-hidden border-0 p-0 bg-transparent hover:opacity-90 transition-opacity";
+const zoomImageClass =
+  "w-full h-auto rounded-md border border-base-200 dark:border-base-800";
+
+const textFields: { title: string; value: string }[] = [
+  { title: "Resum — Context geològic", value: data.contextGeologic },
+  { title: "Posició en el relleu", value: data.posicioRelleu },
+  { title: "Orientació i microclima", value: data.orientacioMicroclima },
+  { title: "Comunitats vegetals principals", value: data.comunitatsVegetals },
+  { title: "Estructura de la vegetació", value: data.estructuraVegetacio },
+  {
+    title: "Relació flora–substrat",
+    value: data.relacioFloraSubstrat,
+  },
+  { title: "Relació flora–relleu", value: data.relacioFloraRelleu },
+  {
+    title: "Observacions ecològiques especials",
+    value: data.observacionsEcologiques,
+  },
+];
+---
+
+<dialog
+  id={modalId}
+  class="itinerari-dada-dialog fixed inset-0 z-[110] m-0 size-full max-h-none max-w-none border-0 bg-base-950/90 p-4 backdrop:bg-transparent open:flex open:items-start open:justify-center overflow-y-auto"
+>
+  <div
+    class="itinerari-dada-panel relative my-8 w-full max-w-3xl rounded-lg bg-base-100 dark:bg-base-900 p-6 lg:p-10 shadow-xl"
+  >
+    <button
+      type="button"
+      class="itinerari-dada-close absolute top-4 right-4 z-10 rounded-full bg-base-200 dark:bg-base-800 px-4 py-2 text-sm text-base-900 dark:text-white hover:bg-base-300 dark:hover:bg-base-700"
+      aria-label="Tancar"
+    >
+      Tancar
+    </button>
+
+    <Text
+      tag="p"
+      variant="textXS"
+      class="uppercase tracking-wider text-base-500 dark:text-base-400 mb-2"
+    >
+      Nom i codi de la parada
+    </Text>
+    <Text
+      tag="h2"
+      variant="displayMD"
+      class="dark:text-white text-base-900 font-medium tracking-tighter mb-8 pr-24"
+    >
+      {data.nomCodi}
+    </Text>
+
+    <div class="flex flex-col gap-8">
+      {
+        textFields.map(({ title, value }) => (
+          <div>
+            <Text
+              tag="h3"
+              variant="displaySM"
+              class="dark:text-white text-base-900 font-medium mb-3"
+            >
+              {title}
+            </Text>
+            <Text
+              tag="p"
+              variant="textBase"
+              class="text-base-500 dark:text-base-400 leading-relaxed"
+            >
+              {value}
+            </Text>
+          </div>
+        ))
+      }
+
+      <div>
+        <Text
+          tag="h3"
+          variant="displaySM"
+          class="dark:text-white text-base-900 font-medium mb-3"
+        >
+          Espècies arbòries destacades
+        </Text>
+        <ul class="list-disc pl-5 space-y-1">
+          {
+            data.especiesArbories.map((especie) => (
+              <li>
+                <Text
+                  tag="span"
+                  variant="textBase"
+                  class="text-base-500 dark:text-base-400"
+                >
+                  {especie}
+                </Text>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div>
+        <Text
+          tag="h3"
+          variant="displaySM"
+          class="dark:text-white text-base-900 font-medium mb-3"
+        >
+          Espècies arbustives/herbàcies destacades
+        </Text>
+        <ul class="list-disc pl-5 space-y-1">
+          {
+            data.especiesArbustivesHerbacies.map((especie) => (
+              <li>
+                <Text
+                  tag="span"
+                  variant="textBase"
+                  class="text-base-500 dark:text-base-400"
+                >
+                  {especie}
+                </Text>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      {
+        data.floraRupicola && (
+          <div>
+            <Text
+              tag="h3"
+              variant="displaySM"
+              class="dark:text-white text-base-900 font-medium mb-3"
+            >
+              Flora rupícola o de fissures
+            </Text>
+            <Text
+              tag="p"
+              variant="textBase"
+              class="text-base-500 dark:text-base-400 leading-relaxed"
+            >
+              {data.floraRupicola}
+            </Text>
+          </div>
+        )
+      }
+    </div>
+
+    {
+      data.images && data.images.length > 0 && (
+        <ItinerariZoom zoomId={zoomId}>
+          <div class="mt-10 flex flex-col gap-6 border-t border-base-200 dark:border-base-800 pt-8">
+            <Text
+              tag="h3"
+              variant="displaySM"
+              class="dark:text-white text-base-900 font-medium"
+            >
+              Suport gràfic (fotos/mapes)
+            </Text>
+            {
+              data.images.map((image) => (
+                <figure>
+                  <button
+                    type="button"
+                    class={zoomThumbClass}
+                    data-itinerari-zoom
+                    data-full-src={image.url.src}
+                    aria-label={`Ampliar: ${image.alt}`}
+                  >
+                    <Image
+                      src={image.url}
+                      alt={image.alt}
+                      width={1200}
+                      height={800}
+                      class={zoomImageClass}
+                    />
+                  </button>
+                  {
+                    image.caption && (
+                      <figcaption class="mt-2 text-sm text-base-500 dark:text-base-400 text-center">
+                        {image.caption}
+                      </figcaption>
+                    )
+                  }
+                </figure>
+              ))
+            }
+          </div>
+        </ItinerariZoom>
+      )
+    }
+  </div>
+</dialog>
+
+<script>
+  function initItinerariDadaModals() {
+    document.querySelectorAll("[data-modal-target]").forEach((btn) => {
+      if (!(btn instanceof HTMLElement)) return;
+      if (btn.dataset.bound) return;
+      btn.dataset.bound = "true";
+
+      const modalId = btn.dataset.modalTarget;
+      if (!modalId) return;
+
+      const dialog = document.getElementById(modalId);
+      if (!(dialog instanceof HTMLDialogElement)) return;
+
+      btn.addEventListener("click", () => dialog.showModal());
+
+      dialog.querySelector(".itinerari-dada-close")?.addEventListener("click", () =>
+        dialog.close(),
+      );
+
+      dialog.addEventListener("click", (event) => {
+        if (event.target === dialog) dialog.close();
+      });
+    });
+  }
+
+  initItinerariDadaModals();
+  document.addEventListener("astro:after-swap", initItinerariDadaModals);
+</script>

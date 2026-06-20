@@ -12,7 +12,36 @@ dades:
   mapa: "Mapa interactiu de l'itinerari geològic Sau–Tavertet (QGIS, capes geològiques i temàtiques)"
   socle: "Configuració estructural i litològica del sector Sau–Tavertet: interacció entre el sòcol hercinià i la cobertora terciària de la conca de l'Ebre."
   historia: "Context històric, geològic i botànic de l'itinerari Sau–Tavertet."
+  paisatge: "Relació entre geologia del Collsacabra, paisatge de la cinglera i distribució de la flora al llarg de tot l'itinerari Sau–Tavertet."
 dadesModals:
+  paisatge:
+    intro: "L'itinerari Sau–Tavertet és un excel·lent exemple de com la geologia del Collsacabra estructura el paisatge i condiciona clarament la distribució de la flora al voltant de la cinglera i el pantà de Sau."
+    sections:
+      - title: "Marc geològic i paisatge"
+        paragraphs:
+          - "La zona se situa al Collsacabra, en el marge nord-est de la conca de l'Ebre, amb materials paleògens (principalment Eocè) que descansen discordantment sobre roques paleozoïques."
+          - "A la sèrie aflorant hi ha, a la base, materials continentals vermells (argiles i gresos) i, per sobre, nivells de margues, calcàries i gresos grisos d'origen marí, sovint amb abundants fòssils nummulítics."
+          - "L'erosió diferencial entre gresos/calcàries més resistents i margues més toves ha originat un relleu en forma de «taula» coronada per la gran cinglera de Tavertet, d'uns 200 m d'alçada i quilòmetres de longitud, que penja sobre el pantà de Sau i la vall del Ter."
+          - "El riu Ter i els seus antecedents han excavat la vall i han anat descalçant el front de cingle; la combinació d'erosió fluvial i gravetat provoca desploms de blocs i modela formes alveolars i balmes en els trams de gresos vermells."
+          - "La infiltració d'aigua en els nivells carbonatats ha generat un sistema notable de cavitats i avencs; un exemple destacat és la cova del Serrat del Vent, considerada una de les més grans del món en gresos pel seu recorregut i desnivell."
+      - title: "Gradients ambientals al llarg de l'itinerari"
+        paragraphs:
+          - "El camí des de la vora del pantà de Sau fins a Tavertet recorre un fort gradient altitudinal (uns 400–450 m) i travessa successivament granits, gresos, conglomerats i calcàries, fet que implica canvis sobtats de substrat, textura del sòl i drenatge."
+          - "A les parts baixes, properes al pantà i als vessants més càlids, domina un clima més marcadament mediterrani, amb influència d'inversions tèrmiques a la vall que acumulen aire fred i boires, afavorint una major humitat edàfica en certs punts."
+          - "A mesura que s'ascendeix i s'arriba a la taula superior del Collsacabra, el relleu es suavitza i el clima esdevé més frescal i humit, fet que afavoreix la presència de rouredes i, localment, fagedes, a més de prats i pastures sobre les margues i calcàries."
+          - "La diferent orientació de les vessants (solanes vs obagues), combinada amb la variabilitat litològica en un espai relativament reduït, genera una gran riquesa florística i un mosaic de comunitats vegetals en poc recorregut lineal."
+      - title: "Flora associada a cada tram geològic"
+        paragraphs:
+          - "Tram inferior (entorn del pantà, materials vermells continentals, solanes): s'hi desenvolupa un bosc típicament mediterrani, amb alzinar muntanyenc com a formació dominant i presència de lianes i espècies adaptades a la sequera estival, sobre sòls sovint més sorrencs i ben drenats."
+          - "Zona de contacte gresos vermells–calcàries grises: el canvi cromàtic i litològic (passatge del vermell al gris de les calcàries nummulítiques) es reflecteix en canvis de sòl i microhàbitats; aquí són freqüents comunitats rupícoles i fissurícoles en petits replans i parets, amb flora adaptada a substrats rocosos carbonatats."
+          - "Part superior de la cinglera i altiplà (margues i calcàries, major humitat): el paisatge combina boscos de roure martinenc i altres caducifolis en zones més frescals, fagedes en àrees ombrívoles i humides, i un mosaic agroforestal amb prats i pastures que trenca la continuïtat forestal."
+          - "Entorn immediat de la cinglera: les parets verticals i replans rocosos acullen vegetació rupícola especialitzada, mentre que a la base de les roques i en canals d'escorrentia es poden concentrar espècies d'ambients més humits, incloent-hi falgueres i flora d'indrets ombrívols."
+      - title: "Relació geologia–flora en la lectura del paisatge"
+        paragraphs:
+          - "La successió vertical de roques (granit–gresos–conglomerats–calcàries) i la seva erosió controlen el perfil del pendent, la presència de graons morfològics i replans, i, per tant, la distribució de sòls profunds vs poc desenvolupats, cosa que condiciona quin tipus de bosc o matollar pot establir-s'hi."
+          - "Les roques carbonatades de la part superior afavoreixen sòls sovint més pedregosos però rics en bases, que són favorables a rouredes i pastures calcícoles, mentre que els materials vermells i siliciclàstics de la base originen sòls diferents, més àcids o amb altres limitacions, on prosperen comunitats mediterrànies d'alzinar."
+          - "Les inversions tèrmiques i la circulació d'humitat associada al relleu i al pantà (boires, mares de núvols) tenen un efecte positiu sobre la vegetació, en especial en obagues i raconades on la humitat es manté més temps, facilitant la presència d'espècies més eurosiberianes en un context generalment mediterrani."
+          - "El resultat és un paisatge d'alta qualitat visual, amb un equilibri entre abruptes cingleres, boscos i mosaic agroforestal, que il·lustra molt bé com la base geològica i geomorfològica estructura el medi físic i ecològic al llarg de tot l'itinerari Sau–Tavertet."
   socle:
     intro: "El sòcol o basament de l'itinerari geològic Sau–Tavertet correspon a roques paleozoiques (sobretot granits i altres materials metamòrfics) sobre les quals s'han disposat, en discordança, els sediments terciaris (conglomerats, gresos i calcàries eocenes) que formen els cingles actuals."
     introMedia:

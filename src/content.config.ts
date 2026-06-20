@@ -2,6 +2,68 @@ import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
 
+const modalContentSchema = (image: (path: string) => z.ZodType) =>
+  z.object({
+    intro: z.string().optional(),
+    introMedia: z
+      .object({
+        title: z.string(),
+        publicSrc: z.string(),
+        alt: z.string(),
+        tipus: z.enum(["animacio", "video"]).default("animacio"),
+      })
+      .optional(),
+    sections: z.array(
+      z.object({
+        title: z.string(),
+        paragraphs: z.array(z.string()),
+      }),
+    ),
+    images: z
+      .array(
+        z.union([
+          z.object({
+            url: image(),
+            alt: z.string(),
+            caption: z.string().optional(),
+          }),
+          z.object({
+            publicSrc: z.string(),
+            alt: z.string(),
+            caption: z.string().optional(),
+            tipus: z.enum(["animacio", "video"]).default("animacio"),
+          }),
+        ]),
+      )
+      .optional(),
+  });
+
+const analisiFloraSchema = (image: (path: string) => z.ZodType) =>
+  z.object({
+    nomCodi: z.string(),
+    resum: z.string().optional(),
+    contextGeologic: z.string(),
+    posicioRelleu: z.string(),
+    orientacioMicroclima: z.string(),
+    comunitatsVegetals: z.string(),
+    estructuraVegetacio: z.string(),
+    especiesArbories: z.array(z.string()),
+    especiesArbustivesHerbacies: z.array(z.string()),
+    floraRupicola: z.string().optional(),
+    relacioFloraSubstrat: z.string(),
+    relacioFloraRelleu: z.string(),
+    observacionsEcologiques: z.string(),
+    images: z
+      .array(
+        z.object({
+          url: image(),
+          alt: z.string(),
+          caption: z.string().optional(),
+        }),
+      )
+      .optional(),
+  });
+
 const work = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/work" }),
   schema: ({ image }) =>
@@ -136,46 +198,9 @@ const itineraris = defineCollection({
         mapa: z.string(),
         socle: z.string(),
         historia: z.string(),
+        paisatge: z.string().optional(),
       }),
-      dadesModals: z
-        .record(
-          z.string(),
-          z.object({
-            intro: z.string().optional(),
-            introMedia: z
-              .object({
-                title: z.string(),
-                publicSrc: z.string(),
-                alt: z.string(),
-                tipus: z.enum(["animacio", "video"]).default("animacio"),
-              })
-              .optional(),
-            sections: z.array(
-              z.object({
-                title: z.string(),
-                paragraphs: z.array(z.string()),
-              }),
-            ),
-            images: z
-              .array(
-                z.union([
-                  z.object({
-                    url: image(),
-                    alt: z.string(),
-                    caption: z.string().optional(),
-                  }),
-                  z.object({
-                    publicSrc: z.string(),
-                    alt: z.string(),
-                    caption: z.string().optional(),
-                    tipus: z.enum(["animacio", "video"]).default("animacio"),
-                  }),
-                ]),
-              )
-              .optional(),
-          }),
-        )
-        .optional(),
+      dadesModals: z.record(z.string(), modalContentSchema(image)).optional(),
       credits: z.array(
         z.object({
           name: z.string(),
@@ -234,7 +259,8 @@ const parades = defineCollection({
           enllaç: z.string(),
         }),
       ),
-      paisatgeUrl: z.string(),
+      analisiFlora: analisiFloraSchema(image).optional(),
+      paisatgeUrl: z.string().optional(),
     }),
 });
 

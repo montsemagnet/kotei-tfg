@@ -4,8 +4,10 @@ import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import ParadaMedia from "@/components/parades/ParadaMedia.astro";
 import ParadaGallery from "@/components/parades/ParadaGallery.astro";
+import ParadaAnalisiFloraModal from "@/components/parades/ParadaAnalisiFloraModal.astro";
 
 const { frontmatter, slug } = Astro.props;
+const analisiFloraModalId = `parada-flora-${slug}`;
 
 const sectionGrid =
   "grid grid-cols-1 lg:grid-cols-4 gap-3 lg:gap-8 items-start";
@@ -140,19 +142,73 @@ const sectionContent = "lg:col-span-3 min-w-0 w-full";
         data-aos-duration="1000"
         class:list={[sectionGrid, "border-t border-base-200 dark:border-base-800 pt-8"]}
       >
-        <Text tag="h4" variant="displayMD" class={sectionLabel}>
-          Anàlisi del paisatge i de la flora associada
-        </Text>
-        <div class={sectionContent}>
-          <Text
-            tag="a"
-            variant="textXL"
-            href={frontmatter.paisatgeUrl}
-            class="inline-flex items-center gap-2 text-accent-600 dark:text-accent-400 hover:underline"
-          >
-            Veure l'anàlisi botànica i del paisatge →
-          </Text>
-        </div>
+        {
+          frontmatter.analisiFlora ? (
+            <>
+              <button
+                type="button"
+                data-modal-target={analisiFloraModalId}
+                class="text-left cursor-pointer group inline-flex items-start gap-2"
+                aria-haspopup="dialog"
+                aria-label="Obrir anàlisi del paisatge i de la flora associada"
+              >
+                <Text
+                  tag="span"
+                  variant="displayMD"
+                  class="font-medium tracking-tighter text-accent-700 dark:text-accent-400 underline decoration-accent-700/30 dark:decoration-accent-400/40 underline-offset-[6px] group-hover:decoration-accent-700 dark:group-hover:decoration-accent-400 transition-colors"
+                >
+                  Anàlisi del paisatge i de la flora associada
+                </Text>
+                <span
+                  class="inline-flex size-7 shrink-0 items-center justify-center rounded-full border border-accent-700/25 dark:border-accent-400/30 text-accent-700 dark:text-accent-400 text-sm leading-none group-hover:bg-accent-700/10 dark:group-hover:bg-accent-400/10 transition-colors mt-0.5"
+                  aria-hidden="true"
+                >
+                  +
+                </span>
+              </button>
+              <Text
+                tag="p"
+                variant="textXL"
+                class:list={[sectionContent, "text-base-500 dark:text-base-400"]}
+              >
+                {frontmatter.analisiFlora.resum ??
+                  frontmatter.analisiFlora.nomCodi}
+              </Text>
+              <ParadaAnalisiFloraModal
+                modalId={analisiFloraModalId}
+                data={frontmatter.analisiFlora}
+              />
+            </>
+          ) : (
+            <>
+              <Text tag="h4" variant="displayMD" class={sectionLabel}>
+                Anàlisi del paisatge i de la flora associada
+              </Text>
+              <div class={sectionContent}>
+                {
+                  frontmatter.paisatgeUrl ? (
+                    <Text
+                      tag="a"
+                      variant="textXL"
+                      href={frontmatter.paisatgeUrl}
+                      class="inline-flex items-center gap-2 text-accent-600 dark:text-accent-400 hover:underline"
+                    >
+                      Veure l'anàlisi botànica i del paisatge →
+                    </Text>
+                  ) : (
+                    <Text
+                      tag="p"
+                      variant="textXL"
+                      class="text-base-500 dark:text-base-400"
+                    >
+                      Contingut en preparació.
+                    </Text>
+                  )
+                }
+              </div>
+            </>
+          )
+        }
       </div>
     </Wrapper>
   </section>

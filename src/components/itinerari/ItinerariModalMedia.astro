@@ -1,0 +1,50 @@
+---
+interface Props {
+  alt: string;
+  caption?: string;
+  publicSrc: string;
+  tipus?: "animacio" | "video";
+}
+
+const { alt, caption, publicSrc, tipus = "animacio" } = Astro.props;
+const mediaClass =
+  "w-full h-auto rounded-md border border-base-200 dark:border-base-800";
+---
+
+<figure class="itinerari-modal-media">
+  {
+    tipus === "video" ? (
+      <video
+        class={mediaClass}
+        src={publicSrc}
+        controls
+        playsinline
+        loop
+        muted
+        preload="metadata"
+      >
+        <track kind="captions" />
+      </video>
+    ) : (
+      <img
+        class={mediaClass}
+        src={publicSrc}
+        alt={alt}
+        loading="lazy"
+        decoding="async"
+      />
+    )
+  }
+  {
+    caption && (
+      <figcaption class="mt-2 text-sm text-base-500 dark:text-base-400 text-center">
+        {caption}
+        {tipus === "animacio" && (
+          <span class="block mt-1 text-xs text-base-400 dark:text-base-500">
+            Mapa temporal animat
+          </span>
+        )}
+      </figcaption>
+    )
+  }
+</figure>

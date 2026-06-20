@@ -1,0 +1,238 @@
+---
+import { Image } from "astro:assets";
+import Text from "@/components/fundations/elements/Text.astro";
+import ItinerariZoom from "@/components/itinerari/ItinerariZoom.astro";
+
+interface Section {
+  title: string;
+  paragraphs: string[];
+}
+
+interface StaticImage {
+  url: ImageMetadata;
+  alt: string;
+  caption?: string;
+}
+
+interface PublicMedia {
+  publicSrc: string;
+  alt: string;
+  caption?: string;
+  tipus?: "animacio" | "video";
+}
+
+type ModalImage = StaticImage | PublicMedia;
+
+function isPublicMedia(image: ModalImage): image is PublicMedia {
+  return "publicSrc" in image;
+}
+
+interface Props {
+  modalId: string;
+  label: string;
+  intro?: string;
+  introMedia?: PublicMedia & { title: string };
+  sections: Section[];
+  images?: ModalImage[];
+}
+
+const { modalId, label, intro, introMedia, sections, images = [] } = Astro.props;
+const zoomId = `${modalId}-zoom`;
+const zoomThumbClass =
+  "w-full cursor-pointer overflow-hidden border-0 p-0 bg-transparent hover:opacity-90 transition-opacity";
+const zoomImageClass =
+  "w-full h-auto rounded-md border border-base-200 dark:border-base-800";
+---
+
+<dialog
+  id={modalId}
+  class="itinerari-dada-dialog fixed inset-0 z-[110] m-0 size-full max-h-none max-w-none border-0 bg-base-950/90 p-4 backdrop:bg-transparent open:flex open:items-start open:justify-center overflow-y-auto"
+>
+  <div
+    class="itinerari-dada-panel relative my-8 w-full max-w-3xl rounded-lg bg-base-100 dark:bg-base-900 p-6 lg:p-10 shadow-xl"
+  >
+    <button
+      type="button"
+      class="itinerari-dada-close absolute top-4 right-4 z-10 rounded-full bg-base-200 dark:bg-base-800 px-4 py-2 text-sm text-base-900 dark:text-white hover:bg-base-300 dark:hover:bg-base-700"
+      aria-label="Tancar"
+    >
+      Tancar
+    </button>
+
+    <Text
+      tag="h2"
+      variant="displayMD"
+      class="dark:text-white text-base-900 font-medium tracking-tighter mb-6 pr-24 capitalize"
+    >
+      {label}
+    </Text>
+
+    {
+      intro && (
+        <Text
+          tag="p"
+          variant="textXL"
+          class="text-base-600 dark:text-base-300 mb-8 leading-relaxed"
+        >
+          {intro}
+        </Text>
+      )
+    }
+
+    {
+      introMedia && (
+        <div class="mb-10">
+          <Text
+            tag="h3"
+            variant="displaySM"
+            class="dark:text-white text-base-900 font-medium mb-4"
+          >
+            {introMedia.title}
+          </Text>
+          <ItinerariZoom zoomId={`${zoomId}-intro`}>
+            <figure class="itinerari-modal-media">
+              <button
+                type="button"
+                class={zoomThumbClass}
+                data-itinerari-zoom
+                data-full-src={introMedia.publicSrc}
+                aria-label={`Ampliar: ${introMedia.alt}`}
+              >
+                <img
+                  src={introMedia.publicSrc}
+                  alt={introMedia.alt}
+                  class={zoomImageClass}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </button>
+            </figure>
+          </ItinerariZoom>
+        </div>
+      )
+    }
+
+    <div class="flex flex-col gap-8">
+      {
+        sections.map((section) => (
+          <div>
+            <Text
+              tag="h3"
+              variant="displaySM"
+              class="dark:text-white text-base-900 font-medium mb-3"
+            >
+              {section.title}
+            </Text>
+            {section.paragraphs.map((paragraph) => (
+              <Text
+                tag="p"
+                variant="textBase"
+                class="text-base-500 dark:text-base-400 mb-3 leading-relaxed last:mb-0"
+              >
+                {paragraph}
+              </Text>
+            ))}
+          </div>
+        ))
+      }
+    </div>
+
+    {
+      images.length > 0 && (
+        <ItinerariZoom zoomId={zoomId}>
+          <div class="mt-10 flex flex-col gap-6 border-t border-base-200 dark:border-base-800 pt-8">
+            <Text
+              tag="h3"
+              variant="displaySM"
+              class="dark:text-white text-base-900 font-medium"
+            >
+              Mapes i figures
+            </Text>
+            {images.map((image) =>
+              isPublicMedia(image) ? (
+                <figure>
+                  <button
+                    type="button"
+                    class={zoomThumbClass}
+                    data-itinerari-zoom
+                    data-full-src={image.publicSrc}
+                    aria-label={`Ampliar: ${image.alt}`}
+                  >
+                    <img
+                      src={image.publicSrc}
+                      alt={image.alt}
+                      class={zoomImageClass}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </button>
+                  {
+                    image.caption && (
+                      <figcaption class="mt-2 text-sm text-base-500 dark:text-base-400 text-center">
+                        {image.caption}
+                      </figcaption>
+                    )
+                  }
+                </figure>
+              ) : (
+                <figure>
+                  <button
+                    type="button"
+                    class={zoomThumbClass}
+                    data-itinerari-zoom
+                    data-full-src={image.url.src}
+                    aria-label={`Ampliar: ${image.alt}`}
+                  >
+                    <Image
+                      src={image.url}
+                      alt={image.alt}
+                      width={1200}
+                      height={800}
+                      class={zoomImageClass}
+                    />
+                  </button>
+                  {
+                    image.caption && (
+                      <figcaption class="mt-2 text-sm text-base-500 dark:text-base-400 text-center">
+                        {image.caption}
+                      </figcaption>
+                    )
+                  }
+                </figure>
+              ),
+            )}
+          </div>
+        </ItinerariZoom>
+      )
+    }
+  </div>
+</dialog>
+
+<script>
+  function initItinerariDadaModals() {
+    document.querySelectorAll("[data-modal-target]").forEach((btn) => {
+      if (!(btn instanceof HTMLElement)) return;
+      if (btn.dataset.bound) return;
+      btn.dataset.bound = "true";
+
+      const modalId = btn.dataset.modalTarget;
+      if (!modalId) return;
+
+      const dialog = document.getElementById(modalId);
+      if (!(dialog instanceof HTMLDialogElement)) return;
+
+      btn.addEventListener("click", () => dialog.showModal());
+
+      dialog.querySelector(".itinerari-dada-close")?.addEventListener("click", () =>
+        dialog.close(),
+      );
+
+      dialog.addEventListener("click", (event) => {
+        if (event.target === dialog) dialog.close();
+      });
+    });
+  }
+
+  initItinerariDadaModals();
+  document.addEventListener("astro:after-swap", initItinerariDadaModals);
+</script>

@@ -137,6 +137,45 @@ const itineraris = defineCollection({
         socle: z.string(),
         historia: z.string(),
       }),
+      dadesModals: z
+        .record(
+          z.string(),
+          z.object({
+            intro: z.string().optional(),
+            introMedia: z
+              .object({
+                title: z.string(),
+                publicSrc: z.string(),
+                alt: z.string(),
+                tipus: z.enum(["animacio", "video"]).default("animacio"),
+              })
+              .optional(),
+            sections: z.array(
+              z.object({
+                title: z.string(),
+                paragraphs: z.array(z.string()),
+              }),
+            ),
+            images: z
+              .array(
+                z.union([
+                  z.object({
+                    url: image(),
+                    alt: z.string(),
+                    caption: z.string().optional(),
+                  }),
+                  z.object({
+                    publicSrc: z.string(),
+                    alt: z.string(),
+                    caption: z.string().optional(),
+                    tipus: z.enum(["animacio", "video"]).default("animacio"),
+                  }),
+                ]),
+              )
+              .optional(),
+          }),
+        )
+        .optional(),
       credits: z.array(
         z.object({
           name: z.string(),

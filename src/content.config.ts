@@ -185,6 +185,13 @@ const itineraris = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string(),
+      titleParts: z
+        .object({
+          lead: z.string().optional(),
+          from: z.string(),
+          to: z.string(),
+        })
+        .optional(),
       description: z.string(),
       tipus: z.string().optional(),
       mapa: z.string().optional(),
@@ -194,20 +201,25 @@ const itineraris = defineCollection({
           paragraphs: z.array(z.string()).optional(),
         }),
       ),
+      introLabel: z.string().optional(),
+      dadesLabels: z.record(z.string(), z.string()).optional(),
       dades: z.object({
-        ubicacio: z.string(),
+        ubicacio: z.string().optional(),
         mapa: z.string(),
-        socle: z.string(),
+        socle: z.string().optional(),
         historia: z.string(),
         paisatge: z.string().optional(),
       }),
       dadesModals: z.record(z.string(), modalContentSchema(image)).optional(),
-      credits: z.array(
-        z.object({
-          name: z.string(),
-          role: z.string(),
-        }),
-      ),
+      dadesModalAliases: z.record(z.string(), z.string()).optional(),
+      credits: z
+        .array(
+          z.object({
+            name: z.string(),
+            role: z.string(),
+          }),
+        )
+        .optional(),
       images: z.array(
         z.object({
           url: image(),

@@ -1,19 +1,26 @@
 ---
-title: "Sau - Tavertet"
+title: "Presa de Sau → Tavertet"
+titleParts:
+  from: "Presa de Sau"
+  to: "Tavertet"
 description: "Itinerari geològic UVIC Sau–Tavertet"
 ordre: 1
 tipus: "Geològic"
 mapa: "sau-tavertet"
 mapaUrl: "https://qgiscloud.com/mmagnet/Sau-Tavertet/"
+introLabel: "Objectiu"
 intro:
   - paragraphs:
       - "L'objectiu científic és observar in situ la successió de materials (granit, gresos i argiles vermells, conglomerats, calcàries nummulítiques, margues) i correlacionar-los amb canvis en la coberta vegetal i en el paisatge."
 dades:
-  ubicacio: "Punt de partida de l'itinerari geològic Sau–Tavertet."
   mapa: "Mapa interactiu de l'itinerari geològic Sau–Tavertet (QGIS, capes geològiques i temàtiques)"
-  socle: "Configuració estructural i litològica del sector Sau–Tavertet: interacció entre el sòcol hercinià i la cobertora terciària de la conca de l'Ebre."
   historia: "Context històric, geològic i botànic de l'itinerari Sau–Tavertet."
   paisatge: "Relació entre geologia del Collsacabra, paisatge de la cinglera i distribució de la flora al llarg de tot l'itinerari Sau–Tavertet."
+dadesLabels:
+  historia: "Geologia"
+  paisatge: "Geobotànica"
+dadesModalAliases:
+  historia: socle
 dadesModals:
   paisatge:
     intro: "L'itinerari Sau–Tavertet és un excel·lent exemple de com la geologia del Collsacabra estructura el paisatge i condiciona clarament la distribució de la flora al voltant de la cinglera i el pantà de Sau."
@@ -84,13 +91,6 @@ dadesModals:
         alt: "Diagrama temporal de l'activitat de falla"
       - url: "/src/images/itineraris/sau-tavertet/I1-periodes4.png"
         alt: "Mapa geològic i secció transversal del sector Tavertet–Empordà"
-credits:
-  - name: "Dra. Judit Molera Marimon"
-    role: "Equip acadèmic"
-  - name: "Dra. Núria Ferrer Ramos"
-    role: "Equip acadèmic"
-  - name: "Montserrat Magnet Sabata"
-    role: "Equip acadèmic"
 images:
   - url: "/src/images/work/1/5.jpeg"
     alt: "Paisatge de l'itinerari Sau–Tavertet"
@@ -102,7 +102,3 @@ thumbnail:
   url: "/src/images/work/1/thumbnail1.jpeg"
   alt: "Itinerari geològic Sau–Tavertet"
 ---
-
-## Context del projecte
-
-L'itinerari geològic Sau–Tavertet és una eina per entendre la configuració estructural i litològica entre el sòcol hercinià i la cobertora terciària de la conca de l'Ebre.

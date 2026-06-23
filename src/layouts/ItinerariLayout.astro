@@ -11,12 +11,17 @@ import ItinerariZoom from "@/components/itinerari/ItinerariZoom.astro";
 
 const { frontmatter } = Astro.props;
 
-const dadesLabels: Record<string, string> = {
+const defaultDadesLabels: Record<string, string> = {
   ubicacio: "ubicació",
   mapa: "mapa",
   socle: "sòcol",
   historia: "història",
   paisatge: "paisatge i flora",
+};
+
+const dadesLabels: Record<string, string> = {
+  ...defaultDadesLabels,
+  ...frontmatter.dadesLabels,
 };
 ---
 
@@ -32,28 +37,52 @@ const dadesLabels: Record<string, string> = {
         ← Tornar a la pàgina d'inici
       </Text>
 
-      <Text
-        tag="h1"
-        variant="display5XL"
-        data-aos="fade-up"
-        data-aos-duration="1000"
-        class="dark:text-white text-base-900 font-medium tracking-tighter mb-8"
-      >
-        {frontmatter.title}
-      </Text>
+      <div class="w-full itinerari-title-wrap">
+        <Text
+          tag="h1"
+          variant="textBase"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          class="itinerari-page-title dark:text-white text-base-900 font-medium tracking-tighter mb-8 w-full max-w-none"
+        >
+          {
+            frontmatter.titleParts ? (
+              <>
+                {
+                  frontmatter.titleParts.lead && (
+                    <>
+                      {frontmatter.titleParts.lead}
+                      <span class="itinerari-title-from">
+                        {frontmatter.titleParts.from}
+                      </span>
+                    </>
+                  )
+                }
+                {!frontmatter.titleParts.lead && frontmatter.titleParts.from}
+                <span class="itinerari-title-arrow" aria-hidden="true">
+                  →
+                </span>
+                {frontmatter.titleParts.to}
+              </>
+            ) : (
+              frontmatter.title
+            )
+          }
+        </Text>
 
-      <div
-        data-aos="fade-up"
-        data-aos-duration="1000"
-        class="relative overflow-hidden mb-12"
-      >
-        <Image
-          width={1000}
-          height={500}
-          src={frontmatter.thumbnail.url}
-          alt={frontmatter.thumbnail.alt}
-          class="w-full object-cover"
-        />
+        <div
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          class="relative overflow-hidden mb-12 w-full"
+        >
+          <Image
+            width={1000}
+            height={500}
+            src={frontmatter.thumbnail.url}
+            alt={frontmatter.thumbnail.alt}
+            class="w-full object-cover"
+          />
+        </div>
       </div>
 
       {
@@ -75,22 +104,24 @@ const dadesLabels: Record<string, string> = {
       <div
         data-aos="fade-up"
         data-aos-duration="1000"
-        class="grid grid-cols-1 lg:grid-cols-4 gap-2 mb-12"
+        class="grid grid-cols-1 lg:grid-cols-4 items-start gap-x-6 gap-y-2 mb-12"
       >
-        <Text
-          tag="h4"
-          variant="displayXL"
-          class="dark:text-white text-base-900 font-medium tracking-tighter"
-          >intro</Text
-        >
-        <div class="lg:col-span-3">
+        <div class="min-w-0">
+          <Text
+            tag="h4"
+            variant="displayMD"
+            class="dark:text-white text-base-900 font-medium tracking-tighter capitalize leading-tight break-words"
+            >{frontmatter.introLabel ?? "intro"}</Text
+          >
+        </div>
+        <div class="lg:col-span-3 min-w-0">
           {
             frontmatter.intro.map((item) =>
               item.paragraphs?.map((p) => (
                 <Text
                   tag="p"
-                  variant="displayMD"
-                  class="dark:text-white text-black mb-4"
+                  variant="textXL"
+                  class="text-base-500 dark:text-base-400 mb-4 last:mb-0"
                 >
                   {p}
                 </Text>
@@ -103,29 +134,31 @@ const dadesLabels: Record<string, string> = {
       <div class="flex flex-col border-t border-base-200 dark:border-base-800 mb-12">
         {
           Object.entries(frontmatter.dades).map(([key, value]) => {
-            const modal = frontmatter.dadesModals?.[key];
+            const modalKey = frontmatter.dadesModalAliases?.[key] ?? key;
+            const modal = frontmatter.dadesModals?.[modalKey];
             const label = dadesLabels[key] ?? key;
-            const modalId = `itinerari-modal-${key}`;
+            const modalId = `itinerari-modal-${modalKey}`;
 
             return (
               <div
                 data-aos="fade-up"
                 data-aos-duration="1000"
-                class="grid grid-cols-1 lg:grid-cols-4 items-baseline gap-2 py-4 border-b border-base-200 dark:border-base-800"
+                class="grid grid-cols-1 lg:grid-cols-4 items-start gap-x-6 gap-y-2 py-4 border-b border-base-200 dark:border-base-800"
               >
+                <div class="min-w-0">
                 {
                   modal ? (
                     <button
                       type="button"
                       data-modal-target={modalId}
-                      class="text-left cursor-pointer group inline-flex items-center gap-2"
+                      class="text-left cursor-pointer group flex flex-wrap items-center gap-2 w-full max-w-full"
                       aria-haspopup="dialog"
                       aria-label={`Obrir informació: ${label}`}
                     >
                       <Text
                         tag="span"
-                        variant="displayXL"
-                        class="capitalize font-medium tracking-tighter text-accent-700 dark:text-accent-400 underline decoration-accent-700/30 dark:decoration-accent-400/40 underline-offset-[6px] group-hover:decoration-accent-700 dark:group-hover:decoration-accent-400 transition-colors"
+                        variant="displayMD"
+                        class="capitalize font-medium tracking-tighter text-accent-700 dark:text-accent-400 underline decoration-accent-700/30 dark:decoration-accent-400/40 underline-offset-[6px] group-hover:decoration-accent-700 dark:group-hover:decoration-accent-400 transition-colors leading-tight break-words"
                       >
                         {label}
                       </Text>
@@ -139,25 +172,26 @@ const dadesLabels: Record<string, string> = {
                   ) : key === "mapa" && frontmatter.mapaUrl ? (
                     <Text
                       tag="a"
-                      variant="displayXL"
+                      variant="displayMD"
                       href={frontmatter.mapaUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       title="Obrir mapa interactiu (nova pestanya)"
-                      class="capitalize font-medium tracking-tighter text-accent-700 dark:text-accent-400 underline decoration-accent-700/30 dark:decoration-accent-400/40 underline-offset-[6px] hover:decoration-accent-700 dark:hover:decoration-accent-400 transition-colors"
+                      class="capitalize font-medium tracking-tighter text-accent-700 dark:text-accent-400 underline decoration-accent-700/30 dark:decoration-accent-400/40 underline-offset-[6px] hover:decoration-accent-700 dark:hover:decoration-accent-400 transition-colors leading-tight break-words inline-block"
                     >
                       {label}
                     </Text>
                   ) : (
                     <Text
                       tag="h4"
-                      variant="displayXL"
-                      class="dark:text-white text-base-900 font-medium tracking-tighter capitalize"
+                      variant="displayMD"
+                      class="dark:text-white text-base-900 font-medium tracking-tighter capitalize leading-tight break-words"
                     >
                       {label}
                     </Text>
                   )
                 }
+                </div>
                 {
                   key === "mapa" && frontmatter.mapaUrl ? (
                     <Text
@@ -167,7 +201,7 @@ const dadesLabels: Record<string, string> = {
                       target="_blank"
                       rel="noopener noreferrer"
                       title="Obrir mapa interactiu (nova pestanya)"
-                      class="text-base-500 dark:text-base-400 lg:col-span-3 hover:text-accent-700 dark:hover:text-accent-400 transition-colors"
+                      class="text-base-500 dark:text-base-400 lg:col-span-3 min-w-0 hover:text-accent-700 dark:hover:text-accent-400 transition-colors"
                     >
                       {value}
                     </Text>
@@ -175,7 +209,7 @@ const dadesLabels: Record<string, string> = {
                     <Text
                       tag="p"
                       variant="textXL"
-                      class="text-base-500 dark:text-base-400 lg:col-span-3"
+                      class="text-base-500 dark:text-base-400 lg:col-span-3 min-w-0"
                     >
                       {value}
                     </Text>
@@ -225,42 +259,77 @@ const dadesLabels: Record<string, string> = {
         </div>
       </ItinerariZoom>
 
-      <div
-        data-aos="fade-up"
-        data-aos-duration="1000"
-        class="grid grid-cols-1 lg:grid-cols-4 gap-2 mt-12"
-      >
-        <Text
-          tag="h4"
-          variant="displayXL"
-          class="dark:text-white text-base-900 font-medium tracking-tighter"
-          >Equip</Text
-        >
-        <div class="lg:col-span-3 flex flex-col gap-4">
-          {
-            frontmatter.credits.map((credit) => (
-              <div class="flex justify-between border-b border-base-200 dark:border-base-800 py-4">
-                <Text
-                  tag="p"
-                  variant="displaySM"
-                  class="dark:text-white font-medium"
-                >
-                  {credit.name}
-                </Text>
-                <Text
-                  tag="p"
-                  variant="textXL"
-                  class="text-base-500 dark:text-base-400"
-                >
-                  {credit.role}
-                </Text>
-              </div>
-            ))
-          }
-        </div>
-      </div>
+      {
+        frontmatter.credits && frontmatter.credits.length > 0 && (
+          <div
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            class="grid grid-cols-1 lg:grid-cols-4 gap-2 mt-12"
+          >
+            <Text
+              tag="h4"
+              variant="displayXL"
+              class="dark:text-white text-base-900 font-medium tracking-tighter"
+              >Equip</Text
+            >
+            <div class="lg:col-span-3 flex flex-col gap-4">
+              {
+                frontmatter.credits.map((credit) => (
+                  <div class="flex justify-between border-b border-base-200 dark:border-base-800 py-4">
+                    <Text
+                      tag="p"
+                      variant="displaySM"
+                      class="dark:text-white font-medium"
+                    >
+                      {credit.name}
+                    </Text>
+                    <Text
+                      tag="p"
+                      variant="textXL"
+                      class="text-base-500 dark:text-base-400"
+                    >
+                      {credit.role}
+                    </Text>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        )
+      }
 
       <slot />
     </Wrapper>
   </section>
 </BaseLayout>
+
+<style>
+  .itinerari-title-wrap {
+    container-type: inline-size;
+  }
+
+  .itinerari-page-title {
+    white-space: nowrap;
+    font-size: clamp(1.875rem, 7.25cqi, 8rem);
+    line-height: 1.05;
+  }
+
+  .itinerari-title-from {
+    margin-left: 0.65em;
+  }
+
+  .itinerari-title-arrow {
+    margin-left: 0.45em;
+    margin-right: 0.25em;
+  }
+
+  @media (min-width: 1024px) {
+    .itinerari-title-from {
+      margin-left: 1em;
+    }
+
+    .itinerari-title-arrow {
+      margin-left: 0.65em;
+    }
+  }
+</style>

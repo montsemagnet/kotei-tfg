@@ -1,4 +1,5 @@
 ---
+import { getEntry } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
@@ -8,6 +9,15 @@ import ParadaAnalisiFloraModal from "@/components/parades/ParadaAnalisiFloraModa
 
 const { frontmatter, slug } = Astro.props;
 const analisiFloraModalId = `parada-flora-${slug}`;
+
+const itinerariEntry = await getEntry("itineraris", frontmatter.itinerari);
+const itinerariTitle = itinerariEntry?.data.title ?? "Itinerari";
+const itinerariHref = `/itineraris/${frontmatter.itinerari}`;
+
+const breadcrumbLink =
+  "uppercase text-base-500 hover:text-base-900 dark:hover:text-white transition-colors";
+const breadcrumbCurrent =
+  "uppercase text-base-900 dark:text-white font-medium";
 
 const sectionGrid =
   "grid grid-cols-1 lg:grid-cols-4 gap-3 lg:gap-8 items-start";
@@ -19,14 +29,47 @@ const sectionContent = "lg:col-span-3 min-w-0 w-full";
 <BaseLayout>
   <section>
     <Wrapper variant="standard" class="py-24 lg:py-48">
-      <Text
-        tag="a"
-        variant="textXS"
-        href={`/itineraris/${frontmatter.itinerari}`}
-        class="uppercase text-base-500 hover:text-base-900 dark:hover:text-white mb-6 inline-block"
-      >
-        ← Tornar a l'itinerari
-      </Text>
+      <nav aria-label="Ruta de navegació" class="mb-6">
+        <ol class="flex flex-wrap items-center gap-x-2 gap-y-1 list-none p-0 m-0">
+          <li>
+            <Text tag="a" variant="textXS" href="/" class={breadcrumbLink}>
+              Inici
+            </Text>
+          </li>
+          <li
+            class="text-base-400 dark:text-base-600 uppercase text-xs select-none"
+            aria-hidden="true"
+          >
+            /
+          </li>
+          <li>
+            <Text
+              tag="a"
+              variant="textXS"
+              href={itinerariHref}
+              class={breadcrumbLink}
+            >
+              {itinerariTitle}
+            </Text>
+          </li>
+          <li
+            class="text-base-400 dark:text-base-600 uppercase text-xs select-none"
+            aria-hidden="true"
+          >
+            /
+          </li>
+          <li>
+            <Text
+              tag="span"
+              variant="textXS"
+              class={breadcrumbCurrent}
+              aria-current="page"
+            >
+              {frontmatter.title}
+            </Text>
+          </li>
+        </ol>
+      </nav>
 
       <Text
         tag="h1"
@@ -67,7 +110,7 @@ const sectionContent = "lg:col-span-3 min-w-0 w-full";
         class:list={[sectionGrid, "mb-12"]}
       >
         <Text tag="h4" variant="displayMD" class={sectionLabel}>
-          Fotos
+          Alflorament
         </Text>
         <div class={sectionContent}>
           <ParadaGallery fotos={frontmatter.fotos} galleryId={slug} />
@@ -130,7 +173,7 @@ const sectionContent = "lg:col-span-3 min-w-0 w-full";
         class:list={[sectionGrid, "mb-12 border-t border-base-200 dark:border-base-800 pt-8"]}
       >
         <Text tag="h4" variant="displayMD" class={sectionLabel}>
-          Context litològic i evolució paleogeogràfica
+          Geologia
         </Text>
         <Wrapper variant="prose" class:list={[sectionContent, "-mt-2"]}>
           <slot />
@@ -150,14 +193,14 @@ const sectionContent = "lg:col-span-3 min-w-0 w-full";
                 data-modal-target={analisiFloraModalId}
                 class="text-left cursor-pointer group inline-flex items-start gap-2"
                 aria-haspopup="dialog"
-                aria-label="Obrir anàlisi del paisatge i de la flora associada"
+                aria-label="Obrir geobotànica"
               >
                 <Text
                   tag="span"
                   variant="displayMD"
                   class="font-medium tracking-tighter text-accent-700 dark:text-accent-400 underline decoration-accent-700/30 dark:decoration-accent-400/40 underline-offset-[6px] group-hover:decoration-accent-700 dark:group-hover:decoration-accent-400 transition-colors"
                 >
-                  Anàlisi del paisatge i de la flora associada
+                  Geobotànica
                 </Text>
                 <span
                   class="inline-flex size-7 shrink-0 items-center justify-center rounded-full border border-accent-700/25 dark:border-accent-400/30 text-accent-700 dark:text-accent-400 text-sm leading-none group-hover:bg-accent-700/10 dark:group-hover:bg-accent-400/10 transition-colors mt-0.5"
@@ -182,7 +225,7 @@ const sectionContent = "lg:col-span-3 min-w-0 w-full";
           ) : (
             <>
               <Text tag="h4" variant="displayMD" class={sectionLabel}>
-                Anàlisi del paisatge i de la flora associada
+                Geobotànica
               </Text>
               <div class={sectionContent}>
                 {

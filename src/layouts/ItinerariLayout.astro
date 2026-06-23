@@ -5,6 +5,7 @@ import { Image } from "astro:assets";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import ItinerariHeroVideo from "@/components/itinerari/ItinerariHeroVideo.astro";
 import ItinerariSau from "@/components/itinerari/itinerari-sau.astro";
 import ItinerariDadaModal from "@/components/itinerari/ItinerariDadaModal.astro";
 import ItinerariZoom from "@/components/itinerari/ItinerariZoom.astro";
@@ -75,13 +76,22 @@ const dadesLabels: Record<string, string> = {
           data-aos-duration="1000"
           class="relative overflow-hidden mb-12 w-full"
         >
-          <Image
-            width={1000}
-            height={500}
-            src={frontmatter.thumbnail.url}
-            alt={frontmatter.thumbnail.alt}
-            class="w-full object-cover"
-          />
+          {
+            frontmatter.video ? (
+              <ItinerariHeroVideo
+                src={frontmatter.video.publicSrc}
+                title={frontmatter.video.alt}
+              />
+            ) : (
+              <Image
+                width={1000}
+                height={500}
+                src={frontmatter.thumbnail.url}
+                alt={frontmatter.thumbnail.alt}
+                class="w-full object-cover"
+              />
+            )
+          }
         </div>
       </div>
 

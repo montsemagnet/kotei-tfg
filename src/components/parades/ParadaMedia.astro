@@ -1,11 +1,14 @@
 ---
 import { Image } from "astro:assets";
+import ItinerariHeroVideo from "@/components/itinerari/ItinerariHeroVideo.astro";
 
 interface Props {
   media: {
     tipus: "foto" | "video";
     foto?: { url: ImageMetadata; alt: string };
     videoUrl?: string;
+    publicSrc?: string;
+    alt?: string;
   };
 }
 
@@ -25,7 +28,15 @@ const { media } = Astro.props;
     )
   }
   {
-    media.tipus === "video" && media.videoUrl && (
+    media.tipus === "video" && media.publicSrc && (
+      <ItinerariHeroVideo
+        src={media.publicSrc}
+        title={media.alt ?? "Vídeo de la parada"}
+      />
+    )
+  }
+  {
+    media.tipus === "video" && !media.publicSrc && media.videoUrl && (
       <div class="aspect-video w-full">
         <iframe
           src={media.videoUrl}

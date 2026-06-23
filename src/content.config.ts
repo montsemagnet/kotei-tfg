@@ -230,6 +230,12 @@ const itineraris = defineCollection({
         url: image(),
         alt: z.string(),
       }),
+      video: z
+        .object({
+          publicSrc: z.string(),
+          alt: z.string(),
+        })
+        .optional(),
       ordre: z.number().optional(),
       draft: z.boolean().optional(),
       enConstruccio: z.boolean().optional(),
@@ -254,7 +260,9 @@ const parades = defineCollection({
         }),
         z.object({
           tipus: z.literal("video"),
-          videoUrl: z.string(),
+          videoUrl: z.string().optional(),
+          publicSrc: z.string().optional(),
+          alt: z.string().optional(),
         }),
       ]),
       fotos: z

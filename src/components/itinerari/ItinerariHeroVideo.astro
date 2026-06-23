@@ -1,0 +1,93 @@
+---
+interface Props {
+  src: string;
+  title: string;
+}
+
+const { src, title } = Astro.props;
+---
+
+<div
+  class="itinerari-hero-video relative w-full aspect-video overflow-hidden bg-base-200 dark:bg-base-800"
+  data-itinerari-hero-video
+>
+  <video
+    class="size-full object-cover"
+    src={src}
+    title={title}
+    autoplay
+    muted
+    playsinline
+    preload="auto"
+    disablepictureinpicture
+    tabindex="-1"
+    controlslist="nodownload nofullscreen noremoteplayback"
+  />
+
+  <button
+    type="button"
+    class="itinerari-hero-video__replay absolute bottom-4 right-4 z-10 hidden size-14 items-center justify-center rounded-full border-0 bg-white/90 p-0 text-base-900 shadow-lg cursor-pointer transition-transform hover:scale-105"
+    aria-label="Reproduir el vídeo de nou"
+  >
+    <svg
+      class="size-7 ml-0.5"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path d="M8 5.14v13.72L19 12 8 5.14z"></path>
+    </svg>
+  </button>
+</div>
+
+<script>
+  document.querySelectorAll("[data-itinerari-hero-video]").forEach((root) => {
+    const video = root.querySelector("video");
+    const replay = root.querySelector("button");
+    if (!(video instanceof HTMLVideoElement) || !(replay instanceof HTMLButtonElement)) {
+      return;
+    }
+
+    video.controls = false;
+
+    const showReplay = () => {
+      replay.classList.remove("hidden");
+      replay.classList.add("inline-flex");
+    };
+
+    const hideReplay = () => {
+      replay.classList.add("hidden");
+      replay.classList.remove("inline-flex");
+    };
+
+    video.addEventListener("ended", showReplay);
+
+    video.addEventListener("error", showReplay);
+
+    replay.addEventListener("click", () => {
+      hideReplay();
+      video.currentTime = 0;
+      video.muted = false;
+      void video.play();
+    });
+
+    void video.play().catch(() => {
+      showReplay();
+    });
+
+    video.addEventListener("contextmenu", (event) => {
+      event.preventDefault();
+    });
+  });
+</script>
+
+<style>
+  .itinerari-hero-video video::-webkit-media-controls {
+    display: none !important;
+  }
+
+  .itinerari-hero-video video::-webkit-media-controls-enclosure {
+    display: none !important;
+  }
+</style>

@@ -8,6 +8,9 @@ ordre: 1
 tipus: "Geològic"
 mapa: "sau-tavertet"
 mapaUrl: "https://qgiscloud.com/mmagnet/Sau-Tavertet/"
+video:
+  publicSrc: "/videos/itineraris/sau-tavertet.mp4"
+  alt: "Vídeo de presentació de l'itinerari geològic Sau–Tavertet"
 introLabel: "Objectiu"
 intro:
   - paragraphs:

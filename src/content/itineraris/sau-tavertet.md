@@ -95,13 +95,13 @@ dadesModals:
       - url: "/src/images/itineraris/sau-tavertet/I1-periodes4.png"
         alt: "Mapa geològic i secció transversal del sector Tavertet–Empordà"
 images:
-  - url: "/src/images/work/1/5.jpeg"
+  - url: "/src/images/itineraris/sau-tavertet/I1-galeria-1.jpeg"
     alt: "Paisatge de l'itinerari Sau–Tavertet"
-  - url: "/src/images/work/1/6.jpeg"
+  - url: "/src/images/itineraris/sau-tavertet/I1-galeria-2.jpeg"
     alt: "Formacions geològiques del sector"
-  - url: "/src/images/work/1/9.jpeg"
+  - url: "/src/images/itineraris/sau-tavertet/I1-galeria-3.jpeg"
     alt: "Vista del recorregut Sau–Tavertet"
 thumbnail:
-  url: "/src/images/work/1/thumbnail1.jpeg"
+  url: "/src/images/itineraris/sau-tavertet/I1-thumbnail.jpeg"
   alt: "Itinerari geològic Sau–Tavertet"
 ---

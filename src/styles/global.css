@@ -58,6 +58,9 @@
     }
   }
 }
+html {
+  font-size: 80%;
+}
 :root {
   font-variant-numeric: tabular-nums;
   /* Shiki  code styles */

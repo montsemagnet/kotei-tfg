@@ -10,7 +10,8 @@ if [ -n "${INCOMING_HOOK_TITLE:-}" ] || [ -n "${INCOMING_HOOK_URL:-}" ]; then
   exit 1
 fi
 
-MSG="${COMMIT_REF_MESSAGE:-}"
+# Netlify no exposa COMMIT_REF_MESSAGE; cal llegir el missatge amb git.
+MSG="$(git log -1 --pretty=%B "${COMMIT_REF:-HEAD}" 2>/dev/null || true)"
 
 if printf '%s' "$MSG" | grep -qF '[deploy]'; then
   echo "Netlify: commit amb [deploy] — es compila i es publica."

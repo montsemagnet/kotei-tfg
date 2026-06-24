@@ -9,16 +9,17 @@ const { src, citation, citationUrl } = Astro.props;
 ---
 
 <figure
-  class="plate-movement-video group relative mt-8 w-full overflow-hidden rounded-sm bg-base-200 dark:bg-base-800"
+  class="plate-movement-video group relative mt-8 w-full max-h-80 aspect-square"
+  data-plate-movement-video
 >
   <video
-    class="size-full object-cover aspect-square max-h-80 w-full"
+    class="size-full object-contain"
     src={src}
     autoplay
     muted
     loop
     playsinline
-    preload="metadata"
+    preload="auto"
     disablepictureinpicture
     tabindex="0"
     aria-label={citation}
@@ -41,6 +42,19 @@ const { src, citation, citationUrl } = Astro.props;
     </p>
   </figcaption>
 </figure>
+
+<script>
+  document.querySelectorAll("[data-plate-movement-video]").forEach((root) => {
+    const video = root.querySelector("video");
+    if (!(video instanceof HTMLVideoElement)) return;
+
+    video.controls = false;
+
+    void video.play().catch(() => {
+      /* Autoplay bloquejat: el primer fotograma encara es mostra amb preload=auto */
+    });
+  });
+</script>
 
 <style>
   .plate-movement-video video::-webkit-media-controls {

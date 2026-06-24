@@ -1,0 +1,49 @@
+---
+interface Props {
+  src: string;
+  citation: string;
+  citationUrl: string;
+}
+
+const { src, citation, citationUrl } = Astro.props;
+---
+
+<figure
+  class="plate-movement-video group relative mt-8 w-full overflow-hidden rounded-sm bg-base-200 dark:bg-base-800"
+>
+  <video
+    class="size-full object-cover aspect-square max-h-80 w-full"
+    src={src}
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+    disablepictureinpicture
+    tabindex="0"
+    aria-label={citation}
+    controlslist="nodownload nofullscreen noremoteplayback"
+  />
+
+  <figcaption
+    class="pointer-events-none absolute inset-0 flex items-end bg-base-950/75 p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100"
+  >
+    <p class="text-xs leading-relaxed text-white">
+      {citation}
+      <a
+        href={citationUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="pointer-events-auto mt-2 block underline underline-offset-2 hover:text-base-200"
+      >
+        {citationUrl}
+      </a>
+    </p>
+  </figcaption>
+</figure>
+
+<style>
+  .plate-movement-video video::-webkit-media-controls {
+    display: none !important;
+  }
+</style>

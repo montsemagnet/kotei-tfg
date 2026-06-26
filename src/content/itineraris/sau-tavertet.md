@@ -17,14 +17,24 @@ intro:
       - "L'objectiu científic és observar in situ la successió de materials (granit, gresos i argiles vermells, conglomerats, calcàries nummulítiques, margues) i correlacionar-los amb canvis en la coberta vegetal i en el paisatge."
 dades:
   mapa: "Mapa interactiu de l'itinerari geològic Sau–Tavertet (QGIS, capes geològiques i temàtiques)"
-  historia: "Context històric, geològic i botànic de l'itinerari Sau–Tavertet."
+  historia: "Context litològic del granit hercinià, el sòcol paleozoic i les cobertes sedimentàries terciàries del sector Sau–Tavertet."
+  paleogeologia: "Seqüència cronològica dels grans esdeveniments geològics que han donat lloc al relleu i a les formacions visibles al llarg de l'itinerari."
   paisatge: "Relació entre geologia del Collsacabra, paisatge de la cinglera i distribució de la flora al llarg de tot l'itinerari Sau–Tavertet."
 dadesLabels:
   historia: "Geologia"
+  paleogeologia: "Paleogeologia"
   paisatge: "Geobotànica"
 dadesModalAliases:
   historia: socle
 dadesModals:
+  paleogeologia:
+    intro: "A la Presa de Sau s'observa el granit hercinià que forma part del sòcol antic de la Cordillera Costero-Catalana. Aquesta unitat litològica, de tipus granitoides, es va emplaçar durant l'orogènia varisca i posteriorment va quedar exposada per processos d'erosió diferencial i tectònica extensional del Neogen. La successió litològica visible permet interpretar la transició entre el basament cristal·lí i les cobertes sedimentàries terciàries que recobreixen el sector de Tavertet. L'evolució paleogeogràfica de la conca de l'Ebre, amb la retirada de la línia de costa i el desenvolupament de sistemes fluvials i lacustres, va condicionar l'actual configuració del relleu i la distribució de les formacions geològiques observables al llarg de l'itinerari."
+    videos:
+      - title: "Formació de Pangea i orogènia varisca"
+        period: "410–280 Ma"
+        publicSrc: "/videos/itineraris/sau-tavertet/paleogeologia/1-orogenia-varisca.mp4"
+        alt: "Formació de Pangea i orogènia varisca"
+        description: "Visualització de la formació de Pangea i la orogènia varisca, fase en què s'emplaça el granit hercinià del sòcol de Sau."
   paisatge:
     intro: "L'itinerari Sau–Tavertet és un excel·lent exemple de com la geologia del Collsacabra estructura el paisatge i condiciona clarament la distribució de la flora al voltant de la cinglera i el pantà de Sau."
     sections:

@@ -223,12 +223,15 @@ const zoomImageClass =
 
       btn.addEventListener("click", () => dialog.showModal());
 
-      dialog.querySelector(".itinerari-dada-close")?.addEventListener("click", () =>
-        dialog.close(),
-      );
+      const closeModal = () => {
+        dialog.querySelectorAll("video").forEach((video) => video.pause());
+        dialog.close();
+      };
+
+      dialog.querySelector(".itinerari-dada-close")?.addEventListener("click", closeModal);
 
       dialog.addEventListener("click", (event) => {
-        if (event.target === dialog) dialog.close();
+        if (event.target === dialog) closeModal();
       });
     });
   }

@@ -13,12 +13,25 @@ const modalContentSchema = (image: (path: string) => z.ZodType) =>
         tipus: z.enum(["animacio", "video"]).default("animacio"),
       })
       .optional(),
-    sections: z.array(
-      z.object({
-        title: z.string(),
-        paragraphs: z.array(z.string()),
-      }),
-    ),
+    sections: z
+      .array(
+        z.object({
+          title: z.string(),
+          paragraphs: z.array(z.string()),
+        }),
+      )
+      .optional(),
+    videos: z
+      .array(
+        z.object({
+          title: z.string(),
+          publicSrc: z.string(),
+          alt: z.string().optional(),
+          period: z.string().optional(),
+          description: z.string().optional(),
+        }),
+      )
+      .optional(),
     images: z
       .array(
         z.union([
@@ -208,6 +221,7 @@ const itineraris = defineCollection({
         mapa: z.string(),
         socle: z.string().optional(),
         historia: z.string(),
+        paleogeologia: z.string().optional(),
         paisatge: z.string().optional(),
       }),
       dadesModals: z.record(z.string(), modalContentSchema(image)).optional(),

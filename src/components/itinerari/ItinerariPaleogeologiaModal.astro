@@ -1,0 +1,120 @@
+---
+interface Video {
+  title: string;
+  publicSrc: string;
+  alt?: string;
+  period?: string;
+  description?: string;
+}
+
+interface Section {
+  title: string;
+  paragraphs: string[];
+}
+
+interface Props {
+  modalId: string;
+  label: string;
+  intro?: string;
+  videos?: Video[];
+  sections?: Section[];
+}
+
+const { modalId, label, intro, videos = [], sections = [] } = Astro.props;
+const videoClass =
+  "w-full aspect-video rounded-md border border-base-200 dark:border-base-800 bg-base-950";
+---
+
+<dialog
+  id={modalId}
+  class="itinerari-dada-dialog fixed inset-0 z-[110] m-0 size-full max-h-none max-w-none border-0 bg-base-950/90 p-4 backdrop:bg-transparent open:flex open:items-start open:justify-center overflow-y-auto"
+>
+  <div
+    class="itinerari-dada-panel relative my-8 w-full max-w-3xl rounded-lg bg-base-100 dark:bg-base-900 p-6 lg:p-10 shadow-xl"
+  >
+    <button
+      type="button"
+      class="itinerari-dada-close absolute top-4 right-4 z-10 rounded-full bg-base-200 dark:bg-base-800 px-4 py-2 text-sm text-base-900 dark:text-white hover:bg-base-300 dark:hover:bg-base-700"
+      aria-label="Tancar"
+    >
+      Tancar
+    </button>
+
+    <h2
+      class="text-2xl md:text-3xl lg:text-4xl dark:text-white text-base-900 font-medium tracking-tighter mb-6 pr-24 capitalize"
+    >
+      {label}
+    </h2>
+
+    {
+      intro && (
+        <p class="text-xl md:text-2xl text-base-600 dark:text-base-300 mb-8 leading-relaxed">
+          {intro}
+        </p>
+      )
+    }
+
+    {
+      videos.length > 0 && (
+        <ol class="flex flex-col gap-10 list-none p-0 m-0">
+          {
+            videos.map((video, index) => (
+              <li>
+                <div class="mb-3">
+                  <h3 class="text-xl md:text-2xl lg:text-3xl dark:text-white text-base-900 font-medium">
+                    {index + 1}. {video.title}
+                  </h3>
+                  {
+                    video.period && (
+                      <p class="mt-1 text-sm uppercase tracking-wide text-base-500 dark:text-base-400 font-mono">
+                        {video.period}
+                      </p>
+                    )
+                  }
+                  {
+                    video.description && (
+                      <p class="mt-2 text-base text-base-500 dark:text-base-400 leading-relaxed">
+                        {video.description}
+                      </p>
+                    )
+                  }
+                </div>
+                <video
+                  class={videoClass}
+                  src={video.publicSrc}
+                  title={video.alt ?? video.title}
+                  controls
+                  playsinline
+                  preload="metadata"
+                />
+              </li>
+            ))
+          }
+        </ol>
+      )
+    }
+
+    {
+      sections.length > 0 && (
+        <div class="flex flex-col gap-8 mt-10">
+          {
+            sections.map((section) => (
+              <div>
+                <h3 class="text-xl md:text-2xl lg:text-3xl dark:text-white text-base-900 font-medium mb-3">
+                  {section.title}
+                </h3>
+                {
+                  section.paragraphs.map((paragraph) => (
+                    <p class="text-base text-base-500 dark:text-base-400 mb-3 leading-relaxed last:mb-0">
+                      {paragraph}
+                    </p>
+                  ))
+                }
+              </div>
+            ))
+          }
+        </div>
+      )
+    }
+  </div>
+</dialog>

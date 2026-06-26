@@ -7,6 +7,7 @@ import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import ItinerariHeroVideo from "@/components/itinerari/ItinerariHeroVideo.astro";
 import ItinerariSau from "@/components/itinerari/itinerari-sau.astro";
+import ItinerariPaleogeologiaModal from "@/components/itinerari/ItinerariPaleogeologiaModal.astro";
 import ItinerariDadaModal from "@/components/itinerari/ItinerariDadaModal.astro";
 import ItinerariZoom from "@/components/itinerari/ItinerariZoom.astro";
 
@@ -17,6 +18,7 @@ const defaultDadesLabels: Record<string, string> = {
   mapa: "mapa",
   socle: "sòcol",
   historia: "història",
+  paleogeologia: "paleogeologia",
   paisatge: "paisatge i flora",
 };
 
@@ -226,15 +228,25 @@ const dadesLabels: Record<string, string> = {
                   )
                 }
                 {
-                  modal && (
-                    <ItinerariDadaModal
+                  modal && modal.videos && modal.videos.length > 0 ? (
+                    <ItinerariPaleogeologiaModal
                       modalId={modalId}
                       label={label}
                       intro={modal.intro}
-                      introMedia={modal.introMedia}
+                      videos={modal.videos}
                       sections={modal.sections}
-                      images={modal.images}
                     />
+                  ) : (
+                    modal && (
+                      <ItinerariDadaModal
+                        modalId={modalId}
+                        label={label}
+                        intro={modal.intro}
+                        introMedia={modal.introMedia}
+                        sections={modal.sections ?? []}
+                        images={modal.images}
+                      />
+                    )
                   )
                 }
               </div>

@@ -2,6 +2,12 @@
 // Fundations
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import PlateMovementVideo from "@/components/landing/PlateMovementVideo.astro";
+
+const noaaCitation =
+  "National Oceanic and Atmospheric Administration. (n.d.). Plate movement: 200 million years ago to today [Vídeo]. NOAA Science on a Sphere.";
+const noaaUrl =
+  "https://sos.noaa.gov/catalog/datasets/plate-movement-200-million-years-ago-to-today/";
 
 // Array actualitzat amb el contingut per al TFG de Biologia
 const philosphy = [
@@ -43,14 +49,21 @@ const philosphy = [
     <div
       class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 overflow-hidden"
     >
-      <Text
-        tag="h3"
-        variant="displayXL"
-        data-aos="fade-up"
-        data-aos-duration="1000"
-        class="dark:text-white text-base-900 font-medium tracking-tighter text-balance"
-        >Què hi trobaràs
-      </Text>
+      <div class="flex flex-col">
+        <Text
+          tag="h3"
+          variant="displayXL"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          class="dark:text-white text-base-900 font-medium tracking-tighter text-balance"
+          >Què hi trobaràs
+        </Text>
+        <PlateMovementVideo
+          src="/videos/inici/plate_movement_400.mp4"
+          citation={noaaCitation}
+          citationUrl={noaaUrl}
+        />
+      </div>
       <div
         class="flex flex-col sm:col-span-2 lg:col-span-3 divide-y divide-base-200 dark:divide-base-800 border-y border-base-200 dark:border-base-800"
       >

@@ -1,0 +1,63 @@
+---
+interface Props {
+  src: string;
+  citation: string;
+  citationUrl: string;
+}
+
+const { src, citation, citationUrl } = Astro.props;
+---
+
+<figure
+  class="plate-movement-video group relative mt-8 w-full max-h-80 aspect-square"
+  data-plate-movement-video
+>
+  <video
+    class="size-full object-contain"
+    src={src}
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+    disablepictureinpicture
+    tabindex="0"
+    aria-label={citation}
+    controlslist="nodownload nofullscreen noremoteplayback"
+  />
+
+  <figcaption
+    class="pointer-events-none absolute inset-0 flex items-end bg-base-950/75 p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-within:opacity-100"
+  >
+    <p class="text-xs leading-relaxed text-white">
+      {citation}
+      <a
+        href={citationUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="pointer-events-auto mt-2 block underline underline-offset-2 hover:text-base-200"
+      >
+        {citationUrl}
+      </a>
+    </p>
+  </figcaption>
+</figure>
+
+<script>
+  document.querySelectorAll("[data-plate-movement-video]").forEach((root) => {
+    const video = root.querySelector("video");
+    if (!(video instanceof HTMLVideoElement)) return;
+
+    video.controls = false;
+
+    void video.play().catch(() => {
+      /* Autoplay bloquejat: el primer fotograma encara es mostra amb preload=auto */
+    });
+  });
+</script>
+
+<style>
+  .plate-movement-video video::-webkit-media-controls {
+    display: none !important;
+  }
+</style>

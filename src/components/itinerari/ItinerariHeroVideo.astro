@@ -4,88 +4,179 @@ interface Props {
   title: string;
   /** Mostra control per activar/desactivar el so (autoplay segueix silenciat) */
   sound?: boolean;
+  /** Botó per obrir el vídeo a pantalla completa */
+  allowFullscreen?: boolean;
+  /** Reprodueix en carregar (desactivar per vídeos dins modals) */
+  autoplayOnMount?: boolean;
 }
 
-const { src, title, sound = false } = Astro.props;
+const {
+  src,
+  title,
+  sound = false,
+  allowFullscreen = false,
+  autoplayOnMount = true,
+} = Astro.props;
 ---
 
 <div
   class="itinerari-hero-video relative w-full aspect-video overflow-hidden bg-base-200 dark:bg-base-800"
   data-itinerari-hero-video
   data-sound={sound ? "true" : "false"}
+  data-fullscreen={allowFullscreen ? "true" : "false"}
+  data-autoplay-on-mount={autoplayOnMount ? "true" : "false"}
 >
   <video
-    class="size-full object-cover"
+    class="relative z-0 size-full object-cover"
     src={src}
     title={title}
-    autoplay
     muted
     playsinline
-    preload="auto"
+    preload={autoplayOnMount ? "auto" : "none"}
     disablepictureinpicture
     tabindex="-1"
-    controlslist="nodownload nofullscreen noremoteplayback"
+    controlslist={allowFullscreen ? "nodownload noremoteplayback" : "nodownload nofullscreen noremoteplayback"}
+    {...(autoplayOnMount ? { autoplay: true } : {})}
   />
 
   {
-    sound && (
+    allowFullscreen && (
       <button
         type="button"
-        class="itinerari-hero-video__sound absolute bottom-4 right-4 z-10 inline-flex size-14 items-center justify-center rounded-full border-0 bg-white/90 p-0 text-base-900 shadow-lg cursor-pointer transition-transform hover:scale-105"
-        aria-label="Activar so"
+        class="itinerari-hero-video__fullscreen absolute bottom-4 left-4 z-10 inline-flex size-14 items-center justify-center rounded-full border-0 bg-white/90 p-0 text-base-900 shadow-lg cursor-pointer transition-transform hover:scale-105"
+        aria-label="Pantalla completa"
         aria-pressed="false"
       >
         <svg
-          class="itinerari-hero-video__sound-on hidden size-7"
+          class="itinerari-hero-video__fullscreen-enter size-7"
           viewBox="0 0 24 24"
           fill="currentColor"
           xmlns="http://www.w3.org/2000/svg"
           aria-hidden="true"
         >
-          <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.06c1.48-.74 2.5-2.26 2.5-4.03zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"></path>
+          <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"></path>
         </svg>
         <svg
-          class="itinerari-hero-video__sound-off size-7"
+          class="itinerari-hero-video__fullscreen-exit hidden size-7"
           viewBox="0 0 24 24"
           fill="currentColor"
           xmlns="http://www.w3.org/2000/svg"
           aria-hidden="true"
         >
-          <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4 9.91 6.09 12 8.18V4z"></path>
+          <path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"></path>
         </svg>
       </button>
     )
   }
 
-  <button
-    type="button"
-    class="itinerari-hero-video__replay absolute bottom-4 right-4 z-10 hidden size-14 items-center justify-center rounded-full border-0 bg-white/90 p-0 text-base-900 shadow-lg cursor-pointer transition-transform hover:scale-105"
-    aria-label="Reproduir el vídeo de nou"
-  >
-    <svg
-      class="size-7 ml-0.5"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <path d="M8 5.14v13.72L19 12 8 5.14z"></path>
-    </svg>
-  </button>
+  {
+    sound && (
+      <div class="itinerari-hero-video__controls absolute bottom-4 right-4 z-10 flex items-center gap-3">
+        <button
+          type="button"
+          class="itinerari-hero-video__playback inline-flex size-14 shrink-0 items-center justify-center rounded-full border-0 bg-white/90 p-0 text-base-900 shadow-lg cursor-pointer transition-transform hover:scale-105"
+          aria-label="Pausar"
+        >
+          <svg
+            class="itinerari-hero-video__playback-play hidden size-7 ml-0.5"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <path d="M8 5.14v13.72L19 12 8 5.14z"></path>
+          </svg>
+          <svg
+            class="itinerari-hero-video__playback-pause size-7"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path>
+          </svg>
+        </button>
+
+        <button
+          type="button"
+          class="itinerari-hero-video__sound inline-flex size-14 shrink-0 items-center justify-center rounded-full border-0 bg-white/90 p-0 text-base-900 shadow-lg cursor-pointer transition-transform hover:scale-105"
+          aria-label="Activar so"
+          aria-pressed="false"
+        >
+          <svg
+            class="itinerari-hero-video__sound-on hidden size-7"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.06c1.48-.74 2.5-2.26 2.5-4.03zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"></path>
+          </svg>
+          <svg
+            class="itinerari-hero-video__sound-off size-7"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4 9.91 6.09 12 8.18V4z"></path>
+          </svg>
+        </button>
+      </div>
+    )
+  }
+
+  {
+    !sound && (
+      <button
+        type="button"
+        class="itinerari-hero-video__playback absolute bottom-4 right-4 z-10 inline-flex size-14 items-center justify-center rounded-full border-0 bg-white/90 p-0 text-base-900 shadow-lg cursor-pointer transition-transform hover:scale-105"
+        aria-label="Pausar"
+      >
+        <svg
+          class="itinerari-hero-video__playback-play hidden size-7 ml-0.5"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <path d="M8 5.14v13.72L19 12 8 5.14z"></path>
+        </svg>
+        <svg
+          class="itinerari-hero-video__playback-pause size-7"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path>
+        </svg>
+      </button>
+    )
+  }
 </div>
 
 <script>
-  document.querySelectorAll("[data-itinerari-hero-video]").forEach((root) => {
+  function initItinerariHeroVideos() {
+  document.querySelectorAll("[data-itinerari-hero-video]:not([data-hero-video-bound])").forEach((root) => {
+    root.setAttribute("data-hero-video-bound", "true");
     const video = root.querySelector("video");
-    const replay = root.querySelector(".itinerari-hero-video__replay");
+    const playback = root.querySelector(".itinerari-hero-video__playback");
     const soundBtn = root.querySelector(".itinerari-hero-video__sound");
     const soundOn = root.querySelector(".itinerari-hero-video__sound-on");
     const soundOff = root.querySelector(".itinerari-hero-video__sound-off");
+    const fullscreenBtn = root.querySelector(".itinerari-hero-video__fullscreen");
+    const fullscreenEnter = root.querySelector(".itinerari-hero-video__fullscreen-enter");
+    const fullscreenExit = root.querySelector(".itinerari-hero-video__fullscreen-exit");
     const hasSound = root.dataset.sound === "true";
+    const autoplayOnMount = root.dataset.autoplayOnMount !== "false";
 
-    if (!(video instanceof HTMLVideoElement) || !(replay instanceof HTMLButtonElement)) {
+    if (!(video instanceof HTMLVideoElement) || !(playback instanceof HTMLButtonElement)) {
       return;
     }
+
+    const playbackPlay = root.querySelector(".itinerari-hero-video__playback-play");
+    const playbackPause = root.querySelector(".itinerari-hero-video__playback-pause");
 
     video.controls = false;
 
@@ -99,25 +190,15 @@ const { src, title, sound = false } = Astro.props;
       soundOff?.classList.toggle("hidden", !muted);
     };
 
-    const showReplay = () => {
-      replay.classList.remove("hidden");
-      replay.classList.add("inline-flex");
-      if (hasSound && soundBtn instanceof HTMLButtonElement) {
-        soundBtn.classList.add("hidden");
-      }
+    const updatePlaybackButton = () => {
+      const showPlay = video.paused || video.ended;
+      playbackPlay?.classList.toggle("hidden", !showPlay);
+      playbackPause?.classList.toggle("hidden", showPlay);
+      playback.setAttribute(
+        "aria-label",
+        video.ended ? "Reproduir el vídeo de nou" : showPlay ? "Reproduir" : "Pausar",
+      );
     };
-
-    const hideReplay = () => {
-      replay.classList.add("hidden");
-      replay.classList.remove("inline-flex");
-      if (hasSound && soundBtn instanceof HTMLButtonElement) {
-        soundBtn.classList.remove("hidden");
-      }
-    };
-
-    video.addEventListener("ended", showReplay);
-
-    video.addEventListener("error", showReplay);
 
     if (hasSound && soundBtn instanceof HTMLButtonElement) {
       updateSoundButton();
@@ -129,29 +210,124 @@ const { src, title, sound = false } = Astro.props;
       });
     }
 
-    replay.addEventListener("click", () => {
-      hideReplay();
-      video.currentTime = 0;
-      if (hasSound) {
-        video.muted = false;
-        updateSoundButton();
+    playback.addEventListener("click", () => {
+      if (video.ended) {
+        video.currentTime = 0;
+        if (hasSound) {
+          video.muted = false;
+          updateSoundButton();
+        }
       }
-      void video.play();
+
+      if (video.paused || video.ended) {
+        void video.play();
+        return;
+      }
+
+      video.pause();
     });
 
-    void video.play().catch(() => {
-      showReplay();
-    });
+    video.addEventListener("play", updatePlaybackButton);
+    video.addEventListener("pause", updatePlaybackButton);
+    video.addEventListener("ended", updatePlaybackButton);
+
+    const updateFullscreenButton = () => {
+      if (!(fullscreenBtn instanceof HTMLButtonElement)) return;
+
+      const active = document.fullscreenElement === root;
+      fullscreenBtn.setAttribute("aria-label", active ? "Sortir de pantalla completa" : "Pantalla completa");
+      fullscreenBtn.setAttribute("aria-pressed", active ? "true" : "false");
+      fullscreenEnter?.classList.toggle("hidden", active);
+      fullscreenExit?.classList.toggle("hidden", !active);
+    };
+
+    if (fullscreenBtn instanceof HTMLButtonElement) {
+      fullscreenBtn.addEventListener("click", () => {
+        if (document.fullscreenElement === root) {
+          void document.exitFullscreen();
+          return;
+        }
+        void root.requestFullscreen();
+      });
+
+      document.addEventListener("fullscreenchange", updateFullscreenButton);
+      updateFullscreenButton();
+    }
+
+    const startPlayback = () => {
+      video.currentTime = 0;
+      video.muted = true;
+      updateSoundButton();
+      updatePlaybackButton();
+
+      const tryPlay = () => {
+        void video.play().catch(() => {
+          updatePlaybackButton();
+        });
+      };
+
+      if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+        tryPlay();
+        return;
+      }
+
+      video.addEventListener(
+        "canplay",
+        () => {
+          tryPlay();
+          updatePlaybackButton();
+        },
+        { once: true },
+      );
+      video.load();
+    };
+
+    const resetPlayback = () => {
+      video.pause();
+      video.currentTime = 0;
+      video.muted = true;
+      updateSoundButton();
+      updatePlaybackButton();
+    };
+
+    root.addEventListener("hero-video-start", startPlayback);
+    root.addEventListener("hero-video-reset", resetPlayback);
+
+    if (autoplayOnMount) {
+      void video.play().catch(() => {
+        updatePlaybackButton();
+      });
+    } else {
+      updatePlaybackButton();
+    }
+
+    updatePlaybackButton();
 
     video.addEventListener("contextmenu", (event) => {
       event.preventDefault();
     });
   });
+  }
+
+  initItinerariHeroVideos();
+  document.addEventListener("astro:after-swap", initItinerariHeroVideos);
 </script>
 
 <style>
-  .itinerari-hero-video[data-sound="true"] .itinerari-hero-video__replay {
-    right: 5.5rem;
+  .itinerari-hero-video:fullscreen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: unset;
+    background: #000;
+  }
+
+  .itinerari-hero-video:fullscreen video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 
   .itinerari-hero-video video::-webkit-media-controls {

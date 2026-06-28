@@ -7,6 +7,7 @@ import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import ItinerariHeroVideo from "@/components/itinerari/ItinerariHeroVideo.astro";
 import ItinerariSau from "@/components/itinerari/itinerari-sau.astro";
+import ItinerariVideoModal from "@/components/itinerari/ItinerariVideoModal.astro";
 import ItinerariPaleogeologiaModal from "@/components/itinerari/ItinerariPaleogeologiaModal.astro";
 import ItinerariDadaModal from "@/components/itinerari/ItinerariDadaModal.astro";
 import ItinerariZoom from "@/components/itinerari/ItinerariZoom.astro";
@@ -26,11 +27,21 @@ const dadesLabels: Record<string, string> = {
   ...defaultDadesLabels,
   ...frontmatter.dadesLabels,
 };
+
+const videoModalId = "itinerari-modal-visualitzacio";
+const videoEnModal = frontmatter.video?.enModal ?? false;
+const hasInlineMap = frontmatter.mapa === "sau-tavertet";
+const heroWrapperClass = hasInlineMap
+  ? "pt-24 lg:pt-48 pb-8 lg:pb-10"
+  : "py-24 lg:py-48";
+const contentWrapperClass = hasInlineMap ? "pt-4 pb-8 lg:pt-6" : "py-8";
+const introParadaLinkClass =
+  "text-accent-700 dark:text-accent-400 underline decoration-accent-700/30 dark:decoration-accent-400/40 underline-offset-[4px] hover:decoration-accent-700 dark:hover:decoration-accent-400 transition-colors";
 ---
 
 <BaseLayout>
   <section>
-    <Wrapper variant="standard" class="py-24 lg:py-48">
+    <Wrapper variant="standard" class={heroWrapperClass}>
       <Text
         tag="a"
         variant="textXS"
@@ -73,29 +84,33 @@ const dadesLabels: Record<string, string> = {
           }
         </Text>
 
-        <div
-          data-aos="fade-up"
-          data-aos-duration="1000"
-          class="relative overflow-hidden mb-12 w-full"
-        >
-          {
-            frontmatter.video ? (
-              <ItinerariHeroVideo
-                src={frontmatter.video.publicSrc}
-                title={frontmatter.video.alt}
-                sound={frontmatter.video.ambSo ?? false}
-              />
-            ) : (
-              <Image
-                width={1000}
-                height={500}
-                src={frontmatter.thumbnail.url}
-                alt={frontmatter.thumbnail.alt}
-                class="w-full object-cover"
-              />
-            )
-          }
-        </div>
+        {
+          !videoEnModal && (
+            <div
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              class="relative overflow-hidden mb-12 w-full"
+            >
+              {
+                frontmatter.video ? (
+                  <ItinerariHeroVideo
+                    src={frontmatter.video.publicSrc}
+                    title={frontmatter.video.alt}
+                    sound={frontmatter.video.ambSo ?? false}
+                  />
+                ) : (
+                  <Image
+                    width={1000}
+                    height={500}
+                    src={frontmatter.thumbnail.url}
+                    alt={frontmatter.thumbnail.alt}
+                    class="w-full object-cover"
+                  />
+                )
+              }
+            </div>
+          )
+        }
       </div>
 
       {
@@ -103,17 +118,58 @@ const dadesLabels: Record<string, string> = {
           <div
             data-aos="fade-up"
             data-aos-duration="1000"
-            class="w-full flex justify-center mt-8"
+            class="w-full"
           >
-            <div class="w-full">
-              <ItinerariSau />
-            </div>
+            <ItinerariSau />
           </div>
+        )
+      }
+
+      {
+        videoEnModal && frontmatter.video && (
+          <ItinerariVideoModal
+            modalId={videoModalId}
+            label={frontmatter.video.modalLabel ?? "Visualització de la zona"}
+            src={frontmatter.video.publicSrc}
+            title={frontmatter.video.alt}
+            sound={frontmatter.video.ambSo ?? false}
+          />
         )
       }
     </Wrapper>
 
-    <Wrapper variant="standard" class="py-8">
+    <Wrapper variant="standard" class={contentWrapperClass}>
+      {
+        videoEnModal && frontmatter.video && (
+          <div
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            class="mb-10"
+          >
+            <button
+              type="button"
+              data-video-modal-target={videoModalId}
+              class="group flex flex-wrap items-center gap-2 text-left cursor-pointer"
+              aria-haspopup="dialog"
+              aria-label={`Obrir: ${frontmatter.video.modalLabel ?? "Visualització de la zona"}`}
+            >
+              <Text
+                tag="span"
+                variant="displayMD"
+                class="font-medium tracking-tighter text-accent-700 dark:text-accent-400 underline decoration-accent-700/30 dark:decoration-accent-400/40 underline-offset-[6px] group-hover:decoration-accent-700 dark:group-hover:decoration-accent-400 transition-colors leading-tight capitalize"
+              >
+                {frontmatter.video.modalLabel ?? "Visualització de la zona"}
+              </Text>
+              <span
+                class="inline-flex size-7 shrink-0 items-center justify-center rounded-full border border-accent-700/25 dark:border-accent-400/30 text-accent-700 dark:text-accent-400 text-sm leading-none group-hover:bg-accent-700/10 dark:group-hover:bg-accent-400/10 transition-colors"
+                aria-hidden="true"
+              >
+                ▶
+              </span>
+            </button>
+          </div>
+        )
+      }
       <div
         data-aos="fade-up"
         data-aos-duration="1000"
@@ -129,17 +185,76 @@ const dadesLabels: Record<string, string> = {
         </div>
         <div class="lg:col-span-3 min-w-0">
           {
-            frontmatter.intro.map((item) =>
-              item.paragraphs?.map((p) => (
-                <Text
-                  tag="p"
-                  variant="textXL"
-                  class="text-base-500 dark:text-base-400 mb-4 last:mb-0"
-                >
-                  {p}
-                </Text>
-              )),
-            )
+            frontmatter.intro.map((item) => (
+              <>
+                {item.paragraphs?.map((p) => (
+                  <Text
+                    tag="p"
+                    variant="textXL"
+                    class="text-base-500 dark:text-base-400 mb-4 last:mb-0"
+                  >
+                    {p}
+                  </Text>
+                ))}
+                {item.table && (
+                  <div class="overflow-x-auto mt-6">
+                    <table class="w-full min-w-[480px] border-collapse text-left">
+                      <thead>
+                        <tr class="border-b border-base-200 dark:border-base-800">
+                          {(item.table.headers ?? ["Parada", "Material / formació", "Edat"]).map(
+                            (header) => (
+                              <th
+                                scope="col"
+                                class="py-3 pr-4 last:pr-0 text-sm font-medium text-base-900 dark:text-white uppercase tracking-wide"
+                              >
+                                {header}
+                              </th>
+                            ),
+                          )}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {item.table.rows.map((row) => (
+                          <tr class="border-b border-base-200 dark:border-base-800">
+                            <td class="py-3 pr-4 text-base font-medium whitespace-nowrap">
+                              {row.slug ? (
+                                <Text
+                                  tag="a"
+                                  href={`/parades/${row.slug}`}
+                                  variant="textBase"
+                                  class={introParadaLinkClass}
+                                >
+                                  {row.parada}
+                                </Text>
+                              ) : (
+                                <span class="text-base-900 dark:text-white">{row.parada}</span>
+                              )}
+                            </td>
+                            <td class="py-3 pr-4 text-base">
+                              {row.slug ? (
+                                <Text
+                                  tag="a"
+                                  href={`/parades/${row.slug}`}
+                                  variant="textBase"
+                                  class={`text-base-500 dark:text-base-400 ${introParadaLinkClass}`}
+                                >
+                                  {row.material}
+                                </Text>
+                              ) : (
+                                <span class="text-base-500 dark:text-base-400">{row.material}</span>
+                              )}
+                            </td>
+                            <td class="py-3 text-base text-base-500 dark:text-base-400">
+                              {row.edat}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+              </>
+            ))
           }
         </div>
       </div>

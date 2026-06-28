@@ -12,6 +12,8 @@
 
     // Set the toggle state correctly based on the theme
     const toggle = document.getElementById("theme-toggle");
-    toggle.setAttribute("aria-checked", theme === "dark" ? "true" : "false");
+    if (toggle) {
+      toggle.setAttribute("aria-checked", theme === "dark" ? "true" : "false");
+    }
   })();
 </script>

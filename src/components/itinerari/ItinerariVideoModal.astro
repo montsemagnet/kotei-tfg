@@ -1,0 +1,102 @@
+---
+import ItinerariHeroVideo from "@/components/itinerari/ItinerariHeroVideo.astro";
+
+interface Props {
+  modalId: string;
+  label: string;
+  src: string;
+  title: string;
+  sound?: boolean;
+  allowFullscreen?: boolean;
+}
+
+const { modalId, label, src, title, sound = false, allowFullscreen = true } = Astro.props;
+---
+
+<dialog
+  id={modalId}
+  class="itinerari-dada-dialog fixed inset-0 z-[110] m-0 size-full max-h-none max-w-none border-0 bg-base-950/90 p-4 backdrop:bg-transparent open:flex open:items-start open:justify-center overflow-y-auto"
+>
+  <div
+    class="itinerari-dada-panel relative my-8 w-full max-w-4xl rounded-lg bg-base-100 dark:bg-base-900 p-6 lg:p-10 shadow-xl"
+  >
+    <button
+      type="button"
+      class="itinerari-dada-close absolute top-4 right-4 z-10 rounded-full bg-base-200 dark:bg-base-800 px-4 py-2 text-sm text-base-900 dark:text-white hover:bg-base-300 dark:hover:bg-base-700"
+      aria-label="Tancar"
+    >
+      Tancar
+    </button>
+
+    <h2
+      class="text-2xl md:text-3xl dark:text-white text-base-900 font-medium tracking-tighter mb-6 pr-24"
+    >
+      {label}
+    </h2>
+
+    <ItinerariHeroVideo
+      src={src}
+      title={title}
+      sound={sound}
+      allowFullscreen={allowFullscreen}
+      autoplayOnMount={false}
+    />
+  </div>
+</dialog>
+
+<script>
+  function initItinerariVideoModals() {
+    document.querySelectorAll("[data-video-modal-target]").forEach((btn) => {
+      if (!(btn instanceof HTMLElement)) return;
+      if (btn.dataset.videoModalBound) return;
+      btn.dataset.videoModalBound = "true";
+
+      const modalId = btn.dataset.videoModalTarget;
+      if (!modalId) return;
+
+      const dialog = document.getElementById(modalId);
+      if (!(dialog instanceof HTMLDialogElement)) return;
+
+      const startModalVideo = () => {
+        dialog
+          .querySelector("[data-itinerari-hero-video]")
+          ?.dispatchEvent(new CustomEvent("hero-video-start"));
+      };
+
+      btn.addEventListener("click", () => {
+        dialog.showModal();
+        requestAnimationFrame(() => {
+          requestAnimationFrame(startModalVideo);
+        });
+      });
+
+      const resetModalVideo = () => {
+        if (document.fullscreenElement instanceof HTMLElement && dialog.contains(document.fullscreenElement)) {
+          void document.exitFullscreen();
+        }
+        dialog
+          .querySelector("[data-itinerari-hero-video]")
+          ?.dispatchEvent(new CustomEvent("hero-video-reset"));
+      };
+
+      const closeModal = () => {
+        resetModalVideo();
+        dialog.close();
+      };
+
+      dialog.querySelector(".itinerari-dada-close")?.addEventListener("click", closeModal);
+
+      dialog.addEventListener("click", (event) => {
+        if (event.target === dialog) closeModal();
+      });
+
+      dialog.addEventListener("cancel", (event) => {
+        event.preventDefault();
+        closeModal();
+      });
+    });
+  }
+
+  initItinerariVideoModals();
+  document.addEventListener("astro:after-swap", initItinerariVideoModals);
+</script>

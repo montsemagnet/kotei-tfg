@@ -123,3 +123,9 @@ body {
   background: none !important;
   box-shadow: none !important;
 }
+
+/* Si AOS no carrega (p. ex. sense connexió al CDN), el contingut segueix visible */
+html.aos-fallback [data-aos] {
+  opacity: 1 !important;
+  transform: none !important;
+}

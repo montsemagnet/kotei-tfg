@@ -6,9 +6,11 @@ import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import ParadaMedia from "@/components/parades/ParadaMedia.astro";
 import ParadaGallery from "@/components/parades/ParadaGallery.astro";
 import ParadaAnalisiFloraModal from "@/components/parades/ParadaAnalisiFloraModal.astro";
+import ItinerariVideoModal from "@/components/itinerari/ItinerariVideoModal.astro";
 
 const { frontmatter, slug } = Astro.props;
 const analisiFloraModalId = `parada-flora-${slug}`;
+const videoAeriModalId = `parada-aeri-${slug}`;
 
 const itinerariEntry = await getEntry("itineraris", frontmatter.itinerari);
 const itinerariTitle = itinerariEntry?.data.title ?? "Itinerari";
@@ -74,14 +76,40 @@ const sectionContent = "lg:col-span-3 min-w-0 w-full";
       <Text
         tag="h1"
         variant="display3XL"
-        data-aos="fade-up"
-        data-aos-duration="1000"
         class="dark:text-white text-base-900 font-medium tracking-tighter mb-8"
       >
         {frontmatter.title}
       </Text>
 
       <ParadaMedia media={frontmatter.media} />
+
+      {
+        frontmatter.videoAeri && (
+          <div class="mt-8">
+            <button
+              type="button"
+              data-video-modal-target={videoAeriModalId}
+              class="group flex flex-wrap items-center gap-2 text-left cursor-pointer"
+              aria-haspopup="dialog"
+              aria-label={`Obrir: ${frontmatter.videoAeri.modalLabel ?? "Vista aèria de la parada"}`}
+            >
+              <Text
+                tag="span"
+                variant="displayMD"
+                class="font-medium tracking-tighter text-accent-700 dark:text-accent-400 underline decoration-accent-700/30 dark:decoration-accent-400/40 underline-offset-[6px] group-hover:decoration-accent-700 dark:group-hover:decoration-accent-400 transition-colors leading-tight capitalize"
+              >
+                {frontmatter.videoAeri.modalLabel ?? "Vista aèria de la parada"}
+              </Text>
+              <span
+                class="inline-flex size-7 shrink-0 items-center justify-center rounded-full border border-accent-700/25 dark:border-accent-400/30 text-accent-700 dark:text-accent-400 text-sm leading-none group-hover:bg-accent-700/10 dark:group-hover:bg-accent-400/10 transition-colors"
+                aria-hidden="true"
+              >
+                ▶
+              </span>
+            </button>
+          </div>
+        )
+      }
 
       <div
         data-aos="fade-up"
@@ -254,5 +282,18 @@ const sectionContent = "lg:col-span-3 min-w-0 w-full";
         }
       </div>
     </Wrapper>
+
+    {
+      frontmatter.videoAeri && (
+        <ItinerariVideoModal
+          modalId={videoAeriModalId}
+          label={frontmatter.videoAeri.modalLabel ?? "Vista aèria de la parada"}
+          src={frontmatter.videoAeri.publicSrc}
+          title={frontmatter.videoAeri.alt}
+          sound={frontmatter.videoAeri.ambSo ?? true}
+          allowFullscreen
+        />
+      )
+    }
   </section>
 </BaseLayout>

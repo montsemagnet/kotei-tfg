@@ -98,6 +98,19 @@ const itineraris = defineCollection({
       intro: z.array(
         z.object({
           paragraphs: z.array(z.string()).optional(),
+          table: z
+            .object({
+              headers: z.array(z.string()).optional(),
+              rows: z.array(
+                z.object({
+                  parada: z.string(),
+                  material: z.string(),
+                  edat: z.string(),
+                  slug: z.string().optional(),
+                }),
+              ),
+            })
+            .optional(),
         }),
       ),
       introLabel: z.string().optional(),
@@ -136,6 +149,10 @@ const itineraris = defineCollection({
           alt: z.string(),
           /** Vídeo amb pista d'àudio — mostra botó per activar el so */
           ambSo: z.boolean().optional(),
+          /** Obrir el vídeo en modal en lloc de mostrar-lo a la capçalera */
+          enModal: z.boolean().optional(),
+          /** Etiqueta de l'enllaç que obre el modal */
+          modalLabel: z.string().optional(),
         })
         .optional(),
       ordre: z.number().optional(),
@@ -165,6 +182,7 @@ const parades = defineCollection({
           videoUrl: z.string().optional(),
           publicSrc: z.string().optional(),
           alt: z.string().optional(),
+          ambSo: z.boolean().optional(),
         }),
       ]),
       fotos: z
@@ -176,6 +194,14 @@ const parades = defineCollection({
         )
         .length(8),
       mapaUrl: z.string().url(),
+      videoAeri: z
+        .object({
+          publicSrc: z.string(),
+          alt: z.string(),
+          ambSo: z.boolean().optional(),
+          modalLabel: z.string().optional(),
+        })
+        .optional(),
       materials: z.array(
         z.object({
           nom: z.string(),

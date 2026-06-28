@@ -1,7 +1,8 @@
 ---
 interface Video {
+  id?: string;
   title: string;
-  publicSrc: string;
+  publicSrc?: string;
   alt?: string;
   period?: string;
   description?: string;
@@ -22,8 +23,14 @@ interface Props {
 }
 
 const { modalId, label, intro, videos = [], sections = [] } = Astro.props;
+
 const videoClass =
   "w-full aspect-video rounded-md border border-base-200 dark:border-base-800 bg-base-950";
+
+function videoAnchorId(video: Video, index: number): string {
+  if (video.id) return `${modalId}-${video.id}`;
+  return `${modalId}-apartat-${index + 1}`;
+}
 ---
 
 <dialog
@@ -56,11 +63,38 @@ const videoClass =
     }
 
     {
+      videos.length > 1 && (
+        <nav
+          class="mb-8 rounded-lg border border-base-200 dark:border-base-800 bg-base-50 dark:bg-base-950/40 px-4 py-4"
+          aria-label="Índex de la paleogeologia"
+        >
+          <p class="text-sm font-medium uppercase tracking-wide text-base-500 dark:text-base-400 mb-3">
+            Índex
+          </p>
+          <ol class="flex flex-col gap-2 list-none p-0 m-0">
+            {
+              videos.map((video, index) => (
+                <li>
+                  <a
+                    href={`#${videoAnchorId(video, index)}`}
+                    class="text-base text-accent-700 dark:text-accent-400 underline decoration-accent-700/30 dark:decoration-accent-400/40 underline-offset-[4px] hover:decoration-accent-700 dark:hover:decoration-accent-400 transition-colors leading-snug"
+                  >
+                    {video.title}
+                  </a>
+                </li>
+              ))
+            }
+          </ol>
+        </nav>
+      )
+    }
+
+    {
       videos.length > 0 && (
         <ol class="flex flex-col gap-10 list-none p-0 m-0">
           {
             videos.map((video, index) => (
-              <li>
+              <li id={videoAnchorId(video, index)} class="scroll-mt-28">
                 <div class="mb-3">
                   <h3 class="text-xl md:text-2xl lg:text-3xl dark:text-white text-base-900 font-medium">
                     {index + 1}. {video.title}
@@ -92,14 +126,18 @@ const videoClass =
                     )
                   }
                 </div>
-                <video
-                  class={videoClass}
-                  src={video.publicSrc}
-                  title={video.alt ?? video.title}
-                  controls
-                  playsinline
-                  preload="metadata"
-                />
+                {
+                  video.publicSrc && (
+                    <video
+                      class={videoClass}
+                      src={video.publicSrc}
+                      title={video.alt ?? video.title}
+                      controls
+                      playsinline
+                      preload="metadata"
+                    />
+                  )
+                }
               </li>
             ))
           }

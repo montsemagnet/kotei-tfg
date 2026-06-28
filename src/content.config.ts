@@ -24,8 +24,9 @@ const modalContentSchema = (image: (path: string) => z.ZodType) =>
     videos: z
       .array(
         z.object({
+          id: z.string().optional(),
           title: z.string(),
-          publicSrc: z.string(),
+          publicSrc: z.string().optional(),
           alt: z.string().optional(),
           period: z.string().optional(),
           description: z.string().optional(),

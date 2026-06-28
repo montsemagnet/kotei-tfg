@@ -31,7 +31,8 @@ dadesModals:
   paleogeologia:
     intro: "Seqüència cronològica en vídeo dels grans esdeveniments geològics que han configurat el relleu i les formacions visibles al llarg de l'itinerari Sau–Tavertet."
     videos:
-      - title: "Parada 1 – Paleozoic: construcció del sòcol ibèric (aflorament de Sau–Tavertet)"
+      - id: parada-1
+        title: "Parada 1 – Paleozoic: construcció del sòcol ibèric (aflorament de Sau–Tavertet)"
         period: "410–280 Ma"
         publicSrc: "/videos/itineraris/sau-tavertet/paleogeologia/1-orogenia-varisca.mp4"
         alt: "Construcció del sòcol ibèric durant el Paleozoic"
@@ -40,7 +41,14 @@ dadesModals:
           - "L'orogènesi herciniana és el procés mitjançant el qual diversos continents i microcontinents es van aproximar i van col·lisionar, tancant oceans i generant una serralada extensa. En el domini ibèric, aquesta col·lisió provoca el plegament de les sèries sedimentàries, el seu metamorfisme i la intrusió de grans masses de magma en profunditat. Tectònicament, aquest període és, per tant, el moment en què es construeix el basament cristal·lí paleozoic: sèries sedimentàries marines i continentals se sotmeten a plegament, metamorfisme i intrusió de magmes profunds associats a l'orogènesi herciniana."
           - "A la presa de Sau, els afloraments que observem corresponen a roques paleozoiques d'aquest basament: principalment granits i esquists. Els granits són roques ígnies plutòniques, de cristalls visibles (quars, feldspats, mica), formades per la cristal·lització lenta de magmes profunds durant les fases tardanes de l'orogènesi herciniana. Els esquists són roques metamòrfiques derivades de sediments argilosos o volcànics que, en ser sotmesos a pressió i temperatura elevades, desenvolupen una esquistositat marcada. El contacte entre aquests granits i esquists a Sau mostra, in situ, la combinació de intrusió magmàtica i metamorfisme que caracteritza el sòcol ibèric, i és el substrat sobre el qual es disposaran més endavant les sèries sedimentàries que formen les cingleres de Tavertet."
           - "Al final del vídeo, un cercle vermell destaca la zona corresponent al domini que acabarà formant part de la placa Ibèrica i a la serralada generada per l'orogènesi herciniana. Aquesta banda muntanyosa paleozoica és precisament el basament sobre el qual s'assentaran, molts milions d'anys després, les conques i cobertores sedimentàries que donaran lloc al relleu actual de Sau–Tavertet i al conjunt de Catalunya."
-      - title: "De 280 Ma a 65 Ma: l'era dels dinosaures"
+      - id: parada-2
+        title: "Parada 2 – Cantera de sauló: alteració del sòcol granític"
+        paragraphs:
+          - "Després d'observar el monzogranit biotític paleozoic a la presa de Sau, la segona parada ens mostra el mateix sòcol ibèric en un estadi més avançat d'evolució superficial. A la cantera, el granit es presenta fortament meteorititzat i desagregat en forma de sauló: un material sorrenc, de tonalitats rosades o marronoses, format per fragments de quars, feldspats i mica procedents de la descomposició del granit."
+          - "El sauló és el regòlit granític, és a dir, la capa de materials solts i alterats que recobreix la roca mare compacta i que es genera per meteorizació física (fracturació, gelifracció, canvis tèrmics) i química (hidrolisi dels feldspats, oxidació de minerals ferromagnesians) al llarg de milions d'anys."
+          - "Paleogeogràficament, aquesta parada ens permet veure com el sòcol cristal·lí construït durant l'orogènesi herciniana no és una entitat rígida i immutable, sinó que es va transformant de manera contínua a la superfície terrestre."
+      - id: mesozoic
+        title: "De 280 Ma a 65 Ma: l'era dels dinosaures"
         period: "280–65 Ma"
         publicSrc: "/videos/itineraris/sau-tavertet/paleogeologia/02.mp4"
         alt: "El Mesozoic i l'era dels dinosaures"

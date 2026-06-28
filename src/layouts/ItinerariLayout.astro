@@ -83,6 +83,7 @@ const dadesLabels: Record<string, string> = {
               <ItinerariHeroVideo
                 src={frontmatter.video.publicSrc}
                 title={frontmatter.video.alt}
+                sound={frontmatter.video.ambSo ?? false}
               />
             ) : (
               <Image
@@ -104,7 +105,7 @@ const dadesLabels: Record<string, string> = {
             data-aos-duration="1000"
             class="w-full flex justify-center mt-8"
           >
-            <div class="max-w-2xl w-full">
+            <div class="w-full">
               <ItinerariSau />
             </div>
           </div>

@@ -11,6 +11,7 @@ mapaUrl: "https://qgiscloud.com/mmagnet/Sau-Tavertet/"
 video:
   publicSrc: "/videos/itineraris/sau-tavertet.mp4"
   alt: "Vídeo de presentació de l'itinerari geològic Sau–Tavertet"
+  ambSo: true
 introLabel: "Objectiu"
 intro:
   - paragraphs:
@@ -39,6 +40,13 @@ dadesModals:
           - "L'orogènesi herciniana és el procés mitjançant el qual diversos continents i microcontinents es van aproximar i van col·lisionar, tancant oceans i generant una serralada extensa. En el domini ibèric, aquesta col·lisió provoca el plegament de les sèries sedimentàries, el seu metamorfisme i la intrusió de grans masses de magma en profunditat. Tectònicament, aquest període és, per tant, el moment en què es construeix el basament cristal·lí paleozoic: sèries sedimentàries marines i continentals se sotmeten a plegament, metamorfisme i intrusió de magmes profunds associats a l'orogènesi herciniana."
           - "A la presa de Sau, els afloraments que observem corresponen a roques paleozoiques d'aquest basament: principalment granits i esquists. Els granits són roques ígnies plutòniques, de cristalls visibles (quars, feldspats, mica), formades per la cristal·lització lenta de magmes profunds durant les fases tardanes de l'orogènesi herciniana. Els esquists són roques metamòrfiques derivades de sediments argilosos o volcànics que, en ser sotmesos a pressió i temperatura elevades, desenvolupen una esquistositat marcada. El contacte entre aquests granits i esquists a Sau mostra, in situ, la combinació de intrusió magmàtica i metamorfisme que caracteritza el sòcol ibèric, i és el substrat sobre el qual es disposaran més endavant les sèries sedimentàries que formen les cingleres de Tavertet."
           - "Al final del vídeo, un cercle vermell destaca la zona corresponent al domini que acabarà formant part de la placa Ibèrica i a la serralada generada per l'orogènesi herciniana. Aquesta banda muntanyosa paleozoica és precisament el basament sobre el qual s'assentaran, molts milions d'anys després, les conques i cobertores sedimentàries que donaran lloc al relleu actual de Sau–Tavertet i al conjunt de Catalunya."
+      - title: "De 280 Ma a 65 Ma: l'era dels dinosaures"
+        period: "280–65 Ma"
+        publicSrc: "/videos/itineraris/sau-tavertet/paleogeologia/02.mp4"
+        alt: "El Mesozoic i l'era dels dinosaures"
+        paragraphs:
+          - "Entre 280 i 65 milions d'anys la Terra recorre el Mesozoic (Triàsic, Juràssic i Cretaci). Al començament Pangea és un únic supercontinent; amb el temps es fractura i s'obren nous oceans, incloent l'Atlàntic i un gran oceà anomenat Tetis, situat entre els blocs que avui correspondrien a Europa i Àfrica–Aràbia. Després de la gran extinció del final del Permià (~252 Ma), apareixen i es diversifiquen els dinosaures, els mamífers primitius i les aus, i al Cretaci s'estenen les plantes amb flor, que transformen profundament els ecosistemes terrestres i les xarxes de pol·linització. El Mesozoic és, en conjunt, una era de clima càlid, sense glaciacions globals comparables a les del Quaternari, però amb variacions regionals del nivell del mar i de les condicions ambientals."
+          - "En la futura zona ibèrica, aquests moviments tectònics controlen la formació de conques i serralades i preparen el moment en què un braç del mar de Tetis ocuparà la conca de l'Ebre durant el Paleocè–Eocè, generant els ambients marins on es formaran les calcàries amb nummulits que veurem a Tavertet. A Sau–Tavertet, però, el registre aflorant estrictament mesozòic és molt limitat, de manera que el vídeo mostra el Mesozoic sobretot com a context global: explica com la Terra passa del paisatge post-hercinià al món dels dinosaures i com, al final del Cretaci (extinció Cretaci–Paleogen, ~66 Ma), es prepara el marc perquè, ja en el Paleocè–Eocè, es formi la conca de l'Ebre i es dipositin els sediments que sí veurem a les parades de l'itinerari."
   paisatge:
     intro: "L'itinerari Sau–Tavertet és un excel·lent exemple de com la geologia del Collsacabra estructura el paisatge i condiciona clarament la distribució de la flora al voltant de la cinglera i el pantà de Sau."
     sections:

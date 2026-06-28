@@ -133,6 +133,8 @@ const itineraris = defineCollection({
         .object({
           publicSrc: z.string(),
           alt: z.string(),
+          /** Vídeo amb pista d'àudio — mostra botó per activar el so */
+          ambSo: z.boolean().optional(),
         })
         .optional(),
       ordre: z.number().optional(),

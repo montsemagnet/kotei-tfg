@@ -4,7 +4,7 @@ import { Image } from "astro:assets";
 // Fundations
 import Text from "@/components/fundations/elements/Text.astro";
 
-const { index, variant = "default", hideImage = false, layout = "stack" } = Astro.props;
+const { index, variant = "default", hideImage = false, layout = "stack", subtitle } = Astro.props;
 const isFeatured = variant === "featured";
 const isInlineFeatured = isFeatured && layout === "inline";
 const enConstruccio = Astro.props.post.data.enConstruccio ?? false;
@@ -79,7 +79,7 @@ const { title, url, description, thumbnail } = {
         !isFeatured && "line-clamp-3",
       ]}
     >
-      {description}
+      {subtitle ?? description}
     </Text>
 
     {

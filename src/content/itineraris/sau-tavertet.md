@@ -3,7 +3,7 @@ title: "Presa de Sau → Tavertet"
 titleParts:
   from: "Presa de Sau"
   to: "Tavertet"
-description: "Itinerari geològic UVIC Sau–Tavertet"
+description: "Itinerari geològic UVIC"
 ordre: 1
 tipus: "Geològic"
 mapa: "sau-tavertet"

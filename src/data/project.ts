@@ -64,6 +64,11 @@ export const thirdPartyResources = [
     url: "https://translate.google.com",
   },
   {
+    name: "Google Earth Pro (Google Maps / Google Earth)",
+    use: "Mapes i animacions de recorregut",
+    url: "https://www.google.com/earth/about/versions/",
+  },
+  {
     name: "Geist / Geist Mono",
     use: "Tipografies del lloc",
     url: "https://vercel.com/font",

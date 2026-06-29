@@ -1,42 +1,31 @@
 ---
-// Fundations
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import { project } from "@/data/project";
 ---
 
 <section>
   <Wrapper variant="standard" class="py-24 lg:py-48">
-    <Text
-      tag="h1"
-      variant="displayXL"
-      data-aos="fade-down"
-      data-aos-duration="1500"
-      class="hero-title dark:text-white font-medium text-black w-full max-w-none"
-    >
-      GeoTransectes UVic. Plataforma web interactiva per a l'aprenentatge de la
-      geologia de camp i la microscòpia petrogràfica en el Grau de Biologia
-    </Text>
+    <div class="hero-heading flex w-fit max-w-full flex-col">
+      <Text
+        tag="h1"
+        variant="display4XL"
+        data-aos="fade-down"
+        data-aos-duration="1500"
+        class="dark:text-white font-medium text-black tracking-tighter"
+      >
+        {project.title}
+      </Text>
+      <Text
+        tag="p"
+        variant="displayLG"
+        data-aos="fade-up"
+        data-aos-duration="1500"
+        data-aos-delay="150"
+        class="mt-8 w-full text-pretty text-base-600 dark:text-base-400 leading-snug font-normal lg:text-justify"
+      >
+        {project.subtitle}
+      </Text>
+    </div>
   </Wrapper>
 </section>
-
-<style>
-  .hero-title {
-    width: 100%;
-    text-wrap: pretty;
-    letter-spacing: -0.01em;
-  }
-
-  @media (min-width: 1024px) {
-    .hero-title {
-      text-align: justify;
-      word-spacing: 0.14em;
-      hyphens: auto;
-    }
-
-    .hero-title::after {
-      content: "";
-      display: inline-block;
-      width: 100%;
-    }
-  }
-</style>

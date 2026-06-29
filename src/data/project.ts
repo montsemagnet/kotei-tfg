@@ -1,7 +1,7 @@
 export const project = {
   title: "GeoTransectes UVic",
   subtitle:
-    "Plataforma web interactiva per a l'aprenentatge de la geologia de camp i la microscòpia petrogràfica en el Grau de Biologia",
+    "Plataforma docent que explora itineraris geològics, parades de camp, cartografia i materials petrogràfics aplicats al Grau de Biologia",
   institution:
     "Universitat de Vic – Universitat Central de Catalunya (UVic-UCC)",
   faculty: "Facultat de Ciències, Tecnologia i Enginyeries (FCTE)",
@@ -20,22 +20,6 @@ export type TeamMember = {
 
 export const teamMembers: TeamMember[] = [
   {
-    name: "Montserrat Magnet Sabata",
-    email: "mariamontserrat.magnet@uvic.cat",
-    roles: [
-      "Autora del TFG",
-      "Desenvolupadora web",
-    ],
-    bio: "Enginyera de sistemes, graduada en Multimèdia (UVic-UCC) i estudiant del Grau en Biologia.",
-  },
-  {
-    name: "Dra. Judit Molera Marimon",
-    email: "judit.molera@uvic.cat",
-    profileUrl: "https://mon.uvic.cat/fcte/judit-molera-marimon/",
-    roles: ["Directora del TFG"],
-    qualifications: ["Doctora en geologia"],
-  },
-  {
     name: "Dra. Núria Ferrer Ramos",
     email: "nuria.ferrer.ramos@uvic.cat",
     profileUrl: "https://mon.uvic.cat/fcte/nuria-ferrer-ramos/",
@@ -45,6 +29,19 @@ export const teamMembers: TeamMember[] = [
       "Postgrau i Màster en Hidrogeologia (CIHS-UPC)",
       "Doctorat en Enginyeria del Terreny de la UPC",
     ],
+  },
+  {
+    name: "Montserrat Magnet Sabata",
+    email: "mariamontserrat.magnet@uvic.cat",
+    roles: ["Autora del TFG"],
+    bio: "Enginyera de sistemes, graduada en Multimèdia (UVic-UCC) i estudiant del Grau en Biologia.",
+  },
+  {
+    name: "Dra. Judit Molera Marimon",
+    email: "judit.molera@uvic.cat",
+    profileUrl: "https://mon.uvic.cat/fcte/judit-molera-marimon/",
+    roles: ["Directora del TFG"],
+    qualifications: ["Doctora en geologia"],
   },
 ];
 

@@ -5,7 +5,6 @@ import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 // Sections
 import Hero from "@/components/landing/Hero.astro";
-import Services from "@/components/landing/Services.astro";
 import Philosphy from "@/components/landing/Philosphy.astro";
 import HowWeWork from "@/components/landing/HowWeWork.astro";
 import Team from "@/components/landing/Team.astro";
@@ -13,58 +12,100 @@ import Team from "@/components/landing/Team.astro";
 // Components
 import LogoCloud from "@/components/assets/LogoCloud.astro";
 import ItinerariCard1 from "@/components/itinerari/ItinerariCard1.astro";
+import { Image } from "astro:assets";
 // Content
 import { getCollection } from "astro:content";
 const allItineraris = (await getCollection("itineraris"))
   .filter((entry) => !entry.data.draft)
   .sort((a, b) => (a.data.ordre ?? 999) - (b.data.ordre ?? 999));
+
+const featuredItinerari = allItineraris.find(
+  (entry) => entry.id === "sau-tavertet" && !(entry.data.enConstruccio ?? false),
+);
 ---
 
 <BaseLayout>
   <Hero />
   <LogoCloud />
-  
+  <Philosphy />
+
   <section>
     <Wrapper variant="standard" class="pb-12">
-      <div class="grid grid-cols-1 lg:grid-cols-4 gap-4">
-        <div class="flex flex-col">
-          <Text
-            tag="h2"
-            variant="displayXL"
-            data-aos="fade-up"
-            data-aos-duration="1000"
-            class="dark:text-white text-base-900 font-medium tracking-tighter"
-          >
-            itinerari
-            <br />
-            destacat
-          </Text>
-          <Text
-            tag="a"
-            variant="textXS"
-            data-aos="fade-up"
-            data-aos-duration="1500"
-            href="/itineraris"
-            class="uppercase text-black dark:text-white hover:text-base-500"
-          >
-            veure'ls tots
-          </Text>
-        </div>
-        <div
-          class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-y-12 gap-2 lg:col-span-3"
-        >
-          {
-            allItineraris
-              .slice(0, 3)
-              .map((post, index) => (
-                <ItinerariCard1 post={post} index={index + 1} />
-              ))
-          }
-        </div>
-      </div>
+      {
+        featuredItinerari && (
+          <>
+            <div class="featured-itinerari w-full max-w-full">
+              <div class="featured-itinerari__row flex flex-col gap-5 sm:flex-row sm:items-stretch sm:gap-6 lg:gap-8">
+                <div class="featured-itinerari__heading relative z-10 shrink-0 sm:min-w-[10rem] lg:min-w-[10.5rem]">
+                  <Text
+                    tag="h2"
+                    variant="displayXL"
+                    data-aos="fade-up"
+                    data-aos-duration="1000"
+                    class="dark:text-white text-base-900 font-medium tracking-tighter"
+                  >
+                    Itinerari
+                    <br />
+                    destacat
+                  </Text>
+                </div>
+
+                <a
+                  href={`/itineraris/${featuredItinerari.id}`}
+                  title={featuredItinerari.data.title}
+                  class="featured-itinerari__photo relative z-0 min-h-[4.5rem] min-w-0 flex-1 overflow-hidden"
+                  data-aos="fade-up"
+                  data-aos-duration="1000"
+                  data-aos-delay="100"
+                >
+                  <Image
+                    src={featuredItinerari.data.thumbnail.url}
+                    alt={featuredItinerari.data.title}
+                    width={960}
+                    height={240}
+                    class="size-full min-h-[4.5rem] object-cover object-[70%_bottom] max-sm:aspect-[3/1] max-sm:object-right-bottom"
+                  />
+                </a>
+
+                <div class="featured-itinerari__copy shrink-0 sm:w-[11.75rem] md:w-[13rem] lg:w-[14.25rem]">
+                  <ItinerariCard1
+                    post={featuredItinerari}
+                    index={1}
+                    variant="featured"
+                    hideImage
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="proximament-block mt-16 lg:mt-24 flex w-fit max-w-full flex-col gap-4 lg:flex-row lg:items-start lg:gap-8"
+              data-aos="fade-up"
+              data-aos-duration="1500"
+            >
+              <Text
+                tag="h3"
+                variant="displayXL"
+                data-aos="fade-up"
+                data-aos-duration="1500"
+                class="shrink-0 dark:text-white text-base-900 font-medium tracking-tighter text-balance"
+              >
+                Pròximament
+              </Text>
+              <Text
+                tag="p"
+                variant="textBase"
+                class="min-w-0 flex-1 text-pretty text-base-700 dark:text-base-400 leading-relaxed lg:text-justify"
+              >
+                Nous itineraris s'incorporaran progressivament per ampliar els àmbits
+                geològics i els materials d'estudi disponibles
+              </Text>
+            </div>
+          </>
+        )
+      }
     </Wrapper>
   </section>
-  <Philosphy />
   <HowWeWork />
   <Team />
 </BaseLayout>

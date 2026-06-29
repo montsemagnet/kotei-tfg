@@ -1,63 +1,41 @@
 ---
 import { AstroSeo } from "@lexingtonthemes/seo";
+import { project } from "@/data/project";
+
+const siteUrl = Astro.site?.href ?? "https://jazzy-pegasus-731767.netlify.app/";
 ---
 
 <AstroSeo
-  title="Your Page Title"
-  description="A detailed description of your page content."
-  canonical="https://yoursite.com/current-page"
+  title={project.title}
+  description={project.subtitle}
+  canonical={siteUrl}
   openGraph={{
-    url: "https://yoursite.com/current-page",
-    title: "Your Page Title",
-    description: "A detailed description of your page content.",
-    images: [
-      {
-        url: "https://yoursite.com/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Open Graph Image Alt",
-        type: "image/jpeg",
-      },
-    ],
-    site_name: "Your Site Name",
+    url: siteUrl,
+    title: project.title,
+    description: project.subtitle,
+    site_name: project.title,
     type: "website",
-    locale: "en_US",
+    locale: "ca_ES",
   }}
   twitter={{
-    handle: "@yourhandle",
-    site: "@yoursite",
-    cardType: "summary_large_image",
+    cardType: "summary",
   }}
 />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.yourwebsite.com/" />
-<meta property="og:title" content="Your Website Title" />
-<meta
-  property="og:description"
-  content="A brief description of your website content."
-/>
-<meta
-  property="og:image"
-  content="https://www.yourwebsite.com/path/to/image.jpg"
-/>
+<meta property="og:url" content={siteUrl} />
+<meta property="og:title" content={project.title} />
+<meta property="og:description" content={project.subtitle} />
 
 <!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content="https://www.yourwebsite.com/" />
-<meta property="twitter:title" content="Your Website Title" />
-<meta
-  property="twitter:description"
-  content="A brief description of your website content."
-/>
-<meta
-  property="twitter:image"
-  content="https://www.yourwebsite.com/path/to/image.jpg"
-/>
+<meta property="twitter:card" content="summary" />
+<meta property="twitter:url" content={siteUrl} />
+<meta property="twitter:title" content={project.title} />
+<meta property="twitter:description" content={project.subtitle} />
 
 <!-- Canonical URL -->
-<link rel="canonical" href="https://www.yourwebsite.com/" />
+<link rel="canonical" href={siteUrl} />
 
 <!-- Additional SEO -->
 <meta name="robots" content="index, follow" />

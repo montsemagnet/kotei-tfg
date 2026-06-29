@@ -11,10 +11,8 @@ const team = teamPhotoOrder.map((name) => {
   const member = teamMembers.find((m) => m.name === name);
   return {
     name,
-    url: member?.profileUrl,
     email: member?.email ?? "",
     roles: member?.roles ?? [],
-    qualifications: member?.qualifications,
   };
 });
 ---
@@ -30,7 +28,7 @@ const team = teamPhotoOrder.map((name) => {
           data-aos-duration="1000"
           class="dark:text-white text-base-900 font-medium tracking-tighter"
         >
-          equip
+          Equip
         </Text>
       </div>
       <div class="lg:col-span-3 flex flex-col gap-4 max-w-sm">
@@ -50,21 +48,7 @@ const team = teamPhotoOrder.map((name) => {
                   variant="textSM"
                   class="leading-snug text-base-900 dark:text-white"
                 >
-                  (0{index + 1}){" "}
-                  {
-                    member.url ? (
-                      <a
-                        href={member.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="hover:text-base-500"
-                      >
-                        {member.name}
-                      </a>
-                    ) : (
-                      member.name
-                    )
-                  }
+                  (0{index + 1}) {member.name}
                 </Text>
                 {
                   member.roles.length > 0 && (
@@ -75,19 +59,6 @@ const team = teamPhotoOrder.map((name) => {
                     >
                       {member.roles.join(" · ")}
                     </Text>
-                  )
-                }
-                {
-                  member.qualifications && (
-                    <ul class="mt-1 space-y-0.5">
-                      {
-                        member.qualifications.map((item) => (
-                          <li class="text-xs text-base-500 dark:text-base-400 leading-snug">
-                            {item}
-                          </li>
-                        ))
-                      }
-                    </ul>
                   )
                 }
                 <a

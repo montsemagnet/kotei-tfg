@@ -1,13 +1,17 @@
+---
+import { project } from "@/data/project";
+---
+
 <!-- Meta Tags -->
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Your Website Title</title>
+<title>{project.title}</title>
 <meta
   name="description"
-  content="A brief description of your website content."
+  content={project.subtitle}
 />
-<meta name="keywords" content="keyword1, keyword2, keyword3" />
-<meta name="author" content="Your Name or Company Name" />
+<meta name="keywords" content="geologia, itineraris, UVic, biologia, petrografia" />
+<meta name="author" content={project.institution} />
 
 <!-- Theme Color for Mobile Browsers -->
 <meta name="theme-color" content="#ffffff" />

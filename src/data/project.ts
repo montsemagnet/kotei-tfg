@@ -34,7 +34,12 @@ export const teamMembers: TeamMember[] = [
     name: "Montserrat Magnet Sabata",
     email: "mariamontserrat.magnet@uvic.cat",
     roles: ["Autora del TFG"],
-    bio: "Enginyera de sistemes, graduada en Multimèdia (UVic-UCC) i estudiant del Grau en Biologia.",
+    qualifications: [
+      "Enginyeria Tècnica en Informàtica de Sistemes (UOC)",
+      "Graduada en Multimèdia (UOC)",
+      "Màster Universitari en Seguretat de les Tecnologies de la Informació i de les Comunicacions (UOC, UAB, URV)",
+      "Estudiant del Grau en Biologia (UVic)",
+    ],
   },
   {
     name: "Dra. Judit Molera Marimon",
@@ -65,7 +70,7 @@ export const thirdPartyResources = [
   },
   {
     name: "Google Earth Pro (Google Maps / Google Earth)",
-    use: "Mapes i animacions de recorregut",
+    use: "Mapes i animacions de recorregut creats a partir d'aquest programari",
     url: "https://www.google.com/earth/about/versions/",
   },
   {

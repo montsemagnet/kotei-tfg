@@ -73,9 +73,15 @@ const introParadaLinkClass =
                   )
                 }
                 {!frontmatter.titleParts.lead && frontmatter.titleParts.from}
-                <span class="itinerari-title-arrow" aria-hidden="true">
-                  →
-                </span>
+                <img
+                  src="/images/ui/flecha-itinerari.gif"
+                  alt=""
+                  width="56"
+                  height="40"
+                  class="itinerari-title-arrow mix-blend-screen dark:mix-blend-normal dark:brightness-0 dark:invert"
+                  loading="eager"
+                  decoding="async"
+                />
                 {frontmatter.titleParts.to}
               </>
             ) : (
@@ -457,6 +463,10 @@ const introParadaLinkClass =
   }
 
   .itinerari-title-arrow {
+    display: inline-block;
+    vertical-align: middle;
+    height: 0.72em;
+    width: auto;
     margin-left: 0.45em;
     margin-right: 0.25em;
   }
@@ -468,6 +478,7 @@ const introParadaLinkClass =
 
     .itinerari-title-arrow {
       margin-left: 0.65em;
+      height: 0.78em;
     }
   }
 </style>

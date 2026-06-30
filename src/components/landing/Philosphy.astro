@@ -41,6 +41,22 @@ const philosphy = [
     description:
       "Un recurs digital pensat perquè l'alumnat pugui estudiar i revisar els continguts de les sortides de camp.",
   },
+  {
+    title: "Inclusió i accessibilitat",
+    description:
+      "Aquest recurs digital amplia l'accés als continguts de camp i facilita el seguiment de l'assignatura a l'alumnat que no pot participar en les sortides.",
+  },
+  {
+    title: "Compromís amb els ODS",
+    descriptionBefore:
+      "El projecte s'alinea amb els ",
+    descriptionLink: {
+      text: "Objectius de Desenvolupament Sostenible",
+      url: "https://www.un.org/sustainabledevelopment/es/",
+    },
+    descriptionAfter:
+      ", especialment amb l'ODS 4 (Educació de qualitat), en oferir materials docents accessibles i ben estructurats; amb l'ODS 10 (Reducció de les desigualtats), en proporcionar alternatives digitals per a l'aprenentatge de camp; i amb l'ODS 15 (Vida terrestre), en promoure la comprensió de la geologia, la vegetació i la conservació dels ecosistemes terrestres.",
+  },
 ];
 ---
 
@@ -69,26 +85,43 @@ const philosphy = [
       >
         {
           philosphy.map((process, index) => (
-            <div class="grid grid-cols-1 lg:grid-cols-3 py-4">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-2 lg:gap-6 py-4">
               <Text
                 tag="h4"
-                variant="textBase"
+                variant="textLG"
                 data-aos="fade-up"
                 data-aos-duration="1500"
-                class="dark:text-white text-base-900 font-medium tracking-tight text-balance"
+                class="dark:text-white text-base-900 font-medium tracking-tight text-balance lg:pr-2"
               >
-                <span>(0{index + 1})</span>
+                <span>(0{index + 1})</span>{" "}
                 {process.title}
               </Text>
               <div class="lg:col-span-2 overflow-hidden">
                 <Text
-                  tag="h4"
-                  variant="textBase"
+                  tag="p"
+                  variant="textLG"
                   data-aos="fade-up"
                   data-aos-duration="2000"
-                  class="dark:text-base-400 text-base-700"
+                  class="dark:text-base-400 text-base-700 leading-relaxed"
                 >
-                  {process.description}
+                  {
+                    process.descriptionLink ? (
+                      <>
+                        {process.descriptionBefore}
+                        <a
+                          href={process.descriptionLink.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="text-accent-600 dark:text-accent-400 underline decoration-accent-600/30 dark:decoration-accent-400/40 underline-offset-[4px] hover:decoration-accent-600 dark:hover:decoration-accent-400 transition-colors"
+                        >
+                          {process.descriptionLink.text}
+                        </a>
+                        {process.descriptionAfter}
+                      </>
+                    ) : (
+                      process.description
+                    )
+                  }
                 </Text>
               </div>
             </div>

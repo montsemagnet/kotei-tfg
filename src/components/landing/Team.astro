@@ -45,8 +45,8 @@ const team = teamPhotoOrder.map((name) => {
               <div class="min-w-0">
                 <Text
                   tag="p"
-                  variant="textSM"
-                  class="leading-snug text-base-900 dark:text-white"
+                  variant="textBase"
+                  class="leading-snug text-base-900 dark:text-white font-medium"
                 >
                   (0{index + 1}) {member.name}
                 </Text>
@@ -54,7 +54,7 @@ const team = teamPhotoOrder.map((name) => {
                   member.roles.length > 0 && (
                     <Text
                       tag="p"
-                      variant="textXS"
+                      variant="textSM"
                       class="mt-0.5 text-base-600 dark:text-base-300 font-medium"
                     >
                       {member.roles.join(" · ")}
@@ -63,7 +63,7 @@ const team = teamPhotoOrder.map((name) => {
                 }
                 <a
                   href={`mailto:${member.email}`}
-                  class="mt-1 block text-xs text-base-500 dark:text-base-400 hover:text-accent-500 dark:hover:text-accent-300 duration-300 break-all"
+                  class="mt-1 block text-sm text-base-500 dark:text-base-400 hover:text-accent-500 dark:hover:text-accent-300 duration-300 break-all"
                 >
                   {member.email}
                 </a>

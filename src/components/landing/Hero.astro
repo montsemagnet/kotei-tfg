@@ -2,6 +2,7 @@
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import { project } from "@/data/project";
+import { withBase } from "@/utils/withBase";
 ---
 
 <section>
@@ -29,7 +30,7 @@ import { project } from "@/data/project";
       </Text>
 
       <a
-        href="/itineraris/sau-tavertet"
+        href={withBase("/itineraris/sau-tavertet")}
         title="Veure l'itinerari Presa de Sau - Tavertet"
         data-aos="fade-up"
         data-aos-duration="1500"
@@ -44,7 +45,7 @@ import { project } from "@/data/project";
           Veure l'itinerari Presa de Sau - Tavertet
         </Text>
         <img
-          src="/images/ui/flecha-itinerari.gif"
+          src={withBase("/images/ui/flecha-itinerari.gif")}
           alt=""
           width="56"
           height="40"

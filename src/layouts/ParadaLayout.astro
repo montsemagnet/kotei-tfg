@@ -7,6 +7,7 @@ import ParadaMedia from "@/components/parades/ParadaMedia.astro";
 import ParadaGallery from "@/components/parades/ParadaGallery.astro";
 import ParadaAnalisiFloraModal from "@/components/parades/ParadaAnalisiFloraModal.astro";
 import ItinerariVideoModal from "@/components/itinerari/ItinerariVideoModal.astro";
+import { withBase } from "@/utils/withBase";
 
 const { frontmatter, slug } = Astro.props;
 const analisiFloraModalId = `parada-flora-${slug}`;
@@ -14,7 +15,7 @@ const videoAeriModalId = `parada-aeri-${slug}`;
 
 const itinerariEntry = await getEntry("itineraris", frontmatter.itinerari);
 const itinerariTitle = itinerariEntry?.data.title ?? "Itinerari";
-const itinerariHref = `/itineraris/${frontmatter.itinerari}`;
+const itinerariHref = withBase(`/itineraris/${frontmatter.itinerari}`);
 
 const breadcrumbLink =
   "uppercase text-base-500 hover:text-base-900 dark:hover:text-white transition-colors";
@@ -34,7 +35,7 @@ const sectionContent = "lg:col-span-3 min-w-0 w-full";
       <nav aria-label="Ruta de navegació" class="mb-6">
         <ol class="flex flex-wrap items-center gap-x-2 gap-y-1 list-none p-0 m-0">
           <li>
-            <Text tag="a" variant="textXS" href="/" class={breadcrumbLink}>
+            <Text tag="a" variant="textXS" href={withBase("/")} class={breadcrumbLink}>
               Inici
             </Text>
           </li>
@@ -183,7 +184,7 @@ const sectionContent = "lg:col-span-3 min-w-0 w-full";
                   <Text
                     tag="a"
                     variant="textXL"
-                    href={material.enllaç}
+                    href={withBase(material.enllaç)}
                     class="text-base-900 dark:text-white hover:text-accent-600 dark:hover:text-accent-400"
                   >
                     {material.nom} →
@@ -261,7 +262,7 @@ const sectionContent = "lg:col-span-3 min-w-0 w-full";
                     <Text
                       tag="a"
                       variant="textXL"
-                      href={frontmatter.paisatgeUrl}
+                      href={withBase(frontmatter.paisatgeUrl)}
                       class="inline-flex items-center gap-2 text-accent-600 dark:text-accent-400 hover:underline"
                     >
                       Veure l'anàlisi botànica i del paisatge →

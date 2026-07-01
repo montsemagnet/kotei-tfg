@@ -1,6 +1,7 @@
 ---
 import SearchIcon from "@/components/fundations/icons/Search.astro";
 import { getCollection } from "astro:content";
+import { withBase } from "@/utils/withBase";
 
 const [itineraris, parades, roques] = await Promise.all([
   getCollection("itineraris"),
@@ -16,21 +17,21 @@ const items = [
       title: entry.data.title,
       description: entry.data.description,
       meta: entry.data.tipus ?? "",
-      url: `/itineraris/${entry.id}`,
+      url: withBase(`/itineraris/${entry.id}`),
     })),
   ...parades.map((entry) => ({
     type: "Parada",
     title: entry.data.title,
     description: entry.data.itinerari,
     meta: entry.data.coordenades ?? "",
-    url: `/parades/${entry.id}`,
+    url: withBase(`/parades/${entry.id}`),
   })),
   ...roques.map((entry) => ({
     type: "Material",
     title: entry.data.title,
     description: entry.data.parada,
     meta: "",
-    url: `/roques/${entry.id}`,
+    url: withBase(`/roques/${entry.id}`),
   })),
 ];
 ---

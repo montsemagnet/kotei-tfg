@@ -19,6 +19,6 @@ export default defineConfig({
     drafts: true,
   },
   site: "https://montsemagnet.github.io",
-  base: "/kotei-tfg",
+  base: "/kotei-tfg/",
   integrations: [sitemap(), mdx()],
 });

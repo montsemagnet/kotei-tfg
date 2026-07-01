@@ -2,6 +2,7 @@
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import { project, teamMembers } from "@/data/project";
+import { withBase } from "@/utils/withBase";
 
 const footerLinks = [
   { href: "/", text: "Inici" },
@@ -96,7 +97,7 @@ const lastUpdated = new Date().toLocaleDateString("ca-ES", {
             footerLinks.map((link) => (
               <li>
                 <a
-                  href={link.href}
+                  href={withBase(link.href)}
                   class="text-sm text-base-600 dark:text-base-400 hover:text-accent-500 dark:hover:text-accent-300 duration-300"
                 >
                   {link.text}

@@ -4,6 +4,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import Text from "@/components/fundations/elements/Text.astro";
 import Button from "@/components/fundations/elements/Button.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import { withBase } from "@/utils/withBase";
 ---
 
 <BaseLayout>
@@ -34,7 +35,7 @@ import Wrapper from "@/components/fundations/containers/Wrapper.astro";
       <div class="mt-4 flex justify-center">
         <Button
           isLink
-          href="/"
+          href={withBase("/")}
           size="base"
           variant="default"
           class="text-base-500 dark:text-base-300 lg:text-balance"

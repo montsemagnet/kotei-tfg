@@ -3,6 +3,7 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import { withBase } from "@/utils/withBase";
 
 const pageData = [
   {
@@ -83,7 +84,7 @@ const pageData = [
                         <Text
                           tag="a"
                           variant="textSM"
-                          href={link.url}
+                          href={withBase(link.url)}
                           class="text-base-500 hover:text-base-900 dark:hover:text-white duration-300"
                         >
                           {link.name}

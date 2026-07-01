@@ -15,6 +15,7 @@ import ItinerariCard1 from "@/components/itinerari/ItinerariCard1.astro";
 import { Image } from "astro:assets";
 // Content
 import { getCollection } from "astro:content";
+import { withBase } from "@/utils/withBase";
 const allItineraris = (await getCollection("itineraris"))
   .filter((entry) => !entry.data.draft)
   .sort((a, b) => (a.data.ordre ?? 999) - (b.data.ordre ?? 999));
@@ -51,7 +52,7 @@ const featuredItinerari = allItineraris.find(
                 </div>
 
                 <a
-                  href={`/itineraris/${featuredItinerari.id}`}
+                  href={withBase(`/itineraris/${featuredItinerari.id}`)}
                   title={featuredItinerari.data.title}
                   class="featured-itinerari__photo relative z-0 min-h-[4.5rem] min-w-0 flex-1 overflow-hidden"
                   data-aos="fade-up"

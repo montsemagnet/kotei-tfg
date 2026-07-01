@@ -1,4 +1,6 @@
 ---
+import { withBase } from "@/utils/withBase";
+
 interface Video {
   id?: string;
   title: string;
@@ -130,7 +132,7 @@ function videoAnchorId(video: Video, index: number): string {
                   video.publicSrc && (
                     <video
                       class={videoClass}
-                      src={video.publicSrc}
+                      src={withBase(video.publicSrc)}
                       title={video.alt ?? video.title}
                       controls
                       playsinline

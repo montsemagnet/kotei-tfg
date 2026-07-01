@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import Text from "@/components/fundations/elements/Text.astro";
 import ItinerariZoom from "@/components/itinerari/ItinerariZoom.astro";
+import { withBase } from "@/utils/withBase";
 
 interface Section {
   title: string;
@@ -95,11 +96,11 @@ const zoomImageClass =
                 type="button"
                 class={zoomThumbClass}
                 data-itinerari-zoom
-                data-full-src={introMedia.publicSrc}
+                data-full-src={withBase(introMedia.publicSrc)}
                 aria-label={`Ampliar: ${introMedia.alt}`}
               >
                 <img
-                  src={introMedia.publicSrc}
+                  src={withBase(introMedia.publicSrc)}
                   alt={introMedia.alt}
                   class={zoomImageClass}
                   loading="lazy"
@@ -155,11 +156,11 @@ const zoomImageClass =
                     type="button"
                     class={zoomThumbClass}
                     data-itinerari-zoom
-                    data-full-src={image.publicSrc}
+                    data-full-src={withBase(image.publicSrc)}
                     aria-label={`Ampliar: ${image.alt}`}
                   >
                     <img
-                      src={image.publicSrc}
+                      src={withBase(image.publicSrc)}
                       alt={image.alt}
                       class={zoomImageClass}
                       loading="lazy"

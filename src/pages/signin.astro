@@ -4,6 +4,7 @@ import { Image } from "astro:assets";
 import Avatar from "@/images/avatar.jpeg";
 import Text from "@/components/fundations/elements/Text.astro";
 import Button from "@/components/fundations/elements/Button.astro";
+import { withBase } from "@/utils/withBase";
 ---
 
 <BaseLayout hideNav={true} hideFooter={true}>
@@ -60,14 +61,14 @@ import Button from "@/components/fundations/elements/Button.astro";
               class="mt-4 text-base-700 dark:text-base-400"
             >
               Don't have an account?
-              <a class="text-accent-400 hover:text-base-500" href="/signup"
+              <a class="text-accent-400 hover:text-base-500" href={withBase("/signup")}
                 >Sign up instead</a
               >
             </Text>
           </div>
         </form>
         <a
-          href="/"
+          href={withBase("/")}
           class="text-black hover:underline dark:text-white flex mt-12"
           >Go back gome</a
         >

@@ -1,5 +1,6 @@
 ---
 import ItinerariHeroVideo from "@/components/itinerari/ItinerariHeroVideo.astro";
+import { withBase } from "@/utils/withBase";
 
 interface Props {
   modalId: string;
@@ -35,7 +36,7 @@ const { modalId, label, src, title, sound = false, allowFullscreen = true } = As
     </h2>
 
     <ItinerariHeroVideo
-      src={src}
+      src={withBase(src)}
       title={title}
       sound={sound}
       allowFullscreen={allowFullscreen}

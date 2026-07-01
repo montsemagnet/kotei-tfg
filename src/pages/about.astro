@@ -12,6 +12,7 @@ import Six from "@/images/team/6.jpeg";
 // Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Button from "@/components/fundations/elements/Button.astro";
+import { withBase } from "@/utils/withBase";
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 // Components
@@ -319,7 +320,7 @@ const teamMembers = [
           lasting impression that resonates with your audience.
         </Text>
         <div class="flex mt-4">
-          <Button isLink size="xl" variant="default" href="/contact">
+          <Button isLink size="xl" variant="default" href={withBase("/contact")}>
             Contact us
           </Button>
         </div>

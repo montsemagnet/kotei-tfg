@@ -11,6 +11,7 @@ import ItinerariVideoModal from "@/components/itinerari/ItinerariVideoModal.astr
 import ItinerariPaleogeologiaModal from "@/components/itinerari/ItinerariPaleogeologiaModal.astro";
 import ItinerariDadaModal from "@/components/itinerari/ItinerariDadaModal.astro";
 import ItinerariZoom from "@/components/itinerari/ItinerariZoom.astro";
+import { withBase } from "@/utils/withBase";
 
 const { frontmatter } = Astro.props;
 
@@ -45,7 +46,7 @@ const introParadaLinkClass =
       <Text
         tag="a"
         variant="textXS"
-        href="/"
+        href={withBase("/")}
         class="uppercase text-base-500 hover:text-base-900 dark:hover:text-white mb-6 inline-block"
       >
         ← Tornar a la pàgina d'inici
@@ -74,7 +75,7 @@ const introParadaLinkClass =
                 }
                 {!frontmatter.titleParts.lead && frontmatter.titleParts.from}
                 <img
-                  src="/images/ui/flecha-itinerari.gif"
+                  src={withBase("/images/ui/flecha-itinerari.gif")}
                   alt=""
                   width="56"
                   height="40"
@@ -100,7 +101,7 @@ const introParadaLinkClass =
               {
                 frontmatter.video ? (
                   <ItinerariHeroVideo
-                    src={frontmatter.video.publicSrc}
+                    src={withBase(frontmatter.video.publicSrc)}
                     title={frontmatter.video.alt}
                     sound={frontmatter.video.ambSo ?? false}
                   />
@@ -226,7 +227,7 @@ const introParadaLinkClass =
                               {row.slug ? (
                                 <Text
                                   tag="a"
-                                  href={`/parades/${row.slug}`}
+                                  href={withBase(`/parades/${row.slug}`)}
                                   variant="textBase"
                                   class={introParadaLinkClass}
                                 >
@@ -240,7 +241,7 @@ const introParadaLinkClass =
                               {row.slug ? (
                                 <Text
                                   tag="a"
-                                  href={`/parades/${row.slug}`}
+                                  href={withBase(`/parades/${row.slug}`)}
                                   variant="textBase"
                                   class={`text-base-500 dark:text-base-400 ${introParadaLinkClass}`}
                                 >

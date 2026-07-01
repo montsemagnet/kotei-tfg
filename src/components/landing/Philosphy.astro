@@ -3,6 +3,7 @@
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import PlateMovementVideo from "@/components/landing/PlateMovementVideo.astro";
+import { withBase } from "@/utils/withBase";
 
 const noaaCitation =
   "National Oceanic and Atmospheric Administration. (n.d.). Plate movement: 200 million years ago to today [Vídeo]. NOAA Science on a Sphere.";
@@ -75,7 +76,7 @@ const philosphy = [
           >Què hi trobaràs
         </Text>
         <PlateMovementVideo
-          src="/videos/inici/plate_movement_400.mp4"
+          src={withBase("/videos/inici/plate_movement_400.mp4")}
           citation={noaaCitation}
           citationUrl={noaaUrl}
         />

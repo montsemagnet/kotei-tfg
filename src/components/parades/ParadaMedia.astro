@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import ItinerariHeroVideo from "@/components/itinerari/ItinerariHeroVideo.astro";
+import { withBase } from "@/utils/withBase";
 
 interface Props {
   media: {
@@ -31,7 +32,7 @@ const { media } = Astro.props;
   {
     media.tipus === "video" && media.publicSrc && (
       <ItinerariHeroVideo
-        src={media.publicSrc}
+        src={withBase(media.publicSrc)}
         title={media.alt ?? "Vídeo de la parada"}
         sound={media.ambSo ?? false}
         allowFullscreen

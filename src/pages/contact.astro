@@ -5,6 +5,7 @@ import Avatar from "@/images/avatar.jpeg";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Text from "@/components/fundations/elements/Text.astro";
 import Button from "@/components/fundations/elements/Button.astro";
+import { withBase } from "@/utils/withBase";
 ---
 
 <BaseLayout hideNav={true} hideFooter={true}>
@@ -133,7 +134,7 @@ import Button from "@/components/fundations/elements/Button.astro";
               </Button>
             </div>
           </div>
-          <a href="/" class="text-black hover:underline dark:text-white"
+          <a href={withBase("/")} class="text-black hover:underline dark:text-white"
             >Go back gome</a
           >
         </div>

@@ -184,6 +184,6 @@ images:
   - url: "/src/images/itineraris/sau-tavertet/I1-galeria-3.jpeg"
     alt: "Vista del recorregut Sau–Tavertet"
 thumbnail:
-  url: "/src/images/itineraris/sau-tavertet/I1-thumbnail.jpeg"
+  url: "/src/images/itineraris/sau-tavertet/I1-thumbnail.jpg"
   alt: "Itinerari geològic Sau–Tavertet"
 ---

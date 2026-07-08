@@ -108,6 +108,8 @@ let imageIndex = 0;
   <dialog
     id={`gallery-${galleryId}`}
     class="roca-gallery-dialog fixed inset-0 z-[110] m-0 size-full max-h-none max-w-none border-0 bg-base-950/90 p-4 backdrop:bg-transparent open:flex open:items-center open:justify-center"
+    aria-modal="true"
+    data-focus-trap="true"
   >
     <button
       type="button"
@@ -144,6 +146,8 @@ let imageIndex = 0;
 </div>
 
 <script>
+  import { openDialogFromTrigger } from "@/utils/modalA11y";
+
   function initRocaGalleries() {
     document.querySelectorAll(".roca-gallery-dialog").forEach((dialogEl) => {
       if (!(dialogEl instanceof HTMLDialogElement)) return;
@@ -164,7 +168,7 @@ let imageIndex = 0;
         return;
       }
 
-      const showImage = (index) => {
+      const updateImage = (index: string | undefined, trigger?: HTMLElement) => {
         const btn = mapRoot.querySelector(
           `[data-gallery="${galleryId}"][data-index="${index}"]`,
         );
@@ -178,31 +182,27 @@ let imageIndex = 0;
           btn.dataset.fullSrc || thumb.currentSrc || thumb.src;
         previewImage.alt = thumb.alt;
         previewCaption.textContent = thumb.alt;
-        dialogEl.showModal();
+
+        if (trigger) {
+          openDialogFromTrigger(dialogEl, trigger);
+        }
       };
 
       mapRoot.querySelectorAll(`[data-gallery="${galleryId}"]`).forEach((btn) => {
-        btn.addEventListener("click", () => showImage(btn.dataset.index));
-      });
-
-      dialogEl.querySelector(".roca-gallery-close")?.addEventListener("click", () =>
-        dialogEl.close(),
-      );
-
-      dialogEl.addEventListener("click", (event) => {
-        if (event.target === dialogEl) dialogEl.close();
+        if (!(btn instanceof HTMLElement)) return;
+        btn.addEventListener("click", () => updateImage(btn.dataset.index, btn));
       });
 
       dialogEl.querySelector(".roca-gallery-prev")?.addEventListener("click", () => {
         const total = mapRoot.querySelectorAll(`[data-gallery="${galleryId}"]`).length;
         const current = Number(dialogEl.dataset.currentIndex ?? 0);
-        showImage((current - 1 + total) % total);
+        updateImage(String((current - 1 + total) % total));
       });
 
       dialogEl.querySelector(".roca-gallery-next")?.addEventListener("click", () => {
         const total = mapRoot.querySelectorAll(`[data-gallery="${galleryId}"]`).length;
         const current = Number(dialogEl.dataset.currentIndex ?? 0);
-        showImage((current + 1) % total);
+        updateImage(String((current + 1) % total));
       });
     });
   }

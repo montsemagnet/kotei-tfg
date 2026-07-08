@@ -31,6 +31,7 @@ interface Props {
 }
 
 const { modalId, data } = Astro.props;
+const titleId = `${modalId}-title`;
 const zoomId = `${modalId}-zoom`;
 const zoomThumbClass =
   "w-full cursor-pointer overflow-hidden border-0 p-0 bg-transparent hover:opacity-90 transition-opacity";
@@ -58,6 +59,9 @@ const textFields: { title: string; value: string }[] = [
 <dialog
   id={modalId}
   class="itinerari-dada-dialog fixed inset-0 z-[110] m-0 size-full max-h-none max-w-none border-0 bg-base-950/90 p-4 backdrop:bg-transparent open:flex open:items-start open:justify-center overflow-y-auto"
+  aria-modal="true"
+  aria-labelledby={titleId}
+  data-focus-trap="true"
 >
   <div
     class="itinerari-dada-panel relative my-8 w-full max-w-3xl rounded-lg bg-base-100 dark:bg-base-900 p-6 lg:p-10 shadow-xl"
@@ -78,6 +82,7 @@ const textFields: { title: string; value: string }[] = [
       Nom i codi de la parada
     </Text>
     <Text
+      id={titleId}
       tag="h2"
       variant="displayMD"
       class="dark:text-white text-base-900 font-medium tracking-tighter mb-8 pr-24"
@@ -226,7 +231,9 @@ const textFields: { title: string; value: string }[] = [
 </dialog>
 
 <script>
-  function initItinerariDadaModals() {
+  import { bindDialogTrigger } from "@/utils/modalA11y";
+
+  function initParadaFloraModals() {
     document.querySelectorAll("[data-modal-target]").forEach((btn) => {
       if (!(btn instanceof HTMLElement)) return;
       if (btn.dataset.bound) return;
@@ -238,18 +245,10 @@ const textFields: { title: string; value: string }[] = [
       const dialog = document.getElementById(modalId);
       if (!(dialog instanceof HTMLDialogElement)) return;
 
-      btn.addEventListener("click", () => dialog.showModal());
-
-      dialog.querySelector(".itinerari-dada-close")?.addEventListener("click", () =>
-        dialog.close(),
-      );
-
-      dialog.addEventListener("click", (event) => {
-        if (event.target === dialog) dialog.close();
-      });
+      bindDialogTrigger(btn, dialog);
     });
   }
 
-  initItinerariDadaModals();
-  document.addEventListener("astro:after-swap", initItinerariDadaModals);
+  initParadaFloraModals();
+  document.addEventListener("astro:after-swap", initParadaFloraModals);
 </script>

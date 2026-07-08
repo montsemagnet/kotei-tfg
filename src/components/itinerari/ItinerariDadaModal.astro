@@ -35,9 +35,20 @@ interface Props {
   introMedia?: PublicMedia & { title: string };
   sections: Section[];
   images?: ModalImage[];
+  /** Focus trap i retorn de focus al botó d'obertura */
+  focusTrap?: boolean;
 }
 
-const { modalId, label, intro, introMedia, sections, images = [] } = Astro.props;
+const {
+  modalId,
+  label,
+  intro,
+  introMedia,
+  sections,
+  images = [],
+  focusTrap = true,
+} = Astro.props;
+const titleId = `${modalId}-title`;
 const zoomId = `${modalId}-zoom`;
 const zoomThumbClass =
   "w-full cursor-pointer overflow-hidden border-0 p-0 bg-transparent hover:opacity-90 transition-opacity";
@@ -48,6 +59,9 @@ const zoomImageClass =
 <dialog
   id={modalId}
   class="itinerari-dada-dialog fixed inset-0 z-[110] m-0 size-full max-h-none max-w-none border-0 bg-base-950/90 p-4 backdrop:bg-transparent open:flex open:items-start open:justify-center overflow-y-auto"
+  aria-modal={focusTrap ? "true" : undefined}
+  aria-labelledby={focusTrap ? titleId : undefined}
+  data-focus-trap={focusTrap ? "true" : "false"}
 >
   <div
     class="itinerari-dada-panel relative my-8 w-full max-w-3xl rounded-lg bg-base-100 dark:bg-base-900 p-6 lg:p-10 shadow-xl"
@@ -61,6 +75,7 @@ const zoomImageClass =
     </button>
 
     <Text
+      id={titleId}
       tag="h2"
       variant="displayMD"
       class="dark:text-white text-base-900 font-medium tracking-tighter mb-6 pr-24 capitalize"
@@ -210,6 +225,8 @@ const zoomImageClass =
 </dialog>
 
 <script>
+  import { bindDialogTrigger } from "@/utils/modalA11y";
+
   function initItinerariDadaModals() {
     document.querySelectorAll("[data-modal-target]").forEach((btn) => {
       if (!(btn instanceof HTMLElement)) return;
@@ -222,17 +239,10 @@ const zoomImageClass =
       const dialog = document.getElementById(modalId);
       if (!(dialog instanceof HTMLDialogElement)) return;
 
-      btn.addEventListener("click", () => dialog.showModal());
-
-      const closeModal = () => {
-        dialog.querySelectorAll("video").forEach((video) => video.pause());
-        dialog.close();
-      };
-
-      dialog.querySelector(".itinerari-dada-close")?.addEventListener("click", closeModal);
-
-      dialog.addEventListener("click", (event) => {
-        if (event.target === dialog) closeModal();
+      bindDialogTrigger(btn, dialog, {
+        onBeforeClose: () => {
+          dialog.querySelectorAll("video").forEach((video) => video.pause());
+        },
       });
     });
   }

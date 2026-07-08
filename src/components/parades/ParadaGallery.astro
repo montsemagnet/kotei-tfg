@@ -35,6 +35,8 @@ const { fotos, galleryId } = Astro.props;
   <dialog
     id={`gallery-${galleryId}`}
     class="parada-gallery-dialog fixed inset-0 z-[110] m-0 size-full max-h-none max-w-none border-0 bg-base-950/90 p-4 backdrop:bg-transparent open:flex open:items-center open:justify-center"
+    aria-modal="true"
+    data-focus-trap="true"
   >
     <button
       type="button"
@@ -71,8 +73,11 @@ const { fotos, galleryId } = Astro.props;
 </div>
 
 <script>
+  import { openDialogFromTrigger } from "@/utils/modalA11y";
+
   function initParadaGalleries() {
     document.querySelectorAll("[data-gallery]").forEach((thumb) => {
+      if (!(thumb instanceof HTMLElement)) return;
       if (thumb.dataset.bound) return;
       thumb.dataset.bound = "true";
 
@@ -82,32 +87,22 @@ const { fotos, galleryId } = Astro.props;
         const dialog = document.getElementById(`gallery-${galleryId}`);
         if (!(dialog instanceof HTMLDialogElement)) return;
 
-        dialog.dataset.currentIndex = String(index);
         updateGalleryImage(dialog, galleryId, index);
-        dialog.showModal();
+        openDialogFromTrigger(dialog, thumb);
       });
     });
 
     document.querySelectorAll(".parada-gallery-dialog").forEach((dialogEl) => {
       if (!(dialogEl instanceof HTMLDialogElement)) return;
-      if (dialogEl.dataset.bound) return;
-      dialogEl.dataset.bound = "true";
+      if (dialogEl.dataset.galleryNavBound) return;
+      dialogEl.dataset.galleryNavBound = "true";
 
       const galleryId = dialogEl.id.replace("gallery-", "");
-
-      dialogEl
-        .querySelector(".parada-gallery-close")
-        ?.addEventListener("click", () => dialogEl.close());
-
-      dialogEl.addEventListener("click", (event) => {
-        if (event.target === dialogEl) dialogEl.close();
-      });
 
       dialogEl.querySelector(".parada-gallery-prev")?.addEventListener("click", () => {
         const current = Number(dialogEl.dataset.currentIndex ?? 0);
         const total = dialogEl.querySelectorAll(`[data-gallery="${galleryId}"]`).length;
         const next = (current - 1 + total) % total;
-        dialogEl.dataset.currentIndex = String(next);
         updateGalleryImage(dialogEl, galleryId, next);
       });
 
@@ -115,7 +110,6 @@ const { fotos, galleryId } = Astro.props;
         const current = Number(dialogEl.dataset.currentIndex ?? 0);
         const total = dialogEl.querySelectorAll(`[data-gallery="${galleryId}"]`).length;
         const next = (current + 1) % total;
-        dialogEl.dataset.currentIndex = String(next);
         updateGalleryImage(dialogEl, galleryId, next);
       });
     });
@@ -126,6 +120,7 @@ const { fotos, galleryId } = Astro.props;
     galleryId: string,
     index: number,
   ) {
+    dialog.dataset.currentIndex = String(index);
     const thumb = document.querySelector(
       `[data-gallery="${galleryId}"][data-index="${index}"] img`,
     );

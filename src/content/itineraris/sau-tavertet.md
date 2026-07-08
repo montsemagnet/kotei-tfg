@@ -10,11 +10,12 @@ mapa: "sau-tavertet"
 mapaUrl: "https://qgiscloud.com/mmagnet/Sau-Tavertet/"
 video:
   publicSrc: "/videos/itineraris/sau-tavertet.mp4"
-  alt: "Vídeo de presentació de l'itinerari geològic Sau–Tavertet"
+  alt: "Recorregut aeri del trajecte proposat Sau–Tavertet"
   ambSo: true
   enModal: true
   modalLabel: "Recorregut aeri"
 introLabel: "Introducció al recorregut"
+paradesLabel: "Parades"
 intro:
   - paragraphs:
       - "Aquest itinerari geològic recorre 6,63 km des de la Presa de Sau (Osona) fins a Tavertet, al cor del Collsacabra. Al llarg del camí s'estudien dotze parades sobre el basament paleozoic i la coberta sedimentària terciària: s'observen in situ la successió litològica (granit, argiles, gresos, conglomerats, calcàries nummulítiques, margues…) i es relaciona amb el paisatge i la vegetació de cada tram. També es realitza una anàlisi en làmina prima dels materials recollits per complementar l'observació de camp."

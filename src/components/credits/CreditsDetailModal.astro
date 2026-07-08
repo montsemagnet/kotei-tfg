@@ -1,0 +1,57 @@
+---
+import Text from "@/components/fundations/elements/Text.astro";
+
+interface Props {
+  modalId: string;
+  label: string;
+  intro?: string;
+}
+
+const { modalId, label, intro } = Astro.props;
+const titleId = `${modalId}-title`;
+---
+
+<dialog
+  id={modalId}
+  class="itinerari-dada-dialog fixed inset-0 z-[110] m-0 size-full max-h-none max-w-none border-0 bg-base-950/90 p-4 backdrop:bg-transparent open:flex open:items-start open:justify-center overflow-y-auto"
+  aria-modal="true"
+  aria-labelledby={titleId}
+  data-focus-trap="true"
+>
+  <div
+    class="itinerari-dada-panel relative my-8 w-full min-w-0 max-w-3xl overflow-x-hidden rounded-lg bg-base-100 dark:bg-base-900 p-6 lg:p-10 shadow-xl"
+  >
+    <button
+      type="button"
+      class="itinerari-dada-close absolute top-4 right-4 z-10 rounded-full bg-base-200 dark:bg-base-800 px-4 py-2 text-sm text-base-900 dark:text-white hover:bg-base-300 dark:hover:bg-base-700"
+      aria-label="Tancar"
+    >
+      Tancar
+    </button>
+
+    <Text
+      id={titleId}
+      tag="h2"
+      variant="displayMD"
+      class="dark:text-white text-base-900 font-medium tracking-tighter pr-24 break-words"
+    >
+      {label}
+    </Text>
+
+    {
+      intro && (
+        <Text
+          tag="p"
+          variant="textBase"
+          class="mt-4 text-base-500 dark:text-base-400 leading-relaxed break-words"
+        >
+          {intro}
+        </Text>
+      )
+    }
+
+    <div class="mt-6 min-w-0 text-base leading-relaxed text-base-700 dark:text-base-300 break-words [overflow-wrap:anywhere] [&_a]:break-all [&_blockquote]:break-words">
+      <slot />
+    </div>
+  </div>
+</dialog>

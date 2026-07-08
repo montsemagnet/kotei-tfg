@@ -115,6 +115,7 @@ const itineraris = defineCollection({
         }),
       ),
       introLabel: z.string().optional(),
+      paradesLabel: z.string().optional(),
       dadesLabels: z.record(z.string(), z.string()).optional(),
       dades: z.object({
         ubicacio: z.string().optional(),

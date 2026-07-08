@@ -5,6 +5,7 @@ interface Video {
   id?: string;
   title: string;
   publicSrc?: string;
+  captionsSrc?: string;
   alt?: string;
   period?: string;
   description?: string;
@@ -28,6 +29,9 @@ const { modalId, label, intro, videos = [], sections = [] } = Astro.props;
 
 const videoClass =
   "w-full aspect-video rounded-md border border-base-200 dark:border-base-800 bg-base-950";
+
+const captionsIconOn = withBase("/images/ui/subtitols-activats.png");
+const captionsIconOff = withBase("/images/ui/subtitols-desactivats.png");
 
 function videoAnchorId(video: Video, index: number): string {
   if (video.id) return `${modalId}-${video.id}`;
@@ -99,7 +103,7 @@ function videoAnchorId(video: Video, index: number): string {
               <li id={videoAnchorId(video, index)} class="scroll-mt-28">
                 <div class="mb-3">
                   <h3 class="text-xl md:text-2xl lg:text-3xl dark:text-white text-base-900 font-medium">
-                    {index + 1}. {video.title}
+                    {video.title}
                   </h3>
                   {
                     video.period && (
@@ -130,14 +134,52 @@ function videoAnchorId(video: Video, index: number): string {
                 </div>
                 {
                   video.publicSrc && (
-                    <video
-                      class={videoClass}
-                      src={withBase(video.publicSrc)}
-                      title={video.alt ?? video.title}
-                      controls
-                      playsinline
-                      preload="metadata"
-                    />
+                    <div class="flex flex-col gap-2" data-video-captions-wrap>
+                      <video
+                        class={videoClass}
+                        src={withBase(video.publicSrc)}
+                        title={video.alt ?? video.title}
+                        controls
+                        playsinline
+                        preload="metadata"
+                        data-paleogeologia-video
+                      >
+                        {
+                          video.captionsSrc && (
+                            <track
+                              kind="subtitles"
+                              src={withBase(video.captionsSrc)}
+                              srclang="ca"
+                              label="Català"
+                            />
+                          )
+                        }
+                      </video>
+                      {
+                        video.captionsSrc && (
+                          <button
+                            type="button"
+                            class="self-start inline-flex items-center gap-2 rounded-md border border-base-200 dark:border-base-700 bg-base-50 dark:bg-base-950/50 px-3 py-2 text-sm font-medium text-base-900 dark:text-white hover:bg-base-100 dark:hover:bg-base-800 transition-colors"
+                            data-captions-toggle
+                            data-icon-on={captionsIconOn}
+                            data-icon-off={captionsIconOff}
+                            aria-pressed="false"
+                            aria-label="Activar subtítols del vídeo"
+                          >
+                            <img
+                              src={captionsIconOff}
+                              alt=""
+                              width="28"
+                              height="28"
+                              class="size-7 shrink-0 object-contain"
+                              data-captions-icon
+                              decoding="async"
+                            />
+                            <span data-captions-toggle-label>Subtítols desactivats</span>
+                          </button>
+                        )
+                      }
+                    </div>
                   )
                 }
               </li>
@@ -171,3 +213,64 @@ function videoAnchorId(video: Video, index: number): string {
     }
   </div>
 </dialog>
+
+<script>
+  function getCaptionsTrack(video: HTMLVideoElement): TextTrack | undefined {
+    return Array.from(video.textTracks).find(
+      (track) => track.kind === "subtitles" || track.kind === "captions",
+    );
+  }
+
+  function syncCaptionsToggle(button: HTMLButtonElement, showing: boolean) {
+    button.setAttribute("aria-pressed", showing ? "true" : "false");
+    button.setAttribute(
+      "aria-label",
+      showing ? "Desactivar subtítols del vídeo" : "Activar subtítols del vídeo",
+    );
+    const label = button.querySelector("[data-captions-toggle-label]");
+    if (label) {
+      label.textContent = showing ? "Subtítols activats" : "Subtítols desactivats";
+    }
+    const icon = button.querySelector("[data-captions-icon]");
+    const iconSrc = showing ? button.dataset.iconOn : button.dataset.iconOff;
+    if (icon instanceof HTMLImageElement && iconSrc) {
+      icon.src = iconSrc;
+    }
+  }
+
+  function initPaleogeologiaCaptions() {
+    document.querySelectorAll("[data-captions-toggle]").forEach((button) => {
+      if (!(button instanceof HTMLButtonElement)) return;
+      if (button.dataset.captionsBound) return;
+      button.dataset.captionsBound = "true";
+
+      const wrap = button.closest("[data-video-captions-wrap]");
+      const video = wrap?.querySelector("[data-paleogeologia-video]");
+      if (!(video instanceof HTMLVideoElement)) return;
+
+      const initCaptions = () => {
+        const track = getCaptionsTrack(video);
+        if (!track) return;
+        track.mode = "hidden";
+        syncCaptionsToggle(button, false);
+      };
+
+      if (video.readyState >= 1) {
+        initCaptions();
+      } else {
+        video.addEventListener("loadedmetadata", initCaptions, { once: true });
+      }
+
+      button.addEventListener("click", () => {
+        const track = getCaptionsTrack(video);
+        if (!track) return;
+        const showing = track.mode === "showing";
+        track.mode = showing ? "hidden" : "showing";
+        syncCaptionsToggle(button, !showing);
+      });
+    });
+  }
+
+  initPaleogeologiaCaptions();
+  document.addEventListener("astro:after-swap", initPaleogeologiaCaptions);
+</script>

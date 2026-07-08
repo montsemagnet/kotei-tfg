@@ -27,6 +27,7 @@ const modalContentSchema = (image: (path: string) => z.ZodType) =>
           id: z.string().optional(),
           title: z.string(),
           publicSrc: z.string().optional(),
+          captionsSrc: z.string().optional(),
           alt: z.string().optional(),
           period: z.string().optional(),
           description: z.string().optional(),

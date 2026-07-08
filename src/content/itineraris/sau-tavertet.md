@@ -83,30 +83,28 @@ dadesModals:
   paleogeologia:
     intro: "Seqüència cronològica en vídeo dels grans esdeveniments geològics que han configurat el relleu i les formacions visibles al llarg de l'itinerari Sau–Tavertet."
     videos:
-      - id: parada-1
-        title: "Parada 1 – Paleozoic: construcció del sòcol ibèric (aflorament de Sau–Tavertet)"
-        period: "410–280 Ma"
+      - id: paleozoic
+        title: "1 – Paleozoic: construcció del sòcol ibèric (vídeo 410–280 Ma)"
+        period: "Del Silurià al Permià (410–280 Ma)"
         publicSrc: "/videos/itineraris/sau-tavertet/paleogeologia/1-orogenia-varisca.mp4"
         alt: "Construcció del sòcol ibèric durant el Paleozoic"
         paragraphs:
-          - "Entre 410 i 280 milions d'anys, el primer vídeo recorre una part clau del Paleozoic: el Silurià tardà, el Devonià, el Carbonífer i l'inici del Permià. En aquest interval els continents es desplacen i acaben confluint en el supercontinent Pangea, mentre a la futura placa Ibèrica té lloc l'orogènesi herciniana (varisca), una gran fase de col·lisió continental que plegarà i transformarà les seves roques. Paral·lelament, els oceans són plens d'invertebrats marins, els peixos es diversifiquen, les plantes vasculars colonitzen la terra ferma i apareixen els primers amfibis, boscos pantanosos i rèptils, configurant ecosistemes cada vegada més complexos."
-          - "L'orogènesi herciniana és el procés mitjançant el qual diversos continents i microcontinents es van aproximar i van col·lisionar, tancant oceans i generant una serralada extensa. En el domini ibèric, aquesta col·lisió provoca el plegament de les sèries sedimentàries, el seu metamorfisme i la intrusió de grans masses de magma en profunditat. Tectònicament, aquest període és, per tant, el moment en què es construeix el basament cristal·lí paleozoic: sèries sedimentàries marines i continentals se sotmeten a plegament, metamorfisme i intrusió de magmes profunds associats a l'orogènesi herciniana."
-          - "A la presa de Sau, els afloraments que observem corresponen a roques paleozoiques d'aquest basament: principalment granits i esquists. Els granits són roques ígnies plutòniques, de cristalls visibles (quars, feldspats, mica), formades per la cristal·lització lenta de magmes profunds durant les fases tardanes de l'orogènesi herciniana. Els esquists són roques metamòrfiques derivades de sediments argilosos o volcànics que, en ser sotmesos a pressió i temperatura elevades, desenvolupen una esquistositat marcada. El contacte entre aquests granits i esquists a Sau mostra, in situ, la combinació de intrusió magmàtica i metamorfisme que caracteritza el sòcol ibèric, i és el substrat sobre el qual es disposaran més endavant les sèries sedimentàries que formen les cingleres de Tavertet."
-          - "Al final del vídeo, un cercle vermell destaca la zona corresponent al domini que acabarà formant part de la placa Ibèrica i a la serralada generada per l'orogènesi herciniana. Aquesta banda muntanyosa paleozoica és precisament el basament sobre el qual s'assentaran, molts milions d'anys després, les conques i cobertores sedimentàries que donaran lloc al relleu actual de Sau–Tavertet i al conjunt de Catalunya."
-      - id: parada-2
-        title: "Parada 2 – Cantera de sauló: alteració del sòcol granític"
-        paragraphs:
-          - "Després d'observar el monzogranit biotític paleozoic a la presa de Sau, la segona parada ens mostra el mateix sòcol ibèric en un estadi més avançat d'evolució superficial. A la cantera, el granit es presenta fortament meteorititzat i desagregat en forma de sauló: un material sorrenc, de tonalitats rosades o marronoses, format per fragments de quars, feldspats i mica procedents de la descomposició del granit."
-          - "El sauló és el regòlit granític, és a dir, la capa de materials solts i alterats que recobreix la roca mare compacta i que es genera per meteorizació física (fracturació, gelifracció, canvis tèrmics) i química (hidrolisi dels feldspats, oxidació de minerals ferromagnesians) al llarg de milions d'anys."
-          - "Paleogeogràficament, aquesta parada ens permet veure com el sòcol cristal·lí construït durant l'orogènesi herciniana no és una entitat rígida i immutable, sinó que es va transformant de manera contínua a la superfície terrestre."
+          - "En aquest interval es formen els granits i esquists que avui afloren a Sau–Tavertet. La col·lisió herciniana/varisca plegarà i metamorfosarà les antigues sèries sedimentàries, i grans masses de magma cristal·litzaran en profunditat, construint el sòcol ibèric. Paral·lelament, la biosfera viu una gran evolució: diversificació de peixos, colonització de la terra ferma per plantes vasculars, aparició d'amfibis, boscos pantanosos i primers rèptils. El vídeo mostra com la futura Ibèria s'integra en el supercontinent Pangea i com es crea el basament sobre el qual, molt després, se sobreposaran els sediments de la conca de l'Ebre."
       - id: mesozoic
-        title: "De 280 Ma a 65 Ma: l'era dels dinosaures"
-        period: "280–65 Ma"
+        title: "2 – Mesozoic global: 280–65 Ma, l'era dels dinosaures"
+        period: "Del Triàsic al Cretaci (280–65 Ma)"
         publicSrc: "/videos/itineraris/sau-tavertet/paleogeologia/02.mp4"
-        alt: "El Mesozoic i l'era dels dinosaures"
+        alt: "El Mesozoic global i l'era dels dinosaures"
         paragraphs:
-          - "Entre 280 i 65 milions d'anys la Terra recorre el Mesozoic (Triàsic, Juràssic i Cretaci). Al començament Pangea és un únic supercontinent; amb el temps es fractura i s'obren nous oceans, incloent l'Atlàntic i un gran oceà anomenat Tetis, situat entre els blocs que avui correspondrien a Europa i Àfrica–Aràbia. Després de la gran extinció del final del Permià (~252 Ma), apareixen i es diversifiquen els dinosaures, els mamífers primitius i les aus, i al Cretaci s'estenen les plantes amb flor, que transformen profundament els ecosistemes terrestres i les xarxes de pol·linització. El Mesozoic és, en conjunt, una era de clima càlid, sense glaciacions globals comparables a les del Quaternari, però amb variacions regionals del nivell del mar i de les condicions ambientals."
-          - "En la futura zona ibèrica, aquests moviments tectònics controlen la formació de conques i serralades i preparen el moment en què un braç del mar de Tetis ocuparà la conca de l'Ebre durant el Paleocè–Eocè, generant els ambients marins on es formaran les calcàries amb nummulits que veurem a Tavertet. A Sau–Tavertet, però, el registre aflorant estrictament mesozòic és molt limitat, de manera que el vídeo mostra el Mesozoic sobretot com a context global: explica com la Terra passa del paisatge post-hercinià al món dels dinosaures i com, al final del Cretaci (extinció Cretaci–Paleogen, ~66 Ma), es prepara el marc perquè, ja en el Paleocè–Eocè, es formi la conca de l'Ebre i es dipositin els sediments que sí veurem a les parades de l'itinerari."
+          - "El supercontinent Pangea es fragmenta, s'obren l'Atlàntic i l'oceà de Tetis, i la Terra entra en l'era dels dinosaures. Després de l'extinció Permià–Triàsic, es diversifiquen dinosaures, mamífers primitius i aus, mentre al Cretaci s'estenen les plantes amb flor, que transformen els ecosistemes terrestres. El clima és globalment càlid i els canvis més importants venen de la reorganització dels continents i oceans. Per a la nostra zona, aquest vídeo dona el context mundial: prepara el marc tectònic i oceànic que farà possible que, ja al Paleogen, un braç del mar de Tetis ocupi la conca de l'Ebre."
+      - id: iberia-ebre
+        title: "3 – Ibèria, mar de Tetis i conca de l'Ebre (vídeo 230 Ma–actualitat)"
+        period: "De la placa Ibèrica a Sau–Tavertet (230 Ma–0 Ma)"
+        publicSrc: "/videos/itineraris/sau-tavertet/paleogeologia/03-iberia-210.mp4"
+        captionsSrc: "/videos/itineraris/sau-tavertet/paleogeologia/03-iberia-210.ca.vtt"
+        alt: "De la placa Ibèrica a la conca de l'Ebre i el paisatge actual de Sau–Tavertet"
+        paragraphs:
+          - "Seguim la placa Ibèrica des de la fragmentació de Pangea fins al paisatge actual. La orogènesi alpina aixeca els Pirineus i la serralada Prelitoral, mentre es forma la conca de l'Ebre com a depressió entre aquestes serralades. Inicialment, durant el Paleocè–Eocè, la conca funciona com una badia marina vinculada al mar de Tetis: s'hi dipositen argiles continentals marginals (Formació Mediona) i calcàries amb nummulits en ambients marins somers. A mesura que la conca es continentalitza, els rius que drenen els Pirineus i els relleus catalans l'omplen amb gresos i conglomerats vermells i, finalment, margues i calcàries que construiran les cingleres de Tavertet. Aquest vídeo connecta directament la història de la placa Ibèrica amb el sòcol i els sediments que estudiem al camp."
   paisatge:
     intro: "L'itinerari Sau–Tavertet és un excel·lent exemple de com la geologia del Collsacabra estructura el paisatge i condiciona clarament la distribució de la flora al voltant de la cinglera i el pantà de Sau."
     sections:

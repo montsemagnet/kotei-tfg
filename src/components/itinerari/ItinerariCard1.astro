@@ -26,7 +26,9 @@ const { title, url, description, thumbnail } = {
 ]}>
   {
     !enConstruccio && (
-      <a class="absolute inset-0 z-10" href={url} title={title} aria-hidden="true" tabindex="-1" />
+      <a class="absolute inset-0 z-30" href={url} title={title}>
+        <span class="sr-only">Veure itinerari: {title}</span>
+      </a>
     )
   }
   {
@@ -51,7 +53,8 @@ const { title, url, description, thumbnail } = {
   }
 
   <div class:list={[
-    "relative z-20",
+    "relative",
+    !enConstruccio && "pointer-events-none",
     "mt-3",
     isFeatured && !hideImage && !isInlineFeatured && "lg:mt-0",
     (hideImage || isInlineFeatured) && "mt-0",
@@ -92,7 +95,7 @@ const { title, url, description, thumbnail } = {
         >
           En construcció
         </Text>
-      ) : (
+      ) : !(isFeatured && hideImage) && (
         <div class="group relative inline-flex overflow-hidden w-full text-base-700 dark:text-base-400 mt-2">
           <div class="translate-y-0 transition group-hover:-translate-y-[150%] duration-500">
             <Text tag="p" variant="textSM">Veure itinerari</Text>

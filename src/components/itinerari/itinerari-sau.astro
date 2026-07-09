@@ -146,28 +146,30 @@ const mapaSvg = fs.existsSync(MAPA_SVG_PATH)
 </div>
 
 <style>
-  @keyframes parada-circle-pulse {
+  @keyframes parada-spotlight-circle {
     0%,
     100% {
-      fill: rgba(220, 252, 231, 0.9);
-      stroke: #1f5a45;
+      fill: rgba(187, 247, 208, 0.98);
+      stroke: #15803d;
+      stroke-width: 4;
     }
     50% {
-      fill: rgba(134, 239, 172, 0.95);
-      stroke: #15803d;
+      fill: rgba(74, 222, 128, 1);
+      stroke: #14532d;
+      stroke-width: 5;
     }
   }
 
-  @keyframes parada-ring-pulse {
+  @keyframes parada-spotlight-ring {
     0%,
     100% {
-      stroke: #1f5a45;
-      stroke-width: 3;
-      opacity: 0.55;
+      stroke: #22c55e;
+      stroke-width: 4;
+      opacity: 0.85;
     }
     50% {
-      stroke: #16a34a;
-      stroke-width: 5;
+      stroke: #86efac;
+      stroke-width: 7;
       opacity: 1;
     }
   }
@@ -188,7 +190,9 @@ const mapaSvg = fs.existsSync(MAPA_SVG_PATH)
   .itinerari-sau-map :global(.parada-ring) {
     fill: none;
     pointer-events: none;
-    animation: parada-ring-pulse 2.2s ease-in-out infinite;
+    opacity: 0.25;
+    stroke: #1f5a45;
+    stroke-width: 2;
   }
 
   .itinerari-sau-map :global(.parada-hit-area) {
@@ -202,19 +206,63 @@ const mapaSvg = fs.existsSync(MAPA_SVG_PATH)
     stroke: #1f5a45;
     stroke-width: 3;
     transition:
-      fill 0.2s ease,
-      stroke 0.2s ease,
-      stroke-width 0.2s ease;
+      fill 0.35s ease,
+      stroke 0.35s ease,
+      stroke-width 0.35s ease,
+      opacity 0.35s ease;
   }
 
-  .itinerari-sau-map :global(.parada-hotspot--disponible .parada-circle) {
-    animation: parada-circle-pulse 2.2s ease-in-out infinite;
+  .itinerari-sau-map
+    :global(
+      .parada-hotspot:not(.parada-hotspot--spotlight):not(:hover):not(:focus-visible)
+        .parada-circle
+    ) {
+    stroke-width: 2;
+    opacity: 0.5;
+  }
+
+  .itinerari-sau-map
+    :global(
+      .parada-hotspot--disponible:not(.parada-hotspot--spotlight):not(:hover):not(
+          :focus-visible
+        )
+        .parada-circle
+    ) {
+    fill: rgba(255, 255, 255, 0.38);
+    stroke: #1f5a45;
+  }
+
+  .itinerari-sau-map
+    :global(
+      .parada-hotspot--pendent:not(.parada-hotspot--spotlight):not(:hover):not(
+          :focus-visible
+        )
+        .parada-circle
+    ) {
+    fill: rgba(255, 255, 255, 0.32);
+    stroke: #9ca3af;
+    stroke-dasharray: 6 4;
+  }
+
+  .itinerari-sau-map :global(.parada-hotspot--spotlight .parada-circle) {
+    animation: parada-spotlight-circle 1.1s ease-in-out infinite;
+    opacity: 1;
+    stroke-dasharray: none;
+  }
+
+  .itinerari-sau-map :global(.parada-hotspot--spotlight .parada-ring) {
+    animation: parada-spotlight-ring 1.1s ease-in-out infinite;
   }
 
   .itinerari-sau-map :global(.parada-hotspot--pendent .parada-circle) {
     stroke-dasharray: 6 4;
     stroke: #6b7280;
     fill: rgba(255, 255, 255, 0.65);
+  }
+
+  .itinerari-sau-map :global(.parada-hotspot--pendent:hover .parada-hit-area),
+  .itinerari-sau-map :global(.parada-hotspot--pendent:focus-visible .parada-hit-area) {
+    fill: rgba(107, 114, 128, 0.2);
   }
 
   .itinerari-sau-map :global(.parada-hotspot--disponible:hover .parada-hit-area),
@@ -244,14 +292,21 @@ const mapaSvg = fs.existsSync(MAPA_SVG_PATH)
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .itinerari-sau-map :global(.parada-hotspot--disponible .parada-circle),
-    .itinerari-sau-map :global(.parada-ring) {
+    .itinerari-sau-map :global(.parada-hotspot--spotlight .parada-circle),
+    .itinerari-sau-map :global(.parada-hotspot--spotlight .parada-ring) {
       animation: none;
     }
 
     .itinerari-sau-map :global(.parada-hotspot--disponible .parada-circle) {
       fill: rgba(220, 252, 231, 0.95);
       stroke: #15803d;
+      opacity: 1;
+    }
+
+    .itinerari-sau-map :global(.parada-hotspot--pendent .parada-circle) {
+      fill: rgba(255, 255, 255, 0.75);
+      stroke: #6b7280;
+      opacity: 1;
     }
   }
 </style>
@@ -401,6 +456,39 @@ const mapaSvg = fs.existsSync(MAPA_SVG_PATH)
     });
   }
 
+  const paradaSpotlightTimers = new WeakMap();
+
+  function startParadaSpotlight(mapRoot, hotspots) {
+    const existingTimer = paradaSpotlightTimers.get(mapRoot);
+    if (existingTimer) {
+      window.clearInterval(existingTimer);
+    }
+
+    const ordered = hotspots.filter(
+      (hotspot) =>
+        hotspot.classList.contains("parada-hotspot--disponible") ||
+        hotspot.classList.contains("parada-hotspot--pendent"),
+    );
+    if (ordered.length === 0) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      ordered.forEach((hotspot) => hotspot.classList.remove("parada-hotspot--spotlight"));
+      return;
+    }
+
+    let index = 0;
+
+    const highlightNext = () => {
+      ordered.forEach((hotspot) => hotspot.classList.remove("parada-hotspot--spotlight"));
+      ordered[index]?.classList.add("parada-hotspot--spotlight");
+      index = (index + 1) % ordered.length;
+    };
+
+    highlightNext();
+    const timerId = window.setInterval(highlightNext, 1100);
+    paradaSpotlightTimers.set(mapRoot, timerId);
+  }
+
   function initItinerariSauMap() {
     document.querySelectorAll("[data-itinerari-map]").forEach((mapRoot) => {
       if (mapRoot.dataset.bound) return;
@@ -480,6 +568,8 @@ const mapaSvg = fs.existsSync(MAPA_SVG_PATH)
         hotspot.addEventListener("focus", (event) => showPreview(hotspot, event));
         hotspot.addEventListener("blur", hidePreview);
       });
+
+      startParadaSpotlight(mapRoot, hotspots);
     });
   }
 

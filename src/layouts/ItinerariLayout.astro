@@ -10,6 +10,7 @@ import ItinerariSau from "@/components/itinerari/itinerari-sau.astro";
 import ItinerariVideoModal from "@/components/itinerari/ItinerariVideoModal.astro";
 import ItinerariPaleogeologiaModal from "@/components/itinerari/ItinerariPaleogeologiaModal.astro";
 import ItinerariDadaModal from "@/components/itinerari/ItinerariDadaModal.astro";
+import ItinerariDadaIndex from "@/components/itinerari/ItinerariDadaIndex.astro";
 import ItinerariZoom from "@/components/itinerari/ItinerariZoom.astro";
 import { withBase } from "@/utils/withBase";
 
@@ -300,8 +301,10 @@ const introTable = frontmatter.intro.find((item) => item.table)?.table;
       <div class="flex flex-col border-t border-base-200 dark:border-base-800 mb-12">
         {
           Object.entries(frontmatter.dades).map(([key, value]) => {
+            const indexItems = frontmatter.dadesIndex?.[key];
+            const hasIndex = Boolean(indexItems?.length);
             const modalKey = frontmatter.dadesModalAliases?.[key] ?? key;
-            const modal = frontmatter.dadesModals?.[modalKey];
+            const modal = !hasIndex ? frontmatter.dadesModals?.[modalKey] : undefined;
             const label = dadesLabels[key] ?? key;
             const modalId = `itinerari-modal-${modalKey}`;
 
@@ -313,7 +316,27 @@ const introTable = frontmatter.intro.find((item) => item.table)?.table;
               >
                 <div class="min-w-0">
                 {
-                  modal ? (
+                  key === "mapa" && frontmatter.mapaUrl ? (
+                    <Text
+                      tag="a"
+                      variant="displayMD"
+                      href={frontmatter.mapaUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="Obrir mapa interactiu (nova pestanya)"
+                      class="capitalize font-medium tracking-tighter text-accent-700 dark:text-accent-400 underline decoration-accent-700/30 dark:decoration-accent-400/40 underline-offset-[6px] hover:decoration-accent-700 dark:hover:decoration-accent-400 transition-colors leading-tight break-words inline-block"
+                    >
+                      {label}
+                    </Text>
+                  ) : hasIndex || !modal ? (
+                    <Text
+                      tag="h2"
+                      variant="displayMD"
+                      class="dark:text-white text-base-900 font-medium tracking-tighter capitalize leading-tight break-words"
+                    >
+                      {label}
+                    </Text>
+                  ) : (
                     <button
                       type="button"
                       data-modal-target={modalId}
@@ -335,26 +358,6 @@ const introTable = frontmatter.intro.find((item) => item.table)?.table;
                         +
                       </span>
                     </button>
-                  ) : key === "mapa" && frontmatter.mapaUrl ? (
-                    <Text
-                      tag="a"
-                      variant="displayMD"
-                      href={frontmatter.mapaUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title="Obrir mapa interactiu (nova pestanya)"
-                      class="capitalize font-medium tracking-tighter text-accent-700 dark:text-accent-400 underline decoration-accent-700/30 dark:decoration-accent-400/40 underline-offset-[6px] hover:decoration-accent-700 dark:hover:decoration-accent-400 transition-colors leading-tight break-words inline-block"
-                    >
-                      {label}
-                    </Text>
-                  ) : (
-                    <Text
-                      tag="h2"
-                      variant="displayMD"
-                      class="dark:text-white text-base-900 font-medium tracking-tighter capitalize leading-tight break-words"
-                    >
-                      {label}
-                    </Text>
                   )
                 }
                 </div>
@@ -372,17 +375,53 @@ const introTable = frontmatter.intro.find((item) => item.table)?.table;
                       {value}
                     </Text>
                   ) : (
-                    <Text
-                      tag="p"
-                      variant="textXL"
-                      class="text-base-500 dark:text-base-400 lg:col-span-3 min-w-0"
-                    >
-                      {value}
-                    </Text>
+                    <div class="lg:col-span-3 min-w-0">
+                      <Text
+                        tag="p"
+                        variant="textXL"
+                        class="text-base-500 dark:text-base-400"
+                      >
+                        {value}
+                      </Text>
+                      {
+                        hasIndex && indexItems && (
+                          <ItinerariDadaIndex
+                            items={indexItems}
+                            ariaLabel={`Índex de ${label}`}
+                          />
+                        )
+                      }
+                    </div>
                   )
                 }
                 {
-                  modal && modal.videos && modal.videos.length > 0 ? (
+                  hasIndex && indexItems?.map((item) => {
+                    const subModal = frontmatter.dadesModals?.[item.modalKey];
+                    if (!subModal) return null;
+                    const subModalId = `itinerari-modal-${item.modalKey}`;
+
+                    return subModal.videos && subModal.videos.length > 0 ? (
+                      <ItinerariPaleogeologiaModal
+                        modalId={subModalId}
+                        label={item.label}
+                        intro={subModal.intro}
+                        videos={subModal.videos}
+                        sections={subModal.sections}
+                      />
+                    ) : (
+                      <ItinerariDadaModal
+                        modalId={subModalId}
+                        label={item.label}
+                        intro={subModal.intro}
+                        introMedia={subModal.introMedia}
+                        sections={subModal.sections ?? []}
+                        images={subModal.images}
+                      />
+                    );
+                  })
+                }
+                {
+                  !hasIndex && modal && modal.videos && modal.videos.length > 0 ? (
                     <ItinerariPaleogeologiaModal
                       modalId={modalId}
                       label={label}
@@ -391,6 +430,7 @@ const introTable = frontmatter.intro.find((item) => item.table)?.table;
                       sections={modal.sections}
                     />
                   ) : (
+                    !hasIndex &&
                     modal && (
                       <ItinerariDadaModal
                         modalId={modalId}

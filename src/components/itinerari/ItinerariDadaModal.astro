@@ -2,11 +2,36 @@
 import { Image } from "astro:assets";
 import Text from "@/components/fundations/elements/Text.astro";
 import ItinerariZoom from "@/components/itinerari/ItinerariZoom.astro";
+import ItinerariModalPublicMedia from "@/components/itinerari/ItinerariModalPublicMedia.astro";
 import { withBase } from "@/utils/withBase";
+
+interface Subsection {
+  title: string;
+  paragraphs: string[];
+}
+
+interface SectionTable {
+  caption?: string;
+  headers: string[];
+  rows: { cells: string[] }[];
+}
 
 interface Section {
   title: string;
-  paragraphs: string[];
+  paragraphs?: string[];
+  subsections?: Subsection[];
+  media?: PublicMedia & { title?: string };
+  mediaItems?: (PublicMedia & { title?: string })[];
+  mediaCaption?: string;
+  mediaAfterParagraph?: number;
+  mediaAfterSubsection?: number;
+  mediaBeforeSubsection?: {
+    subsectionIndex: number;
+    items: (PublicMedia & { title?: string })[];
+    caption?: string;
+  };
+  table?: SectionTable;
+  paragraphsAfter?: string[];
 }
 
 interface StaticImage {
@@ -32,7 +57,7 @@ interface Props {
   modalId: string;
   label: string;
   intro?: string;
-  introMedia?: PublicMedia & { title: string };
+  introMedia?: PublicMedia & { title: string; caption?: string };
   sections: Section[];
   images?: ModalImage[];
   /** Focus trap i retorn de focus al botó d'obertura */
@@ -97,40 +122,17 @@ const zoomImageClass =
 
     {
       introMedia && (
-        <div class="mb-10">
-          <Text
-            tag="h3"
-            variant="displaySM"
-            class="dark:text-white text-base-900 font-medium mb-4"
-          >
-            {introMedia.title}
-          </Text>
-          <ItinerariZoom zoomId={`${zoomId}-intro`}>
-            <figure class="itinerari-modal-media">
-              <button
-                type="button"
-                class={zoomThumbClass}
-                data-itinerari-zoom
-                data-full-src={withBase(introMedia.publicSrc)}
-                aria-label={`Ampliar: ${introMedia.alt}`}
-              >
-                <img
-                  src={withBase(introMedia.publicSrc)}
-                  alt={introMedia.alt}
-                  class={zoomImageClass}
-                  loading="lazy"
-                  decoding="async"
-                />
-              </button>
-            </figure>
-          </ItinerariZoom>
-        </div>
+        <ItinerariModalPublicMedia
+          media={introMedia}
+          zoomId={`${zoomId}-intro`}
+          class="mb-10"
+        />
       )
     }
 
     <div class="flex flex-col gap-8">
       {
-        sections.map((section) => (
+        sections.map((section, sectionIndex) => (
           <div>
             <Text
               tag="h3"
@@ -139,15 +141,161 @@ const zoomImageClass =
             >
               {section.title}
             </Text>
-            {section.paragraphs.map((paragraph) => (
-              <Text
-                tag="p"
-                variant="textBase"
-                class="text-base-500 dark:text-base-400 mb-3 leading-relaxed last:mb-0"
-              >
-                {paragraph}
-              </Text>
+            {section.paragraphs?.map((paragraph, paragraphIndex) => (
+              <>
+                <Text
+                  tag="p"
+                  variant="textBase"
+                  class="text-base-500 dark:text-base-400 mb-3 leading-relaxed last:mb-0"
+                >
+                  {paragraph}
+                </Text>
+                {
+                  section.media &&
+                  section.mediaAfterParagraph === paragraphIndex && (
+                    <ItinerariModalPublicMedia
+                      media={section.media}
+                      zoomId={`${zoomId}-section-${sectionIndex}-inline`}
+                    />
+                  )
+                }
+              </>
             ))}
+            {
+              section.subsections?.map((subsection, subsectionIndex) => (
+                <>
+                  {
+                    section.mediaBeforeSubsection &&
+                    section.mediaBeforeSubsection.subsectionIndex === subsectionIndex && (
+                      <div class="my-6 flex flex-col gap-4">
+                        {section.mediaBeforeSubsection.items.map((item, itemIndex) => (
+                          <ItinerariModalPublicMedia
+                            media={item}
+                            zoomId={`${zoomId}-section-${sectionIndex}-before-${itemIndex}`}
+                            class="my-0"
+                          />
+                        ))}
+                        {
+                          section.mediaBeforeSubsection.caption && (
+                            <Text
+                              tag="p"
+                              variant="textSM"
+                              class="text-base-500 dark:text-base-400 leading-relaxed italic"
+                            >
+                              {section.mediaBeforeSubsection.caption}
+                            </Text>
+                          )
+                        }
+                      </div>
+                    )
+                  }
+                  <div class="mt-4 mb-2">
+                    <Text
+                      tag="h4"
+                      variant="textBase"
+                      class="dark:text-white text-base-900 font-medium mb-2 leading-snug"
+                    >
+                      {subsection.title}
+                    </Text>
+                    {subsection.paragraphs.map((paragraph) => (
+                      <Text
+                        tag="p"
+                        variant="textBase"
+                        class="text-base-500 dark:text-base-400 mb-3 leading-relaxed last:mb-0"
+                      >
+                        {paragraph}
+                      </Text>
+                    ))}
+                  </div>
+                  {
+                    section.mediaItems &&
+                    section.mediaAfterSubsection === subsectionIndex && (
+                      <div class="my-6 flex flex-col gap-4">
+                        {section.mediaItems.map((item, itemIndex) => (
+                          <ItinerariModalPublicMedia
+                            media={item}
+                            zoomId={`${zoomId}-section-${sectionIndex}-items-${itemIndex}`}
+                            class="my-0"
+                          />
+                        ))}
+                        {
+                          section.mediaCaption && (
+                            <Text
+                              tag="p"
+                              variant="textSM"
+                              class="text-base-500 dark:text-base-400 leading-relaxed italic"
+                            >
+                              {section.mediaCaption}
+                            </Text>
+                          )
+                        }
+                      </div>
+                    )
+                  }
+                </>
+              ))
+            }
+            {
+              section.paragraphsAfter?.map((paragraph) => (
+                <Text
+                  tag="p"
+                  variant="textBase"
+                  class="text-base-500 dark:text-base-400 mb-3 leading-relaxed last:mb-0"
+                >
+                  {paragraph}
+                </Text>
+              ))
+            }
+            {
+              section.media && section.mediaAfterParagraph === undefined && (
+                <ItinerariModalPublicMedia
+                  media={section.media}
+                  zoomId={`${zoomId}-section-${sectionIndex}`}
+                />
+              )
+            }
+            {
+              section.table && (
+                <div class="mt-4 overflow-x-auto">
+                  {
+                    section.table.caption && (
+                      <Text
+                        tag="p"
+                        variant="textBase"
+                        class="text-base-500 dark:text-base-400 mb-3 leading-relaxed"
+                      >
+                        {section.table.caption}
+                      </Text>
+                    )
+                  }
+                  <table class="w-full min-w-[640px] border-collapse text-left">
+                    <thead>
+                      <tr class="border-b border-base-200 dark:border-base-800">
+                        {section.table.headers.map((header) => (
+                          <th
+                            scope="col"
+                            class="py-3 pr-4 last:pr-0 text-sm font-medium text-base-900 dark:text-white uppercase tracking-wide"
+                          >
+                            {header}
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {section.table.rows.map((row) => (
+                        <tr class="border-b border-base-200 dark:border-base-800">
+                          {row.cells.map((cell) => (
+                            <td class="py-3 pr-4 last:pr-0 text-base text-base-500 dark:text-base-400 align-top">
+                              {cell}
+                            </td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )
+            }
           </div>
         ))
       }

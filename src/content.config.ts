@@ -10,6 +10,7 @@ const modalContentSchema = (image: (path: string) => z.ZodType) =>
         title: z.string(),
         publicSrc: z.string(),
         alt: z.string(),
+        caption: z.string().optional(),
         tipus: z.enum(["animacio", "video"]).default("animacio"),
       })
       .optional(),
@@ -17,7 +18,67 @@ const modalContentSchema = (image: (path: string) => z.ZodType) =>
       .array(
         z.object({
           title: z.string(),
-          paragraphs: z.array(z.string()),
+          paragraphs: z.array(z.string()).optional(),
+          subsections: z
+            .array(
+              z.object({
+                title: z.string(),
+                paragraphs: z.array(z.string()),
+              }),
+            )
+            .optional(),
+          media: z
+            .object({
+              title: z.string().optional(),
+              publicSrc: z.string(),
+              alt: z.string(),
+              caption: z.string().optional(),
+              tipus: z.enum(["animacio", "video"]).default("animacio"),
+            })
+            .optional(),
+          mediaItems: z
+            .array(
+              z.object({
+                title: z.string().optional(),
+                publicSrc: z.string(),
+                alt: z.string(),
+                caption: z.string().optional(),
+                tipus: z.enum(["animacio", "video"]).default("animacio"),
+              }),
+            )
+            .optional(),
+          mediaCaption: z.string().optional(),
+          /** Índex del paràgraf (0-based) després del qual inserir `media` */
+          mediaAfterParagraph: z.number().int().nonnegative().optional(),
+          /** Índex de la subsecció (0-based) després de la qual inserir `mediaItems` */
+          mediaAfterSubsection: z.number().int().nonnegative().optional(),
+          mediaBeforeSubsection: z
+            .object({
+              subsectionIndex: z.number().int().nonnegative(),
+              items: z.array(
+                z.object({
+                  title: z.string().optional(),
+                  publicSrc: z.string(),
+                  alt: z.string(),
+                  caption: z.string().optional(),
+                  tipus: z.enum(["animacio", "video"]).default("animacio"),
+                }),
+              ),
+              caption: z.string().optional(),
+            })
+            .optional(),
+          table: z
+            .object({
+              caption: z.string().optional(),
+              headers: z.array(z.string()),
+              rows: z.array(
+                z.object({
+                  cells: z.array(z.string()),
+                }),
+              ),
+            })
+            .optional(),
+          paragraphsAfter: z.array(z.string()).optional(),
         }),
       )
       .optional(),
@@ -127,6 +188,19 @@ const itineraris = defineCollection({
       }),
       dadesModals: z.record(z.string(), modalContentSchema(image)).optional(),
       dadesModalAliases: z.record(z.string(), z.string()).optional(),
+      dadesIndex: z
+        .record(
+          z.string(),
+          z.array(
+            z.object({
+              label: z.string(),
+              modalKey: z.string(),
+              /** Si és false, es mostra només `label` sense prefix numèric */
+              numbered: z.boolean().optional(),
+            }),
+          ),
+        )
+        .optional(),
       credits: z
         .array(
           z.object({

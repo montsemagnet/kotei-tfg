@@ -1,0 +1,63 @@
+---
+import Text from "@/components/fundations/elements/Text.astro";
+import ItinerariZoom from "@/components/itinerari/ItinerariZoom.astro";
+import { withBase } from "@/utils/withBase";
+
+interface Props {
+  media: {
+    title?: string;
+    publicSrc: string;
+    alt: string;
+    caption?: string;
+  };
+  zoomId: string;
+  class?: string;
+}
+
+const { media, zoomId, class: className = "my-6" } = Astro.props;
+
+const zoomThumbClass =
+  "w-full cursor-pointer overflow-hidden border-0 p-0 bg-transparent hover:opacity-90 transition-opacity";
+const zoomImageClass =
+  "w-full h-auto rounded-md border border-base-200 dark:border-base-800";
+---
+
+<div class={className}>
+  {
+    media.title && (
+      <Text
+        tag="h4"
+        variant="textBase"
+        class="dark:text-white text-base-900 font-medium mb-3 leading-snug"
+      >
+        {media.title}
+      </Text>
+    )
+  }
+  <ItinerariZoom zoomId={zoomId}>
+    <figure class="itinerari-modal-media">
+      <button
+        type="button"
+        class={zoomThumbClass}
+        data-itinerari-zoom
+        data-full-src={withBase(media.publicSrc)}
+        aria-label={`Ampliar: ${media.alt}`}
+      >
+        <img
+          src={withBase(media.publicSrc)}
+          alt={media.alt}
+          class={zoomImageClass}
+          loading="lazy"
+          decoding="async"
+        />
+      </button>
+      {
+        media.caption && (
+          <figcaption class="mt-2 text-sm text-base-500 dark:text-base-400 leading-relaxed">
+            {media.caption}
+          </figcaption>
+        )
+      }
+    </figure>
+  </ItinerariZoom>
+</div>

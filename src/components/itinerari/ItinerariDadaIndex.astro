@@ -1,0 +1,43 @@
+---
+interface IndexItem {
+  label: string;
+  modalKey: string;
+  numbered?: boolean;
+}
+
+interface Props {
+  items: IndexItem[];
+  ariaLabel: string;
+}
+
+const { items, ariaLabel } = Astro.props;
+
+const linkClass =
+  "text-left cursor-pointer text-base text-accent-700 dark:text-accent-400 underline decoration-accent-700/30 dark:decoration-accent-400/40 underline-offset-[4px] hover:decoration-accent-700 dark:hover:decoration-accent-400 transition-colors leading-snug";
+---
+
+<nav class="mt-6" aria-label={ariaLabel}>
+  <ol class="flex flex-col gap-2 list-none p-0 m-0">
+    {
+      items.map((item, index) => {
+        const modalId = `itinerari-modal-${item.modalKey}`;
+        const displayLabel =
+          item.numbered === false ? item.label : `${index + 1}. ${item.label}`;
+
+        return (
+          <li>
+            <button
+              type="button"
+              data-modal-target={modalId}
+              class={linkClass}
+              aria-haspopup="dialog"
+              aria-label={`Obrir: ${item.label}`}
+            >
+              {displayLabel}
+            </button>
+          </li>
+        );
+      })
+    }
+  </ol>
+</nav>

@@ -1,0 +1,32 @@
+/* Escala el text dins dels blocs marcats; imatges i vídeos queden fora */
+[data-text-size-enabled][data-text-size="large"] .itinerari-modal-text-content {
+  zoom: 1.125;
+}
+
+[data-text-size-enabled][data-text-size="xlarge"] .itinerari-modal-text-content {
+  zoom: 1.25;
+}
+
+[data-text-size-enabled][data-text-size="large"] .itinerari-modal-media figcaption,
+[data-text-size-enabled][data-text-size="large"] :is(.itinerari-zoom-caption, .parada-gallery-caption, .roca-gallery-caption) {
+  font-size: calc(0.875rem * 1.125);
+  line-height: 1.625;
+}
+
+[data-text-size-enabled][data-text-size="xlarge"] .itinerari-modal-media figcaption,
+[data-text-size-enabled][data-text-size="xlarge"] :is(.itinerari-zoom-caption, .parada-gallery-caption, .roca-gallery-caption) {
+  font-size: calc(0.875rem * 1.25);
+  line-height: 1.625;
+}
+
+@supports not (zoom: 1) {
+  [data-text-size-enabled][data-text-size="large"] .itinerari-modal-text-content :is(h2, h3, h4, p, li, th, td, figcaption) {
+    font-size: calc(1em * 1.125) !important;
+    line-height: 1.75 !important;
+  }
+
+  [data-text-size-enabled][data-text-size="xlarge"] .itinerari-modal-text-content :is(h2, h3, h4, p, li, th, td, figcaption) {
+    font-size: calc(1em * 1.25) !important;
+    line-height: 1.75 !important;
+  }
+}

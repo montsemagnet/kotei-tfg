@@ -1,0 +1,47 @@
+---
+import { withBase } from "@/utils/withBase";
+
+const textSizeIcon = withBase("/images/ui/mida-text.png");
+
+const buttonClass =
+  "inline-flex min-w-9 items-center justify-center rounded-md border border-base-200 dark:border-base-700 bg-base-50 dark:bg-base-950/50 px-2.5 py-2 text-sm font-semibold text-base-900 dark:text-white hover:bg-base-100 dark:hover:bg-base-800 transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-base-50 dark:disabled:hover:bg-base-950/50";
+
+const groupClass =
+  "inline-flex items-center gap-1 rounded-md border border-base-200 dark:border-base-700 bg-base-50 dark:bg-base-950/50 p-1";
+---
+
+<div
+  class="itinerari-modal-text-size absolute top-4 right-[7.25rem] z-10"
+  data-modal-text-size
+  role="group"
+  aria-label="Mida del text del modal"
+>
+  <div class={groupClass}>
+    <img
+      src={textSizeIcon}
+      alt=""
+      width="32"
+      height="32"
+      class="size-8 shrink-0 object-contain px-0.5"
+      decoding="async"
+      aria-hidden="true"
+    />
+    <button
+      type="button"
+      class={buttonClass}
+      data-text-size-decrease
+      aria-label="Reduir mida del text"
+    >
+      A−
+    </button>
+    <span class="sr-only" data-text-size-status aria-live="polite">Text normal</span>
+    <button
+      type="button"
+      class={buttonClass}
+      data-text-size-increase
+      aria-label="Augmentar mida del text"
+    >
+      A+
+    </button>
+  </div>
+</div>

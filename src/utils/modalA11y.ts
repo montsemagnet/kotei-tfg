@@ -14,7 +14,7 @@ export function getFocusableElements(container: HTMLElement): HTMLElement[] {
 }
 
 export function getModalPanel(dialog: HTMLElement): HTMLElement {
-  const panel = dialog.querySelector(".itinerari-dada-panel");
+  const panel = dialog.querySelector(".itinerari-dada-panel, [data-text-size-enabled]");
   if (panel instanceof HTMLElement) return panel;
 
   const figure = dialog.querySelector("figure");

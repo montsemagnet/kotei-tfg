@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import ItinerariModalTextSizeControls from "@/components/itinerari/ItinerariModalTextSizeControls.astro";
 
 interface Props {
   fotos: { url: ImageMetadata; alt: string }[];
@@ -38,37 +39,40 @@ const { fotos, galleryId } = Astro.props;
     aria-modal="true"
     data-focus-trap="true"
   >
-    <button
-      type="button"
-      class="parada-gallery-close absolute top-4 right-4 z-10 rounded-full bg-white/10 px-4 py-2 text-white hover:bg-white/20"
-      aria-label="Tancar galeria"
-    >
-      Tancar
-    </button>
-    <button
-      type="button"
-      class="parada-gallery-prev absolute left-4 z-10 rounded-full bg-white/10 px-4 py-2 text-white hover:bg-white/20"
-      aria-label="Foto anterior"
-    >
-      ←
-    </button>
-    <button
-      type="button"
-      class="parada-gallery-next absolute right-4 z-10 rounded-full bg-white/10 px-4 py-2 text-white hover:bg-white/20"
-      aria-label="Foto següent"
-    >
-      →
-    </button>
-    <figure class="max-w-5xl w-full">
-      <img
-        class="parada-gallery-image w-full max-h-[85vh] object-contain mx-auto"
-        src=""
-        alt=""
-      />
-      <figcaption
-        class="parada-gallery-caption mt-4 text-center text-white text-sm"
-      />
-    </figure>
+    <div class="relative w-full max-w-5xl mx-auto" data-text-size-enabled="true">
+      <ItinerariModalTextSizeControls />
+      <button
+        type="button"
+        class="parada-gallery-close absolute top-4 right-4 z-10 rounded-full bg-white/10 px-4 py-2 text-white hover:bg-white/20"
+        aria-label="Tancar galeria"
+      >
+        Tancar
+      </button>
+      <button
+        type="button"
+        class="parada-gallery-prev absolute left-4 z-10 rounded-full bg-white/10 px-4 py-2 text-white hover:bg-white/20"
+        aria-label="Foto anterior"
+      >
+        ←
+      </button>
+      <button
+        type="button"
+        class="parada-gallery-next absolute right-4 z-10 rounded-full bg-white/10 px-4 py-2 text-white hover:bg-white/20"
+        aria-label="Foto següent"
+      >
+        →
+      </button>
+      <figure class="max-w-5xl w-full">
+        <img
+          class="parada-gallery-image w-full max-h-[85vh] object-contain mx-auto"
+          src=""
+          alt=""
+        />
+        <figcaption
+          class="parada-gallery-caption mt-4 text-center text-white text-sm"
+        />
+      </figure>
+    </div>
   </dialog>
 </div>
 

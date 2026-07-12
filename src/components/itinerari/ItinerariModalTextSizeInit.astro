@@ -1,0 +1,9 @@
+---
+---
+
+<script>
+  import { initAllModalTextSizeControls } from "@/utils/modalTextSize";
+
+  initAllModalTextSizeControls();
+  document.addEventListener("astro:after-swap", initAllModalTextSizeControls);
+</script>

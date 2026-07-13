@@ -90,7 +90,7 @@ export const SAU_TAVERTET_PARADES: SauTavertetParada[] = [
   {
     num: "A",
     slug: "I1-A1",
-    label: "Pissares del Cambrordovicià",
+    label: "Pissarres del Cambroordovicià",
     svgIds: ["I1-A1", "A1", "ParadaA1"],
   },
 ];

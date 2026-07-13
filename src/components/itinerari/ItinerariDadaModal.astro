@@ -9,6 +9,7 @@ import { withBase } from "@/utils/withBase";
 interface Subsection {
   title: string;
   paragraphs: string[];
+  media?: PublicMedia & { title?: string };
 }
 
 interface SectionTable {
@@ -180,6 +181,39 @@ const figureTitleClass =
                 </>
               ))}
               {
+                section.mediaItems &&
+                !section.subsections?.length &&
+                section.mediaAfterSubsection === undefined && (
+                  <div class="my-6 flex flex-col gap-6">
+                    {
+                      section.mediaTitle && (
+                        <Text
+                          tag="h4"
+                          variant="textBase"
+                          class={figureTitleClass}
+                        >
+                          {section.mediaTitle}
+                        </Text>
+                      )
+                    }
+                    {section.mediaItems.map((item, itemIndex) => (
+                      <ItinerariModalPublicMedia
+                        media={item}
+                        zoomId={`${zoomId}-section-${sectionIndex}-items-${itemIndex}`}
+                        class="my-0"
+                      />
+                    ))}
+                    {
+                      section.mediaCaption && (
+                        <figcaption class={figureCaptionClass}>
+                          {section.mediaCaption}
+                        </figcaption>
+                      )
+                    }
+                  </div>
+                )
+              }
+              {
                 section.subsections?.map((subsection, subsectionIndex) => (
                   <>
                     {
@@ -232,6 +266,15 @@ const figureTitleClass =
                         </Text>
                       ))}
                     </div>
+                    {
+                      subsection.media && (
+                        <ItinerariModalPublicMedia
+                          media={subsection.media}
+                          zoomId={`${zoomId}-section-${sectionIndex}-subsection-${subsectionIndex}`}
+                          class="my-6"
+                        />
+                      )
+                    }
                     {
                       section.mediaItems &&
                       section.mediaAfterSubsection === subsectionIndex && (

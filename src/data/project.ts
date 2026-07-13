@@ -234,8 +234,15 @@ export type GeologiaItinerariCredit = {
 /** Fonts bibliogràfiques d'imatges i mapes de l'apartat Geologia (itinerari Sau–Tavertet) */
 export const geologiaItinerariCredits: GeologiaItinerariCredit[] = [
   {
+    label: "Bolós et al. (2015) — Sistema de rift europeu neògen–quaternari (Fig. 21)",
+    use: "Mapa del sistema de rift europeu neògen–quaternari (modal de tectònica i estructures, apartat «Procés formador: herència del Rift Europeu»), adaptat de la Fig. 21 via el recurs de Geologia ibèrica de la UNED (Surco de València).",
+    url: "https://www.intecca.uned.es/difusiongiccu/grado/curso_geologia/paginas_contenidos/geologia_iberica/abreventanas/Surco_Valencia.html",
+    apaCitation:
+      "Bolós, X., et al. (2015). Sistema de rift europeo neógeno-cuaternario [Map]. Reproduced in Geología Ibérica, UNED. https://www.intecca.uned.es/difusiongiccu/grado/curso_geologia/paginas_contenidos/geologia_iberica/abreventanas/Surco_Valencia.html",
+  },
+  {
     label: "Cruset et al. (2026) — Fig. 4 (falles, volcanisme i sismicitat)",
-    use: "Mapa del nord-est de Catalunya amb el sistema de falles de les Serralades Transversals, la distribució del volcanisme i la sismicitat cenozoica, adaptat de la Fig. 4 per al modal de tectònica i estructures de l'itinerari Sau–Tavertet. Dades de sismicitat: Geoíndex-Sismologia, Institut Cartogràfic i Geològic de Catalunya (ICGC).",
+    use: "Mapa del nord-est de Catalunya amb el sistema de falles de les Serralades Transversals, la distribució del volcanisme i la sismicitat cenozoica, adaptat de la Fig. 4 per al modal de tectònica i estructures de l'itinerari Sau–Tavertet, amb ressaltat de les falles d'Amer, Sant Joan de Fàbregues i Tavertet. Dades de sismicitat: Geoíndex-Sismologia, Institut Cartogràfic i Geològic de Catalunya (ICGC).",
     url: "https://doi.org/10.1016/j.earscirev.2025.105342",
     apaCitation:
       "Cruset, D., Vergés, J., Viaplana-Muzas, M., Bolós, X., Geyer, A., Díaz, J., Najafi, M., Moragas, M., Millonig, L. J., Gerdes, A., Bravo-Gutiérrez, E., Torné, M., Jiménez-Munt, I., & García-Castellanos, D. (2026). Tectonic controls on volcanism in transfer fault zones: Insights from the Catalan Volcanic Zone (Northeastern Iberia). Earth-Science Reviews, 272, Article 105342. https://doi.org/10.1016/j.earscirev.2025.105342",
@@ -248,6 +255,43 @@ export const geologiaItinerariCredits: GeologiaItinerariCredit[] = [
       "Cruset, D., Vergés, J., Viaplana-Muzas, M., Bolós, X., Geyer, A., Díaz, J., Najafi, M., Moragas, M., Millonig, L. J., Gerdes, A., Bravo-Gutiérrez, E., Torné, M., Jiménez-Munt, I., & García-Castellanos, D. (2026). Tectonic controls on volcanism in transfer fault zones: Insights from the Catalan Volcanic Zone (Northeastern Iberia). Earth-Science Reviews, 272, Article 105342. https://doi.org/10.1016/j.earscirev.2025.105342",
   },
   {
+    label: "Fotografia del Turó del Castell (parades P11–P12, elaboració pròpia)",
+    use: "Fotografia de camp del Turó del Castell amb margues grises i gresos del Castell (modal d'estratigrafia i litologia), realitzada per Montserrat Magnet Sabata a l'itinerari Presa de Sau–Tavertet el 9 de juny de 2026.",
+    apaCitation:
+      "Magnet Sabata, M. (2026). Turó del Castell, itinerari Sau–Tavertet [Photograph]. Elaboració pròpia.",
+  },
+  {
+    label: "Fotografia de gresos vermells i grisos (parada P7, elaboració pròpia)",
+    use: "Fotografia de camp de l'aflorament de gresos vermells i grisos de la Formació Tavertet (modal d'estratigrafia i litologia), realitzada per Montserrat Magnet Sabata a l'itinerari Presa de Sau–Tavertet el 9 de juny de 2026.",
+    apaCitation:
+      "Magnet Sabata, M. (2026). Aflorament de gresos vermells i grisos de la Formació Tavertet [Photograph]. Elaboració pròpia.",
+  },
+  {
+    label: "Fotografia de calcàries nummulítiques a Tavertet (elaboració pròpia)",
+    use: "Fotografia de camp d'un aflorament de calcària nummulítica amb nummulits (modal d'estratigrafia i litologia, parada P9), realitzada per Montserrat Magnet Sabata a l'itinerari Presa de Sau–Tavertet el 9 de juny de 2026.",
+    apaCitation:
+      "Magnet Sabata, M. (2026). Aflorament de calcària nummulítica a Tavertet [Photograph]. Elaboració pròpia.",
+  },
+  {
+    label: "Fotografia del sòcol a la presa de Sau (elaboració pròpia)",
+    use: "Fotografia de camp de l'aflorament de granitoides hercinians del sòcol paleozoic a la presa de Sau (modals de marc geològic regional i d'estratigrafia i litologia, parada P1), realitzada per Montserrat Magnet Sabata el 3 de juny de 2026.",
+    apaCitation:
+      "Magnet Sabata, M. (2026). Aflorament del sòcol paleozoic a la presa de Sau [Photograph]. Elaboració pròpia.",
+  },
+  {
+    label: "Esquema de les dues «històries» geològiques (elaboració pròpia)",
+    use: "Diagrama simplificat del sòcol paleozoic i la cobertura eocena en discordança (modal de marc geològic regional, apartat «Les dues històries que conté el camí»), elaborat per Montserrat Magnet Sabata.",
+    apaCitation:
+      "Magnet Sabata, M. (2026). Esquema del sòcol paleozoic i la cobertura eocena del Collsacabra–Tavertet [Diagram]. Elaboració pròpia.",
+  },
+  {
+    label: "Enciclopèdia Catalana — Successió paleògena a la conca de Vic",
+    use: "Figura de mapa geològic i secció de litofàcies del marge oriental de la Conca de l'Ebre (modal de marc geològic regional), adaptada de l'article sobre els marges oriental i meridional al sector català de la conca. Original de P. Busquets, S. Reguant, A. Barnolas i C. Taberner.",
+    url: "https://www.enciclopedia.cat/historia-natural-dels-paisos-catalans/els-marges-oriental-i-meridional-al-sector-catala-de-la-conca",
+    apaCitation:
+      "Busquets, P., Reguant, S., Barnolas, A., & Taberner, C. (n.d.). La successió paleògena a la conca de Vic [Map and stratigraphic diagram]. In Historia Natural dels Països Catalans. Enciclopèdia Catalana. https://www.enciclopedia.cat/historia-natural-dels-paisos-catalans/els-marges-oriental-i-meridional-al-sector-catala-de-la-conca",
+  },
+  {
     label: "Google Earth — vista aèria Sau–Tavertet",
     use: "Imatge de satèl·lit de base del trajecte Sau–Tavertet (modal de tectònica i estructures), amb la traça de la Falla de Tavertet i les parades superposades per Montserrat Magnet Sabata.",
     url: "https://www.google.com/earth/",
@@ -255,8 +299,15 @@ export const geologiaItinerariCredits: GeologiaItinerariCredit[] = [
       "Google. (n.d.). Google Earth [Satellite imagery and computer software]. https://www.google.com/earth/",
   },
   {
+    label: "Google Earth — Falla de Sant Joan de Fàbregues (Pla Boixer / Sant Joan)",
+    use: "Vista en perspectiva de Google Earth del desnivell entre el Pla Boixer (1.100 m) i Sant Joan de Fàbregues (790 m) (modal de tectònica i estructures, Figura 4), amb marques d'elevació i traça superposades per Montserrat Magnet Sabata.",
+    url: "https://www.google.com/earth/",
+    apaCitation:
+      "Google. (n.d.). Google Earth [Satellite imagery and computer software]. https://www.google.com/earth/",
+  },
+  {
     label: "Mapa geològic local Sau–Tavertet (elaboració pròpia)",
-    use: "Mapa de la falla normal de Tavertet i les parades P1–P9 (modal de tectònica i estructures), elaborat per Montserrat Magnet Sabata amb QGIS a partir de dades de l'ICGC.",
+    use: "Mapa de la falla normal de Tavertet i les parades P1–P12 (modal de tectònica i estructures), elaborat per Montserrat Magnet Sabata amb QGIS a partir de dades de l'ICGC.",
     apaCitation:
       "Magnet Sabata, M. (2026). Mapa geològic de la zona Sau–Tavertet [Map]. Elaboració pròpia amb QGIS a partir del Mapa geològic de Catalunya 1:25.000 de l'Institut Cartogràfic i Geològic de Catalunya.",
   },
@@ -282,7 +333,7 @@ export const geologiaItinerariCredits: GeologiaItinerariCredit[] = [
   },
   {
     label: "Fotografies de geomorfologia (Sau–Tavertet)",
-    use: "Quatre fotografies de camp de l'apartat Geomorfologia de l'itinerari Sau–Tavertet (cinglera sobre el pantà de Sau, erosió diferencial, aflorament modelat per l'aigua i cinglera en perfil), realitzades per Montserrat Magnet Sabata, Núria Ferrer Ramos i Judit Molera Marimon.",
+    use: "Quatre fotografies de camp de l'apartat Geomorfologia de l'itinerari Sau–Tavertet (cinglera sobre el pantà de Sau, erosió diferencial, aflorament modelat per l'aigua i cinglera en perfil), realitzades per Montserrat Magnet Sabata, Núria Ferrer Ramos i Judit Molera Marimon a l'itinerari Presa de Sau–Tavertet el 9 de juny de 2026.",
     apaCitation:
       "Magnet Sabata, M., Ferrer Ramos, N., & Molera Marimon, J. (2026). Fotografies de geomorfologia de l'itinerari Sau–Tavertet [Photographs]. Elaboració pròpia.",
   },

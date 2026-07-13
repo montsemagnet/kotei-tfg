@@ -223,3 +223,67 @@ export const paleogeologiaVideoCredits: PaleogeologiaVideoCredit[] = [
       "woodbrosound. (n.d.). Race With Life [Audio recording]. Motion Array. https://motionarray.com/royalty-free-music/race-with-life-356806/",
   },
 ];
+
+export type GeologiaItinerariCredit = {
+  label: string;
+  use: string;
+  url?: string;
+  apaCitation: string;
+};
+
+/** Fonts bibliogràfiques d'imatges i mapes de l'apartat Geologia (itinerari Sau–Tavertet) */
+export const geologiaItinerariCredits: GeologiaItinerariCredit[] = [
+  {
+    label: "Cruset et al. (2026) — Fig. 4 (falles, volcanisme i sismicitat)",
+    use: "Mapa del nord-est de Catalunya amb el sistema de falles de les Serralades Transversals, la distribució del volcanisme i la sismicitat cenozoica, adaptat de la Fig. 4 per al modal de tectònica i estructures de l'itinerari Sau–Tavertet. Dades de sismicitat: Geoíndex-Sismologia, Institut Cartogràfic i Geològic de Catalunya (ICGC).",
+    url: "https://doi.org/10.1016/j.earscirev.2025.105342",
+    apaCitation:
+      "Cruset, D., Vergés, J., Viaplana-Muzas, M., Bolós, X., Geyer, A., Díaz, J., Najafi, M., Moragas, M., Millonig, L. J., Gerdes, A., Bravo-Gutiérrez, E., Torné, M., Jiménez-Munt, I., & García-Castellanos, D. (2026). Tectonic controls on volcanism in transfer fault zones: Insights from the Catalan Volcanic Zone (Northeastern Iberia). Earth-Science Reviews, 272, Article 105342. https://doi.org/10.1016/j.earscirev.2025.105342",
+  },
+  {
+    label: "Cruset et al. (2026) — Fig. 5C (Zona de Falla de Tavertet)",
+    use: "Imatge de camp dels cingles de Tavertet, adaptada de la Fig. 5C («Tavertet Fault Zone») per al modal d'estratigrafia i litologia de l'itinerari Sau–Tavertet.",
+    url: "https://doi.org/10.1016/j.earscirev.2025.105342",
+    apaCitation:
+      "Cruset, D., Vergés, J., Viaplana-Muzas, M., Bolós, X., Geyer, A., Díaz, J., Najafi, M., Moragas, M., Millonig, L. J., Gerdes, A., Bravo-Gutiérrez, E., Torné, M., Jiménez-Munt, I., & García-Castellanos, D. (2026). Tectonic controls on volcanism in transfer fault zones: Insights from the Catalan Volcanic Zone (Northeastern Iberia). Earth-Science Reviews, 272, Article 105342. https://doi.org/10.1016/j.earscirev.2025.105342",
+  },
+  {
+    label: "Google Earth — vista aèria Sau–Tavertet",
+    use: "Imatge de satèl·lit de base del trajecte Sau–Tavertet (modal de tectònica i estructures), amb la traça de la Falla de Tavertet i les parades superposades per Montserrat Magnet Sabata.",
+    url: "https://www.google.com/earth/",
+    apaCitation:
+      "Google. (n.d.). Google Earth [Satellite imagery and computer software]. https://www.google.com/earth/",
+  },
+  {
+    label: "Mapa geològic local Sau–Tavertet (elaboració pròpia)",
+    use: "Mapa de la falla normal de Tavertet i les parades P1–P9 (modal de tectònica i estructures), elaborat per Montserrat Magnet Sabata amb QGIS a partir de dades de l'ICGC.",
+    apaCitation:
+      "Magnet Sabata, M. (2026). Mapa geològic de la zona Sau–Tavertet [Map]. Elaboració pròpia amb QGIS a partir del Mapa geològic de Catalunya 1:25.000 de l'Institut Cartogràfic i Geològic de Catalunya.",
+  },
+  {
+    label: "Seqüència temporal de la formació del sòcol (elaboració pròpia)",
+    use: "Animació temporal del mapa geològic (modal de marc geològic regional), elaborada per Montserrat Magnet Sabata amb QGIS a partir del Mapa geològic de Catalunya 1:25.000 (ICGC).",
+    apaCitation:
+      "Magnet Sabata, M. (2026). Seqüència temporal de la formació del sòcol, itinerari Sau–Tavertet [Animated map]. Elaboració pròpia amb QGIS a partir del Mapa geològic de Catalunya 1:25.000 de l'Institut Cartogràfic i Geològic de Catalunya.",
+  },
+  {
+    label: "Institut Cartogràfic i Geològic de Catalunya (ICGC) — Mapa geològic 1:25.000",
+    use: "Dades litològiques i estructurals de base per als mapes geològics de l'itinerari Sau–Tavertet (marc regional, seqüència temporal del sòcol, mapa local de falles i mapa interactiu).",
+    url: "https://www.icgc.cat",
+    apaCitation:
+      "Institut Cartogràfic i Geològic de Catalunya. (n.d.). Mapa geològic de Catalunya 1:25.000 [Map]. https://www.icgc.cat",
+  },
+  {
+    label: "QGIS",
+    use: "Programari de SIG utilitzat per a l'elaboració dels mapes geològics i de la seqüència temporal de l'itinerari Sau–Tavertet.",
+    url: "https://qgis.org",
+    apaCitation:
+      "QGIS Development Team. (2025). QGIS geographic information system (Version 3.34) [Computer software]. https://qgis.org",
+  },
+  {
+    label: "Fotografies de geomorfologia (Sau–Tavertet)",
+    use: "Quatre fotografies de camp de l'apartat Geomorfologia de l'itinerari Sau–Tavertet (cinglera sobre el pantà de Sau, erosió diferencial, aflorament modelat per l'aigua i cinglera en perfil), realitzades per Montserrat Magnet Sabata, Núria Ferrer Ramos i Judit Molera Marimon.",
+    apaCitation:
+      "Magnet Sabata, M., Ferrer Ramos, N., & Molera Marimon, J. (2026). Fotografies de geomorfologia de l'itinerari Sau–Tavertet [Photographs]. Elaboració pròpia.",
+  },
+];

@@ -48,6 +48,8 @@ const modalContentSchema = (image: (path: string) => z.ZodType) =>
             )
             .optional(),
           mediaCaption: z.string().optional(),
+          /** Títol de figura sobre un grup `mediaItems` (peu de figura a `mediaCaption`) */
+          mediaTitle: z.string().optional(),
           /** Índex del paràgraf (0-based) després del qual inserir `media` */
           mediaAfterParagraph: z.number().int().nonnegative().optional(),
           /** Índex de la subsecció (0-based) després de la qual inserir `mediaItems` */
@@ -55,6 +57,7 @@ const modalContentSchema = (image: (path: string) => z.ZodType) =>
           mediaBeforeSubsection: z
             .object({
               subsectionIndex: z.number().int().nonnegative(),
+              title: z.string().optional(),
               items: z.array(
                 z.object({
                   title: z.string().optional(),

@@ -175,9 +175,10 @@ dadesModals:
           - "Sota els sediments terciaris, el trajecte es recolza sobre un sòcol de roques paleozoiques i cambroordovicianes que aflora espectacularment al Massís de les Guilleries, a l'altre costat del Pantà de Sau. El massís de les Guilleries és constituït per materials metasedimentaris i ígnies d'edat paleozoica: els nivells més antics corresponen al Cambroordovicià i consisteixen en trams pelítics (pissarres i esquists), separats per nivells d'ortogneissos. Per sobre es situa una sèrie volcano-detrítica que ha proporcionat braquiòpodes d'edat Caradoc (Ordovicià superior). Tota la successió va ser deformada i metamorfitzada durant l'orogènia herciniana (Carbonífer), que va donar lloc a la formació de foliacions generalitzades i un metamorfisme que, a les zones més profundes, va assolir les fàcies amfibolítica d'alt grau."
           - "Posteriorment, durant el Paleozoic tardà, es van produir intrusions granítiques i granitoides lligades a la mateixa orogènia herciniana —els monzogranits i pòrfirs que veurem a la primera parada de l'itinerari. La superfície d'aquest sòcol va quedar arrasada per l'erosió abans del Paleogen, de manera que els sediments terciaris s'hi disposen al damunt mitjançant una discordança erosiva, el contacte espectacular que podrem observar durant el recorregut."
         media:
-          title: "Seqüència temporal de la formació del sòcol"
+          title: "Figura 2. Seqüència temporal de la formació del sòcol paleozoic al llarg de l'itinerari Sau–Tavertet."
           publicSrc: "/images/itineraris/sau-tavertet/geologic-temporal.webp"
           alt: "Seqüència temporal de la formació del sòcol de l'itinerari Sau–Tavertet"
+          caption: "Elaboració pròpia amb QGIS a partir del Mapa geològic de Catalunya 1:25.000 (ICGC)."
       - title: "Les dues «històries» que conté el camí"
         paragraphs:
           - "En resum, l'itinerari travessa verticalment dos grans capítols de la història geològica del territori:"
@@ -215,9 +216,10 @@ dadesModals:
         paragraphs:
           - "Per sobre del sòcol cristal·lí paleozoic, els sediments terciaris s'hi disposen al damunt mitjançant una discordança erosiva. Primer apareix la capa vermella continental (argiles i gresos vermells), i al damunt una capa grisa d'origen marí (margues i calcàries amb nummulits). Aquest contacte, molt net i espectacular, el podrem observar directament en els cingles de Tavertet durant el recorregut, on la línia de separació entre les roques vermelles de la base i les roques grises superiors és perfectament visible."
         media:
+          title: "Figura 1. Vista panoràmica dels cingles de Tavertet (SW–NE), amb el contacte entre la capa vermella continental i la capa grisa marina. La línia discontínua marca la base de la Formació Tavertet (discordança erosiva); a la dreta, la traça de la Zona de Falla de Tavertet."
           publicSrc: "/images/itineraris/sau-tavertet/falla-tavertet.jpg"
           alt: "Contacte entre la capa vermella continental i la capa grisa marina als cingles de Tavertet, amb la Falla de Tavertet"
-          caption: "Contacte entre la capa vermella continental i la capa grisa marina als cingles de Tavertet. La línia discontínua marca la base de la Formació Tavertet (discordança erosiva)."
+          caption: "Adaptada de Cruset et al. (2026), Fig. 5C."
       - title: "La capa grisa marina (P7–P9)"
         paragraphs:
           - "Per sobre de la seqüència vermella s'instal·la la capa grisa, formada per roques d'origen marí: margues, gresos grisos i, sobretot, calcàries amb nummulits. Aquest paquet registra la presència d'un antic mar interior eocè, relacionat amb la part oriental de la Conca de l'Ebre."
@@ -256,9 +258,10 @@ dadesModals:
           - "Tot i que les capes sedimentàries de Tavertet són gairebé horitzontals, el paisatge actual no és una estructura rígida i estàtica, sinó el resultat de diversos moviments tectònics que han fragmentat i desplaçat el bloc rocós. Després de la seva deposició, aquestes roques han estat tallades i desplaçades per un sistema de falles normals que han generat blocs elevats (horsts) i blocs enfonsats (grabens). El bloc on se situa el poble de Tavertet és un horst, mantingut en posició alta, mentre que cap a la Selva i l'Empordà trobem blocs enfonsats que formen fosses i depressions."
           - "Les capes que veiem als cingles són, en general, subhoritzontals o lleugerament inclinades, i aquesta geometria plana és clau per explicar el relleu tabular: una «taula» de roques dures coronada per calcàries, recolzada sobre nivells més tous de margues i gresos. Sobre aquesta taula, les fractures verticals i les falles dibuixen els límits entre blocs i controlen on es formen cingles, vallons i penya-segats."
         media:
+          title: "Figura 1. Mapa del nord-est de Catalunya amb el sistema de falles normals, els camps volcànics i la sismicitat cenozoica. Les estrelles blanques marquen les localitats (Tavertet, Rupit i El Far), que formen part del mateix bloc tectònic elevat, heretant l'extensió del Rift europeu."
           publicSrc: "/images/itineraris/sau-tavertet/mapa-falles-ne-catalunya.png"
           alt: "Mapa del nord-est de Catalunya amb falles normals, camps volcànics i sismicitat cenozoica"
-          caption: "Mapa del NE de Catalunya on es representa el sistema de falles normals (Amer, Sant Joan de Fàbregues, Tavertet, etc.), els camps volcànics (Garrotxa, La Selva, Empordà) i la sismicitat cenozoica. Tavertet, Rupit i El Far formen part del mateix bloc tectònic elevat, heretant l'extensió del Rift europeu."
+          caption: "Dades de sismicitat: Geoíndex-Sismologia (ICGC). Adaptada de Cruset et al. (2026), Fig. 4."
       - title: "Les falles principals del trajecte"
         subsections:
           - title: "Falla de Tavertet"
@@ -275,14 +278,16 @@ dadesModals:
             alt: "Mapa geològic simplificat de la zona Sau–Tavertet amb la falla normal de Tavertet i les parades P1–P9"
           - publicSrc: "/images/itineraris/sau-tavertet/llegenda-mapa-falles-sau-tavertet.png"
             alt: "Llegenda d'unitats litològiques del mapa geològic Sau–Tavertet"
-        mediaCaption: "Mapa geològic simplificat de la zona Sau–Tavertet, on es representa la falla normal de Tavertet i la posició de les parades P1–P9 sobre el bloc elevat de la Serralada Transversal (dades ICGC)."
+        mediaTitle: "Figura 2. Mapa geològic de la zona Sau–Tavertet amb la falla normal de Tavertet i la posició de les parades P1–P9 sobre el bloc elevat de la Serralada Transversal."
+        mediaCaption: "Elaboració pròpia amb QGIS a partir del Mapa geològic de Catalunya 1:25.000 (ICGC)."
         mediaAfterSubsection: 0
         mediaBeforeSubsection:
           subsectionIndex: 1
+          title: "Figura 3. Vista aèria del trajecte Sau–Tavertet amb la traça de la Falla de Tavertet (línies vermelles) superposada. Es poden veure les parades disposades sobre el bloc elevat de Tavertet, separat del bloc oriental per una falla normal cenozoica."
           items:
             - publicSrc: "/images/itineraris/sau-tavertet/vista-aeria-falla-tavertet.png"
               alt: "Vista aèria del trajecte Sau–Tavertet amb la traça de la Falla de Tavertet en vermell"
-          caption: "Vista aèria del trajecte Sau–Tavertet amb la traça de la Falla de Tavertet (línies vermelles) superposada. Es poden veure les parades disposades sobre el bloc elevat de Tavertet, separat del bloc oriental per una falla normal cenozoica."
+          caption: "Imatge de base adaptada de Google Earth; traça de la falla i parades: elaboració pròpia."
         paragraphsAfter:
           - "En conjunt, aquestes tres falles formen part d'un sistema extensiu neogen orientat aproximadament NW–SE, relacionat amb el desenvolupament del Rift Cenozoic Europeu i la Fossa de València. Les falles normals indiquen que el terreny s'ha estirat: un bloc baixa respecte a l'altre, generant fosses i altiplans."
       - title: "Procés formador: herència del Rift Europeu"
@@ -295,30 +300,34 @@ dadesModals:
         paragraphs:
           - "El sector de Tavertet forma part de l'altiplà estructural del Collsacabra, situat aproximadament entre 900 i 1.100 metres d'altitud. El seu tret més visible és la cinglera que domina el pantà de Sau, amb un desnivell molt marcat respecte a la vall encaixada del Ter."
         media:
+          title: "Figura 1. Vista dels cingles de Tavertet sobre el pantà de Sau, que mostra el fort desnivell entre l'altiplà del Collsacabra i la vall encaixada del Ter."
           publicSrc: "/images/itineraris/sau-tavertet/geomofologia-2.jpg"
           alt: "Vista del pantà de Sau i la cinglera de Tavertet des de l'altiplà del Collsacabra"
-          caption: "Vista dels cingles de Tavertet sobre el pantà de Sau, que mostra el fort desnivell entre l'altiplà del Collsacabra i la vall encaixada del Ter."
+          caption: "Fotografia: Montserrat Magnet Sabata, Núria Ferrer Ramos i Judit Molera Marimon."
       - title: "Com es modela el relleu"
         paragraphs:
           - "La forma del paisatge respon a l'erosió diferencial entre materials de duresa diferent. Les calcàries i els gresos més resistents formen cingles i cornises, mentre que les margues i argiles s'erosionen amb més facilitat i originen vessants més suaus o zones de pendent inestable."
         media:
+          title: "Figura 2. Panoràmica de la cinglera de Tavertet, resultat de l'erosió diferencial entre roques dures i materials més tous."
           publicSrc: "/images/itineraris/sau-tavertet/geomofologia-1.jpg"
           alt: "Cinglera de Tavertet amb estratificació visible i erosió diferencial entre capes litològiques"
-          caption: "Panoràmica de la cinglera de Tavertet, resultat de l'erosió diferencial entre roques dures i materials més tous."
+          caption: "Fotografia: Montserrat Magnet Sabata, Núria Ferrer Ramos i Judit Molera Marimon."
       - title: "El paper de l'aigua"
         paragraphs:
           - "El Ter i els torrents secundaris han disseccionat l'altiplà al llarg del temps, obrint valls, canals i graus naturals de pujada cap a Tavertet. En alguns sectors, aquests processos també generen salts d'aigua i encaixaments molt visibles en el paisatge del Collsacabra, com passa al Salt de Sallent."
         media:
+          title: "Figura 3. Aflorament amb alternança de materials vermells i grisos, on l'erosió de l'aigua ressalta el contrast de duresa entre les capes."
           publicSrc: "/images/itineraris/sau-tavertet/geomofologia-5.jpg"
           alt: "Encaixament fluvial i cingleres del Collsacabra modelades per l'acció de l'aigua"
-          caption: "Aflorament amb alternança de materials vermells i grisos, on l'erosió de l'aigua ressalta el contrast de duresa entre les capes."
+          caption: "Fotografia: Montserrat Magnet Sabata, Núria Ferrer Ramos i Judit Molera Marimon."
       - title: "Relleu i estructura geològica"
         paragraphs:
           - "La geomorfologia no depèn només de l'erosió, sinó també de l'estructura tectònica regional. Les falles de les Serralades Transversals han condicionat la disposició dels blocs del terreny i expliquen part del fort contrast topogràfic entre l'altiplà de Tavertet i els relleus veïns."
         media:
+          title: "Figura 4. Cinglera de Tavertet vista de perfil, que evidencia la continuïtat lateral dels estrats i la configuració en bloc elevat de l'altiplà."
           publicSrc: "/images/itineraris/sau-tavertet/geomofologia-4.jpg"
           alt: "Paret rocosa vertical del sector de Tavertet, condicionada per l'estructura geològica i tectònica"
-          caption: "Cinglera de Tavertet vista de perfil, que evidencia la continuïtat lateral dels estrats i la configuració en bloc elevat de l'altiplà."
+          caption: "Fotografia: Montserrat Magnet Sabata, Núria Ferrer Ramos i Judit Molera Marimon."
 images:
   - url: "/src/images/itineraris/sau-tavertet/I1-galeria-1.jpeg"
     alt: "Paisatge de l'itinerari Sau–Tavertet"

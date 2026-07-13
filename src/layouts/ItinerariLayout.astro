@@ -31,6 +31,7 @@ const dadesLabels: Record<string, string> = {
 };
 
 const videoModalId = "itinerari-modal-visualitzacio";
+const altimetriaModalId = "itinerari-modal-altimetria";
 const videoEnModal = frontmatter.video?.enModal ?? false;
 const hasInlineMap = frontmatter.mapa === "sau-tavertet";
 const heroWrapperClass = hasInlineMap
@@ -216,6 +217,53 @@ const introTable = frontmatter.intro.find((item) => item.table)?.table;
               >
                 {frontmatter.video.alt}
               </Text>
+            </div>
+          </div>
+        )
+      }
+
+      {
+        frontmatter.altimetria && (
+          <div
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            class="grid grid-cols-1 lg:grid-cols-4 items-start gap-x-6 gap-y-2 mb-12"
+          >
+            <div class="min-w-0">
+              <button
+                type="button"
+                data-video-modal-target={altimetriaModalId}
+                class="text-left cursor-pointer group inline-flex flex-nowrap items-center gap-2 max-w-full"
+                aria-haspopup="dialog"
+                aria-label={`Obrir: ${frontmatter.altimetria.label}`}
+              >
+                <Text
+                  tag="span"
+                  variant="displayMD"
+                  class="capitalize font-medium tracking-tighter text-accent-700 dark:text-accent-400 underline decoration-accent-700/30 dark:decoration-accent-400/40 underline-offset-[6px] group-hover:decoration-accent-700 dark:group-hover:decoration-accent-400 transition-colors leading-tight break-words"
+                >
+                  {frontmatter.altimetria.label}
+                </Text>
+                <span
+                  class="inline-flex size-7 shrink-0 items-center justify-center rounded-full border border-accent-700/25 dark:border-accent-400/30 text-accent-700 dark:text-accent-400 text-sm leading-none group-hover:bg-accent-700/10 dark:group-hover:bg-accent-400/10 transition-colors"
+                  aria-hidden="true"
+                >
+                  ▶
+                </span>
+              </button>
+            </div>
+            <div class="lg:col-span-3 min-w-0">
+              {
+                frontmatter.altimetria.description && (
+                  <Text
+                    tag="p"
+                    variant="textXL"
+                    class="text-base-500 dark:text-base-400"
+                  >
+                    {frontmatter.altimetria.description}
+                  </Text>
+                )
+              }
             </div>
           </div>
         )
@@ -516,6 +564,19 @@ const introTable = frontmatter.intro.find((item) => item.table)?.table;
 
       <slot />
     </Wrapper>
+
+    {
+      frontmatter.altimetria && (
+        <ItinerariVideoModal
+          modalId={altimetriaModalId}
+          label={frontmatter.altimetria.label}
+          src={frontmatter.altimetria.publicSrc}
+          title={frontmatter.altimetria.alt}
+          sound={frontmatter.altimetria.ambSo ?? false}
+          caption={frontmatter.altimetria.caption}
+        />
+      )
+    }
   </section>
 </BaseLayout>
 

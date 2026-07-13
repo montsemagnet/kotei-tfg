@@ -292,6 +292,13 @@ export const geologiaItinerariCredits: GeologiaItinerariCredit[] = [
       "Busquets, P., Reguant, S., Barnolas, A., & Taberner, C. (n.d.). La successió paleògena a la conca de Vic [Map and stratigraphic diagram]. In Historia Natural dels Països Catalans. Enciclopèdia Catalana. https://www.enciclopedia.cat/historia-natural-dels-paisos-catalans/els-marges-oriental-i-meridional-al-sector-catala-de-la-conca",
   },
   {
+    label: "Google Earth — altimetria del trajecte Sau–Tavertet",
+    use: "Vídeo de Google Earth amb la vista en perspectiva i el perfil d'elevació del recorregut (apartat Altimetria del trajecte a la pàgina de l'itinerari Sau–Tavertet), elaborat per Montserrat Magnet Sabata.",
+    url: "https://www.google.com/earth/",
+    apaCitation:
+      "Google. (n.d.). Google Earth [Satellite imagery and computer software]. https://www.google.com/earth/",
+  },
+  {
     label: "Google Earth — vista aèria Sau–Tavertet",
     use: "Imatge de satèl·lit de base del trajecte Sau–Tavertet (modal de tectònica i estructures), amb la traça de la Falla de Tavertet i les parades superposades per Montserrat Magnet Sabata.",
     url: "https://www.google.com/earth/",

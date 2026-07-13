@@ -130,3 +130,11 @@ html.aos-fallback [data-aos] {
   opacity: 1 !important;
   transform: none !important;
 }
+
+/* Tailwind preflight pot mostrar el contingut de <dialog> tancats */
+.itinerari-dada-dialog:not([open]),
+.itinerari-zoom-dialog:not([open]),
+.roca-gallery-dialog:not([open]),
+.parada-gallery-dialog:not([open]) {
+  display: none !important;
+}

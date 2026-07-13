@@ -14,6 +14,13 @@ video:
   ambSo: true
   enModal: true
   modalLabel: "Recorregut aeri"
+altimetria:
+  label: "Altimetria del trajecte"
+  description: "Perfil d'elevació del recorregut des de la Presa de Sau fins a Tavertet: elevació mínima 428 m, mitjana 645 m i màxima 869 m, amb un desnivell positiu acumulat de +614 m."
+  publicSrc: "/videos/itineraris/sau-tavertet/altimetria.mp4"
+  alt: "Vídeo de Google Earth amb la vista en perspectiva i el perfil d'elevació del trajecte Sau–Tavertet"
+  caption: "Elaboració pròpia. Itinerari Presa de Sau–Tavertet, 9 de juny de 2026."
+  ambSo: false
 introLabel: "Introducció al recorregut"
 paradesLabel: "Parades"
 intro:

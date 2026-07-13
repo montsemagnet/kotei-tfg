@@ -243,6 +243,16 @@ const itineraris = defineCollection({
           modalLabel: z.string().optional(),
         })
         .optional(),
+      altimetria: z
+        .object({
+          label: z.string(),
+          description: z.string().optional(),
+          publicSrc: z.string(),
+          alt: z.string(),
+          caption: z.string().optional(),
+          ambSo: z.boolean().optional(),
+        })
+        .optional(),
       ordre: z.number().optional(),
       draft: z.boolean().optional(),
       enConstruccio: z.boolean().optional(),

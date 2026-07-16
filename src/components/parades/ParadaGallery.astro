@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import ItinerariModalTextSizeControls from "@/components/itinerari/ItinerariModalTextSizeControls.astro";
+import ItinerariModalHeaderActions from "@/components/itinerari/ItinerariModalHeaderActions.astro";
 
 interface Props {
   fotos: { url: ImageMetadata; alt: string }[];
@@ -8,6 +8,8 @@ interface Props {
 }
 
 const { fotos, galleryId } = Astro.props;
+const overlayCloseClass =
+  "parada-gallery-close rounded-full bg-white/10 px-4 py-2 text-white hover:bg-white/20";
 ---
 
 <div data-aos="fade-up" data-aos-duration="1000">
@@ -40,14 +42,10 @@ const { fotos, galleryId } = Astro.props;
     data-focus-trap="true"
   >
     <div class="relative w-full max-w-5xl mx-auto" data-text-size-enabled="true">
-      <ItinerariModalTextSizeControls />
-      <button
-        type="button"
-        class="parada-gallery-close absolute top-4 right-4 z-10 rounded-full bg-white/10 px-4 py-2 text-white hover:bg-white/20"
-        aria-label="Tancar galeria"
-      >
-        Tancar
-      </button>
+      <ItinerariModalHeaderActions
+        closeClass={overlayCloseClass}
+        closeLabel="Tancar galeria"
+      />
       <button
         type="button"
         class="parada-gallery-prev absolute left-4 z-10 rounded-full bg-white/10 px-4 py-2 text-white hover:bg-white/20"

@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import ItinerariModalTextSizeControls from "@/components/itinerari/ItinerariModalTextSizeControls.astro";
+import ItinerariModalHeaderActions from "@/components/itinerari/ItinerariModalHeaderActions.astro";
 
 interface Imatge {
   url: ImageMetadata;
@@ -21,6 +21,8 @@ interface Props {
 const { optica, fileres, galleryId } = Astro.props;
 
 const rowCount = Math.max(fileres.length, 1);
+const overlayCloseClass =
+  "roca-gallery-close rounded-full bg-white/10 px-4 py-2 text-white hover:bg-white/20";
 let imageIndex = 0;
 ---
 
@@ -113,14 +115,10 @@ let imageIndex = 0;
     data-focus-trap="true"
   >
     <div class="relative w-full max-w-6xl mx-auto" data-text-size-enabled="true">
-      <ItinerariModalTextSizeControls />
-      <button
-        type="button"
-        class="roca-gallery-close absolute top-4 right-4 z-10 rounded-full bg-white/10 px-4 py-2 text-white hover:bg-white/20"
-        aria-label="Tancar galeria"
-      >
-        Tancar
-      </button>
+      <ItinerariModalHeaderActions
+        closeClass={overlayCloseClass}
+        closeLabel="Tancar galeria"
+      />
       <button
         type="button"
         class="roca-gallery-prev absolute left-4 z-10 rounded-full bg-white/10 px-4 py-2 text-white hover:bg-white/20"

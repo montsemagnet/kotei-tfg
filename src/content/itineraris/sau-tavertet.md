@@ -386,10 +386,10 @@ dadesModals:
         paragraphs:
           - "El Ter i els torrents secundaris han disseccionat l'altiplà al llarg del temps, obrint valls, canals i graus naturals de pujada cap a Tavertet. En alguns sectors, aquests processos també generen salts d'aigua i encaixaments molt visibles en el paisatge del Collsacabra, com passa al Salt de Sallent."
         media:
-          title: "Figura 3. Aflorament amb alternança de materials vermells i grisos, on l'erosió de l'aigua ressalta el contrast de duresa entre les capes."
-          publicSrc: "/images/itineraris/sau-tavertet/geomofologia-5.jpg"
-          alt: "Encaixament fluvial i cingleres del Collsacabra modelades per l'acció de l'aigua"
-          caption: "Elaboració pròpia. Itinerari Presa de Sau–Tavertet, 9 de juny de 2026."
+          title: "Figura 3. Vista de Google Earth del Ter i del pantà de Sau amb la traça de l'itinerari Sau–Tavertet, que il·lustra la xarxa fluvial i les valls que han modelat el relleu del Collsacabra."
+          publicSrc: "/images/itineraris/sau-tavertet/geomorfologia-ter-itinerari-google-earth.png"
+          alt: "Vista de Google Earth del Ter, el pantà de Sau i la traça de l'itinerari Sau–Tavertet pel Collsacabra"
+          caption: "Imatge de Google Earth; traça de l'itinerari: elaboració pròpia."
       - title: "Relleu i estructura geològica"
         paragraphs:
           - "La geomorfologia no depèn només de l'erosió, sinó també de l'estructura tectònica regional. Les falles de les Serralades Transversals han condicionat la disposició dels blocs del terreny i expliquen part del fort contrast topogràfic entre l'altiplà de Tavertet i els relleus veïns."

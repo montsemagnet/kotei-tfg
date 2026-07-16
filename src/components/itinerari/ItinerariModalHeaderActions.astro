@@ -1,0 +1,24 @@
+---
+import ItinerariModalTextSizeControls from "@/components/itinerari/ItinerariModalTextSizeControls.astro";
+
+interface Props {
+  closeClass: string;
+  closeLabel?: string;
+  showTextSize?: boolean;
+}
+
+const {
+  closeClass,
+  closeLabel = "Tancar",
+  showTextSize = true,
+} = Astro.props;
+---
+
+<div
+  class="itinerari-modal-header-actions absolute top-4 right-4 z-10 flex items-center gap-4"
+>
+  {showTextSize && <ItinerariModalTextSizeControls />}
+  <button type="button" class={closeClass} aria-label={closeLabel}>
+    {closeLabel}
+  </button>
+</div>

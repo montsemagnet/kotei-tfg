@@ -1,11 +1,13 @@
 ---
-import ItinerariModalTextSizeControls from "@/components/itinerari/ItinerariModalTextSizeControls.astro";
+import ItinerariModalHeaderActions from "@/components/itinerari/ItinerariModalHeaderActions.astro";
 
 interface Props {
   zoomId: string;
 }
 
 const { zoomId } = Astro.props;
+const overlayCloseClass =
+  "itinerari-zoom-close rounded-full bg-white/10 px-4 py-2 text-white hover:bg-white/20";
 ---
 
 <div data-itinerari-zoom-root={zoomId}>
@@ -18,14 +20,7 @@ const { zoomId } = Astro.props;
     data-focus-trap="true"
   >
     <div class="relative w-full max-w-6xl mx-auto" data-text-size-enabled="true">
-      <ItinerariModalTextSizeControls />
-      <button
-        type="button"
-        class="itinerari-zoom-close absolute top-4 right-4 z-10 rounded-full bg-white/10 px-4 py-2 text-white hover:bg-white/20"
-        aria-label="Tancar"
-      >
-        Tancar
-      </button>
+      <ItinerariModalHeaderActions closeClass={overlayCloseClass} />
       <figure class="max-w-6xl w-full">
         <img
           class="itinerari-zoom-image w-full max-h-[90vh] object-contain mx-auto"

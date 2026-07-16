@@ -46,7 +46,9 @@ export const teamMembers: TeamMember[] = [
     email: "judit.molera@uvic.cat",
     profileUrl: "https://mon.uvic.cat/fcte/judit-molera-marimon/",
     roles: ["Directora del TFG"],
-    qualifications: ["Doctora en geologia"],
+    qualifications: [
+      "Doctora en Geologia, especialitat en Cristal·lografia i Mineralogia",
+    ],
   },
 ];
 
@@ -308,6 +310,13 @@ export const geologiaItinerariCredits: GeologiaItinerariCredit[] = [
   {
     label: "Google Earth — Falla de Sant Joan de Fàbregues (Pla Boixer / Sant Joan)",
     use: "Vista en perspectiva de Google Earth del desnivell entre el Pla Boixer (1.100 m) i Sant Joan de Fàbregues (790 m) (modal de tectònica i estructures, Figura 4), amb marques d'elevació i traça superposades per Montserrat Magnet Sabata.",
+    url: "https://www.google.com/earth/",
+    apaCitation:
+      "Google. (n.d.). Google Earth [Satellite imagery and computer software]. https://www.google.com/earth/",
+  },
+  {
+    label: "Google Earth — Ter i itinerari Sau–Tavertet (geomorfologia)",
+    use: "Vista de Google Earth del Ter, el pantà de Sau i la traça de l'itinerari (modal de geomorfologia, Figura 3), amb la traça superposada per Montserrat Magnet Sabata.",
     url: "https://www.google.com/earth/",
     apaCitation:
       "Google. (n.d.). Google Earth [Satellite imagery and computer software]. https://www.google.com/earth/",

@@ -1,6 +1,6 @@
 ---
 import { withBase } from "@/utils/withBase";
-import ItinerariModalTextSizeControls from "@/components/itinerari/ItinerariModalTextSizeControls.astro";
+import ItinerariModalHeaderActions from "@/components/itinerari/ItinerariModalHeaderActions.astro";
 
 interface Video {
   id?: string;
@@ -35,6 +35,8 @@ const videoClass =
 
 const captionsIconOn = withBase("/images/ui/subtitols-activats.png");
 const captionsIconOff = withBase("/images/ui/subtitols-desactivats.png");
+const panelCloseClass =
+  "itinerari-dada-close rounded-full bg-base-200 dark:bg-base-800 px-4 py-2 text-sm text-base-900 dark:text-white hover:bg-base-300 dark:hover:bg-base-700";
 
 function videoAnchorId(video: Video, index: number): string {
   if (video.id) return `${modalId}-${video.id}`;
@@ -53,20 +55,12 @@ function videoAnchorId(video: Video, index: number): string {
     class="itinerari-dada-panel relative my-8 w-full max-w-3xl rounded-lg bg-base-100 dark:bg-base-900 p-6 lg:p-10 shadow-xl"
     data-text-size-enabled="true"
   >
-    <ItinerariModalTextSizeControls />
-
-    <button
-      type="button"
-      class="itinerari-dada-close absolute top-4 right-4 z-10 rounded-full bg-base-200 dark:bg-base-800 px-4 py-2 text-sm text-base-900 dark:text-white hover:bg-base-300 dark:hover:bg-base-700"
-      aria-label="Tancar"
-    >
-      Tancar
-    </button>
+    <ItinerariModalHeaderActions closeClass={panelCloseClass} />
 
     <div class="itinerari-modal-text-content">
       <h2
         id={titleId}
-        class="text-2xl md:text-3xl lg:text-4xl dark:text-white text-base-900 font-medium tracking-tighter mb-6 pr-44 capitalize"
+        class="text-2xl md:text-3xl lg:text-4xl dark:text-white text-base-900 font-medium tracking-tighter mb-6 pr-52 capitalize"
       >
         {label}
       </h2>

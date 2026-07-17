@@ -171,12 +171,23 @@ dadesModals:
     sections:
       - title: "Context de l'itinerari"
         paragraphs:
-          - "L'itinerari del Pantà de Sau a Tavertet discorre per una de les zones de major complexitat i interès geològic de Catalunya: el punt de trobada entre tres grans unitats estructurals. La zona s'ubica en l'àmbit de la Serralada Transversal Catalana, que actua com a nexe d'unió entre el Prepirineu, al nord-oest, i les Serralades Costaneres Catalanes (Serralada Prelitoral), al sud-est, abraçant principalment les comarques de la Garrotxa, Osona i la Selva. Geomorfològicament, el Collsacabra i les Guilleries representen dues unitats contigües però de naturalesa geològica ben diferent, separades precisament per la cinglera que recorrem: a l'oest, les Guilleries amb el seu sòcol paleozoic; a l'est, el Collsacabra amb la seva plataforma sedimentària terciària."
+          - "L'itinerari del Pantà de Sau a Tavertet discorre per una de les zones de major complexitat i interès geològic de Catalunya: el punt de trobada entre tres grans unitats estructurals. La zona s'ubica en l'àmbit de la Serralada Transversal Catalana, que actua com a nexe d'unió entre el Prepirineu, al nord-oest, i les Serralades Costaneres Catalanes (Serralada Prelitoral), al sud-est, veure Figura 1, abraçant principalment les comarques de la Garrotxa, Osona i la Selva. Geomorfològicament, el Collsacabra i les Guilleries representen dues unitats contigües però de naturalesa geològica ben diferent, separades precisament per la cinglera que recorrem: a l'oest, les Guilleries amb el seu sòcol paleozoic; a l'est, el Collsacabra amb la seva plataforma sedimentària terciària."
           - "Aquesta posició de «nus geològic» fa que en un espai relatiu reduït es puguin observar roques que cobreixen centenars de milions d'anys d'història de la Terra, des del Cambroordovicià fins al Quaternari recent."
+        embed:
+          title: "Geozona 216: Cingles de Tavertet- El Far"
+          iframeTitle: "Geozona 216: Cingles de Tavertet- El Far al repositori de geotops de Catalunya"
+          src: "https://mediambient.repositori.gencat.cat/handle/20.500.14343/2170#PreviewMode=Miniature"
+          caption: "L'itinerari està catalogat com a geozona al repositori del Departament d'Acció Climàtica, Alimentació i Agenda Rural de la Generalitat de Catalunya."
+          link: "https://mediambient.repositori.gencat.cat/handle/20.500.14343/2170"
+        media:
+          title: "Mapa geològic simplificat del trajecte Sau–Tavertet, amb les principals formacions litològiques (FCG, FCTA, FGF, FMV, P) i els punts de referència de l'itinerari."
+          publicSrc: "/images/itineraris/sau-tavertet/mapa-geologic-geotop-generalitat.png"
+          alt: "Mapa geològic simplificat del trajecte Sau–Tavertet amb formacions litològiques i localitats com Sau, Tavertet i Rupit"
+          caption: "Adaptat de la fitxa del geotop Presa de Sau–Tavertet. Generalitat de Catalunya, Departament d'Acció Climàtica, Alimentació i Agenda Rural."
       - title: "La Conca de l'Ebre i el seu marge oriental"
         paragraphs:
           - "Els materials que trobem entre el pantà de Sau i Tavertet formen part del marge sud-est de la Conca terciària de l'Ebre, una gran depressió d'avantpaís creada pel pes dels Pirineus durant el Paleogen. En aquest marge oriental, que inclou la plana d'Osona i el Collsacabra, es van acumular fins a diversos quilòmetres de sediments procedents de les serralades veïnes."
-          - "A mitjan Eocè, la conca funcionava com una badia oberta cap al Golf de Biscaia, amb sistemes al·luvials i fluvio-lacustres que passaven lateralment a margues i calcàries marines de plataforma, tal com il·lustra la figura d'Osona–Vic. En el nostre itinerari aquests ambients es tradueixen en argiles i gresos vermells a la base de la sèrie, i en les calcàries nummulítiques que formen la cornisa dels cingles de Tavertet. Cap a finals de l'Eocè la conca es va aïllar del mar i va evolucionar cap a una gran plana lacustre endorreica."
+          - "A mitjan Eocè, la conca funcionava com una badia oberta cap al Golf de Biscaia, amb sistemes al·luvials i fluvio-lacustres que passaven lateralment a margues i calcàries marines de plataforma, tal com il·lustra la Figura 2. En el nostre itinerari aquests ambients es tradueixen en argiles i gresos vermells a la base de la sèrie, i en les calcàries nummulítiques que formen la cornisa dels cingles de Tavertet. Cap a finals de l'Eocè la conca es va aïllar del mar i va evolucionar cap a una gran plana lacustre endorreica."
         media:
           title: "Figura 2. Successió paleògena a la conca de Vic: mapa geològic dels principals cossos sedimentaris (esquerra) i relacions entre litofàcies que van rebre el marge oriental de la Conca de l'Ebre (dreta)."
           publicSrc: "/images/itineraris/sau-tavertet/successio-paleogena-conca-vic.png"

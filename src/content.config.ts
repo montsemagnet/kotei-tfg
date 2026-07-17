@@ -91,6 +91,16 @@ const modalContentSchema = (image: (path: string) => z.ZodType) =>
             })
             .optional(),
           paragraphsAfter: z.array(z.string()).optional(),
+          embed: z
+            .object({
+              title: z.string().optional(),
+              iframeTitle: z.string(),
+              src: z.string().url(),
+              caption: z.string().optional(),
+              link: z.string().url().optional(),
+              linkLabel: z.string().optional(),
+            })
+            .optional(),
         }),
       )
       .optional(),
@@ -307,6 +317,13 @@ const parades = defineCollection({
         }),
       ),
       analisiFlora: analisiFloraSchema(image).optional(),
+      geologia: z
+        .object({
+          resum: z.string().optional(),
+          intro: z.string().optional(),
+          sections: modalContentSchema(image).shape.sections,
+        })
+        .optional(),
       paisatgeUrl: z.string().optional(),
     }),
 });

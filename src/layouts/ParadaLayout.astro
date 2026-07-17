@@ -6,11 +6,13 @@ import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import ParadaMedia from "@/components/parades/ParadaMedia.astro";
 import ParadaGallery from "@/components/parades/ParadaGallery.astro";
 import ParadaAnalisiFloraModal from "@/components/parades/ParadaAnalisiFloraModal.astro";
+import ItinerariDadaModal from "@/components/itinerari/ItinerariDadaModal.astro";
 import ItinerariVideoModal from "@/components/itinerari/ItinerariVideoModal.astro";
 import { withBase } from "@/utils/withBase";
 
 const { frontmatter, slug } = Astro.props;
 const analisiFloraModalId = `parada-flora-${slug}`;
+const geologiaModalId = `parada-geologia-${slug}`;
 const videoAeriModalId = `parada-aeri-${slug}`;
 
 const itinerariEntry = await getEntry("itineraris", frontmatter.itinerari);
@@ -201,12 +203,55 @@ const sectionContent = "lg:col-span-3 min-w-0 w-full";
         data-aos-duration="1000"
         class:list={[sectionGrid, "mb-12 border-t border-base-200 dark:border-base-800 pt-8"]}
       >
-        <Text tag="h2" variant="displayMD" class={sectionLabel}>
-          Geologia
-        </Text>
-        <Wrapper variant="prose" class:list={[sectionContent, "-mt-2"]}>
-          <slot />
-        </Wrapper>
+        {
+          frontmatter.geologia ? (
+            <>
+              <button
+                type="button"
+                data-modal-target={geologiaModalId}
+                class="text-left cursor-pointer group inline-flex items-start gap-2"
+                aria-haspopup="dialog"
+                aria-label="Obrir geologia"
+              >
+                <Text
+                  tag="span"
+                  variant="displayMD"
+                  class="font-medium tracking-tighter text-accent-700 dark:text-accent-400 underline decoration-accent-700/30 dark:decoration-accent-400/40 underline-offset-[6px] group-hover:decoration-accent-700 dark:group-hover:decoration-accent-400 transition-colors"
+                >
+                  Geologia
+                </Text>
+                <span
+                  class="inline-flex size-7 shrink-0 items-center justify-center rounded-full border border-accent-700/25 dark:border-accent-400/30 text-accent-700 dark:text-accent-400 text-sm leading-none group-hover:bg-accent-700/10 dark:group-hover:bg-accent-400/10 transition-colors mt-0.5"
+                  aria-hidden="true"
+                >
+                  +
+                </span>
+              </button>
+              <Text
+                tag="p"
+                variant="textXL"
+                class:list={[sectionContent, "text-base-500 dark:text-base-400"]}
+              >
+                {frontmatter.geologia.resum ?? frontmatter.title}
+              </Text>
+              <ItinerariDadaModal
+                modalId={geologiaModalId}
+                label={`Geologia — ${frontmatter.title}`}
+                intro={frontmatter.geologia.intro}
+                sections={frontmatter.geologia.sections ?? []}
+              />
+            </>
+          ) : (
+            <>
+              <Text tag="h2" variant="displayMD" class={sectionLabel}>
+                Geologia
+              </Text>
+              <Wrapper variant="prose" class:list={[sectionContent, "-mt-2"]}>
+                <slot />
+              </Wrapper>
+            </>
+          )
+        }
       </div>
 
       <div

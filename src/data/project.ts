@@ -230,6 +230,8 @@ export type GeologiaItinerariCredit = {
   label: string;
   use: string;
   url?: string;
+  license?: string;
+  licenseUrl?: string;
   apaCitation: string;
 };
 
@@ -285,6 +287,16 @@ export const geologiaItinerariCredits: GeologiaItinerariCredit[] = [
     use: "Diagrama simplificat del sòcol paleozoic i la cobertura eocena en discordança (modal de marc geològic regional, apartat «Les dues històries que conté el camí»), elaborat per Montserrat Magnet Sabata.",
     apaCitation:
       "Magnet Sabata, M. (2026). Esquema del sòcol paleozoic i la cobertura eocena del Collsacabra–Tavertet [Diagram]. Elaboració pròpia.",
+  },
+  {
+    label: "Generalitat de Catalunya — Geozona 216: Cingles de Tavertet- El Far",
+    use: "Visualització incrustada del repositori de geotops de Catalunya i mapa geològic adaptat de la fitxa oficial (modal de marc geològic regional, apartat «Context de l'itinerari»).",
+    url: "https://mediambient.repositori.gencat.cat/handle/20.500.14343/2170",
+    license:
+      "Creative Commons Reconeixement-NoComercial-SenseDerivats 4.0 Internacional (CC BY-NC-ND 4.0)",
+    licenseUrl: "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+    apaCitation:
+      "Generalitat de Catalunya. (n.d.). Geozona 216: Cingles de Tavertet- El Far [Interactive resource and geological map]. Repositori de geotops de Catalunya, Departament d'Acció Climàtica, Alimentació i Agenda Rural. https://mediambient.repositori.gencat.cat/handle/20.500.14343/2170",
   },
   {
     label: "Enciclopèdia Catalana — Successió paleògena a la conca de Vic",

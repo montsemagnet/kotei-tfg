@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import Text from "@/components/fundations/elements/Text.astro";
 import ItinerariZoom from "@/components/itinerari/ItinerariZoom.astro";
+import ItinerariModalEmbed from "@/components/itinerari/ItinerariModalEmbed.astro";
 import ItinerariModalHeaderActions from "@/components/itinerari/ItinerariModalHeaderActions.astro";
 import ItinerariModalPublicMedia from "@/components/itinerari/ItinerariModalPublicMedia.astro";
 import { withBase } from "@/utils/withBase";
@@ -36,6 +37,14 @@ interface Section {
   };
   table?: SectionTable;
   paragraphsAfter?: string[];
+  embed?: {
+    title?: string;
+    iframeTitle: string;
+    src: string;
+    caption?: string;
+    link?: string;
+    linkLabel?: string;
+  };
 }
 
 interface StaticImage {
@@ -361,6 +370,18 @@ const panelCloseClass =
                 )
               }
             </div>
+            {
+              section.embed && (
+                <ItinerariModalEmbed
+                  title={section.embed.title}
+                  iframeTitle={section.embed.iframeTitle}
+                  src={section.embed.src}
+                  caption={section.embed.caption}
+                  link={section.embed.link}
+                  linkLabel={section.embed.linkLabel}
+                />
+              )
+            }
             {
               section.media && section.mediaAfterParagraph === undefined && (
                 <ItinerariModalPublicMedia

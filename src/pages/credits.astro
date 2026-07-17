@@ -439,6 +439,28 @@ const geologiaIntro =
                 </Text>
                 <Text tag="p" variant="textBase" class="mt-1 break-words">
                   {resource.use}
+                  {resource.license && (
+                    <>
+                      {" "}
+                      <span class="text-base-500 dark:text-base-400">
+                        — Llicència:{" "}
+                        {
+                          resource.licenseUrl ? (
+                            <a
+                              href={resource.licenseUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              class="hover:text-accent-500 dark:hover:text-accent-300 duration-300"
+                            >
+                              {resource.license}
+                            </a>
+                          ) : (
+                            resource.license
+                          )
+                        }
+                      </span>
+                    </>
+                  )}
                 </Text>
                 {
                   resource.url && (

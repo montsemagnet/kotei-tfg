@@ -18,5 +18,12 @@ if printf '%s' "$MSG" | grep -qF '[deploy]'; then
   exit 1
 fi
 
+# Desplega automàticament quan el commit toca contingut, imatges o configuració del lloc.
+CHANGED="$(git diff-tree --no-commit-id --name-only -r "${COMMIT_REF:-HEAD}" 2>/dev/null || true)"
+if printf '%s\n' "$CHANGED" | grep -qE '^(src/|public/|astro\.config|package\.json|netlify\.toml)'; then
+  echo "Netlify: canvis de contingut o assets — es compila i es publica."
+  exit 1
+fi
+
 echo "Netlify: build omès (afegeix [deploy] al missatge de commit per publicar)."
 exit 0

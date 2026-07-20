@@ -19,8 +19,11 @@ const overlayCloseClass =
     aria-modal="true"
     data-focus-trap="true"
   >
-    <div class="relative w-full max-w-6xl mx-auto" data-text-size-enabled="true">
-      <ItinerariModalHeaderActions closeClass={overlayCloseClass} />
+    <div class="relative w-full max-w-6xl mx-auto">
+      <ItinerariModalHeaderActions
+        closeClass={overlayCloseClass}
+        showTextSize={false}
+      />
       <figure class="max-w-6xl w-full">
         <img
           class="itinerari-zoom-image w-full max-h-[90vh] object-contain mx-auto"

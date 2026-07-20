@@ -20,12 +20,12 @@
 }
 
 @supports not (zoom: 1) {
-  [data-text-size-enabled][data-text-size="large"] .itinerari-modal-text-content :is(h2, h3, h4, p, li, th, td, figcaption) {
+  [data-text-size-enabled][data-text-size="large"] .itinerari-modal-text-content :is(h2, h3, h4, p, li, th, td, figcaption, dt, dd, span) {
     font-size: calc(1em * 1.125) !important;
     line-height: 1.75 !important;
   }
 
-  [data-text-size-enabled][data-text-size="xlarge"] .itinerari-modal-text-content :is(h2, h3, h4, p, li, th, td, figcaption) {
+  [data-text-size-enabled][data-text-size="xlarge"] .itinerari-modal-text-content :is(h2, h3, h4, p, li, th, td, figcaption, dt, dd, span) {
     font-size: calc(1em * 1.25) !important;
     line-height: 1.75 !important;
   }

@@ -12,6 +12,7 @@ import ItinerariPaleogeologiaModal from "@/components/itinerari/ItinerariPaleoge
 import ItinerariDadaModal from "@/components/itinerari/ItinerariDadaModal.astro";
 import ItinerariDadaIndex from "@/components/itinerari/ItinerariDadaIndex.astro";
 import ItinerariZoom from "@/components/itinerari/ItinerariZoom.astro";
+import GlossariSection from "@/components/global/GlossariSection.astro";
 import { withBase } from "@/utils/withBase";
 
 const { frontmatter } = Astro.props;
@@ -367,6 +368,7 @@ const introTable = frontmatter.intro.find((item) => item.table)?.table;
                 }
                 {
                   hasIndex && indexItems?.map((item) => {
+                    if (!item.modalKey) return null;
                     const subModal = frontmatter.dadesModals?.[item.modalKey];
                     if (!subModal) return null;
                     const subModalId = `itinerari-modal-${item.modalKey}`;
@@ -563,6 +565,8 @@ const introTable = frontmatter.intro.find((item) => item.table)?.table;
       }
 
       <slot />
+
+      <GlossariSection showCartaPdf />
     </Wrapper>
 
     {

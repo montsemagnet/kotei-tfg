@@ -29,6 +29,7 @@ const zoomImageClass =
         tag="h4"
         variant="textBase"
         class="dark:text-white text-base-900 font-medium mb-3 leading-snug"
+        spellcheck="false"
       >
         {media.title}
       </Text>
@@ -53,7 +54,7 @@ const zoomImageClass =
       </button>
       {
         media.caption && (
-          <figcaption class="mt-2 text-sm text-base-500 dark:text-base-400 leading-relaxed">
+          <figcaption class="mt-2 text-sm text-base-500 dark:text-base-400 leading-relaxed" spellcheck="false">
             {media.caption}
           </figcaption>
         )

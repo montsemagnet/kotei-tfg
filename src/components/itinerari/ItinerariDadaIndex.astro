@@ -1,7 +1,8 @@
 ---
 interface IndexItem {
   label: string;
-  modalKey: string;
+  modalKey?: string;
+  href?: string;
   numbered?: boolean;
 }
 
@@ -20,9 +21,26 @@ const linkClass =
   <ol class="flex flex-col gap-2 list-none p-0 m-0">
     {
       items.map((item, index) => {
-        const modalId = `itinerari-modal-${item.modalKey}`;
+        const modalId = item.modalKey
+          ? `itinerari-modal-${item.modalKey}`
+          : undefined;
         const displayLabel =
           item.numbered === false ? item.label : `${index + 1}. ${item.label}`;
+
+        if (item.href) {
+          return (
+            <li>
+              <a
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class={linkClass}
+              >
+                {displayLabel}
+              </a>
+            </li>
+          );
+        }
 
         return (
           <li>

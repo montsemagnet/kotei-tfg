@@ -94,10 +94,8 @@ const modalContentSchema = (image: (path: string) => z.ZodType) =>
           embed: z
             .object({
               title: z.string().optional(),
-              iframeTitle: z.string(),
-              src: z.string().url(),
               caption: z.string().optional(),
-              link: z.string().url().optional(),
+              link: z.string().url(),
               linkLabel: z.string().optional(),
             })
             .optional(),
@@ -214,12 +212,17 @@ const itineraris = defineCollection({
         .record(
           z.string(),
           z.array(
-            z.object({
-              label: z.string(),
-              modalKey: z.string(),
-              /** Si és false, es mostra només `label` sense prefix numèric */
-              numbered: z.boolean().optional(),
-            }),
+            z
+              .object({
+                label: z.string(),
+                modalKey: z.string().optional(),
+                href: z.string().optional(),
+                /** Si és false, es mostra només `label` sense prefix numèric */
+                numbered: z.boolean().optional(),
+              })
+              .refine((item) => item.modalKey || item.href, {
+                message: "Cada ítem de l'índex ha de tenir modalKey o href",
+              }),
           ),
         )
         .optional(),

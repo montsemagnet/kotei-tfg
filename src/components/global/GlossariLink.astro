@@ -1,0 +1,20 @@
+---
+import Text from "@/components/fundations/elements/Text.astro";
+import { withBase } from "@/utils/withBase";
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+
+const href = withBase("/termes");
+const linkClass =
+  "inline-flex items-center gap-1 text-accent-700 dark:text-accent-400 underline decoration-accent-700/30 dark:decoration-accent-400/40 underline-offset-[4px] hover:decoration-accent-700 dark:hover:decoration-accent-400 transition-colors";
+---
+
+<Text tag="p" variant="textSM" class:list={["mt-3", className]}>
+  <a href={href} class={linkClass}>
+    Glossari de termes →
+  </a>
+</Text>

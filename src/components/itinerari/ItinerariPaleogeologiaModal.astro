@@ -1,6 +1,9 @@
 ---
 import { withBase } from "@/utils/withBase";
 import ItinerariModalHeaderActions from "@/components/itinerari/ItinerariModalHeaderActions.astro";
+import TermesLinkedText from "@/components/global/TermesLinkedText.astro";
+import GlossariLink from "@/components/global/GlossariLink.astro";
+import { createTermeLinkTracker } from "@/utils/linkTermes";
 
 interface Video {
   id?: string;
@@ -29,6 +32,7 @@ interface Props {
 const { modalId, label, intro, videos = [], sections = [] } = Astro.props;
 
 const titleId = `${modalId}-title`;
+const introLinkedSlugs = createTermeLinkTracker();
 
 const videoClass =
   "w-full aspect-video rounded-md border border-base-200 dark:border-base-800 bg-base-950";
@@ -67,9 +71,12 @@ function videoAnchorId(video: Video, index: number): string {
 
       {
         intro && (
-          <p class="text-xl md:text-2xl text-base-600 dark:text-base-300 mb-8 leading-relaxed">
-            {intro}
-          </p>
+          <TermesLinkedText
+            text={intro}
+            variant="textXL"
+            class="mb-8"
+            linkedSlugs={introLinkedSlugs}
+          />
         )
       }
 
@@ -105,7 +112,10 @@ function videoAnchorId(video: Video, index: number): string {
       videos.length > 0 && (
         <ol class="flex flex-col gap-10 list-none p-0 m-0">
           {
-            videos.map((video, index) => (
+            videos.map((video, index) => {
+              const videoLinkedSlugs = createTermeLinkTracker();
+
+              return (
               <li id={videoAnchorId(video, index)} class="scroll-mt-28">
                 <div class="itinerari-modal-text-content mb-3">
                   {
@@ -127,9 +137,10 @@ function videoAnchorId(video: Video, index: number): string {
                       <div class="mt-3 flex flex-col gap-3">
                         {
                           video.paragraphs.map((paragraph) => (
-                            <p class="text-base text-base-500 dark:text-base-400 leading-relaxed">
-                              {paragraph}
-                            </p>
+                            <TermesLinkedText
+                              text={paragraph}
+                              linkedSlugs={videoLinkedSlugs}
+                            />
                           ))
                         }
                       </div>
@@ -193,7 +204,8 @@ function videoAnchorId(video: Video, index: number): string {
                   )
                 }
               </li>
-            ))
+              );
+            })
           }
         </ol>
       )
@@ -203,24 +215,31 @@ function videoAnchorId(video: Video, index: number): string {
       sections.length > 0 && (
         <div class="itinerari-modal-text-content flex flex-col gap-8 mt-10">
           {
-            sections.map((section) => (
+            sections.map((section) => {
+              const sectionLinkedSlugs = createTermeLinkTracker();
+
+              return (
               <div>
                 <h3 class="text-xl md:text-2xl lg:text-3xl dark:text-white text-base-900 font-medium mb-3">
                   {section.title}
                 </h3>
                 {
                   section.paragraphs.map((paragraph) => (
-                    <p class="text-base text-base-500 dark:text-base-400 mb-3 leading-relaxed last:mb-0">
-                      {paragraph}
-                    </p>
+                    <TermesLinkedText
+                      text={paragraph}
+                      linkedSlugs={sectionLinkedSlugs}
+                    />
                   ))
                 }
               </div>
-            ))
+              );
+            })
           }
         </div>
       )
     }
+
+    <GlossariLink class="mt-10 border-t border-base-200 dark:border-base-800 pt-6" />
   </div>
 </dialog>
 

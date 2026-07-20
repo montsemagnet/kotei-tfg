@@ -1,0 +1,32 @@
+---
+import Text from "@/components/fundations/elements/Text.astro";
+import { linkTermes } from "@/utils/linkTermes";
+
+interface Props {
+  text: string;
+  linkedSlugs?: Set<string>;
+  class?: string;
+  variant?: "textBase" | "textXL";
+}
+
+const {
+  text,
+  linkedSlugs,
+  class: className,
+  variant = "textBase",
+} = Astro.props;
+
+const html = linkTermes(text, linkedSlugs);
+const baseClass =
+  variant === "textXL"
+    ? "text-base-600 dark:text-base-300 leading-relaxed"
+    : "text-base-500 dark:text-base-400 leading-relaxed";
+---
+
+<Text
+  tag="p"
+  variant={variant}
+  class:list={[baseClass, "mb-3 last:mb-0", className]}
+  spellcheck="false"
+  set:html={html}
+/>

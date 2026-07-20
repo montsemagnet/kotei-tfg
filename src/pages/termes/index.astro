@@ -1,0 +1,194 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import ItinerariModalTextSizeControls from "@/components/itinerari/ItinerariModalTextSizeControls.astro";
+import { termes, termesCategories } from "@/data/termes";
+
+const sortedTermes = [...termes].sort((a, b) =>
+  a.terme.localeCompare(b.terme, "ca"),
+);
+---
+
+<BaseLayout>
+  <section>
+    <Wrapper variant="standard" class="py-24 lg:py-32 max-w-4xl">
+      <div data-text-size-enabled>
+      <div class="flex flex-wrap items-start justify-between gap-4">
+        <Text
+          tag="h1"
+          variant="displayXL"
+          class="dark:text-white text-base-900 font-medium tracking-tighter min-w-0 flex-1"
+        >
+          Glossari de termes
+        </Text>
+        <ItinerariModalTextSizeControls label="Mida del text del glossari" />
+      </div>
+      <Text
+        tag="p"
+        variant="textBase"
+        class="mt-4 text-base-600 dark:text-base-400 leading-relaxed text-pretty itinerari-modal-text-content"
+      >
+        Termes geològics utilitzats a la Web. Les definicions són breus i
+        orientades a la consulta durant la lectura dels apartats de geologia i
+        paleogeologia.
+      </Text>
+
+      <div class="mt-8 flex flex-col gap-4 sm:flex-row sm:items-end">
+        <label class="block flex-1">
+          <span class="sr-only">Cercar terme</span>
+          <input
+            type="search"
+            id="termesSearch"
+            placeholder="Cercar terme, sinònim o categoria..."
+            class="w-full appearance-none rounded-md border border-base-200 bg-base-50 px-3 py-2 text-base-900 shadow-sm outline-none focus:border-base-500 focus:outline-4 focus:outline-base-500/10 dark:border-base-700 dark:bg-base-800 dark:text-white dark:placeholder:text-base-400 sm:text-sm"
+          />
+        </label>
+        <label class="block sm:w-56">
+          <span class="mb-1 block text-xs uppercase tracking-wide text-base-500">
+            Categoria
+          </span>
+          <select
+            id="termesCategory"
+            class="w-full appearance-none rounded-md border border-base-200 bg-base-50 px-3 py-2 text-base-900 shadow-sm outline-none focus:border-base-500 focus:outline-4 focus:outline-base-500/10 dark:border-base-700 dark:bg-base-800 dark:text-white sm:text-sm"
+          >
+            <option value="">Totes</option>
+            {
+              termesCategories.map((categoria) => (
+                <option value={categoria}>{categoria}</option>
+              ))
+            }
+          </select>
+        </label>
+      </div>
+
+      <Text
+        tag="p"
+        id="termesCount"
+        variant="textSM"
+        class="mt-3 text-base-500 dark:text-base-400"
+      >
+        {termes.length} termes
+      </Text>
+
+      <dl
+        id="termesList"
+        class="itinerari-modal-text-content mt-10 divide-y divide-base-200 border-t border-base-200 dark:divide-base-800 dark:border-base-700"
+      >
+        {
+          sortedTermes.map((item) => (
+            <div
+              id={item.slug}
+              data-terme={item.terme}
+              data-category={item.categoria}
+              data-search={`${item.terme} ${item.definicio} ${item.sinonims?.join(" ") ?? ""} ${item.categoria}`}
+              class="termes-entry scroll-mt-32 py-5"
+            >
+              <dt>
+                <Text
+                  tag="span"
+                  variant="textBase"
+                  class="font-medium text-base-900 dark:text-white"
+                >
+                  {item.terme}
+                </Text>
+                <Text
+                  tag="span"
+                  variant="textSM"
+                  class="ml-1 text-base-500 dark:text-base-400 font-normal"
+                >
+                  ({item.categoria})
+                </Text>
+              </dt>
+              <dd class="mt-2">
+                <Text
+                  tag="p"
+                  variant="textBase"
+                  class="leading-relaxed text-base-700 dark:text-base-300"
+                >
+                  {item.definicio}
+                </Text>
+                {
+                  item.sinonims && item.sinonims.length > 0 && (
+                    <Text
+                      tag="p"
+                      variant="textSM"
+                      class="mt-2 text-base-500 dark:text-base-400"
+                    >
+                      Sinònims: {item.sinonims.join(" · ")}
+                    </Text>
+                  )
+                }
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+
+      <Text
+        tag="p"
+        id="termesEmpty"
+        variant="textBase"
+        class="mt-10 hidden text-base-500 dark:text-base-400"
+      >
+        No s'ha trobat cap terme amb aquests criteris.
+      </Text>
+      </div>
+    </Wrapper>
+  </section>
+
+  <script>
+    function initTermesFilter() {
+      const searchInput = document.getElementById("termesSearch");
+      const categorySelect = document.getElementById("termesCategory");
+      const countEl = document.getElementById("termesCount");
+      const emptyEl = document.getElementById("termesEmpty");
+      const listEl = document.getElementById("termesList");
+      const entries = document.querySelectorAll(".termes-entry");
+
+      if (
+        !(searchInput instanceof HTMLInputElement) ||
+        !(categorySelect instanceof HTMLSelectElement) ||
+        !countEl ||
+        !emptyEl ||
+        !listEl
+      ) {
+        return;
+      }
+
+      function applyFilter() {
+        const query = searchInput.value.trim().toLowerCase();
+        const category = categorySelect.value;
+        let visible = 0;
+
+        entries.forEach((entry) => {
+          if (!(entry instanceof HTMLElement)) return;
+          const haystack = (entry.dataset.search ?? "").toLowerCase();
+          const entryCategory = entry.dataset.category ?? "";
+          const matchesQuery = !query || haystack.includes(query);
+          const matchesCategory = !category || entryCategory === category;
+          const show = matchesQuery && matchesCategory;
+          entry.classList.toggle("hidden", !show);
+          if (show) visible += 1;
+        });
+
+        listEl.classList.toggle("hidden", visible === 0);
+        countEl.textContent =
+          visible === 1 ? "1 terme" : `${visible} termes`;
+        emptyEl.classList.toggle("hidden", visible > 0);
+      }
+
+      searchInput.addEventListener("input", applyFilter);
+      categorySelect.addEventListener("change", applyFilter);
+
+      const hash = window.location.hash.replace("#", "");
+      if (hash) {
+        const target = document.getElementById(hash);
+        target?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+
+    initTermesFilter();
+    document.addEventListener("astro:after-swap", initTermesFilter);
+  </script>
+</BaseLayout>

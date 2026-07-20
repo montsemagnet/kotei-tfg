@@ -290,7 +290,7 @@ export const geologiaItinerariCredits: GeologiaItinerariCredit[] = [
   },
   {
     label: "Generalitat de Catalunya — Geozona 216: Cingles de Tavertet- El Far",
-    use: "Visualització incrustada del repositori de geotops de Catalunya i mapa geològic adaptat de la fitxa oficial (modal de marc geològic regional, apartat «Context de l'itinerari»).",
+    use: "Enllaç al repositori de geotops de Catalunya i mapa geològic adaptat de la fitxa oficial (modal de marc geològic regional, apartat «Context de l'itinerari»).",
     url: "https://mediambient.repositori.gencat.cat/handle/20.500.14343/2170",
     license:
       "Creative Commons Reconeixement-NoComercial-SenseDerivats 4.0 Internacional (CC BY-NC-ND 4.0)",

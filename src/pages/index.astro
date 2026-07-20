@@ -12,6 +12,7 @@ import Team from "@/components/landing/Team.astro";
 // Components
 import LogoCloud from "@/components/assets/LogoCloud.astro";
 import ItinerariCard1 from "@/components/itinerari/ItinerariCard1.astro";
+import GlossariSection from "@/components/global/GlossariSection.astro";
 import { Image } from "astro:assets";
 // Content
 import { getCollection } from "astro:content";
@@ -110,4 +111,9 @@ const featuredItinerari = allItineraris.find(
   </section>
   <HowWeWork />
   <Team />
+  <section>
+    <Wrapper variant="standard" class="pb-24 lg:pb-48">
+      <GlossariSection showCartaPdf />
+    </Wrapper>
+  </section>
 </BaseLayout>

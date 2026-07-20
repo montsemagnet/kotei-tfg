@@ -1,4 +1,11 @@
 ---
+interface Props {
+  /** Etiqueta del grup per a lectors de pantalla */
+  label?: string;
+}
+
+const { label = "Mida del text del modal" } = Astro.props;
+
 const buttonClass =
   "inline-flex min-w-9 items-center justify-center rounded-md border border-base-200 dark:border-base-700 bg-base-50 dark:bg-base-950/50 px-2.5 py-2 text-sm font-semibold text-base-900 dark:text-white hover:bg-base-100 dark:hover:bg-base-800 transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-base-50 dark:disabled:hover:bg-base-950/50";
 
@@ -10,7 +17,7 @@ const groupClass =
   class="itinerari-modal-text-size"
   data-modal-text-size
   role="group"
-  aria-label="Mida del text del modal"
+  aria-label={label}
 >
   <div class={groupClass}>
     <button

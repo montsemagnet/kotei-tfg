@@ -105,6 +105,9 @@ dadesIndex:
     - label: "3 – Ibèria, mar de Tetis i conca de l'Ebre (vídeo 230 Ma–actualitat)"
       modalKey: paleogeologia-iberia-ebre
       numbered: false
+    - label: "4 – L'Avinguda dels Temps Geològics (PGOM, ICGC)"
+      href: "https://www.icgc.cat/ca/Eines-i-visors/Apps/PGOM-Pirineus-Geological-Open-Museum/Recorreguts/LAvinguda-dels-Temps-Geologics"
+      numbered: false
 dadesModals:
   paleogeologia-paleozoic:
     videos:
@@ -175,10 +178,9 @@ dadesModals:
           - "Aquesta posició de «nus geològic» fa que en un espai relatiu reduït es puguin observar roques que cobreixen centenars de milions d'anys d'història de la Terra, des del Cambroordovicià fins al Quaternari recent."
         embed:
           title: "Geozona 216: Cingles de Tavertet- El Far"
-          iframeTitle: "Geozona 216: Cingles de Tavertet- El Far al repositori de geotops de Catalunya"
-          src: "https://mediambient.repositori.gencat.cat/handle/20.500.14343/2170#PreviewMode=Miniature"
-          caption: "L'itinerari està catalogat com a geozona al repositori del Departament d'Acció Climàtica, Alimentació i Agenda Rural de la Generalitat de Catalunya."
+          caption: "L'itinerari està catalogat com a geozona al repositori del Departament d'Acció Climàtica, Alimentació i Agenda Rural de la Generalitat de Catalunya. En obrir l'enllaç hi trobareu la fitxa oficial del geotop «Presa de Sau–Tavertet»: descripció del recorregut, mapes geològics, bibliografia i documents associats."
           link: "https://mediambient.repositori.gencat.cat/handle/20.500.14343/2170"
+          linkLabel: "Veure la fitxa al repositori de la Generalitat"
         media:
           title: "Mapa geològic simplificat del trajecte Sau–Tavertet, amb les principals formacions litològiques (FCG, FCTA, FGF, FMV, P) i els punts de referència de l'itinerari."
           publicSrc: "/images/itineraris/sau-tavertet/mapa-geologic-geotop-generalitat.png"

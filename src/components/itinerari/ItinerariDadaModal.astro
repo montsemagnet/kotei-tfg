@@ -5,6 +5,9 @@ import ItinerariZoom from "@/components/itinerari/ItinerariZoom.astro";
 import ItinerariModalEmbed from "@/components/itinerari/ItinerariModalEmbed.astro";
 import ItinerariModalHeaderActions from "@/components/itinerari/ItinerariModalHeaderActions.astro";
 import ItinerariModalPublicMedia from "@/components/itinerari/ItinerariModalPublicMedia.astro";
+import TermesLinkedText from "@/components/global/TermesLinkedText.astro";
+import GlossariLink from "@/components/global/GlossariLink.astro";
+import { createTermeLinkTracker } from "@/utils/linkTermes";
 import { withBase } from "@/utils/withBase";
 
 interface Subsection {
@@ -39,10 +42,8 @@ interface Section {
   paragraphsAfter?: string[];
   embed?: {
     title?: string;
-    iframeTitle: string;
-    src: string;
     caption?: string;
-    link?: string;
+    link: string;
     linkLabel?: string;
   };
 }
@@ -90,6 +91,7 @@ const {
   textSizeControls = true,
 } = Astro.props;
 const titleId = `${modalId}-title`;
+const introLinkedSlugs = createTermeLinkTracker();
 const zoomId = `${modalId}-zoom`;
 const textContentClass = textSizeControls ? "itinerari-modal-text-content" : "";
 const titlePaddingClass = textSizeControls ? "pr-52" : "pr-24";
@@ -115,6 +117,7 @@ const panelCloseClass =
   <div
     class="itinerari-dada-panel relative my-8 w-full max-w-3xl rounded-lg bg-base-100 dark:bg-base-900 p-6 lg:p-10 shadow-xl"
     data-text-size-enabled={textSizeControls ? "true" : undefined}
+    spellcheck="false"
   >
     <ItinerariModalHeaderActions
       closeClass={panelCloseClass}
@@ -133,13 +136,12 @@ const panelCloseClass =
 
       {
         intro && (
-          <Text
-            tag="p"
+          <TermesLinkedText
+            text={intro}
             variant="textXL"
-            class="text-base-600 dark:text-base-300 mb-8 leading-relaxed"
-          >
-            {intro}
-          </Text>
+            class="mb-8"
+            linkedSlugs={introLinkedSlugs}
+          />
         )
       }
     </div>
@@ -156,7 +158,10 @@ const panelCloseClass =
 
     <div class="flex flex-col gap-8">
       {
-        sections.map((section, sectionIndex) => (
+        sections.map((section, sectionIndex) => {
+          const sectionLinkedSlugs = createTermeLinkTracker();
+
+          return (
           <div>
             <div class={textContentClass}>
               <Text
@@ -168,13 +173,10 @@ const panelCloseClass =
               </Text>
               {section.paragraphs?.map((paragraph, paragraphIndex) => (
                 <>
-                  <Text
-                    tag="p"
-                    variant="textBase"
-                    class="text-base-500 dark:text-base-400 mb-3 leading-relaxed last:mb-0"
-                  >
-                    {paragraph}
-                  </Text>
+                  <TermesLinkedText
+                    text={paragraph}
+                    linkedSlugs={sectionLinkedSlugs}
+                  />
                   {
                     section.media &&
                     section.mediaAfterParagraph === paragraphIndex && (
@@ -263,13 +265,10 @@ const panelCloseClass =
                         {subsection.title}
                       </Text>
                       {subsection.paragraphs.map((paragraph) => (
-                        <Text
-                          tag="p"
-                          variant="textBase"
-                          class="text-base-500 dark:text-base-400 mb-3 leading-relaxed last:mb-0"
-                        >
-                          {paragraph}
-                        </Text>
+                        <TermesLinkedText
+                          text={paragraph}
+                          linkedSlugs={sectionLinkedSlugs}
+                        />
                       ))}
                     </div>
                     {
@@ -318,13 +317,10 @@ const panelCloseClass =
               }
               {
                 section.paragraphsAfter?.map((paragraph) => (
-                  <Text
-                    tag="p"
-                    variant="textBase"
-                    class="text-base-500 dark:text-base-400 mb-3 leading-relaxed last:mb-0"
-                  >
-                    {paragraph}
-                  </Text>
+                  <TermesLinkedText
+                    text={paragraph}
+                    linkedSlugs={sectionLinkedSlugs}
+                  />
                 ))
               }
               {
@@ -374,8 +370,6 @@ const panelCloseClass =
               section.embed && (
                 <ItinerariModalEmbed
                   title={section.embed.title}
-                  iframeTitle={section.embed.iframeTitle}
-                  src={section.embed.src}
                   caption={section.embed.caption}
                   link={section.embed.link}
                   linkLabel={section.embed.linkLabel}
@@ -391,9 +385,12 @@ const panelCloseClass =
               )
             }
           </div>
-        ))
+          );
+        })
       }
     </div>
+
+    <GlossariLink class="mt-10 border-t border-base-200 dark:border-base-800 pt-6" />
 
     {
       images.length > 0 && (

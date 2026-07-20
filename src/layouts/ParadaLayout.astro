@@ -8,6 +8,7 @@ import ParadaGallery from "@/components/parades/ParadaGallery.astro";
 import ParadaAnalisiFloraModal from "@/components/parades/ParadaAnalisiFloraModal.astro";
 import ItinerariDadaModal from "@/components/itinerari/ItinerariDadaModal.astro";
 import ItinerariVideoModal from "@/components/itinerari/ItinerariVideoModal.astro";
+import GlossariSection from "@/components/global/GlossariSection.astro";
 import { withBase } from "@/utils/withBase";
 
 const { frontmatter, slug } = Astro.props;
@@ -327,6 +328,8 @@ const sectionContent = "lg:col-span-3 min-w-0 w-full";
           )
         }
       </div>
+
+      <GlossariSection />
     </Wrapper>
 
     {

@@ -1,5 +1,6 @@
 ---
 import Text from "@/components/fundations/elements/Text.astro";
+import TitleIconTrigger from "@/components/fundations/elements/TitleIconTrigger.astro";
 import { withBase } from "@/utils/withBase";
 
 interface Props {
@@ -21,11 +22,6 @@ const {
 const href = withBase("/termes");
 const cartaPdfHref =
   "https://datacloud.icgc.cat/datacloud/descarregues-web/bd/pubs/ChronostratChart2023-09Catalan.pdf";
-const menuLinkClass = "text-left group inline-flex items-start gap-2";
-const titleClass =
-  "font-medium tracking-tighter text-accent-700 dark:text-accent-400 underline decoration-accent-700/30 dark:decoration-accent-400/40 underline-offset-[6px] group-hover:decoration-accent-700 dark:group-hover:decoration-accent-400 transition-colors leading-tight capitalize";
-const iconClass =
-  "inline-flex size-7 shrink-0 items-center justify-center rounded-full border border-accent-700/25 dark:border-accent-400/30 text-accent-700 dark:text-accent-400 text-sm leading-none group-hover:bg-accent-700/10 dark:group-hover:bg-accent-400/10 transition-colors mt-0.5";
 const rowClass =
   "grid grid-cols-1 lg:grid-cols-4 items-start gap-x-6 gap-y-2 py-4";
 const bodyTextLayout = "lg:col-span-3 min-w-0 leading-relaxed";
@@ -44,18 +40,11 @@ const bodyTextClass = `${bodyTextLayout} text-base-700 dark:text-base-400`;
 >
   <div class={rowClass}>
     <div class="min-w-0">
-      <a href={href} class={menuLinkClass}>
-        <Text tag="span" variant="displayMD" class={titleClass}>
-          Glossari
-        </Text>
-        <span class={iconClass} aria-hidden="true">▶</span>
-      </a>
+      <TitleIconTrigger as="a" href={href}>
+        Glossari
+      </TitleIconTrigger>
     </div>
-    <Text
-      tag="p"
-      variant="textLG"
-      class={bodyTextClass}
-    >
+    <Text tag="p" variant="textLG" class={bodyTextClass}>
       {description}
     </Text>
   </div>
@@ -68,24 +57,17 @@ const bodyTextClass = `${bodyTextLayout} text-base-700 dark:text-base-400`;
           "border-t border-base-200 dark:border-base-800",
         ]}
       >
-        <Text
-          tag="h2"
-          variant="displayMD"
-          class="min-w-0 dark:text-white text-base-900 font-medium tracking-tighter capitalize leading-tight break-words"
-        >
-          Escala del temps geològic
-        </Text>
-        <Text
-          tag="a"
-          href={cartaPdfHref}
-          target="_blank"
-          rel="noopener noreferrer"
-          variant="textLG"
-          class:list={[
-            bodyTextLayout,
-            "text-accent-700 dark:text-accent-400 underline decoration-accent-700/30 dark:decoration-accent-400/40 underline-offset-[4px] hover:decoration-accent-700 dark:hover:decoration-accent-400 transition-colors",
-          ]}
-        >
+        <div class="min-w-0">
+          <TitleIconTrigger
+            as="a"
+            href={cartaPdfHref}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Escala del temps geològic
+          </TitleIconTrigger>
+        </div>
+        <Text tag="p" variant="textLG" class={bodyTextClass}>
           Carta oficial de l'ICGC amb la jerarquia d'unitats
           cronostratigràfiques (eons, eres, períodes, èpoques) i les edats en
           Ma, adaptada de la Comissió Internacional d'Estratigrafia (ICS).

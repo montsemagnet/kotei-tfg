@@ -1,0 +1,51 @@
+---
+import Text from "@/components/fundations/elements/Text.astro";
+
+interface Props {
+  as?: "button" | "a";
+  icon?: string;
+  titleVariant?: string;
+  titleClass?: string;
+  class?: string;
+  href?: string;
+  target?: string;
+  rel?: string;
+  type?: "button" | "submit" | "reset";
+}
+
+const {
+  as: Tag = "button",
+  icon = "▶",
+  titleVariant = "displayMD",
+  titleClass = "",
+  class: className = "",
+  type = "button",
+  href,
+  target,
+  rel,
+  ...rest
+} = Astro.props;
+
+const triggerClass =
+  "group grid w-full grid-cols-[minmax(0,1fr)_1.75rem] items-start gap-x-2 text-left cursor-pointer";
+const defaultTitleClass =
+  "min-w-0 capitalize font-medium tracking-tighter text-accent-700 dark:text-accent-400 underline decoration-accent-700/30 dark:decoration-accent-400/40 underline-offset-[6px] group-hover:decoration-accent-700 dark:group-hover:decoration-accent-400 transition-colors leading-tight break-words";
+const iconClass =
+  "inline-flex size-7 shrink-0 items-center justify-center justify-self-end rounded-full border border-accent-700/25 dark:border-accent-400/30 text-accent-700 dark:text-accent-400 text-sm leading-none group-hover:bg-accent-700/10 dark:group-hover:bg-accent-400/10 transition-colors";
+
+const tagProps =
+  Tag === "a"
+    ? { href, target, rel }
+    : { type };
+---
+
+<Tag class:list={[triggerClass, className]} {...tagProps} {...rest}>
+  <Text
+    tag="span"
+    variant={titleVariant}
+    class:list={[defaultTitleClass, titleClass]}
+  >
+    <slot />
+  </Text>
+  <span class={iconClass} aria-hidden="true">{icon}</span>
+</Tag>

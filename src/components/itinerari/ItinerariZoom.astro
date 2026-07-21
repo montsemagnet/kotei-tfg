@@ -7,7 +7,7 @@ interface Props {
 
 const { zoomId } = Astro.props;
 const overlayCloseClass =
-  "itinerari-zoom-close rounded-full bg-white/10 px-4 py-2 text-white hover:bg-white/20";
+  "itinerari-zoom-close itinerari-overlay-close text-sm font-medium";
 ---
 
 <div data-itinerari-zoom-root={zoomId}>
@@ -20,16 +20,19 @@ const overlayCloseClass =
     data-focus-trap="true"
   >
     <div class="relative w-full max-w-6xl mx-auto">
-      <ItinerariModalHeaderActions
-        closeClass={overlayCloseClass}
-        showTextSize={false}
-      />
       <figure class="max-w-6xl w-full">
-        <img
-          class="itinerari-zoom-image w-full max-h-[90vh] object-contain mx-auto"
-          src=""
-          alt=""
-        />
+        <div class="relative">
+          <ItinerariModalHeaderActions
+            closeClass={overlayCloseClass}
+            showTextSize={false}
+            overlay
+          />
+          <img
+            class="itinerari-zoom-image w-full max-h-[90vh] object-contain mx-auto"
+            src=""
+            alt=""
+          />
+        </div>
         <figcaption
           class="itinerari-zoom-caption mt-4 text-center text-white text-sm"
         />

@@ -9,7 +9,7 @@ interface Props {
 
 const { fotos, galleryId } = Astro.props;
 const overlayCloseClass =
-  "parada-gallery-close rounded-full bg-white/10 px-4 py-2 text-white hover:bg-white/20";
+  "parada-gallery-close itinerari-overlay-close text-sm font-medium";
 ---
 
 <div data-aos="fade-up" data-aos-duration="1000">
@@ -42,11 +42,6 @@ const overlayCloseClass =
     data-focus-trap="true"
   >
     <div class="relative w-full max-w-5xl mx-auto">
-      <ItinerariModalHeaderActions
-        closeClass={overlayCloseClass}
-        closeLabel="Tancar galeria"
-        showTextSize={false}
-      />
       <button
         type="button"
         class="parada-gallery-prev absolute left-4 z-10 rounded-full bg-white/10 px-4 py-2 text-white hover:bg-white/20"
@@ -62,11 +57,19 @@ const overlayCloseClass =
         →
       </button>
       <figure class="max-w-5xl w-full">
-        <img
-          class="parada-gallery-image w-full max-h-[85vh] object-contain mx-auto"
-          src=""
-          alt=""
-        />
+        <div class="relative">
+          <ItinerariModalHeaderActions
+            closeClass={overlayCloseClass}
+            closeLabel="Tancar galeria"
+            showTextSize={false}
+            overlay
+          />
+          <img
+            class="parada-gallery-image w-full max-h-[85vh] object-contain mx-auto"
+            src=""
+            alt=""
+          />
+        </div>
         <figcaption
           class="parada-gallery-caption mt-4 text-center text-white text-sm"
         />

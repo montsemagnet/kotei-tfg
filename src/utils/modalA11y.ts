@@ -45,12 +45,32 @@ export function trapFocusInPanel(panel: HTMLElement, event: KeyboardEvent): void
   }
 }
 
+function getNestedOpenDialog(dialog: HTMLDialogElement): HTMLDialogElement | null {
+  for (const nested of dialog.querySelectorAll("dialog")) {
+    if (nested instanceof HTMLDialogElement && nested !== dialog && nested.open) {
+      return nested;
+    }
+  }
+  return null;
+}
+
+function isCloseButtonForDialog(
+  closeButton: Element,
+  dialog: HTMLDialogElement,
+): boolean {
+  return closeButton.closest("dialog") === dialog;
+}
+
 export function focusInitialModalElement(dialog: HTMLDialogElement): void {
   const panel = getModalPanel(dialog);
-  const closeButton = panel.querySelector(CLOSE_BUTTON_SELECTOR);
-  if (closeButton instanceof HTMLElement) {
-    closeButton.focus();
-    return;
+  for (const closeButton of panel.querySelectorAll(CLOSE_BUTTON_SELECTOR)) {
+    if (
+      closeButton instanceof HTMLElement &&
+      isCloseButtonForDialog(closeButton, dialog)
+    ) {
+      closeButton.focus();
+      return;
+    }
   }
 
   getFocusableElements(panel)[0]?.focus();
@@ -76,11 +96,15 @@ function ensureDialogA11yListeners(dialog: HTMLDialogElement): void {
   };
 
   dialog.querySelectorAll(CLOSE_BUTTON_SELECTOR).forEach((closeButton) => {
+    if (!isCloseButtonForDialog(closeButton, dialog)) return;
+
     closeButton.addEventListener("click", closeDialog);
   });
 
   dialog.addEventListener("click", (event) => {
-    if (event.target === dialog) closeDialog();
+    if (event.target !== dialog) return;
+    if (getNestedOpenDialog(dialog)) return;
+    closeDialog();
   });
 
   dialog.addEventListener("close", () => {
@@ -94,6 +118,7 @@ function ensureDialogA11yListeners(dialog: HTMLDialogElement): void {
   if (useFocusTrap) {
     dialog.addEventListener("keydown", (event) => {
       if (!dialog.open) return;
+      if (getNestedOpenDialog(dialog)) return;
       trapFocusInPanel(getModalPanel(dialog), event);
     });
   }

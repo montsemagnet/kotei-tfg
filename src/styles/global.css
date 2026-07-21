@@ -138,3 +138,19 @@ html.aos-fallback [data-aos] {
 .parada-gallery-dialog:not([open]) {
   display: none !important;
 }
+
+/* Botó Tancar visible sobre fotos clares (zoom / galeries) */
+.itinerari-overlay-close {
+  border-radius: 9999px;
+  background-color: rgb(10 10 10 / 0.88);
+  padding: 0.5rem 1rem;
+  color: white;
+  box-shadow:
+    0 4px 14px rgb(0 0 0 / 0.35),
+    0 0 0 1px rgb(255 255 255 / 0.2);
+  backdrop-filter: blur(4px);
+}
+
+.itinerari-overlay-close:hover {
+  background-color: rgb(23 23 23 / 0.95);
+}

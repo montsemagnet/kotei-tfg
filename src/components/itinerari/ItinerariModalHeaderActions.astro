@@ -5,17 +5,23 @@ interface Props {
   closeClass: string;
   closeLabel?: string;
   showTextSize?: boolean;
+  /** Botó sobre la foto (cantonal dreta de la imatge, no de la finestra) */
+  overlay?: boolean;
 }
 
 const {
   closeClass,
   closeLabel = "Tancar",
   showTextSize = true,
+  overlay = false,
 } = Astro.props;
 ---
 
 <div
-  class="itinerari-modal-header-actions absolute top-4 right-4 z-10 flex items-center gap-4"
+  class:list={[
+    "itinerari-modal-header-actions z-10 flex items-center gap-4",
+    overlay ? "absolute top-3 right-3 sm:top-4 sm:right-4" : "absolute top-4 right-4",
+  ]}
 >
   {showTextSize && <ItinerariModalTextSizeControls />}
   <button type="button" class={closeClass} aria-label={closeLabel}>

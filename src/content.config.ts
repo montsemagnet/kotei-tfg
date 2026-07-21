@@ -139,6 +139,8 @@ const analisiFloraSchema = (image: (path: string) => z.ZodType) =>
   z.object({
     nomCodi: z.string(),
     resum: z.string().optional(),
+    /** Text narratiu del modal (substitueix les seccions detallades si n'hi ha) */
+    paragraphs: z.array(z.string()).optional(),
     contextGeologic: z.string(),
     posicioRelleu: z.string(),
     orientacioMicroclima: z.string(),
@@ -155,7 +157,14 @@ const analisiFloraSchema = (image: (path: string) => z.ZodType) =>
         z.object({
           url: image(),
           alt: z.string(),
+          /** Títol de la figura (a sobre de la imatge) */
+          title: z.string().optional(),
+          /** Peu de figura / crèdit (a sota de la imatge) */
           caption: z.string().optional(),
+          /** Text explicatiu addicional sota el peu de figura */
+          text: z.string().optional(),
+          /** Vista reduïda al modal (zoom conserva la mida completa) */
+          compact: z.boolean().optional(),
         }),
       )
       .optional(),

@@ -120,6 +120,28 @@ const sectionContent = "lg:col-span-3 min-w-0 w-full";
           </Text>
         </div>
       </div>
+
+      <div
+        data-aos="fade-up"
+        data-aos-duration="1000"
+        class:list={[sectionGrid, "mt-8 border-t border-base-200 dark:border-base-800 pt-8"]}
+      >
+        <Text tag="h2" variant="displayMD" class={sectionLabel}>
+          Mapa
+        </Text>
+        <div class={sectionContent}>
+          <Text
+            tag="a"
+            variant="textXL"
+            href={frontmatter.mapaUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-accent-600 dark:text-accent-400 hover:underline break-all"
+          >
+            {frontmatter.mapaUrl}
+          </Text>
+        </div>
+      </div>
     </Wrapper>
 
     <Wrapper variant="standard" class="py-8 border-t border-base-200 dark:border-base-800">
@@ -141,62 +163,11 @@ const sectionContent = "lg:col-span-3 min-w-0 w-full";
         data-aos-duration="1000"
         class:list={[sectionGrid, "mb-12 border-t border-base-200 dark:border-base-800 pt-8"]}
       >
-        <Text tag="h2" variant="displayMD" class={sectionLabel}>
-          Mapa
-        </Text>
-        <div class={sectionContent}>
-          <Text
-            tag="a"
-            variant="textXL"
-            href={frontmatter.mapaUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-accent-600 dark:text-accent-400 hover:underline break-all"
-          >
-            {frontmatter.mapaUrl}
-          </Text>
-        </div>
-      </div>
-
-      {
-        frontmatter.materials.length > 0 && (
-          <div
-            data-aos="fade-up"
-            data-aos-duration="1000"
-            class:list={[sectionGrid, "mb-12 border-t border-base-200 dark:border-base-800 pt-8"]}
-          >
-            <Text tag="h2" variant="displayMD" class={sectionLabel}>
-              Materials
-            </Text>
-            <ul class:list={[sectionContent, "flex flex-col gap-3"]}>
-              {frontmatter.materials.map((material) => (
-                <li class="border-b border-base-200 dark:border-base-800 pb-3">
-                  <Text
-                    tag="a"
-                    variant="textXL"
-                    href={withBase(material.enllaç)}
-                    class="text-base-900 dark:text-white hover:text-accent-600 dark:hover:text-accent-400"
-                  >
-                    {material.nom} →
-                  </Text>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )
-      }
-
-      <div
-        data-aos="fade-up"
-        data-aos-duration="1000"
-        class:list={[sectionGrid, "mb-12 border-t border-base-200 dark:border-base-800 pt-8"]}
-      >
         {
           frontmatter.geologia ? (
             <>
               <div class="min-w-0">
                 <TitleIconTrigger
-                  icon="+"
                   data-modal-target={geologiaModalId}
                   aria-haspopup="dialog"
                   aria-label="Obrir geologia"
@@ -231,6 +202,34 @@ const sectionContent = "lg:col-span-3 min-w-0 w-full";
         }
       </div>
 
+      {
+        frontmatter.materials.length > 0 && (
+          <div
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            class:list={[sectionGrid, "mb-12 border-t border-base-200 dark:border-base-800 pt-8"]}
+          >
+            <Text tag="h2" variant="displayMD" class={sectionLabel}>
+              Materials
+            </Text>
+            <ul class:list={[sectionContent, "flex flex-col gap-3"]}>
+              {frontmatter.materials.map((material) => (
+                <li class="border-b border-base-200 dark:border-base-800 pb-3">
+                  <Text
+                    tag="a"
+                    variant="textXL"
+                    href={withBase(material.enllaç)}
+                    class="text-base-900 dark:text-white hover:text-accent-600 dark:hover:text-accent-400"
+                  >
+                    {material.nom} →
+                  </Text>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
+
       <div
         data-aos="fade-up"
         data-aos-duration="1000"
@@ -241,7 +240,6 @@ const sectionContent = "lg:col-span-3 min-w-0 w-full";
             <>
               <div class="min-w-0">
                 <TitleIconTrigger
-                  icon="+"
                   data-modal-target={analisiFloraModalId}
                   aria-haspopup="dialog"
                   aria-label="Obrir geobotànica"
@@ -294,7 +292,7 @@ const sectionContent = "lg:col-span-3 min-w-0 w-full";
         }
       </div>
 
-      <GlossariSection />
+      <GlossariSection descriptionVariant="textXL" />
     </Wrapper>
 
     {

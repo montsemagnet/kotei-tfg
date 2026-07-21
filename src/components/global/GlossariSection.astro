@@ -6,6 +6,8 @@ import { withBase } from "@/utils/withBase";
 interface Props {
   class?: string;
   description?: string;
+  /** Variant del text descriptiu (p. ex. textXL a parades) */
+  descriptionVariant?: "textLG" | "textXL";
   /** Dins del bloc de menús (Geologia, Paleogeologia…): mateixa fila amb border-b */
   menuRow?: boolean;
   /** Carta PDF de l'ICGC sota «Glossari» (pàgina principal i itinerari) */
@@ -15,6 +17,7 @@ interface Props {
 const {
   class: className,
   description = "Definicions dels termes geològics utilitzats a la Web.",
+  descriptionVariant = "textLG",
   menuRow = false,
   showCartaPdf = false,
 } = Astro.props;
@@ -25,7 +28,10 @@ const cartaPdfHref =
 const rowClass =
   "grid grid-cols-1 lg:grid-cols-4 items-start gap-x-6 gap-y-2 py-4";
 const bodyTextLayout = "lg:col-span-3 min-w-0 leading-relaxed";
-const bodyTextClass = `${bodyTextLayout} text-base-700 dark:text-base-400`;
+const bodyTextClass =
+  descriptionVariant === "textXL"
+    ? `${bodyTextLayout} text-base-500 dark:text-base-400`
+    : `${bodyTextLayout} text-base-700 dark:text-base-400`;
 ---
 
 <div
@@ -44,7 +50,7 @@ const bodyTextClass = `${bodyTextLayout} text-base-700 dark:text-base-400`;
         Glossari
       </TitleIconTrigger>
     </div>
-    <Text tag="p" variant="textLG" class={bodyTextClass}>
+    <Text tag="p" variant={descriptionVariant} class={bodyTextClass}>
       {description}
     </Text>
   </div>

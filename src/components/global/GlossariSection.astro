@@ -28,6 +28,8 @@ const iconClass =
   "inline-flex size-7 shrink-0 items-center justify-center rounded-full border border-accent-700/25 dark:border-accent-400/30 text-accent-700 dark:text-accent-400 text-sm leading-none group-hover:bg-accent-700/10 dark:group-hover:bg-accent-400/10 transition-colors mt-0.5";
 const rowClass =
   "grid grid-cols-1 lg:grid-cols-4 items-start gap-x-6 gap-y-2 py-4";
+const bodyTextLayout = "lg:col-span-3 min-w-0 leading-relaxed";
+const bodyTextClass = `${bodyTextLayout} text-base-700 dark:text-base-400`;
 ---
 
 <div
@@ -51,8 +53,8 @@ const rowClass =
     </div>
     <Text
       tag="p"
-      variant="textXL"
-      class="lg:col-span-3 min-w-0 text-base-500 dark:text-base-400"
+      variant="textLG"
+      class={bodyTextClass}
     >
       {description}
     </Text>
@@ -78,8 +80,11 @@ const rowClass =
           href={cartaPdfHref}
           target="_blank"
           rel="noopener noreferrer"
-          variant="textXL"
-          class="lg:col-span-3 min-w-0 text-accent-700 dark:text-accent-400 underline decoration-accent-700/30 dark:decoration-accent-400/40 underline-offset-[4px] hover:decoration-accent-700 dark:hover:decoration-accent-400 transition-colors leading-relaxed"
+          variant="textLG"
+          class:list={[
+            bodyTextLayout,
+            "text-accent-700 dark:text-accent-400 underline decoration-accent-700/30 dark:decoration-accent-400/40 underline-offset-[4px] hover:decoration-accent-700 dark:hover:decoration-accent-400 transition-colors",
+          ]}
         >
           Carta oficial de l'ICGC amb la jerarquia d'unitats
           cronostratigràfiques (eons, eres, períodes, èpoques) i les edats en

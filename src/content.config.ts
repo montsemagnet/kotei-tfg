@@ -185,7 +185,17 @@ const itineraris = defineCollection({
       description: z.string(),
       tipus: z.string().optional(),
       mapa: z.string().optional(),
-      mapaUrl: z.string().url().optional(),
+      /** Ruta interna (/mapa-…) o URL absoluta (https://…) */
+      mapaUrl: z
+        .string()
+        .refine(
+          (v) =>
+            v.startsWith("/") ||
+            v.startsWith("http://") ||
+            v.startsWith("https://"),
+          { message: "Ha de ser una ruta interna (/…) o una URL http(s)" },
+        )
+        .optional(),
       intro: z.array(
         z.object({
           paragraphs: z.array(z.string()).optional(),

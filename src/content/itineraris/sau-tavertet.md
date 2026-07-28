@@ -7,7 +7,7 @@ description: "Itinerari geològic UVIC"
 ordre: 1
 tipus: "Geològic"
 mapa: "sau-tavertet"
-mapaUrl: "https://qgiscloud.com/mmagnet/Sau-Tavertet/"
+mapaUrl: "/mapa-sau-tavertet/"
 video:
   publicSrc: "/videos/itineraris/sau-tavertet.mp4"
   alt: "Recorregut aeri del trajecte proposat Sau–Tavertet"

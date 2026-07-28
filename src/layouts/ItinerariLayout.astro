@@ -45,6 +45,7 @@ const introParadaLinkClass =
 
 const introParagraphs = frontmatter.intro.flatMap((item) => item.paragraphs ?? []);
 const introTable = frontmatter.intro.find((item) => item.table)?.table;
+const mapaHref = frontmatter.mapaUrl ? withBase(frontmatter.mapaUrl) : undefined;
 ---
 
 <BaseLayout>
@@ -261,11 +262,11 @@ const introTable = frontmatter.intro.find((item) => item.table)?.table;
               >
                 <div class="min-w-0">
                 {
-                  key === "mapa" && frontmatter.mapaUrl ? (
+                  key === "mapa" && mapaHref ? (
                     <Text
                       tag="a"
                       variant="displayMD"
-                      href={frontmatter.mapaUrl}
+                      href={mapaHref}
                       target="_blank"
                       rel="noopener noreferrer"
                       title="Obrir mapa interactiu (nova pestanya)"
@@ -293,11 +294,11 @@ const introTable = frontmatter.intro.find((item) => item.table)?.table;
                 }
                 </div>
                 {
-                  key === "mapa" && frontmatter.mapaUrl ? (
+                  key === "mapa" && mapaHref ? (
                     <Text
                       tag="a"
                       variant="textXL"
-                      href={frontmatter.mapaUrl}
+                      href={mapaHref}
                       target="_blank"
                       rel="noopener noreferrer"
                       title="Obrir mapa interactiu (nova pestanya)"

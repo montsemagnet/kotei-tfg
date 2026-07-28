@@ -1,0 +1,10 @@
+﻿Mapa Sau-Tavertet (qgis2web + pegats)
+Export: qgis2web_2026_07_28-20_05_49_453725 (~33.8 MB)
+
+Pegats:
+- Toponímia: etiquetes camp nom, sense línies de color
+- Cabussaments: rotació DIR + escala ajustada + etiqueta INCLIN
+- Ruta: línia discontínua
+- Hidrografia línies: visible per defecte
+
+Obrir: /kotei-tfg/mapa-sau-tavertet/

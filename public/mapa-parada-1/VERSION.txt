@@ -1,0 +1,6 @@
+﻿Mapa Parada 1 (qgis2web)
+Export: qgis2web_2026_07_29-00_04_19_327983
+Pegats:
+- satelit: extent EPSG:3857 correcte
+- Litologia farciment alpha 0.18
+- Vista inicial ampliada

@@ -2,16 +2,37 @@ import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
 import mdx from "@astrojs/mdx";
+
+/** En `astro dev`, carpetes /mapa-…/ no resolen index.html → reescriptura */
+function mapaDirectoryIndex() {
+  return {
+    name: "mapa-directory-index",
+    configureServer(server) {
+      server.middlewares.use((req, _res, next) => {
+        const raw = req.url ?? "";
+        const [pathname, query = ""] = raw.split("?");
+        if (/\/mapa(?:-sau-tavertet|-parada-\d+)\/?$/.test(pathname)) {
+          const nextPath = pathname.replace(/\/?$/, "/index.html");
+          req.url = query ? `${nextPath}?${query}` : nextPath;
+        }
+        next();
+      });
+    },
+  };
+}
+
 export default defineConfig({
   output: "static",
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [tailwindcss(), mapaDirectoryIndex()],
     server: {
-      // Evita que el watcher es pengi amb assets pesats / molts fitxers a public/
+      // Evita que el watcher es pengi amb assets pesats / molts fitxers
       watch: {
         ignored: [
           "**/public/**",
           "**/mapa-sau-tavertet/**",
+          "**/mapa-parada-*/**",
+          "**/mapa-web-sau-tavertet/**",
           "**/node_modules/**",
           "**/.git/**",
         ],

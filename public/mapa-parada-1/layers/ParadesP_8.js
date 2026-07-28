@@ -1,0 +1,1 @@
+var json_ParadesP_8 = {"type":"FeatureCollection","name":"ParadesP_8","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"xy_coordinate_resolution":1e-05,"features":[{"type":"Feature","properties":{"fid":"1","Nom":"P1","Descripcio2":"P1. Monzogranit i pòrfirs"},"geometry":{"type":"Point","coordinates":[2.4147,41.96785]}}]}

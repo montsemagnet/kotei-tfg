@@ -11,4 +11,10 @@
     } else {
       document.documentElement.classList.add("aos-fallback");
     }
+    // Si el CDN triga o falla, no deixar el contingut invisible
+    setTimeout(function () {
+      if (typeof AOS === "undefined") {
+        document.documentElement.classList.add("aos-fallback");
+      }
+    }, 1500);
   </script>

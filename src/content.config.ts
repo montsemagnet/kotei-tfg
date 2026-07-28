@@ -323,7 +323,10 @@ const parades = defineCollection({
           }),
         )
         .length(8),
-      mapaUrl: z.string().url(),
+      /** Ruta interna (/mapa-…) o URL absoluta (https://…) */
+      mapaUrl: z.string(),
+      mapaLabel: z.string().optional(),
+      mapaDescripcio: z.string().optional(),
       videoAeri: z
         .object({
           publicSrc: z.string(),

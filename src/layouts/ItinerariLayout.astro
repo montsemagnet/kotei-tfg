@@ -20,7 +20,7 @@ const { frontmatter } = Astro.props;
 
 const defaultDadesLabels: Record<string, string> = {
   ubicacio: "ubicació",
-  mapa: "mapa",
+  mapa: "Mapa QGIS",
   socle: "sòcol",
   historia: "història",
   paleogeologia: "paleogeologia",
@@ -183,6 +183,43 @@ const mapaHref = frontmatter.mapaUrl ? withBase(frontmatter.mapaUrl) : undefined
       </div>
 
       {
+        mapaHref && frontmatter.dades?.mapa && (
+          <div
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            class="grid grid-cols-1 lg:grid-cols-4 items-start gap-x-6 gap-y-2 mb-12"
+          >
+            <div class="min-w-0">
+              <Text
+                tag="a"
+                variant="displayMD"
+                href={mapaHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Obrir mapa interactiu fet amb QGIS (nova pestanya)"
+                class="font-medium tracking-tighter text-accent-700 dark:text-accent-400 underline decoration-accent-700/30 dark:decoration-accent-400/40 underline-offset-[6px] hover:decoration-accent-700 dark:hover:decoration-accent-400 transition-colors leading-tight break-words inline-block"
+              >
+                {dadesLabels.mapa ?? "Mapa QGIS"}
+              </Text>
+            </div>
+            <div class="lg:col-span-3 min-w-0">
+              <Text
+                tag="a"
+                variant="textXL"
+                href={mapaHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Obrir mapa interactiu fet amb QGIS (nova pestanya)"
+                class="text-base-500 dark:text-base-400 hover:text-accent-700 dark:hover:text-accent-400 transition-colors"
+              >
+                {frontmatter.dades.mapa}
+              </Text>
+            </div>
+          </div>
+        )
+      }
+
+      {
         videoEnModal && frontmatter.video && (
           <div
             data-aos="fade-up"
@@ -247,6 +284,7 @@ const mapaHref = frontmatter.mapaUrl ? withBase(frontmatter.mapaUrl) : undefined
       <div class="flex flex-col border-t border-base-200 dark:border-base-800 mb-12">
         {
           Object.entries(frontmatter.dades).map(([key, value]) => {
+            if (key === "mapa" && mapaHref) return null;
             const indexItems = frontmatter.dadesIndex?.[key];
             const hasIndex = Boolean(indexItems?.length);
             const modalKey = frontmatter.dadesModalAliases?.[key] ?? key;
@@ -262,19 +300,7 @@ const mapaHref = frontmatter.mapaUrl ? withBase(frontmatter.mapaUrl) : undefined
               >
                 <div class="min-w-0">
                 {
-                  key === "mapa" && mapaHref ? (
-                    <Text
-                      tag="a"
-                      variant="displayMD"
-                      href={mapaHref}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title="Obrir mapa interactiu (nova pestanya)"
-                      class="capitalize font-medium tracking-tighter text-accent-700 dark:text-accent-400 underline decoration-accent-700/30 dark:decoration-accent-400/40 underline-offset-[6px] hover:decoration-accent-700 dark:hover:decoration-accent-400 transition-colors leading-tight break-words inline-block"
-                    >
-                      {label}
-                    </Text>
-                  ) : hasIndex || !modal ? (
+                  hasIndex || !modal ? (
                     <Text
                       tag="h2"
                       variant="displayMD"
@@ -293,39 +319,23 @@ const mapaHref = frontmatter.mapaUrl ? withBase(frontmatter.mapaUrl) : undefined
                   )
                 }
                 </div>
-                {
-                  key === "mapa" && mapaHref ? (
-                    <Text
-                      tag="a"
-                      variant="textXL"
-                      href={mapaHref}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title="Obrir mapa interactiu (nova pestanya)"
-                      class="text-base-500 dark:text-base-400 lg:col-span-3 min-w-0 hover:text-accent-700 dark:hover:text-accent-400 transition-colors"
-                    >
-                      {value}
-                    </Text>
-                  ) : (
-                    <div class="lg:col-span-3 min-w-0">
-                      <Text
-                        tag="p"
-                        variant="textXL"
-                        class="text-base-500 dark:text-base-400"
-                      >
-                        {value}
-                      </Text>
-                      {
-                        hasIndex && indexItems && (
-                          <ItinerariDadaIndex
-                            items={indexItems}
-                            ariaLabel={`Índex de ${label}`}
-                          />
-                        )
-                      }
-                    </div>
-                  )
-                }
+                <div class="lg:col-span-3 min-w-0">
+                  <Text
+                    tag="p"
+                    variant="textXL"
+                    class="text-base-500 dark:text-base-400"
+                  >
+                    {value}
+                  </Text>
+                  {
+                    hasIndex && indexItems && (
+                      <ItinerariDadaIndex
+                        items={indexItems}
+                        ariaLabel={`Índex de ${label}`}
+                      />
+                    )
+                  }
+                </div>
                 {
                   hasIndex && indexItems?.map((item) => {
                     if (!item.modalKey) return null;

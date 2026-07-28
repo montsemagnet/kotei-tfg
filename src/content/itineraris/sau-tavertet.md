@@ -82,6 +82,7 @@ dades:
   paleogeologia: "Seqüència cronològica en vídeo dels grans esdeveniments geològics que han configurat el relleu i les formacions visibles al llarg de l'itinerari Sau–Tavertet."
   paisatge: "Relació entre geologia del Collsacabra, paisatge de la cinglera i distribució de la flora al llarg de tot l'itinerari Sau–Tavertet."
 dadesLabels:
+  mapa: "Mapa QGIS"
   historia: "Geologia"
   paleogeologia: "Paleogeologia"
   paisatge: "Geobotànica"

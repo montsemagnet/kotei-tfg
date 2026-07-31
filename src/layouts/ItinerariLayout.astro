@@ -190,17 +190,17 @@ const mapaHref = frontmatter.mapaUrl ? withBase(frontmatter.mapaUrl) : undefined
             class="grid grid-cols-1 lg:grid-cols-4 items-start gap-x-6 gap-y-2 mb-12"
           >
             <div class="min-w-0">
-              <Text
-                tag="a"
-                variant="displayMD"
+              <TitleIconTrigger
+                as="a"
                 href={mapaHref}
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Obrir mapa interactiu fet amb QGIS (nova pestanya)"
-                class="font-medium tracking-tighter text-accent-700 dark:text-accent-400 underline decoration-accent-700/30 dark:decoration-accent-400/40 underline-offset-[6px] hover:decoration-accent-700 dark:hover:decoration-accent-400 transition-colors leading-tight break-words inline-block"
+                aria-label={`Obrir: ${dadesLabels.mapa ?? "Mapa QGIS"}`}
+                titleClass="!normal-case"
               >
                 {dadesLabels.mapa ?? "Mapa QGIS"}
-              </Text>
+              </TitleIconTrigger>
             </div>
             <div class="lg:col-span-3 min-w-0">
               <Text

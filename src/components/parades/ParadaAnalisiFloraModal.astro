@@ -3,6 +3,8 @@ import { Image } from "astro:assets";
 import Text from "@/components/fundations/elements/Text.astro";
 import ItinerariZoom from "@/components/itinerari/ItinerariZoom.astro";
 import ItinerariModalHeaderActions from "@/components/itinerari/ItinerariModalHeaderActions.astro";
+import TermesLinkedText from "@/components/global/TermesLinkedText.astro";
+import { createTermeLinkTracker } from "@/utils/linkTermes";
 
 interface FloraImage {
   url: ImageMetadata;
@@ -38,6 +40,7 @@ interface Props {
 const { modalId, data } = Astro.props;
 const titleId = `${modalId}-title`;
 const zoomId = `${modalId}-zoom`;
+const linkedSlugs = createTermeLinkTracker();
 const zoomThumbClass =
   "w-full cursor-pointer overflow-hidden border-0 p-0 bg-transparent hover:opacity-90 transition-opacity";
 const zoomThumbCompactClass =
@@ -99,13 +102,7 @@ const panelCloseClass =
       {
         data.paragraphs && data.paragraphs.length > 0 ? (
           data.paragraphs.map((paragraph) => (
-            <Text
-              tag="p"
-              variant="textBase"
-              class="text-base-500 dark:text-base-400 leading-relaxed"
-            >
-              {paragraph}
-            </Text>
+            <TermesLinkedText text={paragraph} linkedSlugs={linkedSlugs} />
           ))
         ) : (
           <>
@@ -119,13 +116,7 @@ const panelCloseClass =
             >
               {title}
             </Text>
-            <Text
-              tag="p"
-              variant="textBase"
-              class="text-base-500 dark:text-base-400 leading-relaxed"
-            >
-              {value}
-            </Text>
+            <TermesLinkedText text={value} linkedSlugs={linkedSlugs} />
           </div>
         ))
       }
@@ -190,13 +181,10 @@ const panelCloseClass =
             >
               Flora rupícola o de fissures
             </Text>
-            <Text
-              tag="p"
-              variant="textBase"
-              class="text-base-500 dark:text-base-400 leading-relaxed"
-            >
-              {data.floraRupicola}
-            </Text>
+            <TermesLinkedText
+              text={data.floraRupicola}
+              linkedSlugs={linkedSlugs}
+            />
           </div>
         )
       }
@@ -252,13 +240,10 @@ const panelCloseClass =
                   }
                   {
                     image.text && (
-                      <Text
-                        tag="p"
-                        variant="textBase"
-                        class="mt-3 text-base-500 dark:text-base-400 leading-relaxed"
-                      >
-                        {image.text}
-                      </Text>
+                      <TermesLinkedText
+                        text={image.text}
+                        linkedSlugs={linkedSlugs}
+                      />
                     )
                   }
                 </figure>

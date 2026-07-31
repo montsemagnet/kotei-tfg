@@ -1,6 +1,7 @@
 ---
 import Text from "@/components/fundations/elements/Text.astro";
 import ItinerariZoom from "@/components/itinerari/ItinerariZoom.astro";
+import { linkTermes } from "@/utils/linkTermes";
 import { withBase } from "@/utils/withBase";
 
 interface Props {
@@ -15,6 +16,7 @@ interface Props {
 }
 
 const { media, zoomId, class: className = "my-6" } = Astro.props;
+const titleHtml = media.title ? linkTermes(media.title) : undefined;
 
 const zoomThumbClass =
   "w-full cursor-pointer overflow-hidden border-0 p-0 bg-transparent hover:opacity-90 transition-opacity";
@@ -24,15 +26,14 @@ const zoomImageClass =
 
 <div class={className}>
   {
-    media.title && (
+    titleHtml && (
       <Text
         tag="h4"
         variant="textBase"
         class="dark:text-white text-base-900 font-medium mb-3 leading-snug"
         spellcheck="false"
-      >
-        {media.title}
-      </Text>
+        set:html={titleHtml}
+      />
     )
   }
   <ItinerariZoom zoomId={zoomId}>

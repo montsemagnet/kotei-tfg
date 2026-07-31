@@ -342,6 +342,8 @@ const parades = defineCollection({
         }),
       ),
       analisiFlora: analisiFloraSchema(image).optional(),
+      /** Text curt de geobotànica a la pàgina (sense modal) */
+      geobotanicaText: z.string().optional(),
       geologia: z
         .object({
           resum: z.string().optional(),

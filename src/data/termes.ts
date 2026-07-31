@@ -72,6 +72,16 @@ export const termes: Terme[] = [
     ]
   },
   {
+    "slug": "basament-varisc",
+    "terme": "Basament varisc",
+    "categoria": "Estratigrafia",
+    "definicio": "Basament de roques ígnies i metamòrfiques format durant l'orogènia varisca (o herciniana), al Paleozoic. A la Cordillera Litoral Catalana i a les Guilleries —i també a la presa de Sau— constitueix el «continent» antic sobre el qual, molt més tard, es dipositaren els sediments de la conca de l'Ebre.",
+    "sinonims": [
+      "basament hercinià",
+      "basament varisca"
+    ]
+  },
+  {
     "slug": "biotita",
     "terme": "Biotita",
     "categoria": "Mineralogia",
@@ -631,6 +641,7 @@ export const termes: Terme[] = [
     "definicio": "Varietat clara de monzogranit, amb predomini de quars i feldespats respecte als minerals femílics. Forma part del conjunt de pòrfirs i facies granítiques visibles al contacte litològic de la parada 1.",
     "sinonims": [
       "leucomonzogranits",
+      "leucomonzogranítics",
       "pòrfirs leucomonzogranítics"
     ]
   },
@@ -824,6 +835,17 @@ export const termes: Terme[] = [
     ]
   },
   {
+    "slug": "roques-ignies-plutoniques",
+    "terme": "Roques ígnies plutòniques",
+    "categoria": "Litologia",
+    "definicio": "Roques formades per la cristal·lització d'un magma en profunditat, dins l'escorça, sense arribar a la superfície (a diferència de les volcàniques). Solen presentar textura fanerítica, amb cristalls visibles a l'ull nu. El monzogranit i els pòrfirs de la presa de Sau en són exemples típics del sòcol hercinià.",
+    "sinonims": [
+      "roca ígnia plutònica",
+      "roques plutòniques",
+      "ígnies plutòniques"
+    ]
+  },
+  {
     "slug": "prepirineu",
     "terme": "Prepirineu",
     "categoria": "Geografia geològica",
@@ -836,6 +858,15 @@ export const termes: Terme[] = [
     "definicio": "Roca ígnia amb fenocristalls visibles dins una matriu més fina (textura porfírica), sovint producte d'una intrusió tardana. A la presa de Sau, diferents pòrfirs —monzogranític, leucomonzogranític i granodiorític— es poden distingir al contacte litològic.",
     "sinonims": [
       "pòrfirs"
+    ]
+  },
+  {
+    "slug": "porfirs-monzogranitics-i-leucomonzogranitics",
+    "terme": "Pòrfirs monzogranítics i leucomonzogranítics",
+    "categoria": "Litologia",
+    "definicio": "Facies de pòrfir de composició monzogranítica a leucomonzogranítica, amb textura porfírica i tonalitat generalment clara. A la parada 1 (presa de Sau) formen una de les dues unitats en contacte amb els pòrfirs granodiorítics; al mapa geològic es cartografien amb el codi Gpg.",
+    "sinonims": [
+      "pòrfirs monzogranítics"
     ]
   },
   {
@@ -960,12 +991,22 @@ export const termes: Terme[] = [
     "definicio": "Successió de materials volcànics i sediments detrítics dipositats alternativament, sovint en context de marges de continent. Al massís de les Guilleries, aquesta sèrie conté fòssils d'edat Caradoc i forma part del sòcol paleozoic."
   },
   {
+    "slug": "socol-cristal-li-hercinia",
+    "terme": "Sòcol cristal·lí hercinià",
+    "categoria": "Estratigrafia",
+    "definicio": "Basament de roques ígnies i metamòrfiques format durant l'orogènia varisca (herciniana), al Paleozoic. A la presa de Sau aflora com a monzogranit i pòrfirs i constitueix el suport rígid sobre el qual, en discordança, es recolzen els materials sedimentaris terciaris del Collsacabra.",
+    "sinonims": [
+      "sòcol granític hercinià"
+    ]
+  },
+  {
     "slug": "socol-paleozoic",
     "terme": "Sòcol paleozoic",
     "categoria": "Estratigrafia",
     "definicio": "Conjunt de roques paleozoiques —ígnies, metamòrfiques i sedimentàries transformades— que formen la base estructural d'una regió. A Sau–Tavertet, el sòcol granític hercinià suporta la cobertura eocena en discordança erosiva.",
     "sinonims": [
       "sòcol cristal·lí",
+      "sòcol cristal·lí paleozoic",
       "basament paleozoic",
       "sòcol hercinià"
     ]
@@ -985,7 +1026,9 @@ export const termes: Terme[] = [
     "categoria": "Litologia",
     "definicio": "Textura ígnia amb cristalls visibles a simple vista, producte d'un refredament lent en profunditat. El monzogranit de la presa de Sau presenta textura fanerítica o «granítica», amb quars, feldespats i biotita reconeixibles.",
     "sinonims": [
-      "textura granítica"
+      "textura granítica",
+      "fanerítica",
+      "fanerític"
     ]
   },
   {

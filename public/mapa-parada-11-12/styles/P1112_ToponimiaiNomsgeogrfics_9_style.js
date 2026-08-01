@@ -4,55 +4,17 @@ function categories_P1112_ToponimiaiNomsgeogrfics_9(feature, value, size, resolu
                        labelFont, labelFill, bufferColor, bufferWidth,
                        placement, textAlign, offsetX, offsetY, overflow, repeat) {
     var valueStr = (value !== null && value !== undefined) ? value.toString() : 'default';
+    /* Línia de base transparent: qgis2web la dibuixa com a ratlles de color */
+    var noStroke = new ol.style.Stroke({color: 'rgba(0,0,0,0.0)', lineDash: null, lineCap: 'round', lineJoin: 'round', width: 0});
     switch(valueStr) {
         case '1':
-            return [ new ol.style.Style({
-        stroke: new ol.style.Stroke({color: 'rgba(71,89,210,1.0)', lineDash: null, lineCap: 'round', lineJoin: 'round', width: 2.508}),
-        text: createTextStyle(feature, resolution, labelText, labelFont,
-                              labelFill, placement, bufferColor,
-                              bufferWidth, textAlign, offsetX, offsetY, overflow, repeat)
-    })];
-			break;
-
         case '2':
-            return [ new ol.style.Style({
-        stroke: new ol.style.Stroke({color: 'rgba(113,198,219,1.0)', lineDash: null, lineCap: 'round', lineJoin: 'round', width: 2.508}),
-        text: createTextStyle(feature, resolution, labelText, labelFont,
-                              labelFill, placement, bufferColor,
-                              bufferWidth, textAlign, offsetX, offsetY, overflow, repeat)
-    })];
-			break;
-
         case '3':
-            return [ new ol.style.Style({
-        stroke: new ol.style.Stroke({color: 'rgba(235,29,60,1.0)', lineDash: null, lineCap: 'round', lineJoin: 'round', width: 2.508}),
-        text: createTextStyle(feature, resolution, labelText, labelFont,
-                              labelFill, placement, bufferColor,
-                              bufferWidth, textAlign, offsetX, offsetY, overflow, repeat)
-    })];
-			break;
-
         case '5':
-            return [ new ol.style.Style({
-        stroke: new ol.style.Stroke({color: 'rgba(201,227,85,1.0)', lineDash: null, lineCap: 'round', lineJoin: 'round', width: 2.508}),
-        text: createTextStyle(feature, resolution, labelText, labelFont,
-                              labelFill, placement, bufferColor,
-                              bufferWidth, textAlign, offsetX, offsetY, overflow, repeat)
-    })];
-			break;
-
         case '12':
-            return [ new ol.style.Style({
-        stroke: new ol.style.Stroke({color: 'rgba(46,229,202,1.0)', lineDash: null, lineCap: 'round', lineJoin: 'round', width: 2.508}),
-        text: createTextStyle(feature, resolution, labelText, labelFont,
-                              labelFill, placement, bufferColor,
-                              bufferWidth, textAlign, offsetX, offsetY, overflow, repeat)
-    })];
-			break;
-
         case '13':
             return [ new ol.style.Style({
-        stroke: new ol.style.Stroke({color: 'rgba(133,231,184,1.0)', lineDash: null, lineCap: 'round', lineJoin: 'round', width: 2.508}),
+        stroke: noStroke,
         text: createTextStyle(feature, resolution, labelText, labelFont,
                               labelFill, placement, bufferColor,
                               bufferWidth, textAlign, offsetX, offsetY, overflow, repeat)
@@ -78,7 +40,7 @@ var style_P1112_ToponimiaiNomsgeogrfics_9 = function(feature, resolution){
     var overflow = true;
     var repeat = 0;
     var placement = 'line';
-    if (feature.get("nom") !== null && resolution > 0 && resolution < 0) {
+    if (feature.get("nom") !== null && resolution > 0 && resolution < 20) {
         labelText = String(feature.get("nom"));
     }
     

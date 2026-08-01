@@ -11,8 +11,17 @@ var map = new ol.Map({
     })
 });
 
-//initial view - epsg:3857 coordinates if not "Match project CRS"
-map.getView().fit([266210.550911, 5158024.257627, 267821.116382, 5159040.310422], map.getSize());
+//initial view - epsg:3857 (més a prop de P11–P12 / Turó del Castell)
+function fitInitialView() {
+    map.updateSize();
+    map.getView().fit([266520.0, 5158180.0, 267130.0, 5158680.0], {
+        size: map.getSize(),
+        padding: [36, 36, 36, 36],
+        maxZoom: 17
+    });
+}
+fitInitialView();
+window.addEventListener('load', fitInitialView);
 
 //change cursor
 function pointerOnFeature(evt) {

@@ -5,3 +5,5 @@ Ajustos:
 - Litologia setOpacity 0.5 + fill alpha 0.5
 - Corbes de nivell visibles per defecte
 - Llegenda simplificada a ITINERARI i TOPOGRAFIA (només toggle)
+- Vista inicial més propera (P11–P12 / Turó del Castell)
+- Toponímia: amaga ratlles de base i mostra etiquetes de text

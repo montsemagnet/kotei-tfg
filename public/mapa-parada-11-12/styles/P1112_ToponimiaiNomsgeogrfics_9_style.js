@@ -42,6 +42,10 @@ var style_P1112_ToponimiaiNomsgeogrfics_9 = function(feature, resolution){
     var placement = 'line';
     if (feature.get("nom") !== null && resolution > 0 && resolution < 20) {
         labelText = String(feature.get("nom"));
+        // Evita solapament amb l'etiqueta «Gresos» (P12 / aflorament)
+        if (labelText === "Turó del Castell") {
+            offsetY = -16;
+        }
     }
     
     var style = categories_P1112_ToponimiaiNomsgeogrfics_9(feature, value, size, resolution, labelText,

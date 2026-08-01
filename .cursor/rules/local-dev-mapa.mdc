@@ -1,0 +1,56 @@
+---
+description: Local dev — mapa Sau–Tavertet en port apart (no penjar Astro)
+alwaysApply: true
+---
+
+# Desenvolupament local — mapa itinerari
+
+## Problema
+
+La carpeta completa `public/mapa-sau-tavertet/` (~34 MB, centenars de fitxers qgis2web) **penja `npm run dev` / Astro**. No servir el mapa pesat des d’Astro en local.
+
+## Configuració correcta (sempre)
+
+| Servei | Port | Carpeta / URL |
+|--------|------|----------------|
+| **Astro (web TFG)** | `4321` | `http://127.0.0.1:4321/kotei-tfg/` |
+| **Mapa itinerari (qgis2web)** | `8767` | `mapa-web-sau-tavertet/` → `http://127.0.0.1:8767/` |
+
+- Preferir **`127.0.0.1`**, no `localhost` (Astro està lligat a `127.0.0.1`).
+- El mapa complet viu a **`mapa-web-sau-tavertet/`** (fora de `public/`).
+- A **`public/mapa-sau-tavertet/`** en local només un **placeholder lleuger** que redirigeix a `http://127.0.0.1:8767/` (no la còpia completa del mapa).
+- No deixis una segona còpia completa del mapa dins el projecte (p. ex. `_dev-mapa-sau-parked/`): Vite/Astro pot arribar a consumir **GB de RAM** i penjar-se.
+- `astro.config.mjs` ha de tenir `server.fs.deny` + `watch.ignored` per a `mapa-web-sau-tavertet`.
+- `mapa-parada-1` (~6 MB) pot quedar a `public/`; el problema greu és el mapa Sau–Tavertet gran.
+
+## Com engegar
+
+**Si l’usuari demana obrir/engegar la web en local:** l’agent ha d’engegar **els dos** serveis (web + mapa), no només `npm run dev`.
+
+**Una sola ordre (recomanat):**
+```powershell
+npm run dev:local
+```
+Això arrenca Astro (`4321`) i el mapa (`8767`).
+
+**Manual (dos terminals):**
+```powershell
+npm run dev:map   # mapa → http://127.0.0.1:8767/
+npm run dev       # web  → http://127.0.0.1:4321/kotei-tfg/
+```
+
+Obrir: `http://127.0.0.1:4321/kotei-tfg/`
+
+Si Astro no respon / timeout: aturar Node a `:4321`, comprovar que `public/mapa-sau-tavertet` **no** contingui el mapa sencer (només el placeholder), i tornar a engegar.
+
+## Git / producció
+
+- **No commitis** el placeholder local ni esborris del remote el mapa de producció sense que l’usuari ho demani.
+- A GitHub Pages el mapa pot anar a `public/mapa-sau-tavertet/` (build estàtic); el split de ports és **només per a `astro dev`**.
+- `astro.config.mjs` ja ignora `**/public/**` i `**/mapa-web-sau-tavertet/**` al watcher; això no evita el penjat si la còpia pesada és dins `public/` i Vite la indexa.
+
+## Quan l’usuari digui que no s’obre el localhost
+
+1. Comprovar si `:4321` escolta però no respon → mapa pesat a `public/` o procés penjat.
+2. Restaurar el flux de dos ports (placeholder + `http-server` 8767 + `npm run dev`).
+3. No tornar a copiar el mapa complet a `public/` “per provar-lo” en local.

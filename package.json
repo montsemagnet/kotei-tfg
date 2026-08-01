@@ -5,6 +5,8 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
+    "dev:map": "npx --yes http-server mapa-web-sau-tavertet -p 8767 -c-1 -a 127.0.0.1",
+    "dev:local": "npx --yes concurrently -k -n web,mapa -c blue,green \"npm run dev\" \"npm run dev:map\"",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",

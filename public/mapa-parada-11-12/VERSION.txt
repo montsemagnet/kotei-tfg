@@ -1,0 +1,7 @@
+Mapa Parades 11–12 (qgis2web)
+Export: qgis2web_2026_08_01-19_10_56_696321
+Compartit per I1-P11 i I1-P12
+Ajustos:
+- Litologia setOpacity 0.5 + fill alpha 0.5
+- Corbes de nivell visibles per defecte
+- Llegenda simplificada a ITINERARI i TOPOGRAFIA (només toggle)

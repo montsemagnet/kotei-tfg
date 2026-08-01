@@ -13,6 +13,7 @@ import ItinerariPaleogeologiaModal from "@/components/itinerari/ItinerariPaleoge
 import ItinerariDadaModal from "@/components/itinerari/ItinerariDadaModal.astro";
 import ItinerariDadaIndex from "@/components/itinerari/ItinerariDadaIndex.astro";
 import ItinerariZoom from "@/components/itinerari/ItinerariZoom.astro";
+import ItinerariModalTextSizeControls from "@/components/itinerari/ItinerariModalTextSizeControls.astro";
 import GlossariSection from "@/components/global/GlossariSection.astro";
 import { withBase } from "@/utils/withBase";
 
@@ -50,6 +51,7 @@ const mapaHref = frontmatter.mapaUrl ? withBase(frontmatter.mapaUrl) : undefined
 
 <BaseLayout>
   <section>
+    <div data-text-size-enabled>
     <Wrapper variant="standard" class={heroWrapperClass}>
       <Text
         tag="a"
@@ -60,13 +62,14 @@ const mapaHref = frontmatter.mapaUrl ? withBase(frontmatter.mapaUrl) : undefined
         ← Tornar a la pàgina d'inici
       </Text>
 
-      <div class="w-full itinerari-title-wrap">
+      <div class="mb-8 flex flex-wrap items-start justify-between gap-4">
+      <div class="min-w-0 flex-1 itinerari-title-wrap">
         <Text
           tag="h1"
           variant="textBase"
           data-aos="fade-up"
           data-aos-duration="1000"
-          class="itinerari-page-title dark:text-white text-base-900 font-medium tracking-tighter mb-8 w-full max-w-none"
+          class="itinerari-page-title dark:text-white text-base-900 font-medium tracking-tighter w-full max-w-none"
         >
           {
             frontmatter.titleParts ? (
@@ -98,6 +101,9 @@ const mapaHref = frontmatter.mapaUrl ? withBase(frontmatter.mapaUrl) : undefined
             )
           }
         </Text>
+      </div>
+        <ItinerariModalTextSizeControls label="Mida del text de l'itinerari" />
+      </div>
 
         {
           !videoEnModal && (
@@ -126,7 +132,6 @@ const mapaHref = frontmatter.mapaUrl ? withBase(frontmatter.mapaUrl) : undefined
             </div>
           )
         }
-      </div>
 
       {
         frontmatter.mapa === "sau-tavertet" && (
@@ -157,7 +162,7 @@ const mapaHref = frontmatter.mapaUrl ? withBase(frontmatter.mapaUrl) : undefined
       <div
         data-aos="fade-up"
         data-aos-duration="1000"
-        class="grid grid-cols-1 lg:grid-cols-4 items-start gap-x-6 gap-y-2 mb-12"
+        class="page-text-content grid grid-cols-1 lg:grid-cols-4 items-start gap-x-6 gap-y-2 mb-12"
       >
         <div class="min-w-0">
           <Text
@@ -187,7 +192,7 @@ const mapaHref = frontmatter.mapaUrl ? withBase(frontmatter.mapaUrl) : undefined
           <div
             data-aos="fade-up"
             data-aos-duration="1000"
-            class="grid grid-cols-1 lg:grid-cols-4 items-start gap-x-6 gap-y-2 mb-12"
+            class="page-text-content grid grid-cols-1 lg:grid-cols-4 items-start gap-x-6 gap-y-2 mb-12"
           >
             <div class="min-w-0">
               <TitleIconTrigger
@@ -224,7 +229,7 @@ const mapaHref = frontmatter.mapaUrl ? withBase(frontmatter.mapaUrl) : undefined
           <div
             data-aos="fade-up"
             data-aos-duration="1000"
-            class="grid grid-cols-1 lg:grid-cols-4 items-start gap-x-6 gap-y-2 mb-12"
+            class="page-text-content grid grid-cols-1 lg:grid-cols-4 items-start gap-x-6 gap-y-2 mb-12"
           >
             <div class="min-w-0">
               <TitleIconTrigger
@@ -253,7 +258,7 @@ const mapaHref = frontmatter.mapaUrl ? withBase(frontmatter.mapaUrl) : undefined
           <div
             data-aos="fade-up"
             data-aos-duration="1000"
-            class="grid grid-cols-1 lg:grid-cols-4 items-start gap-x-6 gap-y-2 mb-12"
+            class="page-text-content grid grid-cols-1 lg:grid-cols-4 items-start gap-x-6 gap-y-2 mb-12"
           >
             <div class="min-w-0">
               <TitleIconTrigger
@@ -298,7 +303,7 @@ const mapaHref = frontmatter.mapaUrl ? withBase(frontmatter.mapaUrl) : undefined
                 data-aos-duration="1000"
                 class="grid grid-cols-1 lg:grid-cols-4 items-start gap-x-6 gap-y-2 py-4 border-b border-base-200 dark:border-base-800"
               >
-                <div class="min-w-0">
+                <div class="page-text-content min-w-0">
                 {
                   hasIndex || !modal ? (
                     <Text
@@ -319,7 +324,7 @@ const mapaHref = frontmatter.mapaUrl ? withBase(frontmatter.mapaUrl) : undefined
                   )
                 }
                 </div>
-                <div class="lg:col-span-3 min-w-0">
+                <div class="page-text-content lg:col-span-3 min-w-0">
                   <Text
                     tag="p"
                     variant="textXL"
@@ -397,7 +402,7 @@ const mapaHref = frontmatter.mapaUrl ? withBase(frontmatter.mapaUrl) : undefined
           <div
             data-aos="fade-up"
             data-aos-duration="1000"
-            class="grid grid-cols-1 lg:grid-cols-4 items-start gap-x-6 gap-y-2 mb-12"
+            class="page-text-content grid grid-cols-1 lg:grid-cols-4 items-start gap-x-6 gap-y-2 mb-12"
           >
             <div class="min-w-0">
               <Text
@@ -500,7 +505,7 @@ const mapaHref = frontmatter.mapaUrl ? withBase(frontmatter.mapaUrl) : undefined
           <div
             data-aos="fade-up"
             data-aos-duration="1000"
-            class="grid grid-cols-1 lg:grid-cols-4 gap-2 mt-12"
+            class="page-text-content grid grid-cols-1 lg:grid-cols-4 gap-2 mt-12"
           >
             <Text
               tag="h2"
@@ -536,8 +541,11 @@ const mapaHref = frontmatter.mapaUrl ? withBase(frontmatter.mapaUrl) : undefined
 
       <slot />
 
-      <GlossariSection showCartaPdf />
+      <div class="page-text-content">
+        <GlossariSection showCartaPdf />
+      </div>
     </Wrapper>
+    </div>
 
     {
       frontmatter.altimetria && (

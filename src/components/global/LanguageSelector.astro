@@ -37,7 +37,7 @@ const languages = [
   </button>
 
   <div
-    class="lang-menu pointer-events-none absolute bottom-[calc(100%+0.75rem)] left-1/2 z-[120] w-64 -translate-x-1/2 rounded-lg border border-base-700 bg-base-800 p-3 opacity-0 shadow-xl transition-all duration-200 dark:border-base-300 dark:bg-base-50 invisible"
+    class="lang-menu pointer-events-none fixed z-[200] w-64 rounded-lg border border-base-700 bg-base-800 p-3 opacity-0 shadow-xl transition-opacity duration-200 dark:border-base-300 dark:bg-base-50 invisible"
     role="listbox"
     aria-label="Idiomes disponibles"
     data-lang-menu
@@ -132,6 +132,17 @@ const languages = [
     });
   }
 
+  function placeMenu(toggle: HTMLButtonElement, menu: HTMLElement) {
+    const rect = toggle.getBoundingClientRect();
+    const menuWidth = menu.offsetWidth || 256;
+    const gap = 12;
+    let left = rect.left + rect.width / 2 - menuWidth / 2;
+    left = Math.max(8, Math.min(left, window.innerWidth - menuWidth - 8));
+    menu.style.left = `${left}px`;
+    menu.style.top = "auto";
+    menu.style.bottom = `${window.innerHeight - rect.top + gap}px`;
+  }
+
   function closeMenu(root: HTMLElement) {
     const toggle = root.querySelector("[data-lang-toggle]");
     const menu = root.querySelector("[data-lang-menu]");
@@ -150,6 +161,7 @@ const languages = [
     toggle.setAttribute("aria-expanded", "true");
     menu.classList.remove("pointer-events-none", "invisible", "opacity-0");
     menu.classList.add("pointer-events-auto", "visible", "opacity-100");
+    placeMenu(toggle, menu);
   }
 
   function initLanguageSelector() {
@@ -190,19 +202,43 @@ const languages = [
       });
     });
 
-    document.addEventListener("click", (event) => {
-      document.querySelectorAll("[data-lang-selector]").forEach((root) => {
-        if (!(root instanceof HTMLElement)) return;
-        if (!root.contains(event.target as Node)) closeMenu(root);
-      });
-    });
+    const win = window as Window & { __langSelectorGlobalsBound?: boolean };
+    if (!win.__langSelectorGlobalsBound) {
+      win.__langSelectorGlobalsBound = true;
 
-    document.addEventListener("keydown", (event) => {
-      if (event.key !== "Escape") return;
-      document.querySelectorAll("[data-lang-selector]").forEach((root) => {
-        if (root instanceof HTMLElement) closeMenu(root);
+      document.addEventListener("click", (event) => {
+        document.querySelectorAll("[data-lang-selector]").forEach((root) => {
+          if (!(root instanceof HTMLElement)) return;
+          if (!root.contains(event.target as Node)) closeMenu(root);
+        });
       });
-    });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key !== "Escape") return;
+        document.querySelectorAll("[data-lang-selector]").forEach((root) => {
+          if (root instanceof HTMLElement) closeMenu(root);
+        });
+      });
+
+      const repositionOpenMenus = () => {
+        document.querySelectorAll("[data-lang-selector]").forEach((root) => {
+          if (!(root instanceof HTMLElement)) return;
+          const toggle = root.querySelector("[data-lang-toggle]");
+          const menu = root.querySelector("[data-lang-menu]");
+          if (
+            !(toggle instanceof HTMLButtonElement) ||
+            !(menu instanceof HTMLElement) ||
+            !menu.classList.contains("visible")
+          ) {
+            return;
+          }
+          placeMenu(toggle, menu);
+        });
+      };
+
+      window.addEventListener("resize", repositionOpenMenus);
+      window.addEventListener("scroll", repositionOpenMenus, true);
+    }
   }
 
   initLanguageSelector();

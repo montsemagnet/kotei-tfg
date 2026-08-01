@@ -1,9 +1,37 @@
-/* Escala el text dins dels blocs marcats; imatges i vídeos queden fora */
+/* Escala el text dins dels blocs marcats; imatges i vídeos queden fora.
+   .page-text-content → pàgines d'itinerari i parada
+   .itinerari-modal-text-content → modals i glossari
+*/
+
+/* Pàgines */
+[data-text-size-enabled][data-text-size="large"] .page-text-content {
+  zoom: 1.125;
+}
+
+[data-text-size-enabled][data-text-size="xlarge"] .page-text-content {
+  zoom: 1.25;
+}
+
+/* Modals / glossari */
 [data-text-size-enabled][data-text-size="large"] .itinerari-modal-text-content {
   zoom: 1.125;
 }
 
 [data-text-size-enabled][data-text-size="xlarge"] .itinerari-modal-text-content {
+  zoom: 1.25;
+}
+
+/* Si la pàgina envolta un dialog, no li apliquis l'escala de pàgina al text del modal */
+[data-text-size-enabled][data-text-size] dialog .itinerari-modal-text-content {
+  zoom: 1;
+}
+
+/* El panell del modal sí que escala el seu text */
+.itinerari-dada-panel[data-text-size-enabled][data-text-size="large"] .itinerari-modal-text-content {
+  zoom: 1.125;
+}
+
+.itinerari-dada-panel[data-text-size-enabled][data-text-size="xlarge"] .itinerari-modal-text-content {
   zoom: 1.25;
 }
 
@@ -20,12 +48,27 @@
 }
 
 @supports not (zoom: 1) {
-  [data-text-size-enabled][data-text-size="large"] .itinerari-modal-text-content :is(h2, h3, h4, p, li, th, td, figcaption, dt, dd, span) {
+  [data-text-size-enabled][data-text-size="large"] :is(.itinerari-modal-text-content, .page-text-content) :is(h1, h2, h3, h4, p, li, th, td, figcaption, dt, dd, span, a) {
     font-size: calc(1em * 1.125) !important;
     line-height: 1.75 !important;
   }
 
-  [data-text-size-enabled][data-text-size="xlarge"] .itinerari-modal-text-content :is(h2, h3, h4, p, li, th, td, figcaption, dt, dd, span) {
+  [data-text-size-enabled][data-text-size="xlarge"] :is(.itinerari-modal-text-content, .page-text-content) :is(h1, h2, h3, h4, p, li, th, td, figcaption, dt, dd, span, a) {
+    font-size: calc(1em * 1.25) !important;
+    line-height: 1.75 !important;
+  }
+
+  [data-text-size-enabled][data-text-size] dialog .itinerari-modal-text-content :is(h1, h2, h3, h4, p, li, th, td, figcaption, dt, dd, span, a) {
+    font-size: revert-layer !important;
+    line-height: revert-layer !important;
+  }
+
+  .itinerari-dada-panel[data-text-size-enabled][data-text-size="large"] .itinerari-modal-text-content :is(h2, h3, h4, p, li, th, td, figcaption, dt, dd, span) {
+    font-size: calc(1em * 1.125) !important;
+    line-height: 1.75 !important;
+  }
+
+  .itinerari-dada-panel[data-text-size-enabled][data-text-size="xlarge"] .itinerari-modal-text-content :is(h2, h3, h4, p, li, th, td, figcaption, dt, dd, span) {
     font-size: calc(1em * 1.25) !important;
     line-height: 1.75 !important;
   }

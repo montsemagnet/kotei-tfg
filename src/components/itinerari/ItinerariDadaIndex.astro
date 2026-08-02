@@ -14,7 +14,7 @@ interface Props {
 const { items, ariaLabel } = Astro.props;
 
 const linkClass =
-  "text-left cursor-pointer text-base text-accent-700 dark:text-accent-400 underline decoration-accent-700/30 dark:decoration-accent-400/40 underline-offset-[4px] hover:decoration-accent-700 dark:hover:decoration-accent-400 transition-colors leading-snug";
+  "text-left cursor-pointer text-lg md:text-xl text-accent-700 dark:text-accent-400 underline decoration-accent-700/30 dark:decoration-accent-400/40 underline-offset-[4px] hover:decoration-accent-700 dark:hover:decoration-accent-400 transition-colors leading-snug";
 ---
 
 <nav class="mt-6 pl-6 sm:pl-8 lg:pl-10" aria-label={ariaLabel}>

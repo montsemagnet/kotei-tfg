@@ -371,7 +371,12 @@ export const termes: Terme[] = [
     "slug": "eoce",
     "terme": "Eocè",
     "categoria": "Cronologia",
-    "definicio": "Època del Paleogen compresa entre 56 i 34 Ma, durant la qual la conca de l'Ebre es va reblir amb sediments que passen d'ambients continentals a marins i de nou continentals. És l'edat de la major part de les roques visibles als cingles de Tavertet."
+    "definicio": "Època del Paleogen compresa entre 56 i 34 Ma, durant la qual la conca de l'Ebre es va reblir amb sediments que passen d'ambients continentals a marins i de nou continentals. És l'edat de la major part de les roques visibles als cingles de Tavertet.",
+    "sinonims": [
+      "eocèniques",
+      "eocena",
+      "eocenes"
+    ]
   },
   {
     "slug": "equinid",
@@ -525,8 +530,11 @@ export const termes: Terme[] = [
     "sinonims": [
       "Fm. Barcons",
       "Formació Barcons",
+      "Formació Barcons/Folgueroles",
       "gresos de la Formació Barcons",
-      "gresos continentals de la Formació Barcons"
+      "gresos continentals de la Formació Barcons",
+      "bancs de gresos de la Formació Barcons",
+      "bancs grocs de gresos continentals de la Formació Barcons"
     ]
   },
   {
@@ -593,7 +601,14 @@ export const termes: Terme[] = [
       "margues del Coll de Malla",
       "Formació Margues del Coll de Malla",
       "margues sorrenques blavoses de la Formació Coll de Malla",
-      "margues sorrenques blavoses"
+      "margues sorrenques blavoses",
+      "margues marines grises del Coll de Malla",
+      "margues blaves marines del Coll de Malla",
+      "margues blavoses del Coll de Malla",
+      "margues marines blaves del Coll de Malla",
+      "margues blaves marines",
+      "margues marines grises",
+      "paquet margós del Coll de Malla"
     ]
   },
   {
@@ -1209,7 +1224,9 @@ export const termes: Terme[] = [
     "categoria": "Geomorfologia",
     "definicio": "Relleu aïllat que resta com a testimoni d'una superfície o paquet de materials més extens erosionat al voltant. El Turó del Castell és un turó testimoni on una barra de gresos protegeix les margues subjacents i manté la morfologia cònica sobre l'embassament de Sau.",
     "sinonims": [
-      "turons testimoni"
+      "turons testimoni",
+      "Turó del Castell",
+      "turó del Castell"
     ]
   },
   {

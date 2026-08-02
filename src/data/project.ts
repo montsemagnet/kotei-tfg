@@ -265,6 +265,12 @@ export const geologiaItinerariCredits: GeologiaItinerariCredit[] = [
       "Magnet Sabata, M. (2026). Turó del Castell, itinerari Sau–Tavertet [Photograph]. Elaboració pròpia.",
   },
   {
+    label: "Fotografies de la Parada 11 — geologia i geobotànica (elaboració pròpia)",
+    use: "Fotografies de camp de la Parada 11 (Turó del Castell): aflorament de margues del Coll de Malla, badlands, fòssils/bioturbació, galeria d'imatges de l'aflorament i flora de timonedes i pradells (modals de geologia i geobotànica), realitzades per Montserrat Magnet Sabata el 9 de juny de 2026.",
+    apaCitation:
+      "Magnet Sabata, M. (2026). Parada 11, Turó del Castell (margues del Coll de Malla i vegetació associada) [Photographs]. Elaboració pròpia.",
+  },
+  {
     label: "Fotografia de gresos vermells i grisos (parada P7, elaboració pròpia)",
     use: "Fotografia de camp de l'aflorament de gresos vermells i grisos de la Formació Tavertet (modal d'estratigrafia i litologia), realitzada per Montserrat Magnet Sabata a l'itinerari Presa de Sau–Tavertet el 9 de juny de 2026.",
     apaCitation:

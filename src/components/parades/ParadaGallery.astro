@@ -10,10 +10,11 @@ interface Props {
 const { fotos, galleryId } = Astro.props;
 const overlayCloseClass =
   "parada-gallery-close itinerari-overlay-close text-sm font-medium";
+const galleryGridStyle = `grid-template-columns: repeat(${fotos.length}, minmax(0, 1fr));`;
 ---
 
 <div data-aos="fade-up" data-aos-duration="1000">
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+  <div class="grid gap-2" style={galleryGridStyle}>
     {
       fotos.map((foto, index) => (
         <button

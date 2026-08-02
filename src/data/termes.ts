@@ -523,7 +523,10 @@ export const termes: Terme[] = [
     "categoria": "Estratigrafia",
     "definicio": "Formació sedimentària relacionada amb ambients continentals i marins de platja al tancament de la seqüència eocena (34–28 Ma). Marca la fase final de la sedimentació paleogena abans de l'evolució neogena del litoral català.",
     "sinonims": [
-      "Fm. Barcons"
+      "Fm. Barcons",
+      "Formació Barcons",
+      "gresos de la Formació Barcons",
+      "gresos continentals de la Formació Barcons"
     ]
   },
   {

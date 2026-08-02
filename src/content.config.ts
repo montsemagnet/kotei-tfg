@@ -322,7 +322,8 @@ const parades = defineCollection({
             alt: z.string(),
           }),
         )
-        .length(8),
+        .min(1)
+        .max(8),
       /** Ruta interna (/mapa-…) o URL absoluta (https://…) */
       mapaUrl: z.string(),
       mapaLabel: z.string().optional(),

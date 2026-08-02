@@ -256,14 +256,18 @@ const panelCloseClass =
                         </div>
                       )
                     }
-                    <div class="mt-4 mb-2">
-                      <Text
-                        tag="h4"
-                        variant="textBase"
-                        class="dark:text-white text-base-900 font-medium mb-2 leading-snug"
-                      >
-                        {subsection.title}
-                      </Text>
+                    <div class:list={[subsection.title ? "mt-4 mb-2" : "mb-2"]}>
+                      {
+                        subsection.title && (
+                          <Text
+                            tag="h4"
+                            variant="textBase"
+                            class="dark:text-white text-base-900 font-medium mb-2 leading-snug"
+                          >
+                            {subsection.title}
+                          </Text>
+                        )
+                      }
                       {subsection.paragraphs.map((paragraph) => (
                         <TermesLinkedText
                           text={paragraph}

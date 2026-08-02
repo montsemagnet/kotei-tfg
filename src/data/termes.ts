@@ -35,6 +35,21 @@ export const termes: Terme[] = [
     ]
   },
   {
+    "slug": "alveolina",
+    "terme": "Alveolina",
+    "categoria": "Paleontologia",
+    "definicio": "Foraminífer bentònic amb closca allargada i cambres en espiral, freqüent a les plataformes marines de l'Eocè. A la Formació Coll de Malla, els nivells amb alveolines i ostres serveixen d'horitzó de referència prop del límit Lutecià–Bartonià.",
+    "sinonims": [
+      "alveolines"
+    ]
+  },
+  {
+    "slug": "ambient-de-baixa-energia",
+    "terme": "Ambient de baixa energia",
+    "categoria": "Sedimentologia",
+    "definicio": "Medi sedimentari on l'onatge i els corrents són febles, de manera que s'hi acumula lentament sediment fi (llim, fang i argila). Les margues del Coll de Malla de la parada 11 es van dipositar en un ambient d'aquest tipus, a la plataforma marina somera de la Conca de l'Ebre."
+  },
+  {
     "slug": "argila",
     "terme": "Argila",
     "categoria": "Litologia",
@@ -62,6 +77,21 @@ export const termes: Terme[] = [
     ]
   },
   {
+    "slug": "badlands",
+    "terme": "Badlands",
+    "categoria": "Geomorfologia",
+    "definicio": "Paisatge fortament erosionat, amb xaragalls densos i poc cobert de vegetació, típic de materials tous com margues i argiles. Al Collsacabra, les margues del Coll de Malla generen franges amb morfologia de badlands o «terres dolentes», en contrast amb els cingles calcaris.",
+    "sinonims": [
+      "terres dolentes"
+    ]
+  },
+  {
+    "slug": "bartonia",
+    "terme": "Bartonià",
+    "categoria": "Cronologia",
+    "definicio": "Pis de l'Eocè mitjà–superior (aproximadament 41–38 Ma) que segueix el Lutecià. Als gresos de Folgueroles i a nivells de referència amb alveolines i ostres del Collsacabra, el Bartonià marca un canvi cap a ambients més proximals dins la Conca de l'Ebre."
+  },
+  {
     "slug": "basament",
     "terme": "Basament",
     "categoria": "Estratigrafia",
@@ -82,10 +112,40 @@ export const termes: Terme[] = [
     ]
   },
   {
+    "slug": "bioclast",
+    "terme": "Bioclast",
+    "categoria": "Paleontologia",
+    "definicio": "Fragment de closca, esquelet o altra resta orgànica incorporat al sediment. Als nivells de tempesta de les margues del Coll de Malla, les concentracions de bioclasts indiquen episodis d'energia més alta sobre un fons habitualment tranquil.",
+    "sinonims": [
+      "bioclasts"
+    ]
+  },
+  {
+    "slug": "bioturbacio",
+    "terme": "Bioturbació",
+    "categoria": "Paleontologia",
+    "definicio": "Alteració del sediment per l'activitat d'organismes vius —cucs, crustacis i altres animals que excaven galeries o deixen pistes al fang—. Quan aquestes estructures es conserven a la roca, esdevenen paleoicnofòssils i indiquen un fons habitat i relativament oxigenat.",
+    "sinonims": [
+      "bioturbacions"
+    ]
+  },
+  {
     "slug": "biotita",
     "terme": "Biotita",
     "categoria": "Mineralogia",
     "definicio": "Mineral del grup de les miques, de color fosc i ric en ferro i magnesi, molt freqüent en granits i altres roques plutòniques. Contribueix a donar tonalitats més fosques a les roques i és un dels minerals que es pot identificar amb lupa en afloraments granítics."
+  },
+  {
+    "slug": "bivalve",
+    "terme": "Bivalve",
+    "categoria": "Paleontologia",
+    "definicio": "Mol·lusc amb dues valves (com les ostres i els musclos), molt abundant al registre marí. A la parada 11 s'hi troben bancs d'ostres i altres bivalves marins que documenten un fons fangós de plataforma.",
+    "sinonims": [
+      "bivalves",
+      "bivalves marins",
+      "lamel·libranqui",
+      "lamel·libranquis"
+    ]
   },
   {
     "slug": "bloc-tectonic",
@@ -271,6 +331,15 @@ export const termes: Terme[] = [
     "definicio": "Moviment de materials rocosos o de sòl pendents avall per l'acció de la gravetat, sovint activat per l'aigua o pel gel. En cingleres i vessants inclinats pot representar un risc geològic i modificar ràpidament l'aspecte de l'aflorament."
   },
   {
+    "slug": "diaclasi",
+    "terme": "Diàclasi",
+    "categoria": "Estructura",
+    "definicio": "Fractura de l'escorça o de la roca sense desplaçament apreciable entre els marges del pla de falla. Al granit de la presa de Sau, les diàclasis controlen l'estabilitat de l'aflorament i, sovint, la circulació de fluids i la formació de filons.",
+    "sinonims": [
+      "diàclasis"
+    ]
+  },
+  {
     "slug": "diposit-de-vessant",
     "terme": "Dipòsit de vessant",
     "categoria": "Sedimentologia",
@@ -299,19 +368,20 @@ export const termes: Terme[] = [
     ]
   },
   {
-    "slug": "diaclasi",
-    "terme": "Diàclasi",
-    "categoria": "Estructura",
-    "definicio": "Fractura de l'escorça o de la roca sense desplaçament apreciable entre els marges del pla de falla. Al granit de la presa de Sau, les diàclasis controlen l'estabilitat de l'aflorament i, sovint, la circulació de fluids i la formació de filons.",
-    "sinonims": [
-      "diàclasis"
-    ]
-  },
-  {
     "slug": "eoce",
     "terme": "Eocè",
     "categoria": "Cronologia",
     "definicio": "Època del Paleogen compresa entre 56 i 34 Ma, durant la qual la conca de l'Ebre es va reblir amb sediments que passen d'ambients continentals a marins i de nou continentals. És l'edat de la major part de les roques visibles als cingles de Tavertet."
+  },
+  {
+    "slug": "equinid",
+    "terme": "Equínid",
+    "categoria": "Paleontologia",
+    "definicio": "Eriçó de mar, invertebrat amb esquelet calcari i espines. A les margues del Coll de Malla són freqüents equínids com Schizaster, adaptats a viure enterrats en fangs tous de plataforma marina.",
+    "sinonims": [
+      "equínids",
+      "eriçó de mar"
+    ]
   },
   {
     "slug": "erosio-diferencial",
@@ -356,6 +426,15 @@ export const termes: Terme[] = [
     "definicio": "Major crisi biològica coneguda de la història de la Terra, al límit Permià–Triàsic (~252 Ma), en què va desaparèixer una gran part de les espècies marines i terrestres. Marca el final del Paleozoic i l'inici del Mesozoic.",
     "sinonims": [
       "extinció permotriàsica"
+    ]
+  },
+  {
+    "slug": "facies-amfibolitica",
+    "terme": "Fàcies amfibolítica",
+    "categoria": "Metamorfisme",
+    "definicio": "Conjunt de condicions de metamorfisme de temperatura i pressió elevades en què es formen minerals com l'amfibol i la plagioclasi. Als sectors més profunds del sòcol paleozoic, el metamorfisme hercinià va assolir aquest grau en algunes zones.",
+    "sinonims": [
+      "facies amfibolítiques"
     ]
   },
   {
@@ -448,6 +527,19 @@ export const termes: Terme[] = [
     ]
   },
   {
+    "slug": "formacio-de-folgueroles",
+    "terme": "Formació de Folgueroles",
+    "categoria": "Estratigrafia",
+    "definicio": "Unitat de gresos bartonians situada estratigràficament per damunt de les margues del Coll de Malla. Marca un canvi cap a ambients més proximals (platja i zones costaneres) dins la successió eocena del Collsacabra i de la Conca de l'Ebre.",
+    "sinonims": [
+      "Fm. Folgueroles",
+      "gresos de Folgueroles",
+      "Folgueroles",
+      "Formació Folgueroles",
+      "gresos bartonians de Folgueroles"
+    ]
+  },
+  {
     "slug": "formacio-de-mediona",
     "terme": "Formació de Mediona",
     "categoria": "Estratigrafia",
@@ -471,7 +563,10 @@ export const termes: Terme[] = [
     "categoria": "Estratigrafia",
     "definicio": "Unitat formada principalment per calcàries i gresos marins, molt visibles als cingles del Collsacabra. Conté calcàries nummulítiques i és una de les litologies més característiques de l'itinerari.",
     "sinonims": [
-      "Fm. Tavertet"
+      "Fm. Tavertet",
+      "Calcària de Tavertet",
+      "calcàries de Tavertet",
+      "calcàries lutecianes de Tavertet"
     ]
   },
   {
@@ -489,7 +584,13 @@ export const termes: Terme[] = [
     "categoria": "Estratigrafia",
     "definicio": "Unitat estratigràfica superior del conjunt eocè (38–34 Ma), constituïda principalment per margues grises amb fòssils marins. La seva litologia més tova afavoreix l'erosió i contribueix a l'escalonament de les cingleres.",
     "sinonims": [
-      "Fm. Coll de Malla"
+      "Fm. Coll de Malla",
+      "Formació Coll de Malla",
+      "Margues del Coll de Malla",
+      "margues del Coll de Malla",
+      "Formació Margues del Coll de Malla",
+      "margues sorrenques blavoses de la Formació Coll de Malla",
+      "margues sorrenques blavoses"
     ]
   },
   {
@@ -502,6 +603,12 @@ export const termes: Terme[] = [
     ]
   },
   {
+    "slug": "fossa-de-la-selva",
+    "terme": "Fossa de la Selva",
+    "categoria": "Geografia geològica",
+    "definicio": "Depressió tectònica neògena del sector litoral català, associada al sistema extensiu que va crear diverses conces i fosses a la costa. Comparteix el règim tectònic d'extensió amb altres estructures del Cenozoic català."
+  },
+  {
     "slug": "fossa-de-valencia",
     "terme": "Fossa de València",
     "categoria": "Geografia geològica",
@@ -511,27 +618,12 @@ export const termes: Terme[] = [
     ]
   },
   {
-    "slug": "fossa-de-la-selva",
-    "terme": "Fossa de la Selva",
-    "categoria": "Geografia geològica",
-    "definicio": "Depressió tectònica neògena del sector litoral català, associada al sistema extensiu que va crear diverses conces i fosses a la costa. Comparteix el règim tectònic d'extensió amb altres estructures del Cenozoic català."
-  },
-  {
-    "slug": "facies-amfibolitica",
-    "terme": "Fàcies amfibolítica",
-    "categoria": "Metamorfisme",
-    "definicio": "Conjunt de condicions de metamorfisme de temperatura i pressió elevades en què es formen minerals com l'amfibol i la plagioclasi. Als sectors més profunds del sòcol paleozoic, el metamorfisme hercinià va assolir aquest grau en algunes zones.",
+    "slug": "gasteropode",
+    "terme": "Gasteròpode",
+    "categoria": "Paleontologia",
+    "definicio": "Mol·lusc amb una sola closca enrotllada (com els cargols marins). A les margues del Coll de Malla apareixen gasteròpodes com Turritella, associats a ambients de platja somera o plataforma poc profunda.",
     "sinonims": [
-      "facies amfibolítiques"
-    ]
-  },
-  {
-    "slug": "geozona",
-    "terme": "Geozona",
-    "categoria": "Patrimoni geològic",
-    "definicio": "Àrea delimitada amb valor geològic, didàctic, científic o paisatgístic reconegut per l'administració. L'itinerari Sau–Tavertet està catalogat com a geozona al repositori de geotops de Catalunya.",
-    "sinonims": [
-      "geozones"
+      "gasteròpodes"
     ]
   },
   {
@@ -541,6 +633,15 @@ export const termes: Terme[] = [
     "definicio": "Lloc d'interès geològic singular —aflorament, estructura, formació— identificat i documentat per al seu estudi o divulgació. Els geotops permeten connectar el coneixement de camp amb recursos accessibles al públic.",
     "sinonims": [
       "geotop"
+    ]
+  },
+  {
+    "slug": "geozona",
+    "terme": "Geozona",
+    "categoria": "Patrimoni geològic",
+    "definicio": "Àrea delimitada amb valor geològic, didàctic, científic o paisatgístic reconegut per l'administració. L'itinerari Sau–Tavertet forma part de la geozona 216 «Cingles de Tavertet – El Far», documentada al repositori d'espais d'interès geològic de la Generalitat de Catalunya.",
+    "sinonims": [
+      "geozones"
     ]
   },
   {
@@ -646,10 +747,39 @@ export const termes: Terme[] = [
     ]
   },
   {
+    "slug": "limolite",
+    "terme": "Limolite",
+    "categoria": "Litologia",
+    "definicio": "Roca sedimentària de gra fi, amb mida de partícula entre argila i sorra (llim). A la Formació Coll de Malla, les limolites s'intercalen amb margues i gresos de gra fi i reflecteixen dipòsits de baixa energia en plataforma marina.",
+    "sinonims": [
+      "limolites"
+    ]
+  },
+  {
     "slug": "litofacies",
     "terme": "Litofàcies",
     "categoria": "Estratigrafia",
     "definicio": "Conjunt de característiques litològiques, estructurals i paleontològiques que defineixen un tipus de sediment o roca dipositada en un ambient concret. Permet reconstruir si un sediment es va formar en mar, riu, llac o platja."
+  },
+  {
+    "slug": "litologia",
+    "terme": "Litologia",
+    "categoria": "Litologia",
+    "definicio": "Descripció de la naturalesa física i composicional d'una roca o unitat geològica (tipus de material, textura, color, gra…). En cartografia i camp, la litologia permet distingir formacions i interpretar ambients de sedimentació i resistència a l'erosió.",
+    "sinonims": [
+      "litologies",
+      "litològic",
+      "litològica"
+    ]
+  },
+  {
+    "slug": "lutecia",
+    "terme": "Lutecià",
+    "categoria": "Cronologia",
+    "definicio": "Pis de l'Eocè mitjà (aproximadament 47,8–41,2 Ma). Al Collsacabra, les calcàries de Tavertet són principalment lutecianes i queden per sota de les margues del Coll de Malla, que marquen la transició cap al Bartonià.",
+    "sinonims": [
+      "lutecianes"
+    ]
   },
   {
     "slug": "ma",
@@ -661,21 +791,23 @@ export const termes: Terme[] = [
     ]
   },
   {
-    "slug": "marga",
-    "terme": "Marga",
-    "categoria": "Litologia",
-    "definicio": "Roca sedimentària mixta d'argila i carbonat càlcic, generalment de grana molt fina i textura homogènia. Les margues grises de la Formació del Coll de Malla contenen fòssils marins i són més erosionables que les calcàries veïnes.",
-    "sinonims": [
-      "margues"
-    ]
-  },
-  {
     "slug": "mar-de-tetis",
     "terme": "Mar de Tetis",
     "categoria": "Paleogeografia",
     "definicio": "Antic oceà que separava Gondwana i Lauràsia (i més tard Euràsia) des del Paleozoic fins al tancament progressiu durant l'orogènesi alpina. La placa Ibèrica es va situar a la marga occidental de la Tetis abans de la formació dels Pirineus.",
     "sinonims": [
       "oceà de Tetis"
+    ]
+  },
+  {
+    "slug": "marga",
+    "terme": "Marga",
+    "categoria": "Litologia",
+    "definicio": "Roca sedimentària mixta d'argila i carbonat càlcic, generalment de grana molt fina i textura homogènia. Les margues grises de la Formació del Coll de Malla contenen fòssils marins i són més erosionables que les calcàries veïnes.",
+    "sinonims": [
+      "margues",
+      "margues sorrenques",
+      "margues sorrenques fines"
     ]
   },
   {
@@ -784,6 +916,17 @@ export const termes: Terme[] = [
     "definicio": "Període geològic comprès entre 66 i 23 Ma, que inclou el Paleocè, l'Eocè i l'Oligocè. És el període durant el qual es va formar la major part de la cobertura sedimentària visible a Sau–Tavertet."
   },
   {
+    "slug": "paleoicnofossil",
+    "terme": "Paleoicnofòssil",
+    "categoria": "Paleontologia",
+    "definicio": "Traça o estructura sedimentària deixada per l'activitat d'organismes antics (galeries, petjades, bioturbació), sense conservar el cos de l'animal. A la Parada 11 s'observen paleoicnofòssils atribuïts a crustacis decàpodes i altres organismes de fons fangós.",
+    "sinonims": [
+      "paleoicnofòssils",
+      "icnofòssil",
+      "icnofòssils"
+    ]
+  },
+  {
     "slug": "pangea",
     "terme": "Pangea",
     "categoria": "Paleogeografia",
@@ -823,7 +966,21 @@ export const termes: Terme[] = [
     "slug": "plana-lacustre-endorreica",
     "terme": "Plana lacustre endorreica",
     "categoria": "Geomorfologia",
-    "definicio": "Superfície plana associada a una conca sense sortida al mar, on l'aigua acumulada forma llacs temporals o permanents. En contextos tectònics extensionals, aquestes planes s'omplen sovint de sediments finsos."
+    "definicio": "Superfície plana associada a una conca sense sortida al mar, on l'aigua acumulada forma llacs temporals o permanents. En contextos tectònics extensionals, aquestes planes s'omplen sovint de sediments finsos.",
+    "sinonims": [
+      "endorreic",
+      "endorreica"
+    ]
+  },
+  {
+    "slug": "plataforma-marina",
+    "terme": "Plataforma marina",
+    "categoria": "Sedimentologia",
+    "definicio": "Zona submarina relativament poc profunda que voreja els continents, on s'acumulen fangs, llims i sorres amb onatge i corrents variables. Les margues del Coll de Malla es van dipositar en una plataforma marina somera i de baixa energia al marge de la Conca de l'Ebre.",
+    "sinonims": [
+      "plataforma marina somera",
+      "plataformes marines"
+    ]
   },
   {
     "slug": "pluto",
@@ -833,23 +990,6 @@ export const termes: Terme[] = [
     "sinonims": [
       "plutons"
     ]
-  },
-  {
-    "slug": "roques-ignies-plutoniques",
-    "terme": "Roques ígnies plutòniques",
-    "categoria": "Litologia",
-    "definicio": "Roques formades per la cristal·lització d'un magma en profunditat, dins l'escorça, sense arribar a la superfície (a diferència de les volcàniques). Solen presentar textura fanerítica, amb cristalls visibles a l'ull nu. El monzogranit i els pòrfirs de la presa de Sau en són exemples típics del sòcol hercinià.",
-    "sinonims": [
-      "roca ígnia plutònica",
-      "roques plutòniques",
-      "ígnies plutòniques"
-    ]
-  },
-  {
-    "slug": "prepirineu",
-    "terme": "Prepirineu",
-    "categoria": "Geografia geològica",
-    "definicio": "Conjunt de serralades i relleus situats immediatament al sud dels Pirineus axials, amb geologia molt variada i transició cap a la conca de l'Ebre. Des de Tavertet s'aprecia la relació entre Prepirineu, conca i Serralada Transversal."
   },
   {
     "slug": "porfir",
@@ -868,6 +1008,12 @@ export const termes: Terme[] = [
     "sinonims": [
       "pòrfirs monzogranítics"
     ]
+  },
+  {
+    "slug": "prepirineu",
+    "terme": "Prepirineu",
+    "categoria": "Geografia geològica",
+    "definicio": "Conjunt de serralades i relleus situats immediatament al sud dels Pirineus axials, amb geologia molt variada i transició cap a la conca de l'Ebre. Des de Tavertet s'aprecia la relació entre Prepirineu, conca i Serralada Transversal."
   },
   {
     "slug": "quars",
@@ -904,6 +1050,17 @@ export const termes: Terme[] = [
     ]
   },
   {
+    "slug": "roques-ignies-plutoniques",
+    "terme": "Roques ígnies plutòniques",
+    "categoria": "Litologia",
+    "definicio": "Roques formades per la cristal·lització d'un magma en profunditat, dins l'escorça, sense arribar a la superfície (a diferència de les volcàniques). Solen presentar textura fanerítica, amb cristalls visibles a l'ull nu. El monzogranit i els pòrfirs de la presa de Sau en són exemples típics del sòcol hercinià.",
+    "sinonims": [
+      "roca ígnia plutònica",
+      "roques plutòniques",
+      "ígnies plutòniques"
+    ]
+  },
+  {
     "slug": "saulo",
     "terme": "Sauló",
     "categoria": "Litologia",
@@ -922,16 +1079,16 @@ export const termes: Terme[] = [
     ]
   },
   {
+    "slug": "serie-volcano-detritica",
+    "terme": "Sèrie volcano-detrítica",
+    "categoria": "Litologia",
+    "definicio": "Successió de materials volcànics i sediments detrítics dipositats alternativament, sovint en context de marges de continent. Al massís de les Guilleries, aquesta sèrie conté fòssils d'edat Caradoc i forma part del sòcol paleozoic."
+  },
+  {
     "slug": "serralada-prelitoral",
     "terme": "Serralada Prelitoral",
     "categoria": "Geografia geològica",
     "definicio": "Unitat de relleu de les Serralades Costaneres Catalanes, situada entre la Depressió Prelitoral i la Serralada Litoral. Forma part del conjunt de serralades paral·leles a la costa que emmarquen la conca de l'Ebre."
-  },
-  {
-    "slug": "serralades-costaneres-catalanes",
-    "terme": "Serralades Costaneres Catalanes",
-    "categoria": "Geografia geològica",
-    "definicio": "Conjunt de serralades paral·leles a la costa catalana —Prelitoral, Litoral i zones intermèdies— que delimiten la Depressió Prelitoral. Des del Collsacabra s'observa la seva relació amb la conca de l'Ebre i els Pirineus."
   },
   {
     "slug": "serralada-transversal-catalana",
@@ -941,6 +1098,12 @@ export const termes: Terme[] = [
     "sinonims": [
       "Serralada Transversal"
     ]
+  },
+  {
+    "slug": "serralades-costaneres-catalanes",
+    "terme": "Serralades Costaneres Catalanes",
+    "categoria": "Geografia geològica",
+    "definicio": "Conjunt de serralades paral·leles a la costa catalana —Prelitoral, Litoral i zones intermèdies— que delimiten la Depressió Prelitoral. Des del Collsacabra s'observa la seva relació amb la conca de l'Ebre i els Pirineus."
   },
   {
     "slug": "siluria",
@@ -979,18 +1142,6 @@ export const termes: Terme[] = [
     ]
   },
   {
-    "slug": "superficie-estructural",
-    "terme": "Superfície estructural",
-    "categoria": "Geomorfologia",
-    "definicio": "Superfície del relleu —planura, cinglera o vessant— condicionada per l'estructura geològica subjacent, com falles, estrats inclinats o diferències de resistència litològica. L'altiplà del Collsacabra és una superfície estructural delimitada per cingleres."
-  },
-  {
-    "slug": "serie-volcano-detritica",
-    "terme": "Sèrie volcano-detrítica",
-    "categoria": "Litologia",
-    "definicio": "Successió de materials volcànics i sediments detrítics dipositats alternativament, sovint en context de marges de continent. Al massís de les Guilleries, aquesta sèrie conté fòssils d'edat Caradoc i forma part del sòcol paleozoic."
-  },
-  {
     "slug": "socol-cristal-li-hercinia",
     "terme": "Sòcol cristal·lí hercinià",
     "categoria": "Estratigrafia",
@@ -1010,6 +1161,12 @@ export const termes: Terme[] = [
       "basament paleozoic",
       "sòcol hercinià"
     ]
+  },
+  {
+    "slug": "superficie-estructural",
+    "terme": "Superfície estructural",
+    "categoria": "Geomorfologia",
+    "definicio": "Superfície del relleu —planura, cinglera o vessant— condicionada per l'estructura geològica subjacent, com falles, estrats inclinats o diferències de resistència litològica. L'altiplà del Collsacabra és una superfície estructural delimitada per cingleres."
   },
   {
     "slug": "tectonica-extensional",
@@ -1044,6 +1201,15 @@ export const termes: Terme[] = [
     "definicio": "Primer període del Mesozoic (252–201 Ma), posterior a l'extinció permotriàsica i anterior al Juràssic. Marca l'inici de l'era mesozoica, tot i que a Sau–Tavertet no es conserva registre d'aquest període."
   },
   {
+    "slug": "turo-testimoni",
+    "terme": "Turó testimoni",
+    "categoria": "Geomorfologia",
+    "definicio": "Relleu aïllat que resta com a testimoni d'una superfície o paquet de materials més extens erosionat al voltant. El Turó del Castell és un turó testimoni on una barra de gresos protegeix les margues subjacents i manté la morfologia cònica sobre l'embassament de Sau.",
+    "sinonims": [
+      "turons testimoni"
+    ]
+  },
+  {
     "slug": "vall-del-rin",
     "terme": "Vall del Rin",
     "categoria": "Geografia geològica",
@@ -1074,6 +1240,15 @@ export const termes: Terme[] = [
     "definicio": "Tipus de volcanisme associat a magmes riques en elements alcalins (sodi, potassi), freqüent en contextos d'extensió cortical. A Catalunya, apareix en fases neògenes i quaternàries del litoral, diferent del volcanisme de subducció.",
     "sinonims": [
       "volcanisme alcalí neogen–quaternari"
+    ]
+  },
+  {
+    "slug": "xaragall",
+    "terme": "Xaragall",
+    "categoria": "Geomorfologia",
+    "definicio": "Solc o canal d'erosió profund excavat per l'aigua de pluja sobre materials tous (margues, argiles). Els xaragalls densos donen lloc a paisatges de badlands o «terres dolentes», típics de les franges margoses del Coll de Malla.",
+    "sinonims": [
+      "xaragalls"
     ]
   }
 ];

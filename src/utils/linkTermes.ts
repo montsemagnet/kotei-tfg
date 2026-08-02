@@ -141,10 +141,33 @@ function findBestMatch(
 /**
  * Enllaça la primera aparició de cada terme (per slug) dins un text cap al glossari.
  * Passa el mateix `linkedSlugs` entre paràgrafs d'una secció per no repetir enllaços.
+ * Admet enllaços markdown `[text](https://…)` (s'obren en pestanya nova).
  */
 export function linkTermes(
   text: string,
   linkedSlugs: Set<string> = new Set(),
+): string {
+  const markdownLink =
+    /\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g;
+  let output = "";
+  let lastIndex = 0;
+  let linkMatch: RegExpExecArray | null;
+
+  while ((linkMatch = markdownLink.exec(text)) !== null) {
+    output += linkTermesPlain(text.slice(lastIndex, linkMatch.index), linkedSlugs);
+    const label = linkMatch[1];
+    const href = linkMatch[2];
+    output += `<a href="${escapeHtml(href)}" class="${termLinkClass}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)}</a>`;
+    lastIndex = linkMatch.index + linkMatch[0].length;
+  }
+
+  output += linkTermesPlain(text.slice(lastIndex), linkedSlugs);
+  return output;
+}
+
+function linkTermesPlain(
+  text: string,
+  linkedSlugs: Set<string>,
 ): string {
   let output = "";
   let remaining = text;

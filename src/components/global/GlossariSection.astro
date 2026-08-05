@@ -10,8 +10,6 @@ interface Props {
   descriptionVariant?: "textLG" | "textXL";
   /** Dins del bloc de menús (Geologia, Paleogeologia…): mateixa fila amb border-b */
   menuRow?: boolean;
-  /** Carta PDF de l'ICGC sota «Glossari» (pàgina principal i itinerari) */
-  showCartaPdf?: boolean;
 }
 
 const {
@@ -19,12 +17,9 @@ const {
   description = "Definicions dels termes geològics utilitzats a la Web.",
   descriptionVariant = "textLG",
   menuRow = false,
-  showCartaPdf = false,
 } = Astro.props;
 
 const href = withBase("/termes");
-const cartaPdfHref =
-  "https://datacloud.icgc.cat/datacloud/descarregues-web/bd/pubs/ChronostratChart2023-09Catalan.pdf";
 const rowClass =
   "grid grid-cols-1 lg:grid-cols-4 items-start gap-x-6 gap-y-2 py-4";
 const bodyTextLayout = "lg:col-span-3 min-w-0 leading-relaxed";
@@ -54,31 +49,4 @@ const bodyTextClass =
       {description}
     </Text>
   </div>
-
-  {
-    showCartaPdf && (
-      <div
-        class:list={[
-          rowClass,
-          "border-t border-base-200 dark:border-base-800",
-        ]}
-      >
-        <div class="min-w-0">
-          <TitleIconTrigger
-            as="a"
-            href={cartaPdfHref}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Escala del temps geològic
-          </TitleIconTrigger>
-        </div>
-        <Text tag="p" variant="textLG" class={bodyTextClass}>
-          Carta oficial de l'ICGC amb la jerarquia d'unitats
-          cronostratigràfiques (eons, eres, períodes, èpoques) i les edats en
-          Ma, adaptada de la Comissió Internacional d'Estratigrafia (ICS).
-        </Text>
-      </div>
-    )
-  }
 </div>

@@ -10,7 +10,8 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "nova-parada": "node scripts/nova-parada.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^5.0.6",

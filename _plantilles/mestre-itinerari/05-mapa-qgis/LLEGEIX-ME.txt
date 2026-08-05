@@ -1,0 +1,5 @@
+Posa aquí l’exportació del mapa (QGIS → qgis2web) o un PDF/imatge del mapa general.
+
+Si és qgis2web, copia TOTA la carpeta exportada (index.html, layers, resources, styles…).
+
+Si és un PDF, un sol fitxer n’hi ha prou (exemple: mapa-itinerari.pdf).

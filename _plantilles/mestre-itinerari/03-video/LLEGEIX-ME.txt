@@ -1,0 +1,6 @@
+Posa aquí el vídeo de presentació de l’itinerari.
+
+Recomanacions:
+- Format: MP4
+- Nom: video-itinerari.mp4 (o similar, sense espais)
+- Si no n’hi ha, deixa aquesta carpeta buida i marca-ho a la fitxa

@@ -218,6 +218,15 @@ export const termes: Terme[] = [
     ]
   },
   {
+    "slug": "canal-fluvial",
+    "terme": "Canal fluvial",
+    "categoria": "Sedimentologia",
+    "definicio": "Conducte natural per on circula l'aigua d'un riu i on es dipositen preferentment sorres i graves quan el corrent té energia suficient. Als afloraments, els canals fluvials es reconeixen com a nivells de gresos o conglomerats intercalats entre lutites de plana d'inundació, com a la Formació Mediona (parada 3).",
+    "sinonims": [
+      "canals fluvials"
+    ]
+  },
+  {
     "slug": "cinglera",
     "terme": "Cinglera",
     "categoria": "Geomorfologia",
@@ -554,9 +563,11 @@ export const termes: Terme[] = [
     "slug": "formacio-de-mediona",
     "terme": "Formació de Mediona",
     "categoria": "Estratigrafia",
-    "definicio": "Unitat estratigràfica present a la zona de Sau–Tavertet, formada principalment per argiles vermelles i materials detrítics continentals. A la parada P3 s'hi poden observar argiles plàstiques d'aquesta formació.",
+    "definicio": "Unitat estratigràfica del Paleocè formada per materials detrítics continentals —lutites vermelles, gresos i conglomerats— dipositats en una plana al·luvial. A la parada 3 del trajecte Sau–Tavertet documenta els primers estadis de rebliment de la Conca de l'Ebre després de l'aixecament de les serralades veïnes.",
     "sinonims": [
-      "Fm. Mediona"
+      "Fm. Mediona",
+      "Formació Mediona",
+      "Mediona"
     ]
   },
   {
@@ -701,9 +712,11 @@ export const termes: Terme[] = [
     "slug": "gres",
     "terme": "Gres",
     "categoria": "Litologia",
-    "definicio": "Roca sedimentària formada per grans de sorra cimentats, indicant generalment ambient de baixa a mitjana energia fluvial, eòlica o litoral. Els gresos vermells i grisos són molt freqüents a la seqüència eocena del Collsacabra.",
+    "definicio": "Roca sedimentària formada per grans de sorra cimentats, típica d'ambients de mitjana energia (canals fluvials, platges o dunes). A la Formació Mediona i al llarg de l'itinerari Sau–Tavertet, els gresos marquen episodis de més energia dins de successions amb lutites i conglomerats.",
     "sinonims": [
-      "gresos"
+      "gresos",
+      "nivells de gresos",
+      "sorres consolidades"
     ]
   },
   {
@@ -734,6 +747,16 @@ export const termes: Terme[] = [
     "definicio": "Bloc elevat limitat per falles normals, en contraposició a un graben enfonsat. El bloc de Tavertet es pot interpretar com un horst dins el sistema de falles extensionals del Cenozoic.",
     "sinonims": [
       "bloc elevat"
+    ]
+  },
+  {
+    "slug": "illita",
+    "terme": "Il·lita",
+    "categoria": "Mineralogia",
+    "definicio": "Mineral de l'argila, del grup de les miques, abundant en lutites i argiles sedimentàries. A les lutites vermelles de la Formació Mediona, l'il·lita forma part de la fracció fina dipositada en ambients de baixa energia de la plana al·luvial paleocena.",
+    "sinonims": [
+      "il·lita",
+      "illita"
     ]
   },
   {
@@ -774,6 +797,15 @@ export const termes: Terme[] = [
     ]
   },
   {
+    "slug": "llim",
+    "terme": "Llim",
+    "categoria": "Sedimentologia",
+    "definicio": "Partícula sedimentària de mida intermèdia entre l'argila i la sorra. Els llims, juntament amb les argiles, formen la fracció fina de les lutites; a la Formació Mediona s'acumulen en zones de baixa energia de la plana al·luvial.",
+    "sinonims": [
+      "llims"
+    ]
+  },
+  {
     "slug": "litofacies",
     "terme": "Litofàcies",
     "categoria": "Estratigrafia",
@@ -797,6 +829,18 @@ export const termes: Terme[] = [
     "definicio": "Pis de l'Eocè mitjà (aproximadament 47,8–41,2 Ma). Al Collsacabra, les calcàries de Tavertet són principalment lutecianes i queden per sota de les margues del Coll de Malla, que marquen la transició cap al Bartonià.",
     "sinonims": [
       "lutecianes"
+    ]
+  },
+  {
+    "slug": "lutita",
+    "terme": "Lutita",
+    "categoria": "Litologia",
+    "definicio": "Roca sedimentària d'origen clàstic amb grans de mida inferior a 1/16 de mil·límetre (0,0625 mm); en són exemples el llim i l'argila. Es formen principalment per erosió d'altres roques o per sedimentació de fangs (i, en alguns contextos, per sedimentació turbidítica); si contenen una certa proporció de carbonat de calci, reben el nom de margues. Les lutites vermelles de la Formació Mediona indiquen condicions oxidants en planes al·luvials continentals del Paleocè.",
+    "sinonims": [
+      "lutites",
+      "lutites vermelles",
+      "lutítica",
+      "lutítics"
     ]
   },
   {

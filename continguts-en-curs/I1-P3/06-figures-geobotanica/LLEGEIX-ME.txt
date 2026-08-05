@@ -1,0 +1,9 @@
+Figures que surten DINS del modal de geobotànica.
+
+Noms recomanats:
+  flora-01.jpg
+  flora-02.jpg
+  ...
+
+El títol / peu s’escriu a 03-geobotanica.md.
+Si no hi ha geobotànica encara, deixeu la carpeta buida.

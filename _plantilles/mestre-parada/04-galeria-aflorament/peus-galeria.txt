@@ -1,0 +1,3 @@
+foto-01.jpg | Descripció de la foto 1. Elaboració pròpia. Lloc, data.
+foto-02.jpg | Descripció de la foto 2. Elaboració pròpia. Lloc, data.
+foto-03.jpg | Descripció de la foto 3. Elaboració pròpia. Lloc, data.

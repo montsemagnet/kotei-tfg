@@ -1,0 +1,6 @@
+Posa aquí el vídeo o material d’altimetria / perfil del trajecte.
+
+Recomanacions:
+- Format: MP4 (o imatge PNG/JPG del perfil)
+- Nom: altimetria.mp4
+- Si no n’hi ha, deixa la carpeta buida i marca-ho a la fitxa

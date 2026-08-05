@@ -31,6 +31,7 @@ export const SAU_TAVERTET_PARADES: SauTavertetParada[] = [
     num: 3,
     slug: "I1-P3",
     label: "Argiles del Paleocè, Fm. Mediona",
+    preview: "/images/parades/I1-P3-hover.jpg",
     svgIds: ["I1-P3", "P3", "Parada3"],
   },
   {
@@ -79,12 +80,14 @@ export const SAU_TAVERTET_PARADES: SauTavertetParada[] = [
     num: 11,
     slug: "I1-P11",
     label: "Margues, Fm. Coll de Malla",
+    preview: "/images/parades/I1-P11-hover.jpg",
     svgIds: ["I1-P11", "P11", "Parada11"],
   },
   {
     num: 12,
     slug: "I1-P12",
     label: "Gresos, Fm. Barcons",
+    preview: "/images/parades/I1-P12-hover.jpg",
     svgIds: ["I1-P12", "P12", "Parada12"],
   },
   {

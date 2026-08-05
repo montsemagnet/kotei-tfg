@@ -106,8 +106,11 @@ dadesIndex:
     - label: "3 – Ibèria, mar de Tetis i conca de l'Ebre (vídeo 230 Ma–actualitat)"
       modalKey: paleogeologia-iberia-ebre
       numbered: false
-    - label: "4 – L'Avinguda dels Temps Geològics (PGOM, ICGC)"
+    - label: "* – Enllaç a L'Avinguda dels Temps Geològics de l'ICGC"
       href: "https://www.icgc.cat/ca/Eines-i-visors/Apps/PGOM-Pirineus-Geological-Open-Museum/Recorreguts/LAvinguda-dels-Temps-Geologics"
+      numbered: false
+    - label: "* – Enllaç a la jerarquia d'unitats cronostratigràfiques de l'ICGC"
+      href: "https://datacloud.icgc.cat/datacloud/descarregues-web/bd/pubs/ChronostratChart2023-09Catalan.pdf"
       numbered: false
 dadesModals:
   paleogeologia-paleozoic:

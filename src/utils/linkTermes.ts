@@ -139,7 +139,9 @@ function findBestMatch(
 }
 
 /**
- * Enllaça la primera aparició de cada terme (per slug) dins un text cap al glossari.
+ * Enllaça la primera aparició de cada terme (per slug).
+ * Amb JS: obre una finestra amb la definició (`data-terme-slug`).
+ * Sense JS: va al glossari (`/termes#slug`).
  * Passa el mateix `linkedSlugs` entre paràgrafs d'una secció per no repetir enllaços.
  * Admet enllaços markdown `[text](https://…)` (s'obren en pestanya nova).
  */
@@ -181,7 +183,7 @@ function linkTermesPlain(
     }
 
     output += escapeHtml(remaining.slice(0, match.index));
-    output += `<a href="${withBase(`/termes#${match.slug}`)}" class="${termLinkClass}">${escapeHtml(match.matched)}</a>`;
+    output += `<a href="${withBase(`/termes#${match.slug}`)}" class="${termLinkClass}" data-terme-slug="${escapeHtml(match.slug)}" aria-haspopup="dialog">${escapeHtml(match.matched)}</a>`;
     linkedSlugs.add(match.slug);
     remaining = remaining.slice(match.index + match.length);
   }

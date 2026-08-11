@@ -1,0 +1,158 @@
+---
+import { termes } from "@/data/termes";
+
+const termesBySlug = Object.fromEntries(
+  termes.map((item) => [
+    item.slug,
+    {
+      terme: item.terme,
+      categoria: item.categoria,
+      definicio: item.definicio,
+    },
+  ]),
+);
+
+/** Evita tancar el tag <script> si alguna definició contingués "</script>" */
+const termesJson = JSON.stringify(termesBySlug).replace(/</g, "\\u003c");
+---
+
+<dialog
+  id="terme-definicio-dialog"
+  class="terme-definicio-dialog fixed inset-0 z-[200] m-0 size-full max-h-none max-w-none border-0 bg-base-950/50 p-4 backdrop:bg-transparent open:flex open:items-center open:justify-center overflow-y-auto"
+  aria-modal="true"
+  aria-labelledby="terme-definicio-title"
+  data-focus-trap="true"
+>
+  <div
+    class="itinerari-dada-panel relative my-auto w-full max-w-md rounded-lg bg-base-100 p-5 shadow-xl dark:bg-base-900 sm:p-6"
+  >
+    <button
+      type="button"
+      class="itinerari-dada-close absolute top-3 right-3 flex size-9 items-center justify-center rounded-full bg-base-200 text-xl leading-none text-base-900 hover:bg-base-300 dark:bg-base-800 dark:text-white dark:hover:bg-base-700"
+      aria-label="Tancar"
+    >
+      <span aria-hidden="true">×</span>
+    </button>
+
+    <p
+      data-terme-categoria
+      class="pr-12 text-xs font-medium uppercase tracking-wide text-base-500 dark:text-base-400"
+    >
+    </p>
+    <h2
+      id="terme-definicio-title"
+      data-terme-title
+      class="mt-1 pr-12 text-xl font-medium tracking-tight text-base-900 dark:text-white sm:text-2xl"
+    >
+    </h2>
+    <p
+      data-terme-definicio
+      class="mt-4 text-base leading-relaxed text-base-600 dark:text-base-300"
+    >
+    </p>
+  </div>
+</dialog>
+
+<script
+  type="application/json"
+  id="terme-definicions-data"
+  set:html={termesJson}
+/>
+
+<script>
+  import { openDialogFromTrigger } from "@/utils/modalA11y";
+
+  type TermeDefinicio = {
+    terme: string;
+    categoria: string;
+    definicio: string;
+  };
+
+  function getTermesBySlug(): Record<string, TermeDefinicio> {
+    const dataEl = document.getElementById("terme-definicions-data");
+    if (!(dataEl instanceof HTMLScriptElement) || !dataEl.textContent) {
+      return {};
+    }
+
+    try {
+      return JSON.parse(dataEl.textContent) as Record<string, TermeDefinicio>;
+    } catch {
+      return {};
+    }
+  }
+
+  function getDialog(): HTMLDialogElement | null {
+    const dialog = document.getElementById("terme-definicio-dialog");
+    return dialog instanceof HTMLDialogElement ? dialog : null;
+  }
+
+  function bindDialogCancel(dialog: HTMLDialogElement): void {
+    if (dialog.dataset.termeCancelBound === "true") return;
+    dialog.dataset.termeCancelBound = "true";
+    dialog.addEventListener("cancel", (event) => {
+      event.preventDefault();
+      dialog.close();
+    });
+  }
+
+  function openTerme(
+    slug: string,
+    trigger: HTMLElement,
+    termesBySlug: Record<string, TermeDefinicio>,
+  ): void {
+    const dialog = getDialog();
+    if (!dialog) return;
+
+    const entry = termesBySlug[slug];
+    if (!entry) return;
+
+    const titleEl = dialog.querySelector("[data-terme-title]");
+    const categoriaEl = dialog.querySelector("[data-terme-categoria]");
+    const definicioEl = dialog.querySelector("[data-terme-definicio]");
+
+    if (titleEl) titleEl.textContent = entry.terme;
+    if (categoriaEl) categoriaEl.textContent = entry.categoria;
+    if (definicioEl) definicioEl.textContent = entry.definicio;
+
+    bindDialogCancel(dialog);
+    openDialogFromTrigger(dialog, trigger);
+  }
+
+  declare global {
+    interface Window {
+      __termeDefinicioPopoverBound?: boolean;
+    }
+  }
+
+  function initTermeDefinicioPopover(): void {
+    if (window.__termeDefinicioPopoverBound) return;
+    window.__termeDefinicioPopoverBound = true;
+
+    const termesBySlug = getTermesBySlug();
+
+    document.addEventListener(
+      "click",
+      (event) => {
+        const target = event.target;
+        if (!(target instanceof Element)) return;
+
+        const link = target.closest("[data-terme-slug]");
+        if (!(link instanceof HTMLElement)) return;
+
+        const slug = link.dataset.termeSlug;
+        if (!slug || !termesBySlug[slug]) return;
+
+        event.preventDefault();
+        event.stopPropagation();
+        openTerme(slug, link, termesBySlug);
+      },
+      true,
+    );
+  }
+
+  initTermeDefinicioPopover();
+  document.addEventListener("astro:after-swap", () => {
+    const dialog = getDialog();
+    if (dialog) delete dialog.dataset.termeCancelBound;
+  });
+</script>

@@ -44,6 +44,7 @@ const termesJson = JSON.stringify(termesBySlug).replace(/</g, "\\u003c");
       data-terme-title
       class="mt-1 pr-12 text-xl font-medium tracking-tight text-base-900 dark:text-white sm:text-2xl"
     >
+      Definició
     </h2>
     <p
       data-terme-definicio
@@ -92,6 +93,14 @@ const termesJson = JSON.stringify(termesBySlug).replace(/</g, "\\u003c");
     dialog.addEventListener("cancel", (event) => {
       event.preventDefault();
       dialog.close();
+    });
+    dialog.addEventListener("close", () => {
+      const titleEl = dialog.querySelector("[data-terme-title]");
+      const categoriaEl = dialog.querySelector("[data-terme-categoria]");
+      const definicioEl = dialog.querySelector("[data-terme-definicio]");
+      if (titleEl) titleEl.textContent = "Definició";
+      if (categoriaEl) categoriaEl.textContent = "";
+      if (definicioEl) definicioEl.textContent = "";
     });
   }
 

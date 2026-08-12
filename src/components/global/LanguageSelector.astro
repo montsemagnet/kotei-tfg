@@ -87,6 +87,36 @@ const languages = [
     }
   }
 
+  function labelGoogleTranslateVotingInputs() {
+    const labels: Record<string, string> = {
+      "goog-gt-votingInputSrcLang": "Idioma d'origen (Google Translate)",
+      "goog-gt-votingInputTrgLang": "Idioma de destinació (Google Translate)",
+      "goog-gt-votingInputSrcText": "Text d'origen (Google Translate)",
+      "goog-gt-votingInputTrgText": "Text traduït (Google Translate)",
+      "goog-gt-votingInputVote": "Vot de traducció (Google Translate)",
+    };
+
+    for (const [id, label] of Object.entries(labels)) {
+      const input = document.getElementById(id);
+      if (!(input instanceof HTMLInputElement)) continue;
+      if (!input.getAttribute("aria-label")) {
+        input.setAttribute("aria-label", label);
+      }
+    }
+  }
+
+  function watchGoogleTranslateVotingInputs() {
+    labelGoogleTranslateVotingInputs();
+
+    const observer = new MutationObserver(() => {
+      labelGoogleTranslateVotingInputs();
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    // Google injects the voting pane asynchronously; stop watching after a short window.
+    window.setTimeout(() => observer.disconnect(), 15000);
+  }
+
   function googleTranslateElementInit() {
     const google = (window as Window & { google?: { translate: { TranslateElement: new (
       options: object,
@@ -103,6 +133,7 @@ const languages = [
       },
       "google_translate_element",
     );
+    watchGoogleTranslateVotingInputs();
   }
 
   function loadGoogleTranslate() {

@@ -2,6 +2,9 @@
 
 Carpetes **mestres** (netes) per preparar contingut sense tocar el codi d’Astro.
 
+**Manual de reutilització** (publicat a la web):  
+→ pàgina `/manual/` · font editable `src/pages/manual/_content.md` · apuntador [`MANUAL-REUTILITZACIO.md`](./MANUAL-REUTILITZACIO.md)
+
 ## Com s’utilitzen
 
 1. **No ompliu** les carpetes `mestre-*`.

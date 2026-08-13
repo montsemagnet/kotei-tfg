@@ -7,10 +7,17 @@ import Favicons from "@/components/fundations/head/Favicons.astro";
 import AOS from "@/components/fundations/scripts/AOSHead.astro";
 import FuseJs from "@/components/fundations/scripts/FuseJs.astro";
 import ToggleLocalStorage from "@/components/fundations/scripts/ToggleLocalStorage.astro";
+
+interface Props {
+  pageTitle?: string;
+  description?: string;
+}
+
+const { pageTitle, description } = Astro.props;
 ---
 
-<Seo />
-<Meta />
+<Seo pageTitle={pageTitle} description={description} />
+<Meta pageTitle={pageTitle} description={description} />
 <Fonts />
 <Favicons />
 <!-- Scripts -->

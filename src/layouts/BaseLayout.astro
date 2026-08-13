@@ -12,12 +12,24 @@ import ItinerariModalTextSizeInit from "@/components/itinerari/ItinerariModalTex
 // Hides nav and footer on selected screens by passing
 // the hideNav and hideFooter props
 // <BaseLayout hideNav={true} hideFooter={true}>
-const { hideNav = false, hideFooter = false } = Astro.props;
+interface Props {
+  hideNav?: boolean;
+  hideFooter?: boolean;
+  pageTitle?: string;
+  description?: string;
+}
+
+const {
+  hideNav = false,
+  hideFooter = false,
+  pageTitle,
+  description,
+} = Astro.props as Props;
 ---
 
 <html lang="ca" class="scroll-smooth" spellcheck="false">
   <head>
-    <BaseHead />
+    <BaseHead pageTitle={pageTitle} description={description} />
   </head>
   <body
     class="dark:bg-base-900 bg-base-100 min-h-screen"

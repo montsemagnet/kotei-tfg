@@ -1,4 +1,6 @@
 ---
+import { withBase } from "@/utils/withBase";
+
 interface Props {
   src: string;
   title: string;
@@ -8,6 +10,8 @@ interface Props {
   allowFullscreen?: boolean;
   /** Reprodueix en carregar (desactivar per vídeos dins modals) */
   autoplayOnMount?: boolean;
+  /** Pista de subtítols WebVTT (opcional; ruta sota public/) */
+  captionsSrc?: string;
 }
 
 const {
@@ -16,7 +20,9 @@ const {
   sound = false,
   allowFullscreen = false,
   autoplayOnMount = true,
+  captionsSrc,
 } = Astro.props;
+const captionsHref = captionsSrc ? withBase(captionsSrc) : undefined;
 ---
 
 <div
@@ -37,7 +43,18 @@ const {
     tabindex="-1"
     controlslist={allowFullscreen ? "nodownload noremoteplayback" : "nodownload nofullscreen noremoteplayback"}
     {...(autoplayOnMount ? { autoplay: true } : {})}
-  />
+  >
+    {
+      captionsHref && (
+        <track
+          kind="captions"
+          src={captionsHref}
+          srclang="ca"
+          label="Català"
+        />
+      )
+    }
+  </video>
 
   {
     allowFullscreen && (

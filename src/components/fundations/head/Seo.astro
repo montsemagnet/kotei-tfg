@@ -2,17 +2,28 @@
 import { AstroSeo } from "@lexingtonthemes/seo";
 import { project } from "@/data/project";
 
-const siteUrl = Astro.site?.href ?? "https://jazzy-pegasus-731767.netlify.app/";
+interface Props {
+  pageTitle?: string;
+  description?: string;
+}
+
+const { pageTitle, description = project.subtitle } = Astro.props;
+const documentTitle = pageTitle
+  ? `${pageTitle} | ${project.title}`
+  : project.title;
+const siteUrl =
+  Astro.site?.href ?? "https://montsemagnet.github.io/kotei-tfg/";
+const pageUrl = new URL(Astro.url.pathname, siteUrl).href;
 ---
 
 <AstroSeo
-  title={project.title}
-  description={project.subtitle}
-  canonical={siteUrl}
+  title={documentTitle}
+  description={description}
+  canonical={pageUrl}
   openGraph={{
-    url: siteUrl,
-    title: project.title,
-    description: project.subtitle,
+    url: pageUrl,
+    title: documentTitle,
+    description,
     site_name: project.title,
     type: "website",
     locale: "ca_ES",
@@ -24,18 +35,18 @@ const siteUrl = Astro.site?.href ?? "https://jazzy-pegasus-731767.netlify.app/";
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
-<meta property="og:url" content={siteUrl} />
-<meta property="og:title" content={project.title} />
-<meta property="og:description" content={project.subtitle} />
+<meta property="og:url" content={pageUrl} />
+<meta property="og:title" content={documentTitle} />
+<meta property="og:description" content={description} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary" />
-<meta property="twitter:url" content={siteUrl} />
-<meta property="twitter:title" content={project.title} />
-<meta property="twitter:description" content={project.subtitle} />
+<meta property="twitter:url" content={pageUrl} />
+<meta property="twitter:title" content={documentTitle} />
+<meta property="twitter:description" content={description} />
 
 <!-- Canonical URL -->
-<link rel="canonical" href={siteUrl} />
+<link rel="canonical" href={pageUrl} />
 
 <!-- Additional SEO -->
 <meta name="robots" content="index, follow" />

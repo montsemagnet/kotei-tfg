@@ -6,6 +6,9 @@ interface Props {
 }
 
 const { src, citation, citationUrl } = Astro.props;
+const accessibleLabel =
+  "Animació sense so ni subtítols que mostra el moviment de les plaques tectòniques. Font: " +
+  citation;
 ---
 
 <figure
@@ -22,7 +25,7 @@ const { src, citation, citationUrl } = Astro.props;
     preload="auto"
     disablepictureinpicture
     tabindex="0"
-    aria-label={citation}
+    aria-label={accessibleLabel}
     controlslist="nodownload nofullscreen noremoteplayback"
   />
 
@@ -41,6 +44,11 @@ const { src, citation, citationUrl } = Astro.props;
       </a>
     </p>
   </figcaption>
+
+  <p class="sr-only">
+    Aquest vídeo és una animació visual sense narració ni subtítols. La font és{" "}
+    {citation}. Enllaç: {citationUrl}.
+  </p>
 </figure>
 
 <script>

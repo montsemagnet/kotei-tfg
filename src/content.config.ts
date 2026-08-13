@@ -267,6 +267,8 @@ const itineraris = defineCollection({
         .object({
           publicSrc: z.string(),
           alt: z.string(),
+          /** Pista WebVTT de subtítols (ruta sota public/) */
+          captionsSrc: z.string().optional(),
           /** Vídeo amb pista d'àudio — mostra botó per activar el so */
           ambSo: z.boolean().optional(),
           /** Obrir el vídeo en modal en lloc de mostrar-lo a la capçalera */

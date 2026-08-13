@@ -49,7 +49,10 @@ const introTable = frontmatter.intro.find((item) => item.table)?.table;
 const mapaHref = frontmatter.mapaUrl ? withBase(frontmatter.mapaUrl) : undefined;
 ---
 
-<BaseLayout>
+<BaseLayout
+  pageTitle={frontmatter.title}
+  description={frontmatter.description}
+>
   <section>
     <div data-text-size-enabled>
     <Wrapper variant="standard" class={heroWrapperClass}>
@@ -118,6 +121,7 @@ const mapaHref = frontmatter.mapaUrl ? withBase(frontmatter.mapaUrl) : undefined
                     src={withBase(frontmatter.video.publicSrc)}
                     title={frontmatter.video.alt}
                     sound={frontmatter.video.ambSo ?? false}
+                    captionsSrc={frontmatter.video.captionsSrc}
                   />
                 ) : (
                   <Image

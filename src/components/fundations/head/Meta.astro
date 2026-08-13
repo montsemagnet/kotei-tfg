@@ -1,15 +1,22 @@
 ---
 import { project } from "@/data/project";
+
+interface Props {
+  pageTitle?: string;
+  description?: string;
+}
+
+const { pageTitle, description = project.subtitle } = Astro.props;
+const documentTitle = pageTitle
+  ? `${pageTitle} | ${project.title}`
+  : project.title;
 ---
 
 <!-- Meta Tags -->
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>{project.title}</title>
-<meta
-  name="description"
-  content={project.subtitle}
-/>
+<title>{documentTitle}</title>
+<meta name="description" content={description} />
 <meta name="keywords" content="geologia, itineraris, UVic, biologia, petrografia" />
 <meta name="author" content={project.institution} />
 

@@ -371,7 +371,14 @@ N’hi ha de dos tipus (a Sau–Tavertet n’hi ha tots dos):
 1. Copiar l’export a `public/mapa-<nom>/` (ha d’haver-hi `index.html` a l’arrel) o el PDF a `public/images/…`.  
 2. Al `.md` de l’itinerari: `mapaUrl: "/mapa-<nom>/"` (o path del PDF).  
 3. Comprovar amb `npm run dev:local` i a GitHub Pages.  
-4. Mapes molt grans: no deixar-los sencers a `public/` en local (mapa aparcat / dos ports amb `dev:local`).  
+4. Mapes molt grans: no deixar-los sencers a `public/` en local (mapa aparcat / dos ports amb `dev:local`):
+
+```bash
+npm run mapa:park      # stub a public/ + mapa a mapa-web-sau-tavertet/
+npm run mapa:restore   # abans de commit/push o build de producció
+npm run mapa:status    # comprovar estat
+```
+  
 5. Revisar rutes relatives de qgis2web si `base: /kotei-tfg/`.
 
 **qgis2web** és un export de QGIS; amb mapes complexos pot fallar → PDF o suport.

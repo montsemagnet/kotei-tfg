@@ -13,7 +13,10 @@
     "astro": "astro",
     "nova-parada": "node scripts/nova-parada.mjs",
     "nova-material": "node scripts/nova-material.mjs",
-    "nova-itinerari": "node scripts/nova-itinerari.mjs"
+    "nova-itinerari": "node scripts/nova-itinerari.mjs",
+    "mapa:park": "node scripts/mapa-sau.mjs park",
+    "mapa:restore": "node scripts/mapa-sau.mjs restore",
+    "mapa:status": "node scripts/mapa-sau.mjs status"
   },
   "dependencies": {
     "@astrojs/mdx": "^5.0.6",

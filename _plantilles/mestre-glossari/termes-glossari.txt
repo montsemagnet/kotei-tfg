@@ -1,0 +1,37 @@
+# Termes per al glossari
+
+Ompliu un bloc per cada terme **nou**. Deixeu en blanc el que no sapigueu (categoria, sinònims).
+
+Informàtica / sistemes incorporarà les entrades a `src/data/termes.ts`.
+
+---
+
+## Exemple (esborreu-lo o deixeu-lo com a model)
+
+TERME: Lutita
+CATEGORIA: Litologia
+DEFINICIÓ: Roca sedimentària de gra molt fi (llim i argila), típica d'ambients de baixa energia.
+SINÒNIMS: lutites
+ITINERARI / PARADA (opcional): I1-P4
+
+---
+
+## Termes nous
+
+TERME: 
+CATEGORIA: 
+DEFINICIÓ: 
+SINÒNIMS: 
+ITINERARI / PARADA (opcional): 
+
+TERME: 
+CATEGORIA: 
+DEFINICIÓ: 
+SINÒNIMS: 
+ITINERARI / PARADA (opcional): 
+
+TERME: 
+CATEGORIA: 
+DEFINICIÓ: 
+SINÒNIMS: 
+ITINERARI / PARADA (opcional): 

@@ -1,0 +1,10 @@
+Galeria i miniatura de l’itinerari (processades per Astro → src/images/).
+
+Poseu aquí:
+- Almenys 1 foto (millor 2–3) per a la galeria de la pàgina.
+- Opcional: un fitxer anomenat thumbnail.jpg / thumbnail.png per a la targeta del llistat.
+  Si no n’hi ha, s’usarà la primera foto de la galeria com a miniatura.
+
+Formats: JPG o PNG. Noms sense espais ni accents (ex.: galeria-01.jpg).
+
+Peus / textos alternatius: ompliu peus-galeria.txt

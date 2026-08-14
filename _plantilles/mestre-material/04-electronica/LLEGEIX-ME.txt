@@ -1,0 +1,10 @@
+Imatges de microscopia electrònica.
+
+Formats: JPG o PNG.
+Noms recomanats:
+  elect-01.jpg
+  elect-02.jpg
+  elect-03.jpg
+
+Cada fila pot anar associada a un espectre a 05-espectres/ (mateix número).
+Afegiu els peus a peus.txt.

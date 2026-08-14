@@ -1,0 +1,7 @@
+Plantilla de termes nous per al glossari de la web.
+
+1. Copieu aquesta carpeta (o només termes-glossari.txt) al dossier que entregueu.
+2. Ompliu TERME + DEFINICIÓ (categoria i sinònims si escau).
+3. No cal crear el slug: ho farà sistemes a src/data/termes.ts.
+
+Si el terme ja surt al glossari publicat, no el torneu a definir: useu la mateixa forma al text.

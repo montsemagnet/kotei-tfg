@@ -1,231 +1,97 @@
-﻿Manual pràctic per preparar i incorporar **itineraris**, **parades** i **materials** a la plataforma web GeoTransectes UVic.
+﻿## PRIMERA PART: Dirigida al professorat
 
-**A qui va dirigit**
+Per incorporar un nou itinerari (que pot ser geològic, botànic, zoològic, ecològic, etc.) cal tenir els continguts estructurats i configurats per tal que informàticament es puguin incorporar fàcilment a la web.
 
-| Qui | Què hi trobarà |
-|-----|----------------|
-| **Professorat** | Part A: quin contingut cal preparar, com presentar-lo i com entregar-lo |
-| **Informàtica UVic** / responsable del projecte | Part B: integració tècnica i publicació |
+Per veure com és l’estructura d’un itinerari, **podeu guiar-vos mirant l’itinerari Sau–Tavertet** (estructura de l’itinerari, parades, mapes, finestres emergents…): [https://montsemagnet.github.io/kotei-tfg/itineraris/sau-tavertet/](https://montsemagnet.github.io/kotei-tfg/itineraris/sau-tavertet/).
 
-### Qui fa què (important)
+## 1. Primer pas: estructurar els continguts
 
-| Qui | Què fa |
-|-----|--------|
-| **Professorat** | Prepara el **contingut científic** (textos, imatges, peus, mapes, vídeos…) i l’**entrega** |
-| **Informàtica UVic** i/o **Montserrat Magnet** | Integra el material a la web, revisa tècnicament i **publica** |
+Abans de redactar, es recomana un **petit esquema** del que ha de contenir cada pàgina.
 
-> **La publicació a la web no és oberta a tothom.** El professorat entrega el material preparat; només informàtica (o la responsable del projecte) l’incorpora a la plataforma i el fa públic. Així s’evita malmetre, sense voler, les pàgines ja implementades.
-
----
-
-## Part A — Professorat
-
-No cal conèixer l’estructura tècnica de la web ni noms de carpetes o fitxers del projecte. El que es demana és **contingut clar i complet**, i entregar-lo a qui l’integrarà.
-
-Per veure com queda tot muntat a la pràctica, **podeu guiar-vos mirant l’itinerari Sau–Tavertet** (estructura de la fitxa, parades, mapes, finestres de geologia…): [https://montsemagnet.github.io/kotei-tfg/itineraris/sau-tavertet/](https://montsemagnet.github.io/kotei-tfg/itineraris/sau-tavertet/).
-
-## 1. Primer pas: decidir què cal explicar
-
-Abans de redactar, es recomana un **petit esquema** (en paper o en un document) de com ha de quedar la pàgina. Serveix per decidir què va on i evitar omissions.
-
-**Si prepareu un itinerari:**
+**Primer, la pàgina general de l’itinerari:**
 
 - Títol i frase curta de presentació  
+- Foto de l’itinerari o mapa amb les parades  
 - Llista ordenada de parades (P1, P2… amb el títol de cadascuna)  
-- Què hi haurà a la fitxa: vídeo / mapa / geologia / paleogeologia / geobotànica…  
-- Materials o enllaços especials (si n’hi ha)
+- Quins apartats voleu en aquesta pàgina: mapa / geologia / paleogeologia / geobotànica… (es poden substituir pel que necessiteu si el contingut no és geològic)  
+- Dins de les parades poden haver-hi subapartats que s’obriran com a finestres emergents  
 
-**Si prepareu una parada:**
+> **Mapa interactiu de les parades** (com a Sau–Tavertet, on es cliquen P1, P2… i s’obre cada fitxa): si el voleu, cal demanar-ho a **informàtica / departament de sistemes**. El professorat pot aportar el dibuix, la llista de parades i, si escau, una foto petita de previsualització; la implementació a la web la fa informàtica. L’opció habitual sense aquest encàrrec és un mapa en **PDF** o un mapa elaborat amb **QGIS**.
 
-- Títol de la parada  
-- Capçalera (foto o vídeo)  
-- Textos principals (geologia, flora…) i en quin ordre  
-- Quines imatges van a la **galeria** de l’aflorament i quines són **figures** dels textos  
-- Mapa (si n’hi ha)  
-- Materials petrogràfics enllaçats (si n’hi ha)
+**Segon, l’estructura d’una pàgina corresponent a una parada:**
 
-## 2. Què cal preparar (per tipus de contingut)
+- Quins apartats necessiteu: coordenades, mapa…  
+- Materials o equivalent: per exemple, si és de zoologia o botànica, podrien ser espècies…
 
-### 2.1 Una parada
+**Tercer, l’estructura de la pàgina d’observacions de cada parada:**
 
-| Contingut | Orientació |
-|-----------|------------|
-| **Títol** | Curt i descriptiu, amb el número (ex.: «P4. …»), com a Sau–Tavertet |
-| **Dades de localització** | Coordenades, itinerari al qual pertany, i materials enllaçats si n’hi ha |
-| **Apartat de geologia** | Text estructurat + figures amb peu |
-| **Galeria d’aflorament** | Entre **1 i 8** fotografies, cadascuna amb peu |
-| **Geobotànica** (opcional) | Text i figures, si escau |
-| **Mapa** (recomanat) | PDF o export des de QGIS; indiqueu el text de l’enllaç a la web |
-| **Vídeo** (opcional) | Fitxer MP4; indiqueu si porta so |
+- Poden ser materials, espècies o altres observacions que feu a la parada.  
+- Què voleu explicar de cada observació i quins apartats us calen.
 
-Un cop rebut el material, informàtica generarà la pàgina, enllaçarà la parada a l’itinerari (i al mapa de parades, si cal) i el publicarà.
+## 2. Segon pas: preparar el contingut
 
-### 2.2 Un itinerari nou
+L’objectiu és facilitar la inclusió dels continguts a la pàgina web.
 
-Un itinerari nou sol ser més feina que una sola parada. Cal entregar, com a mínim:
+### 2.1 Textos
 
-- Títol i presentació breu  
-- Llista ordenada de parades (número + títol)  
-- Textos o apartats previstos a la fitxa (història, marc geològic, paleogeologia…)  
-- Imatges de presentació / galeria, amb peus  
-- Vídeo o altimetria, si n’hi ha  
-- Mapa (PDF o export QGIS) i el text amb què ha de constar l’enllaç  
+- Especifiqueu **on** estaran inclosos dins la web: pàgina, apartat, subapartat…  
+- Especifiqueu si entre el text hi ha alguna **figura** inclosa, **on** s’ha de situar (dins del text), el **títol** de la figura, el **peu** de la figura i a quina carpeta heu posat la imatge.  
+- Especifiqueu si hi ha algun **terme** que cal incloure al glossari (si es farà glossari) i la **definició**.
 
-Si el mapa és molt complex i costa d’exportar, contacteu **Montserrat Magnet** o informàtica; un PDF i una consulta solen ser el camí més prudent. **Penjar el mapa a la web** és sempre feina d’informàtica.
+**Peus de figura**
 
-**Mapa clicable de les parades** (com a Sau–Tavertet, on es cliquen P1, P2…): és un encàrrec tècnic. Si el voleu, indiqueu-ho i aporteu el dibuix, la llista de parades i, si escau, una foto petita de previsualització per a cadascuna. L’opció habitual sense desenvolupament addicional és l’enllaç al mapa geològic (PDF o QGIS).
+Per a cada imatge, és molt útil disposar de:
 
-### 2.3 Un material (mostra petrogràfica)
+1. Títol i descripció  
+2. Crèdit («Elaboració pròpia» o autor/font)  
+3. Lloc i data quan sigui una foto de camp  
 
-Prepareu textos i imatges (òptica, electrònica, espectres, percentatges…) i **indiqueu a quina parada** va lligat. Informàtica crearà la pàgina a la web.
-
-### 2.4 Finestres emergents (geologia, història…)
-
-A la web, alguns títols obren una **finestra emergent** amb text llarg i figures (per exemple «Geologia», «Marc geològic regional» o «Paleogeologia»), sense canviar de pàgina.
-
-El professorat només ha de **preparar el material** que informàtica incorporarà a aquestes finestres. No cal programar ni conèixer l’estructura tècnica.
-
-**Què cal entregar** (per a cada finestra o apartat):
-
-- Un **títol** clar (ex.: «Geologia», «Història», «Sòcol»…)  
-- Un **text breu de resum** (si ha de sortir a la pàgina abans d’obrir la finestra)  
-- El **text complet**, organitzat en seccions amb títol si escau  
-- Les **figures** que hi van, cadascuna amb peu (descripció, crèdit, lloc i data si escau)  
-- Si és **paleogeologia** amb diversos vídeos: els vídeos, subtítols (si n’hi ha) i l’ordre de reproducció — millor amb suport tècnic  
-
-Indiqueu a quin lloc de la web va cada bloc (parada concreta o itinerari, i quin apartat). Informàtica s’encarrega de muntar-ho a la plataforma.
-
-## 3. Recomanacions per preparar el material
-
-L’objectiu és facilitar el treball conjunt: si el material arriba **clar, homogeni i complet**, informàtica el pot integrar amb agilitat i **sense haver de tornar a demanar aclariments**.
-
-### 3.1 Textos
-
-| Element | Recomanació |
-|---------|-------------|
-| **Paràgrafs** | Un tema per paràgraf; els blocs molt llargs sense punt i a part són més difícils de llegir a pantalla. |
-| **Estil** | Català normatiu. |
-| **Termes del glossari** | Si cal enllaçar conceptes al glossari, indiqueu-los i proposeu-ne una definició breu (vegeu 3.2). |
-| **Citacions / crèdits** | Preferiblement al peu de figura o al final del text (autor, any, font). |
-
-### 3.2 Termes per al glossari
-
-La web enllaça termes científics a una definició curta. Amb contingut nou, és molt útil indicar **quins conceptes** cal enllaçar i **quina definició** proposeu.
-
-- Marqueu-los al text (per exemple en **negreta** la primera vegada, o amb una nota «→ glossari»).  
-- Per a cada terme **nou**, afegiu una definició breu (orientada a la lectura de camp).  
-- Si el terme **ja surt** al glossari ([https://montsemagnet.github.io/kotei-tfg/termes/](https://montsemagnet.github.io/kotei-tfg/termes/)), feu servir la **mateixa forma**; no cal redefinir-lo.
-
-L’alta al glossari de la web la farà **informàtica**.
-
-### 3.3 Imatges
+### 2.2 Imatges
 
 | Aspecte | Recomanació |
 |---------|-------------|
-| **Formats** | **JPG** per a fotografies i **PNG** per a esquemes o captures amb text nítid. HEIC/HEIF (iPhone) i TIFF sense convertir solen donar problemes; si es pot, convertir-los abans. |
-| **Resolució orientativa** | Entre **1500 i 3000 px** pel costat llarg. Fitxers de 20–40 MP sense redimensionar solen ser innecessaris. |
+| **Formats** | **JPG** per a fotografies i **PNG** per a esquemes o captures amb text nítid. |
+| **Resolució orientativa** | Entre **1500 i 3000 px** pel costat llarg. |
 | **Pes orientatiu** | Idealment **menys de 2–3 MB** per imatge. |
-| **Orientació** | Preferible exportar-les ja girades correctament. |
-| **Identificació** | Cada imatge ha de poder associar-se clarament al seu peu (número o títol inequívoc). |
+| **Orientació** | Girades correctament. |
+| **Identificació** | Cada imatge ha de poder associar-se clarament (número o títol inequívoc). |
 
-### 3.4 Peus de figura
+## 3. Entregar el contingut
 
-Per a **cada** imatge, és molt útil disposar de:
+Es recomana posar en una mateixa carpeta el contingut corresponent a cada pàgina.
 
-1. **Descripció del que es veu** (1–2 frases).  
-2. **Crèdit** (ex.: «Elaboració pròpia» o autor/font).  
-3. **Lloc i data** quan sigui una foto de camp.
+Exemple: carpeta Itinerari, carpeta Parada 1, carpeta Parada 2…, carpeta Observació 1…
 
-Exemple:
-
-> Vista general de l’aflorament. Elaboració pròpia. Turó del Castell, 9 de juny de 2026.
-
-### 3.5 Mapes i vídeos
-
-- **Mapa:** PDF (opció còmoda) o export des de QGIS; indiqueu el text de l’enllaç (ex.: «Mapa interactiu de la parada 4»).  
-- **Vídeo:** format preferent **MP4**; indiqueu si porta so; si és molt pesat, aviseu-ho.
-
-## 4. Abans d’entregar — comprovació ràpida
-
-- [ ] Títols i textos revisats  
-- [ ] Termes nous per al glossari marcats, amb definició (si n’hi ha)  
-- [ ] Totes les imatges amb peu  
-- [ ] Queda clar què és galeria, què és figura de text, què és mapa o vídeo  
-- [ ] Formats adequats (JPG/PNG; PDF del mapa; MP4 del vídeo)  
-
-## 5. Entregar el contingut
-
-Quan el material estigui **complet i revisat**:
-
-1. Reuniu-lo en un **arxiu comprimit (ZIP)** o en el format que us indiquin.  
-2. Envieu-lo per correu a **Montserrat Magnet Sabata** ([mariamontserrat.magnet@uvic.cat](mailto:mariamontserrat.magnet@uvic.cat)) **o** al canal que us indiqui el **servei d’informàtica de la UVic**.  
-3. Indiqueu breument el **títol** i, si escau, l’**itinerari** al qual pertany.
-
-**No** cal publicar el material vosaltres a la web. La publicació a  
-[https://montsemagnet.github.io/kotei-tfg/](https://montsemagnet.github.io/kotei-tfg/)  
-la farà informàtica / la responsable del projecte quan el material sigui acceptat.
-
-## 6. Flux resumit i contacte
-
-```
-PROFESSORAT
-  esquema → contingut preparat → comprovació → entrega
-
-INFORMÀTICA
-  rebre el material → integrar a la plataforma → revisar → publicar
-```
-
-### Contacte
-
-**Montserrat Magnet Sabata** — [mariamontserrat.magnet@uvic.cat](mailto:mariamontserrat.magnet@uvic.cat)
-
-**Abast del suport:** només s’atendran peticions de **professorat universitari** i/o del **servei d’informàtica de la UVic**. Altres sol·licituds (particulars, centres externs, etc.) quedaran fora d’aquest canal.
+Comprimiu-ho en un **ZIP** i copieu-lo a un **USB** per entregar.
 
 ---
 
-## Part B — Informàtica / responsable del projecte
+## SEGONA PART: Dirigida al departament de sistemes
 
-Aquesta part **no** va dirigida al professorat. Resumeix rutes, scripts i convencions tècniques del repositori. Informàtica endreça el material rebut amb `_plantilles/` / `continguts-en-curs/` i l’implementa a Astro.
+Aquesta part segueix l’**ordre de feina** habitual quan arriba un dossier del professorat:
 
-## 9. Idea general (mapa mental) *(només informàtica)*
+1. Preparar l’entorn (A)  
+2. Entendre el model del lloc (B)  
+3. Treballar sempre des de plantilles (C)  
+4. Saber on van les imatges (D)  
+5. **Itinerari** → **parada** → **material** → **glossari** → **finestres emergents** → **mapes** (E–J)  
+6. Comprovar en local i publicar (K)  
+7. Errors i referències (L–M)
 
-Cada contingut és un **fitxer Markdown** (amb frontmatter) + **carpetes d’imatges/vídeos**. Astro genera les pàgines.
+---
 
-| Tipus | Fitxer de contingut | Imatges principals | URL pública (exemple) |
-|--------|---------------------|--------------------|------------------------|
-| Itinerari | `src/content/itineraris/<slug>.md` | `src/images/itineraris/<slug>/` | `/itineraris/sau-tavertet/` |
-| Parada | `src/content/parades/<CODI>.md` | `src/images/parades/<CODI>/` | `/parades/I1-P1/` |
-| Material | `src/content/roques/<CODI-Mm>.md` | `src/images/roques/<CODI-Mm>/` | `/roques/I1-P1-M1/` |
-
-**Noms:**
-
-- Parades itinerari 1 → `I1-P1.md`, `I1-P2.md`…  
-- Materials → `I1-P1-M1.md`, `I1-P1-M2.md`…  
-- Itinerari Sau–Tavertet → `sau-tavertet.md`
-
-| Carpeta | Per a què |
-|---------|-----------|
-| `_plantilles/` | Models nets. **No hi poseu contingut real.** |
-| `continguts-en-curs/` | Treball en curs (còpies que sí s’omplen). |
-
-Documentació de l’script: `scripts/README-nova-parada.md`.
-
-## 10. Eines i publicació
-
-### 10.1 Programes recomanats
+## A. Programes i primer arrencada
 
 | Programa | Per a què serveix | On descarregar-lo |
 |----------|-------------------|-------------------|
-| **Node.js** (versió 18 o 20 LTS) | Executar les ordres de la web (`npm install`, `npm run…`). En instal·lar-lo també s’instal·la **npm**. | [https://nodejs.org](https://nodejs.org) (trieu la versió LTS) |
-| **Editor de text — recomanat: Visual Studio Code** | Obrir la carpeta del projecte, editar fitxers `.md` i obrir el **terminal** sense sortir de l’editor. | [https://code.visualstudio.com](https://code.visualstudio.com) |
-| **Navegador web** (Chrome, Edge, Firefox…) | Veure la web en local i comprovar els canvis. | Ja el teniu a l’ordinador |
-| **Git** (recomanat) | Descarregar el projecte i pujar els canvis a GitHub. Cal un **compte a GitHub** amb permisos al repositori. | Git: [https://git-scm.com](https://git-scm.com) · GitHub: [https://github.com](https://github.com) |
+| **Node.js** (18 o 20 LTS) | Executar `npm install`, `npm run…`. Inclou **npm**. | [https://nodejs.org](https://nodejs.org) (LTS) |
+| **Visual Studio Code** (recomanat) | Obrir el projecte, editar `.md` i usar el terminal. | [https://code.visualstudio.com](https://code.visualstudio.com) |
+| **Navegador** (Chrome, Edge, Firefox…) | Comprovar la web en local. | Ja instal·lat |
+| **Git** + compte **GitHub** | Clonar el repo i pujar canvis. | [git-scm.com](https://git-scm.com) · [github.com](https://github.com) |
 
-No cal instal·lar Astro a part: ja ve dins del projecte i s’activa amb `npm install`.
+No cal instal·lar Astro a part: ve amb el projecte (`npm install`).
 
-**Terminal (VS Code):** amb la carpeta `kotei-tfg` oberta → **Terminal → New Terminal**. El camí ha d’acabar a l’arrel del projecte (no dins `src` o `_plantilles`).
-
-**Primeres ordres** (a l’arrel de `kotei-tfg`):
+**Terminal:** obriu la carpeta `kotei-tfg` a VS Code → **Terminal → New Terminal**. El camí ha d’acabar a l’**arrel** del projecte (no dins `src` ni `_plantilles`).
 
 ```bash
 npm install
@@ -234,123 +100,238 @@ npm run dev:local
 
 Repositori: [https://github.com/montsemagnet/kotei-tfg](https://github.com/montsemagnet/kotei-tfg)
 
-### 10.2 Integrar una parada rebuda
+---
+
+## B. Idea general
+
+El lloc és una web **estàtica** feta amb **Astro 6**: no hi ha CMS ni base de dades. Les pàgines surten de fitxers Markdown + imatges. El disseny (Tailwind, components) ja està fet; la feina habitual de sistemes és afegir o actualitzar contingut, no redissenyar.
+
+| Concepte | |
+|----------|--|
+| **Markdown (`.md`)** | Text pla amb marques senzilles (`#` títol, `-` llista…). Astro el converteix en HTML. |
+| **Frontmatter YAML** | Bloc al començament del `.md`, entre `---`, amb dades estructurades (títol, rutes d’imatge…). El text lliure va a sota. |
+| **Zod / esquema** | A `src/content.config.ts` defineix quins camps són obligatoris. Si algo no encaixa, la compilació falla (és el control de qualitat). |
+| **Tailwind / UI** | Estils i components a `src/styles/` i `src/components/`. No cal tocar-los per publicar un itinerari o una parada. |
+
+Exemple de frontmatter:
+
+```yaml
+---
+title: "P4. Argiles del Paleocè"
+parada: "I1-P4"
+---
+```
+
+**On va cada tipus de contingut**
+
+| Tipus | Fitxer | Imatges de galeria | URL d’exemple |
+|--------|--------|--------------------|---------------|
+| Itinerari | `src/content/itineraris/<slug>.md` | `src/images/itineraris/<slug>/` | `/itineraris/sau-tavertet/` |
+| Parada | `src/content/parades/<CODI>.md` | `src/images/parades/<CODI>/` | `/parades/I1-P1/` |
+| Material / observació | `src/content/roques/<CODI-Mm>.md` | `src/images/roques/<CODI-Mm>/` | `/roques/I1-P1-M1/` |
+
+Les rutes de llista i detall (`src/pages/…`) ja existeixen: no cal crear un fitxer a `src/pages/` per cada parada nova.
+
+**Què és un slug?** És l’identificador curt i estable que s’utilitza al nom del fitxer i a la **URL**, sense accents ni espais (sovint amb guions). Exemple: l’itinerari Sau–Tavertet té l’slug `sau-tavertet` i la URL `/itineraris/sau-tavertet/`. A la taula de parades de l’itinerari, el camp `slug` ha de coincidir amb l’`id` de la parada (el nom del fitxer sense `.md`), p. ex. `I1-P4`.
+
+**Identificadors** (estables, sense accents ni espais; han de coincidir a fitxer, carpeta d’imatges, taula de l’itinerari i URL):
+
+- Parades → `I1-P1`, `I1-P2`…  
+- Materials → `I1-P1-M1`, `I1-P1-M2`…  
+- Itinerari Sau–Tavertet → `sau-tavertet` → `/itineraris/sau-tavertet/`
+
+**Dades auxiliars (`.ts`, no Markdown):** algunes llistes viuen a `src/data/`:
+
+| Fitxer | Quan s’actualitza |
+|--------|-------------------|
+| `src/data/termes.ts` | Termes nous del **glossari** (apartat H) |
+| `src/data/sau-tavertet-parades.ts` | Parades al **mapa SVG** clicable (apartat J) |
+
+**Flux resum:** ZIP/USB del professorat → `nova-itinerari` / `nova-parada` / `nova-material` (`preparar` → omplir → `implementar`) → `npm run dev:local` → commit i `git push` a `main` → GitHub Actions publica a Pages (`base: /kotei-tfg/`).
+
+---
+
+## C. Plantilles i carpetes de treball
+
+Sempre es construeix des de la plantilla.
+
+| Carpeta | Ús |
+|---------|-----|
+| `_plantilles/mestre-*` | Plantilles mestres sense omplir. Mantenir-les sense canvis; cal fer una còpia per treballar el nou contingut. |
+| `continguts-en-curs/` | On es treballa el nou contingut abans de passar-lo a `src/`. |
+
+| Què | Plantilla |
+|-----|-----------|
+| Itinerari | `_plantilles/mestre-itinerari/` |
+| Parada | `_plantilles/mestre-parada/` |
+| Material / observació | `_plantilles/mestre-material/` |
+| Glossari (llista de termes) | `_plantilles/mestre-glossari/` |
+
+**Passos comuns**
+
+1. `npm run nova-<tipus> -- preparar <codi-o-slug>` (crea la còpia a `continguts-en-curs/`)  
+2. Omplir-la amb el nou contingut  
+3. `npm run nova-<tipus> -- implementar <codi-o-slug>` (passa a `src/` i `public/`)  
+
+**Scripts** (mateix patró per a tot):
+
+| Contingut | Ordres | Documentació |
+|-----------|--------|--------------|
+| Itinerari | `npm run nova-itinerari -- preparar\|implementar <slug>` | `scripts/README-nova-itinerari.md` |
+| Parada | `npm run nova-parada -- preparar\|implementar <CODI>` | `scripts/README-nova-parada.md` |
+| Material / observació | `npm run nova-material -- preparar\|implementar <CODI-Mm>` | `scripts/README-nova-material.md` |
+
+El glossari no té script: els termes es passen a `src/data/termes.ts` (apartat H).
+
+**Si dubteu d’un camp** del frontmatter, obriu un exemple ja publicat **només com a consulta** (no com a base per copiar tot l’itinerari):
+
+| Dubte | Obrir |
+|-------|-------|
+| Parada amb geologia | `src/content/parades/I1-P1.md` |
+| Parada via script | `src/content/parades/I1-P3.md` |
+| Material | `src/content/roques/I1-P1-M1.md` |
+| Itinerari simple | `src/content/itineraris/itinerari2.md` |
+| Itinerari amb molts modals | `src/content/itineraris/sau-tavertet.md` |
+
+---
+
+## D. On van les imatges (important)
+
+Hi ha **dues vies**; no són intercanviables.
+
+| Ús | Carpeta | Al Markdown |
+|----|---------|-------------|
+| Galeria / miniatura (Astro les processa) | `src/images/...` | `url: "/src/images/..."` |
+| Figures de finestres emergents, PDF, mapes (sense processar) | `public/images/...` (o `public/mapa-…/`) | `publicSrc: "/images/..."` o `mapaUrl` |
+| Vídeos | `public/videos/...` | `publicSrc: "/videos/..."` |
+
+- Galeria amb path incorrecte a `src/images` → **falla la compilació**.  
+- Figura de modal a `src/images` però enllaçada amb `publicSrc` → la pàgina compila però **la imatge no es veu**.  
+- Cada imatge ha de tenir `alt` descriptiu.  
+- A producció la web va sota `/kotei-tfg/`; als paths del Markdown **no** cal escriure aquest prefix (`publicSrc: "/images/…"`).
+
+---
+
+## E. Itinerari nou
+
+Ordre: **primer l’itinerari**, després les seves parades.
 
 ```bash
-npm run nova-parada -- preparar I1-P4   # si cal crear l’esquelet
-# (o copiar el ZIP rebut a continguts-en-curs/I1-P4/)
-npm run nova-parada -- implementar I1-P4
-# revisar .md, enllaçar a l’itinerari, hover del mapa si cal
+npm run nova-itinerari -- preparar collsacabra
+# omplir continguts-en-curs/collsacabra/ (fitxes, 06-galeria, vídeo, mapa…)
+npm run nova-itinerari -- implementar collsacabra
 npm run dev:local
 ```
 
-### 10.3 Termes nous al glossari
+L’script deixa `enConstruccio: true`. Quan estigui llest: poseu `false` o treieu el camp.  
+Si un camp no queda clar, consulteu un exemple (apartat C); no cal reproduir Sau–Tavertet sencer.  
+Els `dadesModals` complexos i el mapa SVG es completen a mà si cal (apartats I i J).
 
-El professorat marca els conceptes i n’aporta la definició al dossier. Informàtica els passa al glossari.
-
-1. Recolliu els termes nous del dossier.  
-2. Si cal endreçar-los abans d’implementar, podeu deixar-los al final de `02-geologia.md` o en `termes-glossari.txt`:
-
-```text
-TERME: Lutita
-DEFINICIÓ: Roca sedimentària de gra molt fi (llim i argila), típica d'ambients de baixa energia.
-SINÒNIMS (opcional): lutites
-
-TERME: Formació Mediona
-DEFINICIÓ: …
-```
-
-3. Afegiu-los a `src/data/termes.ts`.  
-4. Comproveu els enllaços a la pàgina (popover / glossari).
-
-### 10.4 Publicar
-
-```bash
-git status
-git add …   # només fitxers de contingut/assets necessaris
-git commit -m "Afegeix la parada I1-P4"
-git push origin main
-```
-
-GitHub Actions publica a `https://montsemagnet.github.io/kotei-tfg/`.  
-Si la build falla: path d’imatge, camp obligatori, o `fotos` fora del rang 1–8.
-
-> **Nota local:** el mapa gran Sau–Tavertet no ha d’estar sencer a `public/` en desenvolupament local (flux de dos ports / mapa aparcat).
-
-## 11. Materials (roques)
-
-Copiar / crear fitxer a `src/content/roques/<CODI-Mm>.md` i imatges a `src/images/roques/<CODI-Mm>/`, enllaçats des de la parada. Model: `src/content/roques/I1-P1-M1.md`.
-
-## 12. Itineraris nous
-
-### 12.1 Crear el fitxer a Astro
-
-1. Base mínima: `src/content/itineraris/itinerari2.md`  
-   Base rica: `src/content/itineraris/sau-tavertet.md` (copiar només els blocs necessaris).  
-2. Desar com `src/content/itineraris/<slug>.md`.  
-3. Carpeta d’imatges: `src/images/itineraris/<slug>/` amb miniatura + 3 imatges de galeria.
-
-### 12.2 Camps mínims
+**Camps mínims**
 
 | Camp | Nota |
 |------|------|
-| `title`, `description`, `ordre`, `intro` | Contingut visible; `intro` pot incloure taula de parades amb `slug` |
-| `dades` | Resums; alguns camps són obligatoris al sistema |
+| `title`, `description`, `ordre`, `intro` | Contingut visible; a `intro` hi anirà la **taula de parades** (`slug`) |
+| `dades` | Resums a la pàgina (alguns obligatoris a l’esquema) |
 | `images` / `thumbnail` | Paths `/src/images/itineraris/...` |
-| `enConstruccio` | `true` = “en construcció” (sense fitxa completa) |
+| `enConstruccio` | `true` = encara no és la fitxa completa |
 | `draft` | `true` = no surt al llistat |
 
-Mentre es prepara: `enConstruccio: true`. Quan estigui llest: `false` o treure el camp.
+**Vídeos i mapa de l’itinerari** (detall de finestres a l’apartat I; mapes a J):
 
-### 12.3 Vídeos, figures de modal i mapaUrl
-
-| Contingut | On | Com |
-|-----------|-----|-----|
+| Contingut | On | Camp |
+|-----------|-----|------|
 | Vídeo de capçalera | `public/videos/itineraris/<slug>.mp4` | `video.publicSrc` |
 | Altimetria | `public/videos/itineraris/<slug>/...` | `altimetria` |
 | Figures de finestres | `public/images/itineraris/<slug>/...` | `dadesModals` → `publicSrc` |
 | Mapa QGIS / PDF | `public/mapa-.../` o `public/images/...` | `mapaUrl` |
 
-### 12.4 Integrar un mapa QGIS (qgis2web) o PDF
+---
 
-1. Copiar l’export a `public/mapa-<nom>/` (ha d’haver-hi `index.html` a l’arrel).  
-2. Al `.md`, `mapaUrl: "/mapa-<nom>/"` (o path del PDF).  
-3. Comprovar amb `npm run dev:local` i a GitHub Pages.  
-4. Mapes molt grans (Sau–Tavertet): no deixar-los sencers a `public/` en local (mapa aparcat / dos ports).  
-5. Revisar rutes relatives de qgis2web si `base: /kotei-tfg/`.
+## F. Parada (integrar una nova parada)
 
-**qgis2web** és un complement de QGIS; amb mapes complexos pot fallar → PDF o suport.
+Després de tenir (o crear) l’itinerari:
 
-## 13. Mapa interactiu de parades (patró Sau–Tavertet)
+```bash
+npm run nova-parada -- preparar I1-P4   # crea l’esquelet a continguts-en-curs si cal
+# (o copieu el ZIP rebut a continguts-en-curs/I1-P4/)
+npm run nova-parada -- implementar I1-P4
+npm run dev:local
+```
 
-Dos mapes diferents a Sau–Tavertet:
+Després de l’script: reviseu el `.md`, **enllaceu la parada a l’itinerari** i, si cal, el mapa SVG (apartat J).
 
-1. **Mapa QGIS** → `mapaUrl` / `public/mapa-sau-tavertet/` (apartat 12.4).  
-2. **Mapa SVG clicable** de parades → no surt del Markdown tot sol.
+**Enllaçar la parada a l’itinerari**
 
-| Peça | Fitxer / lloc |
-|------|---------------|
-| Flag | `mapa: "sau-tavertet"` a l’itinerari → activa component a `ItinerariLayout` |
-| SVG | `public/images/itineraris/mapa-parades.svg` |
-| Metadades | `src/data/sau-tavertet-parades.ts` (`slug`, `label`, `preview`, `svgIds`) |
-| Component | `src/components/itinerari/itinerari-sau.astro` |
-| Fotos hover | `public/images/parades/I1-PX-hover.jpg` |
-| Col·lecció | `src/content/parades/*.md` (`disponible`) |
+1. El fitxer `src/content/parades/I1-P4.md` defineix l’`id` `I1-P4` → URL `/parades/I1-P4/`.  
+2. A `src/content/itineraris/<slug>.md`, afegeu una fila a `intro` → `table` → `rows`. El camp **`slug` ha de coincidir exactament** amb aquest `id`:
 
-**Afegir una parada al mapa SVG existent:**
+```yaml
+intro:
+  - paragraphs:
+      - "Text de presentació…"
+    table:
+      rows:
+        - parada: "P4"
+          slug: "I1-P4"
+          material: "Títol curt de la parada"
+          edat: "…"
+```
 
-1. Existeix `src/content/parades/I1-PX.md`.  
-2. Entrada a `SAU_TAVERTET_PARADES` amb `svgIds` coincidents.  
-3. `public/images/parades/I1-PX-hover.jpg`.  
-4. Comprovar hover + navegació; després commit/push.
+3. Si el `slug` no coincideix amb cap fitxer a `parades/`, la fila es veu però l’enllaç no funciona.  
+4. El mapa SVG clicable (si n’hi ha) és **independent** d’aquesta taula → apartat J.
 
-**Itinerari nou amb el mateix patró:** SVG nou, dades noves, component o parametritzar `itinerari-sau.astro` — encàrrec de desenvolupament. Sense desenvolupament: `mapaUrl` (12.4).
+---
 
-## 14. Finestres emergents (modals) — edició tècnica
+## G. Materials / observacions (roques, espècies…)
 
-### 14.1 Modal de geologia d’una parada
+Després de la parada corresponent:
 
-Al fitxer `src/content/parades/I1-P….md`, bloc `geologia`:
+```bash
+npm run nova-material -- preparar I1-P1-M1
+# omplir continguts-en-curs/I1-P1-M1/
+npm run nova-material -- implementar I1-P1-M1
+```
+
+Enllaçar-los des de la parada (camp `materials` del `.md` de la parada).  
+Si no és petrografia, utilitzeu `06-altres/` (i marqueu el tipus a la fitxa).
+
+Exemple de camps: `src/content/roques/I1-P1-M1.md` (consulta).
+
+> L’esquema Zod `roques` està pensat sobretot per a petrografia; altres observacions poden requerir adaptar camps o ampliar l’esquema.
+
+---
+
+## H. Glossari (termes nous)
+
+Quan el dossier porti termes amb definició:
+
+1. Recolliu-los (o utilitzeu `_plantilles/mestre-glossari/termes-glossari.txt`).  
+2. Format orientatiu:
+
+```text
+TERME: Lutita
+DEFINICIÓ: Roca sedimentària de gra molt fi (llim i argila), típica d'ambients de baixa energia.
+SINÒNIMS (opcional): lutites
+```
+
+3. Afegiu-los a `src/data/termes.ts`.  
+4. Comproveu a la web (popover / pàgina de glossari) amb `npm run dev:local`.
+
+---
+
+## I. Finestres emergents (modals)
+
+El **frontmatter** és el bloc de dades al **començament** del fitxer `.md`, entre tres guions (`---`). És on es defineixen títols, imatges, textos de finestres, etc. S’edita obrint el Markdown corresponent amb l’editor (VS Code), per exemple:
+
+- Parada → `src/content/parades/<CODI>.md` (bloc `geologia`, …)
+- Itinerari → `src/content/itineraris/<slug>.md` (blocs `dades`, `dadesModals`, …)
+
+No cal canviar components de la interfície.
+
+### I.1 Modal de geologia (parada)
+
+Al fitxer `src/content/parades/<CODI>.md`, bloc `geologia`:
 
 ```yaml
 geologia:
@@ -364,71 +345,107 @@ geologia:
       media:
         title: "Figura 1. Descripció."
         publicSrc: "/images/parades/I1-P4/geologia/figura-01.jpg"
-        alt: "Text alternatiu per accessibilitat"
+        alt: "Text alternatiu"
         caption: "Crèdit / data."
 ```
 
 - Imatges del modal → `public/images/parades/<CODI>/geologia/` (no `src/images`).  
-- Diverses `sections`; dues figures juntes → `mediaItems:` (vegeu `I1-P1.md`).
+- Diverses `sections`; dues figures juntes → `mediaItems:` (exemple: `I1-P1.md`).
 
-### 14.2 Modal d’itinerari (`dadesModals`)
+### I.2 Modals de l’itinerari (`dadesModals`)
 
 1. `dades.clau` — text curt a la pàgina.  
 2. `dadesModals.clau` — contingut de la finestra.  
 3. Opcional `dadesIndex.clau` — índex amb enllaços a diversos modals.
 
-Model: copiar un bloc senzill de `sau-tavertet.md` (no el de paleogeologia).
+Les claus han de coincidir; si `dadesIndex` apunta a una clau inexistent a `dadesModals`, el modal no obre. Model: consulteu un itinerari publicat (apartat C).
 
-### 14.3 Què cal desenvolupament
+---
 
-- Canviar disseny o comportament de les finestres.  
-- Paleogeologia amb diversos vídeos i subtítols.  
-- Mapa SVG de parades.  
-- Glossari: `src/data/termes.ts`.
+## J. Mapes
 
-## 15. On van les imatges (regla d’or)
+N’hi ha de dos tipus (a Sau–Tavertet n’hi ha tots dos):
 
-| Ús | Carpeta | Al Markdown |
-|----|---------|-------------|
-| Galeria / miniatura (Astro) | `src/images/...` | `url: "/src/images/..."` |
-| Figura de modal, mapa PDF, fitxers “tal qual” | `public/images/...` | `publicSrc: "/images/..."` |
-| Vídeos | `public/videos/...` | `publicSrc: "/videos/..."` |
+### J.1 Mapa QGIS (qgis2web) o PDF
 
-Modal a `src/images` amb `publicSrc` → no es veu.  
-Galeria només a `public/` amb `url: "/src/images/..."` → falla la compilació.  
-Cada imatge ha de tenir `alt` descriptiu.
+1. Copiar l’export a `public/mapa-<nom>/` (ha d’haver-hi `index.html` a l’arrel) o el PDF a `public/images/…`.  
+2. Al `.md` de l’itinerari: `mapaUrl: "/mapa-<nom>/"` (o path del PDF).  
+3. Comprovar amb `npm run dev:local` i a GitHub Pages.  
+4. Mapes molt grans: no deixar-los sencers a `public/` en local (mapa aparcat / dos ports amb `dev:local`).  
+5. Revisar rutes relatives de qgis2web si `base: /kotei-tfg/`.
 
-## 16. Errors freqüents
+**qgis2web** és un export de QGIS; amb mapes complexos pot fallar → PDF o suport.
+
+### J.2 Mapa SVG clicable de parades (patró Sau–Tavertet)
+
+No surt només del Markdown: cal SVG + dades + component.
+
+| Peça | Fitxer / lloc |
+|------|---------------|
+| Activació | `mapa: "sau-tavertet"` a l’itinerari |
+| SVG | `public/images/itineraris/mapa-parades.svg` |
+| Metadades | `src/data/sau-tavertet-parades.ts` (`slug`, `label`, `preview`, `svgIds`) |
+| Component | `src/components/itinerari/itinerari-sau.astro` |
+| Fotos hover | `public/images/parades/I1-PX-hover.jpg` |
+| Contingut | `src/content/parades/*.md` (`disponible`) |
+
+**Afegir una parada al mapa SVG existent**
+
+1. Existeix `src/content/parades/I1-PX.md` i està a la taula de l’itinerari (apartat F).  
+2. Entrada a `SAU_TAVERTET_PARADES` amb `svgIds` coincidents.  
+3. `public/images/parades/I1-PX-hover.jpg`.  
+4. Comprovar hover i navegació.
+
+**Itinerari nou amb el mateix patró:** SVG nou, dades noves i component (o parametritzar `itinerari-sau.astro`) → **encàrrec de desenvolupament**. Sense això: utilitzeu `mapaUrl` (J.1).
+
+---
+
+## K. Comprovar i publicar
+
+```bash
+npm run dev:local          # revisar abans de pujar
+git status
+git add …                  # només contingut/assets necessaris
+git commit -m "Afegeix la parada I1-P4"
+git push origin main
+```
+
+GitHub Actions publica a `https://montsemagnet.github.io/kotei-tfg/`.  
+Si la build falla: path d’imatge, camp obligatori de l’esquema, o `fotos` fora del rang 1–8.
+
+---
+
+## L. Errors freqüents
 
 | Problema | Causa habitual | Solució |
 |----------|----------------|---------|
-| No existeix la pàgina de l’itinerari | `enConstruccio: true` | Posar-lo a `false` quan estigui llest |
-| No surt al llistat | `draft: true` | Traure’l o posar `false` |
-| Imatge trencada al modal | Fitxer a `src/images` però path `publicSrc` | Moure a `public/images/...` |
+| No existeix la pàgina de l’itinerari | `enConstruccio: true` | Posar `false` quan estigui llest |
+| No surt al llistat | `draft: true` | Traure’l o `false` |
+| Imatge trencada al modal | Fitxer a `src/images` amb `publicSrc` | Moure a `public/images/...` |
 | Error en compilar | Path `image()` incorrecte | Comprovar `/src/images/...` exacte |
-| Parada no enllaçada | Falta a la taula de l’itinerari | Afegir fila amb `slug` |
-| Codi `I1-P03` vs `I1-P3` | Inconsistència de noms | Sempre `I1-P3` (l’script normalitza) |
-| Modal que no obre | `dadesIndex` apunta a clau inexistent a `dadesModals` | Unificar noms de clau |
-| Contingut a `_plantilles/mestre-*` | Treball al lloc equivocat | Treballar a `continguts-en-curs/` |
+| Parada no enllaçada | Falta a la taula de l’itinerari | Afegir fila amb `slug` correcte |
+| Codi `I1-P03` vs `I1-P3` | Noms inconsistents | Sempre `I1-P3` (l’script normalitza) |
+| Modal que no obre | `dadesIndex` ≠ clau de `dadesModals` | Unificar noms |
+| Contingut a `_plantilles/mestre-*` | Lloc de treball equivocat | Treballar a `continguts-en-curs/` |
 
-## 17. Exemples «copia això»
+---
 
-| Vull… | Obre / copia… |
-|-------|----------------|
-| Parada completa amb geologia | `src/content/parades/I1-P1.md` |
-| Parada generada per script | `src/content/parades/I1-P3.md` |
-| Material | `src/content/roques/I1-P1-M1.md` |
-| Itinerari mínim | `src/content/itineraris/itinerari2.md` |
-| Itinerari ric + modals | `src/content/itineraris/sau-tavertet.md` |
-| Plantilla de treball parada | `_plantilles/mestre-parada/` |
-| Plantilla de treball itinerari | `_plantilles/mestre-itinerari/` |
-
-## 18. READMEs tècnics del projecte
+## M. READMEs del projecte
 
 | Fitxer | Contingut |
 |--------|-----------|
-| `scripts/README-nova-parada.md` | Script `nova-parada` (preparar / implementar) |
-| `_plantilles/README.md` | Plantilles mestres (no omplir-les) |
-| `continguts-en-curs/README.md` | On es treballa el contingut en curs |
+| `scripts/README-nova-itinerari.md` | Script `nova-itinerari` |
+| `scripts/README-nova-parada.md` | Script `nova-parada` |
+| `scripts/README-nova-material.md` | Script `nova-material` |
+| `_plantilles/README.md` | Plantilles mestres |
+| `continguts-en-curs/README.md` | Staging del contingut en curs |
 
-Canvis de disseny, tipus nou de modal o mapa SVG a mida impliquen tocar `src/components/` o `src/layouts/`, no només textos i imatges.
+Canvis de disseny, modal nou o mapa SVG a mida → tocar `src/components/` o `src/layouts/` (fora del flux habitual de contingut).
+
+---
+
+## Contacte i suport
+
+**Montserrat Magnet Sabata** — [mariamontserrat.magnet@uvic.cat](mailto:mariamontserrat.magnet@uvic.cat)
+
+**Abast del suport:** només peticions de **professorat universitari** i/o del **servei d’informàtica de la UVic**.

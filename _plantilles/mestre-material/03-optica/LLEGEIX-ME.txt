@@ -1,0 +1,6 @@
+Imatge de microscopia òptica (làmina).
+
+Formats: JPG o PNG.
+Nom recomanat: optica.jpg  (o MaterialN-optic.jpg)
+
+Afegiu el peu a peus.txt.

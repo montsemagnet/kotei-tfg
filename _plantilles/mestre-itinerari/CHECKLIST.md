@@ -14,6 +14,7 @@ Marca cada punt quan estigui fet.
 - [ ] Vídeo de presentació a `03-video/` (si n’hi ha) o marcat “no n’hi ha”
 - [ ] Vídeo / material d’altimetria a `04-altimetria/` (si n’hi ha) o marcat “no n’hi ha”
 - [ ] Export QGIS a `05-mapa-qgis/` (carpeta completa de qgis2web) o PDF/mapa alternatiu
+- [ ] Almenys 1 foto a `06-galeria/` (miniatura + galeria de la pàgina)
 
 ## Abans d’entregar
 

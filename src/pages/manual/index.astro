@@ -4,14 +4,13 @@ import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import ItinerariModalTextSizeControls from "@/components/itinerari/ItinerariModalTextSizeControls.astro";
 import { Content, getHeadings } from "./_content.md";
-import { withBase } from "@/utils/withBase";
 
 const headings = getHeadings().filter((h) => h.depth === 2);
 ---
 
 <BaseLayout
   pageTitle="Manual de reutilització"
-  description="Guia pràctica per afegir itineraris, parades i materials a GeoTransectes UVic sense ser especialista en Astro."
+  description="Per què GeoTransectes UVic és reutilitzable: TFG cedit a la universitat perquè el professorat pugui publicar itineraris de camp amb suport de sistemes."
 >
   <section>
     <Wrapper variant="standard" class="py-24 lg:py-32 max-w-4xl">
@@ -29,12 +28,18 @@ const headings = getHeadings().filter((h) => h.depth === 2);
 
         <Text
           tag="p"
-          variant="textBase"
+          variant="textLG"
           class="mt-4 text-base-600 dark:text-base-400 leading-relaxed text-pretty itinerari-modal-text-content"
         >
-          Part A: professorat (quin contingut preparar i com
-          entregar-lo). Part B: informàtica (integrar i publicar).
-          La publicació no és oberta al professorat.
+          Aquest lloc web forma part d’un treball de fi de grau (TFG) elaborat
+          com a <strong>plataforma per publicar itineraris de camp</strong>
+          de biologia (geològics, botànics, zoològics, etc.) per tal de preservar i
+          organitzar el coneixement i fer-lo més accessible. El codi s’ha cedit
+          a la universitat i s’ha dissenyat perquè sigui
+          <strong>reutilitzable</strong>: el professorat pot preparar els seus
+          continguts i, amb el suport del departament de sistemes, incorporar
+          nous itineraris, parades i materials sense haver de construir una web
+          des de zero.
         </Text>
 
         {
@@ -50,12 +55,12 @@ const headings = getHeadings().filter((h) => h.depth === 2);
               >
                 Contingut
               </Text>
-              <ol class="mt-3 space-y-2 list-decimal list-inside">
+              <ol class="mt-3 space-y-2 list-decimal list-inside text-base">
                 {headings.map((heading) => (
                   <li>
                     <a
                       href={`#${heading.slug}`}
-                      class="text-sm text-base-700 dark:text-base-300 hover:text-accent-500 dark:hover:text-accent-300 duration-300"
+                      class="text-base text-base-700 dark:text-base-300 hover:text-accent-500 dark:hover:text-accent-300 duration-300"
                     >
                       {heading.text}
                     </a>
@@ -68,33 +73,42 @@ const headings = getHeadings().filter((h) => h.depth === 2);
 
         <Wrapper
           variant="prose"
-          class="mt-12 itinerari-modal-text-content manual-prose"
+          class="mt-12 itinerari-modal-text-content manual-prose prose-lg"
         >
           <Content />
         </Wrapper>
-
-        <p class="mt-16 text-sm text-base-500 dark:text-base-400">
-          <a
-            href={withBase("/credits")}
-            class="underline underline-offset-2 hover:text-accent-500 dark:hover:text-accent-300"
-          >
-            Crèdits i llicències
-          </a>
-          {" · "}
-          Font editable al repositori:
-          <code class="text-xs">src/pages/manual/_content.md</code>
-        </p>
       </div>
     </Wrapper>
   </section>
 </BaseLayout>
 
 <style>
+  .manual-prose {
+    font-size: 1.125rem;
+    line-height: 1.8;
+  }
   .manual-prose :global(pre) {
     overflow-x: auto;
+    font-size: 0.95em;
+    color: #f3f4f6;
+    background-color: #111827;
+  }
+  .manual-prose :global(pre code) {
+    color: inherit;
+    background-color: transparent;
   }
   .manual-prose :global(table) {
     display: block;
     overflow-x: auto;
+    font-size: 1em;
+  }
+  .manual-prose :global(h2) {
+    font-size: 1.5em;
+  }
+  .manual-prose :global(h3) {
+    font-size: 1.25em;
+  }
+  .manual-prose :global(h4) {
+    font-size: 1.125em;
   }
 </style>

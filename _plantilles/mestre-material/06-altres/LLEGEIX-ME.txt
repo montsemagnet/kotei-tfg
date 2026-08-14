@@ -1,0 +1,7 @@
+Imatges addicionals o, si l'observació no és petrogràfica
+(espècie, mostra de camp, etc.), poseu aquí les fotos principals.
+
+Formats: JPG o PNG.
+Noms sense accents ni espais: foto-01.jpg, especie-01.jpg…
+
+Afegiu els peus a peus.txt.

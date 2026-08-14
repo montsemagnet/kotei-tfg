@@ -13,6 +13,7 @@ import {
   paleogeologiaVideoCreditGroups,
   geologiaItinerariCredits,
 } from "@/data/project";
+import { withBase } from "@/utils/withBase";
 
 const lastUpdated = new Date().toLocaleDateString("ca-ES", {
   year: "numeric",
@@ -204,6 +205,85 @@ const geologiaIntro =
             >
               {project.facultyContact}
             </a>
+          </Text>
+        </section>
+
+        <section>
+          <Text
+            tag="h2"
+            variant="textLG"
+            class="font-medium text-base-900 dark:text-white"
+          >
+            Manual de reutilització
+          </Text>
+          <Text tag="p" variant="textBase" class="mt-4 leading-relaxed">
+            El{" "}
+            <a
+              href={withBase("/manual")}
+              class="text-accent-700 dark:text-accent-400 underline underline-offset-2 hover:decoration-accent-700 dark:hover:decoration-accent-400"
+            >
+              Manual de reutilització
+            </a>
+            {" "}
+            forma part d’aquest TFG. Explica com preparar i incorporar nous
+            itineraris, parades i materials a la plataforma (professorat i
+            departament de sistemes).
+          </Text>
+          <dl class="mt-4 space-y-2">
+            <div>
+              <dt class="font-medium text-base-900 dark:text-white">Autoria</dt>
+              <dd>
+                Montserrat Magnet Sabata —
+                <a
+                  href="mailto:mariamontserrat.magnet@uvic.cat"
+                  class="ml-1 hover:text-accent-500 dark:hover:text-accent-300 duration-300"
+                >
+                  mariamontserrat.magnet@uvic.cat
+                </a>
+              </dd>
+            </div>
+            <div>
+              <dt class="font-medium text-base-900 dark:text-white">
+                Suport
+              </dt>
+              <dd>
+                Només peticions de professorat universitari i/o del servei
+                d’informàtica de la UVic.
+              </dd>
+            </div>
+            <div>
+              <dt class="font-medium text-base-900 dark:text-white">
+                Drets d’autor
+              </dt>
+              <dd>
+                El Manual de reutilització és propietat de l’autora. Està
+                prohibit utilitzar-lo, reproduir-lo, distribuir-lo o publicar-lo,
+                en qualsevol format, sense autorització expressa i per escrit de
+                Montserrat Magnet Sabata.
+              </dd>
+            </div>
+          </dl>
+        </section>
+
+        <section>
+          <Text
+            tag="h2"
+            variant="textLG"
+            class="font-medium text-base-900 dark:text-white"
+          >
+            Continuïtat i reutilització
+          </Text>
+          <Text tag="p" variant="textBase" class="mt-4 leading-relaxed">
+            Per afegir nous itineraris, parades o materials a la plataforma,
+            seguiu el{" "}
+            <a
+              href={withBase("/manual")}
+              class="text-accent-700 dark:text-accent-400 underline underline-offset-2 hover:decoration-accent-700 dark:hover:decoration-accent-400"
+            >
+              Manual de reutilització
+            </a>
+            . No cal programar components Astro per al flux habitual de
+            contingut.
           </Text>
         </section>
 

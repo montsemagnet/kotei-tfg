@@ -1,0 +1,9 @@
+Espectres (si n'hi ha), preferiblement alineats amb 04-electronica/.
+
+Formats: JPG o PNG.
+Noms recomanats:
+  espectre-01.jpg
+  espectre-02.jpg
+  espectre-03.jpg
+
+Afegiu els peus a peus.txt.

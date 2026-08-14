@@ -11,7 +11,9 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "nova-parada": "node scripts/nova-parada.mjs"
+    "nova-parada": "node scripts/nova-parada.mjs",
+    "nova-material": "node scripts/nova-material.mjs",
+    "nova-itinerari": "node scripts/nova-itinerari.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^5.0.6",

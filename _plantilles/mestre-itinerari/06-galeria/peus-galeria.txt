@@ -1,0 +1,3 @@
+# Format: nom-fitxer.jpg | Text alternatiu (alt) / peu de figura
+# Exemple:
+# galeria-01.jpg | Vista del recorregut des del punt d'inici. Elaboració pròpia.

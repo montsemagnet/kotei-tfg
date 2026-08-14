@@ -517,7 +517,7 @@ var group_TOPOGRAFIA = new ol.layer.Group({
 var group_CAPESGEOLOGIQUES = new ol.layer.Group({
                                 layers: [lyr_LitologiadelScolPaleozoiciMesozoic_2,lyr_DipsitsQuaternarisiMaterialsSuperficials_3,lyr_ContactesGeneralsiIntrusius_4,lyr_ContactesDiscordantsiEsllavissaments_5,lyr_GeomorfolgicadeVessants_6,lyr_Sentitdemoviment_7,lyr_ElementsAntrpicsiZonesModificades_8,lyr_Cabussaments_9,lyr_Extraccions_10,lyr_TipusiNaturalesaLitolgica_11,lyr_Zonesconsideradesdinteresgeologic_12,lyr_Falles_13,],
                                 fold: 'close',
-                                title: 'CAPES GEOLOGIQUES '});
+                                title: 'Capes Geològiques'});
 var group_FONS = new ol.layer.Group({
                                 layers: [lyr_Ortofotomapa3_0, lyr_Relleu_1],
                                 fold: 'close',

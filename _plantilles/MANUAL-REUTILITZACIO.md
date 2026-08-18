@@ -1,4 +1,4 @@
-# Manual de reutilització — GeoTransectes UVic
+# Manual d'incorporació d'un nou itinerari
 
 La **versió publicada a la web** (canònica) és:
 

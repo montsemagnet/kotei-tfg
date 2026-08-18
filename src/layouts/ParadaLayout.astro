@@ -1,5 +1,5 @@
 ---
-import { getEntry } from "astro:content";
+import { getCollection, getEntry } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Text from "@/components/fundations/elements/Text.astro";
 import TitleIconTrigger from "@/components/fundations/elements/TitleIconTrigger.astro";
@@ -12,6 +12,7 @@ import ItinerariVideoModal from "@/components/itinerari/ItinerariVideoModal.astr
 import ItinerariModalTextSizeControls from "@/components/itinerari/ItinerariModalTextSizeControls.astro";
 import GlossariSection from "@/components/global/GlossariSection.astro";
 import { withBase } from "@/utils/withBase";
+import { getParadaSlug } from "@/utils/paradaSlug";
 
 const { frontmatter, slug } = Astro.props;
 const analisiFloraModalId = `parada-flora-${slug}`;
@@ -30,10 +31,29 @@ const mapaTitleAttr =
     ? "Obrir mapa interactiu fet amb QGIS (nova pestanya)"
     : `Obrir ${mapaLabel.toLowerCase()} (nova pestanya)`;
 
+const paradesItinerari = (await getCollection("parades"))
+  .filter((entry) => entry.data.itinerari === frontmatter.itinerari)
+  .map((entry) => ({
+    slug: getParadaSlug(entry),
+    title: entry.data.title,
+    ordre: entry.data.ordre,
+  }))
+  .sort((a, b) => a.ordre - b.ordre);
+
+const currentIndex = paradesItinerari.findIndex((p) => p.slug === slug);
+const paradaAnterior =
+  currentIndex > 0 ? paradesItinerari[currentIndex - 1] : undefined;
+const paradaSeguent =
+  currentIndex >= 0 && currentIndex < paradesItinerari.length - 1
+    ? paradesItinerari[currentIndex + 1]
+    : undefined;
+
 const breadcrumbLink =
   "uppercase text-base-500 hover:text-base-900 dark:hover:text-white transition-colors";
 const breadcrumbCurrent =
   "uppercase text-base-900 dark:text-white font-medium";
+const paradaNavLink =
+  "uppercase text-base-500 hover:text-base-900 dark:hover:text-white transition-colors inline-flex items-center gap-1";
 
 const sectionGrid =
   "grid grid-cols-1 lg:grid-cols-4 gap-3 lg:gap-8 items-start";
@@ -98,6 +118,56 @@ const sectionContent = "lg:col-span-3 min-w-0 w-full";
         </Text>
         <ItinerariModalTextSizeControls label="Mida del text de la parada" />
       </div>
+
+      {
+        (paradaAnterior || paradaSeguent) && (
+          <nav
+            aria-label="Parades de l'itinerari"
+            class="mb-8 flex items-center justify-between gap-4"
+          >
+            <div class="min-w-0">
+              {
+                paradaAnterior ? (
+                  <Text
+                    tag="a"
+                    variant="textXS"
+                    href={withBase(`/parades/${paradaAnterior.slug}`)}
+                    class={paradaNavLink}
+                    title={paradaAnterior.title}
+                  >
+                    <span aria-hidden="true">←</span>
+                    <span class="truncate max-w-[12rem] sm:max-w-none">
+                      {paradaAnterior.title}
+                    </span>
+                  </Text>
+                ) : (
+                  <span class="invisible text-xs" aria-hidden="true">
+                    ←
+                  </span>
+                )
+              }
+            </div>
+            <div class="min-w-0 text-right">
+              {
+                paradaSeguent ? (
+                  <Text
+                    tag="a"
+                    variant="textXS"
+                    href={withBase(`/parades/${paradaSeguent.slug}`)}
+                    class={`${paradaNavLink} justify-end`}
+                    title={paradaSeguent.title}
+                  >
+                    <span class="truncate max-w-[12rem] sm:max-w-none">
+                      {paradaSeguent.title}
+                    </span>
+                    <span aria-hidden="true">→</span>
+                  </Text>
+                ) : null
+              }
+            </div>
+          </nav>
+        )
+      }
 
       <ParadaMedia media={frontmatter.media} />
 

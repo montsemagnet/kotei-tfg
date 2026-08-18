@@ -1,0 +1,8 @@
+Vídeo d’introducció o vista aèria de la parada (opcional).
+
+Formats: MP4
+Noms exemple:
+  video-inici.mp4
+  video-aeri.mp4
+
+Si no n’hi ha, deixeu la carpeta buida i indiqueu-ho a 01-fitxa-parada.md.

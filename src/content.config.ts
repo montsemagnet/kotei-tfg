@@ -163,6 +163,8 @@ const analisiFloraSchema = (image: (path: string) => z.ZodType) =>
           caption: z.string().optional(),
           /** Text explicatiu addicional sota el peu de figura */
           text: z.string().optional(),
+          /** Si és true, el text es mostra com a subtítol de secció (més gran que un peu) */
+          textAsHeading: z.boolean().optional(),
           /** Vista reduïda al modal (zoom conserva la mida completa) */
           compact: z.boolean().optional(),
         }),

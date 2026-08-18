@@ -68,6 +68,7 @@ export const SAU_TAVERTET_PARADES: SauTavertetParada[] = [
     num: 9,
     slug: "I1-P9",
     label: "Calcàries amb nummulits, Fm. Tavertet",
+    preview: "/images/parades/I1-P9-hover.jpg",
     svgIds: ["I1-P9", "P9", "Parada9"],
   },
   {

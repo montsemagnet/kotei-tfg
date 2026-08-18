@@ -13,7 +13,8 @@ export const termes: Terme[] = [
     "categoria": "Camp",
     "definicio": "Zona on una roca o unitat geològica queda exposada a la superfície i es pot observar directament, sense estar coberta per sòl, vegetació densa o edificacions. En camp, identificar els afloraments permet descriure la litologia, l'estructura i, sovint, els fòssils que documenten la història geològica d'un indret.",
     "sinonims": [
-      "al·lorament"
+      "al·lorament",
+      "afloraments"
     ]
   },
   {
@@ -48,6 +49,17 @@ export const termes: Terme[] = [
     "terme": "Ambient de baixa energia",
     "categoria": "Sedimentologia",
     "definicio": "Medi sedimentari on l'onatge i els corrents són febles, de manera que s'hi acumula lentament sediment fi (llim, fang i argila). Les margues del Coll de Malla de la parada 11 es van dipositar en un ambient d'aquest tipus, a la plataforma marina somera de la Conca de l'Ebre."
+  },
+  {
+    "slug": "aportacio-detritica",
+    "terme": "Aportació detrítica",
+    "categoria": "Sedimentologia",
+    "definicio": "Arribada de sediments procedents de l'erosió de relleus continentals (sorres, llims, argiles o graves) a un ambient de sedimentació, sovint marí. Una aportació detrítica elevada afavoreix gresos i calcarenites; quan és baixa, poden dominar les calcàries bioclàstiques, com a la Formació Tavertet.",
+    "sinonims": [
+      "aportacions detrítiques",
+      "aport detritic",
+      "aport detrític"
+    ]
   },
   {
     "slug": "argila",
@@ -109,6 +121,18 @@ export const termes: Terme[] = [
     "sinonims": [
       "basament hercinià",
       "basament varisca"
+    ]
+  },
+  {
+    "slug": "bentonic",
+    "terme": "Bentònic",
+    "categoria": "Paleontologia",
+    "definicio": "Organisme que viu associat al fons marí o lacustre, ja sigui fixat al substrat o desplaçant-s'hi, a diferència del plàncton (que flota a la columna d'aigua). Els nummulits són foraminífers bentònics de grans dimensions característics de plataformes marines somes de l'Eocè.",
+    "sinonims": [
+      "bentònics",
+      "bentònica",
+      "bentòniques",
+      "foraminífers bentònics"
     ]
   },
   {
@@ -175,13 +199,35 @@ export const termes: Terme[] = [
     ]
   },
   {
+    "slug": "calcaria-bioclastica",
+    "terme": "Calcària bioclàstica",
+    "categoria": "Litologia",
+    "definicio": "Calcària formada per l'acumulació i cimentació de restes d'organismes marins (bioclasts), com foraminífers, fragments de closca o altres esquelets carbonatats. A la Formació Tavertet, les calcàries bioclàstiques amb nummulits indiquen un ambient de plataforma marina soma i càlida.",
+    "sinonims": [
+      "calcàries bioclàstiques",
+      "calcària bioclástica",
+      "calcàries bioclastiques"
+    ]
+  },
+  {
     "slug": "calcaria-nummulitica",
     "terme": "Calcària nummulítica",
     "categoria": "Litologia",
     "definicio": "Calcària rica en fòssils de nummulits, foraminífers discoides molt característics de l'Eocè (56–34 Ma). Aquest tipus de roca, coneguda popularment com a pedra de Girona, indica ambient de plataforma marina poc profunda i és molt visible als cingles de Tavertet.",
     "sinonims": [
       "pedra de Girona",
-      "calcàries nummulítiques"
+      "calcàries nummulítiques",
+      "calcàries amb nummulits",
+      "calcària amb nummulits"
+    ]
+  },
+  {
+    "slug": "calcarenita",
+    "terme": "Calcarenita",
+    "categoria": "Litologia",
+    "definicio": "Roca carbonatada de gra sorrenç (mida arena) formada per fragments calcaris cimentats, sovint amb bioclasts. Indica més energia o més aportació de partícules que una calcària micrítica; a la Formació Tavertet alterna amb calcàries amb nummulits i gresos.",
+    "sinonims": [
+      "calcarenites"
     ]
   },
   {
@@ -267,7 +313,8 @@ export const termes: Terme[] = [
     "categoria": "Geografia geològica",
     "definicio": "Gran conca sedimentària situada entre els Pirineus i les serralades costaneres, reblerta principalment durant el Cenozoic per l'orogènesi alpina. Sau–Tavertet s'ubica al marge sud-oriental d'aquesta conca, on afloren el sòcol i la cobertura eocena.",
     "sinonims": [
-      "conca terciària de l'Ebre"
+      "conca terciària de l'Ebre",
+      "conca de l'Ebre"
     ]
   },
   {
@@ -576,7 +623,8 @@ export const termes: Terme[] = [
     "categoria": "Estratigrafia",
     "definicio": "Unitat geològica del registre eocè regional, integrada dins la successió paleogena de la conca de l'Ebre. Forma part del conjunt de formacions que documenten la transició entre ambients continentals i marins.",
     "sinonims": [
-      "Fm. Romagats"
+      "Fm. Romagats",
+      "Formació Romagats"
     ]
   },
   {
@@ -586,6 +634,7 @@ export const termes: Terme[] = [
     "definicio": "Unitat formada principalment per calcàries i gresos marins, molt visibles als cingles del Collsacabra. Conté calcàries nummulítiques i és una de les litologies més característiques de l'itinerari.",
     "sinonims": [
       "Fm. Tavertet",
+      "Formació Tavertet",
       "Calcària de Tavertet",
       "calcàries de Tavertet",
       "calcàries lutecianes de Tavertet"
@@ -1229,6 +1278,16 @@ export const termes: Terme[] = [
     "terme": "Superfície estructural",
     "categoria": "Geomorfologia",
     "definicio": "Superfície del relleu —planura, cinglera o vessant— condicionada per l'estructura geològica subjacent, com falles, estrats inclinats o diferències de resistència litològica. L'altiplà del Collsacabra és una superfície estructural delimitada per cingleres."
+  },
+  {
+    "slug": "transgressio-marina",
+    "terme": "Transgressió marina",
+    "categoria": "Sedimentologia",
+    "definicio": "Avenç del mar sobre zones abans continentals o de menor profunditat, de manera que s'hi dipositen sediments marins damunt materials més proximals o continentals. Durant l'Eocè, una transgressió marina va afectar bona part de la Conca de l'Ebre i va permetre la sedimentació de calcàries amb nummulits de la Formació Tavertet.",
+    "sinonims": [
+      "transgressions marines",
+      "transgressió"
+    ]
   },
   {
     "slug": "tectonica-extensional",

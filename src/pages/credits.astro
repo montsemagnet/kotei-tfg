@@ -214,55 +214,65 @@ const geologiaIntro =
             variant="textLG"
             class="font-medium text-base-900 dark:text-white"
           >
-            Manual de reutilització
+            Manual d'incorporació d'itineraris
           </Text>
-          <Text tag="p" variant="textBase" class="mt-4 leading-relaxed">
+          <Text
+            tag="p"
+            variant="textBase"
+            class="mt-4 leading-relaxed md:text-lg"
+          >
             El{" "}
             <a
               href={withBase("/manual")}
               class="text-accent-700 dark:text-accent-400 underline underline-offset-2 hover:decoration-accent-700 dark:hover:decoration-accent-400"
             >
-              Manual de reutilització
+              Manual d'incorporació d'un nou itinerari a la web
             </a>
             {" "}
             forma part d’aquest TFG. Explica com preparar i incorporar nous
             itineraris, parades i materials a la plataforma (professorat i
             departament de sistemes).
           </Text>
-          <dl class="mt-4 space-y-2">
-            <div>
-              <dt class="font-medium text-base-900 dark:text-white">Autoria</dt>
-              <dd>
-                Montserrat Magnet Sabata —
-                <a
-                  href="mailto:mariamontserrat.magnet@uvic.cat"
-                  class="ml-1 hover:text-accent-500 dark:hover:text-accent-300 duration-300"
-                >
-                  mariamontserrat.magnet@uvic.cat
-                </a>
-              </dd>
-            </div>
-            <div>
-              <dt class="font-medium text-base-900 dark:text-white">
-                Suport
-              </dt>
-              <dd>
-                Només peticions de professorat universitari i/o del servei
-                d’informàtica de la UVic.
-              </dd>
-            </div>
-            <div>
-              <dt class="font-medium text-base-900 dark:text-white">
-                Drets d’autor
-              </dt>
-              <dd>
-                El Manual de reutilització és propietat de l’autora. Està
-                prohibit utilitzar-lo, reproduir-lo, distribuir-lo o publicar-lo,
-                en qualsevol format, sense autorització expressa i per escrit de
-                Montserrat Magnet Sabata.
-              </dd>
-            </div>
-          </dl>
+          <Text
+            tag="p"
+            variant="textBase"
+            class="mt-4 leading-relaxed md:text-lg"
+          >
+            <span class="font-medium text-base-900 dark:text-white"
+              >Autoria.</span
+            >{" "}
+            Montserrat Magnet Sabata —
+            <a
+              href="mailto:mariamontserrat.magnet@uvic.cat"
+              class="hover:text-accent-500 dark:hover:text-accent-300 duration-300"
+            >
+              mariamontserrat.magnet@uvic.cat
+            </a>
+          </Text>
+          <Text
+            tag="p"
+            variant="textBase"
+            class="mt-3 leading-relaxed md:text-lg"
+          >
+            <span class="font-medium text-base-900 dark:text-white"
+              >Suport.</span
+            >{" "}
+            Només peticions de professorat universitari i/o del servei
+            d’informàtica de la UVic.
+          </Text>
+          <Text
+            tag="p"
+            variant="textBase"
+            class="mt-3 leading-relaxed md:text-lg"
+          >
+            <span class="font-medium text-base-900 dark:text-white"
+              >Drets d’autor.</span
+            >{" "}
+            El Manual d'incorporació d'itineraris és propietat de l’autora. Està prohibit
+            utilitzar-lo, reproduir-lo, distribuir-lo o publicar-lo, en
+            qualsevol format, sense autorització expressa i per escrit de
+            Montserrat Magnet Sabata.
+          </Text>
         </section>
 
         <section>
@@ -273,14 +283,14 @@ const geologiaIntro =
           >
             Continuïtat i reutilització
           </Text>
-          <Text tag="p" variant="textBase" class="mt-4 leading-relaxed">
+          <Text tag="p" variant="textBase" class="mt-4 leading-relaxed md:text-lg">
             Per afegir nous itineraris, parades o materials a la plataforma,
             seguiu el{" "}
             <a
               href={withBase("/manual")}
               class="text-accent-700 dark:text-accent-400 underline underline-offset-2 hover:decoration-accent-700 dark:hover:decoration-accent-400"
             >
-              Manual de reutilització
+              Manual d'incorporació d'itineraris
             </a>
             . No cal programar components Astro per al flux habitual de
             contingut.

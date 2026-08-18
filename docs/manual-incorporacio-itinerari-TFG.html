@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Manual d'incorporació d'un nou itinerari a la web — TFG</title>
+  <style>
+    @page { margin: 2cm; }
+    body {
+      font-family: "Segoe UI", Calibri, Arial, sans-serif;
+      font-size: 11pt;
+      line-height: 1.45;
+      color: #111;
+      max-width: 48rem;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+    h1 { font-size: 18pt; margin-top: 0; }
+    h2 { font-size: 14pt; margin-top: 1.6em; border-bottom: 1px solid #ccc; padding-bottom: 0.2em; }
+    h3 { font-size: 12pt; margin-top: 1.2em; }
+    h4, h5 { font-size: 11pt; margin-top: 1em; }
+    p, li { orphans: 3; widows: 3; }
+    table { border-collapse: collapse; width: 100%; margin: 0.8em 0; font-size: 10pt; }
+    th, td { border: 1px solid #999; padding: 0.35em 0.5em; vertical-align: top; }
+    th { background: #f0f0f0; text-align: left; }
+    code, pre { font-family: Consolas, "Courier New", monospace; font-size: 9.5pt; }
+    pre { background: #f5f5f5; padding: 0.75em; overflow-x: auto; border: 1px solid #ddd; }
+    a { color: #0645ad; }
+    .meta { color: #444; font-size: 10pt; margin-bottom: 1.5em; }
+    @media print {
+      body { padding: 0; max-width: none; }
+      a { color: inherit; text-decoration: none; }
+      pre { break-inside: avoid; }
+      h2, h3 { break-after: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Manual d'incorporació d'un nou itinerari a la web</h1>
+  <p class="meta">
+    <strong>GeoTransectes UVic</strong> — Document per annexar a la memòria del TFG<br />
+    Versió web: <a href="https://montsemagnet.github.io/kotei-tfg/manual/">https://montsemagnet.github.io/kotei-tfg/manual/</a><br />
+    Per desar com a PDF: Ctrl+P → «Desa com a PDF» / «Microsoft Print to PDF».
+  </p>
+
+  <p>Aquest lloc web forma part d’un treball de fi de grau (TFG) elaborat com a plataforma per publicar itineraris de camp de biologia (geològics, botànics, zoològics, etc.) per tal de preservar i organitzar el coneixement i fer-lo més accessible. El codi s’ha cedit a la universitat i s’ha dissenyat perquè sigui reutilitzable: el professorat pot preparar els seus continguts i, amb el suport del departament de sistemes, incorporar nous itineraris, parades i materials sense haver de construir una web des de zero.</p>
+
+  <h2>PRIMERA PART: Dirigida al professorat</h2>
+  <p>Per incorporar un nou itinerari (BIOLÒGIC: geològic, botànic, zoològic, ecològic, etc.) cal tenir els continguts estructurats i configurats per tal que informàticament es puguin incorporar fàcilment a la web.</p>
+  <p>Per veure com és l’estructura d’un itinerari, podeu guiar-vos mirant l’itinerari Sau–Tavertet: <a href="https://montsemagnet.github.io/kotei-tfg/itineraris/sau-tavertet/">https://montsemagnet.github.io/kotei-tfg/itineraris/sau-tavertet/</a></p>
+
+  <h3>1. Primer pas: estructurar els continguts</h3>
+  <p>Abans de redactar, es recomana un petit esquema de què ha de contenir cada pàgina.</p>
+  <p><strong>Primer, la pàgina general de l’itinerari:</strong></p>
+  <ul>
+    <li>Títol i frase curta de presentació</li>
+    <li>Foto de l’itinerari o mapa amb les parades</li>
+    <li>Llista ordenada de parades (P1, P2… amb el títol de cadascuna)</li>
+    <li>Quins apartats voleu en aquesta pàgina: mapa / geologia / paleogeologia / geobotànica… (es poden substituir pel que necessiteu si el contingut no és geològic)</li>
+    <li>Dins de les parades pot haver-hi subapartats que s’obriran com a finestres emergents (modals)</li>
+  </ul>
+  <p><strong>Mapa interactiu de les parades</strong> (com a Sau–Tavertet, on es cliquen P1, P2… i s’obre cada fitxa): si el voleu interactiu (que en clicar cada parada s’obri la pàgina corresponent), cal demanar-ho a informàtica / departament de sistemes. El professorat pot aportar el dibuix, la llista de parades i, si escau, una foto petita de previsualització. L’opció habitual és un mapa en PDF o un mapa elaborat amb QGIS i informàtica el convertirà en interactiu.</p>
+  <p><strong>Segon, l’estructura d’una pàgina corresponent a una parada:</strong></p>
+  <ul>
+    <li>Quins apartats necessiteu: coordenades, mapa…</li>
+    <li>Materials o equivalent: per exemple, si és de zoologia o botànica, en comptes de materials es podria substituir per espècies o qualsevol altra observació que feu a les parades de l’itinerari…</li>
+  </ul>
+  <p><strong>Tercer, l’estructura de la pàgina d’observacions de cada parada</strong> (a la web de l’itinerari Sau–Tavertet correspondria a la pàgina d’un material):</p>
+  <ul>
+    <li>Què voleu explicar de cada observació i quins apartats necessiteu.</li>
+  </ul>
+
+  <h3>2. Segon pas: preparar el contingut</h3>
+  <p>L’objectiu és tenir els continguts en un format que faciliti la seva inclusió a la pàgina web.</p>
+  <h4>Textos</h4>
+  <ul>
+    <li>Quan escriviu un text especifiqueu on estarà inclòs dins la web: quina pàgina, quin apartat, subapartat…</li>
+    <li>Especifiqueu també si entre el text hi ha alguna figura/imatge inclosa, on s’ha de situar exactament (dins del text), el títol de la figura, el peu de la figura i a quina carpeta heu posat la figura/imatge i amb quin nom la trobaran.</li>
+    <li>Especifiqueu si hi ha algun terme que cal incloure en el glossari (si es farà glossari) i la definició.</li>
+  </ul>
+  <p><strong>Peus de figura.</strong> Per a cada imatge: títol i descripció; crèdit («Elaboració pròpia» o autor/font); lloc i data quan sigui una foto de camp.</p>
+  <h4>Imatges</h4>
+  <table>
+    <thead><tr><th>Aspecte</th><th>Recomanació</th></tr></thead>
+    <tbody>
+      <tr><td>Formats</td><td>JPG per a fotografies i PNG per a esquemes o captures amb text nítid.</td></tr>
+      <tr><td>Resolució orientativa</td><td>Entre 1500 i 3000 px pel costat llarg.</td></tr>
+      <tr><td>Pes orientatiu</td><td>Idealment menys de 2–3 MB per imatge.</td></tr>
+      <tr><td>Orientació</td><td>Girades correctament.</td></tr>
+      <tr><td>Identificació</td><td>Cada imatge ha de poder associar-se clarament (número o títol inequívoc).</td></tr>
+    </tbody>
+  </table>
+
+  <h3>3. Entregar el contingut</h3>
+  <p>Es recomana posar en una mateixa carpeta el contingut corresponent a cada pàgina. Exemple: carpeta Itinerari, carpeta Parada 1, carpeta Parada 2…, carpeta Observació 1… Comprimiu-ho en un ZIP i copieu-lo a un USB per entregar.</p>
+
+  <h2>SEGONA PART: Dirigida al departament de sistemes</h2>
+
+  <h3>A. Idea general</h3>
+  <p>El lloc és una web estàtica feta amb Astro 6: no hi ha CMS ni base de dades. Les pàgines surten de fitxers Markdown + imatges. El disseny (Tailwind, components) ja està fet.</p>
+  <p>Ho trobareu tot fet en carpetes i arxius mestres: només cal fer còpia dels mestres (que s’han de mantenir nets per a futures incorporacions), canviar el text o les imatges de la còpia i executar l’script que ja existeix per incorporar-ho a la web.</p>
+  <p>Els mestres corresponen a: un itinerari; una parada; un material o observació (a Sau–Tavertet, la pàgina de material petrogràfic correspon a una observació feta en una parada).</p>
+  <h4>Com funciona la web</h4>
+  <ol>
+    <li>Rebre el dossier del professorat (ZIP/USB).</li>
+    <li>Copiar la plantilla mestra adequada (_plantilles/mestre-… → continguts-en-curs/…).</li>
+    <li>Substituir textos i imatges a la còpia.</li>
+    <li>Executar l’script.</li>
+    <li>Comprovar en local i publicar (Git → el sistema de publicació de la UVic).</li>
+  </ol>
+  <h4>Esquema general</h4>
+  <ul>
+    <li>Itinerari
+      <ul>
+        <li>Parada 1, Parada 2, …
+          <ul><li>Observació / material 1, 2, … (espècies, mostres, etc.)</li></ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <h4>Apartats especials</h4>
+  <table>
+    <thead><tr><th>Element</th><th>Descripció</th></tr></thead>
+    <tbody>
+      <tr><td>Mapa QGIS / PDF</td><td>Mapa enllaçat des de l’itinerari o la parada (export qgis2web o PDF).</td></tr>
+      <tr><td>Mapa SVG de parades</td><td>Mapa clicable a la fitxa de l’itinerari (patró Sau–Tavertet). Requereix programació si ha de ser clicable.</td></tr>
+      <tr><td>Finestres emergents (modals)</td><td>Textos i figures que s’obren sense sortir de la pàgina. Es defineixen al Markdown.</td></tr>
+      <tr><td>Glossari</td><td>Llista de termes amb definició (fitxer de dades).</td></tr>
+    </tbody>
+  </table>
+
+  <h3>B. Programes i primera arrencada</h3>
+  <ul>
+    <li><strong>Node.js</strong> (amb npm): motor per executar npm install, npm run… i els scripts d’incorporació.</li>
+    <li><strong>Visual Studio Code</strong>: obrir el projecte, editar Markdown/imatges i usar el terminal.</li>
+    <li><strong>Navegador</strong>: comprovar la web en local.</li>
+    <li><strong>Git</strong> + servei de versions (GitHub, GitLab…): clonar, guardar i publicar. L’allotjament el decideix la universitat.</li>
+  </ul>
+  <p>No cal instal·lar Astro a part: forma part de les dependències del repositori clonat. Amb <code>npm install</code> a l’arrel ja n’hi ha prou.</p>
+  <p>Terminal: obriu la carpeta on heu clonat el projecte a VS Code → Terminal → New Terminal (arrel del projecte).</p>
+  <pre>npm install
+npm run dev:local</pre>
+  <p>Repositori d’origen del TFG: <a href="https://github.com/montsemagnet/kotei-tfg">https://github.com/montsemagnet/kotei-tfg</a></p>
+
+  <h3>C. Plantilles i carpetes de treball</h3>
+  <p><strong>Primer de tot: cal copiar les plantilles mestres a una nova carpeta.</strong></p>
+  <p>Les carpetes <code>_plantilles/mestre-*</code> són models nets. No hi escriviu contingut real. Copieu a <code>continguts-en-curs/</code>, treballeu només sobre la còpia i, quan els canvis estiguin fets, l’script <code>implementar</code> portarà el contingut a <code>src/</code> i <code>public/</code>.</p>
+  <table>
+    <thead><tr><th>Element</th><th>Plantilla</th></tr></thead>
+    <tbody>
+      <tr><td>Itinerari</td><td>_plantilles/mestre-itinerari/</td></tr>
+      <tr><td>Parada</td><td>_plantilles/mestre-parada/</td></tr>
+      <tr><td>Material / observació</td><td>_plantilles/mestre-material/</td></tr>
+      <tr><td>Glossari</td><td>_plantilles/mestre-glossari/</td></tr>
+    </tbody>
+  </table>
+  <p>Ara cal canviar i posar la nova informació a les plantilles que hem copiat.</p>
+
+  <h4>Com fer els canvis a un itinerari</h4>
+  <ol>
+    <li>Copieu mestre-itinerari a continguts-en-curs/&lt;slug&gt;/.</li>
+    <li>Ompliu 01-fitxa-itinerari.md, 02-llista-parades.md, 06-galeria/ i CHECKLIST.md (mínim).</li>
+    <li>Opcional: 03-video/, 04-altimetria/, 05-mapa-qgis/.</li>
+    <li>Executeu l’script d’incorporació; després enllaceu parades (slug) i completeu elements especials si cal.</li>
+  </ol>
+
+  <h4>Com fer els canvis a una parada</h4>
+  <ol>
+    <li>Copieu mestre-parada a continguts-en-curs/&lt;CODI&gt;/ (ex. I1-P4).</li>
+    <li>Mínim: 01-fitxa-parada.md, 04-galeria-aflorament/ (1–8 fotos), CHECKLIST.md.</li>
+    <li>Recomanat: 02-geologia.md + 05-figures-geologia/; 08-mapa-qgis/.</li>
+    <li>Executeu l’script i enllaceu la parada a l’itinerari (camp slug = codi).</li>
+  </ol>
+
+  <h4>Com fer els canvis a una observació / material</h4>
+  <ol>
+    <li>Copieu mestre-material a continguts-en-curs/&lt;CODI-Mm&gt;/.</li>
+    <li>Ompliu fitxa, observacions i imatges (03–05 o 06-altres/).</li>
+    <li>Executeu l’script i enllaceu des de la parada (camp materials).</li>
+  </ol>
+
+  <h4>On van les imatges</h4>
+  <p><strong>Via src/images/</strong>: galeries, miniatures, aflorament, òptica/electrònica/espectres… (Astro les processa; <code>url: "/src/images/..."</code>).</p>
+  <p><strong>Via public/images/</strong> (i videos/, mapa-…/): figures de modals, PDF/qgis2web, vídeos, hover del mapa SVG (<code>publicSrc</code> / <code>mapaUrl</code>).</p>
+  <p>No escriviu el prefix <code>/kotei-tfg/</code> als paths: la base s’afegeix sola en producció.</p>
+
+  <h4>Scripts d’incorporació</h4>
+  <table>
+    <thead><tr><th>Element</th><th>Preparar</th><th>Implementar</th></tr></thead>
+    <tbody>
+      <tr><td>Itinerari</td><td>npm run nova-itinerari -- preparar &lt;slug&gt;</td><td>npm run nova-itinerari -- implementar &lt;slug&gt;</td></tr>
+      <tr><td>Parada</td><td>npm run nova-parada -- preparar &lt;CODI&gt;</td><td>npm run nova-parada -- implementar &lt;CODI&gt;</td></tr>
+      <tr><td>Material</td><td>npm run nova-material -- preparar &lt;CODI-Mm&gt;</td><td>npm run nova-material -- implementar &lt;CODI-Mm&gt;</td></tr>
+    </tbody>
+  </table>
+
+  <h4>Elements especials</h4>
+  <p><strong>Glossari:</strong> afegir termes a src/data/termes.ts (sense script).</p>
+  <p><strong>Modals:</strong> frontmatter del .md (geologia a parades; dades/dadesModals a itineraris).</p>
+  <p><strong>Mapes:</strong></p>
+  <ul>
+    <li><strong>PDF o mapa petit:</strong> a <code>public/mapa-&lt;nom&gt;/</code> o <code>public/images/…</code> amb <code>mapaUrl</code>.</li>
+    <li><strong>Mapes molt grans (qgis2web, desenes de MB):</strong> no deixar-los sencers a <code>public/</code> en local (penja Astro). Poseu el mapa a una carpeta a l’arrel (ex. <code>mapa-web-sau-tavertet/</code>), deixeu només un placeholder a <code>public/</code>, engegueu amb <code>npm run dev:local</code> (o <code>npm run mapa:park</code>). Abans de publicar: <code>npm run mapa:restore</code> per tornar el mapa sencer a <code>public/</code>.</li>
+    <li><strong>Mapa SVG clicable:</strong> requereix programació; si no, useu PDF o qgis2web.</li>
+  </ul>
+
+  <h3>D. Comprovar i publicar</h3>
+  <pre>npm run dev:local
+git status
+git add …
+git commit -m "Afegeix la parada I1-P4"
+git push origin main</pre>
+  <p>Exemple de publicació del TFG: https://montsemagnet.github.io/kotei-tfg/</p>
+
+  <h3>E. Errors freqüents</h3>
+  <table>
+    <thead><tr><th>Problema</th><th>Causa</th><th>Solució</th></tr></thead>
+    <tbody>
+      <tr><td>No existeix la pàgina de l’itinerari</td><td>enConstruccio: true</td><td>Posar false quan estigui llest</td></tr>
+      <tr><td>No surt al llistat</td><td>draft: true</td><td>Traure’l o false</td></tr>
+      <tr><td>Imatge trencada al modal</td><td>src/images amb publicSrc</td><td>Moure a public/images/...</td></tr>
+      <tr><td>Error en compilar</td><td>Path incorrecte</td><td>Comprovar /src/images/...</td></tr>
+      <tr><td>Parada no enllaçada</td><td>Falta a la taula</td><td>Afegir fila amb slug correcte</td></tr>
+      <tr><td>I1-P03 vs I1-P3</td><td>Noms inconsistents</td><td>Sempre I1-P3</td></tr>
+      <tr><td>Modal que no obre</td><td>Claus diferents</td><td>Unificar dadesIndex / dadesModals</td></tr>
+      <tr><td>Contingut a mestre-*</td><td>Lloc equivocat</td><td>Treballar a continguts-en-curs/</td></tr>
+    </tbody>
+  </table>
+
+  <h3>F. READMEs del projecte</h3>
+  <p>Tots aquests fitxers són a l’arrel del repositori clonat, dins les carpetes indicades:</p>
+  <table>
+    <thead><tr><th>Carpeta</th><th>Fitxer</th><th>Contingut</th></tr></thead>
+    <tbody>
+      <tr><td>scripts/</td><td>README-nova-itinerari.md</td><td>Script nova-itinerari</td></tr>
+      <tr><td>scripts/</td><td>README-nova-parada.md</td><td>Script nova-parada</td></tr>
+      <tr><td>scripts/</td><td>README-nova-material.md</td><td>Script nova-material</td></tr>
+      <tr><td>_plantilles/</td><td>README.md</td><td>Plantilles mestres</td></tr>
+      <tr><td>continguts-en-curs/</td><td>README.md</td><td>Contingut en curs</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Contacte i suport</h3>
+  <p><strong>Montserrat Magnet Sabata</strong> — mariamontserrat.magnet@uvic.cat</p>
+  <p>Abast del suport: només peticions de professorat universitari i/o del servei d’informàtica de la UVic.</p>
+</body>
+</html>

@@ -6,11 +6,40 @@ import ItinerariModalTextSizeControls from "@/components/itinerari/ItinerariModa
 import { Content, getHeadings } from "./_content.md";
 
 const headings = getHeadings().filter((h) => h.depth === 2);
+
+type TocItem =
+  | { kind: "part"; heading: (typeof headings)[number] }
+  | { kind: "step"; heading: (typeof headings)[number]; n: number }
+  | { kind: "item"; heading: (typeof headings)[number] };
+
+const tocItems: TocItem[] = [];
+let inFirstPart = false;
+let firstPartStep = 0;
+
+for (const heading of headings) {
+  if (heading.text.startsWith("PRIMERA PART")) {
+    inFirstPart = true;
+    firstPartStep = 0;
+    tocItems.push({ kind: "part", heading });
+    continue;
+  }
+  if (heading.text.startsWith("SEGONA PART")) {
+    inFirstPart = false;
+    tocItems.push({ kind: "part", heading });
+    continue;
+  }
+  if (inFirstPart) {
+    firstPartStep += 1;
+    tocItems.push({ kind: "step", heading, n: firstPartStep });
+    continue;
+  }
+  tocItems.push({ kind: "item", heading });
+}
 ---
 
 <BaseLayout
-  pageTitle="Manual de reutilització"
-  description="Per què GeoTransectes UVic és reutilitzable: TFG cedit a la universitat perquè el professorat pugui publicar itineraris de camp amb suport de sistemes."
+  pageTitle="Manual d'incorporació d'un nou itinerari"
+  description="Guia per al professorat i al departament de sistemes per incorporar itineraris de camp de biologia a GeoTransectes UVic."
 >
   <section>
     <Wrapper variant="standard" class="py-24 lg:py-32 max-w-4xl">
@@ -21,7 +50,7 @@ const headings = getHeadings().filter((h) => h.depth === 2);
             variant="displayXL"
             class="dark:text-white text-base-900 font-medium tracking-tighter min-w-0 flex-1"
           >
-            Manual de reutilització
+            Manual d'incorporació d'un nou itinerari a la web
           </Text>
           <ItinerariModalTextSizeControls label="Mida del text del manual" />
         </div>
@@ -32,14 +61,13 @@ const headings = getHeadings().filter((h) => h.depth === 2);
           class="mt-4 text-base-600 dark:text-base-400 leading-relaxed text-pretty itinerari-modal-text-content"
         >
           Aquest lloc web forma part d’un treball de fi de grau (TFG) elaborat
-          com a <strong>plataforma per publicar itineraris de camp</strong>
-          de biologia (geològics, botànics, zoològics, etc.) per tal de preservar i
+          com a plataforma per publicar itineraris de camp de biologia
+          (geològics, botànics, zoològics, etc.) per tal de preservar i
           organitzar el coneixement i fer-lo més accessible. El codi s’ha cedit
-          a la universitat i s’ha dissenyat perquè sigui
-          <strong>reutilitzable</strong>: el professorat pot preparar els seus
-          continguts i, amb el suport del departament de sistemes, incorporar
-          nous itineraris, parades i materials sense haver de construir una web
-          des de zero.
+          a la universitat i s’ha dissenyat perquè sigui reutilitzable: el
+          professorat pot preparar els seus continguts i, amb el suport del
+          departament de sistemes, incorporar nous itineraris, parades i
+          materials sense haver de construir una web des de zero.
         </Text>
 
         {
@@ -55,18 +83,26 @@ const headings = getHeadings().filter((h) => h.depth === 2);
               >
                 Contingut
               </Text>
-              <ol class="mt-3 space-y-2 list-decimal list-inside text-base">
-                {headings.map((heading) => (
-                  <li>
+              <ul class="mt-3 space-y-2 list-none p-0 text-base">
+                {tocItems.map((item) => (
+                  <li
+                    class={
+                      item.kind === "part"
+                        ? "mt-3 first:mt-0 font-medium text-base-900 dark:text-white"
+                        : "pl-4"
+                    }
+                  >
                     <a
-                      href={`#${heading.slug}`}
+                      href={`#${item.heading.slug}`}
                       class="text-base text-base-700 dark:text-base-300 hover:text-accent-500 dark:hover:text-accent-300 duration-300"
                     >
-                      {heading.text}
+                      {item.kind === "step"
+                        ? `${item.n}. ${item.heading.text}`
+                        : item.heading.text}
                     </a>
                   </li>
                 ))}
-              </ol>
+              </ul>
             </nav>
           )
         }

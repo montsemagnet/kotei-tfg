@@ -2,8 +2,8 @@
 
 Carpetes **mestres** (sense omplir) per preparar contingut sense tocar el codi d’Astro.
 
-**Manual de reutilització** (publicat a la web):  
-→ pàgina `/manual/` · font editable `src/pages/manual/_content.md`
+**Manual d'incorporació d'itineraris** (publicat a la web):  
+→ pàgina `/manual/` · font editable `src/pages/manual/_content.md` · apuntador [`MANUAL-REUTILITZACIO.md`](./MANUAL-REUTILITZACIO.md)
 
 ## Com s’utilitzen
 

@@ -12,6 +12,7 @@ interface FloraImage {
   title?: string;
   caption?: string;
   text?: string;
+  textAsHeading?: boolean;
   compact?: boolean;
 }
 
@@ -239,12 +240,22 @@ const panelCloseClass =
                     )
                   }
                   {
-                    image.text && (
-                      <TermesLinkedText
-                        text={image.text}
-                        linkedSlugs={linkedSlugs}
-                      />
-                    )
+                    image.text &&
+                      (image.textAsHeading ? (
+                        <Text
+                          tag="h3"
+                          variant="displaySM"
+                          class="dark:text-white text-base-900 font-medium mt-8 mb-2"
+                          spellcheck="false"
+                        >
+                          {image.text}
+                        </Text>
+                      ) : (
+                        <TermesLinkedText
+                          text={image.text}
+                          linkedSlugs={linkedSlugs}
+                        />
+                      ))
                   }
                 </figure>
               ))

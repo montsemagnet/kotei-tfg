@@ -8,6 +8,7 @@ import ParadaMedia from "@/components/parades/ParadaMedia.astro";
 import ParadaGallery from "@/components/parades/ParadaGallery.astro";
 import ParadaAnalisiFloraModal from "@/components/parades/ParadaAnalisiFloraModal.astro";
 import ItinerariDadaModal from "@/components/itinerari/ItinerariDadaModal.astro";
+import ItinerariDadaIndex from "@/components/itinerari/ItinerariDadaIndex.astro";
 import ItinerariVideoModal from "@/components/itinerari/ItinerariVideoModal.astro";
 import ItinerariModalTextSizeControls from "@/components/itinerari/ItinerariModalTextSizeControls.astro";
 import GlossariSection from "@/components/global/GlossariSection.astro";
@@ -17,6 +18,8 @@ import { getParadaSlug } from "@/utils/paradaSlug";
 const { frontmatter, slug } = Astro.props;
 const analisiFloraModalId = `parada-flora-${slug}`;
 const geologiaModalId = `parada-geologia-${slug}`;
+const geologiaParts = frontmatter.geologia?.parts ?? [];
+const hasGeologiaParts = geologiaParts.length > 0;
 const videoAeriModalId = `parada-aeri-${slug}`;
 
 const itinerariEntry = await getEntry("itineraris", frontmatter.itinerari);
@@ -267,7 +270,32 @@ const sectionContent = "lg:col-span-3 min-w-0 w-full";
         class:list={[sectionGrid, "page-text-content mb-12 border-t border-base-200 dark:border-base-800 pt-8"]}
       >
         {
-          frontmatter.geologia ? (
+          frontmatter.geologia && hasGeologiaParts ? (
+            <>
+              <Text tag="h2" variant="displayMD" class={sectionLabel}>
+                Geologia
+              </Text>
+              <div class:list={[sectionContent, "min-w-0"]}>
+                {frontmatter.geologia.resum && (
+                  <Text
+                    tag="p"
+                    variant="textXL"
+                    class="text-base-500 dark:text-base-400"
+                  >
+                    {frontmatter.geologia.resum}
+                  </Text>
+                )}
+                <ItinerariDadaIndex
+                  ariaLabel="Índex de geologia"
+                  modalIdPrefix={`${geologiaModalId}-`}
+                  items={geologiaParts.map((part, partIndex) => ({
+                    label: part.label,
+                    modalKey: String(partIndex),
+                  }))}
+                />
+              </div>
+            </>
+          ) : frontmatter.geologia ? (
             <>
               <div class="min-w-0">
                 <TitleIconTrigger
@@ -404,7 +432,19 @@ const sectionContent = "lg:col-span-3 min-w-0 w-full";
     </div>
 
     {
-      frontmatter.geologia && (
+      frontmatter.geologia &&
+        hasGeologiaParts &&
+        geologiaParts.map((part, partIndex) => (
+          <ItinerariDadaModal
+            modalId={`${geologiaModalId}-${partIndex}`}
+            label={part.modalLabel ?? `${part.label} — ${frontmatter.title}`}
+            intro={part.intro}
+            sections={part.sections ?? []}
+          />
+        ))
+    }
+    {
+      frontmatter.geologia && !hasGeologiaParts && (
         <ItinerariDadaModal
           modalId={geologiaModalId}
           label={`Geologia — ${frontmatter.title}`}

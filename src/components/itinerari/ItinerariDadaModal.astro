@@ -135,14 +135,19 @@ const panelCloseClass =
       </Text>
 
       {
-        intro && (
-          <TermesLinkedText
-            text={intro}
-            variant="textBase"
-            class="mb-8"
-            linkedSlugs={introLinkedSlugs}
-          />
-        )
+        intro &&
+          intro
+            .split(/\n\s*\n/)
+            .map((p) => p.trim())
+            .filter(Boolean)
+            .map((paragraph) => (
+              <TermesLinkedText
+                text={paragraph}
+                variant="textBase"
+                class="mb-3 last:mb-8"
+                linkedSlugs={introLinkedSlugs}
+              />
+            ))
       }
     </div>
 

@@ -255,6 +255,12 @@ export const termes: Terme[] = [
     "definicio": "Etapa de l'Ordovicià superior (458–449 Ma), dins del Paleozoic antic. A Catalunya, fòssils d'edat Caradoc —com braquiòpodes— s'han trobat en materials del sòcol paleozoic de les Guilleries."
   },
   {
+    "slug": "carbonifer",
+    "terme": "Carbonífer",
+    "categoria": "Cronologia",
+    "definicio": "Període del Paleozoic (aproximadament 359–299 Ma) durant el qual es van formar grans boscos pantanosos i, en moltes regions, es va intensificar l'orogènia herciniana o varisca. Al sector de Sau–Guilleries, forma part de l'interval temporal en què es van emplaçar monzogranits, leucogranits i dics porfírics del sòcol."
+  },
+  {
     "slug": "cenozoic",
     "terme": "Cenozoic",
     "categoria": "Cronologia",
@@ -280,6 +286,24 @@ export const termes: Terme[] = [
     "sinonims": [
       "cingleres",
       "penya-segat"
+    ]
+  },
+  {
+    "slug": "clast",
+    "terme": "Clast",
+    "categoria": "Sedimentologia",
+    "definicio": "Fragment de roca o mineral incorporat a un sediment o a una roca sedimentària. Als conglomerats vermells suprajacents al granit de Sau hi ha clasts de roques metamòrfiques derivades de l'erosió del sòcol paleozoic.",
+    "sinonims": [
+      "clasts"
+    ]
+  },
+  {
+    "slug": "clorita",
+    "terme": "Clorita",
+    "categoria": "Mineralogia",
+    "definicio": "Mineral fil·losilicat de color verdós que sovint resulta de l'alteració de biotita o altres minerals ferromagnesians. Al monzogranit de la presa de Sau, la biotita pot aparèixer parcialment transformada a clorita a les zones més alterades.",
+    "sinonims": [
+      "clorites"
     ]
   },
   {
@@ -378,7 +402,10 @@ export const termes: Terme[] = [
     "slug": "cristal-litzacio",
     "terme": "Cristal·lització",
     "categoria": "Petrologia",
-    "definicio": "Procés de formació i creixement de cristalls a partir d'un magma, d'un fluid o d'una dissolució quan es produeixen condicions de saturació. En roques plutòniques com el granit de Sau, la cristal·lització lenta en profunditat dóna lloc a textura fanerítica."
+    "definicio": "Procés de formació i creixement de cristalls a partir d'un magma, d'un fluid o d'una dissolució quan es produeixen condicions de saturació. En roques plutòniques com el granit de Sau, la cristal·lització lenta en profunditat dóna lloc a textura fanerítica.",
+    "sinonims": [
+      "cristal·litzar"
+    ]
   },
   {
     "slug": "despullament",
@@ -393,6 +420,17 @@ export const termes: Terme[] = [
     "definicio": "Fractura de l'escorça o de la roca sense desplaçament apreciable entre els marges del pla de falla. Al granit de la presa de Sau, les diàclasis controlen l'estabilitat de l'aflorament i, sovint, la circulació de fluids i la formació de filons.",
     "sinonims": [
       "diàclasis"
+    ]
+  },
+  {
+    "slug": "dic-porfiric",
+    "terme": "Dic porfíric",
+    "categoria": "Litologia",
+    "definicio": "Cos ígni tabular (dic) format per pòrfir que talla una roca més antiga aprofitant fractures o zones de debilitat. A la presa de Sau, els dics porfírics tallen el monzogranit i indiquen fases d'emplaçament magmàtic posteriors al plutó principal.",
+    "sinonims": [
+      "dics porfírics",
+      "dic porfírica",
+      "dics porfirics"
     ]
   },
   {
@@ -529,6 +567,8 @@ export const termes: Terme[] = [
     "categoria": "Mineralogia",
     "definicio": "Mineral del grup dels feldespats ric en potassi, molt abundant als granits i sovint de color rosat o blanc. Juntament amb el quars, és un dels components principals de les roques plutòniques del sòcol de Sau.",
     "sinonims": [
+      "feldespats",
+      "feldespat",
       "feldespat K",
       "ortoclasa"
     ]
@@ -549,6 +589,60 @@ export const termes: Terme[] = [
     "definicio": "Cos tabular, generalment allargat, que omple una fractura o diàclasi preexistent amb roca cristal·litzada des de fluids o magmes. Al granit de Sau es poden observar filons de pòrfir més clars que la roca envoltant.",
     "sinonims": [
       "filons"
+    ]
+  },
+  {
+    "slug": "friable",
+    "terme": "Friable",
+    "categoria": "Litologia",
+    "definicio": "Qualitat d'una roca o material que es desagrega fàcilment amb la pressió dels dits o amb un cop lleu, per haver perdut la cohesió entre els grans. El sauló és un exemple clàssic de material friable: conserva la textura del granit però ja no té resistència mecànica."
+  },
+  {
+    "slug": "granit-fresc",
+    "terme": "Granit fresc",
+    "categoria": "Litologia",
+    "definicio": "Granit que no ha patit alteració significativa: conserva la cohesió original, els minerals mantenen el color i la duresa, i la roca sona compacta al cop de martell. Contrast amb el granit alterat i el sauló, que representen estadis progressius de meteorització.",
+    "sinonims": [
+      "granit sa",
+      "granit sense alterar"
+    ]
+  },
+  {
+    "slug": "mica",
+    "terme": "Mica",
+    "categoria": "Mineralogia",
+    "definicio": "Grup de minerals fil·losilicats amb estructura laminar que els permet exfoliar-se en làmines primes i brillants. Les miques més freqüents en granits són la biotita (fosca) i la moscovita (clara). Al sauló, les miques es conserven com a làmines visibles entre els grans de quars i feldespat.",
+    "sinonims": [
+      "miques",
+      "moscovita"
+    ]
+  },
+  {
+    "slug": "plana-al-luvial",
+    "terme": "Plana al·luvial",
+    "categoria": "Sedimentologia",
+    "definicio": "Superfície plana i extensa formada per l'acumulació de sediments transportats per cursos fluvials. A la Formació Mediona, les lutites vermelles es van dipositar en una plana al·luvial distal del Paleocè, on alternaven fangs amb episodis de gresos i conglomerats.",
+    "sinonims": [
+      "planes al·luvials",
+      "plana al·luvial distal"
+    ]
+  },
+  {
+    "slug": "codol",
+    "terme": "Còdol",
+    "categoria": "Sedimentologia",
+    "definicio": "Fragment de roca arrodonit per l'acció del transport fluvial o marí, amb un diàmetre generalment entre 2 i 256 mm. La presència de còdols en un sediment indica transport per corrents d'energia elevada.",
+    "sinonims": [
+      "còdols"
+    ]
+  },
+  {
+    "slug": "grava",
+    "terme": "Grava",
+    "categoria": "Sedimentologia",
+    "definicio": "Sediment format per fragments de roca de mida superior a 2 mm, incloent còdols i blocs. Les graves indiquen transport per corrents d'alta energia, com rius de muntanya o ventalls al·luvials. Quan es cimenten, formen conglomerats.",
+    "sinonims": [
+      "graves"
     ]
   },
   {
@@ -733,6 +827,17 @@ export const termes: Terme[] = [
     ]
   },
   {
+    "slug": "granitic",
+    "terme": "Granític",
+    "categoria": "Litologia",
+    "definicio": "Qualificatiu que indica que una roca, un basament o un sòcol està format per granit o granitoides (riques en quars i feldespats). A Sau–Tavertet, el basament granític paleozoic de les Guilleries constitueix el fonament de la presa i de la cobertura sedimentària posterior.",
+    "sinonims": [
+      "granítica",
+      "granítics",
+      "granítiques"
+    ]
+  },
+  {
     "slug": "granitoide",
     "terme": "Granitoide",
     "categoria": "Litologia",
@@ -872,6 +977,15 @@ export const termes: Terme[] = [
     ]
   },
   {
+    "slug": "leucogranit",
+    "terme": "Leucogranit",
+    "categoria": "Litologia",
+    "definicio": "Granitoide de tonalitat clara (leucocràtica), ric en quars i feldespats i pobre en minerals foscos. A l'entorn de la presa de Sau, els leucogranits formen part del conjunt de granitoides paleozoics associats als monzogranits i als dics porfírics.",
+    "sinonims": [
+      "leucogranits"
+    ]
+  },
+  {
     "slug": "lutecia",
     "terme": "Lutecià",
     "categoria": "Cronologia",
@@ -928,6 +1042,152 @@ export const termes: Terme[] = [
     "definicio": "Part principal del sector paleozoic de les Guilleries, on afloren pissarres, esquists, ortogneissos i materials volcano-detrítics del Cambroordovicià al Carbonífer. És el lloc de referència per entendre el sòcol sobre el qual es recolza l'itinerari Sau–Tavertet."
   },
   {
+    "slug": "magma",
+    "terme": "Magma",
+    "categoria": "Petrologia",
+    "definicio": "Material fos o parcialment fos generat a l'interior de la Terra, compost per silicats líquids, gasos dissolts i, sovint, cristalls en suspensió. En refredar-se en profunditat forma roques plutòniques (com el granit); si arriba a la superfície genera roques volcàniques.",
+    "sinonims": [
+      "magmes"
+    ]
+  },
+  {
+    "slug": "minerals-argilosos",
+    "terme": "Minerals argilosos",
+    "categoria": "Mineralogia",
+    "definicio": "Grup de minerals fil·losilicats de gra molt fi (il·lita, caolinita, esmectita…) que es formen principalment per alteració química de feldespats i miques. Al granit de Sau, la meteorització transforma els feldespats en minerals argilosos, contribuint a la formació del sauló.",
+    "sinonims": [
+      "minerals d'argila",
+      "argiles (mineral)"
+    ]
+  },
+  {
+    "slug": "caoli",
+    "terme": "Caolí",
+    "categoria": "Mineralogia",
+    "definicio": "Mineral argilós blanc (caolinita) que resulta de l'alteració profunda dels feldespats en presència d'aigua. En granits molt meteoritzats, el caolí pot dominar la fracció fina i donar tonalitats blanques al sauló.",
+    "sinonims": [
+      "caolinita"
+    ]
+  },
+  {
+    "slug": "roques-encaixants",
+    "terme": "Roques encaixants",
+    "categoria": "Petrologia",
+    "definicio": "Roques preexistents que envolten una intrusió magmàtica o un filó. A la presa de Sau, les pissarres paleozoiques són les roques encaixants on va penetrar el magma granític durant l'orogènia herciniana.",
+    "sinonims": [
+      "roca encaixant",
+      "roca hoste"
+    ]
+  },
+  {
+    "slug": "metamorfisme-de-contacte",
+    "terme": "Metamorfisme de contacte",
+    "categoria": "Metamorfisme",
+    "definicio": "Transformació de les roques encaixants per la calor d'una intrusió magmàtica propera, sense pressió dirigida important. Produeix una aurèola de minerals nous (corneanes) al voltant del cos intrusiu; a Sau, les pissarres pròximes al granit van patir aquest procés.",
+    "sinonims": [
+      "aurèola de contacte",
+      "metamorfisme termal"
+    ]
+  },
+  {
+    "slug": "roca-metamorfica",
+    "terme": "Roca metamòrfica",
+    "categoria": "Litologia",
+    "definicio": "Roca formada per la transformació d'una roca preexistent (ígnia, sedimentària o metamòrfica anterior) sota l'efecte de pressió, temperatura i/o fluids, sense arribar a la fusió total. Exemples: pissarres, esquists, marbres, corneanes.",
+    "sinonims": [
+      "roques metamòrfiques",
+      "metamòrfica",
+      "metamòrfiques"
+    ]
+  },
+  {
+    "slug": "roca-magmatica",
+    "terme": "Roca magmàtica",
+    "categoria": "Litologia",
+    "definicio": "Roca formada per la cristal·lització o el refredament d'un magma, ja sigui en profunditat (plutònica) o a la superfície (volcànica). A la presa de Sau, els pòrfirs i monzogranits són roques magmàtiques plutòniques o hipabissals.",
+    "sinonims": [
+      "roques magmàtiques",
+      "roca ígnia",
+      "roques ígnies"
+    ]
+  },
+  {
+    "slug": "textura-porfirica",
+    "terme": "Textura porfírica",
+    "categoria": "Litologia",
+    "definicio": "Textura ígnia amb cristalls grans (fenocristalls) immersos en una matriu de gra més fi o vitri. Indica refredament en dues etapes: primer lent (creixement dels fenocristalls) i després ràpid (consolidació de la matriu). Característica dels pòrfirs de la presa de Sau.",
+    "sinonims": [
+      "porfírica",
+      "porfíriques"
+    ]
+  },
+  {
+    "slug": "sistema-magmatic",
+    "terme": "Sistema magmàtic",
+    "categoria": "Petrologia",
+    "definicio": "Conjunt de processos relacionats amb la generació, el transport i l'emplaçament de magmes en una regió. A Sau, el sistema magmàtic hercinià va produir diverses fases d'intrusió (monzogranit, leucomonzogranit, pòrfirs) al llarg del Carbonífer–Permià."
+  },
+  {
+    "slug": "fase-d-emplacament",
+    "terme": "Fase d'emplaçament",
+    "categoria": "Petrologia",
+    "definicio": "Etapa en què un magma s'instal·la (s'emplaça) en una posició definitiva dins l'escorça, aprofitant fractures o zones de debilitat. Els dics porfírics de Sau demostren que el sistema magmàtic va tenir més d'una fase d'emplaçament.",
+    "sinonims": [
+      "fases d'emplaçament"
+    ]
+  },
+  {
+    "slug": "pegmatoide",
+    "terme": "Pegmatoide",
+    "categoria": "Litologia",
+    "definicio": "Cos de roca ígnia de gra molt gros, similar a una pegmatita però sense la zonació típica, format en les últimes etapes de cristal·lització d'un magma granític. A la presa de Sau s'han descrit cossos pegmatoides irregulars, de dimensions centimètriques a mètriques.",
+    "sinonims": [
+      "pegmatoides",
+      "cossos pegmatoides"
+    ]
+  },
+  {
+    "slug": "zirco",
+    "terme": "Zircó",
+    "categoria": "Mineralogia",
+    "definicio": "Mineral accessori (ZrSiO₄) molt resistent, present en petites quantitats en granits i altres roques ígnies. És especialment útil per a la datació radiomètrica (U-Pb) de l'edat de cristal·lització d'un plutó.",
+    "sinonims": [
+      "zircons"
+    ]
+  },
+  {
+    "slug": "xenolit",
+    "terme": "Xenòlit",
+    "categoria": "Petrologia",
+    "definicio": "Fragment de roca estranya englobat dins un magma o una roca ígnia, procedent de les roques encaixants o d'estadis anteriors. Al monzogranit de Sau, els xenòlits de metasediments paleozoics indiquen que el magma va incorporar trossos de les pissarres que travessava.",
+    "sinonims": [
+      "xenòlits",
+      "enclavaments"
+    ]
+  },
+  {
+    "slug": "roca-hipabissal",
+    "terme": "Roca hipabissal",
+    "categoria": "Litologia",
+    "definicio": "Roca ígnia cristal·litzada a poca profunditat (entre la superfície i la zona plutònica profunda), sovint en forma de dics o sills. Els pòrfirs de Sau en són un exemple: textura porfírica per refredament intermedi.",
+    "sinonims": [
+      "roques hipabissals",
+      "hipabissal",
+      "subvolcànica"
+    ]
+  },
+  {
+    "slug": "dioritic",
+    "terme": "Diorític",
+    "categoria": "Litologia",
+    "definicio": "Relatiu a la diorita, roca plutònica de composició intermèdia (entre granit i gabre), rica en plagiòclasi i amfíbol. Al monzogranit de Sau, petits enclavaments diorítics indiquen mescla de magmes o assimilació de roques més bàsiques.",
+    "sinonims": [
+      "diorítics",
+      "diorita",
+      "diorites"
+    ]
+  },
+  {
     "slug": "mesozoic",
     "terme": "Mesozoic",
     "categoria": "Cronologia",
@@ -964,7 +1224,8 @@ export const termes: Terme[] = [
     "definicio": "Tipus de granitoide amb proporcions equilibrades de quars, feldespat potàssic i plagioclasi, molt freqüent al sòcol hercinià català. El granit de la presa de Sau n'és un exemple ben exposat, amb textura fanerítica i sistema de diàclasis.",
     "sinonims": [
       "monzogranits",
-      "granit hercinià"
+      "granit hercinià",
+      "granit"
     ]
   },
   {
@@ -1038,6 +1299,20 @@ export const termes: Terme[] = [
     ]
   },
   {
+    "slug": "paleozoic",
+    "terme": "Paleozoic",
+    "categoria": "Cronologia",
+    "definicio": "Era geològica (aproximadament 541–252 Ma) que va del Cambrià al Permià, durant la qual es va construir gran part del sòcol ibèric. A Sau–Tavertet, el basament granític paleozoic de les Guilleries és el resultat de l'orogènia herciniana i precedeix la cobertura sedimentària terciària.",
+    "sinonims": [
+      "paleozoïc",
+      "paleozoica",
+      "paleozoiques",
+      "paleozoics",
+      "roques paleozoïques",
+      "roca paleozoica"
+    ]
+  },
+  {
     "slug": "pangea",
     "terme": "Pangea",
     "categoria": "Paleogeografia",
@@ -1091,6 +1366,16 @@ export const termes: Terme[] = [
     "sinonims": [
       "plataforma marina somera",
       "plataformes marines"
+    ]
+  },
+  {
+    "slug": "plagioclasi",
+    "terme": "Plagiòclasi",
+    "categoria": "Mineralogia",
+    "definicio": "Feldespat ric en calci i/o sodi, habitualment de color blanc, que forma part essencial de molts granitoides. Al monzogranit de la presa de Sau s'observa a simple vista juntament amb el quars, el feldespat potàssic i la biotita.",
+    "sinonims": [
+      "plagiòclasis",
+      "plagioclasi"
     ]
   },
   {
@@ -1167,8 +1452,22 @@ export const termes: Terme[] = [
     "definicio": "Roques formades per la cristal·lització d'un magma en profunditat, dins l'escorça, sense arribar a la superfície (a diferència de les volcàniques). Solen presentar textura fanerítica, amb cristalls visibles a l'ull nu. El monzogranit i els pòrfirs de la presa de Sau en són exemples típics del sòcol hercinià.",
     "sinonims": [
       "roca ígnia plutònica",
+      "roca magmàtica plutònica",
+      "roques magmàtiques plutòniques",
       "roques plutòniques",
       "ígnies plutòniques"
+    ]
+  },
+  {
+    "slug": "roca-sedimentaria",
+    "terme": "Roca sedimentària",
+    "categoria": "Litologia",
+    "definicio": "Roca formada per acumulació i cimentació de sediments (fragments minerals, fòssils o precipitats químics), habitualment disposada en estrats. A Sau–Tavertet, les roques sedimentàries paleògenes contrasten amb el granit massiu del sòcol, que no presenta estratificació.",
+    "sinonims": [
+      "roques sedimentàries",
+      "materials sedimentaris",
+      "sedimentària",
+      "sedimentàries"
     ]
   },
   {
@@ -1270,7 +1569,9 @@ export const termes: Terme[] = [
       "sòcol cristal·lí",
       "sòcol cristal·lí paleozoic",
       "basament paleozoic",
-      "sòcol hercinià"
+      "sòcol hercinià",
+      "sòcol granític",
+      "sòcol granític antic"
     ]
   },
   {

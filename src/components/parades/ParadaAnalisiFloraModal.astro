@@ -203,6 +203,19 @@ const panelCloseClass =
               data.images.map((image) => (
                 <figure class="itinerari-modal-media">
                   {
+                    image.text &&
+                      image.textAsHeading && (
+                        <Text
+                          tag="h3"
+                          variant="displaySM"
+                          class="dark:text-white text-base-900 font-medium mt-2 mb-4"
+                          spellcheck="false"
+                        >
+                          {image.text}
+                        </Text>
+                      )
+                  }
+                  {
                     image.title && (
                       <Text
                         tag="h4"
@@ -241,21 +254,12 @@ const panelCloseClass =
                   }
                   {
                     image.text &&
-                      (image.textAsHeading ? (
-                        <Text
-                          tag="h3"
-                          variant="displaySM"
-                          class="dark:text-white text-base-900 font-medium mt-8 mb-2"
-                          spellcheck="false"
-                        >
-                          {image.text}
-                        </Text>
-                      ) : (
+                      !image.textAsHeading && (
                         <TermesLinkedText
                           text={image.text}
                           linkedSlugs={linkedSlugs}
                         />
-                      ))
+                      )
                   }
                 </figure>
               ))

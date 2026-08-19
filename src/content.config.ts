@@ -354,6 +354,18 @@ const parades = defineCollection({
           resum: z.string().optional(),
           intro: z.string().optional(),
           sections: modalContentSchema(image).shape.sections,
+          /** Diversos modals de geologia (p. ex. Geologia I / II). Si hi ha `parts`, s'usen en lloc de intro+sections. */
+          parts: z
+            .array(
+              z.object({
+                label: z.string(),
+                modalLabel: z.string().optional(),
+                resum: z.string().optional(),
+                intro: z.string().optional(),
+                sections: modalContentSchema(image).shape.sections,
+              }),
+            )
+            .optional(),
         })
         .optional(),
       paisatgeUrl: z.string().optional(),

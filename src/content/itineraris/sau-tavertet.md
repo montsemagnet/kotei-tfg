@@ -183,7 +183,7 @@ dadesModals:
         embed:
           title: "Geozona 216: Cingles de Tavertet- El Far"
           caption: "L'itinerari està catalogat com a geozona al repositori del Departament d'Acció Climàtica, Alimentació i Agenda Rural de la Generalitat de Catalunya. En obrir l'enllaç hi trobareu la fitxa oficial del geotop «Presa de Sau–Tavertet»: descripció del recorregut, mapes geològics, bibliografia i documents associats."
-          link: "https://mediambient.repositori.gencat.cat/handle/20.500.14343/2170"
+          link: "https://mediambient.repositori.gencat.cat/bitstream/handle/20.500.14343/2170/2000_Cingles_Tavertet_Far_fitxa_descriptiva.pdf?sequence=1&isAllowed=y"
           linkLabel: "Veure la fitxa al repositori de la Generalitat"
         media:
           title: "Mapa geològic simplificat del trajecte Sau–Tavertet, amb les principals formacions litològiques (FCG, FCTA, FGF, FMV, P) i els punts de referència de l'itinerari."

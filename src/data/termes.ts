@@ -172,6 +172,28 @@ export const termes: Terme[] = [
     ]
   },
   {
+    "slug": "boscos-caducifolis",
+    "terme": "Boscos caducifolis",
+    "categoria": "Geobotànica",
+    "definicio": "Formacions forestals dominades per arbres de fulla caduca, adaptats a climes amb una estació freda o seca marcada. A l'entorn de Sau–Tavertet i el Collsacabra inclouen, entre d'altres, rouredes de roure martinenc i, en sectors més humits, fagedes.",
+    "sinonims": [
+      "bosc caducifoli",
+      "caducifolis",
+      "caducifòlies"
+    ]
+  },
+  {
+    "slug": "boscos-esclerofilles",
+    "terme": "Boscos esclerofil·les",
+    "categoria": "Geobotànica",
+    "definicio": "Formacions forestals de fulla persistent, dura i coriàcia, típiques del clima mediterrani. A l'itinerari Sau–Tavertet es reconeixen sobretot alzinars i carrascars, sovint en mosaic amb matollars i boscos caducifolis.",
+    "sinonims": [
+      "bosc esclerofil·le",
+      "esclerofil·les",
+      "escleròfil·les"
+    ]
+  },
+  {
     "slug": "bloc-tectonic",
     "terme": "Bloc tectònic",
     "categoria": "Tectònica",
@@ -276,16 +298,6 @@ export const termes: Terme[] = [
     "definicio": "Conducte natural per on circula l'aigua d'un riu i on es dipositen preferentment sorres i graves quan el corrent té energia suficient. Als afloraments, els canals fluvials es reconeixen com a nivells de gresos o conglomerats intercalats entre lutites de plana d'inundació, com a la Formació Mediona (parada 3).",
     "sinonims": [
       "canals fluvials"
-    ]
-  },
-  {
-    "slug": "cinglera",
-    "terme": "Cinglera",
-    "categoria": "Geomorfologia",
-    "definicio": "Paret o vessant rocos molt abrupte generat per erosió diferencial entre roques resistents i altres més fàcilment erosionables. Les cingleres de Tavertet són un dels elements paisatgístics més emblemàtics de l'itinerari i reflecteixen la resistència de les calcàries i gresos eocenes.",
-    "sinonims": [
-      "cingleres",
-      "penya-segat"
     ]
   },
   {
@@ -528,6 +540,17 @@ export const termes: Terme[] = [
     ]
   },
   {
+    "slug": "facies",
+    "terme": "Fàcies",
+    "categoria": "Sedimentologia",
+    "definicio": "Conjunt de característiques litològiques, estructurals i paleontològiques d'una roca o sediment que reflecteixen l'ambient en què es va formar. Per exemple, les fàcies mitjanes i distals de ventalls al·luvials de la Formació Vilanova de Sau indiquen sectors amb energia i granulometria variables.",
+    "sinonims": [
+      "facies",
+      "fàcies sedimentària",
+      "fàcies sedimentàries"
+    ]
+  },
+  {
     "slug": "facies-amfibolitica",
     "terme": "Fàcies amfibolítica",
     "categoria": "Metamorfisme",
@@ -736,11 +759,13 @@ export const termes: Terme[] = [
   },
   {
     "slug": "formacio-de-vilanova-de-sau",
-    "terme": "Formació de Vilanova de Sau",
+    "terme": "Formació Vilanova de Sau",
     "categoria": "Estratigrafia",
-    "definicio": "Unitat sedimentària característica del sector de Sau, integrada en la cobertura eocena sobre el sòcol granític. Forma part de la seqüència de materials detrítics i carbonats que recobreixen el basament paleozoic.",
+    "definicio": "Unitat de roques sedimentàries continentals eocenes de la Plana de Vic i el Collsacabra, formada sobretot per gresos i conglomerats vermells amb nivells de lutites. A la parada 5 aflora amb una potència regional d'uns 260–270 m i registra ventalls al·luvials abans de l'entrada del mar eocè.",
     "sinonims": [
-      "Fm. Vilanova de Sau"
+      "Formació de Vilanova de Sau",
+      "Fm. Vilanova de Sau",
+      "Fm Vilanova de Sau"
     ]
   },
   {
@@ -1048,6 +1073,19 @@ export const termes: Terme[] = [
     "definicio": "Material fos o parcialment fos generat a l'interior de la Terra, compost per silicats líquids, gasos dissolts i, sovint, cristalls en suspensió. En refredar-se en profunditat forma roques plutòniques (com el granit); si arriba a la superfície genera roques volcàniques.",
     "sinonims": [
       "magmes"
+    ]
+  },
+  {
+    "slug": "materials-detritics",
+    "terme": "Materials detrítics",
+    "categoria": "Sedimentologia",
+    "definicio": "Sediments o roques formats per fragments (clasts) procedents de l'erosió d'altres roques: lutites, gresos, conglomerats, etc. A la Formació Vilanova de Sau, els materials detrítics vermells registren transport fluvial i de ventalls al·luvials en ambient continental.",
+    "sinonims": [
+      "material detrític",
+      "detrítics",
+      "sediments detrítics",
+      "nivell detrític",
+      "nivells detrítics"
     ]
   },
   {

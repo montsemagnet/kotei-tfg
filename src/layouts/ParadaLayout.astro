@@ -10,6 +10,7 @@ import ParadaAnalisiFloraModal from "@/components/parades/ParadaAnalisiFloraModa
 import ItinerariDadaModal from "@/components/itinerari/ItinerariDadaModal.astro";
 import ItinerariDadaIndex from "@/components/itinerari/ItinerariDadaIndex.astro";
 import ItinerariVideoModal from "@/components/itinerari/ItinerariVideoModal.astro";
+import ItinerariZoom from "@/components/itinerari/ItinerariZoom.astro";
 import ItinerariModalTextSizeControls from "@/components/itinerari/ItinerariModalTextSizeControls.astro";
 import GlossariSection from "@/components/global/GlossariSection.astro";
 import { withBase } from "@/utils/withBase";
@@ -21,6 +22,7 @@ const geologiaModalId = `parada-geologia-${slug}`;
 const geologiaParts = frontmatter.geologia?.parts ?? [];
 const hasGeologiaParts = geologiaParts.length > 0;
 const videoAeriModalId = `parada-aeri-${slug}`;
+const mapaZoomId = `parada-mapa-${slug}`;
 
 const itinerariEntry = await getEntry("itineraris", frontmatter.itinerari);
 const itinerariTitle = itinerariEntry?.data.title ?? "Itinerari";
@@ -29,10 +31,16 @@ const mapaHref = frontmatter.mapaUrl ? withBase(frontmatter.mapaUrl) : undefined
 const mapaLabel = frontmatter.mapaLabel ?? "Mapa QGIS";
 const mapaDescripcio =
   frontmatter.mapaDescripcio ?? frontmatter.mapaUrl;
+const mapaIsStaticImage = Boolean(
+  frontmatter.mapaUrl &&
+    /\.(png|jpe?g|webp|gif)$/i.test(frontmatter.mapaUrl),
+);
 const mapaTitleAttr =
   mapaLabel === "Mapa QGIS"
     ? "Obrir mapa interactiu fet amb QGIS (nova pestanya)"
-    : `Obrir ${mapaLabel.toLowerCase()} (nova pestanya)`;
+    : mapaIsStaticImage
+      ? `Ampliar ${mapaLabel.toLowerCase()}`
+      : `Obrir ${mapaLabel.toLowerCase()} (nova pestanya)`;
 
 const paradesItinerari = (await getCollection("parades"))
   .filter((entry) => entry.data.itinerari === frontmatter.itinerari)
@@ -209,7 +217,45 @@ const sectionContent = "lg:col-span-3 min-w-0 w-full";
       </div>
 
       {
-        mapaHref && (
+        mapaHref && mapaIsStaticImage && (
+          <ItinerariZoom zoomId={mapaZoomId}>
+            <div
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              class:list={[sectionGrid, "mt-8 border-t border-base-200 dark:border-base-800 pt-8"]}
+            >
+              <div class="min-w-0">
+                <TitleIconTrigger
+                  data-itinerari-zoom
+                  data-full-src={mapaHref}
+                  data-alt={String(mapaDescripcio)}
+                  title={mapaTitleAttr}
+                  aria-label={`Ampliar: ${mapaLabel}`}
+                  titleClass="!normal-case"
+                >
+                  {mapaLabel}
+                </TitleIconTrigger>
+              </div>
+              <button
+                type="button"
+                data-itinerari-zoom
+                data-full-src={mapaHref}
+                data-alt={String(mapaDescripcio)}
+                title={mapaTitleAttr}
+                aria-label={`Ampliar: ${mapaDescripcio}`}
+                class:list={[
+                  sectionContent,
+                  "text-left text-xl text-base-500 dark:text-base-400 hover:text-accent-700 dark:hover:text-accent-400 transition-colors cursor-pointer bg-transparent border-0 p-0",
+                ]}
+              >
+                {mapaDescripcio}
+              </button>
+            </div>
+          </ItinerariZoom>
+        )
+      }
+      {
+        mapaHref && !mapaIsStaticImage && (
           <div
             data-aos="fade-up"
             data-aos-duration="1000"

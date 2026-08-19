@@ -44,6 +44,7 @@ export const SAU_TAVERTET_PARADES: SauTavertetParada[] = [
     num: 5,
     slug: "I1-P5",
     label: "Gresos i conglomerats vermells, Fm. Vilanova de Sau",
+    preview: "/images/parades/I1-P5-hover.jpg",
     svgIds: ["I1-P5", "P5", "Parada5"],
   },
   {

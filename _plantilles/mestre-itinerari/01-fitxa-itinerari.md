@@ -41,9 +41,3 @@ Paràgrafs que expliquen el recorregut (objectius, longitud, què s’observa):
 - N’hi ha? (`sí` / `no`): 
 - Nom del fitxer a `04-altimetria/`: 
 - Descripció curta del perfil (cotas, desnivell…): 
-
-## Notes per a informàtica
-
-Qualsevol detall útil (mapes compartits entre parades, enllaços externs…):
-
-> 

@@ -1,6 +1,6 @@
 /**
- * Set <layerOpacity> on polygon-style QML files for P11-12 clips.
- * Usage: node scripts/qgis/patch_qml_opacity.mjs [opacity=0.5]
+ * Assigna <layerOpacity> als fitxers QML d'estil de polígon dels retalls P11-12.
+ * Ús: node scripts/qgis/patch_qml_opacity.mjs [opacity=0.5]
  */
 import fs from "fs";
 import path from "path";

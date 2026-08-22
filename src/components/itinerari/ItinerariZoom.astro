@@ -82,14 +82,15 @@ const overlayCloseClass =
           if (!fullSrc) return;
 
           const alt =
-            (thumb instanceof HTMLImageElement && thumb.alt) ||
             btn.dataset.alt ||
+            (thumb instanceof HTMLImageElement && thumb.alt) ||
             btn.getAttribute("aria-label") ||
             "";
+          const caption = btn.dataset.caption || alt;
 
           previewImage.src = fullSrc;
           previewImage.alt = alt;
-          previewCaption.textContent = alt;
+          previewCaption.textContent = caption;
           openDialogFromTrigger(dialog, btn);
         });
       });

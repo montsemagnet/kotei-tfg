@@ -34,7 +34,7 @@ const paleogeologiaIntro =
   "Els tres vídeos de paleogeologia han estat elaborats per Montserrat Magnet Sabata. A continuació es detallen les fonts, dades, programari i música de tercers utilitzades en la seva producció; la selecció de continguts, el muntatge, l'edició i l'adaptació dels materials són obra de l'autora. Les dades d'EarthByte Group estan subjectes a la llicència Creative Commons Attribution 3.0 Unported (CC BY 3.0).";
 
 const geologiaIntro =
-  "Imatges, mapes i fotografies de camp dels apartats Geologia i Geomorfologia de l'itinerari Sau–Tavertet, amb les citacions bibliogràfiques corresponents.";
+  "Citacions de mapes, figures i fonts de tercers dels apartats Geologia i Geomorfologia de l'itinerari Sau–Tavertet. Les fotografies de camp d'autoria pròpia no s'hi inclouen.";
 ---
 
 <BaseLayout
@@ -281,28 +281,6 @@ const geologiaIntro =
             variant="textLG"
             class="font-medium text-base-900 dark:text-white"
           >
-            Continuïtat i reutilització
-          </Text>
-          <Text tag="p" variant="textBase" class="mt-4 leading-relaxed md:text-lg">
-            Per afegir nous itineraris, parades o materials a la plataforma,
-            seguiu el{" "}
-            <a
-              href={withBase("/manual")}
-              class="text-accent-700 dark:text-accent-400 underline underline-offset-2 hover:decoration-accent-700 dark:hover:decoration-accent-400"
-            >
-              Manual d'incorporació d'itineraris
-            </a>
-            . No cal programar components Astro per al flux habitual de
-            contingut.
-          </Text>
-        </section>
-
-        <section>
-          <Text
-            tag="h2"
-            variant="textLG"
-            class="font-medium text-base-900 dark:text-white"
-          >
             Com citar aquest recurs (APA 7)
           </Text>
           <blockquote
@@ -368,8 +346,9 @@ const geologiaIntro =
                     variant="textBase"
                     class="text-base-500 dark:text-base-400"
                   >
-                    Figures, mapes i fotografies amb les citacions
-                    bibliogràfiques corresponents.
+                    Mapes i figures de tercers, amb les citacions
+                    bibliogràfiques corresponents. Les fotografies d'autoria
+                    pròpia no s'hi inclouen.
                   </Text>
                 </div>
               )

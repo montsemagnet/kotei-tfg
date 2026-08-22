@@ -29,11 +29,11 @@ if (!changed) {
 
 fs.writeFileSync(qgsPath, t, "utf8");
 
-// Re-zip as .qgz (zip of contents without nesting folder)
+// Torna a comprimir com a .qgz (zip del contingut, sense carpeta intermèdia)
 const zipTmp = "C:/CGIS/TFG9-P11-12/_qgz_opacity_patch/QGIS2WEB_new.zip";
 if (fs.existsSync(zipTmp)) fs.unlinkSync(zipTmp);
 
-// Prefer Compress-Archive from the out folder contents
+// Preferim Compress-Archive a partir del contingut de la carpeta de sortida
 execSync(
   `powershell -NoProfile -Command "Compress-Archive -Path '${outDir}\\*' -DestinationPath '${zipTmp}' -Force"`,
   { stdio: "inherit" }

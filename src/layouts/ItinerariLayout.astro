@@ -422,7 +422,7 @@ const mapaHref = frontmatter.mapaUrl ? withBase(frontmatter.mapaUrl) : undefined
                 <table class="w-full min-w-[480px] border-collapse text-left">
                   <thead>
                     <tr class="border-b border-base-200 dark:border-base-800">
-                      {(introTable.headers ?? ["Parada", "Material / formació", "Edat"]).map(
+                      {(introTable.headers ?? ["Parada", "Material / formació", "Edat i origen"]).map(
                         (header) => (
                           <th
                             scope="col"
@@ -482,12 +482,14 @@ const mapaHref = frontmatter.mapaUrl ? withBase(frontmatter.mapaUrl) : undefined
         <div class="grid grid-cols-1 md:grid-cols-3 gap-2 mb-12">
           {
             frontmatter.images.map((image) => (
-              <div data-aos="fade-up" data-aos-duration="1000">
+              <div data-aos="fade-up" data-aos-duration="1000" class="min-w-0">
                 <button
                   type="button"
-                  class="w-full cursor-pointer overflow-hidden border-0 p-0 bg-transparent hover:opacity-90 transition-opacity"
+                  class="block w-full aspect-square cursor-pointer overflow-hidden border-0 p-0 bg-transparent hover:opacity-90 transition-opacity"
                   data-itinerari-zoom
                   data-full-src={image.url.src}
+                  data-alt={image.alt}
+                  data-caption={image.caption ?? image.alt}
                   aria-label={`Ampliar: ${image.alt}`}
                 >
                   <Image
@@ -495,7 +497,7 @@ const mapaHref = frontmatter.mapaUrl ? withBase(frontmatter.mapaUrl) : undefined
                     alt={image.alt}
                     width={600}
                     height={600}
-                    class="w-full h-full object-cover"
+                    class="size-full object-cover"
                   />
                 </button>
               </div>

@@ -182,7 +182,7 @@ function readParadesTable(filePath) {
       edat: edat || "—",
     });
   }
-  // Fix parada label: I1-P3 → P3
+  // Etiqueta de parada: I1-P3 → P3
   return rows.map((r) => ({
     ...r,
     parada: r.slug.match(/P(\d+)$/i) ? `P${r.slug.match(/P(\d+)$/i)[1]}` : r.parada,

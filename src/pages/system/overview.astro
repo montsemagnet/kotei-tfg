@@ -1,9 +1,21 @@
 ---
-// Fundations
+import { getCollection } from "astro:content";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import { withBase } from "@/utils/withBase";
+
+const itineraris = (await getCollection("itineraris"))
+  .filter((entry) => !entry.data.draft && !entry.data.enConstruccio)
+  .sort((a, b) => (a.data.ordre ?? 999) - (b.data.ordre ?? 999));
+
+const parades = (await getCollection("parades")).sort(
+  (a, b) => a.data.ordre - b.data.ordre,
+);
+
+const materials = (await getCollection("roques")).sort(
+  (a, b) => a.data.ordre - b.data.ordre,
+);
 
 const pageData = [
   {
@@ -14,22 +26,41 @@ const pageData = [
         links: [
           { url: "/", name: "Inici" },
           { url: "/itineraris", name: "Itineraris" },
-          { url: "/itineraris/sau-tavertet", name: "Itinerari Sau–Tavertet" },
-          { url: "/parades/I1-P1", name: "Parada I1-P1" },
-          { url: "/roques/I1-P1-M1", name: "Material I1-P1-M1" },
-          { url: "/termes", name: "Glossari" },
-          { url: "/credits", name: "Crèdits" },
+          { url: "/termes", name: "Glossari de termes" },
+          { url: "/credits", name: "Crèdits i llicències" },
           { url: "/manual", name: "Manual d'incorporació d'itineraris" },
-          { url: "/404", name: "Error 404" },
+          { url: "/system/overview", name: "Mapa del lloc" },
+          { url: "/404", name: "Pàgina no trobada (404)" },
         ],
+      },
+      {
+        title: "Itineraris",
+        links: itineraris.map((entry) => ({
+          url: `/itineraris/${entry.id}`,
+          name: entry.data.title,
+        })),
+      },
+      {
+        title: "Parades",
+        links: parades.map((entry) => ({
+          url: `/parades/${entry.id}`,
+          name: `${entry.id} — ${entry.data.title}`,
+        })),
+      },
+      {
+        title: "Materials",
+        links: materials.map((entry) => ({
+          url: `/roques/${entry.id}`,
+          name: `${entry.id} — ${entry.data.title}`,
+        })),
       },
       {
         title: "Sistema de disseny",
         links: [
           { name: "Colors", url: "/system/colors" },
-          { name: "Links", url: "/system/links" },
-          { name: "Buttons", url: "/system/buttons" },
-          { name: "Typography", url: "/system/typography" },
+          { name: "Enllaços", url: "/system/links" },
+          { name: "Botons", url: "/system/buttons" },
+          { name: "Tipografia", url: "/system/typography" },
         ],
       },
     ],
@@ -37,7 +68,10 @@ const pageData = [
 ];
 ---
 
-<BaseLayout>
+<BaseLayout
+  pageTitle="Mapa del lloc"
+  description="Rutes i pàgines del lloc GeoTransectes UVic."
+>
   <section>
     <Wrapper variant="standard" class="py-24">
       <div class="overflow-hidden">
@@ -48,7 +82,7 @@ const pageData = [
           data-aos-duration="1500"
           class="dark:text-white xl:text-6xl tracking-tight font-medium text-black text-balance"
         >
-          Overview
+          Mapa del lloc
         </Text>
       </div>
       <Text
@@ -58,7 +92,7 @@ const pageData = [
         data-aos-duration="2000"
         class="mt-4 text-base-500 dark:text-base-400 max-w-xl"
       >
-        Mapa de rutes del lloc GeoTransectes UVic.
+        Rutes i pàgines del lloc GeoTransectes UVic.
       </Text>
       {
         pageData.map((section) => (

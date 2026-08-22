@@ -261,6 +261,8 @@ const itineraris = defineCollection({
         z.object({
           url: image(),
           alt: z.string(),
+          /** Text curt que es mostra en ampliar la imatge */
+          caption: z.string().optional(),
         }),
       ),
       thumbnail: z.object({

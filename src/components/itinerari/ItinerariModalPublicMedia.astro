@@ -1,6 +1,7 @@
 ---
 import Text from "@/components/fundations/elements/Text.astro";
 import ItinerariZoom from "@/components/itinerari/ItinerariZoom.astro";
+import ItinerariHeroVideo from "@/components/itinerari/ItinerariHeroVideo.astro";
 import { linkTermes } from "@/utils/linkTermes";
 import { withBase } from "@/utils/withBase";
 
@@ -10,6 +11,8 @@ interface Props {
     publicSrc: string;
     alt: string;
     caption?: string;
+    tipus?: "animacio" | "video";
+    compact?: boolean;
   };
   zoomId: string;
   class?: string;
@@ -17,9 +20,12 @@ interface Props {
 
 const { media, zoomId, class: className = "my-6" } = Astro.props;
 const titleHtml = media.title ? linkTermes(media.title) : undefined;
+const isVideo = media.tipus === "video";
+const assetSrc = withBase(media.publicSrc);
 
-const zoomThumbClass =
-  "w-full cursor-pointer overflow-hidden border-0 p-0 bg-transparent hover:opacity-90 transition-opacity";
+const zoomThumbClass = media.compact
+  ? "mx-auto block w-full max-w-[16rem] sm:max-w-sm cursor-pointer overflow-hidden border-0 p-0 bg-transparent hover:opacity-90 transition-opacity"
+  : "w-full cursor-pointer overflow-hidden border-0 p-0 bg-transparent hover:opacity-90 transition-opacity";
 const zoomImageClass =
   "w-full h-auto rounded-md border border-base-200 dark:border-base-800";
 ---
@@ -36,30 +42,48 @@ const zoomImageClass =
       />
     )
   }
-  <ItinerariZoom zoomId={zoomId}>
-    <figure class="itinerari-modal-media">
-      <button
-        type="button"
-        class={zoomThumbClass}
-        data-itinerari-zoom
-        data-full-src={withBase(media.publicSrc)}
-        aria-label={`Ampliar: ${media.alt}`}
-      >
-        <img
-          src={withBase(media.publicSrc)}
-          alt={media.alt}
-          class={zoomImageClass}
-          loading="lazy"
-          decoding="async"
-        />
-      </button>
-      {
-        media.caption && (
+  {
+    isVideo ? (
+      <figure class="itinerari-modal-media">
+        <div class="rounded-md border border-base-200 dark:border-base-800">
+          <ItinerariHeroVideo
+            src={assetSrc}
+            title={media.alt}
+            allowFullscreen
+            autoplayOnMount={false}
+          />
+        </div>
+        {media.caption && (
           <figcaption class="mt-2 text-sm text-base-500 dark:text-base-400 leading-relaxed" spellcheck="false">
             {media.caption}
           </figcaption>
-        )
-      }
-    </figure>
-  </ItinerariZoom>
+        )}
+      </figure>
+    ) : (
+      <ItinerariZoom zoomId={zoomId}>
+        <figure class="itinerari-modal-media">
+          <button
+            type="button"
+            class={zoomThumbClass}
+            data-itinerari-zoom
+            data-full-src={assetSrc}
+            aria-label={`Ampliar: ${media.alt}`}
+          >
+            <img
+              src={assetSrc}
+              alt={media.alt}
+              class={zoomImageClass}
+              loading="lazy"
+              decoding="async"
+            />
+          </button>
+          {media.caption && (
+            <figcaption class="mt-2 text-sm text-base-500 dark:text-base-400 leading-relaxed" spellcheck="false">
+              {media.caption}
+            </figcaption>
+          )}
+        </figure>
+      </ItinerariZoom>
+    )
+  }
 </div>

@@ -435,6 +435,36 @@ export const termes: Terme[] = [
     ]
   },
   {
+    "slug": "dic",
+    "terme": "Dic",
+    "categoria": "Litologia",
+    "definicio": "Cos ígni tabular que talla les roques encaixants aprofitant fractures o zones de debilitat. Es forma quan un magma penetra una esquerda i s'hi refreda. Als afloraments de Mas Novell (A1) s'observen dics d'aplita i dics màfics que travessen les pissarres paleozoiques.",
+    "sinonims": [
+      "dics",
+      "dic ígni",
+      "dics ígnis"
+    ]
+  },
+  {
+    "slug": "dic-d-aplita",
+    "terme": "Dic d'aplita",
+    "categoria": "Litologia",
+    "definicio": "Dic de composició clara, ric en quars i feldespats i de gra fi, format per un magma silícic que es consolida dins d'una fractura. A l'aflorament auxiliar A1 es veu a l'entorn de Mas Novell, tallant les roques metamòrfiques del sòcol.",
+    "sinonims": [
+      "dics d'aplita",
+      "aplita"
+    ]
+  },
+  {
+    "slug": "dic-mafic",
+    "terme": "Dic màfic",
+    "categoria": "Litologia",
+    "definicio": "Dic de tonalitat fosca, ric en minerals ferromagnesians (ferro i magnesi), format a partir d'un magma més bàsic que l'aplita. A l'A1 contrasta amb el dic d'aplita i evidencia magmes de composició diferent que van circular per fractures del sòcol.",
+    "sinonims": [
+      "dics màfics"
+    ]
+  },
+  {
     "slug": "dic-porfiric",
     "terme": "Dic porfíric",
     "categoria": "Litologia",
@@ -585,13 +615,22 @@ export const termes: Terme[] = [
     ]
   },
   {
+    "slug": "feldespat",
+    "terme": "Feldespat",
+    "categoria": "Mineralogia",
+    "definicio": "Grup de minerals tectosilicats molt abundants a l'escorça (feldespat potàssic i plagiòclasi). Amb el quars, són constituents principals de granits i aplitas; s'alteren fàcilment a minerals argilosos. L'ortografia catalana també admet la forma feldspat.",
+    "sinonims": [
+      "feldespats",
+      "feldspat",
+      "feldspats"
+    ]
+  },
+  {
     "slug": "feldespat-potassic",
     "terme": "Feldespat potàssic",
     "categoria": "Mineralogia",
     "definicio": "Mineral del grup dels feldespats ric en potassi, molt abundant als granits i sovint de color rosat o blanc. Juntament amb el quars, és un dels components principals de les roques plutòniques del sòcol de Sau.",
     "sinonims": [
-      "feldespats",
-      "feldespat",
       "feldespat K",
       "ortoclasa"
     ]
@@ -891,7 +930,7 @@ export const termes: Terme[] = [
     "slug": "gres",
     "terme": "Gres",
     "categoria": "Litologia",
-    "definicio": "Roca sedimentària formada per grans de sorra cimentats, típica d'ambients de mitjana energia (canals fluvials, platges o dunes). A la Formació Mediona i al llarg de l'itinerari Sau–Tavertet, els gresos marquen episodis de més energia dins de successions amb lutites i conglomerats.",
+    "definicio": "Roca sedimentària formada per grans de sorra cimentats, típica d'ambients de mitjana energia (canals fluvials, platges o dunes). Al llarg de l'itinerari Sau–Tavertet apareixen en diverses formacions, tant continentals com marines, i marquen episodis de més energia dins de successions amb lutites, conglomerats o calcàries.",
     "sinonims": [
       "gresos",
       "nivells de gresos",
@@ -1036,9 +1075,6 @@ export const termes: Terme[] = [
     "terme": "Ma",
     "categoria": "Cronologia",
     "definicio": "Abreviatura de megaannus (milions d'anys), unitat habitual per expressar edats geològiques en escales de temps profund. Per exemple, 66 Ma equival a 66 milions d'anys abans del present.",
-    "sinonims": [
-      "milions d'anys"
-    ]
   },
   {
     "slug": "mar-de-tetis",
@@ -1118,13 +1154,52 @@ export const termes: Terme[] = [
     ]
   },
   {
+    "slug": "metamorfisme-regional",
+    "terme": "Metamorfisme regional",
+    "categoria": "Metamorfisme",
+    "definicio": "Metamorfisme que afecta grans volums de l'escorça, associat a orogènies, amb pressió i temperatura elevades. A les Guilleries i als afloraments de l'A1 va originar la foliació de pissarres i fil·lites durant l'orogènia herciniana.",
+    "sinonims": [
+      "metamorfisme regional hercinià"
+    ]
+  },
+  {
+    "slug": "fil-lites-pigallades",
+    "terme": "Fil·lites pigallades",
+    "categoria": "Litologia",
+    "definicio": "Roques metamòrfiques de gra fi, amb foliació i petites taques fosques (porfiroblasts) originades per metamorfisme de contacte sobre un metamorfisme regional previ. Deriven de sediments argilosos; a l'A1 afloren amb pissarres pigallades a l'entorn de Mas Novell.",
+    "sinonims": [
+      "fil·lite pigallada",
+      "pissarres pigallades",
+      "pissarra pigallada"
+    ]
+  },
+  {
+    "slug": "porfiroblast",
+    "terme": "Porfiroblast",
+    "categoria": "Metamorfisme",
+    "definicio": "Cristall o agregat mineral que creix durant el metamorfisme, sovint més gros que la matriu de la roca. A les pissarres pigallades de l'A1, les pigues fosques són porfiroblasts formats per metamorfisme tèrmic.",
+    "sinonims": [
+      "porfiroblasts"
+    ]
+  },
+  {
+    "slug": "recristal-litzacio-mineral",
+    "terme": "Recristal·lització mineral",
+    "categoria": "Metamorfisme",
+    "definicio": "Formació de cristalls nous en estat sòlid per efecte de temperatura i, sovint, de pressió, sense que la roca arribi a fondre's. És el mecanisme del metamorfisme de contacte a les pissarres de l'A1.",
+    "sinonims": [
+      "recristal·lització"
+    ]
+  },
+  {
     "slug": "metamorfisme-de-contacte",
     "terme": "Metamorfisme de contacte",
     "categoria": "Metamorfisme",
     "definicio": "Transformació de les roques encaixants per la calor d'una intrusió magmàtica propera, sense pressió dirigida important. Produeix una aurèola de minerals nous (corneanes) al voltant del cos intrusiu; a Sau, les pissarres pròximes al granit van patir aquest procés.",
     "sinonims": [
       "aurèola de contacte",
-      "metamorfisme termal"
+      "metamorfisme termal",
+      "metamorfisme tèrmic"
     ]
   },
   {

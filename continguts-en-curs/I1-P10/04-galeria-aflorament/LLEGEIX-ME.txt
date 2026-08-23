@@ -1,0 +1,12 @@
+Galeria «Alflorament» de la pàgina de la parada.
+
+Poseu entre 1 i 8 fotografies (JPG o PNG).
+
+Noms recomanats:
+  foto-01.jpg
+  foto-02.jpg
+  ...
+  foto-08.jpg
+
+Opcional: un fitxer peus-galeria.txt amb una línia per foto:
+  foto-01.jpg | Descripció curta. Elaboració pròpia. Lloc, data.

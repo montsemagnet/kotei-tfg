@@ -59,6 +59,7 @@ interface PublicMedia {
   alt: string;
   caption?: string;
   tipus?: "animacio" | "video";
+  compact?: boolean;
 }
 
 type ModalImage = StaticImage | PublicMedia;
@@ -169,13 +170,17 @@ const panelCloseClass =
           return (
           <div>
             <div class={textContentClass}>
-              <Text
-                tag="h3"
-                variant="displaySM"
-                class="dark:text-white text-base-900 font-medium mb-3"
-              >
-                {section.title}
-              </Text>
+              {
+                section.title.trim() && (
+                  <Text
+                    tag="h3"
+                    variant="displaySM"
+                    class="dark:text-white text-base-900 font-medium mb-3"
+                  >
+                    {section.title}
+                  </Text>
+                )
+              }
               {section.paragraphs?.map((paragraph, paragraphIndex) => (
                 <>
                   <TermesLinkedText

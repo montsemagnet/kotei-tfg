@@ -43,6 +43,7 @@ const modalContentSchema = (image: (path: string) => z.ZodType) =>
               alt: z.string(),
               caption: z.string().optional(),
               tipus: z.enum(["animacio", "video"]).default("animacio"),
+              compact: z.boolean().optional(),
             })
             .optional(),
           mediaItems: z
@@ -53,6 +54,7 @@ const modalContentSchema = (image: (path: string) => z.ZodType) =>
                 alt: z.string(),
                 caption: z.string().optional(),
                 tipus: z.enum(["animacio", "video"]).default("animacio"),
+                compact: z.boolean().optional(),
               }),
             )
             .optional(),
@@ -332,8 +334,8 @@ const parades = defineCollection({
         )
         .min(1)
         .max(8),
-      /** Ruta interna (/mapa-…) o URL absoluta (https://…) */
-      mapaUrl: z.string(),
+      /** Ruta interna (/mapa-…) o URL absoluta (https://…). Ometre si la parada no té mapa. */
+      mapaUrl: z.string().optional(),
       mapaLabel: z.string().optional(),
       mapaDescripcio: z.string().optional(),
       videoAeri: z

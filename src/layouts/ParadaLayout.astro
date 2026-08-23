@@ -41,6 +41,11 @@ const mapaTitleAttr =
     : mapaIsStaticImage
       ? `Ampliar ${mapaLabel.toLowerCase()}`
       : `Obrir ${mapaLabel.toLowerCase()} (nova pestanya)`;
+const hasGeobotanica = Boolean(
+  frontmatter.geobotanicaText ||
+    frontmatter.analisiFlora ||
+    frontmatter.paisatgeUrl,
+);
 
 const paradesItinerari = (await getCollection("parades"))
   .filter((entry) => entry.data.itinerari === frontmatter.itinerari)
@@ -400,76 +405,68 @@ const sectionContent = "lg:col-span-3 min-w-0 w-full";
         )
       }
 
-      <div
-        data-aos="fade-up"
-        data-aos-duration="1000"
-        class:list={[sectionGrid, "page-text-content border-t border-base-200 dark:border-base-800 pt-8"]}
-      >
-        {
-          frontmatter.geobotanicaText ? (
-            <>
-              <Text tag="h2" variant="displayMD" class={sectionLabel}>
-                Geobotànica
-              </Text>
-              <Text
-                tag="p"
-                variant="textXL"
-                class:list={[sectionContent, "text-base-500 dark:text-base-400"]}
-              >
-                {frontmatter.geobotanicaText}
-              </Text>
-            </>
-          ) : frontmatter.analisiFlora ? (
-            <>
-              <div class="min-w-0">
-                <TitleIconTrigger
-                  data-modal-target={analisiFloraModalId}
-                  aria-haspopup="dialog"
-                  aria-label="Obrir geobotànica"
-                >
-                  Geobotànica
-                </TitleIconTrigger>
-              </div>
-              <Text
-                tag="p"
-                variant="textXL"
-                class:list={[sectionContent, "text-base-500 dark:text-base-400"]}
-              >
-                {frontmatter.analisiFlora.resum ??
-                  frontmatter.analisiFlora.nomCodi}
-              </Text>
-            </>
-          ) : (
-            <>
-              <Text tag="h2" variant="displayMD" class={sectionLabel}>
-                Geobotànica
-              </Text>
-              <div class={sectionContent}>
-                {
-                  frontmatter.paisatgeUrl ? (
+      {
+        hasGeobotanica && (
+          <div
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            class:list={[sectionGrid, "page-text-content border-t border-base-200 dark:border-base-800 pt-8"]}
+          >
+            {
+              frontmatter.geobotanicaText ? (
+                <>
+                  <Text tag="h2" variant="displayMD" class={sectionLabel}>
+                    Geobotànica
+                  </Text>
+                  <Text
+                    tag="p"
+                    variant="textXL"
+                    class:list={[sectionContent, "text-base-500 dark:text-base-400"]}
+                  >
+                    {frontmatter.geobotanicaText}
+                  </Text>
+                </>
+              ) : frontmatter.analisiFlora ? (
+                <>
+                  <div class="min-w-0">
+                    <TitleIconTrigger
+                      data-modal-target={analisiFloraModalId}
+                      aria-haspopup="dialog"
+                      aria-label="Obrir geobotànica"
+                    >
+                      Geobotànica
+                    </TitleIconTrigger>
+                  </div>
+                  <Text
+                    tag="p"
+                    variant="textXL"
+                    class:list={[sectionContent, "text-base-500 dark:text-base-400"]}
+                  >
+                    {frontmatter.analisiFlora.resum ??
+                      frontmatter.analisiFlora.nomCodi}
+                  </Text>
+                </>
+              ) : (
+                <>
+                  <Text tag="h2" variant="displayMD" class={sectionLabel}>
+                    Geobotànica
+                  </Text>
+                  <div class={sectionContent}>
                     <Text
                       tag="a"
                       variant="textXL"
-                      href={withBase(frontmatter.paisatgeUrl)}
+                      href={withBase(frontmatter.paisatgeUrl ?? "")}
                       class="inline-flex items-center gap-2 text-accent-600 dark:text-accent-400 hover:underline"
                     >
                       Veure l'anàlisi botànica i del paisatge →
                     </Text>
-                  ) : (
-                    <Text
-                      tag="p"
-                      variant="textXL"
-                      class="text-base-500 dark:text-base-400"
-                    >
-                      Contingut en preparació.
-                    </Text>
-                  )
-                }
-              </div>
-            </>
-          )
-        }
-      </div>
+                  </div>
+                </>
+              )
+            }
+          </div>
+        )
+      }
 
       <div class="page-text-content">
         <GlossariSection descriptionVariant="textXL" />

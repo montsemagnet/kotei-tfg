@@ -80,6 +80,10 @@ intro:
           slug: "I1-P12"
           material: "Gresos, Fm. Barcons"
           edat: "Eocè mitjà, Lutecià (aprox. 47,8–41 Ma). Origen marí litoral o de plataforma soma: sorres dipositades per corrents i onatge; equivalent lateral del Gres de Folgueroles."
+        - parada: "A1"
+          slug: "I1-A1"
+          material: "Afloraments metamòrfics (pissarres pigallades i dics)"
+          edat: "Paleozoic. Sòcol hercinià: metamorfisme regional i de contacte, amb dics d'aplita i màfics. Parada auxiliar, fora de l'itinerari docent principal."
 dades:
   mapa: "Mapa interactiu de l'itinerari geològic Sau–Tavertet (QGIS, capes geològiques i temàtiques)"
   historia: "Context litològic del granit hercinià, el sòcol paleozoic i les cobertes sedimentàries terciàries del sector Sau–Tavertet."
@@ -332,6 +336,7 @@ dadesModals:
             - cells: ["P10", "Capa grisa", "Superfície estructural amb diàclasis", "Estructures en coberta sedimentària · Eocè (47–34 Ma)"]
             - cells: ["P11", "Capa grisa", "Margues, Fm. Coll de Malla", "Fons marí fangós · Eocè superior (38–34 Ma)"]
             - cells: ["P12", "Capa grisa", "Gresos, Fm. Barcons", "Arenes marines / de platja; cingles i cornises · Eocè terminal–Oligocè (34–28 Ma)"]
+            - cells: ["A1", "Sòcol hercinià (auxiliar)", "Afloraments metamòrfics", "Pissarres pigallades i dics · Paleozoic"]
   tectonica-estructures:
     sections:
       - title: "Arquitectura general del bloc de Tavertet"

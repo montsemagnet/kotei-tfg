@@ -485,9 +485,8 @@ const mapaHref = frontmatter.mapaUrl ? withBase(frontmatter.mapaUrl) : undefined
               <div data-aos="fade-up" data-aos-duration="1000" class="min-w-0">
                 <button
                   type="button"
-                  class="block w-full aspect-square cursor-pointer overflow-hidden border-0 p-0 bg-transparent hover:opacity-90 transition-opacity"
+                  class="relative z-[1] pointer-events-auto block w-full aspect-square cursor-pointer overflow-hidden border-0 p-0 bg-transparent hover:opacity-90 transition-opacity"
                   data-itinerari-zoom
-                  data-full-src={image.url.src}
                   data-alt={image.alt}
                   data-caption={image.caption ?? image.alt}
                   aria-label={`Ampliar: ${image.alt}`}

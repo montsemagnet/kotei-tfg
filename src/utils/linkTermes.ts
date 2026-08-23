@@ -36,8 +36,18 @@ function isWordLetter(char: string): boolean {
   return /[\p{L}]/u.test(char);
 }
 
+/** «una mica» (adverbi) no s'ha d'enllaçar amb el mineral mica. */
+function isAdverbUnaMica(text: string, index: number): boolean {
+  return /(?:^|[^\p{L}])una\s+$/iu.test(text.slice(0, index));
+}
+
 /** Només enllaça paraules senceres (evita «Ma» dins «marcat», «materials», etc.). */
-function findPhraseIndex(text: string, phrase: string, fromIndex = 0): number {
+function findPhraseIndex(
+  text: string,
+  phrase: string,
+  fromIndex = 0,
+  reject?: (index: number) => boolean,
+): number {
   const lowerText = text.toLowerCase();
   const lowerPhrase = phrase.toLowerCase();
   let searchFrom = fromIndex;
@@ -50,7 +60,7 @@ function findPhraseIndex(text: string, phrase: string, fromIndex = 0): number {
     const after =
       index + phrase.length < text.length ? text[index + phrase.length] : "";
 
-    if (!isWordLetter(before) && !isWordLetter(after)) {
+    if (!isWordLetter(before) && !isWordLetter(after) && !reject?.(index)) {
       return index;
     }
 
@@ -98,7 +108,11 @@ function findBestMatch(
   for (const { phrase, slug } of phraseEntries) {
     if (linkedSlugs.has(slug)) continue;
 
-    const index = findPhraseIndex(remaining, phrase);
+    const rejectMica =
+      slug === "mica" && phrase.toLowerCase() === "mica"
+        ? (index: number) => isAdverbUnaMica(remaining, index)
+        : undefined;
+    const index = findPhraseIndex(remaining, phrase, 0, rejectMica);
     if (index === -1) continue;
 
     if (

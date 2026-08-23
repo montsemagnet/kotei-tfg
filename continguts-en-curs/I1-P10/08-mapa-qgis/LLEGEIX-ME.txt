@@ -1,0 +1,13 @@
+Mapa de la parada.
+
+Opció A — QGIS (qgis2web):
+  Copieu TOTA la carpeta exportada (index.html, layers, resources, styles…).
+
+Opció B — PDF o imatge:
+  Un sol fitxer, exemple: mapa-parada.pdf
+
+Opció C — Mapa compartit amb una altra parada:
+  No cal duplicar fitxers: indiqueu-ho a 01-fitxa-parada.md
+  (exemple: mateix mapa que I1-P11).
+
+Aquesta parada (P10) no té botó Mapa a la web: l’ortofoto va a la capçalera.

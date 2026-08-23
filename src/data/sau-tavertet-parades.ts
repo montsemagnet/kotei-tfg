@@ -63,6 +63,7 @@ export const SAU_TAVERTET_PARADES: SauTavertetParada[] = [
     num: 8,
     slug: "I1-P8",
     label: "Gresos grisos, Fm. Tavertet",
+    preview: "/images/parades/I1-P8-hover.jpg",
     svgIds: ["I1-P8", "P8", "Parada8"],
   },
   {
@@ -76,6 +77,7 @@ export const SAU_TAVERTET_PARADES: SauTavertetParada[] = [
     num: 10,
     slug: "I1-P10",
     label: "Superfície estructural amb diàclasis",
+    preview: "/images/parades/I1-P10-hover.jpg",
     svgIds: ["I1-P10", "P10", "Parada10"],
   },
   {
@@ -95,7 +97,8 @@ export const SAU_TAVERTET_PARADES: SauTavertetParada[] = [
   {
     num: "A",
     slug: "I1-A1",
-    label: "Pissarres del Cambroordovicià",
+    label: "Afloraments metamòrfics",
+    preview: "/images/parades/I1-A1-hover.jpg",
     svgIds: ["I1-A1", "A1", "ParadaA1"],
   },
 ];

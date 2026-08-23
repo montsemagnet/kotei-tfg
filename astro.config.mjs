@@ -32,7 +32,8 @@ export default defineConfig({
       },
       watch: {
         ignored: [
-          "**/public/**",
+          "**/public/mapa-sau-tavertet/**",
+          "**/public/mapa-parada-*/**",
           "**/mapa-sau-tavertet/**",
           "**/mapa-parada-*/**",
           "**/mapa-web-sau-tavertet/**",

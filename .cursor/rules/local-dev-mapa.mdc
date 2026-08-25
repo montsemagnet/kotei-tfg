@@ -1,56 +1,63 @@
 ---
-description: Local dev — mapa Sau–Tavertet en port apart (no penjar Astro)
+description: Local dev — mapes qgis2web en ports apart (no penjar Astro)
 alwaysApply: true
 ---
 
-# Desenvolupament local — mapa itinerari
+# Desenvolupament local — mapes itinerari
 
 ## Problema
 
-La carpeta completa `public/mapa-sau-tavertet/` (~34 MB, centenars de fitxers qgis2web) **penja `npm run dev` / Astro**. No servir el mapa pesat des d’Astro en local.
+Les carpetes completes de mapes qgis2web **pengen `npm run dev` / Astro** si es serveixen des de `public/`. No servir els mapes pesats des d’Astro en local.
 
 ## Configuració correcta (sempre)
 
 | Servei | Port | Carpeta / URL |
 |--------|------|----------------|
 | **Astro (web TFG)** | `4321` | `http://127.0.0.1:4321/kotei-tfg/` |
-| **Mapa itinerari (qgis2web)** | `8767` | `mapa-web-sau-tavertet/` → `http://127.0.0.1:8767/` |
+| **Mapa itinerari geològic (qgis2web)** | `8767` | `mapa-web-sau-tavertet/` → `http://127.0.0.1:8767/` |
+| **Mapa geobotànic (hàbitats + geologia)** | `8768` | `mapa-web-geobotanica/` → `http://127.0.0.1:8768/` |
 
 - Preferir **`127.0.0.1`**, no `localhost` (Astro està lligat a `127.0.0.1`).
-- El mapa complet viu a **`mapa-web-sau-tavertet/`** (fora de `public/`).
-- A **`public/mapa-sau-tavertet/`** en local només un **placeholder lleuger** que redirigeix a `http://127.0.0.1:8767/` (no la còpia completa del mapa).
+- Els mapes complets viuen a **`mapa-web-sau-tavertet/`** i **`mapa-web-geobotanica/`** (fora de `public/`).
+- A **`public/mapa-sau-tavertet/`** i **`public/mapa-geobotanica/`** en local només un **placeholder lleuger** que redirigeix al port corresponent.
 - No deixis una segona còpia completa del mapa dins el projecte (p. ex. `_dev-mapa-sau-parked/`): Vite/Astro pot arribar a consumir **GB de RAM** i penjar-se.
-- `astro.config.mjs` ha de tenir `server.fs.deny` + `watch.ignored` per a `mapa-web-sau-tavertet`.
-- `mapa-parada-1` (~6 MB) pot quedar a `public/`; el problema greu és el mapa Sau–Tavertet gran.
+- `astro.config.mjs` ha de tenir `server.fs.deny` + `watch.ignored` per a `mapa-web-sau-tavertet` i `mapa-web-geobotanica`.
+- `mapa-parada-1` (~6 MB) pot quedar a `public/`; el problema greu són els mapes qgis2web grans.
 
 ## Com engegar
 
-**Si l’usuari demana obrir/engegar la web en local:** l’agent ha d’engegar **els dos** serveis (web + mapa), no només `npm run dev`.
+**Si l’usuari demana obrir/engegar la web en local:** l’agent ha d’engegar **Astro i els mapes**, no només `npm run dev`.
 
 **Una sola ordre (recomanat):**
 ```powershell
 npm run dev:local
 ```
-Això arrenca Astro (`4321`) i el mapa (`8767`).
+Això arrenca Astro (`4321`), el mapa geològic (`8767`) i el mapa geobotànic (`8768`).
 
-**Manual (dos terminals):**
+**Manual:**
 ```powershell
-npm run dev:map   # mapa → http://127.0.0.1:8767/
-npm run dev       # web  → http://127.0.0.1:4321/kotei-tfg/
+npm run dev:map       # mapa geològic → http://127.0.0.1:8767/
+npm run dev:map:geo   # mapa geobotànic → http://127.0.0.1:8768/
+npm run dev           # web → http://127.0.0.1:4321/kotei-tfg/
 ```
 
 Obrir: `http://127.0.0.1:4321/kotei-tfg/`
 
-Si Astro no respon / timeout: aturar Node a `:4321`, comprovar que `public/mapa-sau-tavertet` **no** contingui el mapa sencer (només el placeholder), i tornar a engegar.
+Pàgina de l’itinerari: `http://127.0.0.1:4321/kotei-tfg/itineraris/sau-tavertet/`
+- Primer **Mapa QGIS** (dalt) → mapa geològic Sau–Tavertet (`8767`)
+- **Mapa QGIS** sota Geobotànica → mapa d’hàbitats i geologia (`8768`)
+
+Si Astro no respon / timeout: aturar Node a `:4321`, comprovar que `public/mapa-sau-tavertet` i `public/mapa-geobotanica` **no** continguin el mapa sencer (només el placeholder), i tornar a engegar.
 
 ## Git / producció
 
-- **No commitis** el placeholder local ni esborris del remote el mapa de producció sense que l’usuari ho demani.
-- A GitHub Pages el mapa pot anar a `public/mapa-sau-tavertet/` (build estàtic); el split de ports és **només per a `astro dev`**.
-- `astro.config.mjs` ja ignora `**/public/**` i `**/mapa-web-sau-tavertet/**` al watcher; això no evita el penjat si la còpia pesada és dins `public/` i Vite la indexa.
+- **No commitis** els placeholders locals ni esborris del remote el mapa de producció sense que l’usuari ho demani.
+- A GitHub Pages el mapa pot anar a `public/mapa-sau-tavertet/` i `public/mapa-geobotanica/` (build estàtic); el split de ports és **només per a `astro dev`**.
+- El satèl·lit original del mapa geobotànic fa ~190 MB (límit GitHub 100 MB): a `mapa-web-geobotanica` s’ha comprimit a JPEG (~7 MB).
+- `astro.config.mjs` ignora aquestes carpetes al watcher; això no evita el penjat si la còpia pesada és dins `public/` i Vite la indexa.
 
 ## Quan l’usuari digui que no s’obre el localhost
 
 1. Comprovar si `:4321` escolta però no respon → mapa pesat a `public/` o procés penjat.
-2. Restaurar el flux de dos ports (placeholder + `http-server` 8767 + `npm run dev`).
+2. Restaurar el flux de ports (placeholders + `http-server` 8767/8768 + `npm run dev`).
 3. No tornar a copiar el mapa complet a `public/` “per provar-lo” en local.

@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "astro dev",
     "dev:map": "npx --yes http-server mapa-web-sau-tavertet -p 8767 -c-1 -a 127.0.0.1",
-    "dev:local": "npx --yes concurrently -k -n web,mapa -c blue,green \"npm run dev\" \"npm run dev:map\"",
+    "dev:map:geo": "npx --yes http-server mapa-web-geobotanica -p 8768 -c-1 -a 127.0.0.1",
+    "dev:local": "npx --yes concurrently -k -n web,mapa,geo -c blue,green,magenta \"npm run dev\" \"npm run dev:map\" \"npm run dev:map:geo\"",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",

@@ -8,6 +8,7 @@ ordre: 1
 tipus: "Geològic"
 mapa: "sau-tavertet"
 mapaUrl: "/mapa-sau-tavertet/index.html"
+mapaGeobotanicaUrl: "/mapa-geobotanica/index.html"
 video:
   publicSrc: "/videos/itineraris/sau-tavertet.mp4"
   alt: "Recorregut aeri del trajecte proposat Sau–Tavertet"
@@ -94,6 +95,7 @@ dadesLabels:
   historia: "Geologia"
   paleogeologia: "Paleogeologia"
   paisatge: "Geobotànica"
+  mapaGeobotanica: "Mapa QGIS geobotànic"
 dadesIndex:
   historia:
     - label: "Marc geològic regional"

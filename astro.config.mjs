@@ -11,7 +11,7 @@ function mapaDirectoryIndex() {
       server.middlewares.use((req, _res, next) => {
         const raw = req.url ?? "";
         const [pathname, query = ""] = raw.split("?");
-        if (/\/mapa(?:-sau-tavertet|-parada-[\d-]+)\/?$/.test(pathname)) {
+        if (/\/mapa(?:-sau-tavertet|-geobotanica|-parada-[\d-]+)\/?$/.test(pathname)) {
           const nextPath = pathname.replace(/\/?$/, "/index.html");
           req.url = query ? `${nextPath}?${query}` : nextPath;
         }
@@ -28,15 +28,18 @@ export default defineConfig({
     server: {
       // Evita que Vite/Astro indexin o serveixin el mapa qgis2web (penja el dev server)
       fs: {
-        deny: ["**/mapa-web-sau-tavertet/**", "**/_dev-mapa-sau-parked/**"],
+        deny: ["**/mapa-web-sau-tavertet/**", "**/mapa-web-geobotanica/**", "**/_dev-mapa-sau-parked/**"],
       },
       watch: {
         ignored: [
           "**/public/mapa-sau-tavertet/**",
+          "**/public/mapa-geobotanica/**",
           "**/public/mapa-parada-*/**",
           "**/mapa-sau-tavertet/**",
+          "**/mapa-geobotanica/**",
           "**/mapa-parada-*/**",
           "**/mapa-web-sau-tavertet/**",
+          "**/mapa-web-geobotanica/**",
           "**/_dev-mapa-sau-parked/**",
           "**/node_modules/**",
           "**/.git/**",

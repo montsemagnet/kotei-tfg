@@ -26,6 +26,7 @@ const defaultDadesLabels: Record<string, string> = {
   historia: "història",
   paleogeologia: "paleogeologia",
   paisatge: "paisatge i flora",
+  mapaGeobotanica: "Mapa QGIS geobotànic",
 };
 
 const dadesLabels: Record<string, string> = {
@@ -47,6 +48,9 @@ const introParadaLinkClass =
 const introParagraphs = frontmatter.intro.flatMap((item) => item.paragraphs ?? []);
 const introTable = frontmatter.intro.find((item) => item.table)?.table;
 const mapaHref = frontmatter.mapaUrl ? withBase(frontmatter.mapaUrl) : undefined;
+const mapaGeobotanicaHref = frontmatter.mapaGeobotanicaUrl
+  ? withBase(frontmatter.mapaGeobotanicaUrl)
+  : undefined;
 ---
 
 <BaseLayout
@@ -294,10 +298,26 @@ const mapaHref = frontmatter.mapaUrl ? withBase(frontmatter.mapaUrl) : undefined
         {
           Object.entries(frontmatter.dades).map(([key, value]) => {
             if (key === "mapa" && mapaHref) return null;
-            const indexItems = frontmatter.dadesIndex?.[key];
-            const hasIndex = Boolean(indexItems?.length);
+            if (key === "mapaGeobotanica") return null;
+            const contentIndexItems = frontmatter.dadesIndex?.[key] ?? [];
+            const extraIndexItems =
+              key === "paisatge" && mapaGeobotanicaHref
+                ? [
+                    {
+                      label:
+                        dadesLabels.mapaGeobotanica ?? "Mapa QGIS geobotànic",
+                      href: mapaGeobotanicaHref,
+                      numbered: false as const,
+                    },
+                  ]
+                : [];
+            const indexItems = [...contentIndexItems, ...extraIndexItems];
+            const hasSubModals = indexItems.some((item) => item.modalKey);
+            const hasIndex = indexItems.length > 0;
             const modalKey = frontmatter.dadesModalAliases?.[key] ?? key;
-            const modal = !hasIndex ? frontmatter.dadesModals?.[modalKey] : undefined;
+            const modal = !hasSubModals
+              ? frontmatter.dadesModals?.[modalKey]
+              : undefined;
             const label = dadesLabels[key] ?? key;
             const modalId = `itinerari-modal-${modalKey}`;
 
@@ -309,7 +329,7 @@ const mapaHref = frontmatter.mapaUrl ? withBase(frontmatter.mapaUrl) : undefined
               >
                 <div class="page-text-content min-w-0">
                 {
-                  hasIndex || !modal ? (
+                  !modal ? (
                     <Text
                       tag="h2"
                       variant="displayMD"

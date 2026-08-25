@@ -202,6 +202,17 @@ const itineraris = defineCollection({
           { message: "Ha de ser una ruta interna (/…) o una URL http(s)" },
         )
         .optional(),
+      /** Mapa qgis2web d'hàbitats i geologia (itinerari Sau–Tavertet) */
+      mapaGeobotanicaUrl: z
+        .string()
+        .refine(
+          (v) =>
+            v.startsWith("/") ||
+            v.startsWith("http://") ||
+            v.startsWith("https://"),
+          { message: "Ha de ser una ruta interna (/…) o una URL http(s)" },
+        )
+        .optional(),
       intro: z.array(
         z.object({
           paragraphs: z.array(z.string()).optional(),
@@ -230,6 +241,7 @@ const itineraris = defineCollection({
         historia: z.string(),
         paleogeologia: z.string().optional(),
         paisatge: z.string().optional(),
+        mapaGeobotanica: z.string().optional(),
       }),
       dadesModals: z.record(z.string(), modalContentSchema(image)).optional(),
       dadesModalAliases: z.record(z.string(), z.string()).optional(),

@@ -1,4 +1,6 @@
 ---
+import { withBase } from "@/utils/withBase";
+
 interface IndexItem {
   label: string;
   modalKey?: string;
@@ -30,10 +32,11 @@ const linkClass =
           item.numbered === false ? item.label : `${index + 1}. ${item.label}`;
 
         if (item.href) {
+          const href = withBase(item.href);
           return (
             <li>
               <a
-                href={item.href}
+                href={href}
                 target="_blank"
                 rel="noopener noreferrer"
                 class={linkClass}

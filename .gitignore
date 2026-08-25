@@ -4,4 +4,5 @@ dist/
 video-originals/
 # Export qgis2web pesat (servit en local via http-server; no versionar)
 mapa-web-sau-tavertet/
+mapa-web-geobotanica/
 _mapa-sau-tavertet-backup/

@@ -185,7 +185,7 @@ const sectionContent = "lg:col-span-3 min-w-0 w-full";
         )
       }
 
-      <ParadaMedia media={frontmatter.media} />
+      {frontmatter.media && <ParadaMedia media={frontmatter.media} />}
 
       {
         frontmatter.videoAeri && (
@@ -300,20 +300,24 @@ const sectionContent = "lg:col-span-3 min-w-0 w-full";
     </Wrapper>
 
     <Wrapper variant="standard" class="py-8 border-t border-base-200 dark:border-base-800">
-      <div
-        data-aos="fade-up"
-        data-aos-duration="1000"
-        class:list={[sectionGrid, "mb-12"]}
-      >
-        <div class="page-text-content min-w-0">
-          <Text tag="h2" variant="displayMD" class={sectionLabel}>
-            Alflorament
-          </Text>
-        </div>
-        <div class={sectionContent}>
-          <ParadaGallery fotos={frontmatter.fotos} galleryId={slug} />
-        </div>
-      </div>
+      {
+        frontmatter.fotos && frontmatter.fotos.length > 0 && (
+          <div
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            class:list={[sectionGrid, "mb-12"]}
+          >
+            <div class="page-text-content min-w-0">
+              <Text tag="h2" variant="displayMD" class={sectionLabel}>
+                Alflorament
+              </Text>
+            </div>
+            <div class={sectionContent}>
+              <ParadaGallery fotos={frontmatter.fotos} galleryId={slug} />
+            </div>
+          </div>
+        )
+      }
 
       <div
         data-aos="fade-up"

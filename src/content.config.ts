@@ -157,8 +157,8 @@ const analisiFloraSchema = (image: (path: string) => z.ZodType) =>
     images: z
       .array(
         z.object({
-          url: image(),
-          alt: z.string(),
+          url: image().optional(),
+          alt: z.string().optional(),
           /** Títol de la figura (a sobre de la imatge) */
           title: z.string().optional(),
           /** Peu de figura / crèdit (a sota de la imatge) */
@@ -321,22 +321,24 @@ const parades = defineCollection({
       itinerari: z.string(),
       ordre: z.number(),
       coordenades: z.string(),
-      media: z.discriminatedUnion("tipus", [
-        z.object({
-          tipus: z.literal("foto"),
-          foto: z.object({
-            url: image(),
-            alt: z.string(),
+      media: z
+        .discriminatedUnion("tipus", [
+          z.object({
+            tipus: z.literal("foto"),
+            foto: z.object({
+              url: image(),
+              alt: z.string(),
+            }),
           }),
-        }),
-        z.object({
-          tipus: z.literal("video"),
-          videoUrl: z.string().optional(),
-          publicSrc: z.string().optional(),
-          alt: z.string().optional(),
-          ambSo: z.boolean().optional(),
-        }),
-      ]),
+          z.object({
+            tipus: z.literal("video"),
+            videoUrl: z.string().optional(),
+            publicSrc: z.string().optional(),
+            alt: z.string().optional(),
+            ambSo: z.boolean().optional(),
+          }),
+        ])
+        .optional(),
       fotos: z
         .array(
           z.object({
@@ -344,8 +346,8 @@ const parades = defineCollection({
             alt: z.string(),
           }),
         )
-        .min(1)
-        .max(8),
+        .max(8)
+        .optional(),
       /** Ruta interna (/mapa-…) o URL absoluta (https://…). Ometre si la parada no té mapa. */
       mapaUrl: z.string().optional(),
       mapaLabel: z.string().optional(),

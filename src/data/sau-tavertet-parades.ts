@@ -57,6 +57,7 @@ export const SAU_TAVERTET_PARADES: SauTavertetParada[] = [
     num: 7,
     slug: "I1-P7",
     label: "Gresos grisos i vermells, Fm. Tavertet",
+    preview: "/images/parades/I1-P7-hover.jpg",
     svgIds: ["I1-P7", "P7", "Parada7"],
   },
   {

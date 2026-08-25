@@ -8,9 +8,15 @@ function mapaDirectoryIndex() {
   return {
     name: "mapa-directory-index",
     configureServer(server) {
-      server.middlewares.use((req, _res, next) => {
+      server.middlewares.use((req, res, next) => {
         const raw = req.url ?? "";
         const [pathname, query = ""] = raw.split("?");
+        if (/\/mapa-geobotanica(?:\/index\.html)?\/?$/.test(pathname)) {
+          res.statusCode = 302;
+          res.setHeader("Location", "http://127.0.0.1:8768/");
+          res.end();
+          return;
+        }
         if (/\/mapa(?:-sau-tavertet|-geobotanica|-parada-[\d-]+)\/?$/.test(pathname)) {
           const nextPath = pathname.replace(/\/?$/, "/index.html");
           req.url = query ? `${nextPath}?${query}` : nextPath;
@@ -28,7 +34,13 @@ export default defineConfig({
     server: {
       // Evita que Vite/Astro indexin o serveixin el mapa qgis2web (penja el dev server)
       fs: {
-        deny: ["**/mapa-web-sau-tavertet/**", "**/mapa-web-geobotanica/**", "**/_dev-mapa-sau-parked/**"],
+        deny: [
+          "**/mapa-web-sau-tavertet/**",
+          "**/mapa-web-geobotanica/**",
+          "**/public/mapa-geobotanica/**",
+          "**/_dev-mapa-sau-parked/**",
+          "**/_tmp-*/**",
+        ],
       },
       watch: {
         ignored: [
@@ -41,6 +53,7 @@ export default defineConfig({
           "**/mapa-web-sau-tavertet/**",
           "**/mapa-web-geobotanica/**",
           "**/_dev-mapa-sau-parked/**",
+          "**/_tmp-*/**",
           "**/node_modules/**",
           "**/.git/**",
         ],

@@ -7,8 +7,8 @@ import TermesLinkedText from "@/components/global/TermesLinkedText.astro";
 import { createTermeLinkTracker } from "@/utils/linkTermes";
 
 interface FloraImage {
-  url: ImageMetadata;
-  alt: string;
+  url?: ImageMetadata;
+  alt?: string;
   title?: string;
   caption?: string;
   text?: string;
@@ -242,21 +242,25 @@ const panelCloseClass =
                       </Text>
                     )
                   }
+                  {
+                    image.url && (
                   <button
                     type="button"
                     class={image.compact ? zoomThumbCompactClass : zoomThumbClass}
                     data-itinerari-zoom
                     data-full-src={image.url.src}
-                    aria-label={`Ampliar: ${image.alt}`}
+                    aria-label={`Ampliar: ${image.alt ?? "Imatge"}`}
                   >
                     <Image
                       src={image.url}
-                      alt={image.alt}
+                      alt={image.alt ?? ""}
                       width={1200}
                       height={800}
                       class={zoomImageClass}
                     />
                   </button>
+                    )
+                  }
                   {
                     image.caption && (
                       <figcaption

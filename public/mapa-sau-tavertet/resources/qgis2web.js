@@ -890,11 +890,6 @@ let measuring = false;
 	}
 
 
-  function convertToFeet(length) {
-    feet_length = length * 3.2808;
-    return feet_length
-  }
-
   /**
   * format length output
   * @param {ol.geom.LineString} line
@@ -910,13 +905,11 @@ let measuring = false;
         var c2 = ol.proj.transform(coordinates[i + 1], sourceProj, 'EPSG:4326');
         length += ol.sphere.getDistance(c1, c2);
       }
-      feet_length = convertToFeet(length)
-
       var output;
-      if (feet_length > 5280) {
-          output = (Math.round(feet_length / 5280 * 100) / 100) + ' miles';
+      if (length >= 1000) {
+          output = (Math.round(length / 1000 * 100) / 100) + ' km';
       } else {
-          output = (Math.round(feet_length * 100) / 100) + ' ft';
+          output = (Math.round(length * 100) / 100) + ' m';
       }
       return output;
   };
@@ -931,10 +924,10 @@ let measuring = false;
     var geom = polygon.clone().transform(sourceProj, 'EPSG:3857');
     var area = Math.abs(ol.sphere.getArea(geom));
     var output;
-    if (area > 2589988) {  // 1 sq mi in square meters
-      output = (Math.round((area / 2589988) * 1000) / 1000) + ' sq mi';
+    if (area >= 1000000) {
+      output = (Math.round((area / 1000000) * 100) / 100) + ' km²';
     } else {
-      output = (Math.round(area * 10.7639 * 100) / 100) + ' sq ft';
+      output = (Math.round(area * 100) / 100) + ' m²';
     }
     return output;
   };

@@ -1,9 +1,0 @@
-Figures que surten DINS del modal de geologia.
-
-Noms recomanats:
-  figura-01.jpg
-  figura-02.jpg
-  figura-03.jpg
-  ...
-
-El títol / peu de cada figura s’escriu a 02-geologia.md.

@@ -1,4 +1,26 @@
 
+// Llegendes llargues (Naturalesa litològica, Dipòsits quaternaris, …):
+// es pleguen al panell i s'obren amb ▶
+(function prepareLayerLegends(layers) {
+    layers.forEach(function (lyr) {
+        if (lyr.getLayers) {
+            prepareLayerLegends(lyr.getLayers().getArray());
+            return;
+        }
+        var t = lyr.get('title');
+        if (typeof t !== 'string') return;
+        var imgCount = (t.match(/<img/gi) || []).length;
+        if (imgCount < 2) return;
+        lyr.set('legendHtml', t);
+        lyr.set('legendOpen', false);
+        var shortName = t.split(/<br\s*\/?>/i)[0].replace(/<img[^>]*>/gi, '').trim();
+        if (!shortName) {
+            shortName = t.replace(/<img[^>]*>/gi, '').replace(/<br\s*\/?>/gi, '').trim();
+        }
+        lyr.set('title', shortName || lyr.get('popuplayertitle') || 'Capa');
+    });
+})(layersList);
+
 var map = new ol.Map({
     target: 'map',
     renderer: 'canvas',
@@ -548,6 +570,14 @@ var topRightContainerDiv = document.getElementById('top-right-container')
 var bottomRightContainerDiv = document.getElementById('bottom-right-container')
 
 //title
+var titleEl = document.createElement('div');
+titleEl.className = 'map-title-window';
+titleEl.innerHTML =
+    '<h1>Hàbitats terrestres i hàbitats d\'interès comunitari a l\'itinerari Sau–Tavertet</h1>' +
+    '<p>Podeu afegir capes temàtiques activant-les o desactivant-les, i veure informació addicional clicant sobre la zona d\'interès.</p>';
+if (bottomRightContainerDiv) {
+    bottomRightContainerDiv.appendChild(titleEl);
+}
 
 //abstract
 

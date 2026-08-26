@@ -278,15 +278,15 @@ var group_TFGsortides = new ol.layer.Group({
                                 title: 'ITINERARI'});
 var group_HABITATS = new ol.layer.Group({
                                 layers: [lyr_Espais_naturals_protegit_5,lyr_Terrestres_7,lyr_Interes_comunitari_6,],
-                                fold: 'close',
+                                fold: 'open',
                                 title: 'HABITATS '});
 var group_GEOLOGIA = new ol.layer.Group({
                                 layers: [lyr_falles_1,lyr_Dipositsquaternaris_2,lyr_Tipusderoca_3,lyr_Geologia_4,],
-                                fold: 'close',
+                                fold: 'open',
                                 title: 'GEOLOGIA'});
 var group_Mapesbase = new ol.layer.Group({
                                 layers: [lyr_Satelit_0,],
-                                fold: 'close',
+                                fold: 'open',
                                 title: 'Mapes base'});
 
 lyr_Satelit_0.setVisible(false);lyr_falles_1.setVisible(false);lyr_Dipositsquaternaris_2.setVisible(false);lyr_Tipusderoca_3.setVisible(false);lyr_Geologia_4.setVisible(false);lyr_Espais_naturals_protegit_5.setVisible(false);lyr_Interes_comunitari_6.setVisible(true);lyr_Terrestres_7.setVisible(true);lyr_ParadesP_8.setVisible(true);lyr_ParadesP_8.set('title', 'Parades');lyr_ItinerraiSauTaveret_9.setVisible(true);lyr_Afloraments_10.setVisible(false);lyr_Noms_11.setVisible(true);lyr_nomsgeografics_12.setVisible(false);lyr_curvesdenivell_13.setVisible(false);lyr_construccions_14.setVisible(false);lyr_hidrografiap_15.setVisible(false);lyr_hidrografia_16.setVisible(false);

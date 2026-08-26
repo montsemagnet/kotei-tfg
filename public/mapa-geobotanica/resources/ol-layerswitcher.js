@@ -425,10 +425,16 @@ class LayerSwitcher extends Control {
                 li.classList.add(CSS_PREFIX + 'fold');
                 li.classList.add(CSS_PREFIX + lyr.get('fold'));
                 const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'layer-fold-btn';
+                btn.setAttribute('aria-label', 'Obrir o tancar grup');
+                btn.textContent = lyr.get('fold') === 'open' ? '▼' : '▶';
                 btn.onclick = function (e) {
                     const evt = e || window.event;
                     LayerSwitcher.toggleFold_(lyr, li);
+                    btn.textContent = lyr.get('fold') === 'open' ? '▼' : '▶';
                     evt.preventDefault();
+                    evt.stopPropagation();
                 };
                 li.appendChild(btn);
             }
@@ -447,6 +453,20 @@ class LayerSwitcher extends Control {
                 label.htmlFor = checkboxId;
             }
             label.innerHTML = lyrTitle;
+            if (lyr.get('fold')) {
+                label.removeAttribute('for');
+                label.style.cursor = 'pointer';
+                label.title = 'Clic per obrir o tancar el grup';
+                label.addEventListener('click', function (e) {
+                    LayerSwitcher.toggleFold_(lyr, li);
+                    const foldBtn = li.querySelector('button.layer-fold-btn');
+                    if (foldBtn) {
+                        foldBtn.textContent = lyr.get('fold') === 'open' ? '▼' : '▶';
+                    }
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+            }
             li.appendChild(label);
             const ul = document.createElement('ul');
             li.appendChild(ul);
@@ -454,6 +474,44 @@ class LayerSwitcher extends Control {
         }
         else {
             li.className = 'layer';
+            const legendHtml = lyr.get('legendHtml');
+            const legendOpen = !!lyr.get('legendOpen');
+            if (legendHtml) {
+                li.classList.add('has-legend');
+                if (legendOpen) {
+                    li.classList.add('legend-open');
+                }
+                const legendBtn = document.createElement('button');
+                legendBtn.type = 'button';
+                legendBtn.className = 'layer-legend-btn';
+                legendBtn.title = 'Mostrar o amagar llegenda';
+                legendBtn.setAttribute('aria-label', 'Mostrar o amagar llegenda');
+                legendBtn.textContent = legendOpen ? '▼' : '▶';
+                const toggleLegend = function (e) {
+                    const evt = e || window.event;
+                    const open = !lyr.get('legendOpen');
+                    lyr.set('legendOpen', open);
+                    legendBtn.textContent = open ? '▼' : '▶';
+                    li.classList.toggle('legend-open', open);
+                    const body = li.querySelector('.layer-legend-body');
+                    if (body) {
+                        body.hidden = !open;
+                    }
+                    if (evt) {
+                        evt.preventDefault();
+                        evt.stopPropagation();
+                    }
+                };
+                legendBtn.onclick = toggleLegend;
+                li.appendChild(legendBtn);
+                label.style.cursor = 'pointer';
+                label.title = 'Clic per veure la simbologia';
+                label.addEventListener('click', function (e) {
+                    if (e.target && e.target.tagName === 'INPUT') return;
+                    e.preventDefault();
+                    toggleLegend(e);
+                });
+            }
             const input = document.createElement('input');
             if (lyr.get('type') === 'base') {
                 input.type = 'radio';
@@ -470,7 +528,9 @@ class LayerSwitcher extends Control {
                 render(lyr);
             };
             li.appendChild(input);
-            label.htmlFor = checkboxId;
+            if (!legendHtml) {
+                label.htmlFor = checkboxId;
+            }
             label.innerHTML = lyrTitle;
             const rsl = map.getView().getResolution();
             if (rsl >= lyr.getMaxResolution() || rsl < lyr.getMinResolution()) {
@@ -483,6 +543,19 @@ class LayerSwitcher extends Control {
                 }
             }
             li.appendChild(label);
+            if (legendHtml) {
+                const legend = document.createElement('div');
+                legend.className = 'layer-legend-body';
+                legend.hidden = !legendOpen;
+                const parts = String(legendHtml).split(/<br\s*\/?>/i);
+                let body = parts.slice(1).join('<br/>').trim();
+                if (!body) {
+                    const imgs = String(legendHtml).match(/<img[^>]*>/gi);
+                    body = imgs ? imgs.join(' ') : '';
+                }
+                legend.innerHTML = body;
+                li.appendChild(legend);
+            }
         }
         return li;
     }

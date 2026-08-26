@@ -54,7 +54,8 @@
   display: block;
 }
 
-.layer-switcher.shown button {
+/* Només amaga el botó principal del control, no els ▶ de grups/llegendes */
+.layer-switcher.shown > button {
   display: none;
 }
 
@@ -67,8 +68,8 @@
   margin: 1px;
 }
 
-.layer-switcher.shown button:focus,
-.layer-switcher.shown button:hover {
+.layer-switcher.shown > button:focus,
+.layer-switcher.shown > button:hover {
   background-color: #fafafa;
 }
 

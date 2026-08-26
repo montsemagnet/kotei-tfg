@@ -1,10 +1,8 @@
 
-// Grups: itinerari i topografia oberts; geologia i fons tancats
-[group_ITINERARISAUTAVERTET, group_TOPOGRAFIA].forEach(function (g) {
+// Grups desplegats a l'inici; les capes geològiques no s'activen (setVisible a layers.js)
+[group_ITINERARISAUTAVERTET, group_TOPOGRAFIA, group_CAPESGEOLOGIQUES, group_FONS].forEach(function (g) {
     g.set('fold', 'open');
 });
-group_CAPESGEOLOGIQUES.set('fold', 'close');
-group_FONS.set('fold', 'open');
 
 // Desa llegenda completa i deixa un títol curt (el panell afegirà ▶ per obrir la llegenda)
 (function prepareLayerLegends(layers) {
@@ -225,6 +223,10 @@ var featureOverlay = new ol.layer.Vector({
 var doHighlight = false;
 var doHover = false;
 
+function popupValueIsEmpty(value) {
+    return value == null || String(value).trim() === '' || String(value).toLowerCase() === 'null';
+}
+
 function createPopupField(currentFeature, currentFeatureKeys, layer) {
     var popupText = '';
     for (var i = 0; i < currentFeatureKeys.length; i++) {
@@ -236,7 +238,7 @@ function createPopupField(currentFeature, currentFeatureKeys, layer) {
             if (layer.get('fieldLabels')[currentFeatureKeys[i]] == "hidden field") {
                 continue;
             } else if (layer.get('fieldLabels')[currentFeatureKeys[i]] == "inline label - visible with data") {
-                if (currentFeature.get(currentFeatureKeys[i]) == null) {
+                if (popupValueIsEmpty(currentFeature.get(currentFeatureKeys[i]))) {
                     continue;
                 }
             }
@@ -247,7 +249,7 @@ function createPopupField(currentFeature, currentFeatureKeys, layer) {
                 popupField += '<td colspan="2">';
             }
             if (layer.get('fieldLabels')[currentFeatureKeys[i]] == "header label - visible with data") {
-                if (currentFeature.get(currentFeatureKeys[i]) == null) {
+                if (popupValueIsEmpty(currentFeature.get(currentFeatureKeys[i]))) {
                     continue;
                 }
             }
@@ -276,7 +278,7 @@ function createPopupField(currentFeature, currentFeatureKeys, layer) {
 }
 
 var highlight;
-var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+var autolinker = new Autolinker({truncate: {length: 400, location: 'smart'}});
 
 function onPointerMove(evt) {
     if (!doHover && !doHighlight) {
@@ -571,6 +573,14 @@ var topRightContainerDiv = document.getElementById('top-right-container')
 var bottomRightContainerDiv = document.getElementById('bottom-right-container')
 
 //title
+var titleEl = document.createElement('div');
+titleEl.className = 'map-title-window';
+titleEl.innerHTML =
+    '<h1>Mapa Geològic itinerari Sau-Tavertet</h1>' +
+    '<p>Podeu afegir capes temàtiques activant-les i desactivant-les i veure informació addicional clicant sobre la capa d’interès.</p>';
+if (bottomRightContainerDiv) {
+    bottomRightContainerDiv.appendChild(titleEl);
+}
 
 //abstract
 

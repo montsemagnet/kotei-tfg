@@ -6,6 +6,9 @@ interface IndexItem {
   modalKey?: string;
   href?: string;
   numbered?: boolean;
+  download?: string | boolean;
+  videoModalTarget?: string;
+  description?: string;
 }
 
 interface Props {
@@ -19,10 +22,12 @@ const { items, ariaLabel, modalIdPrefix = "itinerari-modal-" } = Astro.props;
 
 const linkClass =
   "text-left cursor-pointer text-lg md:text-xl text-accent-700 dark:text-accent-400 underline decoration-accent-700/30 dark:decoration-accent-400/40 underline-offset-[4px] hover:decoration-accent-700 dark:hover:decoration-accent-400 transition-colors leading-snug";
+const descriptionClass =
+  "min-w-0 text-base md:text-lg text-base-500 dark:text-base-400 leading-relaxed";
 ---
 
 <nav class="mt-6 pl-6 sm:pl-8 lg:pl-10" aria-label={ariaLabel}>
-  <ol class="flex flex-col gap-2 list-none p-0 m-0">
+  <ol class="flex flex-col gap-3 list-none p-0 m-0">
     {
       items.map((item, index) => {
         const modalId = item.modalKey
@@ -30,19 +35,53 @@ const linkClass =
           : undefined;
         const displayLabel =
           item.numbered === false ? item.label : `${index + 1}. ${item.label}`;
+        const rowClass = item.description
+          ? "grid grid-cols-1 sm:grid-cols-[minmax(10rem,max-content)_minmax(0,1fr)] gap-x-6 gap-y-1 items-baseline"
+          : "";
 
         if (item.href) {
           const href = withBase(item.href);
+          const isDownload =
+            item.download !== undefined && item.download !== false;
           return (
-            <li>
+            <li class={rowClass}>
               <a
                 href={href}
-                target="_blank"
-                rel="noopener noreferrer"
+                download={
+                  isDownload
+                    ? typeof item.download === "string"
+                      ? item.download
+                      : true
+                    : undefined
+                }
+                target={isDownload ? undefined : "_blank"}
+                rel={isDownload ? undefined : "noopener noreferrer"}
                 class={linkClass}
               >
                 {displayLabel}
               </a>
+              {item.description && (
+                <p class={descriptionClass}>{item.description}</p>
+              )}
+            </li>
+          );
+        }
+
+        if (item.videoModalTarget) {
+          return (
+            <li class={rowClass}>
+              <button
+                type="button"
+                data-video-modal-target={item.videoModalTarget}
+                class={linkClass}
+                aria-haspopup="dialog"
+                aria-label={`Obrir: ${item.label}`}
+              >
+                {displayLabel}
+              </button>
+              {item.description && (
+                <p class={descriptionClass}>{item.description}</p>
+              )}
             </li>
           );
         }

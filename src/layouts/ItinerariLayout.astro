@@ -21,7 +21,7 @@ const { frontmatter } = Astro.props;
 
 const defaultDadesLabels: Record<string, string> = {
   ubicacio: "ubicació",
-  mapa: "Mapa QGIS",
+  mapa: "Mapa QGIS geològic",
   socle: "sòcol",
   historia: "història",
   paleogeologia: "paleogeologia",
@@ -51,6 +51,38 @@ const mapaHref = frontmatter.mapaUrl ? withBase(frontmatter.mapaUrl) : undefined
 const mapaGeobotanicaHref = frontmatter.mapaGeobotanicaUrl
   ? withBase(frontmatter.mapaGeobotanicaUrl)
   : undefined;
+
+const recorregutItems = [
+  ...(frontmatter.rutaMobil
+    ? [
+        {
+          label: frontmatter.rutaMobil.label,
+          href: frontmatter.rutaMobil.publicSrc,
+          download: frontmatter.rutaMobil.downloadName ?? true,
+          description: frontmatter.rutaMobil.description,
+        },
+      ]
+    : []),
+  ...(videoEnModal && frontmatter.video
+    ? [
+        {
+          label: frontmatter.video.modalLabel ?? "Visualització de la zona",
+          videoModalTarget: videoModalId,
+          description: frontmatter.video.alt,
+        },
+      ]
+    : []),
+  ...(frontmatter.altimetria
+    ? [
+        {
+          label: frontmatter.altimetria.label,
+          videoModalTarget: altimetriaModalId,
+          description: frontmatter.altimetria.description,
+        },
+      ]
+    : []),
+];
+const hasRecorregut = recorregutItems.length > 0;
 ---
 
 <BaseLayout
@@ -195,113 +227,59 @@ const mapaGeobotanicaHref = frontmatter.mapaGeobotanicaUrl
         </div>
       </div>
 
-      {
-        mapaHref && frontmatter.dades?.mapa && (
-          <div
-            data-aos="fade-up"
-            data-aos-duration="1000"
-            class="page-text-content grid grid-cols-1 lg:grid-cols-4 items-start gap-x-6 gap-y-2 mb-12"
-          >
-            <div class="min-w-0">
-              <TitleIconTrigger
-                as="a"
-                href={mapaHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                title="Obrir mapa interactiu fet amb QGIS (nova pestanya)"
-                aria-label={`Obrir: ${dadesLabels.mapa ?? "Mapa QGIS"}`}
-                titleClass="!normal-case"
-              >
-                {dadesLabels.mapa ?? "Mapa QGIS"}
-              </TitleIconTrigger>
-            </div>
-            <div class="lg:col-span-3 min-w-0">
-              <Text
-                tag="a"
-                variant="textXL"
-                href={mapaHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                title="Obrir mapa interactiu fet amb QGIS (nova pestanya)"
-                class="text-base-500 dark:text-base-400 hover:text-accent-700 dark:hover:text-accent-400 transition-colors"
-              >
-                {frontmatter.dades.mapa}
-              </Text>
-            </div>
-          </div>
-        )
-      }
-
-      {
-        videoEnModal && frontmatter.video && (
-          <div
-            data-aos="fade-up"
-            data-aos-duration="1000"
-            class="page-text-content grid grid-cols-1 lg:grid-cols-4 items-start gap-x-6 gap-y-2 mb-12"
-          >
-            <div class="min-w-0">
-              <TitleIconTrigger
-                data-video-modal-target={videoModalId}
-                aria-haspopup="dialog"
-                aria-label={`Obrir: ${frontmatter.video.modalLabel ?? "Visualització de la zona"}`}
-              >
-                {frontmatter.video.modalLabel ?? "Visualització de la zona"}
-              </TitleIconTrigger>
-            </div>
-            <div class="lg:col-span-3 min-w-0">
-              <Text
-                tag="p"
-                variant="textXL"
-                class="text-base-500 dark:text-base-400"
-              >
-                {frontmatter.video.alt}
-              </Text>
-            </div>
-          </div>
-        )
-      }
-
-      {
-        frontmatter.altimetria && (
-          <div
-            data-aos="fade-up"
-            data-aos-duration="1000"
-            class="page-text-content grid grid-cols-1 lg:grid-cols-4 items-start gap-x-6 gap-y-2 mb-12"
-          >
-            <div class="min-w-0">
-              <TitleIconTrigger
-                data-video-modal-target={altimetriaModalId}
-                aria-haspopup="dialog"
-                aria-label={`Obrir: ${frontmatter.altimetria.label}`}
-              >
-                {frontmatter.altimetria.label}
-              </TitleIconTrigger>
-            </div>
-            <div class="lg:col-span-3 min-w-0">
-              {
-                frontmatter.altimetria.description && (
-                  <Text
-                    tag="p"
-                    variant="textXL"
-                    class="text-base-500 dark:text-base-400"
-                  >
-                    {frontmatter.altimetria.description}
-                  </Text>
-                )
-              }
-            </div>
-          </div>
-        )
-      }
-
       <div class="flex flex-col border-t border-base-200 dark:border-base-800 mb-12">
+        {
+          hasRecorregut && (
+            <div
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              class="grid grid-cols-1 lg:grid-cols-4 items-start gap-x-6 gap-y-2 py-4 border-b border-base-200 dark:border-base-800"
+            >
+              <div class="page-text-content min-w-0">
+                <Text
+                  tag="h2"
+                  variant="displayMD"
+                  class="dark:text-white text-base-900 font-medium tracking-tighter leading-tight break-words"
+                >
+                  {frontmatter.recorregutLabel ?? "Veure el recorregut"}
+                </Text>
+              </div>
+              <div class="page-text-content lg:col-span-3 min-w-0">
+                {
+                  frontmatter.recorregutDescripcio && (
+                    <Text
+                      tag="p"
+                      variant="textXL"
+                      class="text-base-500 dark:text-base-400"
+                    >
+                      {frontmatter.recorregutDescripcio}
+                    </Text>
+                  )
+                }
+                <ItinerariDadaIndex
+                  items={recorregutItems}
+                  ariaLabel={frontmatter.recorregutLabel ?? "Veure el recorregut"}
+                />
+              </div>
+            </div>
+          )
+        }
         {
           Object.entries(frontmatter.dades).map(([key, value]) => {
             if (key === "mapa" && mapaHref) return null;
             if (key === "mapaGeobotanica") return null;
             const contentIndexItems = frontmatter.dadesIndex?.[key] ?? [];
-            const extraIndexItems =
-              key === "paisatge" && mapaGeobotanicaHref
+            const extraIndexItems = [
+              ...(key === "historia" && mapaHref
+                ? [
+                    {
+                      label: dadesLabels.mapa ?? "Mapa QGIS geològic",
+                      href: mapaHref,
+                      numbered: false as const,
+                    },
+                  ]
+                : []),
+              ...(key === "paisatge" && mapaGeobotanicaHref
                 ? [
                     {
                       label:
@@ -310,7 +288,8 @@ const mapaGeobotanicaHref = frontmatter.mapaGeobotanicaUrl
                       numbered: false as const,
                     },
                   ]
-                : [];
+                : []),
+            ];
             const indexItems = [...contentIndexItems, ...extraIndexItems];
             const hasSubModals = indexItems.some((item) => item.modalKey);
             const hasIndex = indexItems.length > 0;

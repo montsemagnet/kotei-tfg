@@ -297,6 +297,17 @@ const itineraris = defineCollection({
           modalLabel: z.string().optional(),
         })
         .optional(),
+      /** Fitxer KMZ/KML de la ruta per descarregar i obrir al mòbil */
+      rutaMobil: z
+        .object({
+          label: z.string(),
+          description: z.string(),
+          publicSrc: z.string(),
+          downloadName: z.string().optional(),
+        })
+        .optional(),
+      recorregutLabel: z.string().optional(),
+      recorregutDescripcio: z.string().optional(),
       altimetria: z
         .object({
           label: z.string(),

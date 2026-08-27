@@ -22,6 +22,13 @@ altimetria:
   alt: "Vídeo de Google Earth amb la vista en perspectiva i el perfil d'elevació del trajecte Sau–Tavertet"
   caption: "Elaboració pròpia. Itinerari Presa de Sau–Tavertet, 9 de juny de 2026."
   ambSo: false
+rutaMobil:
+  label: "Track de la ruta"
+  description: "Descarrega el track de l'itinerari (KMZ) per obrir-lo al mòbil i seguir el recorregut durant l'excursió."
+  publicSrc: "/rutes/Itinerari_Sau_Tavertet.kmz"
+  downloadName: "Itinerari_Sau_Tavertet.kmz"
+recorregutLabel: "Veure el recorregut"
+recorregutDescripcio: "Track, vol aeri i perfil d'elevació per situar el trajecte Sau–Tavertet, també si no es fa l'excursió."
 introLabel: "Introducció al recorregut"
 paradesLabel: "Parades"
 intro:
@@ -91,7 +98,7 @@ dades:
   paleogeologia: "Seqüència cronològica en vídeo dels grans esdeveniments geològics que han configurat el relleu i les formacions visibles al llarg de l'itinerari Sau–Tavertet."
   paisatge: "Relació entre geologia del Collsacabra, paisatge de la cinglera i distribució de la flora al llarg de tot l'itinerari Sau–Tavertet."
 dadesLabels:
-  mapa: "Mapa QGIS"
+  mapa: "Mapa QGIS geològic"
   historia: "Geologia"
   paleogeologia: "Paleogeologia"
   paisatge: "Geobotànica"

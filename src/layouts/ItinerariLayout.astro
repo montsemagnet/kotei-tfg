@@ -23,11 +23,27 @@ const defaultDadesLabels: Record<string, string> = {
   ubicacio: "ubicació",
   mapa: "Mapa QGIS geològic",
   socle: "sòcol",
-  historia: "història",
   paleogeologia: "paleogeologia",
+  historia: "història",
   paisatge: "paisatge i flora",
   mapaGeobotanica: "Mapa QGIS geobotànic",
 };
+
+const dadesDisplayOrder = [
+  "ubicacio",
+  "socle",
+  "paleogeologia",
+  "historia",
+  "paisatge",
+];
+
+const dadesSections = Object.entries(frontmatter.dades).sort(([keyA], [keyB]) => {
+  const rank = (key: string) => {
+    const i = dadesDisplayOrder.indexOf(key);
+    return i === -1 ? dadesDisplayOrder.length : i;
+  };
+  return rank(keyA) - rank(keyB);
+});
 
 const dadesLabels: Record<string, string> = {
   ...defaultDadesLabels,
@@ -265,7 +281,7 @@ const hasRecorregut = recorregutItems.length > 0;
           )
         }
         {
-          Object.entries(frontmatter.dades).map(([key, value]) => {
+          dadesSections.map(([key, value]) => {
             if (key === "mapa" && mapaHref) return null;
             if (key === "mapaGeobotanica") return null;
             const contentIndexItems = frontmatter.dadesIndex?.[key] ?? [];
@@ -372,7 +388,7 @@ const hasRecorregut = recorregutItems.length > 0;
                   })
                 }
                 {
-                  !hasIndex && modal && modal.videos && modal.videos.length > 0 ? (
+                  modal && modal.videos && modal.videos.length > 0 ? (
                     <ItinerariPaleogeologiaModal
                       modalId={modalId}
                       label={label}
@@ -381,7 +397,6 @@ const hasRecorregut = recorregutItems.length > 0;
                       sections={modal.sections}
                     />
                   ) : (
-                    !hasIndex &&
                     modal && (
                       <ItinerariDadaModal
                         modalId={modalId}

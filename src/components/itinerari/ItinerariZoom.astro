@@ -6,6 +6,8 @@ interface Props {
 const { zoomId } = Astro.props;
 const overlayCloseClass =
   "itinerari-zoom-close itinerari-overlay-close text-sm font-medium";
+const overlayIconClass =
+  "itinerari-overlay-close itinerari-zoom-tool inline-flex size-10 items-center justify-center p-0";
 ---
 
 <div data-itinerari-zoom-root={zoomId}>
@@ -17,14 +19,29 @@ const overlayCloseClass =
     aria-modal="true"
     data-focus-trap="true"
   >
-    <div class="itinerari-zoom-stage relative flex size-full max-h-full max-w-full flex-col items-center justify-center">
-      <div class="absolute top-3 right-3 z-10 flex items-center gap-2 sm:top-4 sm:right-4">
+    <div class="itinerari-zoom-stage relative flex size-full max-h-full max-w-full flex-col">
+      <div class="absolute top-3 right-3 z-20 flex items-center gap-2 sm:top-4 sm:right-4">
         <button
           type="button"
-          class="itinerari-zoom-fullscreen itinerari-overlay-close text-sm font-medium"
-          aria-label="Pantalla completa"
+          class:list={["itinerari-zoom-out", overlayIconClass]}
+          aria-label="Allunyar"
         >
-          Pantalla completa
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="size-5" aria-hidden="true">
+            <circle cx="11" cy="11" r="6"></circle>
+            <path d="M20 20l-3.2-3.2"></path>
+            <path d="M8 11h6"></path>
+          </svg>
+        </button>
+        <button
+          type="button"
+          class:list={["itinerari-zoom-in", overlayIconClass]}
+          aria-label="Apropar"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="size-5" aria-hidden="true">
+            <circle cx="11" cy="11" r="6"></circle>
+            <path d="M20 20l-3.2-3.2"></path>
+            <path d="M11 8v6M8 11h6"></path>
+          </svg>
         </button>
         <button
           type="button"
@@ -34,14 +51,17 @@ const overlayCloseClass =
           Tancar
         </button>
       </div>
-      <figure class="flex max-h-full w-full max-w-full flex-col items-center">
-        <img
-          class="itinerari-zoom-image mx-auto max-h-[calc(100dvh-5.5rem)] w-auto max-w-full object-contain"
-          src=""
-          alt=""
-        />
+      <figure class="mt-12 flex min-h-0 flex-1 flex-col">
+        <div class="itinerari-zoom-viewport flex min-h-0 flex-1 items-center justify-center overflow-hidden">
+          <img
+            class="itinerari-zoom-image max-h-full max-w-full object-contain select-none"
+            src=""
+            alt=""
+            draggable="false"
+          />
+        </div>
         <figcaption
-          class="itinerari-zoom-caption mt-3 max-w-4xl px-4 text-center text-sm text-white"
+          class="itinerari-zoom-caption mt-3 max-w-4xl self-center px-4 text-center text-sm text-white"
         />
       </figure>
     </div>
@@ -51,10 +71,85 @@ const overlayCloseClass =
 <script>
   import { openDialogFromTrigger } from "@/utils/modalA11y";
 
-  let hostSourceDialog = null;
-  let pausedDialogs = [];
-  let skipDialogCloseCleanup = false;
-  let leavingFullscreen = false;
+  const MIN_SCALE = 1;
+  const MAX_SCALE = 5;
+  const ZOOM_STEP = 1.35;
+
+  const zoomState = new WeakMap();
+  const pointers = new Map();
+  let pinchDistance = 0;
+  let pinchScale = 1;
+  let panDialog = null;
+  let panLast = null;
+  let didPan = false;
+
+  function getState(dialog) {
+    let state = zoomState.get(dialog);
+    if (!state) {
+      state = { scale: 1, x: 0, y: 0 };
+      zoomState.set(dialog, state);
+    }
+    return state;
+  }
+
+  function resetState(dialog) {
+    zoomState.set(dialog, { scale: 1, x: 0, y: 0 });
+    applyTransform(dialog);
+  }
+
+  function clamp(value, min, max) {
+    return Math.min(max, Math.max(min, value));
+  }
+
+  function clampPan(dialog, state) {
+    const viewport = dialog.querySelector(".itinerari-zoom-viewport");
+    const image = dialog.querySelector(".itinerari-zoom-image");
+    if (!(viewport instanceof HTMLElement) || !(image instanceof HTMLElement)) {
+      return;
+    }
+
+    const extraX = Math.max(0, image.offsetWidth * state.scale - viewport.clientWidth);
+    const extraY = Math.max(0, image.offsetHeight * state.scale - viewport.clientHeight);
+    state.x = clamp(state.x, -extraX / 2, extraX / 2);
+    state.y = clamp(state.y, -extraY / 2, extraY / 2);
+  }
+
+  function applyTransform(dialog) {
+    const image = dialog.querySelector(".itinerari-zoom-image");
+    const viewport = dialog.querySelector(".itinerari-zoom-viewport");
+    if (!(image instanceof HTMLElement)) return;
+
+    const state = getState(dialog);
+    if (state.scale <= MIN_SCALE) {
+      state.scale = MIN_SCALE;
+      state.x = 0;
+      state.y = 0;
+    }
+    clampPan(dialog, state);
+    image.style.transform = `translate(${state.x}px, ${state.y}px) scale(${state.scale})`;
+    if (viewport instanceof HTMLElement) {
+      viewport.style.cursor = state.scale > MIN_SCALE ? "grab" : "zoom-in";
+    }
+
+    const zoomOut = dialog.querySelector(".itinerari-zoom-out");
+    const zoomIn = dialog.querySelector(".itinerari-zoom-in");
+    if (zoomOut instanceof HTMLButtonElement) {
+      zoomOut.disabled = state.scale <= MIN_SCALE + 0.01;
+    }
+    if (zoomIn instanceof HTMLButtonElement) {
+      zoomIn.disabled = state.scale >= MAX_SCALE - 0.01;
+    }
+  }
+
+  function setScale(dialog, nextScale) {
+    const state = getState(dialog);
+    state.scale = clamp(nextScale, MIN_SCALE, MAX_SCALE);
+    applyTransform(dialog);
+  }
+
+  function zoomBy(dialog, factor) {
+    setScale(dialog, getState(dialog).scale * factor);
+  }
 
   function openZoomFromTrigger(btn) {
     const root = btn.closest("[data-itinerari-zoom-root]");
@@ -73,8 +168,6 @@ const overlayCloseClass =
     }
 
     const thumb = btn.querySelector("img");
-    // En local, data-full-src (image.url.src) pot ser una ruta /src/ que no existeix.
-    // La miniatura ja té l'URL que Vite/Astro serveix de veritat.
     const fullSrc =
       (thumb instanceof HTMLImageElement ? thumb.currentSrc || thumb.src : "") ||
       btn.dataset.fullSrc ||
@@ -93,263 +186,176 @@ const overlayCloseClass =
     previewCaption.textContent = caption;
     if (dialog.open) dialog.close();
     openDialogFromTrigger(dialog, btn, {
-      onOpen: () => {
-        syncZoomFullscreenButton(dialog);
-      },
-      onBeforeClose: () => {
-        if (skipDialogCloseCleanup) return;
-        tearDownFullscreenHost();
-      },
+      onOpen: () => resetState(dialog),
     });
   }
 
-  function getFullscreenElement() {
-    return document.fullscreenElement || document.webkitFullscreenElement || null;
-  }
+  function openZoomDialog(target) {
+    if (!(target instanceof Element)) return false;
 
-  function pauseOpenDialogs() {
-    pausedDialogs = Array.from(document.querySelectorAll("dialog[open]")).filter(
-      (dialog) => dialog instanceof HTMLDialogElement,
-    );
-    skipDialogCloseCleanup = true;
-    pausedDialogs.forEach((dialog) => {
-      if (dialog instanceof HTMLDialogElement && dialog.open) dialog.close();
-    });
-    skipDialogCloseCleanup = false;
-  }
-
-  function restorePausedDialogs(includeZoom) {
-    const source = hostSourceDialog;
-    const toRestore = pausedDialogs.filter((dialog) => {
-      if (!(dialog instanceof HTMLDialogElement)) return false;
-      if (!includeZoom && dialog === source) return false;
-      return true;
-    });
-    pausedDialogs = [];
-    toRestore.forEach((dialog) => {
-      if (dialog.open) return;
-      try {
-        dialog.showModal();
-      } catch {
-        dialog.show();
-      }
-    });
-  }
-
-  function bindFullscreenHost(host) {
-    if (host.dataset.fsBound === "true") return;
-    host.dataset.fsBound = "true";
-
-    const handleHostAction = (event) => {
-      const target = event.target;
-      if (!(target instanceof Element)) return;
-
-      if (target.closest(".itinerari-zoom-fs-exit")) {
-        event.preventDefault();
-        event.stopPropagation();
-        event.stopImmediatePropagation();
-        void leaveImageFullscreen(false);
-        return;
-      }
-
-      if (target.closest(".itinerari-zoom-fs-close")) {
-        event.preventDefault();
-        event.stopPropagation();
-        event.stopImmediatePropagation();
-        void leaveImageFullscreen(true);
-      }
-    };
-
-    host.addEventListener("pointerup", handleHostAction, true);
-    host.addEventListener("click", handleHostAction, true);
-    host.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") {
-        event.preventDefault();
-        void leaveImageFullscreen(false);
-      }
-    });
-  }
-
-  function getFullscreenHost() {
-    let host = document.getElementById("itinerari-zoom-fs-host");
-    if (host instanceof HTMLElement) {
-      bindFullscreenHost(host);
-      return host;
-    }
-
-    host = document.createElement("div");
-    host.id = "itinerari-zoom-fs-host";
-    host.className = "itinerari-zoom-fs-host";
-    host.hidden = true;
-    host.setAttribute("role", "dialog");
-    host.setAttribute("aria-modal", "true");
-    host.setAttribute("aria-label", "Imatge a pantalla completa");
-    host.innerHTML = `
-      <div class="itinerari-zoom-fs-actions">
-        <button type="button" class="itinerari-zoom-fs-exit itinerari-overlay-close text-sm font-medium">Sortir</button>
-        <button type="button" class="itinerari-zoom-fs-close itinerari-overlay-close text-sm font-medium">Tancar</button>
-      </div>
-      <figure class="itinerari-zoom-fs-figure">
-        <img class="itinerari-zoom-fs-image" src="" alt="" />
-        <figcaption class="itinerari-zoom-fs-caption"></figcaption>
-      </figure>
-    `;
-    document.body.appendChild(host);
-    bindFullscreenHost(host);
-    return host;
-  }
-
-  function hideFullscreenHost() {
-    const host = document.getElementById("itinerari-zoom-fs-host");
-    if (host instanceof HTMLElement) host.hidden = true;
-  }
-
-  function tearDownFullscreenHost() {
-    hideFullscreenHost();
-    if (getFullscreenElement()) exitFullscreenSafe();
-    hostSourceDialog = null;
-    pausedDialogs = [];
-  }
-
-  function isZoomFullscreen(dialog) {
-    const host = document.getElementById("itinerari-zoom-fs-host");
-    return Boolean(
-      host instanceof HTMLElement && !host.hidden && hostSourceDialog === dialog,
-    );
-  }
-
-  function syncZoomFullscreenButton(dialog) {
-    const btn = dialog.querySelector(".itinerari-zoom-fullscreen");
-    if (!(btn instanceof HTMLButtonElement)) return;
-    const active = isZoomFullscreen(dialog);
-    btn.textContent = active ? "Sortir" : "Pantalla completa";
-    btn.setAttribute(
-      "aria-label",
-      active ? "Sortir de pantalla completa" : "Pantalla completa",
-    );
-    btn.setAttribute("aria-pressed", active ? "true" : "false");
-  }
-
-  function exitFullscreenSafe() {
-    if (document.exitFullscreen) {
-      void document.exitFullscreen();
-      return;
-    }
-    if (document.webkitExitFullscreen) {
-      document.webkitExitFullscreen();
-    }
-  }
-
-  function enterImageFullscreen(dialog) {
-    const image = dialog.querySelector(".itinerari-zoom-image");
-    const caption = dialog.querySelector(".itinerari-zoom-caption");
-    if (!(image instanceof HTMLImageElement)) return;
-
-    const host = getFullscreenHost();
-    const hostImage = host.querySelector(".itinerari-zoom-fs-image");
-    const hostCaption = host.querySelector(".itinerari-zoom-fs-caption");
-    if (!(hostImage instanceof HTMLImageElement) || !(hostCaption instanceof HTMLElement)) {
-      return;
-    }
-
-    hostImage.src = image.currentSrc || image.src;
-    hostImage.alt = image.alt;
-    hostCaption.textContent = caption instanceof HTMLElement ? caption.textContent : "";
-    host.hidden = false;
-    hostSourceDialog = dialog;
-    pauseOpenDialogs();
-    host.querySelector(".itinerari-zoom-fs-exit")?.focus();
-
-    if (host.requestFullscreen) {
-      try {
-        const result = host.requestFullscreen({ navigationUI: "hide" });
-        if (result && typeof result.catch === "function") {
-          result.catch(() => {
-            try {
-              void host.requestFullscreen();
-            } catch {
-              /* la capa ja tapa la pàgina */
-            }
-          });
-        }
-      } catch {
-        try {
-          void host.requestFullscreen();
-        } catch {
-          /* la capa ja tapa la pàgina */
-        }
-      }
-      return;
-    }
-    if (host.webkitRequestFullscreen) {
-      host.webkitRequestFullscreen();
-    }
-  }
-
-  async function leaveImageFullscreen(closeZoom) {
-    if (leavingFullscreen) return;
-    leavingFullscreen = true;
-    const source = hostSourceDialog;
-    hideFullscreenHost();
-    try {
-      if (getFullscreenElement() && document.exitFullscreen) {
-        await document.exitFullscreen();
-      } else if (getFullscreenElement() && document.webkitExitFullscreen) {
-        document.webkitExitFullscreen();
-      }
-    } catch {
-      /* ja fora de pantalla completa */
-    }
-    restorePausedDialogs(!closeZoom);
-    hostSourceDialog = null;
-    leavingFullscreen = false;
-    if (source instanceof HTMLDialogElement) syncZoomFullscreenButton(source);
-  }
-
-  function toggleZoomFullscreen(dialog) {
-    if (isZoomFullscreen(dialog)) {
-      leaveImageFullscreen(false);
-      return;
-    }
-    enterImageFullscreen(dialog);
-  }
-
-  function onZoomClick(event) {
-    const target = event.target;
-    if (!(target instanceof Element)) return;
-
-    const fullscreenBtn = target.closest(".itinerari-zoom-fullscreen");
-    if (fullscreenBtn instanceof HTMLElement) {
-      const dialog = fullscreenBtn.closest("dialog");
+    if (target.closest(".itinerari-zoom-in")) {
+      const dialog = target.closest(".itinerari-zoom-dialog");
       if (dialog instanceof HTMLDialogElement) {
-        event.preventDefault();
-        event.stopPropagation();
-        toggleZoomFullscreen(dialog);
-        syncZoomFullscreenButton(dialog);
+        zoomBy(dialog, ZOOM_STEP);
+        return true;
       }
-      return;
+    }
+
+    if (target.closest(".itinerari-zoom-out")) {
+      const dialog = target.closest(".itinerari-zoom-dialog");
+      if (dialog instanceof HTMLDialogElement) {
+        zoomBy(dialog, 1 / ZOOM_STEP);
+        return true;
+      }
     }
 
     const btn = target.closest("[data-itinerari-zoom]");
-    if (!(btn instanceof HTMLElement)) return;
-    event.preventDefault();
-    event.stopPropagation();
+    if (!(btn instanceof HTMLElement)) return false;
     openZoomFromTrigger(btn);
+    return true;
+  }
+
+  function onZoomClick(event) {
+    if (didPan) {
+      didPan = false;
+      event.preventDefault();
+      event.stopPropagation();
+      return;
+    }
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+    if (openZoomDialog(target)) {
+      event.preventDefault();
+      event.stopPropagation();
+      return;
+    }
+
+    const dialog = target.closest(".itinerari-zoom-dialog");
+    if (
+      dialog instanceof HTMLDialogElement &&
+      dialog.open &&
+      target.closest(".itinerari-zoom-viewport") &&
+      !target.closest("button")
+    ) {
+      event.preventDefault();
+      event.stopPropagation();
+      if (getState(dialog).scale <= MIN_SCALE) zoomBy(dialog, ZOOM_STEP);
+    }
+  }
+
+  function pointerDistance() {
+    const pts = Array.from(pointers.values());
+    if (pts.length < 2) return 0;
+    const dx = pts[0].x - pts[1].x;
+    const dy = pts[0].y - pts[1].y;
+    return Math.hypot(dx, dy);
+  }
+
+  function onPointerDown(event) {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+    if (target.closest("button")) return;
+
+    const dialog = target.closest(".itinerari-zoom-dialog");
+    if (!(dialog instanceof HTMLDialogElement) || !dialog.open) return;
+    if (!target.closest(".itinerari-zoom-viewport")) return;
+
+    pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+    panDialog = dialog;
+    panLast = { x: event.clientX, y: event.clientY };
+    didPan = false;
+
+    if (pointers.size === 2) {
+      pinchDistance = pointerDistance();
+      pinchScale = getState(dialog).scale;
+    }
+
+    try {
+      target.setPointerCapture(event.pointerId);
+    } catch {
+      /* capture opcional */
+    }
+  }
+
+  function onPointerMove(event) {
+    if (!panDialog || !pointers.has(event.pointerId)) return;
+    pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+
+    if (pointers.size === 2 && pinchDistance > 0) {
+      const next = pointerDistance();
+      setScale(panDialog, pinchScale * (next / pinchDistance));
+      didPan = true;
+      return;
+    }
+
+    const state = getState(panDialog);
+    if (state.scale <= MIN_SCALE || !panLast) return;
+
+    const dx = event.clientX - panLast.x;
+    const dy = event.clientY - panLast.y;
+    if (Math.abs(dx) > 1 || Math.abs(dy) > 1) didPan = true;
+    state.x += dx;
+    state.y += dy;
+    panLast = { x: event.clientX, y: event.clientY };
+    applyTransform(panDialog);
+  }
+
+  function onPointerUp(event) {
+    pointers.delete(event.pointerId);
+    if (pointers.size < 2) {
+      pinchDistance = 0;
+    }
+    if (pointers.size === 0) {
+      panDialog = null;
+      panLast = null;
+    }
+  }
+
+  function onWheel(event) {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+    const dialog = target.closest(".itinerari-zoom-dialog");
+    if (!(dialog instanceof HTMLDialogElement) || !dialog.open) return;
+    event.preventDefault();
+    zoomBy(dialog, event.deltaY < 0 ? ZOOM_STEP : 1 / ZOOM_STEP);
+  }
+
+  function onDoubleClick(event) {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+    if (target.closest("button")) return;
+    const dialog = target.closest(".itinerari-zoom-dialog");
+    if (!(dialog instanceof HTMLDialogElement) || !dialog.open) return;
+    if (!target.closest(".itinerari-zoom-viewport")) return;
+    event.preventDefault();
+    const state = getState(dialog);
+    setScale(dialog, state.scale > 1.4 ? MIN_SCALE : 2.4);
+  }
+
+  function onKeyDown(event) {
+    const dialog = document.querySelector(".itinerari-zoom-dialog[open]");
+    if (!(dialog instanceof HTMLDialogElement)) return;
+    if (event.key === "+" || event.key === "=") {
+      event.preventDefault();
+      zoomBy(dialog, ZOOM_STEP);
+    }
+    if (event.key === "-" || event.key === "_") {
+      event.preventDefault();
+      zoomBy(dialog, 1 / ZOOM_STEP);
+    }
   }
 
   function initItinerariZoom() {
     if (document.documentElement.dataset.itinerariZoomDelegated === "true") return;
     document.documentElement.dataset.itinerariZoomDelegated = "true";
     document.addEventListener("click", onZoomClick);
-    const onFullscreenChange = () => {
-      const host = document.getElementById("itinerari-zoom-fs-host");
-      const full = getFullscreenElement();
-      if (host instanceof HTMLElement && !host.hidden && !full && hostSourceDialog) {
-        void leaveImageFullscreen(false);
-      }
-    };
-    document.addEventListener("fullscreenchange", onFullscreenChange);
-    document.addEventListener("webkitfullscreenchange", onFullscreenChange);
+    document.addEventListener("pointerdown", onPointerDown);
+    document.addEventListener("pointermove", onPointerMove);
+    document.addEventListener("pointerup", onPointerUp);
+    document.addEventListener("pointercancel", onPointerUp);
+    document.addEventListener("wheel", onWheel, { passive: false });
+    document.addEventListener("dblclick", onDoubleClick);
+    document.addEventListener("keydown", onKeyDown);
   }
 
   initItinerariZoom();
@@ -357,69 +363,46 @@ const overlayCloseClass =
 </script>
 
 <style is:global>
-  .itinerari-zoom-fs-host {
-    position: fixed;
-    inset: 0;
-    z-index: 400;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #000;
-    padding: 1rem;
+  .itinerari-zoom-image {
+    transform-origin: center center;
+    will-change: transform;
   }
 
-  .itinerari-zoom-fs-host[hidden] {
-    display: none !important;
+  .itinerari-zoom-viewport {
+    touch-action: none;
   }
 
-  .itinerari-zoom-fs-host:fullscreen,
-  .itinerari-zoom-fs-host:-webkit-full-screen {
-    width: 100% !important;
-    height: 100% !important;
-    background: #000 !important;
+  .itinerari-zoom-tool {
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
   }
 
-  .itinerari-zoom-fs-actions {
+  .itinerari-zoom-tool:disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+
+  button[data-itinerari-zoom]:has(img) {
+    position: relative;
+  }
+
+  button[data-itinerari-zoom]:has(img)::after {
+    content: "";
     position: absolute;
-    top: 0.75rem;
-    right: 0.75rem;
-    z-index: 2147483647;
-    display: flex;
-    gap: 0.5rem;
-    pointer-events: auto;
-  }
-
-  .itinerari-zoom-fs-actions button {
-    pointer-events: auto;
-    cursor: pointer;
-  }
-
-  .itinerari-zoom-fs-figure {
-    display: flex;
-    max-height: 100%;
-    width: 100%;
-    max-width: 100%;
-    flex-direction: column;
-    align-items: center;
+    right: 0.6rem;
+    bottom: 0.6rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 9999px;
     pointer-events: none;
-  }
-
-  .itinerari-zoom-fs-image {
-    display: block;
-    width: auto;
-    max-width: 100vw;
-    height: auto;
-    max-height: calc(100dvh - 5.5rem);
-    object-fit: contain;
-    pointer-events: none;
-  }
-
-  .itinerari-zoom-fs-caption {
-    margin-top: 0.75rem;
-    max-width: 56rem;
-    padding: 0 1rem;
-    text-align: center;
-    font-size: 0.875rem;
-    color: #fff;
+    background-color: rgb(10 10 10 / 0.72);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23fff' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='6'/%3E%3Cpath d='M20 20l-3.2-3.2'/%3E%3Cpath d='M11 8v6M8 11h6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1.15rem;
+    box-shadow:
+      0 4px 14px rgb(0 0 0 / 0.35),
+      0 0 0 1px rgb(255 255 255 / 0.22);
   }
 </style>

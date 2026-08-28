@@ -481,20 +481,30 @@ const sectionContent = "lg:col-span-3 min-w-0 w-full";
     {
       frontmatter.geologia &&
         hasGeologiaParts &&
-        geologiaParts.map((part, partIndex) => (
+        geologiaParts.map((part, partIndex) => {
+          const nextPart = geologiaParts[partIndex + 1];
+          return (
           <ItinerariDadaModal
             modalId={`${geologiaModalId}-${partIndex}`}
             label={part.modalLabel ?? `${part.label} — ${frontmatter.title}`}
             intro={part.intro}
             sections={part.sections ?? []}
+            nextModalId={
+              nextPart ? `${geologiaModalId}-${partIndex + 1}` : undefined
+            }
+            nextLabel={nextPart?.label}
           />
-        ))
+          );
+        })
     }
     {
       frontmatter.geologia && !hasGeologiaParts && (
         <ItinerariDadaModal
           modalId={geologiaModalId}
-          label={`Geologia — ${frontmatter.title}`}
+          label={
+            frontmatter.geologia.modalLabel ??
+            `Geologia — ${frontmatter.title}`
+          }
           intro={frontmatter.geologia.intro}
           sections={frontmatter.geologia.sections ?? []}
         />

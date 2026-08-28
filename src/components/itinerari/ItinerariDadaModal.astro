@@ -79,6 +79,10 @@ interface Props {
   focusTrap?: boolean;
   /** Botons A− / A+ per escalar el text */
   textSizeControls?: boolean;
+  /** Id del modal següent (geologia amb més d'una part) */
+  nextModalId?: string;
+  /** Etiqueta curta del modal següent, per a l'aria-label */
+  nextLabel?: string;
 }
 
 const {
@@ -90,6 +94,8 @@ const {
   images = [],
   focusTrap = true,
   textSizeControls = true,
+  nextModalId,
+  nextLabel,
 } = Astro.props;
 const titleId = `${modalId}-title`;
 const introLinkedSlugs = createTermeLinkTracker();
@@ -474,11 +480,42 @@ const panelCloseClass =
         </ItinerariZoom>
       )
     }
+
+    {
+      nextModalId && (
+        <div class="mt-8 flex justify-end">
+          <button
+            type="button"
+            class="inline-flex size-11 items-center justify-center rounded-full bg-base-200 text-base-900 hover:bg-base-300 dark:bg-base-800 dark:text-white dark:hover:bg-base-700"
+            data-next-modal={nextModalId}
+            aria-label={nextLabel ? `Següent: ${nextLabel}` : "Següent apartat"}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="size-6"
+              aria-hidden="true"
+            >
+              <path d="M9 6l6 6-6 6" />
+            </svg>
+          </button>
+        </div>
+      )
+    }
   </div>
 </dialog>
 
 <script>
-  import { bindDialogTrigger } from "@/utils/modalA11y";
+  import { bindDialogTrigger, switchToDialog } from "@/utils/modalA11y";
+
+  function pauseDialogVideos(dialog: HTMLDialogElement) {
+    dialog.querySelectorAll("video").forEach((video) => video.pause());
+  }
 
   function initItinerariDadaModals() {
     document.querySelectorAll("[data-modal-target]").forEach((btn) => {
@@ -493,9 +530,30 @@ const panelCloseClass =
       if (!(dialog instanceof HTMLDialogElement)) return;
 
       bindDialogTrigger(btn, dialog, {
-        onBeforeClose: () => {
-          dialog.querySelectorAll("video").forEach((video) => video.pause());
-        },
+        onBeforeClose: () => pauseDialogVideos(dialog),
+      });
+    });
+
+    document.querySelectorAll("[data-next-modal]").forEach((btn) => {
+      if (!(btn instanceof HTMLElement) || btn.dataset.nextBound === "true") {
+        return;
+      }
+      btn.dataset.nextBound = "true";
+
+      btn.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+
+        const from = btn.closest("dialog");
+        const toId = btn.dataset.nextModal;
+        const to = toId ? document.getElementById(toId) : null;
+        if (!(from instanceof HTMLDialogElement) || !(to instanceof HTMLDialogElement)) {
+          return;
+        }
+
+        switchToDialog(from, to, {
+          onBeforeClose: () => pauseDialogVideos(to),
+        });
       });
     });
   }

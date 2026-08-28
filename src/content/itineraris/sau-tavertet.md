@@ -50,7 +50,7 @@ intro:
           edat: "Quaternari (2,58 Ma–actualitat). Origen superficial: alteració química del granit fins a formar sorra; no marí."
         - parada: "P3"
           slug: "I1-P3"
-          material: "Argiles del Paleocè, Fm. Mediona"
+          material: "Argiles del Paleocè, Formació Mediona"
           edat: "Paleocè superior, Thanetià (aprox. 59–56 Ma). Origen continental: sediments fins dipositats en planes al·luvials humides i petits llacs; no marí."
         - parada: "P4"
           slug: "I1-P4"
@@ -58,23 +58,23 @@ intro:
           edat: "Quaternari (2,58 Ma–actualitat). Origen continental: acumulació de blocs, graves i sòls desplaçats pel vessant; no marí."
         - parada: "P5"
           slug: "I1-P5"
-          material: "Gresos i conglomerats vermells, Fm. Vilanova de Sau"
+          material: "Gresos i conglomerats vermells, Formació Vilanova de Sau"
           edat: "Eocè inferior, Ilerdià (aprox. 56–47,8 Ma). Origen continental: dipòsits fluvials i de cons al·luvials; no marí."
         - parada: "P6"
           slug: "I1-P6"
-          material: "Conglomerats, Fm. Romagats"
+          material: "Conglomerats, Formació Romagats"
           edat: "Eocè mitjà, Lutecià (aprox. 47,8–41 Ma). Origen continental: conglomerats dipositats en ventalls al·luvials per fluxos d'aigua carregats de sediments; no marí."
         - parada: "P7"
           slug: "I1-P7"
-          material: "Gresos grisos i vermells, Fm. Tavertet"
+          material: "Gresos vermells i grisos: contacte amb la Formació Tavertet"
           edat: "Eocè mitjà, Lutecià inferior–mitjà (aprox. 48–46 Ma). Origen de transició continental-marí: sediments aportats des de terra i dipositats durant l'entrada progressiva del mar."
         - parada: "P8"
           slug: "I1-P8"
-          material: "Gresos grisos, Fm. Tavertet"
+          material: "Gresos de la Formació Tavertet"
           edat: "Eocè mitjà, Lutecià inferior–mitjà (aprox. 48–46 Ma). Origen marí litoral: sorres dipositades en una plataforma marina soma, influïda per ones i corrents."
         - parada: "P9"
           slug: "I1-P9"
-          material: "Calcàries amb nummulits, Fm. Tavertet"
+          material: "Calcàries amb nummulits de la Formació Tavertet"
           edat: "Eocè mitjà, Lutecià inferior–mitjà (aprox. 48–46 Ma). Origen marí de plataforma: acumulació i cimentació de fragments carbonatats i closques de nummulits."
         - parada: "P10"
           slug: "I1-P10"
@@ -82,11 +82,11 @@ intro:
           edat: "Estructures en roques eocenes, principalment lutecianes (aprox. 48–41 Ma). Origen tectònic i erosiu: fractures generades per esforços tectònics i modelades posteriorment per l'erosió."
         - parada: "P11"
           slug: "I1-P11"
-          material: "Margues, Fm. Coll de Malla"
+          material: "Margues de la Formació Coll de Malla"
           edat: "Eocè mitjà, Lutecià (aprox. 47,8–41 Ma). Origen marí de plataforma: acumulació de fangs calcaris i argilosos en aigües tranquil·les, amb episodis d'aportació sorrenca."
         - parada: "P12"
           slug: "I1-P12"
-          material: "Gresos, Fm. Barcons"
+          material: "Gresos de la Formació Barcons"
           edat: "Eocè mitjà, Lutecià (aprox. 47,8–41 Ma). Origen marí litoral o de plataforma soma: sorres dipositades per corrents i onatge; equivalent lateral del Gres de Folgueroles."
         - parada: "A1"
           slug: "I1-A1"
@@ -94,13 +94,13 @@ intro:
           edat: "Paleozoic. Sòcol hercinià: metamorfisme regional i de contacte, amb dics d'aplita i màfics. Parada auxiliar, fora de l'itinerari docent principal."
 dades:
   mapa: "Mapa interactiu de l'itinerari geològic Sau–Tavertet (QGIS, capes geològiques i temàtiques)"
-  historia: "Context litològic del granit hercinià, el sòcol paleozoic i les cobertes sedimentàries terciàries del sector Sau–Tavertet."
   paleogeologia: "Seqüència cronològica en vídeo dels grans esdeveniments geològics que han configurat el relleu i les formacions visibles al llarg de l'itinerari Sau–Tavertet."
+  historia: "Context litològic del granit hercinià, el sòcol paleozoic i les cobertes sedimentàries terciàries del sector Sau–Tavertet."
   paisatge: "Relació entre geologia del Collsacabra, paisatge de la cinglera i distribució de la flora al llarg de tot l'itinerari Sau–Tavertet."
 dadesLabels:
   mapa: "Mapa QGIS geològic"
-  historia: "Geologia"
   paleogeologia: "Paleogeologia"
+  historia: "Geologia"
   paisatge: "Geobotànica"
   mapaGeobotanica: "Mapa QGIS geobotànic"
 dadesIndex:
@@ -261,16 +261,16 @@ dadesModals:
         paragraphs:
           - "Per sobre del sòcol cristal·lí, en discordança erosiva, s'hi disposa un primer paquet de sediments de color vermell, d'origen continental. Són argiles i gresos dipositats en rius, llacunes i planes d'inundació, en un paisatge fluvial càlid anterior a la invasió marina."
         subsections:
-          - title: "P3 – Argiles del Paleocè, Fm. Mediona"
+          - title: "P3 – Argiles del Paleocè, Formació Mediona"
             paragraphs:
               - "A la P3 es pot observar el nivell d'argiles vermelles de la Formació de Mediona: materials fins, plàstics quan s'humitegen, amb tonalitats rogenques degudes als òxids de ferro. Representen antics llacs i depressions on es decantava el material més fi dels sistemes fluvials."
           - title: "P4 – Dipòsits de vessant (Quaternari)"
             paragraphs:
               - "A la P4 s'observen dipòsits de vessant recents: materials no consolidats que recobreixen pendents i replans del trajecte, reoberts per processos de despullament i transport per aigua. Formen part del marge quaternari de la successió."
-          - title: "P5 – Gresos i conglomerats vermells, Fm. Vilanova de Sau"
+          - title: "P5 – Gresos i conglomerats vermells, Formació Vilanova de Sau"
             paragraphs:
               - "A la P5 afloren gresos i conglomerats vermells de la Formació de Vilanova de Sau: arenes i còdols cimentats en tonalitats rogenques, dipositats en canals de riu i ventalls al·luvials dins la capa vermella continental."
-          - title: "P6 – Conglomerats, Fm. Romagats"
+          - title: "P6 – Conglomerats, Formació Romagats"
             paragraphs:
               - "A la P6 apareixen conglomerats de la Formació de Romagats, amb clasts millor seleccionats i cimentació més compacta, que marquen la continuïtat del farciment continental abans de la transició cap als ambients de la capa grisa."
       - title: "Discordança erosiva als cingles de Tavertet"
@@ -285,22 +285,22 @@ dadesModals:
         paragraphs:
           - "Per sobre de la seqüència vermella s'instal·la la capa grisa, formada per roques d'origen marí: gresos grisos, calcàries amb nummulits, margues i altres litologies eocenes. Aquest paquet registra la presència d'un antic mar interior eocè, relacionat amb la part oriental de la Conca de l'Ebre, fins al tancament de la seqüència prop de Tavertet."
         subsections:
-          - title: "P7 – Gresos grisos i vermells, Fm. Tavertet"
+          - title: "P7 – Gresos vermells i grisos: contacte amb la Formació Tavertet"
             paragraphs:
               - "A la P7 es veu el contacte entre gresos vermells i gresos grisos de la Formació Tavertet, amb presència eventual d'un nivell oxidat groguenc. Aquest pas documenta la transició entre els ambients continentals i els primers ambients marginalment marins o de plana costanera."
-          - title: "P8 – Gresos grisos, Fm. Tavertet"
+          - title: "P8 – Gresos de la Formació Tavertet"
             paragraphs:
               - "A la P8 predominen gresos grisos ben estratificats de la Formació Tavertet, dipositats en ambients costaners o marins poc profunds ja dominats per condicions sedimentàries de baixa energia."
-          - title: "P9 – Calcàries amb nummulits, Fm. Tavertet"
+          - title: "P9 – Calcàries amb nummulits de la Formació Tavertet"
             paragraphs:
               - "La P9 és la parada emblemàtica de les calcàries grises amb nummulits («pedra de Girona»), uns foraminífers de mida centimètrica que s'identifiquen fàcilment al camp. Són roques dures, molt resistents a l'erosió, que formen la cornisa superior dels cingles de Tavertet."
           - title: "P10 – Superfície estructural amb diàclasis"
             paragraphs:
               - "A la P10 es pot observar una superfície estructural marcada per diàclasis i xarxes de fractures que tallen la coberta sedimentària eocena, registrant deformacions fràgils en un context post-sedimentari."
-          - title: "P11 – Margues, Fm. Coll de Malla"
+          - title: "P11 – Margues de la Formació Coll de Malla"
             paragraphs:
               - "A la P11 afloren margues grisoses de la Formació del Coll de Malla, roques toves i plàstiques amb fòssils marins abundants. La seva menor duresa afavoreix l'erosió i explica part de l'escalonament dels cingles."
-          - title: "P12 – Gresos, Fm. Barcons"
+          - title: "P12 – Gresos de la Formació Barcons"
             paragraphs:
               - "A la P12 es documenten gresos de la Formació de Barcons, al Turó del Castell, que alternen amb les margues i formen relleus més resistents. Són arenes marines o de platja cimentades que tanquen la seqüència grisa prop de Tavertet."
         mediaAfterSubsection: 0
@@ -335,16 +335,16 @@ dadesModals:
           rows:
             - cells: ["P1", "Sòcol hercinià", "Monzogranit i pòrfirs", "Continent paleozoic antic · Paleozoic (310–280 Ma)"]
             - cells: ["P2", "Alteració superficial", "Cantera de Sauló", "Regòlit granític quaternari · Quaternari"]
-            - cells: ["P3", "Capa vermella", "Argiles del Paleocè, Fm. Mediona", "Plans d'inundació fluvials · Paleocè (66–56 Ma)"]
+            - cells: ["P3", "Capa vermella", "Argiles del Paleocè, Formació Mediona", "Plans d'inundació fluvials · Paleocè (66–56 Ma)"]
             - cells: ["P4", "Quaternari", "Dipòsits de vessant (Quaternari)", "Despullament i transport per aigua · Quaternari (2,6 Ma–actualitat)"]
-            - cells: ["P5", "Capa vermella", "Gresos i conglomerats vermells, Fm. Vilanova de Sau", "Canals de riu i ventalls al·luvials · Eocè inferior (56–47 Ma)"]
-            - cells: ["P6", "Capa vermella", "Conglomerats, Fm. Romagats", "Sistemes fluvials continentals · Eocè (47–38 Ma)"]
-            - cells: ["P7", "Capa grisa", "Gresos grisos i vermells, Fm. Tavertet", "Transició continental–marina · Eocè (47–38 Ma)"]
-            - cells: ["P8", "Capa grisa", "Gresos grisos, Fm. Tavertet", "Platja o mar poc profund · Eocè (47–38 Ma)"]
-            - cells: ["P9", "Capa grisa", "Calcàries amb nummulits, Fm. Tavertet", "Mar eocè poc profund · Eocè mitjà (47–34 Ma)"]
+            - cells: ["P5", "Capa vermella", "Gresos i conglomerats vermells, Formació Vilanova de Sau", "Canals de riu i ventalls al·luvials · Eocè inferior (56–47 Ma)"]
+            - cells: ["P6", "Capa vermella", "Conglomerats, Formació Romagats", "Sistemes fluvials continentals · Eocè (47–38 Ma)"]
+            - cells: ["P7", "Capa grisa", "Gresos vermells i grisos: contacte amb la Formació Tavertet", "Transició continental–marina · Eocè (47–38 Ma)"]
+            - cells: ["P8", "Capa grisa", "Gresos de la Formació Tavertet", "Platja o mar poc profund · Eocè (47–38 Ma)"]
+            - cells: ["P9", "Capa grisa", "Calcàries amb nummulits de la Formació Tavertet", "Mar eocè poc profund · Eocè mitjà (47–34 Ma)"]
             - cells: ["P10", "Capa grisa", "Superfície estructural amb diàclasis", "Estructures en coberta sedimentària · Eocè (47–34 Ma)"]
-            - cells: ["P11", "Capa grisa", "Margues, Fm. Coll de Malla", "Fons marí fangós · Eocè superior (38–34 Ma)"]
-            - cells: ["P12", "Capa grisa", "Gresos, Fm. Barcons", "Arenes marines / de platja; cingles i cornises · Eocè terminal–Oligocè (34–28 Ma)"]
+            - cells: ["P11", "Capa grisa", "Margues de la Formació Coll de Malla", "Fons marí fangós · Eocè superior (38–34 Ma)"]
+            - cells: ["P12", "Capa grisa", "Gresos de la Formació Barcons", "Arenes marines / de platja; cingles i cornises · Eocè terminal–Oligocè (34–28 Ma)"]
             - cells: ["A1", "Sòcol hercinià (auxiliar)", "Afloraments metamòrfics", "Pissarres pigallades i dics · Paleozoic"]
   tectonica-estructures:
     sections:

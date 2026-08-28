@@ -654,6 +654,19 @@ export const termes: Terme[] = [
     ]
   },
   {
+    "slug": "flora-rupicola",
+    "terme": "Flora rupícola",
+    "categoria": "Geobotànica",
+    "definicio": "Vegetació adaptada a viure sobre roca nua o en fissures, amb sòl molt prim o inexistent. A la parada 1, les comunitats rupícoles colonitzen les diàclasis del monzogranit, on s'acumulen sediments, matèria orgànica i humitat que permeten l'arrelament.",
+    "sinonims": [
+      "comunitats rupícoles",
+      "vegetació rupícola",
+      "coberta rupícola",
+      "rupícola",
+      "rupícoles"
+    ]
+  },
+  {
     "slug": "friable",
     "terme": "Friable",
     "categoria": "Litologia",
@@ -771,6 +784,17 @@ export const termes: Terme[] = [
       "Fm. Mediona",
       "Formació Mediona",
       "Mediona"
+    ]
+  },
+  {
+    "slug": "formacio-de-orpi",
+    "terme": "Formació Orpí",
+    "categoria": "Estratigrafia",
+    "definicio": "Unitat de l'Eocè inferior (Ilerdià) formada principalment per calcàries de plataforma marina somera, sovint amb alveolines. Al sector de Sau–Tavertet apareix de manera local entre la Formació Mediona i la Formació Vilanova de Sau, i registra un episodi transgresiu marí abans del retorn a la sedimentació continental dels gresos i conglomerats vermells.",
+    "sinonims": [
+      "Fm. Orpí",
+      "Formació d'Orpí",
+      "Orpí"
     ]
   },
   {
@@ -1125,6 +1149,15 @@ export const termes: Terme[] = [
     ]
   },
   {
+    "slug": "matollar-mediterrani",
+    "terme": "Matollar mediterrani",
+    "categoria": "Geobotànica",
+    "definicio": "Formació vegetal densa, de port baix o mitjà, dominada per arbusts esclerofil·les adaptats a l'estiu sec. A la parada 1 apareix sobre sòls àcids i ben drenats derivats del granit, amb espècies com l'arboç i les ginestes.",
+    "sinonims": [
+      "matollars mediterranis"
+    ]
+  },
+  {
     "slug": "minerals-argilosos",
     "terme": "Minerals argilosos",
     "categoria": "Mineralogia",
@@ -1132,6 +1165,15 @@ export const termes: Terme[] = [
     "sinonims": [
       "minerals d'argila",
       "argiles (mineral)"
+    ]
+  },
+  {
+    "slug": "microhabitats",
+    "terme": "Microhàbitats",
+    "categoria": "Geobotànica",
+    "definicio": "Ambients de dimensions molt reduïdes que ofereixen condicions diferents de l'entorn immediat (humitat, sòl, ombra o protecció). A la parada 1, les diàclasis del granit actuen com a microhàbitats on s'acumulen sediments i aigua i es pot arrelar la vegetació sobre una roca aparentment nua.",
+    "sinonims": [
+      "microhàbitat"
     ]
   },
   {
@@ -1584,6 +1626,18 @@ export const termes: Terme[] = [
     ]
   },
   {
+    "slug": "roques-siliciques",
+    "terme": "Roques silíciques",
+    "categoria": "Litologia",
+    "definicio": "Roques riques en sílice (quars) i pobres en carbonats, com els granits. En alterar-se originen sòls àcids i ben drenats. El monzogranit de la presa de Sau, a la parada 1, n'és l'exemple més clar de l'itinerari.",
+    "sinonims": [
+      "roca silícica",
+      "roques silícies",
+      "silíciques",
+      "silícica"
+    ]
+  },
+  {
     "slug": "saulo",
     "terme": "Sauló",
     "categoria": "Litologia",
@@ -1688,10 +1742,30 @@ export const termes: Terme[] = [
     ]
   },
   {
+    "slug": "sols-acids",
+    "terme": "Sòls àcids",
+    "categoria": "Geobotànica",
+    "definicio": "Sòls amb pH baix, sovint pobres en nutrients i bases, típics de l'alteració de roques silíciques. A les parades 1 i 2, el monzogranit i el sauló originen sòls àcids i ben drenats que seleccionen vegetació adaptada a aquestes condicions.",
+    "sinonims": [
+      "sòl àcid"
+    ]
+  },
+  {
     "slug": "superficie-estructural",
     "terme": "Superfície estructural",
     "categoria": "Geomorfologia",
     "definicio": "Superfície del relleu —planura, cinglera o vessant— condicionada per l'estructura geològica subjacent, com falles, estrats inclinats o diferències de resistència litològica. L'altiplà del Collsacabra és una superfície estructural delimitada per cingleres."
+  },
+  {
+    "slug": "substrat-silicic",
+    "terme": "Substrat silícic",
+    "categoria": "Geobotànica",
+    "definicio": "Material parental ric en sílice i pobre en carbonats sobre el qual es desenvolupa el sòl. A Sau–Tavertet, el sòcol granític de les parades 1 i 2 n'és el cas més clar, en contrast amb les calcàries de Tavertet.",
+    "sinonims": [
+      "substrats silícics",
+      "substrats silicis",
+      "substrat silici"
+    ]
   },
   {
     "slug": "transgressio-marina",
@@ -1768,6 +1842,16 @@ export const termes: Terme[] = [
     "definicio": "Acumulació de sediments en forma de ventall al peu d'un vessant o sortida de canyons, on el corrent perd energia bruscament. Durant l'Eocè inferior, els ventalls al·luvials van contribuir a dipositar materials vermells a la base de la seqüència del Collsacabra.",
     "sinonims": [
       "ventalls al·luvials"
+    ]
+  },
+  {
+    "slug": "vegetacio-pionera",
+    "terme": "Vegetació pionera",
+    "categoria": "Geobotànica",
+    "definicio": "Conjunt de plantes capaces de colonitzar superfícies inestables, remogudes o amb sòl poc desenvolupat. A la parada 2, la vegetació pionera i les espècies ruderals ocupen talussos de sauló de l'antiga pedrera.",
+    "sinonims": [
+      "espècies pioneres",
+      "plantes pioneres"
     ]
   },
   {

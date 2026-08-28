@@ -238,8 +238,8 @@ const itineraris = defineCollection({
         ubicacio: z.string().optional(),
         mapa: z.string(),
         socle: z.string().optional(),
-        historia: z.string(),
         paleogeologia: z.string().optional(),
+        historia: z.string(),
         paisatge: z.string().optional(),
         mapaGeobotanica: z.string().optional(),
       }),
@@ -384,6 +384,7 @@ const parades = defineCollection({
         .object({
           resum: z.string().optional(),
           intro: z.string().optional(),
+          modalLabel: z.string().optional(),
           sections: modalContentSchema(image).shape.sections,
           /** Diversos modals de geologia (p. ex. Geologia I / II). Si hi ha `parts`, s'usen en lloc de intro+sections. */
           parts: z

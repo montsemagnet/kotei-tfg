@@ -6,6 +6,7 @@ const CLOSE_BUTTON_SELECTOR =
 
 const dialogOpeners = new WeakMap<HTMLDialogElement, HTMLElement>();
 const dialogBeforeCloseHandlers = new WeakMap<HTMLDialogElement, () => void>();
+const skipRestoreFocus = new WeakSet<HTMLDialogElement>();
 
 export function getFocusableElements(container: HTMLElement): HTMLElement[] {
   return Array.from(container.querySelectorAll(FOCUSABLE_SELECTOR)).filter(
@@ -109,9 +110,14 @@ function ensureDialogA11yListeners(dialog: HTMLDialogElement): void {
 
   dialog.addEventListener("close", () => {
     const opener = dialogOpeners.get(dialog);
-    if (opener instanceof HTMLElement && useFocusTrap) {
+    if (
+      opener instanceof HTMLElement &&
+      useFocusTrap &&
+      !skipRestoreFocus.has(dialog)
+    ) {
       restoreFocusToTrigger(opener);
     }
+    skipRestoreFocus.delete(dialog);
     dialogOpeners.delete(dialog);
   });
 
@@ -155,4 +161,33 @@ export function bindDialogTrigger(
   trigger.addEventListener("click", () => {
     openDialogFromTrigger(dialog, trigger, options);
   });
+}
+
+/** Tanca el diàleg actual i n'obre un altre sense tornar el focus al botó d'origen. */
+export function switchToDialog(
+  from: HTMLDialogElement,
+  to: HTMLDialogElement,
+  options: { onBeforeClose?: () => void } = {},
+): void {
+  ensureDialogA11yListeners(from);
+  ensureDialogA11yListeners(to);
+
+  const opener = dialogOpeners.get(from);
+  skipRestoreFocus.add(from);
+  dialogBeforeCloseHandlers.get(from)?.();
+  from.close();
+
+  if (options.onBeforeClose) {
+    dialogBeforeCloseHandlers.set(to, options.onBeforeClose);
+  }
+  if (opener instanceof HTMLElement) {
+    dialogOpeners.set(to, opener);
+  }
+
+  to.showModal();
+  to.scrollTop = 0;
+
+  if (to.dataset.focusTrap !== "false") {
+    requestAnimationFrame(() => focusInitialModalElement(to));
+  }
 }

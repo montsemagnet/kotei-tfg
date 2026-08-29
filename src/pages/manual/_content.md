@@ -318,17 +318,7 @@ Tots aquests fitxers són a l’arrel del repositori clonat, dins les carpetes i
 
 ## G. Seguretat i protecció de dades (RGPD)
 
-Resum per al Servei d’Informàtica de la UVic-UCC, pensat per a l’avaluació d’allotjament del lloc.
-
-| Camp | Valor |
-|------|-------|
-| Nom del lloc | GeoTransectes UVic |
-| Naturalesa | Lloc web docent de consulta (itineraris de camp) |
-| Titular / autora | Montserrat Magnet Sabata (`mariamontserrat.magnet@uvic.cat`) |
-| Centre | Facultat de Ciències, Tecnologia i Enginyeries (FCTE) |
-| Direcció del TFG | Dra. Núria Ferrer Ramos, Dra. Judit Molera Marimon |
-
-### Què és tècnicament
+### Seguretat
 
 El lloc és una web estàtica. Es genera amb Astro (`output: "static"`) i el resultat del `build` és un conjunt de fitxers HTML, CSS, JavaScript, imatges i vídeos.
 
@@ -385,7 +375,7 @@ Si Informàtica aplica una Content-Security-Policy estricta, caldrà permetre aq
 | Autenticació / sessions | No n’hi ha. |
 | Pujada de fitxers per usuaris | No n’hi ha. |
 | Formulari de contacte / spam | No s’envia cap formulari. (La plantilla original incloïa pàgines `signin` / `signup` / `contact` sense `action`; no estan enllaçades al menú ni al mapa del lloc.) |
-| Secrets al repositori | No hi ha claus d’API ni fitxers d’entorn de producció. |
+| Credencials al repositori | No hi ha claus d’API ni fitxers d’entorn de producció. |
 | HTTPS | Recomanat i ja usat a l’allotjament actual (GitHub Pages). |
 
 El contingut es publica a partir d’un repositori Git. Els canvis a producció passen per compilació (`npm run build`) i còpia del directori `dist/`.
@@ -394,12 +384,12 @@ El contingut es publica a partir d’un repositori Git. Els canvis a producció 
 
 1. Servir el contingut del directori de build (`dist/`) com a web estàtica.
 2. HTTPS (certificat institucional o equivalent).
-3. Si el lloc no està a l’arrel del domini (p. ex. `/geotransectes/`), cal respectar el `base` d’Astro (ara `/kotei-tfg/` a GitHub Pages; es pot ajustar).
+3. El lloc es pot servir a l’arrel d’un domini o dins d’una carpeta (p. ex. `/geotransectes/` o l’actual `/kotei-tfg/` a GitHub Pages). Aquest prefix s’indica a `astro.config.mjs` (`base`). Si Informàtica canvia la ruta d’allotjament, cal actualitzar el `base`, tornar a generar el lloc (`npm run build`) i publicar el nou directori `dist/`. Si el `base` no coincideix amb l’URL real, els enllaços i els recursos es trenquen.
 4. Mida: el lloc inclou mapes interactius, imatges i vídeos; convé preveure desenes de MB (els mapes qgis2web i els vídeos són la part pesada).
 5. No cal base de dades, correu de servidor, PHP ni Node en runtime.
 6. Actualitzacions: republicar els fitxers estàtics quan hi hagi una nova versió (sense migracions).
 
-Allotjament de desenvolupament actual: GitHub Pages (`https://montsemagnet.github.io/kotei-tfg/`). És un lloc públic de consulta, no un entorn amb dades internes de la universitat.
+Allotjament de desenvolupament actual: GitHub Pages (`https://montsemagnet.github.io/kotei-tfg/`).
 
 ---
 
@@ -407,4 +397,4 @@ Allotjament de desenvolupament actual: GitHub Pages (`https://montsemagnet.githu
 
 **Montserrat Magnet Sabata** — [mariamontserrat.magnet@uvic.cat](mailto:mariamontserrat.magnet@uvic.cat)
 
-**Abast del suport:** només peticions de **professorat universitari** i/o del **servei d’informàtica de la UVic**.
+**Abast del suport:** només peticions de professorat universitari i/o del servei d’informàtica de la UVic.

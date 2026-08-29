@@ -168,24 +168,61 @@ dadesModals:
           - "L'erosió diferencial entre gresos/calcàries més resistents i margues més toves ha originat un relleu en forma de «taula» coronada per la gran cinglera de Tavertet, d'uns 200 m d'alçada i quilòmetres de longitud, que penja sobre el pantà de Sau i la vall del Ter."
           - "El riu Ter i els seus antecedents han excavat la vall i han anat descalçant el front de cingle; la combinació d'erosió fluvial i gravetat provoca desploms de blocs i modela formes alveolars i balmes en els trams de gresos vermells."
           - "La infiltració d'aigua en els nivells carbonatats ha generat un sistema notable de cavitats i avencs; un exemple destacat és la cova del Serrat del Vent, considerada una de les més grans del món en gresos pel seu recorregut i desnivell."
+        mediaAfterParagraph: 0
+        media:
+          title: "Figura 1. Vista generalitzada del paisatge: el pantà de Sau, el vessant forestal i la cinglera de Tavertet, amb la capa vermella a la base i les calcàries grises al capdamunt."
+          publicSrc: "/images/itineraris/sau-tavertet/geobotanica-fig1-vista-paisatge.png"
+          alt: "Pantà de Sau, bosc de vessant i cinglera de Tavertet amb capes vermelles i grises"
+          caption: "Elaboració pròpia. Pantà de Sau–Tavertet."
+          compact: true
       - title: "Gradients ambientals al llarg de l'itinerari"
         paragraphs:
           - "El camí des de la vora del pantà de Sau fins a Tavertet recorre un fort gradient altitudinal (uns 400–450 m) i travessa successivament granits, gresos, conglomerats i calcàries, fet que implica canvis sobtats de substrat, textura del sòl i drenatge."
           - "A les parts baixes, properes al pantà i als vessants més càlids, domina un clima més marcadament mediterrani, amb influència d'inversions tèrmiques a la vall que acumulen aire fred i boires, afavorint una major humitat edàfica en certs punts."
           - "A mesura que s'ascendeix i s'arriba a la taula superior del Collsacabra, el relleu es suavitza i el clima esdevé més frescal i humit, fet que afavoreix la presència de rouredes i, localment, fagedes, a més de prats i pastures sobre les margues i calcàries."
           - "La diferent orientació de les vessants (solanes vs obagues), combinada amb la variabilitat litològica en un espai relativament reduït, genera una gran riquesa florística i un mosaic de comunitats vegetals en poc recorregut lineal."
+        mediaAfterParagraph: 0
+        media:
+          title: "Figura 2. Gradient ambiental de l'itinerari: des de l'embassament de Sau fins a l'altiplà del Collsacabra, amb canvi d'altitud, de substrat i de vegetació."
+          publicSrc: "/images/itineraris/sau-tavertet/geobotanica-fig2-gradients-ambientals.png"
+          alt: "Embassament de Sau, vessants forestals i cingles del Collsacabra en un mateix paisatge"
+          caption: "Elaboració pròpia. Pantà de Sau–Tavertet."
+          compact: true
       - title: "Flora associada a cada tram geològic"
         paragraphs:
-          - "Tram inferior (entorn del pantà, materials vermells continentals, solanes): s'hi desenvolupa un bosc típicament mediterrani, amb alzinar muntanyenc com a formació dominant i presència de lianes i espècies adaptades a la sequera estival, sobre sòls sovint més sorrencs i ben drenats."
+          - "Tram inferior (presa de Sau i entorn del pantà: granits del sòcol i materials vermells continentals, solanes): s'hi desenvolupa un bosc típicament mediterrani, amb alzinar muntanyenc com a formació dominant i presència de lianes i espècies adaptades a la sequera estival, sobre sòls sovint més sorrencs i ben drenats."
           - "Zona de contacte gresos vermells–calcàries grises: el canvi cromàtic i litològic (passatge del vermell al gris de les calcàries nummulítiques) es reflecteix en canvis de sòl i microhàbitats; aquí són freqüents comunitats rupícoles i fissurícoles en petits replans i parets, amb flora adaptada a substrats rocosos carbonatats."
           - "Part superior de la cinglera i altiplà (margues i calcàries, major humitat): el paisatge combina boscos de roure martinenc i altres caducifolis en zones més frescals, fagedes en àrees ombrívoles i humides, i un mosaic agroforestal amb prats i pastures que trenca la continuïtat forestal."
           - "Entorn immediat de la cinglera: les parets verticals i replans rocosos acullen vegetació rupícola especialitzada, mentre que a la base de les roques i en canals d'escorrentia es poden concentrar espècies d'ambients més humits, incloent-hi falgueres i flora d'indrets ombrívols."
+        mediaAfterParagraph: 0
+        media:
+          title: "Figura 3. Granits de la presa de Sau: vessant fracturat del sòcol, amb vegetació a les fissures i alzinar a la capçada."
+          publicSrc: "/images/itineraris/sau-tavertet/geobotanica-fig3-granits-presa.png"
+          alt: "Aflorament de granit a la presa de Sau amb arbusts a les fractures i bosc a la part alta"
+          caption: "Elaboració pròpia. Presa de Sau."
+          compact: true
       - title: "Relació geologia–flora en la lectura del paisatge"
         paragraphs:
           - "La successió vertical de roques (granit–gresos–conglomerats–calcàries) i la seva erosió controlen el perfil del pendent, la presència de graons morfològics i replans, i, per tant, la distribució de sòls profunds vs poc desenvolupats, cosa que condiciona quin tipus de bosc o matollar pot establir-s'hi."
           - "Les roques carbonatades de la part superior afavoreixen sòls sovint més pedregosos però rics en bases, que són favorables a rouredes i pastures calcícoles, mentre que els materials vermells i siliciclàstics de la base originen sòls diferents, més àcids o amb altres limitacions, on prosperen comunitats mediterrànies d'alzinar."
           - "Les inversions tèrmiques i la circulació d'humitat associada al relleu i al pantà (boires, mares de núvols) tenen un efecte positiu sobre la vegetació, en especial en obagues i raconades on la humitat es manté més temps, facilitant la presència d'espècies més eurosiberianes en un context generalment mediterrani."
           - "El resultat és un paisatge d'alta qualitat visual, amb un equilibri entre abruptes cingleres, boscos i mosaic agroforestal, que il·lustra molt bé com la base geològica i geomorfològica estructura el medi físic i ecològic al llarg de tot l'itinerari Sau–Tavertet."
+        mediaItems:
+          - title: "Figura 4. Relació geologia–flora a escala de microhàbitat: vegetació rupícola arrelada a una diàclasi del granit de la presa de Sau."
+            publicSrc: "/images/itineraris/sau-tavertet/geobotanica-fig4-geologia-flora.png"
+            alt: "Plantes suculentes creixent en una fissura entre blocs de granit a la presa de Sau"
+            caption: "Elaboració pròpia. Presa de Sau."
+            compact: true
+          - title: "Figura 5. Molsa i flora rupícola en una fissura del monzogranit: la fractura reté humitat i sòl fi i permet la colonització de la roca."
+            publicSrc: "/images/itineraris/sau-tavertet/geobotanica-fig5-geologia-flora.png"
+            alt: "Molsa i una petita planta en una esquerda del granit de la presa de Sau"
+            caption: "Elaboració pròpia. Presa de Sau."
+            compact: true
+          - title: "Figura 6. Matoll arrelat en una diàclasi vertical del monzogranit: la fracturació de la roca determina on pot establir-se la vegetació."
+            publicSrc: "/images/itineraris/sau-tavertet/geobotanica-fig6-geologia-flora.png"
+            alt: "Petit arbust creixent en una esquerda vertical del granit de la presa de Sau"
+            caption: "Elaboració pròpia. Presa de Sau."
+            compact: true
   marc-geologic-regional:
     introMedia:
       title: "Figura 1. Marc geològic regional del trajecte Sau–Tavertet, situat entre els Pirineus, la Conca de l'Ebre, la Serralada Transversal i les Serralades Costaneres Catalanes."

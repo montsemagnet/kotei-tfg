@@ -488,6 +488,7 @@ const sectionContent = "lg:col-span-3 min-w-0 w-full";
             modalId={`${geologiaModalId}-${partIndex}`}
             label={part.modalLabel ?? `${part.label} — ${frontmatter.title}`}
             intro={part.intro}
+            introMedia={part.introMedia}
             sections={part.sections ?? []}
             nextModalId={
               nextPart ? `${geologiaModalId}-${partIndex + 1}` : undefined

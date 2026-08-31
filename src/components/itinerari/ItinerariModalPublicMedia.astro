@@ -16,18 +16,23 @@ interface Props {
   };
   zoomId: string;
   class?: string;
+  /** Miniatura que omple la cel·la (graella); el zoom mostra la imatge completa */
+  fill?: boolean;
 }
 
-const { media, zoomId, class: className = "my-6" } = Astro.props;
+const { media, zoomId, class: className = "my-6", fill = false } = Astro.props;
 const titleHtml = media.title ? linkTermes(media.title) : undefined;
 const isVideo = media.tipus === "video";
 const assetSrc = withBase(media.publicSrc);
 
-const zoomThumbClass = media.compact
-  ? "mx-auto block w-full max-w-[16rem] sm:max-w-sm cursor-pointer overflow-hidden border-0 p-0 bg-transparent hover:opacity-90 transition-opacity"
-  : "w-full cursor-pointer overflow-hidden border-0 p-0 bg-transparent hover:opacity-90 transition-opacity";
-const zoomImageClass =
-  "w-full h-auto rounded-md border border-base-200 dark:border-base-800";
+const zoomThumbClass = fill
+  ? "block w-full cursor-pointer overflow-hidden border-0 p-0 bg-transparent hover:opacity-90 transition-opacity"
+  : media.compact
+    ? "mx-auto block w-full max-w-[16rem] sm:max-w-sm cursor-pointer overflow-hidden border-0 p-0 bg-transparent hover:opacity-90 transition-opacity"
+    : "w-full cursor-pointer overflow-hidden border-0 p-0 bg-transparent hover:opacity-90 transition-opacity";
+const zoomImageClass = fill
+  ? "w-full aspect-[4/3] object-cover rounded-md border border-base-200 dark:border-base-800"
+  : "w-full h-auto rounded-md border border-base-200 dark:border-base-800";
 ---
 
 <div class={className}>

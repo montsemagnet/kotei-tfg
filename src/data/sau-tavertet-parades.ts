@@ -38,12 +38,14 @@ export const SAU_TAVERTET_PARADES: SauTavertetParada[] = [
     num: 4,
     slug: "I1-P4",
     label: "Dipòsits de vessant (Quaternari)",
+    preview: "/images/parades/I1-P4-hover.jpg",
     svgIds: ["I1-P4", "P4", "Parada4"],
   },
   {
     num: 5,
     slug: "I1-P5",
     label: "Gresos i conglomerats vermells, Formació Vilanova de Sau",
+    preview: "/images/parades/I1-P5-hover.jpg",
     svgIds: ["I1-P5", "P5", "Parada5"],
   },
   {

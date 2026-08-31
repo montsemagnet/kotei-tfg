@@ -30,6 +30,7 @@ interface Section {
   mediaItems?: (PublicMedia & { title?: string })[];
   mediaCaption?: string;
   mediaTitle?: string;
+  mediaLayout?: "stack" | "grid";
   mediaAfterParagraph?: number;
   mediaAfterSubsection?: number;
   mediaBeforeSubsection?: {
@@ -208,13 +209,25 @@ const panelCloseClass =
                 section.mediaItems &&
                 !section.subsections?.length &&
                 section.mediaAfterSubsection === undefined && (
-                  <div class="my-6 flex flex-col gap-6">
+                  <div
+                    class:list={[
+                      "my-6",
+                      section.mediaLayout === "grid"
+                        ? section.mediaItems.length <= 2
+                          ? "grid grid-cols-2 gap-2"
+                          : "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2"
+                        : "flex flex-col gap-6",
+                    ]}
+                  >
                     {
                       section.mediaTitle && (
                         <Text
                           tag="h4"
                           variant="textBase"
-                          class={figureTitleClass}
+                          class:list={[
+                            figureTitleClass,
+                            section.mediaLayout === "grid" && "col-span-full",
+                          ]}
                         >
                           {section.mediaTitle}
                         </Text>
@@ -225,11 +238,17 @@ const panelCloseClass =
                         media={item}
                         zoomId={`${zoomId}-section-${sectionIndex}-items-${itemIndex}`}
                         class="my-0"
+                        fill={section.mediaLayout === "grid"}
                       />
                     ))}
                     {
                       section.mediaCaption && (
-                        <figcaption class={figureCaptionClass}>
+                        <figcaption
+                          class:list={[
+                            figureCaptionClass,
+                            section.mediaLayout === "grid" && "col-span-full",
+                          ]}
+                        >
                           {section.mediaCaption}
                         </figcaption>
                       )

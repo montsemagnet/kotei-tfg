@@ -11,6 +11,7 @@ const modalContentSchema = (image: (path: string) => z.ZodType) =>
         publicSrc: z.string(),
         alt: z.string(),
         caption: z.string().optional(),
+        compact: z.boolean().optional(),
         tipus: z.enum(["animacio", "video"]).default("animacio"),
       })
       .optional(),
@@ -61,6 +62,8 @@ const modalContentSchema = (image: (path: string) => z.ZodType) =>
           mediaCaption: z.string().optional(),
           /** Títol de figura sobre un grup `mediaItems` (peu de figura a `mediaCaption`) */
           mediaTitle: z.string().optional(),
+          /** graella de miniatures ampliables; per defecte, una sota l'altra */
+          mediaLayout: z.enum(["stack", "grid"]).optional(),
           /** Índex del paràgraf (0-based) després del qual inserir `media` */
           mediaAfterParagraph: z.number().int().nonnegative().optional(),
           /** Índex de la subsecció (0-based) després de la qual inserir `mediaItems` */
@@ -394,6 +397,7 @@ const parades = defineCollection({
                 modalLabel: z.string().optional(),
                 resum: z.string().optional(),
                 intro: z.string().optional(),
+                introMedia: modalContentSchema(image).shape.introMedia,
                 sections: modalContentSchema(image).shape.sections,
               }),
             )

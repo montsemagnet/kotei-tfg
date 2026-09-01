@@ -1,31 +1,12 @@
-# Resum de seguretat i privadesa — GeoTransectes UVic
-
-La versió publicada a la web és [Seguretat i protecció de dades](https://montsemagnet.github.io/kotei-tfg/manual/seguretat/). Font editable: `src/pages/manual/_seguretat.md`. Portada del manual: `/manual/`.
-
-Document orientat al Servei d’Informàtica de la Universitat de Vic – Universitat Central de Catalunya (UVic-UCC), per a l’avaluació d’allotjament del lloc web del TFG.
-
----
-
-## 1. Seguretat
+## Seguretat
 
 El lloc és una web estàtica. Es genera amb Astro (`output: "static"`) i el resultat del `build` és un conjunt de fitxers HTML, CSS, JavaScript, imatges i vídeos.
 
-En producció no hi ha:
+En producció no hi ha servidor d’aplicació (Node, PHP, Python, Java…), base de dades, API pròpia, autenticació ni gestió d’usuaris, panell d’administració, recollida de formularis, sistema de pagament, ni fitxers `.env` ni credencials de servei.
 
-- servidor d’aplicació (Node, PHP, Python, Java…)
-- base de dades
-- API pròpia
-- autenticació ni gestió d’usuaris
-- panell d’administració
-- recollida de formularis
-- sistema de pagament
-- fitxers `.env` ni credencials de servei
+Per allotjar-la n’hi ha prou amb un servidor de fitxers estàtics (Apache, nginx, IIS o l’allotjament web institucional) amb HTTPS. No cal instal·lar Node ni cap runtime al servidor de producció.
 
-Per allotjar-la n’hi ha prou amb un servidor de fitxers estàtics (Apache, nginx, IIS, o l’allotjament web institucional) amb HTTPS. No cal instal·lar Node ni cap runtime al servidor de producció.
-
----
-
-## 2. Dades personals (RGPD)
+## Dades personals (RGPD)
 
 El lloc no recull ni tracta dades personals d’usuaris.
 
@@ -37,28 +18,24 @@ El lloc no recull ni tracta dades personals d’usuaris.
 
 Els únics correus que apareixen a la web són els de l’equip del TFG (crèdits), ja públics en el context acadèmic.
 
-En conclusió, no hi ha tractament de dades d’alumnat, professorat visitant ni públic general. No cal formulari de consentiment de cookies de tracking. Si s’activa la traducció automàtica (apartat 4), Google pot tractar el contingut de la pàgina segons la seva política; l’ús és opcional.
+En conclusió, no hi ha tractament de dades d’alumnat, professorat visitant ni públic general. No cal formulari de consentiment de cookies de tracking. Si s’activa la traducció automàtica (apartat Serveis de tercers), Google pot tractar el contingut de la pàgina segons la seva política; l’ús és opcional.
 
----
-
-## 3. Emmagatzematge al navegador
+## Emmagatzematge al navegador
 
 | Mecanisme | Finalitat | Dades |
-|---|---|---|
+|-----------|-----------|-------|
 | `localStorage` (`theme`) | Recordar mode clar/fosc | `"light"` / `"dark"` |
 | `localStorage` (mida de text dels modals) | Accessibilitat | valor de mida, sense identificador |
 | Galeta `googtrans` | Només si l’usuari tria un idioma al selector | codi d’idioma (p. ex. `/ca/es`) |
 
 Són preferències tècniques al dispositiu de l’usuari. No s’envien al servidor del lloc.
 
----
+## Serveis de tercers (navegador)
 
-## 4. Serveis de tercers (navegador)
-
-El lloc no crida APIs pròpies. El navegador sí que pot contactar aquests serveis, ja inclosos a la plantilla o a la traducció:
+El lloc no crida APIs pròpies. El navegador sí que pot contactar aquests serveis:
 
 | Servei | Ús | Quan |
-|---|---|---|
+|--------|----|------|
 | Google Fonts (`fonts.googleapis.com`, `fonts.gstatic.com`) | Tipografies Geist | A totes les pàgines |
 | jsDelivr (`cdn.jsdelivr.net`) | Biblioteca Fuse.js (cerca) | A totes les pàgines |
 | unpkg | Biblioteca AOS (animacions d’entrada) | A totes les pàgines |
@@ -70,12 +47,10 @@ Enllaços sortints (UVic, crèdits, fonts) s’obren en pestanya nova (`rel="noo
 
 Si Informàtica aplica una Content-Security-Policy estricta, caldrà permetre aquests orígens o, alternativament, autoservir fonts i biblioteques des del mateix domini.
 
----
-
-## 5. Superfície d’atac i mesures
+## Superfície d’atac
 
 | Risc habitual | Situació en aquest lloc |
-|---|---|
+|---------------|-------------------------|
 | Injecció SQL / XSS de servidor | No aplicable: no hi ha backend ni base de dades. El contingut es genera en temps de compilació. |
 | Autenticació / sessions | No n’hi ha. |
 | Pujada de fitxers per usuaris | No n’hi ha. |
@@ -85,9 +60,7 @@ Si Informàtica aplica una Content-Security-Policy estricta, caldrà permetre aq
 
 El contingut es publica a partir d’un repositori Git. Els canvis a producció passen per compilació (`npm run build`) i còpia del directori `dist/`.
 
----
-
-## 6. Requisits d’allotjament institucional
+## Requisits d’allotjament institucional
 
 1. Servir el contingut del directori de build (`dist/`) com a web estàtica.
 2. HTTPS (certificat institucional o equivalent).
@@ -99,10 +72,3 @@ El contingut es publica a partir d’un repositori Git. Els canvis a producció 
 Allotjament de desenvolupament actual: GitHub Pages (`https://montsemagnet.github.io/kotei-tfg/`).
 
 ---
-
-## 7. Contacte tècnic
-
-Per a dubtes d’allotjament o d’aquest resum:
-
-- Autora: Montserrat Magnet Sabata — `mariamontserrat.magnet@uvic.cat`
-- Facultat: `secretaria.fcte@uvic.cat`

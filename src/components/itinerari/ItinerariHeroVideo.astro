@@ -12,6 +12,10 @@ interface Props {
   autoplayOnMount?: boolean;
   /** Pista de subtítols WebVTT (opcional; ruta sota public/) */
   captionsSrc?: string;
+  /** `cover` omple el requadre (retalla); `contain` mostra tot el fotograma */
+  fit?: "cover" | "contain";
+  /** En obrir el modal, reprodueix amb so (el clic de l'usuari ho permet) */
+  startUnmuted?: boolean;
 }
 
 const {
@@ -21,19 +25,25 @@ const {
   allowFullscreen = false,
   autoplayOnMount = true,
   captionsSrc,
+  fit = "cover",
+  startUnmuted = false,
 } = Astro.props;
 const captionsHref = captionsSrc ? withBase(captionsSrc) : undefined;
 ---
 
 <div
-  class="itinerari-hero-video relative w-full aspect-video overflow-hidden bg-black"
+  class="itinerari-hero-video relative w-full overflow-hidden bg-black aspect-video"
   data-itinerari-hero-video
   data-sound={sound ? "true" : "false"}
+  data-start-unmuted={startUnmuted ? "true" : "false"}
   data-fullscreen={allowFullscreen ? "true" : "false"}
   data-autoplay-on-mount={autoplayOnMount ? "true" : "false"}
 >
   <video
-    class="relative z-0 size-full bg-black object-cover"
+    class:list={[
+      "relative z-0 size-full bg-black",
+      fit === "contain" ? "object-contain" : "object-cover",
+    ]}
     src={src}
     aria-label={title}
     muted
@@ -335,12 +345,21 @@ const captionsHref = captionsSrc ? withBase(captionsSrc) : undefined;
 
     const startPlayback = () => {
       video.currentTime = 0;
-      video.muted = true;
+      const wantSound = hasSound && root.dataset.startUnmuted === "true";
+      video.muted = !wantSound;
       updateSoundButton();
       updatePlaybackButton();
 
       const tryPlay = () => {
-        void video.play().catch(() => {
+        void video.play().then(updatePlaybackButton).catch(() => {
+          if (wantSound && !video.muted) {
+            video.muted = true;
+            updateSoundButton();
+            void video.play().catch(() => {
+              updatePlaybackButton();
+            });
+            return;
+          }
           updatePlaybackButton();
         });
       };

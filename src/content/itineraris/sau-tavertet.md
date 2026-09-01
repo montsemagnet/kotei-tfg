@@ -27,9 +27,9 @@ rutaMobil:
   description: "Descarrega el track de l'itinerari (KMZ) per obrir-lo al mòbil i seguir el recorregut durant l'excursió."
   publicSrc: "/rutes/Itinerari_Sau_Tavertet.kmz"
   downloadName: "Itinerari_Sau_Tavertet.kmz"
-recorregutLabel: "Veure el recorregut"
+recorregutLabel: "El recorregut"
 recorregutDescripcio: "Track, vol aeri i perfil d'elevació per situar el trajecte Sau–Tavertet, també si no es fa l'excursió."
-introLabel: "Introducció al recorregut"
+introLabel: "Introducció a l'itinerari"
 paradesLabel: "Parades"
 intro:
   - paragraphs:
@@ -114,13 +114,16 @@ dadesIndex:
     - label: "Geomorfologia"
       modalKey: geomorfologia
   paleogeologia:
-    - label: "1 – Paleozoic: construcció del sòcol ibèric (vídeo 410–280 Ma)"
+    - label: "Seqüència geològica de l'itinerari Sau–Tavertet"
+      modalKey: sequencia-geologica-itinerari
+      numbered: false
+    - label: "Paleozoic: construcció del sòcol ibèric (vídeo 410–280 Ma)"
       modalKey: paleogeologia-paleozoic
       numbered: false
-    - label: "2 – Mesozoic global: 280–65 Ma, l'era dels dinosaures"
+    - label: "Mesozoic global: 280–65 Ma, l'era dels dinosaures"
       modalKey: paleogeologia-mesozoic
       numbered: false
-    - label: "3 – Ibèria, mar de Tetis i conca de l'Ebre (vídeo 230 Ma–actualitat)"
+    - label: "Ibèria, mar de Tetis i conca de l'Ebre (vídeo 230 Ma–actualitat)"
       modalKey: paleogeologia-iberia-ebre
       numbered: false
     - label: "* – Enllaç a L'Avinguda dels Temps Geològics de l'ICGC"
@@ -130,10 +133,145 @@ dadesIndex:
       href: "https://datacloud.icgc.cat/datacloud/descarregues-web/bd/pubs/ChronostratChart2023-09Catalan.pdf"
       numbered: false
 dadesModals:
+  sequencia-geologica-itinerari:
+    intro: "Evolució dels materials, ambients sedimentaris i processos geològics observables entre el pantà de Sau i Tavertet."
+    cronologia:
+      - tipus: periode
+        titol: "MAR PALEOZOIC"
+        text: "anterior al Carbonífer superior"
+        videoPublicSrc: "/videos/itineraris/sau-tavertet/cronologia/mar-paleozoic.mp4"
+        videoAmbSo: true
+      - tipus: producte
+        titol: "Argiles, llims i sorres fines"
+        categoria: "Sediments"
+      - tipus: proces
+        titol: "compactació i cimentació"
+      - tipus: proces
+        titol: "diagènesi"
+      - tipus: producte
+        titol: "Lutites"
+        categoria: "sedimentaria"
+      - tipus: proces
+        titol: "convergència de plaques i orogènia varisca"
+      - tipus: proces
+        titol: "augment de pressió i temperatura"
+      - tipus: proces
+        titol: "metamorfisme regional"
+      - tipus: producte
+        titol: "A1-Pissarres / fil·lites"
+        categoria: "metamòrfica"
+      - tipus: proces
+        titol: "fusió parcial de roques en profunditat"
+      - tipus: proces
+        titol: "Magma granític (material fos)"
+      - tipus: proces
+        titol: "intrusió dins de l'escorça"
+      - tipus: proces
+        titol: "refredament lent i cristal·lització"
+      - tipus: producte
+        titol: "P1-Monzogranit biotític"
+        categoria: "magmàtica intrusiva-plutónica"
+        text: "~310–280 Ma"
+      - tipus: proces
+        titol: "pulsos magmàtics tardans"
+      - tipus: proces
+        titol: "injecció de magma residual en fractures"
+      - tipus: producte
+        titol: "P1-Pòrfirs, microaplites i dics d'aplita"
+        categoria: "magmàtiques filonianes"
+        text: "~310–280 Ma"
+      - tipus: proces
+        titol: "calor de les intrusions sobre les pissarres encaixants"
+      - tipus: proces
+        titol: "metamorfisme de contacte"
+      - tipus: producte
+        titol: "A1-Pissarres pigallades"
+        categoria: "metamòrfica de contacte"
+      - tipus: proces
+        titol: "aixecament, erosió i exhumació"
+      - tipus: producte
+        titol: "P1-Sòcol paleozoic erosionat"
+        categoria: "metamòrfiques i magmàtiques"
+        text: "~310–280 Ma"
+      - tipus: proces
+        titol: "més de 200 Ma sense registre sedimentari local continu"
+      - tipus: producte
+        titol: "discordança erosiva"
+      - tipus: periode
+        titol: "PALEOCÈ FINAL–EOCÈ: ES REPRÈN LA SEDIMENTACIÓ"
+      - tipus: producte
+        titol: "P3-Lutites vermelles i paleosòls"
+        categoria: "sedimentaries continentals"
+        text: "Formació de Mediona · Paleocè final, Thanetià, ~59–56 Ma"
+      - tipus: proces
+        titol: "dipòsit en planes fangoses, zones temporalment inundades"
+      - tipus: proces
+        titol: "i ambients continentals de baixa energia"
+      - tipus: producte
+        titol: "P5-Gresos, conglomerats i lutites vermelles"
+        categoria: "sedimentaries continentals"
+        text: "Formació de Vilanova de Sau · Eocè inferior, Ilerdià, ~56–47,8 Ma"
+      - tipus: proces
+        titol: "rius, canals, planes d'inundació"
+      - tipus: proces
+        titol: "i ventalls al·luvials"
+      - tipus: producte
+        titol: "P6-Conglomerats i gresos vermells"
+        categoria: "sedimentaries continentals"
+        text: "Formació de Romagats · Eocè mitjà, Lutecià, ~47,8–41 Ma"
+      - tipus: proces
+        titol: "transport per cursos fluvials d'alta energia"
+      - tipus: proces
+        titol: "i ventalls al·luvials propers als relleus"
+      - tipus: periode
+        titol: "TRANSGRESSIÓ MARINA EOCENA"
+        text: "El mar avança sobre la conca continental"
+      - tipus: producte
+        titol: "P7-P8-Gresos, conglomerats i calcàries sorrenques"
+        categoria: "sedimentaries marines"
+        text: "Formació de Tavertet · Eocè mitjà, Lutecià inferior–mitjà, ~48–46 Ma"
+      - tipus: proces
+        titol: "mar de plataforma somera"
+      - tipus: proces
+        titol: "sedimentació de carbonat de calci"
+      - tipus: proces
+        titol: "organismes marins, especialment nummulits"
+      - tipus: producte
+        titol: "P9-Calcàries amb nummulits"
+        categoria: "sedimentaries marines carbonatades"
+        text: "Formació de Tavertet · Eocè mitjà, Lutecià inferior–mitjà, ~48–46 Ma"
+      - tipus: proces
+        titol: "les calcàries resistents formen la cinglera"
+      - tipus: proces
+        titol: "erosió diferencial"
+      - tipus: producte
+        titol: "P9-P10 Cingles de Tavertet"
+        text: "Roques principalment eocenes, d'edat luteciana, ~48–41 Ma. Les calcàries dures formen els penya-segats; les roques més toves s'erosionen amb més facilitat."
+      - tipus: proces
+        titol: "mar més tranquil i, localment, més profund"
+      - tipus: proces
+        titol: "dipòsit de fangs calcaris"
+      - tipus: producte
+        titol: "P11-Margues sorrences gris-blavoses, limolites i gresos fins"
+        categoria: "sedimentaries marines"
+        text: "Formació del Coll de Malla · Eocè mitjà, Lutecià, ~47,8–41 Ma"
+      - tipus: proces
+        titol: "progrés de sistemes litorals i deltaics"
+      - tipus: proces
+        titol: "aportació de sorra cap al centre de la conca"
+      - tipus: producte
+        titol: "P12- Gresos groguencs o gris-blavosos, amb glauconita"
+        categoria: "sedimentaries deltaiques i marines"
+        text: "Formació de Folgueroles · Eocè mitjà, Lutecià, ~47,8–41 Ma"
+      - tipus: proces
+        titol: "sedimentació, aixecament i erosió posteriors"
+      - tipus: producte
+        titol: "TAVERTET ACTUAL"
+        text: "Altiplà format per materials eocens, especialment calcàries, margues i gresos, situats damunt del sòcol paleozoic de les Guilleries."
   paleogeologia-paleozoic:
     videos:
       - id: paleozoic
-        title: "1 – Paleozoic: construcció del sòcol ibèric (vídeo 410–280 Ma)"
+        title: "Paleozoic: construcció del sòcol ibèric (vídeo 410–280 Ma)"
         period: "Del Silurià al Permià (410–280 Ma)"
         publicSrc: "/videos/itineraris/sau-tavertet/paleogeologia/1-orogenia-varisca.mp4"
         alt: "Construcció del sòcol ibèric durant el Paleozoic"
@@ -142,7 +280,7 @@ dadesModals:
   paleogeologia-mesozoic:
     videos:
       - id: mesozoic
-        title: "2 – Mesozoic global: 280–65 Ma, l'era dels dinosaures"
+        title: "Mesozoic global: 280–65 Ma, l'era dels dinosaures"
         period: "Del Triàsic al Cretaci (280–65 Ma)"
         publicSrc: "/videos/itineraris/sau-tavertet/paleogeologia/02.mp4"
         alt: "El Mesozoic global i l'era dels dinosaures"
@@ -151,7 +289,7 @@ dadesModals:
   paleogeologia-iberia-ebre:
     videos:
       - id: iberia-ebre
-        title: "3 – Ibèria, mar de Tetis i conca de l'Ebre (vídeo 230 Ma–actualitat)"
+        title: "Ibèria, mar de Tetis i conca de l'Ebre (vídeo 230 Ma–actualitat)"
         period: "De la placa Ibèrica a Sau–Tavertet (230 Ma–0 Ma)"
         publicSrc: "/videos/itineraris/sau-tavertet/paleogeologia/03-iberia-210.mp4"
         captionsSrc: "/videos/itineraris/sau-tavertet/paleogeologia/03-iberia-210.ca.vtt"

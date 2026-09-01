@@ -318,3 +318,41 @@ export const geologiaItinerariCredits: GeologiaItinerariCredit[] = [
       "QGIS Development Team. (2025). QGIS geographic information system (Version 3.34) [Computer software]. https://qgis.org",
   },
 ];
+
+/** Vídeos de tercers de la seqüència geològica (modal Sau–Tavertet). */
+export const cronologiaSequenciaCredits: GeologiaItinerariCredit[] = [
+  {
+    label: "Scotese / Encyclopaedia Britannica — mapa de l'Ordovicià",
+    use: "Mapa paleogeogràfic de l'Ordovicià mitjà, adaptat per al vídeo MAR PALEOZOIC de la seqüència geològica de l'itinerari Sau–Tavertet.",
+    url: "https://www.britannica.com/science/Ordovician-Period",
+    apaCitation:
+      "Scotese, C. R. (n.d.). Ordovician paleogeography [Map]. Adapted in The Editors of Encyclopaedia Britannica, Ordovician Period. Encyclopaedia Britannica. https://www.britannica.com/science/Ordovician-Period",
+  },
+  {
+    label: "metfan869 — Igneous Intrusions Animation",
+    use: "Animació d'intrusions ígnies al vídeo de la seqüència geològica (procés «intrusions»).",
+    url: "https://www.youtube.com/watch?v=GTa86rDEfek",
+    apaCitation:
+      "metfan869. (2021, January 5). Igneous Intrusions Animation [Video]. YouTube. https://www.youtube.com/watch?v=GTa86rDEfek",
+  },
+  {
+    label: "YouTube — animació de ventall al·luvial",
+    use: "Vídeo amb veu sobre ventalls al·luvials a la seqüència geològica. Canal no identificat al fitxer.",
+    apaCitation:
+      "Alluvial fan [Video]. (n.d.). YouTube.",
+  },
+  {
+    label: "Formación Fundamental B-Learning PUCV — Introducción a las rocas metamórficas",
+    use: "Fragments adaptats (sense so) per als vídeos de metamorfisme de contacte i metamorfisme regional de la seqüència geològica.",
+    url: "https://www.youtube.com/watch?v=RLyO_bpYSB8",
+    apaCitation:
+      "Formación Fundamental B-Learning PUCV. (2016, September 13). Introducción a las rocas metamórficas [Video]. YouTube. https://www.youtube.com/watch?v=RLyO_bpYSB8",
+  },
+  {
+    label: "Aditi Thakur — animació d'orogènia",
+    use: "Short de YouTube sobre formació de muntanyes (orogènia), adaptat per a la seqüència geològica (convergència de plaques i orogènia varisca) treient-ne el so.",
+    url: "https://www.youtube.com/shorts/xTHcBxQRWMw",
+    apaCitation:
+      "Thakur, A. (2026, August 30). #orogeny#mountainformation #geology#viralvideo #trendingshorts#youtubeshort #views#animation#science [Video]. YouTube. https://www.youtube.com/shorts/xTHcBxQRWMw",
+  },
+];

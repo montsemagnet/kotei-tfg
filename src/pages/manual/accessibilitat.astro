@@ -1,0 +1,13 @@
+---
+import ManualDocPage from "@/components/manual/ManualDocPage.astro";
+import { Content, getHeadings } from "./_accessibilitat.md";
+---
+
+<ManualDocPage
+  pageTitle="Revisió d'accessibilitat"
+  description="Avaluació interna d'accessibilitat (WCAG, WAVE, Lighthouse) de GeoTransectes UVic."
+  headings={getHeadings()}
+  currentSlug="accessibilitat"
+>
+  <Content />
+</ManualDocPage>

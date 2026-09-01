@@ -1,0 +1,13 @@
+---
+import ManualDocPage from "@/components/manual/ManualDocPage.astro";
+import { Content, getHeadings } from "./_informatica.md";
+---
+
+<ManualDocPage
+  pageTitle="Dirigit a informàtica"
+  description="Plantilles, scripts i publicació per incorporar itineraris, parades i materials a GeoTransectes UVic."
+  headings={getHeadings()}
+  currentSlug="informatica"
+>
+  <Content />
+</ManualDocPage>

@@ -34,6 +34,19 @@ const pageData = [
         ],
       },
       {
+        title: "Manual d'incorporació",
+        links: [
+          { url: "/manual", name: "Portada del manual" },
+          { url: "/manual/professorat", name: "Dirigit al professorat" },
+          { url: "/manual/informatica", name: "Dirigit a informàtica" },
+          { url: "/manual/seguretat", name: "Seguretat i protecció de dades" },
+          {
+            url: "/manual/accessibilitat",
+            name: "Revisió d'accessibilitat",
+          },
+        ],
+      },
+      {
         title: "Itineraris",
         links: itineraris.map((entry) => ({
           url: `/itineraris/${entry.id}`,

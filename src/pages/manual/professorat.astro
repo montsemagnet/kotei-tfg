@@ -1,0 +1,13 @@
+---
+import ManualDocPage from "@/components/manual/ManualDocPage.astro";
+import { Content, getHeadings } from "./_professorat.md";
+---
+
+<ManualDocPage
+  pageTitle="Dirigit al professorat"
+  description="Com estructurar, preparar i entregar els continguts d'un itinerari nou a GeoTransectes UVic."
+  headings={getHeadings()}
+  currentSlug="professorat"
+>
+  <Content />
+</ManualDocPage>

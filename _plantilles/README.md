@@ -3,7 +3,7 @@
 Carpetes **mestres** (sense omplir) per preparar contingut sense tocar el codi d’Astro.
 
 **Manual d'incorporació d'itineraris** (publicat a la web):  
-→ pàgina `/manual/` · font editable `src/pages/manual/_content.md` · apuntador [`MANUAL-REUTILITZACIO.md`](./MANUAL-REUTILITZACIO.md)
+→ portada `/manual/` · parts a `/manual/professorat/`, `/manual/informatica/`, `/manual/seguretat/`, `/manual/accessibilitat/` · apuntador [`MANUAL-REUTILITZACIO.md`](./MANUAL-REUTILITZACIO.md)
 
 ## Com s’utilitzen
 

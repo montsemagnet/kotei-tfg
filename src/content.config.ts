@@ -121,6 +121,19 @@ const modalContentSchema = (image: (path: string) => z.ZodType) =>
         }),
       )
       .optional(),
+    /** Seqüència cronològica (títol a l'esquerra, text a la dreta; sense glossari) */
+    cronologia: z
+      .array(
+        z.object({
+          tipus: z.enum(["periode", "proces", "producte"]),
+          titol: z.string(),
+          text: z.string().optional(),
+          categoria: z.string().optional(),
+          videoPublicSrc: z.string().optional(),
+          videoAmbSo: z.boolean().optional(),
+        }).passthrough(),
+      )
+      .optional(),
     images: z
       .array(
         z.union([
@@ -257,6 +270,7 @@ const itineraris = defineCollection({
                 label: z.string(),
                 modalKey: z.string().optional(),
                 href: z.string().optional(),
+                description: z.string().optional(),
                 /** Si és false, es mostra només `label` sense prefix numèric */
                 numbered: z.boolean().optional(),
               })

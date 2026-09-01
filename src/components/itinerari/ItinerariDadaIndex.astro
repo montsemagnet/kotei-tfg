@@ -87,7 +87,7 @@ const descriptionClass =
         }
 
         return (
-          <li>
+          <li class={rowClass}>
             <button
               type="button"
               data-modal-target={modalId}
@@ -97,6 +97,9 @@ const descriptionClass =
             >
               {displayLabel}
             </button>
+            {item.description && (
+              <p class={descriptionClass}>{item.description}</p>
+            )}
           </li>
         );
       })

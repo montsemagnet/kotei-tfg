@@ -1,0 +1,13 @@
+---
+import ManualDocPage from "@/components/manual/ManualDocPage.astro";
+import { Content, getHeadings } from "./_seguretat.md";
+---
+
+<ManualDocPage
+  pageTitle="Seguretat i protecció de dades"
+  description="Revisió de seguretat, RGPD i requisits d'allotjament institucional de GeoTransectes UVic."
+  headings={getHeadings()}
+  currentSlug="seguretat"
+>
+  <Content />
+</ManualDocPage>

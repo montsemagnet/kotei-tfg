@@ -1,8 +1,9 @@
 # Manual d'incorporació d'un nou itinerari a la web
 
 **GeoTransectes UVic** — Annex / document per a la memòria del TFG  
-Versió publicada a la web: https://montsemagnet.github.io/kotei-tfg/manual/  
-Font editable: `src/pages/manual/_content.md`
+Versió publicada a la web (dividida en quatre parts):  
+https://montsemagnet.github.io/kotei-tfg/manual/  
+Fonts editables: `src/pages/manual/_professorat.md`, `_informatica.md`, `_seguretat.md`, `_accessibilitat.md`.
 
 ---
 

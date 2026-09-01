@@ -12,6 +12,7 @@ import {
   paleogeologiaVideoCredits,
   paleogeologiaVideoCreditGroups,
   geologiaItinerariCredits,
+  cronologiaSequenciaCredits,
 } from "@/data/project";
 import { withBase } from "@/utils/withBase";
 
@@ -26,6 +27,7 @@ const apaCitation = `Magnet Sabata, M. (${project.publicationYear}). ${project.t
 const thirdPartyModalId = "credits-third-party-modal";
 const paleogeologiaModalId = "credits-paleogeologia-modal";
 const geologiaModalId = "credits-geologia-modal";
+const cronologiaModalId = "credits-cronologia-modal";
 
 const thirdPartyIntro =
   "Programari, plantilla, tipografies, icones i serveis utilitzats per al lloc web en general.";
@@ -35,6 +37,9 @@ const paleogeologiaIntro =
 
 const geologiaIntro =
   "Citacions de mapes, figures i fonts de tercers dels apartats Geologia i Geomorfologia de l'itinerari Sau–Tavertet. Les fotografies de camp d'autoria pròpia no s'hi inclouen.";
+
+const cronologiaIntro =
+  "Vídeos de tercers de la seqüència geològica de l'itinerari Sau–Tavertet. El muntatge i l'adaptació són de l'autora; la citació completa és APA 7.";
 ---
 
 <BaseLayout
@@ -229,9 +234,9 @@ const geologiaIntro =
               Manual d'incorporació d'un nou itinerari a la web
             </a>
             {" "}
-            forma part d’aquest TFG. Explica com preparar i incorporar nous
-            itineraris, parades i materials a la plataforma (professorat i
-            departament de sistemes).
+            forma part d’aquest TFG. Està dividit en quatre parts: professorat,
+            informàtica, seguretat i protecció de dades, i revisió
+            d’accessibilitat.
           </Text>
           <Text
             tag="p"
@@ -349,6 +354,25 @@ const geologiaIntro =
                     Mapes i figures de tercers, amb les citacions
                     bibliogràfiques corresponents. Les fotografies d'autoria
                     pròpia no s'hi inclouen.
+                  </Text>
+                </div>
+              )
+            }
+
+            {
+              cronologiaSequenciaCredits.length > 0 && (
+                <div class="py-4 border-b border-base-200 dark:border-base-800 space-y-2">
+                  <CreditsModalTrigger
+                    modalId={cronologiaModalId}
+                    label="Vídeos de la seqüència geològica (Sau–Tavertet)"
+                  />
+                  <Text
+                    tag="p"
+                    variant="textBase"
+                    class="text-base-500 dark:text-base-400"
+                  >
+                    Mapes i animacions de tercers del modal de seqüència
+                    geològica, amb citació APA 7.
                   </Text>
                 </div>
               )
@@ -533,6 +557,54 @@ const geologiaIntro =
                       </span>
                     </>
                   )}
+                </Text>
+                {
+                  resource.url && (
+                    <Text tag="p" variant="textBase" class="mt-1 break-all">
+                      <a
+                        href={resource.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="break-all hover:text-accent-500 dark:hover:text-accent-300 duration-300"
+                      >
+                        {resource.url}
+                      </a>
+                    </Text>
+                  )
+                }
+                <blockquote
+                  class="mt-3 border-l-2 border-base-300 dark:border-base-600 pl-4 leading-relaxed italic text-base-600 dark:text-base-400 break-words [overflow-wrap:anywhere]"
+                >
+                  {resource.apaCitation}
+                </blockquote>
+              </li>
+            ))
+          }
+        </ul>
+      </CreditsDetailModal>
+    )
+  }
+
+  {
+    cronologiaSequenciaCredits.length > 0 && (
+      <CreditsDetailModal
+        modalId={cronologiaModalId}
+        label="Vídeos de la seqüència geològica (itinerari Sau–Tavertet)"
+        intro={cronologiaIntro}
+      >
+        <ul class="space-y-8">
+          {
+            cronologiaSequenciaCredits.map((resource) => (
+              <li class="min-w-0 break-words">
+                <Text
+                  tag="p"
+                  variant="textBase"
+                  class="font-medium text-base-900 dark:text-white break-words"
+                >
+                  {resource.label}
+                </Text>
+                <Text tag="p" variant="textBase" class="mt-1 break-words">
+                  {resource.use}
                 </Text>
                 {
                   resource.url && (

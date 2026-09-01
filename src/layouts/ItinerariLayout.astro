@@ -11,6 +11,7 @@ import ItinerariSau from "@/components/itinerari/itinerari-sau.astro";
 import ItinerariVideoModal from "@/components/itinerari/ItinerariVideoModal.astro";
 import ItinerariPaleogeologiaModal from "@/components/itinerari/ItinerariPaleogeologiaModal.astro";
 import ItinerariDadaModal from "@/components/itinerari/ItinerariDadaModal.astro";
+import ItinerariCronologiaModal from "@/components/itinerari/ItinerariCronologiaModal.astro";
 import ItinerariDadaIndex from "@/components/itinerari/ItinerariDadaIndex.astro";
 import ItinerariZoom from "@/components/itinerari/ItinerariZoom.astro";
 import ItinerariModalTextSizeControls from "@/components/itinerari/ItinerariModalTextSizeControls.astro";
@@ -257,7 +258,7 @@ const hasRecorregut = recorregutItems.length > 0;
                   variant="displayMD"
                   class="dark:text-white text-base-900 font-medium tracking-tighter leading-tight break-words"
                 >
-                  {frontmatter.recorregutLabel ?? "Veure el recorregut"}
+                  {frontmatter.recorregutLabel ?? "El recorregut"}
                 </Text>
               </div>
               <div class="page-text-content lg:col-span-3 min-w-0">
@@ -274,7 +275,7 @@ const hasRecorregut = recorregutItems.length > 0;
                 }
                 <ItinerariDadaIndex
                   items={recorregutItems}
-                  ariaLabel={frontmatter.recorregutLabel ?? "Veure el recorregut"}
+                  ariaLabel={frontmatter.recorregutLabel ?? "El recorregut"}
                 />
               </div>
             </div>
@@ -367,7 +368,14 @@ const hasRecorregut = recorregutItems.length > 0;
                     if (!subModal) return null;
                     const subModalId = `itinerari-modal-${item.modalKey}`;
 
-                    return subModal.videos && subModal.videos.length > 0 ? (
+                    return subModal.cronologia && subModal.cronologia.length > 0 ? (
+                      <ItinerariCronologiaModal
+                        modalId={subModalId}
+                        label={item.label}
+                        intro={subModal.intro}
+                        items={subModal.cronologia}
+                      />
+                    ) : subModal.videos && subModal.videos.length > 0 ? (
                       <ItinerariPaleogeologiaModal
                         modalId={subModalId}
                         label={item.label}

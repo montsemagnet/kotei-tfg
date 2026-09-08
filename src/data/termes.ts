@@ -325,7 +325,8 @@ export const termes: Terme[] = [
     "definicio": "Conjunt de roques sedimentàries més modernes que recobreixen un basament més antic, sovint en discordança erosiva. A Sau–Tavertet, la cobertura terciària eocena reposa sobre el sòcol paleozoic després d'un llarg hiatus mesozoic.",
     "sinonims": [
       "cobertes sedimentàries",
-      "cobertura terciària"
+      "cobertura terciària",
+      "cobertora"
     ]
   },
   {
@@ -973,7 +974,8 @@ export const termes: Terme[] = [
     "categoria": "Estratigrafia",
     "definicio": "Interval de temps no representat en el registre sedimentari per falta de dipòsit o per erosió. Entre el sòcol paleozoic i la cobertura eocena de Sau–Tavertet hi ha un hiatus de gairebé tot el Mesozoic.",
     "sinonims": [
-      "buit estratigràfic"
+      "buit estratigràfic",
+      "hiat"
     ]
   },
   {

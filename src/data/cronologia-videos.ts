@@ -47,6 +47,22 @@ export const cronologiaVideoPerTitol: Record<string, CronologiaVideoLink> = {
     caption:
       "Fragment adaptat de Formación Fundamental B-Learning PUCV. YouTube.",
   },
+  "rius, canals, planes d'inundació": {
+    src: "/videos/itineraris/sau-tavertet/cronologia/ventalls2-veu.mp4",
+    sound: true,
+    startUnmuted: true,
+    fit: "contain",
+    linkPhrase: "planes d'inundació",
+    caption: "Animació d'un ventall al·luvial. Font: YouTube.",
+  },
+  "i ventalls al·luvials": {
+    src: "/videos/itineraris/sau-tavertet/cronologia/ventalls2-veu.mp4",
+    sound: true,
+    startUnmuted: true,
+    fit: "contain",
+    linkPhrase: "ventalls al·luvials",
+    caption: "Animació d'un ventall al·luvial. Font: YouTube.",
+  },
   "i ventalls al·luvials propers als relleus": {
     src: "/videos/itineraris/sau-tavertet/cronologia/ventalls2-veu.mp4",
     sound: true,
@@ -55,11 +71,21 @@ export const cronologiaVideoPerTitol: Record<string, CronologiaVideoLink> = {
     linkPhrase: "ventalls al·luvials",
     caption: "Animació d'un ventall al·luvial. Font: YouTube.",
   },
+  "intrusió dins de l'escorça": {
+    src: "/videos/itineraris/sau-tavertet/cronologia/intrusio.mp4",
+    sound: false,
+    startUnmuted: false,
+    fit: "contain",
+    caption:
+      "Animació d'intrusions ígnies. Adaptat de metfan869. YouTube.",
+  },
   "calor de les intrusions sobre les pissarres encaixants": {
     src: "/videos/itineraris/sau-tavertet/cronologia/intrusio.mp4",
     sound: false,
     startUnmuted: false,
     fit: "contain",
     linkPhrase: "intrusions",
+    caption:
+      "Animació d'intrusions ígnies. Adaptat de metfan869. YouTube.",
   },
 };

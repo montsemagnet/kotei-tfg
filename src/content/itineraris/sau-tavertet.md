@@ -24,11 +24,11 @@ altimetria:
   ambSo: false
 rutaMobil:
   label: "Track de la ruta"
-  description: "Descarrega el track de l'itinerari (KMZ) per obrir-lo al mòbil i seguir el recorregut durant l'excursió."
+  description: "Descarrega el track de l'itinerari (KMZ) per obrir-lo al mòbil i seguir el recorregut durant l'excursió. Caldrà carregar aquest track en una aplicació compatible, com Google Earth, Google Maps o Wikiloc."
   publicSrc: "/rutes/Itinerari_Sau_Tavertet.kmz"
   downloadName: "Itinerari_Sau_Tavertet.kmz"
 recorregutLabel: "El recorregut"
-recorregutDescripcio: "Track, vol aeri i perfil d'elevació per situar el trajecte Sau–Tavertet, també si no es fa l'excursió."
+recorregutDescripcio: "Track, vol aeri i perfil d'elevació per situar el trajecte Sau–Tavertet."
 introLabel: "Introducció a l'itinerari"
 paradesLabel: "Parades"
 intro:
@@ -117,13 +117,13 @@ dadesIndex:
     - label: "Seqüència geològica de l'itinerari Sau–Tavertet"
       modalKey: sequencia-geologica-itinerari
       numbered: false
-    - label: "Paleozoic: construcció del sòcol ibèric (vídeo 410–280 Ma)"
+    - label: "Paleozoic: construcció del sòcol"
       modalKey: paleogeologia-paleozoic
       numbered: false
-    - label: "Mesozoic global: 280–65 Ma, l'era dels dinosaures"
+    - label: "Hiatus i discordança erosiva (sense registre aflorant, ~250 Ma)"
       modalKey: paleogeologia-mesozoic
       numbered: false
-    - label: "Ibèria, mar de Tetis i conca de l'Ebre (vídeo 230 Ma–actualitat)"
+    - label: "Eocè: cobertura del sòcol"
       modalKey: paleogeologia-iberia-ebre
       numbered: false
     - label: "* – Enllaç a L'Avinguda dels Temps Geològics de l'ICGC"
@@ -135,6 +135,11 @@ dadesIndex:
 dadesModals:
   sequencia-geologica-itinerari:
     intro: "Evolució dels materials, ambients sedimentaris i processos geològics observables entre el pantà de Sau i Tavertet."
+    outroMedia:
+      title: "Seqüència temporal de formació de les roques al llarg de l'itinerari Sau–Tavertet."
+      publicSrc: "/images/itineraris/sau-tavertet/geologic-temporal.gif"
+      alt: "Animació de la seqüència temporal de formació de cada tipus de roca a l'itinerari Sau–Tavertet"
+      caption: "Elaboració pròpia amb QGIS a partir del Mapa geològic de Catalunya 1:25.000 (ICGC). L'animació mostra en quin moment es va formar cada tipus de roca, des del sòcol paleozoic fins a la coberta eocena."
     cronologia:
       - tipus: periode
         titol: "MAR PALEOZOIC"
@@ -271,31 +276,31 @@ dadesModals:
   paleogeologia-paleozoic:
     videos:
       - id: paleozoic
-        title: "Paleozoic: construcció del sòcol ibèric (vídeo 410–280 Ma)"
+        title: "Paleozoic: construcció del sòcol"
         period: "Del Silurià al Permià (410–280 Ma)"
         publicSrc: "/videos/itineraris/sau-tavertet/paleogeologia/1-orogenia-varisca.mp4"
-        alt: "Construcció del sòcol ibèric durant el Paleozoic"
+        alt: "Construcció del sòcol durant el Paleozoic"
         paragraphs:
-          - "En aquest interval es formen els granits i esquists que avui afloren a Sau–Tavertet. La col·lisió herciniana/varisca plegarà i metamorfosarà les antigues sèries sedimentàries, i grans masses de magma cristal·litzaran en profunditat, construint el sòcol ibèric. Paral·lelament, la biosfera viu una gran evolució: diversificació de peixos, colonització de la terra ferma per plantes vasculars, aparició d'amfibis, boscos pantanosos i primers rèptils. El vídeo mostra com la futura Ibèria s'integra en el supercontinent Pangea i com es crea el basament sobre el qual, molt després, se sobreposaran els sediments de la conca de l'Ebre."
+          - "En aquest interval es formen els granits i esquists que avui afloren a Sau–Tavertet. La col·lisió herciniana/varisca plegarà i metamorfosarà les antigues sèries sedimentàries, i grans masses de magma cristal·litzaran en profunditat, construint el sòcol. Paral·lelament, la biosfera viu una gran evolució: diversificació de peixos, colonització de la terra ferma per plantes vasculars, aparició d'amfibis, boscos pantanosos i primers rèptils. El vídeo mostra com la futura Ibèria s'integra en el supercontinent Pangea i com es crea el basament sobre el qual, molt després, se sobreposaran els sediments eocens."
   paleogeologia-mesozoic:
     videos:
       - id: mesozoic
-        title: "Mesozoic global: 280–65 Ma, l'era dels dinosaures"
-        period: "Del Triàsic al Cretaci (280–65 Ma)"
+        title: "Hiatus i discordança erosiva (sense registre aflorant, ~250 Ma)"
+        period: "Del Permià a l'inici del Paleogen (~250 Ma sense registre aflorant)"
         publicSrc: "/videos/itineraris/sau-tavertet/paleogeologia/02.mp4"
-        alt: "El Mesozoic global i l'era dels dinosaures"
+        alt: "Context mundial del hiatus mesozoic sense registre aflorant a Sau–Tavertet"
         paragraphs:
-          - "El supercontinent Pangea es fragmenta, s'obren l'Atlàntic i l'oceà de Tetis, i la Terra entra en l'era dels dinosaures. Després de l'extinció Permià–Triàsic, es diversifiquen dinosaures, mamífers primitius i aus, mentre al Cretaci s'estenen les plantes amb flor, que transformen els ecosistemes terrestres. El clima és globalment càlid i els canvis més importants venen de la reorganització dels continents i oceans. Per a la nostra zona, aquest vídeo dona el context mundial: prepara el marc tectònic i oceànic que farà possible que, ja al Paleogen, un braç del mar de Tetis ocupi la conca de l'Ebre."
+          - "El supercontinent Pangea es fragmenta, s'obren l'Atlàntic i l'oceà de Tetis, i la Terra entra en l'era dels dinosaures. Després de l'extinció Permià–Triàsic, es diversifiquen dinosaures, mamífers primitius i aus, mentre al Cretaci s'estenen les plantes amb flor, que transformen els ecosistemes terrestres. El clima és globalment càlid i els canvis més importants venen de la reorganització dels continents i oceans. En el trajecte Sau–Tavertet, d'aquest interval no n'hi ha cap capa aflorant: són gairebé 250 milions d'anys de hiatus, visibles al camp com la discordança erosiva entre el sòcol paleozoic i la coberta eocena. El vídeo mostra el context mundial d'aquest buit: mentre al planeta passava tot això, aquí no en queda registre."
   paleogeologia-iberia-ebre:
     videos:
       - id: iberia-ebre
-        title: "Ibèria, mar de Tetis i conca de l'Ebre (vídeo 230 Ma–actualitat)"
-        period: "De la placa Ibèrica a Sau–Tavertet (230 Ma–0 Ma)"
+        title: "Eocè: cobertura del sòcol"
+        period: "De la placa Ibèrica a la coberta eocena (230 Ma–actualitat)"
         publicSrc: "/videos/itineraris/sau-tavertet/paleogeologia/03-iberia-210.mp4"
         captionsSrc: "/videos/itineraris/sau-tavertet/paleogeologia/03-iberia-210.ca.vtt"
-        alt: "De la placa Ibèrica a la conca de l'Ebre i el paisatge actual de Sau–Tavertet"
+        alt: "De la placa Ibèrica a la coberta eocena del sòcol a Sau–Tavertet"
         paragraphs:
-          - "Seguim la placa Ibèrica des de la fragmentació de Pangea fins al paisatge actual. La orogènesi alpina aixeca els Pirineus i la serralada Prelitoral, mentre es forma la conca de l'Ebre com a depressió entre aquestes serralades. Inicialment, durant el Paleocè–Eocè, la conca funciona com una badia marina vinculada al mar de Tetis: s'hi dipositen argiles continentals marginals (Formació Mediona) i calcàries amb nummulits en ambients marins somers. A mesura que la conca es continentalitza, els rius que drenen els Pirineus i els relleus catalans l'omplen amb gresos i conglomerats vermells i, finalment, margues i calcàries que construiran les cingleres de Tavertet. Aquest vídeo connecta directament la història de la placa Ibèrica amb el sòcol i els sediments que estudiem al camp."
+          - "Seguim la placa Ibèrica des de la fragmentació de Pangea fins al paisatge actual. La orogènesi alpina aixeca els Pirineus i la serralada Prelitoral, mentre es forma la conca de l'Ebre com a depressió entre aquestes serralades. Inicialment, durant el Paleocè–Eocè, la conca funciona com una badia marina vinculada al mar de Tetis: s'hi dipositen argiles continentals marginals (Formació Mediona) i calcàries amb nummulits en ambients marins somers. A mesura que la conca es continentalitza, els rius que drenen els Pirineus i els relleus catalans l'omplen amb gresos i conglomerats vermells i, finalment, margues i calcàries que construiran les cingleres de Tavertet. Al camp, el resultat d'aquesta història és la coberta eocena que recobreix el sòcol paleozoic."
   paisatge:
     intro: "L'itinerari Sau–Tavertet és un excel·lent exemple de com la geologia del Collsacabra estructura el paisatge i condiciona clarament la distribució de la flora al voltant de la cinglera i el pantà de Sau."
     sections:
@@ -400,10 +405,6 @@ dadesModals:
             publicSrc: "/images/itineraris/sau-tavertet/socol-presa-sau.png"
             alt: "Aflorament de granit del sòcol paleozoic a la presa de Sau"
             caption: "Elaboració pròpia. Presa de Sau, 3 de juny de 2026."
-          - title: "Figura 4. Seqüència temporal de la formació del sòcol paleozoic al llarg de l'itinerari Sau–Tavertet."
-            publicSrc: "/images/itineraris/sau-tavertet/geologic-temporal.webp"
-            alt: "Seqüència temporal de la formació del sòcol de l'itinerari Sau–Tavertet"
-            caption: "Elaboració pròpia amb QGIS a partir del Mapa geològic de Catalunya 1:25.000 (ICGC)."
       - title: "Les dues «històries» que conté el camí"
         paragraphs:
           - "En resum, l'itinerari travessa verticalment dos grans capítols de la història geològica del territori:"
@@ -411,7 +412,7 @@ dadesModals:
           - "La cobertura (sediments terciaris): roques de l'Eocè (~50–37 Ma), dipositades en ambients que van del continental al marí i viceversa, en el context de la formació dels Pirineus i el rebliment de la Conca de l'Ebre."
           - "Entre les dues hi ha un hiatus —un buit en el registre— de gairebé 250 milions d'anys, corresponent al Mesozoic, del qual no hi ha materials representats en la superfície d'aquesta zona. Aquesta absència, visible a la discordança erosiva, és en si mateix un document geològic de primer ordre."
         media:
-          title: "Figura 5. Esquema simplificat que mostra com el sòcol paleozoic de les Guilleries (~500–300 Ma) queda recobert, en discordança erosiva, pels sediments eocens del marge oriental de la Conca de l'Ebre (~50–37 Ma): a la base, argiles i gresos vermells de ventalls al·luvials i sistemes fluvials; a la part superior, margues i calcàries nummulítiques de plataforma marina poc profunda que formen les cingleres de Tavertet."
+          title: "Figura 4. Esquema simplificat que mostra com el sòcol paleozoic de les Guilleries (~500–300 Ma) queda recobert, en discordança erosiva, pels sediments eocens del marge oriental de la Conca de l'Ebre (~50–37 Ma): a la base, argiles i gresos vermells de ventalls al·luvials i sistemes fluvials; a la part superior, margues i calcàries nummulítiques de plataforma marina poc profunda que formen les cingleres de Tavertet."
           publicSrc: "/images/itineraris/sau-tavertet/esquema-dues-histories-geologiques.png"
           alt: "Esquema del sòcol paleozoic de les Guilleries recobert en discordança pels sediments eocens del Collsacabra–Tavertet"
           caption: "Elaboració pròpia."

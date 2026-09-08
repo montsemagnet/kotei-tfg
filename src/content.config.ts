@@ -15,6 +15,16 @@ const modalContentSchema = (image: (path: string) => z.ZodType) =>
         tipus: z.enum(["animacio", "video"]).default("animacio"),
       })
       .optional(),
+    outroMedia: z
+      .object({
+        title: z.string(),
+        publicSrc: z.string(),
+        alt: z.string(),
+        caption: z.string().optional(),
+        compact: z.boolean().optional(),
+        tipus: z.enum(["animacio", "video"]).default("animacio"),
+      })
+      .optional(),
     sections: z
       .array(
         z.object({

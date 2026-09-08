@@ -173,7 +173,7 @@ const hasRecorregut = recorregutItems.length > 0;
                   <ItinerariHeroVideo
                     src={withBase(frontmatter.video.publicSrc)}
                     title={frontmatter.video.alt}
-                    sound={frontmatter.video.ambSo ?? false}
+                    sound={frontmatter.video.ambSo ?? true}
                     captionsSrc={frontmatter.video.captionsSrc}
                   />
                 ) : (
@@ -209,7 +209,7 @@ const hasRecorregut = recorregutItems.length > 0;
             label={frontmatter.video.modalLabel ?? "Visualització de la zona"}
             src={frontmatter.video.publicSrc}
             title={frontmatter.video.alt}
-            sound={frontmatter.video.ambSo ?? false}
+            sound={frontmatter.video.ambSo ?? true}
           />
         )
       }
@@ -374,6 +374,7 @@ const hasRecorregut = recorregutItems.length > 0;
                         label={item.label}
                         intro={subModal.intro}
                         items={subModal.cronologia}
+                        outroMedia={subModal.outroMedia}
                       />
                     ) : subModal.videos && subModal.videos.length > 0 ? (
                       <ItinerariPaleogeologiaModal

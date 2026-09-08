@@ -26,7 +26,7 @@ const {
   autoplayOnMount = true,
   captionsSrc,
   fit = "cover",
-  startUnmuted = false,
+  startUnmuted = sound,
 } = Astro.props;
 const captionsHref = captionsSrc ? withBase(captionsSrc) : undefined;
 ---
@@ -282,13 +282,13 @@ const captionsHref = captionsSrc ? withBase(captionsSrc) : undefined;
     playback.addEventListener("click", () => {
       if (video.ended) {
         video.currentTime = 0;
-        if (hasSound) {
-          video.muted = false;
-          updateSoundButton();
-        }
       }
 
       if (video.paused || video.ended) {
+        if (hasSound && root.dataset.startUnmuted === "true") {
+          video.muted = false;
+          updateSoundButton();
+        }
         void video.play();
         return;
       }
@@ -392,9 +392,7 @@ const captionsHref = captionsSrc ? withBase(captionsSrc) : undefined;
     root.addEventListener("hero-video-reset", resetPlayback);
 
     if (autoplayOnMount) {
-      void video.play().catch(() => {
-        updatePlaybackButton();
-      });
+      startPlayback();
     } else {
       updatePlaybackButton();
     }

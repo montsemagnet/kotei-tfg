@@ -330,7 +330,7 @@ export const cronologiaSequenciaCredits: GeologiaItinerariCredit[] = [
   },
   {
     label: "metfan869 — Igneous Intrusions Animation",
-    use: "Animació d'intrusions ígnies al vídeo de la seqüència geològica (procés «intrusions»).",
+    use: "Animació d'intrusions ígnies als processos «intrusió dins de l'escorça» i «intrusions» de la seqüència geològica.",
     url: "https://www.youtube.com/watch?v=GTa86rDEfek",
     apaCitation:
       "metfan869. (2021, January 5). Igneous Intrusions Animation [Video]. YouTube. https://www.youtube.com/watch?v=GTa86rDEfek",

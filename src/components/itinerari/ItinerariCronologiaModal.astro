@@ -2,6 +2,7 @@
 import Text from "@/components/fundations/elements/Text.astro";
 import ItinerariModalHeaderActions from "@/components/itinerari/ItinerariModalHeaderActions.astro";
 import ItinerariVideoModal from "@/components/itinerari/ItinerariVideoModal.astro";
+import ItinerariModalPublicMedia from "@/components/itinerari/ItinerariModalPublicMedia.astro";
 import { cronologiaVideoPerTitol, type CronologiaVideoLink } from "@/data/cronologia-videos";
 import { withBase } from "@/utils/withBase";
 
@@ -21,6 +22,14 @@ interface Props {
   items: CronologiaItem[];
   iconSrc?: string;
   arrowSrc?: string;
+  outroMedia?: {
+    title?: string;
+    publicSrc: string;
+    alt: string;
+    caption?: string;
+    tipus?: "animacio" | "video";
+    compact?: boolean;
+  };
 }
 
 const {
@@ -30,6 +39,7 @@ const {
   items,
   iconSrc = "/images/itineraris/sau-tavertet/icone-proces.png",
   arrowSrc = "/images/itineraris/sau-tavertet/fletxa.png",
+  outroMedia,
 } = Astro.props;
 
 const titleId = `${modalId}-title`;
@@ -321,6 +331,15 @@ const videoItems = resolvedItems.filter(({ video }) => Boolean(video));
           })
         }
       </ol>
+      {
+        outroMedia && (
+          <ItinerariModalPublicMedia
+            media={outroMedia}
+            zoomId={`${modalId}-outro`}
+            class="mt-10 mb-2"
+          />
+        )
+      }
       <p class="mt-8 pt-6 border-t border-base-200 dark:border-base-800 text-base text-base-500 dark:text-base-400 leading-relaxed">
         Els termes d'aquest esquema són al{" "}
         <a
@@ -347,7 +366,7 @@ const videoItems = resolvedItems.filter(({ video }) => Boolean(video));
           allowFullscreen={video.allowFullscreen ?? true}
           fit={video.fit ?? "contain"}
           hideLabel={video.hideLabel ?? false}
-          startUnmuted={video.startUnmuted ?? false}
+          startUnmuted={video.startUnmuted ?? video.sound ?? true}
           caption={video.caption}
         />
       ) : null,

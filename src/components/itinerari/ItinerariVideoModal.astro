@@ -27,7 +27,7 @@ const {
   caption,
   fit = "cover",
   hideLabel = false,
-  startUnmuted = false,
+  startUnmuted,
 } = Astro.props;
 const titleId = `${modalId}-title`;
 const panelCloseClass =
@@ -65,7 +65,7 @@ const panelCloseClass =
       allowFullscreen={allowFullscreen}
       autoplayOnMount={false}
       fit={fit}
-      startUnmuted={startUnmuted}
+      startUnmuted={startUnmuted ?? sound}
     />
     {
       caption && (

@@ -34,7 +34,8 @@ const { media } = Astro.props;
       <ItinerariHeroVideo
         src={withBase(media.publicSrc)}
         title={media.alt ?? "Vídeo de la parada"}
-        sound={media.ambSo ?? false}
+        sound={media.ambSo ?? true}
+        startUnmuted={media.ambSo ?? true}
         allowFullscreen
       />
     )

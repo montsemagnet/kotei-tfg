@@ -63,19 +63,19 @@ intro:
         - parada: "P6"
           slug: "I1-P6"
           material: "Conglomerats, Formació Romagats"
-          edat: "Eocè mitjà, Lutecià (aprox. 47,8–41 Ma). Origen continental: conglomerats dipositats en ventalls al·luvials per fluxos d'aigua carregats de sediments; no marí."
+          edat: "Eocè, Cuisià–Lutecià inferior. Origen continental: conglomerats dipositats en ventalls al·luvials per fluxos d'aigua carregats de sediments; no marí."
         - parada: "P7"
           slug: "I1-P7"
           material: "Gresos vermells i grisos: contacte amb la Formació Tavertet"
-          edat: "Eocè mitjà, Lutecià inferior–mitjà (aprox. 48–46 Ma). Origen de transició continental-marí: sediments aportats des de terra i dipositats durant l'entrada progressiva del mar."
+          edat: "Eocè mitjà, Lutecià inferior. Origen de transició continental-marí: sediments aportats des de terra i dipositats durant l'entrada progressiva del mar."
         - parada: "P8"
           slug: "I1-P8"
           material: "Gresos de la Formació Tavertet"
-          edat: "Eocè mitjà, Lutecià inferior–mitjà (aprox. 48–46 Ma). Origen marí litoral: sorres dipositades en una plataforma marina soma, influïda per ones i corrents."
+          edat: "Eocè mitjà, Lutecià inferior. Origen marí litoral: sorres dipositades en una plataforma marina soma, influïda per ones i corrents."
         - parada: "P9"
           slug: "I1-P9"
           material: "Calcàries amb nummulits de la Formació Tavertet"
-          edat: "Eocè mitjà, Lutecià inferior–mitjà (aprox. 48–46 Ma). Origen marí de plataforma: acumulació i cimentació de fragments carbonatats i closques de nummulits."
+          edat: "Eocè mitjà, Lutecià inferior. Origen marí de plataforma: acumulació i cimentació de fragments carbonatats i closques de nummulits."
         - parada: "P10"
           slug: "I1-P10"
           material: "Superfície estructural amb diàclasis"
@@ -83,11 +83,11 @@ intro:
         - parada: "P11"
           slug: "I1-P11"
           material: "Margues de la Formació Coll de Malla"
-          edat: "Eocè mitjà, Lutecià (aprox. 47,8–41 Ma). Origen marí de plataforma: acumulació de fangs calcaris i argilosos en aigües tranquil·les, amb episodis d'aportació sorrenca."
+          edat: "Eocè mitjà, Lutecià mitjà. Origen marí de plataforma: acumulació de fangs calcaris i argilosos en aigües tranquil·les, amb episodis d'aportació sorrenca."
         - parada: "P12"
           slug: "I1-P12"
           material: "Gresos de la Formació Barcons"
-          edat: "Eocè mitjà, Lutecià (aprox. 47,8–41 Ma). Origen marí litoral o de plataforma soma: sorres dipositades per corrents i onatge; equivalent lateral del Gres de Folgueroles."
+          edat: "Eocè mitjà, Lutecià mitjà–superior. Origen marí litoral o de plataforma soma: sorres dipositades per corrents i onatge; equivalent lateral del Gres de Folgueroles."
         - parada: "A1"
           slug: "I1-A1"
           material: "Afloraments metamòrfics (pissarres pigallades i dics)"
@@ -143,7 +143,7 @@ dadesModals:
     cronologia:
       - tipus: periode
         titol: "MAR PALEOZOIC"
-        text: "anterior al Carbonífer superior"
+        text: "anterior al Carbonífer superior · ~450 Ma"
         videoPublicSrc: "/videos/itineraris/sau-tavertet/cronologia/mar-paleozoic.mp4"
         videoAmbSo: true
       - tipus: producte
@@ -157,49 +157,59 @@ dadesModals:
         titol: "Lutites"
         categoria: "sedimentaria"
       - tipus: proces
-        titol: "convergència de plaques i orogènia varisca"
+        titol: "convergència de plaques i orogènia varisca (~360–300 Ma)"
       - tipus: proces
         titol: "augment de pressió i temperatura"
-      - tipus: proces
-        titol: "metamorfisme regional"
-      - tipus: producte
-        titol: "A1-Pissarres / fil·lites"
-        categoria: "metamòrfica"
-      - tipus: proces
-        titol: "fusió parcial de roques en profunditat"
-      - tipus: proces
-        titol: "Magma granític (material fos)"
-      - tipus: proces
-        titol: "intrusió dins de l'escorça"
-      - tipus: proces
-        titol: "refredament lent i cristal·lització"
-      - tipus: producte
-        titol: "P1-Monzogranit biotític"
-        categoria: "magmàtica intrusiva-plutónica"
-        text: "~310–280 Ma"
-      - tipus: proces
-        titol: "pulsos magmàtics tardans"
-      - tipus: proces
-        titol: "injecció de magma residual en fractures"
-      - tipus: producte
-        titol: "P1-Pòrfirs, microaplites i dics d'aplita"
-        categoria: "magmàtiques filonianes"
-        text: "~310–280 Ma"
-      - tipus: proces
-        titol: "calor de les intrusions sobre les pissarres encaixants"
-      - tipus: proces
-        titol: "metamorfisme de contacte"
-      - tipus: producte
-        titol: "A1-Pissarres pigallades"
-        categoria: "metamòrfica de contacte"
+      - tipus: parallel
+        titol: "Processos simultanis durant l'orogènia varisca"
+        branques:
+          - titol: "Metamorfisme regional"
+            items:
+              - tipus: proces
+                titol: "Deformació tectònica intensa"
+              - tipus: proces
+                titol: "Desenvolupament de pissarrositat i foliació metamòrfica"
+              - tipus: producte
+                titol: "A1-Pissarres / fil·lites"
+                categoria: "metamòrfica"
+          - titol: "Fusió parcial en profunditat"
+            items:
+              - tipus: proces
+                titol: "Magma granític (material fos)"
+              - tipus: proces
+                titol: "intrusió plutònica"
+              - tipus: proces
+                titol: "refredament lent i cristal·lització"
+              - tipus: producte
+                titol: "P1-Monzogranit biotític"
+                categoria: "magmàtica intrusiva-plutònica"
+                text: "~310–280 Ma"
+      - tipus: parallel
+        titol: "Processos associats al plutó granític"
+        branques:
+          - titol: "Metamorfisme de contacte"
+            items:
+              - tipus: proces
+                titol: "calor del plutó granític a les roques encaixants"
+              - tipus: producte
+                titol: "A1-Pissarres pigallades"
+                categoria: "metamòrfica de contacte"
+          - titol: "Pulsos magmàtics tardans"
+            items:
+              - tipus: proces
+                titol: "injecció de magma residual en fractures"
+              - tipus: producte
+                titol: "P1-Pòrfirs, microaplites i dics d'aplita"
+                categoria: "magmàtiques filonianes"
+                text: "~310–280 Ma"
       - tipus: proces
         titol: "aixecament, erosió i exhumació"
       - tipus: producte
         titol: "P1-Sòcol paleozoic erosionat"
         categoria: "metamòrfiques i magmàtiques"
-        text: "~310–280 Ma"
+        text: "Roques d'~310–280 Ma; l'exhumació és posterior"
       - tipus: proces
-        titol: "més de 200 Ma sense registre sedimentari local continu"
+        titol: "~250 Ma sense registre sedimentari local continu"
       - tipus: producte
         titol: "discordança erosiva"
       - tipus: periode
@@ -208,69 +218,65 @@ dadesModals:
         titol: "P3-Lutites vermelles i paleosòls"
         categoria: "sedimentaries continentals"
         text: "Formació de Mediona · Paleocè final, Thanetià, ~59–56 Ma"
-      - tipus: proces
-        titol: "dipòsit en planes fangoses, zones temporalment inundades"
-      - tipus: proces
-        titol: "i ambients continentals de baixa energia"
+        processos:
+          - "dipòsit en planes fangoses, zones temporalment inundades"
+          - "ambients continentals de baixa energia"
       - tipus: producte
         titol: "P5-Gresos, conglomerats i lutites vermelles"
         categoria: "sedimentaries continentals"
         text: "Formació de Vilanova de Sau · Eocè inferior, Ilerdià, ~56–47,8 Ma"
-      - tipus: proces
-        titol: "rius, canals, planes d'inundació"
-      - tipus: proces
-        titol: "i ventalls al·luvials"
+        processos:
+          - "rius, canals, planes d'inundació"
+          - "ventalls al·luvials"
       - tipus: producte
         titol: "P6-Conglomerats i gresos vermells"
         categoria: "sedimentaries continentals"
-        text: "Formació de Romagats · Eocè mitjà, Lutecià, ~47,8–41 Ma"
-      - tipus: proces
-        titol: "transport per cursos fluvials d'alta energia"
-      - tipus: proces
-        titol: "i ventalls al·luvials propers als relleus"
+        text: "Formació de Romagats · Cuisià–Lutecià inferior"
+        processos:
+          - "transport per cursos fluvials d'alta energia"
+          - "ventalls al·luvials propers als relleus"
       - tipus: periode
         titol: "TRANSGRESSIÓ MARINA EOCENA"
         text: "El mar avança sobre la conca continental"
       - tipus: producte
         titol: "P7-P8-Gresos, conglomerats i calcàries sorrenques"
         categoria: "sedimentaries marines"
-        text: "Formació de Tavertet · Eocè mitjà, Lutecià inferior–mitjà, ~48–46 Ma"
-      - tipus: proces
-        titol: "mar de plataforma somera"
-      - tipus: proces
-        titol: "sedimentació de carbonat de calci"
-      - tipus: proces
-        titol: "organismes marins, especialment nummulits"
+        text: "Formació de Tavertet · Lutecià inferior"
+        processos:
+          - "Transició d'ambients continentals a marins somers"
+          - "Sedimentació de sorres i graves a la costa i a la plataforma proximal"
       - tipus: producte
         titol: "P9-Calcàries amb nummulits"
         categoria: "sedimentaries marines carbonatades"
-        text: "Formació de Tavertet · Eocè mitjà, Lutecià inferior–mitjà, ~48–46 Ma"
-      - tipus: proces
-        titol: "les calcàries resistents formen la cinglera"
-      - tipus: proces
-        titol: "erosió diferencial"
-      - tipus: producte
-        titol: "P9-P10 Cingles de Tavertet"
-        text: "Roques principalment eocenes, d'edat luteciana, ~48–41 Ma. Les calcàries dures formen els penya-segats; les roques més toves s'erosionen amb més facilitat."
-      - tipus: proces
-        titol: "mar més tranquil i, localment, més profund"
-      - tipus: proces
-        titol: "dipòsit de fangs calcaris"
+        text: "Formació de Tavertet · Lutecià inferior"
+        processos:
+          - "Mar de plataforma carbonatada somera"
+          - "Sedimentació de carbonat de calci i fragments bioclàstics"
+          - "Abundància de nummulits i altres invertebrats marins"
       - tipus: producte
         titol: "P11-Margues sorrences gris-blavoses, limolites i gresos fins"
         categoria: "sedimentaries marines"
-        text: "Formació del Coll de Malla · Eocè mitjà, Lutecià, ~47,8–41 Ma"
-      - tipus: proces
-        titol: "progrés de sistemes litorals i deltaics"
-      - tipus: proces
-        titol: "aportació de sorra cap al centre de la conca"
+        text: "Formació del Coll de Malla · Lutecià mitjà"
+        processos:
+          - "Mar més tranquil i, localment, relativament més profund"
+          - "Sedimentació de fangs carbonatats, llims i sorres fines"
+          - "Progrés de sistemes litorals i deltaics"
       - tipus: producte
-        titol: "P12- Gresos groguencs o gris-blavosos, amb glauconita"
+        titol: "P12-Gresos groguencs o gris-blavosos, amb glauconita"
         categoria: "sedimentaries deltaiques i marines"
-        text: "Formació de Folgueroles · Eocè mitjà, Lutecià, ~47,8–41 Ma"
+        text: "Formació de Barcons (equivalent del Gres de Folgueroles) · Lutecià mitjà–superior"
+        processos:
+          - "Progradació de sistemes deltaics i litorals"
+          - "Aportació de sorra cap al centre de la conca"
       - tipus: proces
-        titol: "sedimentació, aixecament i erosió posteriors"
+        titol: "Aixecament tectònic i erosió diferencial posteriors"
       - tipus: producte
+        titol: "P9-P10 Cingles de Tavertet"
+        text: "Relleu actual desenvolupat principalment sobre les calcàries de la Formació de Tavertet."
+        processos:
+          - "Les calcàries més resistents formen els escarpaments"
+          - "Les margues i els gresos més tous s'erosionen amb més facilitat"
+      - tipus: periode
         titol: "TAVERTET ACTUAL"
         text: "Altiplà format per materials eocens, especialment calcàries, margues i gresos, situats damunt del sòcol paleozoic de les Guilleries."
   paleogeologia-paleozoic:
@@ -417,7 +423,7 @@ dadesModals:
           alt: "Esquema del sòcol paleozoic de les Guilleries recobert en discordança pels sediments eocens del Collsacabra–Tavertet"
           caption: "Elaboració pròpia."
   estratigrafia-litologia:
-    intro: "Al llarg de l'itinerari, des de la presa del pantà de Sau fins al poble de Tavertet, travessem una columna estratigràfica completa: des del sòcol cristal·lí paleozoic fins als sediments vermells continentals i les roques grises marines de l'Eocè, responsables dels cingles actuals. Les parades P1–P12 segueixen aquest ordre, de més antiga a més moderna."
+    intro: "Al llarg de l'itinerari, des de la presa del pantà de Sau fins al poble de Tavertet, travessem una columna estratigràfica completa: des del sòcol cristal·lí paleozoic fins als sediments vermells continentals i les roques grises marines de l'Eocè, responsables dels cingles actuals. Les parades P1–P12 segueixen aquest ordre, de més antiga a més moderna. La cartografia local situa la Formació de Romagats entre el Cuisià i el Lutecià inferior, la Formació de Tavertet al Lutecià inferior, la Formació del Coll de Malla al Lutecià mitjà, i la Formació de Folgueroles al Lutecià mitjà–superior."
     sections:
       - title: "De la base cristal·lina al farciment terciari (P1–P2)"
         subsections:
@@ -514,13 +520,13 @@ dadesModals:
             - cells: ["P3", "Capa vermella", "Argiles del Paleocè, Formació Mediona", "Plans d'inundació fluvials · Paleocè (66–56 Ma)"]
             - cells: ["P4", "Quaternari", "Dipòsits de vessant (Quaternari)", "Despullament i transport per aigua · Quaternari (2,6 Ma–actualitat)"]
             - cells: ["P5", "Capa vermella", "Gresos i conglomerats vermells, Formació Vilanova de Sau", "Canals de riu i ventalls al·luvials · Eocè inferior (56–47 Ma)"]
-            - cells: ["P6", "Capa vermella", "Conglomerats, Formació Romagats", "Sistemes fluvials continentals · Eocè (47–38 Ma)"]
-            - cells: ["P7", "Capa grisa", "Gresos vermells i grisos: contacte amb la Formació Tavertet", "Transició continental–marina · Eocè (47–38 Ma)"]
-            - cells: ["P8", "Capa grisa", "Gresos de la Formació Tavertet", "Platja o mar poc profund · Eocè (47–38 Ma)"]
-            - cells: ["P9", "Capa grisa", "Calcàries amb nummulits de la Formació Tavertet", "Mar eocè poc profund · Eocè mitjà (47–34 Ma)"]
-            - cells: ["P10", "Capa grisa", "Superfície estructural amb diàclasis", "Estructures en coberta sedimentària · Eocè (47–34 Ma)"]
-            - cells: ["P11", "Capa grisa", "Margues de la Formació Coll de Malla", "Fons marí fangós · Eocè superior (38–34 Ma)"]
-            - cells: ["P12", "Capa grisa", "Gresos de la Formació Barcons", "Arenes marines / de platja; cingles i cornises · Eocè terminal–Oligocè (34–28 Ma)"]
+            - cells: ["P6", "Capa vermella", "Conglomerats, Formació Romagats", "Sistemes fluvials continentals · Cuisià–Lutecià inferior"]
+            - cells: ["P7", "Capa grisa", "Gresos vermells i grisos: contacte amb la Formació Tavertet", "Transició continental–marina · Lutecià inferior"]
+            - cells: ["P8", "Capa grisa", "Gresos de la Formació Tavertet", "Platja o mar poc profund · Lutecià inferior"]
+            - cells: ["P9", "Capa grisa", "Calcàries amb nummulits de la Formació Tavertet", "Mar eocè poc profund · Lutecià inferior"]
+            - cells: ["P10", "Capa grisa", "Superfície estructural amb diàclasis", "Estructures en coberta sedimentària · Lutecià"]
+            - cells: ["P11", "Capa grisa", "Margues de la Formació Coll de Malla", "Fons marí fangós · Lutecià mitjà"]
+            - cells: ["P12", "Capa grisa", "Gresos de la Formació Barcons", "Arenes marines / de platja; cingles i cornises · Lutecià mitjà–superior"]
             - cells: ["A1", "Sòcol hercinià (auxiliar)", "Afloraments metamòrfics", "Pissarres pigallades i dics · Paleozoic"]
   tectonica-estructures:
     sections:

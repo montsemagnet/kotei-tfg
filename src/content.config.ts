@@ -2,6 +2,33 @@ import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
 
+const cronologiaStepSchema = z
+  .object({
+    tipus: z.enum(["periode", "proces", "producte"]),
+    titol: z.string(),
+    text: z.string().optional(),
+    categoria: z.string().optional(),
+    videoPublicSrc: z.string().optional(),
+    videoAmbSo: z.boolean().optional(),
+    processos: z.array(z.string()).optional(),
+  })
+  .passthrough();
+
+const cronologiaNodeSchema = z.union([
+  cronologiaStepSchema,
+  z.object({
+    tipus: z.literal("parallel"),
+    titol: z.string().optional(),
+    branques: z.array(
+      z.object({
+        titol: z.string().optional(),
+        text: z.string().optional(),
+        items: z.array(cronologiaStepSchema),
+      }),
+    ),
+  }),
+]);
+
 const modalContentSchema = (image: (path: string) => z.ZodType) =>
   z.object({
     intro: z.string().optional(),
@@ -132,18 +159,7 @@ const modalContentSchema = (image: (path: string) => z.ZodType) =>
       )
       .optional(),
     /** Seqüència cronològica (títol a l'esquerra, text a la dreta; sense glossari) */
-    cronologia: z
-      .array(
-        z.object({
-          tipus: z.enum(["periode", "proces", "producte"]),
-          titol: z.string(),
-          text: z.string().optional(),
-          categoria: z.string().optional(),
-          videoPublicSrc: z.string().optional(),
-          videoAmbSo: z.boolean().optional(),
-        }).passthrough(),
-      )
-      .optional(),
+    cronologia: z.array(cronologiaNodeSchema).optional(),
     images: z
       .array(
         z.union([

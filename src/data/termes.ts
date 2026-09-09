@@ -262,7 +262,7 @@ export const termes: Terme[] = [
     "slug": "capa-grisa",
     "terme": "Capa grisa",
     "categoria": "Estratigrafia",
-    "definicio": "Paquet de roques marines grises —gresos, margues i calcàries— dipositades durant l'Eocè superior al sector de Tavertet (38–34 Ma). Representa el pas cap a ambient marí més obert i és la litologia dominant de les cingleres que delimiten l'altiplà del Collsacabra."
+    "definicio": "Paquet de roques marines grises —gresos, margues i calcàries— de l'Eocè mitjà al sector de Tavertet, des del Lutecià inferior (Formació de Tavertet) fins al Lutecià mitjà–superior (Coll de Malla i Folgueroles/Barcons). Representa el pas cap a ambient marí i és la litologia dominant de les cingleres que delimiten l'altiplà del Collsacabra."
   },
   {
     "slug": "capa-vermella",
@@ -433,6 +433,15 @@ export const termes: Terme[] = [
     "definicio": "Fractura de l'escorça o de la roca sense desplaçament apreciable entre els marges del pla de falla. Al granit de la presa de Sau, les diàclasis controlen l'estabilitat de l'aflorament i, sovint, la circulació de fluids i la formació de filons.",
     "sinonims": [
       "diàclasis"
+    ]
+  },
+  {
+    "slug": "diagenesi",
+    "terme": "Diagènesi",
+    "categoria": "Sedimentologia",
+    "definicio": "Conjunt de processos físics i químics que transformen un sediment solt en roca sedimentària. Inclouen, entre d'altres, la compactació, la pèrdua d'aigua, la cimentació, l'escalfament geotèrmic, la recristal·lització i la reordenació de les partícules. Es produeix als primers 5 o 6 km de l'escorça, a temperatures inferiors a uns 150–200 °C; més enllà ja es considera metamorfisme. Sovint la consolidació ve de la infiltració d'aigües amb substàncies dissoltes, que converteixen graves en conglomerats, sorres en gresos, argiles en lutites, fangs calcaris en calcàries o dolomies, i cendres volcàniques en cinerites. A Sau–Tavertet, la diagènesi explica el pas dels sediments eocens a les lutites, gresos i calcàries de la cobertura.",
+    "sinonims": [
+      "diagenització"
     ]
   },
   {
@@ -752,7 +761,7 @@ export const termes: Terme[] = [
     "slug": "formacio-de-barcons",
     "terme": "Formació de Barcons",
     "categoria": "Estratigrafia",
-    "definicio": "Formació sedimentària relacionada amb ambients continentals i marins de platja al tancament de la seqüència eocena (34–28 Ma). Marca la fase final de la sedimentació paleogena abans de l'evolució neogena del litoral català.",
+    "definicio": "Gresos que tanquen la seqüència marina visible al Turó del Castell (parada 12), equivalents laterals del Gres de Folgueroles. La cartografia local els situa al Lutecià mitjà–superior.",
     "sinonims": [
       "Fm. Barcons",
       "Formació Barcons",
@@ -767,7 +776,7 @@ export const termes: Terme[] = [
     "slug": "formacio-de-folgueroles",
     "terme": "Formació de Folgueroles",
     "categoria": "Estratigrafia",
-    "definicio": "Unitat de gresos bartonians situada estratigràficament per damunt de les margues del Coll de Malla. Marca un canvi cap a ambients més proximals (platja i zones costaneres) dins la successió eocena del Collsacabra i de la Conca de l'Ebre.",
+    "definicio": "Unitat de gresos situada estratigràficament per damunt de les margues del Coll de Malla. La cartografia local la situa al Lutecià mitjà–superior; en la bibliografia regional sovint s'atribueix al Bartonià. Marca un canvi cap a ambients més proximals (platja i zones costaneres) dins la successió eocena del Collsacabra.",
     "sinonims": [
       "Fm. Folgueroles",
       "gresos de Folgueroles",
@@ -802,17 +811,19 @@ export const termes: Terme[] = [
     "slug": "formacio-de-romagats",
     "terme": "Formació de Romagats",
     "categoria": "Estratigrafia",
-    "definicio": "Unitat geològica del registre eocè regional, integrada dins la successió paleogena de la conca de l'Ebre. Forma part del conjunt de formacions que documenten la transició entre ambients continentals i marins.",
+    "definicio": "Unitat de conglomerats i gresos vermells del marge oriental de la Conca de l'Ebre, dipositats en ventalls al·luvials. Al sector de Sau–Tavertet la cartografia local la situa entre el Cuisià i el Lutecià inferior, per sota de la Formació de Tavertet.",
     "sinonims": [
       "Fm. Romagats",
-      "Formació Romagats"
+      "Formació Romagats",
+      "Romegats",
+      "Formació de Romegats"
     ]
   },
   {
     "slug": "formacio-de-tavertet",
     "terme": "Formació de Tavertet",
     "categoria": "Estratigrafia",
-    "definicio": "Unitat formada principalment per calcàries i gresos marins, molt visibles als cingles del Collsacabra. Conté calcàries nummulítiques i és una de les litologies més característiques de l'itinerari.",
+    "definicio": "Unitat formada principalment per calcàries i gresos marins, molt visibles als cingles del Collsacabra. Conté calcàries nummulítiques; la cartografia local la situa al Lutecià inferior.",
     "sinonims": [
       "Fm. Tavertet",
       "Formació Tavertet",
@@ -836,7 +847,7 @@ export const termes: Terme[] = [
     "slug": "formacio-del-coll-de-malla",
     "terme": "Formació del Coll de Malla",
     "categoria": "Estratigrafia",
-    "definicio": "Unitat estratigràfica superior del conjunt eocè (38–34 Ma), constituïda principalment per margues grises amb fòssils marins. La seva litologia més tova afavoreix l'erosió i contribueix a l'escalonament de les cingleres.",
+    "definicio": "Unitat de margues grises amb fòssils marins, situada per damunt de les calcàries de Tavertet. La cartografia local la situa al Lutecià mitjà; la litologia tova afavoreix l'erosió i contribueix a l'escalonament de les cingleres.",
     "sinonims": [
       "Fm. Coll de Malla",
       "Formació Coll de Malla",
@@ -1048,6 +1059,12 @@ export const termes: Terme[] = [
     "sinonims": [
       "llims"
     ]
+  },
+  {
+    "slug": "litificacio",
+    "terme": "Litificació",
+    "categoria": "Sedimentologia",
+    "definicio": "Procés pel qual els sediments es compacten per l'acció de la pressió, n'expulsen els fluids i esdevenen gradualment roca sedimentària. Implica sobretot una disminució de la porositat per compactació i cimentació. En alguns casos, però, durant la diagènesi es dissolen minerals i la porositat pot augmentar. A Sau–Tavertet, la litificació és el pas que converteix els sediments eocens en les lutites, gresos i calcàries de la cobertura."
   },
   {
     "slug": "litofacies",

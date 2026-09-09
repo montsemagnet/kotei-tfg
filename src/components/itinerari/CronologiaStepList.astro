@@ -1,0 +1,330 @@
+---
+import Text from "@/components/fundations/elements/Text.astro";
+import { withBase } from "@/utils/withBase";
+import type { AnnotatedCronologiaStep } from "@/components/itinerari/cronologia";
+
+interface Props {
+  items: AnnotatedCronologiaStep[];
+  iconUrl: string;
+  arrowUrl: string;
+  previousIsProces?: boolean;
+  previousIsProducte?: boolean;
+}
+
+const {
+  items,
+  iconUrl,
+  arrowUrl,
+  previousIsProces = false,
+  previousIsProducte = false,
+} = Astro.props;
+
+const periodeLinkClass =
+  "text-left cursor-pointer dark:text-accent-400 text-accent-700 font-medium tracking-tight underline decoration-accent-700/30 dark:decoration-accent-400/40 underline-offset-[4px] hover:decoration-accent-700 dark:hover:decoration-accent-400 transition-colors";
+const paradaLinkClass =
+  "text-accent-700 dark:text-accent-400 underline decoration-accent-700/30 dark:decoration-accent-400/40 underline-offset-[3px] hover:decoration-accent-700 dark:hover:decoration-accent-400 transition-colors";
+const procesLinkClass =
+  "text-left cursor-pointer text-accent-700 dark:text-accent-400 underline decoration-accent-700/30 dark:decoration-accent-400/40 underline-offset-[3px] hover:decoration-accent-700 dark:hover:decoration-accent-400 transition-colors leading-snug";
+
+function splitLinkPhrase(
+  titol: string,
+  phrase?: string,
+): { before: string; phrase: string; after: string } | null {
+  if (!phrase) return null;
+  const index = titol.toLowerCase().indexOf(phrase.toLowerCase());
+  if (index < 0) return null;
+  return {
+    before: titol.slice(0, index),
+    phrase: titol.slice(index, index + phrase.length),
+    after: titol.slice(index + phrase.length),
+  };
+}
+
+function parseParadaTitle(titol: string): {
+  codes: string[];
+  separator: string;
+  rest: string;
+} | null {
+  const match = titol.match(
+    /^((?:A\d+|P\d+)(?:-(?:A\d+|P\d+))*)([-\s]+)(.*)$/,
+  );
+  if (!match) return null;
+  const codes = match[1].split("-").filter((code) => /^(A|P)\d+$/.test(code));
+  if (codes.length === 0) return null;
+  return { codes, separator: match[2], rest: match[3] };
+}
+---
+
+{
+    items.map((item, index) => {
+      const titol = item.titol.replace(/^[↓⬇]\s*/u, "").trim();
+      const previous = index > 0 ? items[index - 1] : undefined;
+      const showResultArrow =
+        (item.tipus === "producte" &&
+          (previous?.tipus === "proces" ||
+            previous?.tipus === "producte" ||
+            (!previous && (previousIsProces || previousIsProducte)))) ||
+        (item.tipus === "proces" &&
+          (previous?.tipus === "producte" ||
+            (!previous && previousIsProducte)));
+      const paradaTitle = parseParadaTitle(titol);
+      const videoModalId = item.videoId;
+
+      if (item.tipus === "periode") {
+        return (
+          <li class="mt-8 first:mt-0 mb-4 border-t border-base-200 dark:border-base-800 pt-6">
+            {
+              videoModalId ? (
+                <Text tag="h3" variant="displaySM" class="leading-tight">
+                  <button
+                    type="button"
+                    data-cronologia-video-target={videoModalId}
+                    class={periodeLinkClass}
+                    aria-haspopup="dialog"
+                    aria-label={`Obrir vídeo: ${titol}`}
+                  >
+                    {titol}
+                  </button>
+                </Text>
+              ) : (
+                <Text
+                  tag="h3"
+                  variant="displaySM"
+                  class="dark:text-white text-base-900 font-medium tracking-tight"
+                >
+                  {titol}
+                </Text>
+              )
+            }
+            {
+              item.text && (
+                <Text
+                  tag="p"
+                  variant="textBase"
+                  class="text-base-500 dark:text-base-400 mt-2 leading-relaxed"
+                >
+                  {item.text}
+                </Text>
+              )
+            }
+          </li>
+        );
+      }
+
+      if (item.tipus === "proces") {
+        const linked = videoModalId
+          ? splitLinkPhrase(titol, item.video?.linkPhrase)
+          : null;
+        return (
+          <>
+            {
+              showResultArrow && (
+                <li class="flex justify-center py-2" aria-hidden="true">
+                  <img
+                    src={arrowUrl}
+                    alt=""
+                    class="h-8 w-auto sm:h-9"
+                    width="36"
+                    height="36"
+                  />
+                </li>
+              )
+            }
+          <li class="flex items-start gap-2 py-1.5">
+            <span
+              class="mt-0.5 size-5 shrink-0 bg-accent-700 dark:bg-accent-400"
+              style={`mask: url('${iconUrl}') center / contain no-repeat; -webkit-mask: url('${iconUrl}') center / contain no-repeat; mask-mode: alpha; -webkit-mask-source-type: alpha;`}
+              aria-hidden="true"
+            />
+            <div class="min-w-0">
+              {
+                videoModalId ? (
+                  linked ? (
+                    <p class="text-base text-base-700 dark:text-base-200 leading-snug">
+                      {linked.before}
+                      <button
+                        type="button"
+                        data-cronologia-video-target={videoModalId}
+                        class={`${procesLinkClass} inline`}
+                        aria-haspopup="dialog"
+                        aria-label={`Obrir vídeo: ${linked.phrase}`}
+                      >
+                        {linked.phrase}
+                      </button>
+                      {linked.after}
+                    </p>
+                  ) : (
+                    <button
+                      type="button"
+                      data-cronologia-video-target={videoModalId}
+                      class={procesLinkClass}
+                      aria-haspopup="dialog"
+                      aria-label={`Obrir vídeo: ${titol}`}
+                    >
+                      {titol}
+                    </button>
+                  )
+                ) : (
+                  <Text
+                    tag="p"
+                    variant="textBase"
+                    class="text-base-700 dark:text-base-200 leading-snug"
+                  >
+                    {titol}
+                  </Text>
+                )
+              }
+              {
+                item.text && (
+                  <Text
+                    tag="p"
+                    variant="textSM"
+                    class="text-base-500 dark:text-base-400 mt-1 leading-relaxed"
+                  >
+                    {item.text}
+                  </Text>
+                )
+              }
+            </div>
+          </li>
+          </>
+        );
+      }
+
+      const nestedProcessos =
+        item.processosEnriquits ??
+        item.processos?.map((titol) => ({ titol })) ??
+        [];
+
+      return (
+        <>
+          {
+            showResultArrow && (
+              <li class="flex justify-center py-2" aria-hidden="true">
+                <img
+                  src={arrowUrl}
+                  alt=""
+                  class="h-8 w-auto sm:h-9"
+                  width="36"
+                  height="36"
+                />
+              </li>
+            )
+          }
+          <li class="rounded-lg border border-base-200 dark:border-base-700 bg-base-50/70 dark:bg-base-800/40 p-3 sm:p-4 my-1">
+            <div class="grid grid-cols-1 sm:grid-cols-[minmax(8rem,1fr)_minmax(0,max-content)] gap-x-4 gap-y-1 items-baseline">
+            <Text
+              tag="p"
+              variant="textBase"
+              class="dark:text-white text-base-900 font-semibold leading-snug"
+            >
+              {
+                paradaTitle ? (
+                  <>
+                    {paradaTitle.codes.map((code, codeIndex) => (
+                      <>
+                        {codeIndex > 0 ? "-" : ""}
+                        <a
+                          href={withBase(`/parades/I1-${code}`)}
+                          class={paradaLinkClass}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`Obrir parada ${code} en una pestanya nova`}
+                        >
+                          {code}
+                        </a>
+                      </>
+                    ))}
+                    {paradaTitle.separator}
+                    {paradaTitle.rest}
+                  </>
+                ) : (
+                  titol
+                )
+              }
+            </Text>
+            <div class="min-w-0 sm:text-right">
+              {
+                item.categoria && (
+                  <p class="text-sm text-base-400 dark:text-base-500">
+                    ({item.categoria})
+                  </p>
+                )
+              }
+              {
+                item.text && (
+                  <Text
+                    tag="p"
+                    variant="textBase"
+                    class="text-base-500 dark:text-base-400 leading-relaxed mt-1"
+                  >
+                    {item.text}
+                  </Text>
+                )
+              }
+            </div>
+            </div>
+            {
+              nestedProcessos.length > 0 && (
+                <ul class="mt-3 space-y-1.5 list-none p-0 m-0">
+                  {nestedProcessos.map((proces) => {
+                    const procesVideoId = "videoId" in proces ? proces.videoId : undefined;
+                    const procesVideo = "video" in proces ? proces.video : undefined;
+                    const linked = procesVideoId
+                      ? splitLinkPhrase(proces.titol, procesVideo?.linkPhrase)
+                      : null;
+                    return (
+                      <li class="flex items-start gap-2">
+                        <span
+                          class="mt-0.5 size-5 shrink-0 bg-accent-700 dark:bg-accent-400"
+                          style={`mask: url('${iconUrl}') center / contain no-repeat; -webkit-mask: url('${iconUrl}') center / contain no-repeat; mask-mode: alpha; -webkit-mask-source-type: alpha;`}
+                          aria-hidden="true"
+                        />
+                        {
+                          procesVideoId ? (
+                            linked ? (
+                              <p class="text-base text-base-700 dark:text-base-200 leading-snug">
+                                {linked.before}
+                                <button
+                                  type="button"
+                                  data-cronologia-video-target={procesVideoId}
+                                  class={`${procesLinkClass} inline`}
+                                  aria-haspopup="dialog"
+                                  aria-label={`Obrir vídeo: ${linked.phrase}`}
+                                >
+                                  {linked.phrase}
+                                </button>
+                                {linked.after}
+                              </p>
+                            ) : (
+                              <button
+                                type="button"
+                                data-cronologia-video-target={procesVideoId}
+                                class={procesLinkClass}
+                                aria-haspopup="dialog"
+                                aria-label={`Obrir vídeo: ${proces.titol}`}
+                              >
+                                {proces.titol}
+                              </button>
+                            )
+                          ) : (
+                            <Text
+                              tag="p"
+                              variant="textBase"
+                              class="text-base-700 dark:text-base-200 leading-snug"
+                            >
+                              {proces.titol}
+                            </Text>
+                          )
+                        }
+                      </li>
+                    );
+                  })}
+                </ul>
+              )
+            }
+          </li>
+        </>
+      );
+    })
+  }

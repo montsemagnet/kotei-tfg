@@ -3,23 +3,25 @@ import Text from "@/components/fundations/elements/Text.astro";
 import ItinerariModalHeaderActions from "@/components/itinerari/ItinerariModalHeaderActions.astro";
 import ItinerariVideoModal from "@/components/itinerari/ItinerariVideoModal.astro";
 import ItinerariModalPublicMedia from "@/components/itinerari/ItinerariModalPublicMedia.astro";
-import { cronologiaVideoPerTitol, type CronologiaVideoLink } from "@/data/cronologia-videos";
+import CronologiaStepList from "@/components/itinerari/CronologiaStepList.astro";
+import {
+  isAnnotatedParallel,
+  isParallel,
+  lookupCronologiaVideo,
+  resolveCronologiaItemVideo,
+  type AnnotatedBranch,
+  type AnnotatedCronologiaStep,
+  type AnnotatedNode,
+  type CronologiaNode,
+  type CronologiaStep,
+} from "@/components/itinerari/cronologia";
 import { withBase } from "@/utils/withBase";
-
-export interface CronologiaItem {
-  tipus: "periode" | "proces" | "producte";
-  titol: string;
-  text?: string;
-  categoria?: string;
-  videoPublicSrc?: string;
-  videoAmbSo?: boolean;
-}
 
 interface Props {
   modalId: string;
   label: string;
   intro?: string;
-  items: CronologiaItem[];
+  items: CronologiaNode[];
   iconSrc?: string;
   arrowSrc?: string;
   outroMedia?: {
@@ -47,63 +49,64 @@ const iconUrl = withBase(iconSrc);
 const arrowUrl = withBase(arrowSrc);
 const panelCloseClass =
   "itinerari-dada-close rounded-full bg-base-200 dark:bg-base-800 px-4 py-2 text-sm text-base-900 dark:text-white hover:bg-base-300 dark:hover:bg-base-700";
-const periodeLinkClass =
-  "text-left cursor-pointer dark:text-accent-400 text-accent-700 font-medium tracking-tight underline decoration-accent-700/30 dark:decoration-accent-400/40 underline-offset-[4px] hover:decoration-accent-700 dark:hover:decoration-accent-400 transition-colors";
-const paradaLinkClass =
-  "text-accent-700 dark:text-accent-400 underline decoration-accent-700/30 dark:decoration-accent-400/40 underline-offset-[3px] hover:decoration-accent-700 dark:hover:decoration-accent-400 transition-colors";
 const procesLinkClass =
   "text-left cursor-pointer text-accent-700 dark:text-accent-400 underline decoration-accent-700/30 dark:decoration-accent-400/40 underline-offset-[3px] hover:decoration-accent-700 dark:hover:decoration-accent-400 transition-colors leading-snug";
+const paradaLinkClass =
+  "text-accent-700 dark:text-accent-400 underline decoration-accent-700/30 dark:decoration-accent-400/40 underline-offset-[3px] hover:decoration-accent-700 dark:hover:decoration-accent-400 transition-colors";
 
-function resolveItemVideo(item: CronologiaItem): CronologiaVideoLink | undefined {
-  const titol = item.titol.replace(/^[↓⬇]\s*/u, "").trim();
-  const fromMap = cronologiaVideoPerTitol[titol];
-  if (item.videoPublicSrc) {
+let videoSeq = 0;
+const videoItems: AnnotatedCronologiaStep[] = [];
+
+function annotateStep(item: CronologiaStep): AnnotatedCronologiaStep {
+  const video = resolveCronologiaItemVideo(item);
+  const videoId = video ? `${modalId}-video-${videoSeq++}` : undefined;
+  const processosEnriquits = item.processos?.map((titol) => {
+    const procesVideo = lookupCronologiaVideo(titol);
+    const procesVideoId = procesVideo
+      ? `${modalId}-video-${videoSeq++}`
+      : undefined;
+    if (procesVideo && procesVideoId) {
+      videoItems.push({
+        tipus: "proces",
+        titol,
+        video: procesVideo,
+        videoId: procesVideoId,
+      });
+    }
+    return { titol, video: procesVideo, videoId: procesVideoId };
+  });
+  const annotated = { ...item, video, videoId, processosEnriquits };
+  if (video && videoId) videoItems.push(annotated);
+  return annotated;
+}
+
+function annotateHeading(
+  titol?: string,
+  text?: string,
+): Pick<AnnotatedBranch, "titol" | "text" | "video" | "videoId"> {
+  if (!titol) return { titol, text };
+  const heading: CronologiaStep = { tipus: "proces", titol, text };
+  const video = lookupCronologiaVideo(titol);
+  const videoId = video ? `${modalId}-video-${videoSeq++}` : undefined;
+  if (video && videoId) {
+    videoItems.push({ ...heading, video, videoId });
+  }
+  return { titol, text, video, videoId };
+}
+
+const annotatedNodes: AnnotatedNode[] = items.map((node) => {
+  if (isParallel(node)) {
     return {
-      hideLabel: fromMap?.hideLabel,
-      startUnmuted: fromMap?.startUnmuted,
-      fit: fromMap?.fit,
-      ...fromMap,
-      src: item.videoPublicSrc,
-      sound: item.videoAmbSo ?? fromMap?.sound ?? true,
+      tipus: "parallel",
+      titol: node.titol,
+      branques: node.branques.map((branca) => ({
+        ...annotateHeading(branca.titol, branca.text),
+        items: branca.items.map(annotateStep),
+      })),
     };
   }
-  return fromMap;
-}
-
-function splitLinkPhrase(
-  titol: string,
-  phrase?: string,
-): { before: string; phrase: string; after: string } | null {
-  if (!phrase) return null;
-  const index = titol.toLowerCase().indexOf(phrase.toLowerCase());
-  if (index < 0) return null;
-  return {
-    before: titol.slice(0, index),
-    phrase: titol.slice(index, index + phrase.length),
-    after: titol.slice(index + phrase.length),
-  };
-}
-
-function parseParadaTitle(titol: string): {
-  codes: string[];
-  separator: string;
-  rest: string;
-} | null {
-  const match = titol.match(
-    /^((?:A\d+|P\d+)(?:-(?:A\d+|P\d+))*)([-\s]+)(.*)$/,
-  );
-  if (!match) return null;
-  const codes = match[1].split("-").filter((code) => /^(A|P)\d+$/.test(code));
-  if (codes.length === 0) return null;
-  return { codes, separator: match[2], rest: match[3] };
-}
-
-const resolvedItems = items.map((item, index) => ({
-  item,
-  index,
-  video: resolveItemVideo(item),
-}));
-const videoItems = resolvedItems.filter(({ video }) => Boolean(video));
+  return annotateStep(node);
+});
 ---
 
 <dialog
@@ -114,7 +117,7 @@ const videoItems = resolvedItems.filter(({ video }) => Boolean(video));
   data-focus-trap="true"
 >
   <div
-    class="itinerari-dada-panel relative my-8 w-full max-w-3xl rounded-lg bg-base-100 dark:bg-base-900 p-6 lg:p-10 shadow-xl"
+    class="itinerari-dada-panel relative my-8 w-full max-w-5xl rounded-lg bg-base-100 dark:bg-base-900 p-6 lg:p-10 shadow-xl"
     data-text-size-enabled="true"
     spellcheck="false"
   >
@@ -149,121 +152,140 @@ const videoItems = resolvedItems.filter(({ video }) => Boolean(video));
 
       <ol class="list-none p-0 m-0 flex flex-col">
         {
-          resolvedItems.map(({ item, index, video }) => {
-            const titol = item.titol.replace(/^[↓⬇]\s*/u, "").trim();
-            const previous = index > 0 ? items[index - 1] : undefined;
-            const showResultArrow =
-              item.tipus === "producte" && previous?.tipus === "proces";
-            const paradaTitle = parseParadaTitle(titol);
-
-            if (item.tipus === "periode") {
-              const videoModalId = video
-                ? `${modalId}-video-${index}`
-                : undefined;
+          annotatedNodes.map((node, index) => {
+            if (!isAnnotatedParallel(node)) {
+              const previous = annotatedNodes[index - 1];
+              const previousIsProces =
+                previous != null &&
+                !isAnnotatedParallel(previous) &&
+                previous.tipus === "proces";
+              const previousIsProducte =
+                previous != null &&
+                !isAnnotatedParallel(previous) &&
+                previous.tipus === "producte";
               return (
-                <li class="mt-8 first:mt-0 mb-4 border-t border-base-200 dark:border-base-800 pt-6">
-                  {
-                    videoModalId ? (
-                      <Text
-                        tag="h3"
-                        variant="displaySM"
-                        class="leading-tight"
-                      >
-                        <button
-                          type="button"
-                          data-cronologia-video-target={videoModalId}
-                          class={periodeLinkClass}
-                          aria-haspopup="dialog"
-                          aria-label={`Obrir vídeo: ${titol}`}
-                        >
-                          {titol}
-                        </button>
-                      </Text>
-                    ) : (
-                      <Text
-                        tag="h3"
-                        variant="displaySM"
-                        class="dark:text-white text-base-900 font-medium tracking-tight"
-                      >
-                        {titol}
-                      </Text>
-                    )
-                  }
-                  {
-                    item.text && (
-                      <Text
-                        tag="p"
-                        variant="textBase"
-                        class="text-base-500 dark:text-base-400 mt-2 leading-relaxed"
-                      >
-                        {item.text}
-                      </Text>
-                    )
-                  }
-                </li>
+                <CronologiaStepList
+                  items={[node]}
+                  iconUrl={iconUrl}
+                  arrowUrl={arrowUrl}
+                  previousIsProces={previousIsProces}
+                  previousIsProducte={previousIsProducte}
+                />
               );
             }
 
-            if (item.tipus === "proces") {
-              const videoModalId = video
-                ? `${modalId}-video-${index}`
-                : undefined;
-              const linked = videoModalId
-                ? splitLinkPhrase(titol, video?.linkPhrase)
-                : null;
-              return (
-                <li class="flex items-start gap-2 py-1.5">
-                  <span
-                    class="mt-0.5 size-5 shrink-0 bg-accent-700 dark:bg-accent-400"
-                    style={`mask: url('${iconUrl}') center / contain no-repeat; -webkit-mask: url('${iconUrl}') center / contain no-repeat; mask-mode: alpha; -webkit-mask-source-type: alpha;`}
-                    aria-hidden="true"
-                  />
-                  {
-                    videoModalId ? (
-                      linked ? (
-                        <p class="text-base text-base-700 dark:text-base-200 leading-snug">
-                          {linked.before}
-                          <button
-                            type="button"
-                            data-cronologia-video-target={videoModalId}
-                            class={`${procesLinkClass} inline`}
-                            aria-haspopup="dialog"
-                            aria-label={`Obrir vídeo: ${linked.phrase}`}
-                          >
-                            {linked.phrase}
-                          </button>
-                          {linked.after}
-                        </p>
-                      ) : (
-                        <button
-                          type="button"
-                          data-cronologia-video-target={videoModalId}
-                          class={procesLinkClass}
-                          aria-haspopup="dialog"
-                          aria-label={`Obrir vídeo: ${titol}`}
-                        >
-                          {titol}
-                        </button>
-                      )
-                    ) : (
-                      <Text
-                        tag="p"
-                        variant="textBase"
-                        class="text-base-700 dark:text-base-200 leading-snug"
-                      >
-                        {titol}
-                      </Text>
-                    )
-                  }
-                </li>
-              );
-            }
+            const groupTitle = node.titol?.trim() || "Processos associats";
+            const branchLabel = node.branques
+              .map((branca) => branca.titol)
+              .filter(Boolean)
+              .join(" i ");
+            const next = annotatedNodes[index + 1];
+            const showExitArrow = next != null && !isAnnotatedParallel(next);
 
             return (
-              <>
+              <li class="mt-4 mb-2">
+                <div
+                  class="flex justify-center py-2"
+                  aria-hidden="true"
+                >
+                  <img
+                    src={arrowUrl}
+                    alt=""
+                    class="h-8 w-auto sm:h-9"
+                    width="36"
+                    height="36"
+                  />
+                </div>
+                <div
+                  class="relative hidden md:block h-8 mb-1"
+                  aria-hidden="true"
+                >
+                  <div class="absolute left-1/4 right-1/4 top-0 border-t-2 border-base-300 dark:border-base-600" />
+                  <div class="absolute left-1/4 top-0 h-full border-l-2 border-base-300 dark:border-base-600" />
+                  <div class="absolute right-1/4 top-0 h-full border-r-2 border-base-300 dark:border-base-600" />
+                  <span class="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 bg-base-100 dark:bg-base-900 px-2 text-[0.7rem] tracking-wide text-accent-700 dark:text-accent-400 text-center max-w-[min(100%,24rem)] leading-snug">
+                    {groupTitle}
+                  </span>
+                </div>
+                <div
+                  class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 md:items-start"
+                  role="group"
+                  aria-label={
+                    branchLabel
+                      ? `${groupTitle}: ${branchLabel}`
+                      : groupTitle
+                  }
+                >
+                  {
+                    node.branques.map((branca, branchIndex) => (
+                      <div class="rounded-lg border border-base-200 dark:border-base-700 bg-base-50/70 dark:bg-base-800/40 p-3 sm:p-4">
+                        {
+                          branchIndex > 0 && (
+                            <p class="md:hidden mb-3 text-center text-[0.7rem] tracking-wide text-accent-700 dark:text-accent-400">
+                              {groupTitle}
+                            </p>
+                          )
+                        }
+                        {
+                          branca.titol && (
+                            <div class="flex items-start gap-2 pb-2 mb-1 border-b border-base-200/80 dark:border-base-700/80">
+                              <span
+                                class="mt-0.5 size-5 shrink-0 bg-accent-700 dark:bg-accent-400"
+                                style={`mask: url('${iconUrl}') center / contain no-repeat; -webkit-mask: url('${iconUrl}') center / contain no-repeat; mask-mode: alpha; -webkit-mask-source-type: alpha;`}
+                                aria-hidden="true"
+                              />
+                              <div class="min-w-0">
+                                {
+                                  branca.videoId ? (
+                                    <button
+                                      type="button"
+                                      data-cronologia-video-target={branca.videoId}
+                                      class={`${procesLinkClass} font-semibold`}
+                                      aria-haspopup="dialog"
+                                      aria-label={`Obrir vídeo: ${branca.titol}`}
+                                    >
+                                      {branca.titol}
+                                    </button>
+                                  ) : (
+                                    <Text
+                                      tag="p"
+                                      variant="textBase"
+                                      class="dark:text-white text-base-900 font-semibold leading-snug"
+                                    >
+                                      {branca.titol}
+                                    </Text>
+                                  )
+                                }
+                                {
+                                  branca.text && (
+                                    <Text
+                                      tag="p"
+                                      variant="textSM"
+                                      class="text-base-500 dark:text-base-400 mt-1 leading-relaxed"
+                                    >
+                                      {branca.text}
+                                    </Text>
+                                  )
+                                }
+                              </div>
+                            </div>
+                          )
+                        }
+                        <ol class="list-none p-0 m-0 flex flex-col">
+                          <CronologiaStepList
+                            items={branca.items}
+                            iconUrl={iconUrl}
+                            arrowUrl={arrowUrl}
+                            previousIsProces={Boolean(branca.titol)}
+                          />
+                        </ol>
+                      </div>
+                    ))
+                  }
+                </div>
                 {
-                  showResultArrow && (
-                    <li class="flex justify-center py-2" aria-hidden="true">
+                  showExitArrow && (
+                    <div class="flex justify-center py-2" aria-hidden="true">
                       <img
                         src={arrowUrl}
                         alt=""
@@ -271,62 +293,10 @@ const videoItems = resolvedItems.filter(({ video }) => Boolean(video));
                         width="36"
                         height="36"
                       />
-                    </li>
+                    </div>
                   )
                 }
-                <li class="grid grid-cols-1 sm:grid-cols-[minmax(11rem,1fr)_minmax(0,max-content)] gap-x-6 gap-y-1 items-baseline py-3 border-b border-base-200/80 dark:border-base-800/80">
-                  <Text
-                    tag="p"
-                    variant="textBase"
-                    class="dark:text-white text-base-900 font-semibold leading-snug"
-                  >
-                    {
-                      paradaTitle ? (
-                        <>
-                          {paradaTitle.codes.map((code, codeIndex) => (
-                            <>
-                              {codeIndex > 0 ? "-" : ""}
-                                <a
-                                  href={withBase(`/parades/I1-${code}`)}
-                                  class={paradaLinkClass}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  aria-label={`Obrir parada ${code} en una pestanya nova`}
-                                >
-                                {code}
-                              </a>
-                            </>
-                          ))}
-                          {paradaTitle.separator}
-                          {paradaTitle.rest}
-                        </>
-                      ) : (
-                        titol
-                      )
-                    }
-                  </Text>
-                  <div class="min-w-0 sm:text-right">
-                    {
-                      item.categoria && (
-                        <p class="text-sm text-base-400 dark:text-base-500">
-                          ({item.categoria})
-                        </p>
-                      )
-                    }
-                    {
-                      item.text && (
-                        <Text
-                          tag="p"
-                          variant="textBase"
-                          class="text-base-500 dark:text-base-400 leading-relaxed mt-1"
-                        >
-                          {item.text}
-                        </Text>
-                      )
-                    }
-                  </div>
-                </li>
-              </>
+              </li>
             );
           })
         }
@@ -355,19 +325,19 @@ const videoItems = resolvedItems.filter(({ video }) => Boolean(video));
     </div>
   </div>
   {
-    videoItems.map(({ item, index, video }) =>
-      video ? (
+    videoItems.map((item) =>
+      item.video && item.videoId ? (
         <ItinerariVideoModal
-          modalId={`${modalId}-video-${index}`}
-          label={video.linkPhrase ?? item.titol.replace(/^[↓⬇]\s*/u, "").trim()}
-          src={video.src}
-          title={video.linkPhrase ?? item.titol.replace(/^[↓⬇]\s*/u, "").trim()}
-          sound={video.sound ?? true}
-          allowFullscreen={video.allowFullscreen ?? true}
-          fit={video.fit ?? "contain"}
-          hideLabel={video.hideLabel ?? false}
-          startUnmuted={video.startUnmuted ?? video.sound ?? true}
-          caption={video.caption}
+          modalId={item.videoId}
+          label={item.video.linkPhrase ?? item.titol.replace(/^[↓⬇]\s*/u, "").trim()}
+          src={item.video.src}
+          title={item.video.linkPhrase ?? item.titol.replace(/^[↓⬇]\s*/u, "").trim()}
+          sound={item.video.sound ?? true}
+          allowFullscreen={item.video.allowFullscreen ?? true}
+          fit={item.video.fit ?? "contain"}
+          hideLabel={item.video.hideLabel ?? false}
+          startUnmuted={item.video.startUnmuted ?? item.video.sound ?? true}
+          caption={item.video.caption}
         />
       ) : null,
     )

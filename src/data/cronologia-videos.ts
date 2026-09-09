@@ -29,6 +29,13 @@ export const cronologiaVideoPerTitol: Record<string, CronologiaVideoLink> = {
     fit: "contain",
     caption: "Animació d'orogènia. Adaptat d'Aditi Thakur. YouTube.",
   },
+  "convergència de plaques i orogènia varisca (~360–300 Ma)": {
+    src: "/videos/itineraris/sau-tavertet/cronologia/orogenia-varisca.mp4",
+    sound: false,
+    startUnmuted: false,
+    fit: "contain",
+    caption: "Animació d'orogènia. Adaptat d'Aditi Thakur. YouTube.",
+  },
   "metamorfisme de contacte": {
     src: "/videos/itineraris/sau-tavertet/cronologia/metamorfisme-contacte.mp4",
     sound: false,
@@ -63,7 +70,15 @@ export const cronologiaVideoPerTitol: Record<string, CronologiaVideoLink> = {
     linkPhrase: "ventalls al·luvials",
     caption: "Animació d'un ventall al·luvial. Font: YouTube.",
   },
-  "i ventalls al·luvials propers als relleus": {
+  "ventalls al·luvials": {
+    src: "/videos/itineraris/sau-tavertet/cronologia/ventalls2-veu.mp4",
+    sound: true,
+    startUnmuted: true,
+    fit: "contain",
+    linkPhrase: "ventalls al·luvials",
+    caption: "Animació d'un ventall al·luvial. Font: YouTube.",
+  },
+  "ventalls al·luvials propers als relleus": {
     src: "/videos/itineraris/sau-tavertet/cronologia/ventalls2-veu.mp4",
     sound: true,
     startUnmuted: true,
@@ -79,12 +94,29 @@ export const cronologiaVideoPerTitol: Record<string, CronologiaVideoLink> = {
     caption:
       "Animació d'intrusions ígnies. Adaptat de metfan869. YouTube.",
   },
+  "intrusió plutònica": {
+    src: "/videos/itineraris/sau-tavertet/cronologia/intrusio.mp4",
+    sound: false,
+    startUnmuted: false,
+    fit: "contain",
+    caption:
+      "Animació d'intrusions ígnies. Adaptat de metfan869. YouTube.",
+  },
   "calor de les intrusions sobre les pissarres encaixants": {
     src: "/videos/itineraris/sau-tavertet/cronologia/intrusio.mp4",
     sound: false,
     startUnmuted: false,
     fit: "contain",
     linkPhrase: "intrusions",
+    caption:
+      "Animació d'intrusions ígnies. Adaptat de metfan869. YouTube.",
+  },
+  "calor del plutó granític a les roques encaixants": {
+    src: "/videos/itineraris/sau-tavertet/cronologia/intrusio.mp4",
+    sound: false,
+    startUnmuted: false,
+    fit: "contain",
+    linkPhrase: "plutó granític",
     caption:
       "Animació d'intrusions ígnies. Adaptat de metfan869. YouTube.",
   },

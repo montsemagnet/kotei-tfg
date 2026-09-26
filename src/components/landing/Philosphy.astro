@@ -10,8 +10,19 @@ const noaaCitation =
 const noaaUrl =
   "https://sos.noaa.gov/catalog/datasets/plate-movement-200-million-years-ago-to-today/";
 
-// Array actualitzat amb el contingut per al TFG de Biologia
-const philosphy = [
+type PhilosophyItem = {
+  title: string;
+  description?: string;
+  descriptionBefore?: string;
+  descriptionLink?: { text: string; url: string };
+  descriptionAfter?: string;
+};
+
+interface Props {
+  items?: PhilosophyItem[];
+}
+
+const defaultItems: PhilosophyItem[] = [
   {
     title: "Itineraris de camp",
     description:
@@ -59,6 +70,8 @@ const philosphy = [
       ", especialment amb l'ODS 4 (Educació de qualitat), en oferir materials docents accessibles i ben estructurats; amb l'ODS 10 (Reducció de les desigualtats), en proporcionar alternatives digitals per a l'aprenentatge de camp; i amb l'ODS 15 (Vida terrestre), en promoure la comprensió de la geologia, la vegetació i la conservació dels ecosistemes terrestres.",
   },
 ];
+
+const { items: philosphy = defaultItems } = Astro.props;
 ---
 
 <section>

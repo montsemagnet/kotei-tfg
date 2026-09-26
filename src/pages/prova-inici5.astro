@@ -1,0 +1,74 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import HeroProva from "@/components/landing/HeroProva.astro";
+import Philosphy from "@/components/landing/Philosphy.astro";
+import HowWeWork from "@/components/landing/HowWeWork.astro";
+import Team from "@/components/landing/Team.astro";
+import imatgeEspiral from "@/images/landing/fons-filotaxis-prova.png";
+
+const provaPhilosophy = [
+  {
+    title: "Itineraris de camp",
+    description:
+      "Recorreguts biològics per preparar i ampliar les sortides pràctiques de la Facultat de Biologia (UVic-UCC).",
+  },
+  {
+    title: "Parades interpretatives",
+    description:
+      "Punts específics de cada itinerari on s'explica el context biològic i els principals elements d'interès de cada indret.",
+  },
+  {
+    title: "Cartografia amb QGIS",
+    description:
+      "Mapes temàtics per visualitzar la geologia, la vegetació i la distribució espacial dels punts d’estudi.",
+  },
+  {
+    title: "Suport a l'aprenentatge",
+    description:
+      "Un recurs digital pensat perquè l'alumnat pugui estudiar i revisar els continguts de les sortides de camp.",
+  },
+  {
+    title: "Inclusió i accessibilitat",
+    description:
+      "Aquest recurs digital amplia l'accés als continguts de camp i facilita el seguiment de l'assignatura a l'alumnat que no pot participar en les sortides. També incorpora recursos per a persones amb discapacitat visual — text alternatiu a imatges, navegació per teclat, augment de mida del text als modals i alternatives textuals al mapa interactiu — i auditiva — subtítols als vídeos narrats.",
+  },
+  {
+    title: "Compromís amb els ODS",
+    descriptionBefore: "El projecte s'alinea amb els ",
+    descriptionLink: {
+      text: "Objectius de Desenvolupament Sostenible",
+      url: "https://www.un.org/sustainabledevelopment/es/",
+    },
+    descriptionAfter:
+      ", especialment amb l'ODS 4 (Educació de qualitat), en oferir materials docents accessibles i ben estructurats; amb l'ODS 10 (Reducció de les desigualtats), en proporcionar alternatives digitals per a l'aprenentatge de camp; i amb l'ODS 15 (Vida terrestre), en promoure la comprensió de la geologia, la vegetació i la conservació dels ecosistemes terrestres.",
+  },
+];
+---
+
+<BaseLayout
+  pageTitle="Prova d'inici 5 — Itineraris Biològics"
+  description="Cinquena prova visual de la pàgina d'inici, amb imatge vegetal sota el títol."
+>
+  <div>
+    <HeroProva hideIllustration />
+    <section class="bg-black" aria-label="Imatge vegetal de prova">
+      <figure class="w-full">
+        <Image
+          src={imatgeEspiral}
+          alt="Umbel·la vegetal de prova, sota el títol. Imatge provisional."
+          class="mx-auto block h-auto w-full max-h-[92vh] object-contain"
+        />
+      </figure>
+    </section>
+    <div class="page-text-content">
+      <div id="que-hi-trobaras">
+        <Philosphy items={provaPhilosophy} />
+      </div>
+      <HowWeWork quote="Llegir el paisatge i la vida que l'habita és entendre com la Terra escriu la història de la vida, des dels minerals i els seus orígens estel·lars fins als models ecològics." />
+      <div id="equip">
+        <Team />
+      </div>
+    </div>
+  </div>
+</BaseLayout>

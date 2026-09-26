@@ -1,7 +1,14 @@
 ---
-// Fundations
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+
+interface Props {
+  quote?: string;
+}
+
+const {
+  quote = "Explorar la geologia i la flora associada és entendre com la Terra escriu la història de la vida, des dels minerals que observem al microscopi fins als models geològics i els seus orígens estel·lars.",
+} = Astro.props;
 ---
 
 <section>
@@ -12,9 +19,7 @@ import Wrapper from "@/components/fundations/containers/Wrapper.astro";
         variant="displayMD"
         class="dark:text-white xl:text-6xl tracking-tight font-medium text-black text-balance"
       >
-        Explorar la geologia i la flora associada és entendre com la Terra escriu
-        la història de la vida, des dels minerals que observem al microscopi fins
-        als models geològics i els seus orígens estel·lars.
+        {quote}
       </Text>
       <Text
         tag="p"

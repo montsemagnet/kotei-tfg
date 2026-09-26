@@ -1,0 +1,116 @@
+---
+import { Image } from "astro:assets";
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import ilustracioProva from "@/images/landing/biologia-ilustracio-prova.png";
+import { withBase } from "@/utils/withBase";
+
+interface Props {
+  imageSize?: "normal" | "gran";
+  hideIllustration?: boolean;
+  textOnDark?: boolean;
+  /** Verd més llegible (fulla), només per proves que ho demanin. */
+  lletraVerda?: boolean;
+}
+
+const {
+  imageSize = "normal",
+  hideIllustration = false,
+  textOnDark = false,
+  lletraVerda = false,
+} = Astro.props;
+
+/** Verd fosc de la samarreta de Biologia UVic (prova). */
+const verdSamarreta = "#1B2F26";
+const verdFulla = "#1E6B42";
+const titolColor = textOnDark
+  ? "#F6F3EC"
+  : lletraVerda
+    ? verdFulla
+    : verdSamarreta;
+const imageClass =
+  imageSize === "gran"
+    ? "mx-auto block h-auto w-full max-w-none object-contain"
+    : "mx-auto block h-auto w-full max-h-[92vh] object-contain";
+
+const landingLinks = [
+  { href: "#que-hi-trobaras", label: "Què hi trobaràs" },
+  { href: withBase("/itineraris"), label: "Itineraris" },
+  { href: "#equip", label: "Equip" },
+];
+
+const linkClass = textOnDark
+  ? "text-sm sm:text-base text-[#F6F3EC] font-medium tracking-tight underline decoration-white/50 underline-offset-[6px] hover:text-white hover:decoration-white transition-colors text-center"
+  : lletraVerda
+    ? "text-sm sm:text-base text-[#1E6B42] font-medium tracking-tight underline decoration-[#1E6B42]/40 underline-offset-[6px] hover:text-[#14532D] hover:decoration-[#14532D] transition-colors text-center"
+    : "text-sm sm:text-base text-base-900 dark:text-white font-medium tracking-tight underline decoration-base-300 dark:decoration-base-700 underline-offset-[6px] hover:text-accent-600 dark:hover:text-accent-400 hover:decoration-accent-500 dark:hover:decoration-accent-400 transition-colors text-center";
+---
+
+<section>
+  <Wrapper variant="standard" class="pt-16 pb-4 lg:pt-20 lg:pb-6">
+    <div class="flex flex-col items-center text-center">
+      <nav aria-label="Seccions de la pàgina d'inici">
+        <ul class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 sm:gap-x-8">
+          {
+            landingLinks.map((item) => (
+              <li>
+                <a href={item.href} class={linkClass}>
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <div class="mt-6 flex w-full max-w-full flex-col items-center">
+        <Text
+          tag="h1"
+          variant="display4XL"
+          data-aos="fade-down"
+          data-aos-duration="1500"
+          class="font-medium tracking-tighter text-center"
+          style={`color: ${titolColor}`}
+        >
+          Itineraris Biològics
+        </Text>
+
+        <Text
+          tag="p"
+          variant="displayMD"
+          data-aos="fade-up"
+          data-aos-duration="1500"
+          data-aos-delay="150"
+          class="mt-3 font-medium tracking-tight text-center"
+          style={`color: ${titolColor}`}
+        >
+          UVic-UCC
+        </Text>
+      </div>
+    </div>
+  </Wrapper>
+</section>
+
+{
+  !hideIllustration && (
+    <section
+      class="relative w-full"
+      style={`background-color: ${verdSamarreta}`}
+      aria-label="Il·lustració del Grau de Biologia"
+    >
+      <figure class="mx-auto w-full">
+        <Image
+          src={ilustracioProva}
+          alt="Il·lustració del Grau de Biologia 2022–2026, amb fauna i flora, de Claudia Márquez Ortega. Imatge provisional de baixa resolució."
+          class={imageClass}
+        />
+        <figcaption
+          class="px-8 lg:px-24 pb-6 pt-3 text-center text-sm font-medium tracking-tight"
+          style="color: #c4b4a0"
+        >
+          Il·lustració: Claudia Márquez Ortega. Cedida per a aquesta web.
+        </figcaption>
+      </figure>
+    </section>
+  )
+}

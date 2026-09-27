@@ -16,7 +16,7 @@ import { withBase } from "@/utils/withBase";
   href="https://www.uvic.cat/grau/biologia"
   target="_blank"
   rel="noopener noreferrer"
-  class="fixed top-8 left-8 z-[100]"
+  class="fixed top-4 left-4 z-[100] sm:top-8 sm:left-8"
   aria-label="Grau de Biologia — UVic"
 >
   <img src={logoUvicBN.src} alt="Logo UVic B&N" class="logo-nav" />
@@ -61,10 +61,15 @@ import { withBase } from "@/utils/withBase";
 
 <style>
   .logo-nav {
-    width: 150px;
+    width: 72px;
     height: auto;
     display: block;
     transition: opacity 0.3s ease;
+  }
+  @media (min-width: 640px) {
+    .logo-nav {
+      width: 150px;
+    }
   }
   .logo-nav:hover {
     opacity: 0.7;

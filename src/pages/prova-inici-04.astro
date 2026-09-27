@@ -58,11 +58,14 @@ const provaPhilosophy = [
     >
       <figure class="w-full">
         <img
-          src={withBase("/images/landing/verd-retocat.png")}
+          src={withBase("/images/landing/verd-retocat.webp")}
           alt="Il·lustració del Grau de Biologia, amb fauna i flora, de Claudia Márquez Ortega."
-          width="4000"
-          height="5000"
-          class="mx-auto block h-auto w-full max-w-none object-contain"
+          width="2400"
+          height="3000"
+          decoding="async"
+          fetchpriority="high"
+          class="mx-auto block object-contain"
+          style="width: 100%; height: auto; max-width: 100%; object-fit: contain;"
         />
         <figcaption
           class="px-8 lg:px-24 pb-6 pt-3 text-center text-sm font-medium tracking-tight"

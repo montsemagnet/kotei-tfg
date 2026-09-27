@@ -4,6 +4,7 @@ import HeroProva from "@/components/landing/HeroProva.astro";
 import Philosphy from "@/components/landing/Philosphy.astro";
 import HowWeWork from "@/components/landing/HowWeWork.astro";
 import Team from "@/components/landing/Team.astro";
+import { withBase } from "@/utils/withBase";
 
 const provaPhilosophy = [
   {
@@ -45,16 +46,33 @@ const provaPhilosophy = [
 ---
 
 <BaseLayout
-  pageTitle="Prova d'inici 2 — Itineraris Biològics"
-  description="Segona prova visual de la pàgina d'inici, amb la il·lustració a mida gran."
+  pageTitle="Prova d'inici 02 — Itineraris Biològics"
+  description="Segona prova d'inici amb la il·lustració de Claudia Márquez Ortega sobre fons blanc."
 >
   <div>
-    <HeroProva imageSize="gran" />
+    <HeroProva hideIllustration lletraNegra />
+    <section class="bg-black" aria-label="Il·lustració de Claudia Márquez Ortega">
+      <figure class="w-full">
+        <img
+          src={withBase("/images/landing/claudia-fonsblanc.png")}
+          alt="Il·lustració del Grau de Biologia, amb fauna i flora, de Claudia Márquez Ortega."
+          width="4000"
+          height="5000"
+          class="mx-auto block h-auto w-full max-h-[92vh] object-contain"
+        />
+        <figcaption
+          class="px-8 lg:px-24 pb-6 pt-3 text-center text-sm font-medium tracking-tight"
+          style="color: #c4b4a0"
+        >
+          Il·lustració: Claudia Márquez Ortega. Cedida per a aquesta web.
+        </figcaption>
+      </figure>
+    </section>
     <div class="page-text-content">
       <div id="que-hi-trobaras">
         <Philosphy items={provaPhilosophy} />
       </div>
-      <HowWeWork quote="Llegir el paisatge i la vida que l'habita és entendre com la Terra escriu la història de la vida, des dels minerals i els seus orígens estel·lars fins als models ecològics." />
+      <HowWeWork quote="Llegir el paisatge i qui l'habita és entendre com la Terra escriu la història de la vida, des dels minerals i els seus orígens estel·lars fins als models ecològics." />
       <div id="equip">
         <Team />
       </div>

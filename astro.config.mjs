@@ -54,6 +54,8 @@ export default defineConfig({
           "**/mapa-web-geobotanica/**",
           "**/_dev-mapa-sau-parked/**",
           "**/_tmp-*/**",
+          "**/src/images/landing/**",
+          "**/public/images/landing/**",
           "**/node_modules/**",
           "**/.git/**",
         ],

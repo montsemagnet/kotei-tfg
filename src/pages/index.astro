@@ -1,123 +1,125 @@
 ---
-// Fundations
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import Text from "@/components/fundations/elements/Text.astro";
-import Wrapper from "@/components/fundations/containers/Wrapper.astro";
-// Sections
-import Hero from "@/components/landing/Hero.astro";
+import HeroProva from "@/components/landing/HeroProva.astro";
 import Philosphy from "@/components/landing/Philosphy.astro";
 import HowWeWork from "@/components/landing/HowWeWork.astro";
 import Team from "@/components/landing/Team.astro";
-
-// Components
-import LogoCloud from "@/components/assets/LogoCloud.astro";
-import ItinerariCard1 from "@/components/itinerari/ItinerariCard1.astro";
-import GlossariSection from "@/components/global/GlossariSection.astro";
-import { Image } from "astro:assets";
-// Content
-import { getCollection } from "astro:content";
+import ItinerariZoom from "@/components/itinerari/ItinerariZoom.astro";
 import { withBase } from "@/utils/withBase";
-const allItineraris = (await getCollection("itineraris"))
-  .filter((entry) => !entry.data.draft)
-  .sort((a, b) => (a.data.ordre ?? 999) - (b.data.ordre ?? 999));
 
-const featuredItinerari = allItineraris.find(
-  (entry) => entry.id === "sau-tavertet" && !(entry.data.enConstruccio ?? false),
-);
+const illustrationVerdSrc = withBase("/images/landing/verd-retocat.webp");
+const illustrationFonsBlancSrc = withBase("/images/landing/claudia-fonsblanc.webp");
+const illustrationAlt =
+  "Il·lustració del Grau de Biologia, amb fauna i flora, de Claudia Márquez Ortega.";
+const illustrationCaption = "Il·lustració: Claudia Márquez Ortega. Cedida per a aquesta web.";
+const illustrationThumbClass = "block h-auto w-full object-contain";
+const illustrationZoomButtonClass =
+  "mx-auto block w-full max-w-4xl cursor-pointer border-0 bg-transparent p-0";
+
+const provaPhilosophy = [
+  {
+    title: "Itineraris de camp",
+    description:
+      "Recorreguts biològics per preparar i ampliar les sortides pràctiques de la Facultat de Biologia (UVic-UCC).",
+  },
+  {
+    title: "Parades interpretatives",
+    description:
+      "Punts específics de cada itinerari on s'explica el context biològic i els principals elements d'interès de cada indret.",
+  },
+  {
+    title: "Cartografia amb QGIS",
+    description:
+      "Mapes temàtics per visualitzar la geologia, la vegetació i la distribució espacial dels punts d’estudi.",
+  },
+  {
+    title: "Suport a l'aprenentatge",
+    description:
+      "Un recurs digital pensat perquè l'alumnat pugui estudiar i revisar els continguts de les sortides de camp.",
+  },
+  {
+    title: "Inclusió i accessibilitat",
+    description:
+      "Aquest recurs digital amplia l'accés als continguts de camp i facilita el seguiment de l'assignatura a l'alumnat que no pot participar en les sortides. També incorpora recursos per a persones amb discapacitat visual — text alternatiu a imatges, navegació per teclat, augment de mida del text als modals i alternatives textuals al mapa interactiu — i auditiva — subtítols als vídeos narrats.",
+  },
+  {
+    title: "Compromís amb els ODS",
+    descriptionBefore: "El projecte s'alinea amb els ",
+    descriptionLink: {
+      text: "Objectius de Desenvolupament Sostenible",
+      url: "https://www.un.org/sustainabledevelopment/es/",
+    },
+    descriptionAfter:
+      ", especialment amb l'ODS 4 (Educació de qualitat), en oferir materials docents accessibles i ben estructurats; amb l'ODS 10 (Reducció de les desigualtats), en proporcionar alternatives digitals per a l'aprenentatge de camp; i amb l'ODS 15 (Vida terrestre), en promoure la comprensió de la geologia, la vegetació i la conservació dels ecosistemes terrestres.",
+  },
+];
 ---
 
-<BaseLayout>
+<BaseLayout
+  description="Itineraris biològics de camp UVic-UCC amb il·lustració de Claudia Márquez Ortega, mapes QGIS i recursos per a l'aprenentatge."
+>
   <div data-text-size-enabled>
-  <Hero />
-  <div class="page-text-content">
-  <LogoCloud />
-  <Philosphy />
-
-  <section>
-    <Wrapper variant="standard" class="pb-12">
-      {
-        featuredItinerari && (
-          <>
-            <div class="featured-itinerari w-full max-w-full">
-              <div class="featured-itinerari__row flex flex-col gap-5 sm:flex-row sm:items-stretch sm:gap-6 lg:gap-8">
-                <div class="featured-itinerari__heading relative z-10 shrink-0 sm:min-w-[10rem] lg:min-w-[10.5rem]">
-                  <Text
-                    tag="h2"
-                    variant="displayXL"
-                    data-aos="fade-up"
-                    data-aos-duration="1000"
-                    class="dark:text-white text-base-900 font-medium tracking-tighter"
-                  >
-                    Itinerari
-                    <br />
-                    destacat
-                  </Text>
-                </div>
-
-                <a
-                  href={withBase(`/itineraris/${featuredItinerari.id}`)}
-                  title={featuredItinerari.data.title}
-                  class="featured-itinerari__photo relative z-0 min-h-[4.5rem] min-w-0 flex-1 overflow-hidden"
-                  data-aos="fade-up"
-                  data-aos-duration="1000"
-                  data-aos-delay="100"
-                >
-                  <Image
-                    src={featuredItinerari.data.thumbnail.url}
-                    alt={featuredItinerari.data.title}
-                    width={1200}
-                    height={288}
-                    class="size-full min-h-[4.5rem] object-cover object-[58%_50%] max-sm:aspect-[3/1] max-sm:object-[65%_center]"
-                  />
-                </a>
-
-                <div class="featured-itinerari__copy shrink-0 sm:w-[11.75rem] md:w-[13rem] lg:w-[14.25rem]">
-                  <ItinerariCard1
-                    post={featuredItinerari}
-                    index={1}
-                    variant="featured"
-                    hideImage
-                    subtitle="Itinerari geològic UVIC"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div
-              class="proximament-block mt-16 lg:mt-24 flex w-fit max-w-full flex-col gap-4 lg:flex-row lg:items-start lg:gap-8"
-              data-aos="fade-up"
-              data-aos-duration="1500"
-            >
-              <Text
-                tag="h3"
-                variant="displayXL"
-                data-aos="fade-up"
-                data-aos-duration="1500"
-                class="shrink-0 dark:text-white text-base-900 font-medium tracking-tighter text-balance"
-              >
-                Pròximament
-              </Text>
-              <Text
-                tag="p"
-                variant="textLG"
-                class="min-w-0 flex-1 text-pretty text-base-700 dark:text-base-400 leading-relaxed lg:text-justify"
-              >
-                Nous itineraris s'incorporaran progressivament per ampliar els àmbits
-                geològics i els materials d'estudi disponibles
-              </Text>
-            </div>
-          </>
-        )
-      }
-    </Wrapper>
-  </section>
-  <HowWeWork />
-  <Team />
-  <section>
-    <Wrapper variant="standard" class="pb-24 lg:pb-48">
-      <GlossariSection />
-    </Wrapper>
-  </section>
-  </div>
+    <HeroProva hideIllustration lletraVerda />
+    <section
+      class="relative w-full bg-[#1F321E] dark:bg-base-950"
+      aria-label="Il·lustració de Claudia Márquez Ortega"
+    >
+      <ItinerariZoom zoomId="inici-illustration">
+        <figure class="w-full bg-transparent">
+          <button
+            type="button"
+            class:list={[illustrationZoomButtonClass, "dark:hidden"]}
+            data-itinerari-zoom
+            data-full-src={illustrationVerdSrc}
+            data-alt={illustrationAlt}
+            data-caption={illustrationCaption}
+            aria-label={`Ampliar il·lustració: ${illustrationAlt}`}
+          >
+            <img
+              src={illustrationVerdSrc}
+              alt={illustrationAlt}
+              width="2400"
+              height="3000"
+              decoding="async"
+              fetchpriority="high"
+              class={illustrationThumbClass}
+            />
+          </button>
+          <button
+            type="button"
+            class:list={[illustrationZoomButtonClass, "hidden dark:block"]}
+            data-itinerari-zoom
+            data-full-src={illustrationFonsBlancSrc}
+            data-alt={illustrationAlt}
+            data-caption={illustrationCaption}
+            aria-label={`Ampliar il·lustració: ${illustrationAlt}`}
+          >
+            <img
+              src={illustrationFonsBlancSrc}
+              alt={illustrationAlt}
+              width="2200"
+              height="2750"
+              decoding="async"
+              fetchpriority="high"
+              class={illustrationThumbClass}
+            />
+          </button>
+          <figcaption
+            class="px-8 lg:px-24 pb-6 pt-3 text-center text-sm font-medium tracking-tight text-[#c4b4a0] dark:text-base-400"
+          >
+            {illustrationCaption}
+          </figcaption>
+        </figure>
+      </ItinerariZoom>
+    </section>
+    <div class="page-text-content">
+      <div id="que-hi-trobaras">
+        <Philosphy items={provaPhilosophy} />
+      </div>
+      <HowWeWork quote="Llegir el paisatge i qui l'habita és entendre com la Terra escriu la història de la vida, des dels minerals i els seus orígens estel·lars fins als models ecològics." />
+      <div id="equip">
+        <Team />
+      </div>
+    </div>
   </div>
 </BaseLayout>

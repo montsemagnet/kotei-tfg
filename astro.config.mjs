@@ -63,7 +63,8 @@ export default defineConfig({
     },
   },
   server: {
-    host: "127.0.0.1",
+    // `true`: escolta IPv4 i IPv6; amb només 127.0.0.1, localhost al navegador pot fallar (Windows).
+    host: true,
     port: 4321,
   },
   markdown: {

@@ -3,12 +3,12 @@ title: "Presa de Sau → Tavertet"
 titleParts:
   from: "Presa de Sau"
   to: "Tavertet"
-description: "Itinerari geològic UVIC"
-ordre: 1
+description: "Còpia de recanvi de l'itinerari (versió anterior)."
+ordre: 90
+draft: true
 tipus: "Geològic"
 mapa: "sau-tavertet"
 mapaUrl: "/mapa-sau-tavertet/index.html"
-mapaGeobotanicaUrl: "/mapa-geobotanica/index.html"
 video:
   publicSrc: "/videos/itineraris/sau-tavertet.mp4"
   alt: "Recorregut aeri del trajecte proposat Sau–Tavertet"
@@ -94,135 +94,40 @@ intro:
           edat: "Paleozoic. Sòcol hercinià: metamorfisme regional i de contacte, amb dics d'aplita i màfics. Parada auxiliar, fora de l'itinerari docent principal."
 dades:
   mapa: "Mapa interactiu de l'itinerari geològic Sau–Tavertet (QGIS, capes geològiques i temàtiques)"
-  historia: "Successió paleògena del marge sud-est de la Conca de l'Ebre, del sòcol paleozoic als gresos superiors."
-dadesArticle:
-  - kind: p
-    text: >-
-      L'itinerari del pantà de Sau a Tavertet permet llegir gairebé com un llibre obert la transició entre un paisatge continental i un mar eocè ([Evolució dels materials i processos geològics](#modal:sequencia-geologica-itinerari)). Si imaginem un tall vertical des de la vall del Ter fins al cim de Tavertet, observem una successió de roques sedimentàries paleògenes, dipositades fa aproximadament entre 56 i 40 milions d'anys, sobre un sòcol paleozoic molt més antic.
-  - kind: p
-    text: "El perfil es pot resumir així, de baix a dalt:"
-  - kind: sequence
-    items:
-      - "sòcol paleozoic"
-      - "sediments continentals vermells"
-      - "transgressió marina"
-      - "calcàries de cingle"
-      - "margues marines"
-      - "gresos superiors"
-  - kind: p
-    text: >-
-      Aquesta sèrie forma part del marge sud-est de l'antiga Conca de l'Ebre. Durant l'Eocè, mentre s'aixecaven els Pirineus i els relleus de la Serralada Prelitoral, aquesta conca s'anava reblint amb sediments procedents dels relleus emergits propers.
-  - kind: h3
-    text: "1. El basament: les roques paleozoïques"
-  - kind: p
-    text: >-
-      A la base del tall hi ha el sòcol paleozoic, constituït principalment per pissarres i granitoides ([vídeo de formació del sòcol paleozoic](#modal:paleogeologia-paleozoic)). Són roques formades abans de l'Eocè i representen el substrat sobre el qual es van dipositar posteriorment les roques sedimentàries visibles als cingles.
-  - kind: p
-    text: >-
-      Aquest contacte no és continu ni representa una sedimentació ininterrompuda: hi ha una discordança erosiva ([El buit de ~250 Ma](#modal:paleogeologia-mesozoic)). És a dir, abans que s'hi acumulessin els sediments eocens, el sòcol paleozoic va restar exposat, alterat i erosionat durant un llarg període.
-  - kind: h3
-    text: "2. Els materials continentals vermells"
-  - kind: p
-    text: >-
-      Damunt del sòcol apareixen els materials de colors vermellosos que es poden observar a la part baixa de l'itinerari, especialment als vessants situats sobre el pantà de Sau. Corresponen a la Formació de Mediona, la Formació Vilanova de Sau i la Formació de Romagats.
-  - kind: table
-    headers:
-      - "Unitat"
-      - "Materials principals"
-      - "Ambient sedimentari interpretat"
-    rows:
-      - - "Formació Mediona"
-        - "Lutites, argiles, limolites, gresos i nivells carbonatats vermells"
-        - "Planes al·luvials, zones palustres i ambients lacustres locals"
-      - - "Formació Vilanova de Sau"
-        - "Lutites vermelles, sorres, gresos i conglomerats"
-        - "Rius, canals fluvials i ventalls al·luvials"
-      - - "Formació Romagats"
-        - "Conglomerats, gresos i lutites vermelloses"
-        - "Sistemes fluvials energètics i ventalls al·luvials propers als relleus de les Guilleries"
-  - kind: p
-    text: >-
-      El color rogenc indica que aquests sediments es dipositaven en un medi continental oxidant, en contacte amb l'atmosfera. El ferro contingut en els minerals s'oxidava, i donava els colors vermells, ocres i ataronjats característics.
-  - kind: p
-    text: >-
-      La Formació Vilanova de Sau i, sobretot, la de Romagats inclouen materials més gruixuts —sorres i còdols—, cosa que indica una elevada energia de transport. Els rius baixaven des de les zones elevades de les Guilleries i dipositaven sediments en planes al·luvials i ventalls formats al peu dels relleus.
-  - kind: h3
-    text: "3. El canvi clau: l'arribada del mar"
-  - kind: p
-    text: >-
-      A mesura que pugem, els conglomerats i gresos vermells continentals donen pas, de manera relativament brusca però sedimentològicament gradual, a materials grisos i calcaris: és la transgressió marina ([Eocè: cobertura del sòcol](#modal:paleogeologia-iberia-ebre)).
-  - kind: p
-    text: >-
-      Una transgressió significa que el mar avança sobre zones que abans eren continentals. En aquest cas, durant el Lutecià, el mar va envair progressivament el sector de Tavertet. Els primers nivells de transició contenen conglomerats i gresos grollers, relacionats amb ambients costaners, bancs de sorra remoguts per les marees i aportacions continentals encara molt properes.
-  - kind: p
-    text: "Aquest canvi és especialment visible al paisatge:"
-  - kind: ul
-    items:
-      - "A sota predominen materials vermells, detrítics i continentals."
-      - "A sobre predominen roques grises, calcàries i margoses, d'origen marí."
-      - "El contrast cromàtic marca una transformació paleoambiental profunda: d'una plana fluvial propera a les Guilleries a una plataforma marina."
-  - kind: h3
-    text: "4. Les Calcàries de Tavertet: la gran paret del cingle"
-  - kind: p
-    text: >-
-      La unitat més espectacular del recorregut és la Formació de Tavertet, formada principalment per calcàries grises, sovint arenoses i bioclàstiques. Aquestes roques constitueixen la gran cornisa resistent dels cingles de Sau i Tavertet.
-  - kind: p
-    text: >-
-      Es van dipositar en una plataforma marina somera, amb aigües relativament càlides i favorables a la vida bentònica. Per això hi són freqüents els fòssils marins, especialment els nummulits, uns grans foraminífers amb closca calcària, així com restes de mol·luscs, equínids i altres invertebrats.
-  - kind: p
-    text: >-
-      Els nummulits són un dels indicadors més recognoscibles d'aquest antic mar eocè. La seva presència confirma que la zona que avui ocupa Tavertet era un fons marí poc profund fa uns 45 milions d'anys.
-  - kind: p
-    text: >-
-      La resistència de les calcàries a l'erosió explica que formin cingles verticals i plataformes elevades. Per contra, les roques més toves que hi ha per sobre o per sota s'erosionen amb més facilitat.
-  - kind: h3
-    text: "5. Les Margues de Coll de Malla"
-  - kind: p
-    text: >-
-      Per damunt de les calcàries apareixen les Margues de Coll de Malla, també conegudes en altres sectors com a margues de Banyoles. Són roques de color gris blavós, formades per una barreja de carbonat de calci i argila, amb intercalacions de gresos, lutites i alguns nivells calcaris.
-  - kind: p
-    text: >-
-      Aquestes margues indiquen un ambient marí una mica més profund i tranquil que el de les calcàries de Tavertet. En un fons marí amb menys energia, les partícules fines d'argila i carbonat poden sedimentar i acumular-se. També contenen un registre fòssil notable, amb invertebrats marins i, localment, altres restes paleontològiques.
-  - kind: p
-    text: >-
-      Com que les margues són materials tous i fàcilment erosionables, originen vessants suaus i xaragalls. Un exemple molt clar és el turó del Castell de Tavertet: és un turó testimoni format principalment per les margues de Coll de Malla, preservades perquè una capa més resistent de gresos protegeix parcialment el seu cim.
-  - kind: h3
-    text: "6. Els gresos superiors"
-  - kind: p
-    text: >-
-      A la part alta de la successió, especialment cap a sectors més orientals i septentrionals del Collsacabra, apareixen els gresos de Folgueroles i, localment, la Formació de Bracons i la Formació de Rupit.
-  - kind: p
-    text: >-
-      Són roques formades per sorra consolidada, amb tonalitats groguenques, grisenques o blavoses. Representen una nova variació de les condicions sedimentàries marines, amb aportacions de sediments detrítics més importants. Els gresos tenen més resistència que les margues i poden actuar com a capa protectora sobre relleus margosos, tal com passa al turó del Castell.
+  paleogeologia: "Seqüència cronològica en vídeo dels grans esdeveniments geològics que han configurat el relleu i les formacions visibles al llarg de l'itinerari Sau–Tavertet."
+  historia: "Context litològic del granit hercinià, el sòcol paleozoic i les cobertes sedimentàries terciàries del sector Sau–Tavertet."
 dadesLabels:
   mapa: "Mapa QGIS geològic"
-  mapaGeobotanica: "Mapa QGIS botànic"
+  paleogeologia: "Paleogeologia"
   historia: "Geologia"
 dadesIndex:
   historia:
-    - label: "Evolució dels materials i processos geològics"
+    - label: "Marc geològic regional"
+      modalKey: marc-geologic-regional
+    - label: "Estratigrafia i litologia del trajecte Sau–Tavertet"
+      modalKey: estratigrafia-litologia
+    - label: "Tectònica i estructures"
+      modalKey: tectonica-estructures
+    - label: "Geomorfologia"
+      modalKey: geomorfologia
+  paleogeologia:
+    - label: "Seqüència geològica de l'itinerari Sau–Tavertet"
       modalKey: sequencia-geologica-itinerari
       numbered: false
-    - label: "Paleozoic: el sòcol"
+    - label: "Paleozoic: construcció del sòcol"
       modalKey: paleogeologia-paleozoic
       numbered: false
-    - label: "El buit de ~250 Ma"
+    - label: "Hiatus i discordança erosiva (sense registre aflorant, ~250 Ma)"
       modalKey: paleogeologia-mesozoic
       numbered: false
-    - label: "Eocè: la coberta"
+    - label: "Eocè: cobertura del sòcol"
       modalKey: paleogeologia-iberia-ebre
       numbered: false
-    - label: "Resum. On som (marc regional)"
-      modalKey: marc-geologic-regional
+    - label: "* – Enllaç a L'Avinguda dels Temps Geològics de l'ICGC"
+      href: "https://www.icgc.cat/ca/Eines-i-visors/Apps/PGOM-Pirineus-Geological-Open-Museum/Recorreguts/LAvinguda-dels-Temps-Geologics"
       numbered: false
-    - label: "Resum. Quines roques trepitges"
-      modalKey: estratigrafia-litologia
-      numbered: false
-    - label: "Resum. Falles i estructures"
-      modalKey: tectonica-estructures
-      numbered: false
-    - label: "Resum. Per què hi ha cingles"
-      modalKey: geomorfologia
+    - label: "* – Enllaç a la jerarquia d'unitats cronostratigràfiques de l'ICGC"
+      href: "https://datacloud.icgc.cat/datacloud/descarregues-web/bd/pubs/ChronostratChart2023-09Catalan.pdf"
       numbered: false
 dadesModals:
   sequencia-geologica-itinerari:

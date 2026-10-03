@@ -769,7 +769,11 @@ export const termes: Terme[] = [
       "gresos de la Formació Barcons",
       "gresos continentals de la Formació Barcons",
       "bancs de gresos de la Formació Barcons",
-      "bancs grocs de gresos continentals de la Formació Barcons"
+      "bancs grocs de gresos continentals de la Formació Barcons",
+      "formacions de Bracons",
+      "Formació de Bracons",
+      "Formació Bracons",
+      "Bracons"
     ]
   },
   {
@@ -815,8 +819,19 @@ export const termes: Terme[] = [
     "sinonims": [
       "Fm. Romagats",
       "Formació Romagats",
+      "Romagats",
       "Romegats",
       "Formació de Romegats"
+    ]
+  },
+  {
+    "slug": "formacio-de-rupit",
+    "terme": "Formació de Rupit",
+    "categoria": "Estratigrafia",
+    "definicio": "Unitat de gresos de la part alta de la successió eocena del Collsacabra, més freqüent als sectors orientals i septentrionals, cap a Rupit. Representa condicions sedimentàries marines amb una aportació detrítica important i pot actuar com a capa resistent sobre relleus margosos.",
+    "sinonims": [
+      "Fm. Rupit",
+      "Formació Rupit"
     ]
   },
   {
@@ -840,7 +855,8 @@ export const termes: Terme[] = [
     "sinonims": [
       "Formació de Vilanova de Sau",
       "Fm. Vilanova de Sau",
-      "Fm Vilanova de Sau"
+      "Fm Vilanova de Sau",
+      "Vilanova de Sau"
     ]
   },
   {

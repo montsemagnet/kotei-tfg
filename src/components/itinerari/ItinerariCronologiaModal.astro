@@ -32,6 +32,7 @@ interface Props {
     tipus?: "animacio" | "video";
     compact?: boolean;
   };
+  hideTitle?: boolean;
 }
 
 const {
@@ -42,6 +43,7 @@ const {
   iconSrc = "/images/itineraris/sau-tavertet/icone-proces.png",
   arrowSrc = "/images/itineraris/sau-tavertet/fletxa.png",
   outroMedia,
+  hideTitle = false,
 } = Astro.props;
 
 const titleId = `${modalId}-title`;
@@ -113,7 +115,8 @@ const annotatedNodes: AnnotatedNode[] = items.map((node) => {
   id={modalId}
   class="itinerari-dada-dialog fixed inset-0 z-[110] m-0 size-full max-h-none max-w-none border-0 bg-base-950/90 p-4 backdrop:bg-transparent open:flex open:items-start open:justify-center overflow-y-auto"
   aria-modal="true"
-  aria-labelledby={titleId}
+  aria-labelledby={hideTitle ? undefined : titleId}
+  aria-label={hideTitle ? label : undefined}
   data-focus-trap="true"
 >
   <div
@@ -124,14 +127,18 @@ const annotatedNodes: AnnotatedNode[] = items.map((node) => {
     <ItinerariModalHeaderActions closeClass={panelCloseClass} />
 
     <div class="itinerari-modal-text-content">
-      <Text
-        id={titleId}
-        tag="h2"
-        variant="displayMD"
-        class="dark:text-white text-base-900 font-medium tracking-tighter mb-6 pr-52 leading-tight"
-      >
-        {label}
-      </Text>
+      {
+        !hideTitle && (
+          <Text
+            id={titleId}
+            tag="h2"
+            variant="displayMD"
+            class="dark:text-white text-base-900 font-medium tracking-tighter mb-6 pr-52 leading-tight"
+          >
+            {label}
+          </Text>
+        )
+      }
 
       {
         intro &&

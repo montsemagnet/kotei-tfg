@@ -11,7 +11,8 @@ const illustrationVerdSrc = withBase("/images/landing/verd-retocat.webp");
 const illustrationFonsBlancSrc = withBase("/images/landing/claudia-fonsblanc.webp");
 const illustrationAlt =
   "Il·lustració del Grau de Biologia, amb fauna i flora, de Claudia Márquez Ortega.";
-const illustrationCaption = "Il·lustració: Claudia Márquez Ortega. Cedida per a aquesta web.";
+const illustrationCaption =
+  "Il·lustració de Claudia Márquez Ortega, biòloga i il·lustradora. Cedida per a aquesta web. Els drets de la imatge són seus.";
 const illustrationThumbClass = "block h-auto w-full object-contain";
 const illustrationZoomButtonClass =
   "mx-auto block w-full max-w-4xl cursor-pointer border-0 bg-transparent p-0";
@@ -105,9 +106,22 @@ const provaPhilosophy = [
             />
           </button>
           <figcaption
-            class="px-8 lg:px-24 pb-6 pt-3 text-center text-sm font-medium tracking-tight text-[#c4b4a0] dark:text-base-400"
+            class="px-8 lg:px-24 pb-6 pt-3 text-center text-sm font-medium leading-relaxed tracking-tight text-[#c4b4a0] dark:text-base-400"
           >
-            {illustrationCaption}
+            <span class="block">
+              Il·lustració de <span class="font-semibold">Claudia Márquez Ortega</span>,
+              biòloga i il·lustradora.
+            </span>
+            <span class="mt-1 block">
+              Cedida per a aquesta web. Els drets de la imatge són seus.
+              {" "}
+              <a
+                href={withBase("/credits")}
+                class="underline decoration-white/40 underline-offset-[3px] hover:decoration-white"
+              >
+                Crèdits
+              </a>
+            </span>
           </figcaption>
         </figure>
       </ItinerariZoom>

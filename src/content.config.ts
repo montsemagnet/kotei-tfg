@@ -285,6 +285,24 @@ const itineraris = defineCollection({
         paisatge: z.string().optional(),
         mapaGeobotanica: z.string().optional(),
       }),
+      dadesArticle: z
+        .array(
+          z.discriminatedUnion("kind", [
+            z.object({ kind: z.literal("p"), text: z.string() }),
+            z.object({ kind: z.literal("h3"), text: z.string() }),
+            z.object({
+              kind: z.literal("sequence"),
+              items: z.array(z.string()),
+            }),
+            z.object({
+              kind: z.literal("table"),
+              headers: z.array(z.string()),
+              rows: z.array(z.array(z.string())),
+            }),
+            z.object({ kind: z.literal("ul"), items: z.array(z.string()) }),
+          ]),
+        )
+        .optional(),
       dadesModals: z.record(z.string(), modalContentSchema(image)).optional(),
       dadesModalAliases: z.record(z.string(), z.string()).optional(),
       dadesIndex: z

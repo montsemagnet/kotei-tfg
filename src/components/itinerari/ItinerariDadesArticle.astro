@@ -1,0 +1,98 @@
+---
+import { createTermeLinkTracker, linkTermes } from "@/utils/linkTermes";
+
+type ArticleBlock =
+  | { kind: "p"; text: string }
+  | { kind: "h3"; text: string }
+  | { kind: "sequence"; items: string[] }
+  | { kind: "table"; headers: string[]; rows: string[][] }
+  | { kind: "ul"; items: string[] };
+
+interface Props {
+  blocks: ArticleBlock[];
+}
+
+const { blocks } = Astro.props;
+const linkedSlugs = createTermeLinkTracker();
+---
+
+<div class="itinerari-dades-article flex flex-col gap-5 text-base-500 dark:text-base-400">
+  {
+    blocks.map((block) => {
+      if (block.kind === "p") {
+        return (
+          <p
+            class="text-lg md:text-xl leading-relaxed"
+            set:html={linkTermes(block.text, linkedSlugs)}
+          />
+        );
+      }
+
+      if (block.kind === "h3") {
+        return (
+          <h3
+            class="mt-2 text-base md:text-lg font-medium tracking-tight text-base-900 dark:text-white"
+            set:html={linkTermes(block.text, linkedSlugs)}
+          />
+        );
+      }
+
+      if (block.kind === "sequence") {
+        return (
+          <p class="text-lg md:text-xl leading-relaxed">
+            {block.items.map((item, index) => (
+              <>
+                {index > 0 && (
+                  <span class="mx-1.5 text-base-400 dark:text-base-500" aria-hidden="true">
+                    →
+                  </span>
+                )}
+                <span set:html={linkTermes(item, linkedSlugs)} />
+              </>
+            ))}
+          </p>
+        );
+      }
+
+      if (block.kind === "ul") {
+        return (
+          <ul class="flex list-disc flex-col gap-2 pl-5 text-lg md:text-xl leading-relaxed">
+            {block.items.map((item) => (
+              <li set:html={linkTermes(item, linkedSlugs)} />
+            ))}
+          </ul>
+        );
+      }
+
+      return (
+        <div class="overflow-x-auto">
+          <table class="w-full min-w-[36rem] border-collapse text-left text-sm md:text-base">
+            <thead>
+              <tr class="border-b border-base-200 dark:border-base-800">
+                {block.headers.map((header) => (
+                  <th
+                    scope="col"
+                    class="py-3 pr-4 last:pr-0 font-medium text-base-900 dark:text-white"
+                    set:html={linkTermes(header, linkedSlugs)}
+                  />
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {block.rows.map((row) => (
+                <tr class="border-b border-base-200 dark:border-base-800 align-top">
+                  {row.map((cell) => (
+                    <td
+                      class="py-3 pr-4 last:pr-0 leading-relaxed"
+                      set:html={linkTermes(cell, linkedSlugs)}
+                    />
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
+    })
+  }
+</div>

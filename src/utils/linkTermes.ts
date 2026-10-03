@@ -21,7 +21,7 @@ const phraseEntries: PhraseEntry[] = termes
   .sort((a, b) => b.phrase.length - a.phrase.length);
 
 const termLinkClass =
-  "text-accent-700 dark:text-accent-400 underline decoration-accent-700/30 dark:decoration-accent-400/40 underline-offset-[3px] hover:decoration-accent-700 dark:hover:decoration-accent-400 transition-colors";
+  "text-base-700 dark:text-base-300 underline decoration-base-400/70 dark:decoration-base-500 underline-offset-[3px] hover:text-base-900 hover:decoration-base-700 dark:hover:text-white dark:hover:decoration-base-300 transition-colors";
 
 function escapeHtml(text: string): string {
   return text
@@ -157,14 +157,15 @@ function findBestMatch(
  * Amb JS: obre una finestra amb la definició (`data-terme-slug`).
  * Sense JS: va al glossari (`/termes#slug`).
  * Passa el mateix `linkedSlugs` entre paràgrafs d'una secció per no repetir enllaços.
- * Admet enllaços markdown `[text](https://…)` (s'obren en pestanya nova).
+ * Admet enllaços markdown `[text](https://…)` (pestanya nova)
+ * i `[text](#modal:clau)` (obre el modal `itinerari-modal-clau`).
  */
 export function linkTermes(
   text: string,
   linkedSlugs: Set<string> = new Set(),
 ): string {
   const markdownLink =
-    /\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g;
+    /\[([^\]]+)\]\((https?:\/\/[^)\s]+|#modal:[a-z0-9-]+)\)/g;
   let output = "";
   let lastIndex = 0;
   let linkMatch: RegExpExecArray | null;
@@ -173,7 +174,12 @@ export function linkTermes(
     output += linkTermesPlain(text.slice(lastIndex, linkMatch.index), linkedSlugs);
     const label = linkMatch[1];
     const href = linkMatch[2];
-    output += `<a href="${escapeHtml(href)}" class="${termLinkClass}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)}</a>`;
+    if (href.startsWith("#modal:")) {
+      const modalId = `itinerari-modal-${href.slice("#modal:".length)}`;
+      output += `<button type="button" class="${termLinkClass} bg-transparent p-0 font-[inherit]" data-modal-target="${escapeHtml(modalId)}" aria-haspopup="dialog">${escapeHtml(label)}</button>`;
+    } else {
+      output += `<a href="${escapeHtml(href)}" class="${termLinkClass}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)}</a>`;
+    }
     lastIndex = linkMatch.index + linkMatch[0].length;
   }
 

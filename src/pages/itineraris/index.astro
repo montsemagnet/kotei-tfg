@@ -5,17 +5,125 @@ import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 // Components
 import ItinerariCard1 from "@/components/itinerari/ItinerariCard1.astro";
-// Content
+import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
+import { withBase } from "@/utils/withBase";
 
 const allItineraris = (await getCollection("itineraris"))
   .filter((entry) => !entry.data.draft)
   .sort((a, b) => (a.data.ordre ?? 999) - (b.data.ordre ?? 999));
+
+const featuredItinerari = allItineraris.find(
+  (entry) => entry.id === "sau-tavertet" && !(entry.data.enConstruccio ?? false),
+);
+
+const pageLinks = [
+  { href: withBase("/"), label: "Inici" },
+  { href: withBase("/itineraris/sau-tavertet"), label: "Itinerari Sau-Tavertet" },
+];
+
+const pageLinkClass =
+  "text-sm sm:text-base text-[#1E6B42] font-medium tracking-tight underline decoration-[#1E6B42]/40 underline-offset-[6px] hover:text-[#14532D] hover:decoration-[#14532D] transition-colors text-center";
 ---
 
 <BaseLayout pageTitle="Tots els itineraris">
   <section>
-    <Wrapper variant="standard" class="py-24 lg:py-48">
+    <Wrapper variant="standard" class="pt-28 pb-4 sm:pt-16 lg:pt-20">
+      <nav class="relative z-[110] w-full px-16 sm:px-0" aria-label="Enllaços de la pàgina">
+        <ul class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 sm:gap-x-8">
+          {
+            pageLinks.map((item) => (
+              <li>
+                <a href={item.href} class={pageLinkClass}>
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </Wrapper>
+  </section>
+  <section>
+    <Wrapper variant="standard" class="pt-8 lg:pt-16 pb-12">
+      {
+        featuredItinerari && (
+          <>
+            <div class="featured-itinerari w-full max-w-full">
+              <div class="featured-itinerari__row flex flex-col gap-5 sm:flex-row sm:items-stretch sm:gap-6 lg:gap-8">
+                <div class="featured-itinerari__heading relative z-10 shrink-0 sm:min-w-[10rem] lg:min-w-[10.5rem]">
+                  <Text
+                    tag="h2"
+                    variant="displayXL"
+                    data-aos="fade-up"
+                    data-aos-duration="1000"
+                    class="dark:text-white text-base-900 font-medium tracking-tight"
+                  >
+                    Itinerari
+                    <br />
+                    destacat
+                  </Text>
+                </div>
+
+                <a
+                  href={withBase(`/itineraris/${featuredItinerari.id}`)}
+                  title={featuredItinerari.data.title}
+                  class="featured-itinerari__photo relative z-0 min-h-[4.5rem] min-w-0 flex-1 overflow-hidden"
+                  data-aos="fade-up"
+                  data-aos-duration="1000"
+                  data-aos-delay="100"
+                >
+                  <Image
+                    src={featuredItinerari.data.thumbnail.url}
+                    alt={featuredItinerari.data.title}
+                    width={1200}
+                    height={288}
+                    class="size-full min-h-[4.5rem] object-cover object-[58%_50%] max-sm:aspect-[3/1] max-sm:object-[65%_center]"
+                  />
+                </a>
+
+                <div class="featured-itinerari__copy shrink-0 sm:w-[11.75rem] md:w-[13rem] lg:w-[14.25rem]">
+                  <ItinerariCard1
+                    post={featuredItinerari}
+                    index={1}
+                    variant="featured"
+                    hideImage
+                    subtitle="Itinerari geològic UVIC"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="proximament-block mt-16 lg:mt-24 flex w-fit max-w-full flex-col gap-4 lg:flex-row lg:items-start lg:gap-8"
+              data-aos="fade-up"
+              data-aos-duration="1500"
+            >
+              <Text
+                tag="h3"
+                variant="displayXL"
+                data-aos="fade-up"
+                data-aos-duration="1500"
+                class="shrink-0 dark:text-white text-base-900 font-medium tracking-tighter text-balance"
+              >
+                Pròximament
+              </Text>
+              <Text
+                tag="p"
+                variant="textLG"
+                class="min-w-0 flex-1 text-pretty text-base-700 dark:text-base-400 leading-relaxed lg:text-justify"
+              >
+                Nous itineraris s'incorporaran progressivament per ampliar els àmbits
+                biològics i els materials d'estudi disponibles
+              </Text>
+            </div>
+          </>
+        )
+      }
+    </Wrapper>
+  </section>
+  <section>
+    <Wrapper variant="standard" class="pb-24 lg:pb-48">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-start">
         <div class="overflow-hidden">
           <Text

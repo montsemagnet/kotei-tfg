@@ -386,6 +386,7 @@ const itineraris = defineCollection({
         .optional(),
       recorregutLabel: z.string().optional(),
       recorregutDescripcio: z.string().optional(),
+      recorregutGif: z.string().optional(),
       altimetria: z
         .object({
           label: z.string(),

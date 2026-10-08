@@ -29,6 +29,7 @@ rutaMobil:
   downloadName: "Itinerari_Sau_Tavertet.kmz"
 recorregutLabel: "El recorregut"
 recorregutDescripcio: "Track, vol aeri i perfil d'elevació per situar el trajecte Sau–Tavertet."
+recorregutGif: "/images/itineraris/sau-tavertet/conexion-ruta.gif"
 introLabel: "Introducció a l'itinerari"
 paradesLabel: "Parades"
 intro:

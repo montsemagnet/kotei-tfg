@@ -103,6 +103,12 @@ export const thirdPartyResources: ThirdPartyResource[] = [
     category: "icones",
   },
   {
+    name: "Conexión de ruta (IconScout)",
+    use: "Animació GIF amb fons transparent de l'apartat El recorregut a l'itinerari Sau–Tavertet. Drets adquirits amb llicència Digital d'IconScout.",
+    url: "https://iconscout.com/es/lottie-animations/conexion-de-ruta",
+    category: "icones",
+  },
+  {
     name: "ezGIF Animated GIF Maker",
     use: "Creació d'animacions GIF de la interfície",
     url: "https://ezgif.com/maker",

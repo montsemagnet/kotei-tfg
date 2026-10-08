@@ -22,7 +22,7 @@ const gifFinal = gif ? gif.replace(/\.gif$/i, "-final.png") : "";
 const gifMs = 8200;
 const linkedSlugs = createTermeLinkTracker();
 const replayButtonClass =
-  "text-sm sm:text-base text-[#1E6B42] font-medium tracking-tight underline decoration-[#1E6B42]/40 underline-offset-[6px] hover:text-[#14532D] hover:decoration-[#14532D] transition-colors";
+  "inline-flex size-10 items-center justify-center rounded-full text-[#1E6B42] hover:bg-[#1E6B42]/10 hover:text-[#14532D] transition-colors";
 
 /** Amb flex-col-reverse el visor va de nova a antiga: el títol de grup
  *  va al primer ítem visible del grup, saltant hiatus. */
@@ -46,15 +46,9 @@ function showGrupLabel(index: number) {
   aria-label="Successió de capes geològiques, de més antiga a més moderna"
 >
   <div
-    class="mb-4 flex items-center border-t border-base-300 pt-3 dark:border-base-700"
+    class="mb-4 border-t border-base-300 pt-3 dark:border-base-700"
     data-capa-ralla
-  >
-    <p class="w-[12.5rem] shrink-0 invisible" data-capa-replay-wrap>
-      <button type="button" class={replayButtonClass} data-capa-replay>
-        Reinicia la imatge
-      </button>
-    </p>
-  </div>
+  ></div>
 
   <div class="geologia-capes-frame">
     <div class="geologia-capes-visual">
@@ -70,6 +64,24 @@ function showGrupLabel(index: number) {
         </figcaption>
       </figure>
       <div class="geologia-capes-base" aria-hidden="true"></div>
+      <p class="mt-1 flex justify-end invisible" data-capa-replay-wrap>
+        <button
+          type="button"
+          class={replayButtonClass}
+          data-capa-replay
+          aria-label="Reproduir l'animació"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            class="size-7"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11.02-6.86a1 1 0 0 0 0-1.72L9.5 4.28a1 1 0 0 0-1.5.86Z" />
+          </svg>
+        </button>
+      </p>
     </div>
 
     <div class="geologia-capes-text">
@@ -81,7 +93,9 @@ function showGrupLabel(index: number) {
               <li
                 data-capa-index={index}
                 data-linia-base={index === capes.length - 3 ? true : undefined}
-                class="geologia-capa"
+                data-aos="fade-up"
+                data-aos-duration="1500"
+                data-aos-delay={String((capes.length - 1 - index) * 80)}
               >
                 {showGrup && capa.grup && (
                   <p class="mb-1.5 text-xs font-medium uppercase tracking-[0.14em] text-base-400 dark:text-base-500">
@@ -186,21 +200,6 @@ function showGrupLabel(index: number) {
     width: 100%;
   }
 
-  .geologia-capa {
-    display: none;
-    opacity: 0;
-    transform: translateY(0.55rem);
-  }
-
-  .geologia-capa.is-visible {
-    display: block;
-    opacity: 1;
-    transform: none;
-    transition:
-      opacity 500ms ease,
-      transform 500ms ease;
-  }
-
   @media (min-width: 768px) {
     .geologia-capes-frame {
       flex-direction: row;
@@ -210,25 +209,13 @@ function showGrupLabel(index: number) {
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .geologia-capes-figure.is-ready .geologia-capes-img,
-    .geologia-capa,
-    .geologia-capa.is-visible {
+    .geologia-capes-figure.is-ready .geologia-capes-img {
       transition: none;
-      transform: none;
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .geologia-capa,
-    .geologia-capa.is-visible {
-      display: block;
     }
   }
 </style>
 
 <script>
-  const TEXT_MS = 850;
-
   function prefersReducedMotion() {
     return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   }
@@ -243,11 +230,6 @@ function showGrupLabel(index: number) {
     if (root.dataset.bound === "true") return;
     root.dataset.bound = "true";
 
-    const capas = Array.from(
-      root.querySelectorAll<HTMLElement>("[data-capa-index]"),
-    ).sort(
-      (a, b) => Number(a.dataset.capaIndex) - Number(b.dataset.capaIndex),
-    );
     const img = root.querySelector<HTMLImageElement>("[data-capa-gif-img]");
     const figure = root.querySelector<HTMLElement>("[data-capa-figure]");
     const visual = root.querySelector<HTMLElement>(".geologia-capes-visual");
@@ -257,11 +239,10 @@ function showGrupLabel(index: number) {
     const gif = root.dataset.capaGif ?? "";
     const still = root.dataset.capaGifFinal ?? "";
     const gifMs = Number(root.dataset.capaGifMs || 8200);
-    if (!img || !figure || capas.length === 0 || !gif) return;
+    if (!img || !figure || !gif) return;
 
     let timers: number[] = [];
     let cancelled = false;
-    let textsReady = false;
 
     const clearTimers = () => {
       timers.forEach((id) => window.clearTimeout(id));
@@ -283,23 +264,13 @@ function showGrupLabel(index: number) {
     const syncLinia = () => {
       if (!visual) return;
       const desktop = window.matchMedia("(min-width: 768px)").matches;
-      if (
-        desktop &&
-        liniaCapa &&
-        liniaCapa.classList.contains("is-visible")
-      ) {
+      if (desktop && liniaCapa) {
         const top = visual.getBoundingClientRect().top;
         const bottom = liniaCapa.getBoundingClientRect().bottom;
         visual.style.height = `${Math.max(0, bottom - top)}px`;
       } else {
         visual.style.removeProperty("height");
       }
-    };
-
-    const showAllTexts = () => {
-      capas.forEach((capa) => capa.classList.add("is-visible"));
-      textsReady = true;
-      requestAnimationFrame(syncLinia);
     };
 
     const showFinalImage = () => {
@@ -310,7 +281,15 @@ function showGrupLabel(index: number) {
     };
 
     const runGif = async () => {
+      cancelled = true;
+      clearTimers();
+      cancelled = false;
+      setReplayVisible(false);
       figure.classList.add("is-ready");
+      if (prefersReducedMotion()) {
+        showFinalImage();
+        return;
+      }
       playGif(img, gif);
       await wait(gifMs);
       if (cancelled) return;
@@ -318,68 +297,20 @@ function showGrupLabel(index: number) {
       setReplayVisible(true);
     };
 
-    const runTextsThenGif = async () => {
-      cancelled = false;
-      textsReady = false;
-      for (const capa of capas) {
-        if (cancelled) return;
-        capa.classList.add("is-visible");
-        await wait(TEXT_MS);
-      }
-      textsReady = true;
-      if (cancelled) return;
-      requestAnimationFrame(() => {
-        syncLinia();
-        if (!cancelled) void runGif();
-      });
-    };
-
-    const startFull = () => {
-      cancelled = true;
-      clearTimers();
-      cancelled = false;
-      textsReady = false;
-      capas.forEach((capa) => capa.classList.remove("is-visible"));
-      figure.classList.remove("is-ready");
-      img.removeAttribute("src");
-      setReplayVisible(false);
-      if (prefersReducedMotion()) {
-        showAllTexts();
-        showFinalImage();
-        return;
-      }
-      void runTextsThenGif();
-    };
-
-    const restartImages = () => {
-      cancelled = true;
-      clearTimers();
-      cancelled = false;
-      setReplayVisible(false);
-      figure.classList.remove("is-ready");
-      img.removeAttribute("src");
-      showAllTexts();
-      if (prefersReducedMotion()) {
-        showFinalImage();
-        return;
-      }
-      void runGif();
-    };
-
     replayButtons.forEach((button) =>
       button.addEventListener("click", () => {
-        if (textsReady) restartImages();
-        else startFull();
+        void runGif();
       }),
     );
 
     window.addEventListener("resize", syncLinia);
+    requestAnimationFrame(syncLinia);
 
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries.some((entry) => entry.isIntersecting)) {
           observer.disconnect();
-          startFull();
+          void runGif();
         }
       },
       { threshold: 0.15 },

@@ -6,33 +6,38 @@ import { withBase } from "@/utils/withBase";
 const verdFulla = "#1E6B42";
 
 const landingLinks = [
+  { href: "#inici", label: "Inici" },
   { href: "#que-hi-trobaras", label: "Què hi trobaràs" },
   { href: withBase("/itineraris"), label: "Itineraris" },
+  { href: withBase("/itineraris/sau-tavertet/"), label: "Sau-Tavertet" },
   { href: "#equip", label: "Equip" },
 ];
 
 const linkClass =
-  "text-sm sm:text-base text-[#1E6B42] font-medium tracking-tight underline decoration-[#1E6B42]/40 underline-offset-[6px] hover:text-[#14532D] hover:decoration-[#14532D] transition-colors text-center";
+  "text-lg sm:text-xl text-[#1E6B42] font-medium tracking-tight underline decoration-[#1E6B42]/40 underline-offset-[6px] hover:text-[#14532D] hover:decoration-[#14532D] transition-colors text-center";
 ---
 
-<section>
-  <Wrapper variant="standard" class="pt-28 pb-4 sm:pt-16 lg:pt-20 lg:pb-6">
-    <div class="flex flex-col items-center text-center">
-      <nav class="relative z-[110] w-full px-16 sm:px-0" aria-label="Seccions de la pàgina d'inici">
-        <ul class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 sm:gap-x-8">
-          {
-            landingLinks.map((item) => (
-              <li>
-                <a href={item.href} class={linkClass}>
-                  {item.label}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-      </nav>
+<nav
+  class="sticky top-0 z-[110] bg-base-100/95 py-3 dark:bg-base-900/95 backdrop-blur-sm"
+  aria-label="Seccions de la pàgina d'inici"
+>
+  <ul class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 px-16 sm:gap-x-8 sm:px-0">
+    {
+      landingLinks.map((item) => (
+        <li>
+          <a href={item.href} class={linkClass}>
+            {item.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
 
-      <div class="mt-6 flex w-full max-w-full flex-col items-center">
+<section id="inici" class="scroll-mt-24">
+  <Wrapper variant="standard" class="pt-24 pb-4 sm:pt-12 lg:pt-16 lg:pb-6">
+    <div class="flex flex-col items-center text-center">
+      <div class="flex w-full max-w-full flex-col items-center">
         <Text
           tag="h1"
           variant="display4XL"

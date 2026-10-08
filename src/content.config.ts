@@ -303,6 +303,23 @@ const itineraris = defineCollection({
           ]),
         )
         .optional(),
+      /** GIF únic de la columna (totes les capes enllaçades). */
+      gifColumna: z.string().optional(),
+      /** Seqüència visual de capes (GIF + text), de més antiga a més moderna. */
+      dadesCapes: z
+        .array(
+          z.object({
+            gif: z.string().optional(),
+            grup: z.string().optional(),
+            titol: z.string(),
+            periode: z.string().optional(),
+            litologia: z.string().optional(),
+            ambient: z.string().optional(),
+            hiatus: z.boolean().optional(),
+            pauseMs: z.number().optional(),
+          }),
+        )
+        .optional(),
       dadesModals: z.record(z.string(), modalContentSchema(image)).optional(),
       dadesModalAliases: z.record(z.string(), z.string()).optional(),
       dadesIndex: z

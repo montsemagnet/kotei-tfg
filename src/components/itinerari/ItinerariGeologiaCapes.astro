@@ -1,0 +1,398 @@
+---
+import { createTermeLinkTracker, linkTermes } from "@/utils/linkTermes";
+
+export type GeologiaCapa = {
+  gif?: string;
+  grup?: string;
+  titol: string;
+  periode?: string;
+  litologia?: string;
+  ambient?: string;
+  hiatus?: boolean;
+  pauseMs?: number;
+};
+
+interface Props {
+  capes: GeologiaCapa[];
+  gif?: string;
+}
+
+const { capes, gif } = Astro.props;
+const gifFinal = gif ? gif.replace(/\.gif$/i, "-final.png") : "";
+const gifMs = 8200;
+const linkedSlugs = createTermeLinkTracker();
+const replayButtonClass =
+  "text-sm sm:text-base text-[#1E6B42] font-medium tracking-tight underline decoration-[#1E6B42]/40 underline-offset-[6px] hover:text-[#14532D] hover:decoration-[#14532D] transition-colors";
+
+/** Amb flex-col-reverse el visor va de nova a antiga: el títol de grup
+ *  va al primer ítem visible del grup, saltant hiatus. */
+function showGrupLabel(index: number) {
+  const capa = capes[index];
+  if (!capa?.grup || capa.hiatus) return false;
+  for (let j = index + 1; j < capes.length; j++) {
+    if (capes[j].grup !== capa.grup) break;
+    if (!capes[j].hiatus) return false;
+  }
+  return true;
+}
+---
+
+<div
+  class="geologia-capes"
+  data-geologia-capes
+  data-capa-gif={gif ?? ""}
+  data-capa-gif-final={gifFinal}
+  data-capa-gif-ms={String(gifMs)}
+  aria-label="Successió de capes geològiques, de més antiga a més moderna"
+>
+  <div
+    class="mb-4 flex items-center border-t border-base-300 pt-3 dark:border-base-700"
+    data-capa-ralla
+  >
+    <p class="w-[12.5rem] shrink-0 invisible" data-capa-replay-wrap>
+      <button type="button" class={replayButtonClass} data-capa-replay>
+        Reinicia la imatge
+      </button>
+    </p>
+  </div>
+
+  <div class="geologia-capes-frame">
+    <div class="geologia-capes-visual">
+      <figure class="geologia-capes-figure" data-capa-figure>
+        <img
+          data-capa-gif-img
+          src=""
+          alt=""
+          class="geologia-capes-img bg-transparent"
+        />
+        <figcaption class="sr-only">
+          Columna esquemàtica de capes, de més antiga (a baix) a més moderna (a dalt).
+        </figcaption>
+      </figure>
+      <div class="geologia-capes-base" aria-hidden="true"></div>
+    </div>
+
+    <div class="geologia-capes-text">
+      <ol class="flex flex-col-reverse gap-3">
+        {
+          capes.map((capa, index) => {
+            const showGrup = showGrupLabel(index);
+            return (
+              <li
+                data-capa-index={index}
+                data-linia-base={index === capes.length - 3 ? true : undefined}
+                class="geologia-capa"
+              >
+                {showGrup && capa.grup && (
+                  <p class="mb-1.5 text-xs font-medium uppercase tracking-[0.14em] text-base-400 dark:text-base-500">
+                    {capa.grup}
+                  </p>
+                )}
+                <article
+                  class:list={[
+                    "rounded-xl border px-4 py-3",
+                    capa.hiatus
+                      ? "border-dashed border-base-300 bg-base-50/80 dark:border-base-600 dark:bg-base-900/40"
+                      : "border-base-200 bg-white/70 dark:border-base-800 dark:bg-base-950/40",
+                  ]}
+                >
+                  <h3
+                    class="text-base md:text-lg font-medium tracking-tight text-base-900 dark:text-white"
+                    set:html={linkTermes(capa.titol, linkedSlugs)}
+                  />
+                  {capa.periode && (
+                    <p
+                      class="mt-1 text-sm text-base-500 dark:text-base-400"
+                      set:html={linkTermes(capa.periode, linkedSlugs)}
+                    />
+                  )}
+                  {capa.litologia && (
+                    <p
+                      class="mt-1 text-sm leading-relaxed text-base-600 dark:text-base-300"
+                      set:html={linkTermes(capa.litologia, linkedSlugs)}
+                    />
+                  )}
+                  {capa.ambient && (
+                    <p
+                      class="mt-2 text-sm md:text-base leading-relaxed text-base-500 dark:text-base-400"
+                      set:html={linkTermes(capa.ambient, linkedSlugs)}
+                    />
+                  )}
+                </article>
+              </li>
+            );
+          })
+        }
+      </ol>
+    </div>
+  </div>
+</div>
+
+<style>
+  .geologia-capes-frame {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.5rem;
+  }
+
+  .geologia-capes-visual {
+    width: 12.5rem;
+    max-width: 12.5rem;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .geologia-capes-figure {
+    display: block;
+    width: 12.5rem;
+    flex: 1 1 auto;
+    min-height: 0;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .geologia-capes-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: bottom center;
+    background: transparent;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .geologia-capes-figure.is-ready .geologia-capes-img {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.45s ease;
+  }
+
+  .geologia-capes-base {
+    display: block;
+    width: 12.5rem;
+    height: 8px;
+    flex-shrink: 0;
+    margin: 0;
+    background: #111;
+  }
+
+  .geologia-capes-text {
+    flex: 1 1 0%;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .geologia-capa {
+    display: none;
+    opacity: 0;
+    transform: translateY(0.55rem);
+  }
+
+  .geologia-capa.is-visible {
+    display: block;
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 500ms ease,
+      transform 500ms ease;
+  }
+
+  @media (min-width: 768px) {
+    .geologia-capes-frame {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 1.5rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .geologia-capes-figure.is-ready .geologia-capes-img,
+    .geologia-capa,
+    .geologia-capa.is-visible {
+      transition: none;
+      transform: none;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .geologia-capa,
+    .geologia-capa.is-visible {
+      display: block;
+    }
+  }
+</style>
+
+<script>
+  const TEXT_MS = 850;
+
+  function prefersReducedMotion() {
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  }
+
+  function playGif(img: HTMLImageElement, url: string) {
+    if (!url) return;
+    img.removeAttribute("src");
+    img.src = `${url}${url.includes("?") ? "&" : "?"}r=${Date.now()}`;
+  }
+
+  function initGeologiaCapes(root: HTMLElement) {
+    if (root.dataset.bound === "true") return;
+    root.dataset.bound = "true";
+
+    const capas = Array.from(
+      root.querySelectorAll<HTMLElement>("[data-capa-index]"),
+    ).sort(
+      (a, b) => Number(a.dataset.capaIndex) - Number(b.dataset.capaIndex),
+    );
+    const img = root.querySelector<HTMLImageElement>("[data-capa-gif-img]");
+    const figure = root.querySelector<HTMLElement>("[data-capa-figure]");
+    const visual = root.querySelector<HTMLElement>(".geologia-capes-visual");
+    const liniaCapa = root.querySelector<HTMLElement>("[data-linia-base]");
+    const replayWraps = root.querySelectorAll<HTMLElement>("[data-capa-replay-wrap]");
+    const replayButtons = root.querySelectorAll<HTMLButtonElement>("[data-capa-replay]");
+    const gif = root.dataset.capaGif ?? "";
+    const still = root.dataset.capaGifFinal ?? "";
+    const gifMs = Number(root.dataset.capaGifMs || 8200);
+    if (!img || !figure || capas.length === 0 || !gif) return;
+
+    let timers: number[] = [];
+    let cancelled = false;
+    let textsReady = false;
+
+    const clearTimers = () => {
+      timers.forEach((id) => window.clearTimeout(id));
+      timers = [];
+    };
+
+    const wait = (ms: number) =>
+      new Promise<void>((resolve) => {
+        const id = window.setTimeout(resolve, ms);
+        timers.push(id);
+      });
+
+    const setReplayVisible = (visible: boolean) => {
+      replayWraps.forEach((wrap) => {
+        wrap.classList.toggle("invisible", !visible);
+      });
+    };
+
+    const syncLinia = () => {
+      if (!visual) return;
+      const desktop = window.matchMedia("(min-width: 768px)").matches;
+      if (
+        desktop &&
+        liniaCapa &&
+        liniaCapa.classList.contains("is-visible")
+      ) {
+        const top = visual.getBoundingClientRect().top;
+        const bottom = liniaCapa.getBoundingClientRect().bottom;
+        visual.style.height = `${Math.max(0, bottom - top)}px`;
+      } else {
+        visual.style.removeProperty("height");
+      }
+    };
+
+    const showAllTexts = () => {
+      capas.forEach((capa) => capa.classList.add("is-visible"));
+      textsReady = true;
+      requestAnimationFrame(syncLinia);
+    };
+
+    const showFinalImage = () => {
+      if (still) img.src = still;
+      figure.classList.add("is-ready");
+      setReplayVisible(true);
+      syncLinia();
+    };
+
+    const runGif = async () => {
+      figure.classList.add("is-ready");
+      playGif(img, gif);
+      await wait(gifMs);
+      if (cancelled) return;
+      if (still) img.src = still;
+      setReplayVisible(true);
+    };
+
+    const runTextsThenGif = async () => {
+      cancelled = false;
+      textsReady = false;
+      for (const capa of capas) {
+        if (cancelled) return;
+        capa.classList.add("is-visible");
+        await wait(TEXT_MS);
+      }
+      textsReady = true;
+      if (cancelled) return;
+      requestAnimationFrame(() => {
+        syncLinia();
+        if (!cancelled) void runGif();
+      });
+    };
+
+    const startFull = () => {
+      cancelled = true;
+      clearTimers();
+      cancelled = false;
+      textsReady = false;
+      capas.forEach((capa) => capa.classList.remove("is-visible"));
+      figure.classList.remove("is-ready");
+      img.removeAttribute("src");
+      setReplayVisible(false);
+      if (prefersReducedMotion()) {
+        showAllTexts();
+        showFinalImage();
+        return;
+      }
+      void runTextsThenGif();
+    };
+
+    const restartImages = () => {
+      cancelled = true;
+      clearTimers();
+      cancelled = false;
+      setReplayVisible(false);
+      figure.classList.remove("is-ready");
+      img.removeAttribute("src");
+      showAllTexts();
+      if (prefersReducedMotion()) {
+        showFinalImage();
+        return;
+      }
+      void runGif();
+    };
+
+    replayButtons.forEach((button) =>
+      button.addEventListener("click", () => {
+        if (textsReady) restartImages();
+        else startFull();
+      }),
+    );
+
+    window.addEventListener("resize", syncLinia);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          observer.disconnect();
+          startFull();
+        }
+      },
+      { threshold: 0.15 },
+    );
+    observer.observe(root);
+  }
+
+  function bindAll() {
+    document
+      .querySelectorAll<HTMLElement>("[data-geologia-capes]")
+      .forEach(initGeologiaCapes);
+  }
+
+  bindAll();
+  document.addEventListener("astro:after-swap", bindAll);
+</script>

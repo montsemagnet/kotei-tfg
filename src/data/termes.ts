@@ -319,6 +319,15 @@ export const termes: Terme[] = [
     ]
   },
   {
+    "slug": "cordierita",
+    "terme": "Cordierita",
+    "categoria": "Mineralogia",
+    "definicio": "Mineral alumino-silicat típic del metamorfisme de grau mitjà a alt, especialment en roques pelítiques. A les Guilleries, la presència de cordierita i feldespat potàssic marca sectors de metamorfisme més intens, de fàcies amfibolítica.",
+    "sinonims": [
+      "cordierites"
+    ]
+  },
+  {
     "slug": "cobertura-sedimentaria",
     "terme": "Cobertura sedimentària",
     "categoria": "Estratigrafia",
@@ -502,6 +511,16 @@ export const termes: Terme[] = [
     "sinonims": [
       "discordança erosiva",
       "discordança angular"
+    ]
+  },
+  {
+    "slug": "deformacio",
+    "terme": "Deformació",
+    "categoria": "Tectònica",
+    "definicio": "Canvi de forma, posició o estructura de les roques per l'acció de forces tectòniques. Durant l'orogènia varisca, la deformació de la successió paleozoica va generar foliacions i altres estructures que no s'han de confondre amb les capes sedimentàries originals.",
+    "sinonims": [
+      "deformació tectònica",
+      "deformar"
     ]
   },
   {
@@ -755,6 +774,15 @@ export const termes: Terme[] = [
     "definicio": "Organisme marí unicel·lular amb closca calcària, molt abundant al registre fòssil i útil per datar roques sedimentàries. Els nummulits són foraminífers macroscòpics característics de l'Eocè mediterrani.",
     "sinonims": [
       "foraminífers"
+    ]
+  },
+  {
+    "slug": "fossil",
+    "terme": "Fòssil",
+    "categoria": "Paleontologia",
+    "definicio": "Resta o traça d'un organisme antic conservada a les roques. Els fòssils, com els braquiòpodes de l'Ordovicià a les Guilleries o els nummulits de Tavertet, permeten datar les capes i reconstruir els ambients del passat.",
+    "sinonims": [
+      "fòssils"
     ]
   },
   {
@@ -1037,6 +1065,7 @@ export const termes: Terme[] = [
     "definicio": "Cos de roca formada per magma que ha penetrat roques preexistents sense arribar a la superfície. Al granit de Sau, les intrusions tardanes es manifesten com filons i pòrfirs que tallen la roca principal.",
     "sinonims": [
       "intrusió",
+      "intrusions",
       "intrusió granítica",
       "puls magmàtic"
     ]
@@ -1275,6 +1304,8 @@ export const termes: Terme[] = [
     "definicio": "Transformació de les roques encaixants per la calor d'una intrusió magmàtica propera, sense pressió dirigida important. Produeix una aurèola de minerals nous (corneanes) al voltant del cos intrusiu; a Sau, les pissarres pròximes al granit van patir aquest procés.",
     "sinonims": [
       "aurèola de contacte",
+      "aurèola",
+      "aurèoles",
       "metamorfisme termal",
       "metamorfisme tèrmic"
     ]
@@ -1288,6 +1319,17 @@ export const termes: Terme[] = [
       "roques metamòrfiques",
       "metamòrfica",
       "metamòrfiques"
+    ]
+  },
+  {
+    "slug": "roca-volcanica",
+    "terme": "Roca volcànica",
+    "categoria": "Litologia",
+    "definicio": "Roca magmàtica formada pel refredament ràpid de lava o de fragments ejectats en una erupció. A les Guilleries, la sèrie volcano-detrítica inclou intercalacions de roques volcàniques àcides, riques en sílice.",
+    "sinonims": [
+      "roques volcàniques",
+      "roques volcàniques àcides",
+      "volcàniques àcides"
     ]
   },
   {
@@ -1452,8 +1494,18 @@ export const termes: Terme[] = [
     "definicio": "Formació de grans serralades durant el Paleozoic per col·lisió de continents i tancament d'oceà (380–300 Ma), també anomenada hercínica. Va crear el sòcol paleozoic de les Guilleries i la major part del basament de la península Ibèrica.",
     "sinonims": [
       "orogènia herciniana",
+      "herciniana",
       "col·lisió varisca",
       "col·lisió herciniana"
+    ]
+  },
+  {
+    "slug": "ordovicia",
+    "terme": "Ordovicià",
+    "categoria": "Cronologia",
+    "definicio": "Període del Paleozoic (485–443 Ma), posterior al Cambrià. A les Guilleries, fòssils de braquiòpodes permeten atribuir alguns nivells de la sèrie volcano-detrítica a l'Ordovicià superior.",
+    "sinonims": [
+      "Ordovicià superior"
     ]
   },
   {
@@ -1475,7 +1527,11 @@ export const termes: Terme[] = [
     "slug": "paleogen",
     "terme": "Paleogen",
     "categoria": "Cronologia",
-    "definicio": "Període geològic comprès entre 66 i 23 Ma, que inclou el Paleocè, l'Eocè i l'Oligocè. És el període durant el qual es va formar la major part de la cobertura sedimentària visible a Sau–Tavertet."
+    "definicio": "Període geològic comprès entre 66 i 23 Ma, que inclou el Paleocè, l'Eocè i l'Oligocè. És el període durant el qual es va formar la major part de la cobertura sedimentària visible a Sau–Tavertet.",
+    "sinonims": [
+      "Paleògen",
+      "paleògens"
+    ]
   },
   {
     "slug": "paleoicnofossil",
@@ -1694,7 +1750,10 @@ export const termes: Terme[] = [
     "slug": "serie-volcano-detritica",
     "terme": "Sèrie volcano-detrítica",
     "categoria": "Litologia",
-    "definicio": "Successió de materials volcànics i sediments detrítics dipositats alternativament, sovint en context de marges de continent. Al massís de les Guilleries, aquesta sèrie conté fòssils d'edat Caradoc i forma part del sòcol paleozoic."
+    "definicio": "Successió de materials volcànics i sediments detrítics dipositats alternativament, sovint en context de marges de continent. Al massís de les Guilleries, aquesta sèrie conté fòssils d'edat Caradoc i forma part del sòcol paleozoic.",
+    "sinonims": [
+      "sèrie volcano-detrítica"
+    ]
   },
   {
     "slug": "serralada-prelitoral",
@@ -1768,6 +1827,7 @@ export const termes: Terme[] = [
     "categoria": "Estratigrafia",
     "definicio": "Conjunt de roques paleozoiques —ígnies, metamòrfiques i sedimentàries transformades— que formen la base estructural d'una regió. A Sau–Tavertet, el sòcol granític hercinià suporta la cobertura eocena en discordança erosiva.",
     "sinonims": [
+      "sòcol",
       "sòcol cristal·lí",
       "sòcol cristal·lí paleozoic",
       "basament paleozoic",

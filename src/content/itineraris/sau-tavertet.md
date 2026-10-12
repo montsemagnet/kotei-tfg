@@ -95,180 +95,160 @@ intro:
           edat: "Paleozoic. Sòcol hercinià: metamorfisme regional i de contacte, amb dics d'aplita i màfics. Parada auxiliar, fora de l'itinerari docent principal."
 dades:
   mapa: "Mapa interactiu de l'itinerari geològic Sau–Tavertet (QGIS, capes geològiques i temàtiques)"
-  historia: "Successió paleògena del marge sud-est de la Conca de l'Ebre, del sòcol paleozoic als gresos superiors."
-dadesArticle:
-  - kind: p
-    text: >-
-      L'itinerari del pantà de Sau a Tavertet permet llegir gairebé com un llibre obert la transició entre un paisatge continental i un mar eocè ([Evolució dels materials i processos geològics](#modal:sequencia-geologica-itinerari)). Si imaginem un tall vertical des de la vall del Ter fins al cim de Tavertet, observem una successió de roques sedimentàries paleògenes, dipositades fa aproximadament entre 56 i 40 milions d'anys, sobre un sòcol paleozoic molt més antic.
-  - kind: p
-    text: "El perfil es pot resumir així, de baix a dalt:"
-  - kind: sequence
-    items:
-      - "sòcol paleozoic"
-      - "sediments continentals vermells"
-      - "transgressió marina"
-      - "calcàries de cingle"
-      - "margues marines"
-      - "gresos superiors"
-  - kind: p
-    text: >-
-      Aquesta sèrie forma part del marge sud-est de l'antiga Conca de l'Ebre. Durant l'Eocè, mentre s'aixecaven els Pirineus i els relleus de la Serralada Prelitoral, aquesta conca s'anava reblint amb sediments procedents dels relleus emergits propers.
-  - kind: h3
-    text: "1. El basament: les roques paleozoïques"
-  - kind: p
-    text: >-
-      A la base del tall hi ha el sòcol paleozoic, constituït principalment per pissarres i granitoides ([vídeo de formació del sòcol paleozoic](#modal:paleogeologia-paleozoic)). Són roques formades abans de l'Eocè i representen el substrat sobre el qual es van dipositar posteriorment les roques sedimentàries visibles als cingles.
-  - kind: p
-    text: >-
-      Aquest contacte no és continu ni representa una sedimentació ininterrompuda: hi ha una discordança erosiva ([El buit de ~250 Ma](#modal:paleogeologia-mesozoic)). És a dir, abans que s'hi acumulessin els sediments eocens, el sòcol paleozoic va restar exposat, alterat i erosionat durant un llarg període.
-  - kind: h3
-    text: "2. Els materials continentals vermells"
-  - kind: p
-    text: >-
-      Damunt del sòcol apareixen els materials de colors vermellosos que es poden observar a la part baixa de l'itinerari, especialment als vessants situats sobre el pantà de Sau. Corresponen a la Formació de Mediona, la Formació Vilanova de Sau i la Formació de Romagats.
-  - kind: table
-    headers:
-      - "Unitat"
-      - "Materials principals"
-      - "Ambient sedimentari interpretat"
-    rows:
-      - - "Formació Mediona"
-        - "Lutites, argiles, limolites, gresos i nivells carbonatats vermells"
-        - "Planes al·luvials, zones palustres i ambients lacustres locals"
-      - - "Formació Vilanova de Sau"
-        - "Lutites vermelles, sorres, gresos i conglomerats"
-        - "Rius, canals fluvials i ventalls al·luvials"
-      - - "Formació Romagats"
-        - "Conglomerats, gresos i lutites vermelloses"
-        - "Sistemes fluvials energètics i ventalls al·luvials propers als relleus de les Guilleries"
-  - kind: p
-    text: >-
-      El color rogenc indica que aquests sediments es dipositaven en un medi continental oxidant, en contacte amb l'atmosfera. El ferro contingut en els minerals s'oxidava, i donava els colors vermells, ocres i ataronjats característics.
-  - kind: p
-    text: >-
-      La Formació Vilanova de Sau i, sobretot, la de Romagats inclouen materials més gruixuts —sorres i còdols—, cosa que indica una elevada energia de transport. Els rius baixaven des de les zones elevades de les Guilleries i dipositaven sediments en planes al·luvials i ventalls formats al peu dels relleus.
-  - kind: h3
-    text: "3. El canvi clau: l'arribada del mar"
-  - kind: p
-    text: >-
-      A mesura que pugem, els conglomerats i gresos vermells continentals donen pas, de manera relativament brusca però sedimentològicament gradual, a materials grisos i calcaris: és la transgressió marina ([Eocè: cobertura del sòcol](#modal:paleogeologia-iberia-ebre)).
-  - kind: p
-    text: >-
-      Una transgressió significa que el mar avança sobre zones que abans eren continentals. En aquest cas, durant el Lutecià, el mar va envair progressivament el sector de Tavertet. Els primers nivells de transició contenen conglomerats i gresos grollers, relacionats amb ambients costaners, bancs de sorra remoguts per les marees i aportacions continentals encara molt properes.
-  - kind: p
-    text: "Aquest canvi és especialment visible al paisatge:"
-  - kind: ul
-    items:
-      - "A sota predominen materials vermells, detrítics i continentals."
-      - "A sobre predominen roques grises, calcàries i margoses, d'origen marí."
-      - "El contrast cromàtic marca una transformació paleoambiental profunda: d'una plana fluvial propera a les Guilleries a una plataforma marina."
-  - kind: h3
-    text: "4. Les Calcàries de Tavertet: la gran paret del cingle"
-  - kind: p
-    text: >-
-      La unitat més espectacular del recorregut és la Formació de Tavertet, formada principalment per calcàries grises, sovint arenoses i bioclàstiques. Aquestes roques constitueixen la gran cornisa resistent dels cingles de Sau i Tavertet.
-  - kind: p
-    text: >-
-      Es van dipositar en una plataforma marina somera, amb aigües relativament càlides i favorables a la vida bentònica. Per això hi són freqüents els fòssils marins, especialment els nummulits, uns grans foraminífers amb closca calcària, així com restes de mol·luscs, equínids i altres invertebrats.
-  - kind: p
-    text: >-
-      Els nummulits són un dels indicadors més recognoscibles d'aquest antic mar eocè. La seva presència confirma que la zona que avui ocupa Tavertet era un fons marí poc profund fa uns 45 milions d'anys.
-  - kind: p
-    text: >-
-      La resistència de les calcàries a l'erosió explica que formin cingles verticals i plataformes elevades. Per contra, les roques més toves que hi ha per sobre o per sota s'erosionen amb més facilitat.
-  - kind: h3
-    text: "5. Les Margues de Coll de Malla"
-  - kind: p
-    text: >-
-      Per damunt de les calcàries apareixen les Margues de Coll de Malla, també conegudes en altres sectors com a margues de Banyoles. Són roques de color gris blavós, formades per una barreja de carbonat de calci i argila, amb intercalacions de gresos, lutites i alguns nivells calcaris.
-  - kind: p
-    text: >-
-      Aquestes margues indiquen un ambient marí una mica més profund i tranquil que el de les calcàries de Tavertet. En un fons marí amb menys energia, les partícules fines d'argila i carbonat poden sedimentar i acumular-se. També contenen un registre fòssil notable, amb invertebrats marins i, localment, altres restes paleontològiques.
-  - kind: p
-    text: >-
-      Com que les margues són materials tous i fàcilment erosionables, originen vessants suaus i xaragalls. Un exemple molt clar és el turó del Castell de Tavertet: és un turó testimoni format principalment per les margues de Coll de Malla, preservades perquè una capa més resistent de gresos protegeix parcialment el seu cim.
-  - kind: h3
-    text: "6. Els gresos superiors"
-  - kind: p
-    text: >-
-      A la part alta de la successió, especialment cap a sectors més orientals i septentrionals del Collsacabra, apareixen els gresos de Folgueroles i, localment, la Formació de Bracons i la Formació de Rupit.
-  - kind: p
-    text: >-
-      Són roques formades per sorra consolidada, amb tonalitats groguenques, grisenques o blavoses. Representen una nova variació de les condicions sedimentàries marines, amb aportacions de sediments detrítics més importants. Els gresos tenen més resistència que les margues i poden actuar com a capa protectora sobre relleus margosos, tal com passa al turó del Castell.
+  historia: ""
 gifColumna: "/images/itineraris/sau-tavertet/capes/Blocs-lego.gif"
 dadesCapes:
-  - grup: "Sòcol paleozoic"
-    titol: "Metasediments paleozoics de les Guilleries"
-    periode: "Cambroordovicià–Carbonífer; aproximadament 500–300 Ma"
-    litologia: "Pissarres, esquistos, quarsites, metagrauvàques i ortogneis"
-    ambient: "Substrat antic format per sediments paleozoics posteriorment deformats i metamorfizats durant l'orogènia herciniana o varisca."
-  - grup: "Sòcol paleozoic"
-    titol: "Intrusions granítiques i granitoides hercinians"
-    periode: "Carbonífer superior; aproximadament 320–300 Ma"
-    litologia: "Granits, granodiorites i roques filonianes associades"
-    ambient: "Intrusions magmàtiques varisques que tallen els metasediments paleozoics i formen part del sòcol de les Guilleries."
-  - grup: "Sòcol paleozoic"
-    titol: "Discordança erosiva"
-    periode: "Després del Carbonífer superior fins al Paleocè; hiatus aproximat de 250 Ma"
-    litologia: "Superfície erosiva; no és una formació sedimentària"
-    ambient: "Separa el sòcol paleozoic de la cobertora paleògena. Indica una llarga etapa d'erosió i absència de registre sedimentari conservat."
+  - titol: "El sòcol paleozoic"
+    paragrafs:
+      - "El sòcol és la base de roques antigues sobre la qual es van dipositar els sediments del Paleogen que veurem durant l'itinerari. A la zona de Sau, aquest basament aflora al massís de les Guilleries i està format per roques del Paleozoic, com pissarres, esquists i granits."
+      - "Durant l'orogènia varisca, també anomenada herciniana, les roques preexistents es van deformar i van experimentar metamorfisme: es van transformar per l'augment de la pressió i la temperatura. En les etapes tardanes d'aquesta orogènia també es van emplaçar magmes que, en refredar-se, van formar roques com els monzogranits i els pòrfirs que observarem a la primera parada."
+      - "Més endavant, l'erosió va desgastar aquests materials i va deixar al descobert el sòcol. Sobre aquesta superfície es van dipositar els sediments paleògens. El contacte entre les roques antigues i els sediments més recents és una discordança erosiva i representa un llarg interval de temps que no ha quedat enregistrat en forma de capes sedimentàries."
+    ampliacionsTitol: "Per saber-ne més"
+    ampliacions:
+      - label: "Les roques del sòcol paleozoic i la seva història"
+        modalKey: socol-roques-historia
+      - label: "Esquema dels processos geològics fins la formació del sòcol"
+        modalKey: socol-esquema-processos
+      - label: "Paleogeografia: de l'Ordovicià a la coberta eocena"
+        modalKey: socol-paleogeografia
+  - titol: ""
+  - titol: ""
     hiatus: true
-  - grup: "Cobertora paleògena continental"
-    titol: "Formació Mediona"
-    periode: "Paleocè superior, Thanetià; aproximadament 59–56 Ma"
-    litologia: "Lutites vermelles, gresos, conglomerats i nivells carbonatats palustres o lacustres"
-    ambient: "Formació basal continental de la cobertora paleògena en aquest sector. Reposa sobre el sòcol paleozoic i passa cap amunt a la Formació Vilanova de Sau."
-  - grup: "Cobertora paleògena continental"
-    titol: "Formació Vilanova de Sau"
-    periode: "Paleocè superior–Eocè mitjà; unitat heteròcrona. En termes generals, aproximadament 56–48 Ma"
-    litologia: "Lutites vermelles, gresos i conglomerats; els conglomerats augmenten cap al sostre"
-    ambient: "Se situa sobre la Formació Mediona i sota la Formació Romagats. Dipòsits continentals de planes d'inundació, canals fluvials i ventalls al·luvials. El color vermell prové de l'oxidació del ferro en condicions subaèries."
-  - grup: "Cobertora paleògena continental"
-    titol: "Formació Romagats"
-    periode: "Eocè inferior–mitjà; edat variable lateralment, aproximadament 52–47 Ma"
-    litologia: "Conglomerats, gresos, lutites vermelles i paleosòls locals"
-    ambient: "Se situa sobre la Formació Vilanova de Sau i, cap al sector de Tavertet, sota la Formació Tavertet. Dipòsits de ventalls al·luvials proximals, canals fluvials i planes d'inundació."
-  - grup: "Cobertora paleògena marina"
-    titol: "Margues i calcàries nummulítiques"
-    periode: "Eocè mitjà, aproximadament 50–41 Ma"
-    litologia: "Margues, calcàries i calcarenites amb nummulits"
-    ambient: "Materials marins de la part alta de la sèrie eocena. Els nummulits indiquen una plataforma marina càlida i relativament somera."
-  - grup: "Cobertora paleògena marina"
-    titol: "Formació Tavertet"
-    periode: "Eocè mitjà, aproximadament Lutecià; entorn de 48–41 Ma"
-    litologia: "Calcàries, margues i intercalacions detrítiques"
-    ambient: "Unitat marina situada damunt de la Formació Romagats al sector de Tavertet. Representa una transgressió marina eocena i una plataforma marina somera."
+  - titol: ""
+  - titol: ""
+  - titol: ""
+  - titol: ""
+  - titol: ""
 dadesLabels:
   mapa: "Mapa QGIS geològic"
   mapaGeobotanica: "Mapa QGIS botànic"
   historia: "Geologia"
 dadesIndex:
-  historia:
-    - label: "Evolució dels materials i processos geològics"
-      modalKey: sequencia-geologica-itinerari
-      numbered: false
-    - label: "Paleozoic: el sòcol"
-      modalKey: paleogeologia-paleozoic
-      numbered: false
-    - label: "El buit de ~250 Ma"
-      modalKey: paleogeologia-mesozoic
-      numbered: false
-    - label: "Eocè: la coberta"
-      modalKey: paleogeologia-iberia-ebre
-      numbered: false
-    - label: "Resum. On som (marc regional)"
-      modalKey: marc-geologic-regional
-      numbered: false
-    - label: "Resum. Quines roques trepitges"
-      modalKey: estratigrafia-litologia
-      numbered: false
-    - label: "Resum. Falles i estructures"
-      modalKey: tectonica-estructures
-      numbered: false
-    - label: "Resum. Per què hi ha cingles"
-      modalKey: geomorfologia
-      numbered: false
+  historia: []
 dadesModals:
+  socol-roques-historia:
+    sections:
+      - title: "Els materials cambroordovicians i els ortogneissos"
+        paragraphs:
+          - "Els materials més antics que afloren a les Guilleries s'han atribuït tradicionalment al Cambroordovicià. Hi predominen roques derivades de sediments fins, com els esquists, entre les quals apareixen nivells d'ortogneissos."
+          - "Els ortogneissos són roques metamòrfiques que provenen de roques ígnies preexistents. Per tant, no tots els materials d'aquest conjunt tenen el mateix origen: alguns procedeixen de sediments i d'altres, de magmes que es van emplaçar abans de la deformació i el metamorfisme variscos."
+          - "L'atribució cambroordoviciana d'aquests materials es basa en la comparació amb altres successions geològiques, ja que les roques més transformades no han proporcionat fòssils que permetin datar-les directament."
+      - title: "La sèrie volcano-detrítica i els braquiòpodes que permeten datar-la"
+        paragraphs:
+          - "Per damunt d'aquest conjunt es descriu una sèrie volcano-detrítica: una successió que combina materials sedimentaris, formats per fragments d'altres roques, amb materials d'origen volcànic. A les Guilleries hi destaquen les intercalacions de roques volcàniques àcides."
+          - "Aquesta successió ha proporcionat fòssils de braquiòpodes que han permès atribuir alguns nivells a l'Ordovicià superior. Els fòssils aporten, així, una referència temporal que complementa la informació obtinguda de les roques."
+      - title: "Les foliacions i les diferències en el grau de metamorfisme"
+        paragraphs:
+          - "Durant l'orogènia varisca, la successió paleozoica es va deformar i va experimentar metamorfisme. La deformació va generar foliacions: estructures planes relacionades amb la disposició orientada dels minerals de la roca. Aquestes estructures no s'han de confondre amb les capes sedimentàries originals."
+          - "La intensitat del metamorfisme no va ser igual a tot el massís. Als sectors menys transformats es van formar minerals com la clorita; als sectors de grau més alt es van assolir condicions de fàcies amfibolítica i es van desenvolupar minerals com la cordierita i el feldespat potàssic. Aquestes diferències permeten reconèixer les diverses condicions de metamorfisme que van experimentar les roques."
+          - "A més, l'emplaçament tardà de granitoides va escalfar les roques del seu voltant i va generar zones de metamorfisme de contacte, anomenades aurèoles. El sòcol conserva, per tant, tant els efectes del metamorfisme regional com els de l'escalfament local associat a les intrusions."
+  socol-esquema-processos:
+    intro: "Esquema dels processos geològics des del mar paleozoic fins a la formació del sòcol i la discordança erosiva."
+    cronologia:
+      - tipus: periode
+        titol: "MAR PALEOZOIC"
+        text: "anterior al Carbonífer superior · ~450 Ma"
+        videoPublicSrc: "/videos/itineraris/sau-tavertet/cronologia/mar-paleozoic.mp4"
+        videoAmbSo: true
+      - tipus: producte
+        titol: "Argiles, llims i sorres fines"
+        categoria: "Sediments"
+      - tipus: proces
+        titol: "compactació i cimentació"
+      - tipus: proces
+        titol: "diagènesi"
+      - tipus: producte
+        titol: "Lutites"
+        categoria: "sedimentaria"
+      - tipus: proces
+        titol: "convergència de plaques i orogènia varisca (~360–300 Ma)"
+      - tipus: proces
+        titol: "augment de pressió i temperatura"
+      - tipus: parallel
+        titol: "Processos simultanis durant l'orogènia varisca"
+        branques:
+          - titol: "Metamorfisme regional"
+            items:
+              - tipus: proces
+                titol: "Deformació tectònica intensa"
+              - tipus: proces
+                titol: "Desenvolupament de pissarrositat i foliació metamòrfica"
+              - tipus: producte
+                titol: "A1-Pissarres / fil·lites"
+                categoria: "metamòrfica"
+          - titol: "Fusió parcial en profunditat"
+            items:
+              - tipus: proces
+                titol: "Magma granític (material fos)"
+              - tipus: proces
+                titol: "intrusió plutònica"
+              - tipus: proces
+                titol: "refredament lent i cristal·lització"
+              - tipus: producte
+                titol: "P1-Monzogranit biotític"
+                categoria: "magmàtica intrusiva-plutònica"
+                text: "~310–280 Ma"
+      - tipus: parallel
+        titol: "Processos associats al plutó granític"
+        branques:
+          - titol: "Metamorfisme de contacte"
+            items:
+              - tipus: proces
+                titol: "calor del plutó granític a les roques encaixants"
+              - tipus: producte
+                titol: "A1-Pissarres pigallades"
+                categoria: "metamòrfica de contacte"
+          - titol: "Pulsos magmàtics tardans"
+            items:
+              - tipus: proces
+                titol: "injecció de magma residual en fractures"
+              - tipus: producte
+                titol: "P1-Pòrfirs, microaplites i dics d'aplita"
+                categoria: "magmàtiques filonianes"
+                text: "~310–280 Ma"
+      - tipus: proces
+        titol: "aixecament, erosió i exhumació"
+      - tipus: producte
+        titol: "P1-Sòcol paleozoic erosionat"
+        categoria: "metamòrfiques i magmàtiques"
+        text: "Roques d'~310–280 Ma; l'exhumació és posterior"
+      - tipus: proces
+        titol: "~250 Ma sense registre sedimentari local continu"
+      - tipus: producte
+        titol: "discordança erosiva"
+  socol-paleogeografia:
+    intro: "Quatre vídeos per situar el sòcol de Sau–Tavertet en el context paleogeogràfic mundial, des de l'Ordovicià fins a la coberta eocena."
+    videos:
+      - id: ordovicia
+        title: "L'Ordovicià"
+        period: "Ordovicià mitjà (~458 Ma)"
+        publicSrc: "/videos/itineraris/sau-tavertet/cronologia/mar-paleozoic.mp4"
+        alt: "Mapa paleogeogràfic de l'Ordovicià mitjà, amb la posició esquemàtica de la futura Ibèria"
+        paragraphs:
+          - "Durant l'Ordovicià, fa uns 458 milions d'anys, la futura Ibèria se situava al marge de Gondwana, en un mar de plataforma paleozoic on es dipositaven argiles i llims. El mapa mostra aquesta posició esquemàtica i el context oceànic de l'època."
+          - "Mapa de l'Ordovicià. Adaptat de C. R. Scotese, Encyclopaedia Britannica."
+      - id: siluria-permia
+        title: "Del Silurià al Permià"
+        period: "410–280 Ma"
+        publicSrc: "/videos/itineraris/sau-tavertet/paleogeologia/1-orogenia-varisca.mp4"
+        alt: "Construcció del sòcol durant el Paleozoic"
+        paragraphs:
+          - "En aquest interval es formen els granits i esquists que avui afloren a Sau–Tavertet. La col·lisió herciniana/varisca plegarà i metamorfosarà les antigues sèries sedimentàries, i grans masses de magma cristal·litzaran en profunditat, construint el sòcol. Paral·lelament, la biosfera viu una gran evolució: diversificació de peixos, colonització de la terra ferma per plantes vasculars, aparició d'amfibis, boscos pantanosos i primers rèptils. El vídeo mostra com la futura Ibèria s'integra en el supercontinent Pangea i com es crea el basament sobre el qual, molt després, se sobreposaran els sediments eocens."
+      - id: permia-paleogen
+        title: "Del Permià a l'inici del Paleogen"
+        period: "~250 Ma sense registre aflorant"
+        publicSrc: "/videos/itineraris/sau-tavertet/paleogeologia/02.mp4"
+        alt: "Context mundial del hiatus mesozoic sense registre aflorant a Sau–Tavertet"
+        paragraphs:
+          - "El supercontinent Pangea es fragmenta, s'obren l'Atlàntic i l'oceà de Tetis, i la Terra entra en l'era dels dinosaures. Després de l'extinció Permià–Triàsic, es diversifiquen dinosaures, mamífers primitius i aus, mentre al Cretaci s'estenen les plantes amb flor, que transformen els ecosistemes terrestres. El clima és globalment càlid i els canvis més importants venen de la reorganització dels continents i oceans. En el trajecte Sau–Tavertet, d'aquest interval no n'hi ha cap capa aflorant: són gairebé 250 milions d'anys de hiatus, visibles al camp com la discordança erosiva entre el sòcol paleozoic i la coberta eocena. El vídeo mostra el context mundial d'aquest buit: mentre al planeta passava tot això, aquí no en queda registre."
+      - id: coberta-eocena
+        title: "Coberta eocena"
+        period: "De la placa Ibèrica a la coberta eocena (230 Ma–actualitat)"
+        publicSrc: "/videos/itineraris/sau-tavertet/paleogeologia/03-iberia-210.mp4"
+        captionsSrc: "/videos/itineraris/sau-tavertet/paleogeologia/03-iberia-210.ca.vtt"
+        alt: "De la placa Ibèrica a la coberta eocena del sòcol a Sau–Tavertet"
+        paragraphs:
+          - "Seguim la placa Ibèrica des de la fragmentació de Pangea fins al paisatge actual. La orogènesi alpina aixeca els Pirineus i la serralada Prelitoral, mentre es forma la conca de l'Ebre com a depressió entre aquestes serralades. Inicialment, durant el Paleocè–Eocè, la conca funciona com una badia marina vinculada al mar de Tetis: s'hi dipositen argiles continentals marginals (Formació Mediona) i calcàries amb nummulits en ambients marins somers. A mesura que la conca es continentalitza, els rius que drenen els Pirineus i els relleus catalans l'omplen amb gresos i conglomerats vermells i, finalment, margues i calcàries que construiran les cingleres de Tavertet. Al camp, el resultat d'aquesta història és la coberta eocena que recobreix el sòcol paleozoic."
   sequencia-geologica-itinerari:
     intro: "Evolució dels materials, ambients sedimentaris i processos geològics observables entre el pantà de Sau i Tavertet."
     outroMedia:

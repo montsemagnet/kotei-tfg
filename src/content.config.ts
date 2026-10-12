@@ -315,6 +315,16 @@ const itineraris = defineCollection({
             periode: z.string().optional(),
             litologia: z.string().optional(),
             ambient: z.string().optional(),
+            paragrafs: z.array(z.string()).optional(),
+            ampliacionsTitol: z.string().optional(),
+            ampliacions: z
+              .array(
+                z.object({
+                  label: z.string(),
+                  modalKey: z.string(),
+                }),
+              )
+              .optional(),
             hiatus: z.boolean().optional(),
             pauseMs: z.number().optional(),
           }),

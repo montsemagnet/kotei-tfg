@@ -1,5 +1,12 @@
 ---
+import Text from "@/components/fundations/elements/Text.astro";
 import { createTermeLinkTracker, linkTermes } from "@/utils/linkTermes";
+import { withBase } from "@/utils/withBase";
+
+export type GeologiaAmpliacio = {
+  label: string;
+  modalKey: string;
+};
 
 export type GeologiaCapa = {
   gif?: string;
@@ -8,6 +15,9 @@ export type GeologiaCapa = {
   periode?: string;
   litologia?: string;
   ambient?: string;
+  paragrafs?: string[];
+  ampliacionsTitol?: string;
+  ampliacions?: GeologiaAmpliacio[];
   hiatus?: boolean;
   pauseMs?: number;
 };
@@ -15,14 +25,19 @@ export type GeologiaCapa = {
 interface Props {
   capes: GeologiaCapa[];
   gif?: string;
+  heading?: string;
 }
 
-const { capes, gif } = Astro.props;
+const { capes, gif, heading } = Astro.props;
 const gifFinal = gif ? gif.replace(/\.gif$/i, "-final.png") : "";
-const gifMs = 8200;
 const linkedSlugs = createTermeLinkTracker();
-const replayButtonClass =
-  "inline-flex size-10 items-center justify-center rounded-full text-[#1E6B42] hover:bg-[#1E6B42]/10 hover:text-[#14532D] transition-colors";
+const ampliacioIconSrc = withBase("/images/ui/ampliacio-coneixements.gif");
+const textClass =
+  "text-lg md:text-xl text-base-500 dark:text-base-400";
+const ampliacioTitolClass =
+  "inline-flex items-center gap-3 text-lg md:text-xl font-medium tracking-tight text-base-900 dark:text-white leading-snug";
+const ampliacioLinkClass =
+  "text-left cursor-pointer text-lg md:text-xl text-accent-700 dark:text-accent-400 underline decoration-accent-700/30 dark:decoration-accent-400/40 underline-offset-[4px] hover:decoration-accent-700 dark:hover:decoration-accent-400 transition-colors leading-snug";
 
 /** Amb flex-col-reverse el visor va de nova a antiga: el títol de grup
  *  va al primer ítem visible del grup, saltant hiatus. */
@@ -38,20 +53,25 @@ function showGrupLabel(index: number) {
 ---
 
 <div
-  class="geologia-capes"
+  class="geologia-capes grid grid-cols-1 lg:grid-cols-4 items-start gap-x-6 gap-y-2"
   data-geologia-capes
   data-capa-gif={gif ?? ""}
   data-capa-gif-final={gifFinal}
-  data-capa-gif-ms={String(gifMs)}
   aria-label="Successió de capes geològiques, de més antiga a més moderna"
 >
-  <div
-    class="mb-4 border-t border-base-300 pt-3 dark:border-base-700"
-    data-capa-ralla
-  ></div>
-
-  <div class="geologia-capes-frame">
-    <div class="geologia-capes-visual">
+  <div class="page-text-content min-w-0">
+    {
+      heading && (
+        <Text
+          tag="h2"
+          variant="displayMD"
+          class="dark:text-white text-base-900 font-medium tracking-tighter capitalize leading-tight break-words"
+        >
+          {heading}
+        </Text>
+      )
+    }
+    <div class="geologia-capes-visual mt-3">
       <figure class="geologia-capes-figure" data-capa-figure>
         <img
           data-capa-gif-img
@@ -64,30 +84,23 @@ function showGrupLabel(index: number) {
         </figcaption>
       </figure>
       <div class="geologia-capes-base" aria-hidden="true"></div>
-      <p class="mt-1 flex justify-end invisible" data-capa-replay-wrap>
-        <button
-          type="button"
-          class={replayButtonClass}
-          data-capa-replay
-          aria-label="Reproduir l'animació"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            class="size-7"
-            fill="currentColor"
-            aria-hidden="true"
-          >
-            <path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11.02-6.86a1 1 0 0 0 0-1.72L9.5 4.28a1 1 0 0 0-1.5.86Z" />
-          </svg>
-        </button>
-      </p>
     </div>
+  </div>
 
-    <div class="geologia-capes-text">
+    <div class="geologia-capes-text page-text-content min-w-0 lg:col-span-3">
       <ol class="flex flex-col-reverse gap-3">
         {
           capes.map((capa, index) => {
+            const hasText = Boolean(
+              capa.titol ||
+                capa.grup ||
+                capa.periode ||
+                capa.litologia ||
+                capa.ambient ||
+                (capa.paragrafs && capa.paragrafs.length > 0) ||
+                (capa.ampliacions && capa.ampliacions.length > 0),
+            );
+            if (!hasText) return null;
             const showGrup = showGrupLabel(index);
             return (
               <li
@@ -104,14 +117,22 @@ function showGrupLabel(index: number) {
                 )}
                 <article
                   class:list={[
-                    "rounded-xl border px-4 py-3",
-                    capa.hiatus
-                      ? "border-dashed border-base-300 bg-base-50/80 dark:border-base-600 dark:bg-base-900/40"
-                      : "border-base-200 bg-white/70 dark:border-base-800 dark:bg-base-950/40",
+                    capa.paragrafs && capa.paragrafs.length > 0
+                      ? ""
+                      : [
+                          "rounded-xl border px-4 py-3",
+                          capa.hiatus
+                            ? "border-dashed border-base-300 bg-base-50/80 dark:border-base-600 dark:bg-base-900/40"
+                            : "border-base-200 bg-white/70 dark:border-base-800 dark:bg-base-950/40",
+                        ],
                   ]}
                 >
                   <h3
-                    class="text-base md:text-lg font-medium tracking-tight text-base-900 dark:text-white"
+                    class:list={[
+                      capa.paragrafs && capa.paragrafs.length > 0
+                        ? textClass
+                        : "text-base md:text-lg font-medium tracking-tight text-base-900 dark:text-white",
+                    ]}
                     set:html={linkTermes(capa.titol, linkedSlugs)}
                   />
                   {capa.periode && (
@@ -132,28 +153,61 @@ function showGrupLabel(index: number) {
                       set:html={linkTermes(capa.ambient, linkedSlugs)}
                     />
                   )}
+                  {capa.paragrafs?.map((paragraf) => (
+                    <p
+                      class:list={["mt-3", textClass]}
+                      set:html={linkTermes(paragraf, linkedSlugs)}
+                    />
+                  ))}
                 </article>
+                {
+                  (capa.ampliacionsTitol ||
+                    (capa.ampliacions && capa.ampliacions.length > 0)) && (
+                    <div class="mt-5">
+                      {capa.ampliacionsTitol && (
+                        <p class={ampliacioTitolClass}>
+                          <img
+                            src={ampliacioIconSrc}
+                            alt=""
+                            width="80"
+                            height="80"
+                            class="size-20 shrink-0 bg-transparent"
+                          />
+                          <span>{capa.ampliacionsTitol}</span>
+                        </p>
+                      )}
+                      {capa.ampliacions && capa.ampliacions.length > 0 && (
+                        <ul class="mt-3 flex flex-col gap-2 list-none p-0 m-0">
+                          {capa.ampliacions.map((ampliacio) => (
+                            <li>
+                              <button
+                                type="button"
+                                data-modal-target={`itinerari-modal-${ampliacio.modalKey}`}
+                                class={ampliacioLinkClass}
+                                aria-haspopup="dialog"
+                                aria-label={`Ampliació de coneixements: ${ampliacio.label}`}
+                              >
+                                {ampliacio.label}
+                              </button>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  )
+                }
               </li>
             );
           })
         }
       </ol>
     </div>
-  </div>
 </div>
 
 <style>
-  .geologia-capes-frame {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 1.5rem;
-  }
-
   .geologia-capes-visual {
     width: 12.5rem;
-    max-width: 12.5rem;
-    flex-shrink: 0;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -161,7 +215,7 @@ function showGrupLabel(index: number) {
 
   .geologia-capes-figure {
     display: block;
-    width: 12.5rem;
+    width: 100%;
     flex: 1 1 auto;
     min-height: 0;
     margin: 0;
@@ -187,7 +241,7 @@ function showGrupLabel(index: number) {
 
   .geologia-capes-base {
     display: block;
-    width: 12.5rem;
+    width: 100%;
     height: 8px;
     flex-shrink: 0;
     margin: 0;
@@ -195,17 +249,8 @@ function showGrupLabel(index: number) {
   }
 
   .geologia-capes-text {
-    flex: 1 1 0%;
     min-width: 0;
     width: 100%;
-  }
-
-  @media (min-width: 768px) {
-    .geologia-capes-frame {
-      flex-direction: row;
-      align-items: flex-start;
-      gap: 1.5rem;
-    }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -220,12 +265,6 @@ function showGrupLabel(index: number) {
     return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   }
 
-  function playGif(img: HTMLImageElement, url: string) {
-    if (!url) return;
-    img.removeAttribute("src");
-    img.src = `${url}${url.includes("?") ? "&" : "?"}r=${Date.now()}`;
-  }
-
   function initGeologiaCapes(root: HTMLElement) {
     if (root.dataset.bound === "true") return;
     root.dataset.bound = "true";
@@ -234,32 +273,9 @@ function showGrupLabel(index: number) {
     const figure = root.querySelector<HTMLElement>("[data-capa-figure]");
     const visual = root.querySelector<HTMLElement>(".geologia-capes-visual");
     const liniaCapa = root.querySelector<HTMLElement>("[data-linia-base]");
-    const replayWraps = root.querySelectorAll<HTMLElement>("[data-capa-replay-wrap]");
-    const replayButtons = root.querySelectorAll<HTMLButtonElement>("[data-capa-replay]");
     const gif = root.dataset.capaGif ?? "";
     const still = root.dataset.capaGifFinal ?? "";
-    const gifMs = Number(root.dataset.capaGifMs || 8200);
     if (!img || !figure || !gif) return;
-
-    let timers: number[] = [];
-    let cancelled = false;
-
-    const clearTimers = () => {
-      timers.forEach((id) => window.clearTimeout(id));
-      timers = [];
-    };
-
-    const wait = (ms: number) =>
-      new Promise<void>((resolve) => {
-        const id = window.setTimeout(resolve, ms);
-        timers.push(id);
-      });
-
-    const setReplayVisible = (visible: boolean) => {
-      replayWraps.forEach((wrap) => {
-        wrap.classList.toggle("invisible", !visible);
-      });
-    };
 
     const syncLinia = () => {
       if (!visual) return;
@@ -273,35 +289,11 @@ function showGrupLabel(index: number) {
       }
     };
 
-    const showFinalImage = () => {
-      if (still) img.src = still;
+    const startOnce = () => {
+      img.src = prefersReducedMotion() && still ? still : gif;
       figure.classList.add("is-ready");
-      setReplayVisible(true);
-      syncLinia();
+      requestAnimationFrame(syncLinia);
     };
-
-    const runGif = async () => {
-      cancelled = true;
-      clearTimers();
-      cancelled = false;
-      setReplayVisible(false);
-      figure.classList.add("is-ready");
-      if (prefersReducedMotion()) {
-        showFinalImage();
-        return;
-      }
-      playGif(img, gif);
-      await wait(gifMs);
-      if (cancelled) return;
-      if (still) img.src = still;
-      setReplayVisible(true);
-    };
-
-    replayButtons.forEach((button) =>
-      button.addEventListener("click", () => {
-        void runGif();
-      }),
-    );
 
     window.addEventListener("resize", syncLinia);
     requestAnimationFrame(syncLinia);
@@ -310,7 +302,7 @@ function showGrupLabel(index: number) {
       (entries) => {
         if (entries.some((entry) => entry.isIntersecting)) {
           observer.disconnect();
-          void runGif();
+          startOnce();
         }
       },
       { threshold: 0.15 },

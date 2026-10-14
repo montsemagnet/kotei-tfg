@@ -1,6 +1,7 @@
 ---
 import { withBase } from "@/utils/withBase";
 import ItinerariModalHeaderActions from "@/components/itinerari/ItinerariModalHeaderActions.astro";
+import ItinerariModalPublicMedia from "@/components/itinerari/ItinerariModalPublicMedia.astro";
 import TermesLinkedText from "@/components/global/TermesLinkedText.astro";
 import GlossariLink from "@/components/global/GlossariLink.astro";
 import { createTermeLinkTracker } from "@/utils/linkTermes";
@@ -18,7 +19,14 @@ interface Video {
 
 interface Section {
   title: string;
-  paragraphs: string[];
+  paragraphs?: string[];
+  media?: {
+    title?: string;
+    publicSrc: string;
+    alt: string;
+    caption?: string;
+    tipus?: "animacio" | "video";
+  };
 }
 
 interface Props {
@@ -30,6 +38,8 @@ interface Props {
 }
 
 const { modalId, label, intro, videos = [], sections = [] } = Astro.props;
+const heading =
+  videos.length === 1 && videos[0]?.title ? videos[0].title : label;
 
 const titleId = `${modalId}-title`;
 const introLinkedSlugs = createTermeLinkTracker();
@@ -66,7 +76,7 @@ function videoAnchorId(video: Video, index: number): string {
         id={titleId}
         class="text-2xl md:text-3xl lg:text-4xl dark:text-white text-base-900 font-medium tracking-tighter mb-6 pr-52 capitalize"
       >
-        {label}
+        {heading}
       </h2>
 
       {
@@ -215,7 +225,7 @@ function videoAnchorId(video: Video, index: number): string {
       sections.length > 0 && (
         <div class="itinerari-modal-text-content flex flex-col gap-8 mt-10">
           {
-            sections.map((section) => {
+            sections.map((section, sectionIndex) => {
               const sectionLinkedSlugs = createTermeLinkTracker();
 
               return (
@@ -224,12 +234,21 @@ function videoAnchorId(video: Video, index: number): string {
                   {section.title}
                 </h3>
                 {
-                  section.paragraphs.map((paragraph) => (
+                  (section.paragraphs ?? []).map((paragraph) => (
                     <TermesLinkedText
                       text={paragraph}
                       linkedSlugs={sectionLinkedSlugs}
                     />
                   ))
+                }
+                {
+                  section.media && (
+                    <ItinerariModalPublicMedia
+                      media={section.media}
+                      zoomId={`${modalId}-seccio-${sectionIndex}`}
+                      class="mt-4"
+                    />
+                  )
                 }
               </div>
               );

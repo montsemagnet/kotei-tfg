@@ -316,6 +316,15 @@ const itineraris = defineCollection({
             litologia: z.string().optional(),
             ambient: z.string().optional(),
             paragrafs: z.array(z.string()).optional(),
+            media: z
+              .object({
+                title: z.string().optional(),
+                publicSrc: z.string(),
+                alt: z.string(),
+                caption: z.string().optional(),
+                tipus: z.enum(["animacio", "video"]).default("animacio"),
+              })
+              .optional(),
             ampliacionsTitol: z.string().optional(),
             ampliacions: z
               .array(
@@ -397,6 +406,22 @@ const itineraris = defineCollection({
       recorregutLabel: z.string().optional(),
       recorregutDescripcio: z.string().optional(),
       recorregutGif: z.string().optional(),
+      recorregutIndex: z
+        .array(
+          z
+            .object({
+              label: z.string(),
+              modalKey: z.string().optional(),
+              href: z.string().optional(),
+              description: z.string().optional(),
+              numbered: z.boolean().optional(),
+              modalLabel: z.string().optional(),
+            })
+            .refine((item) => item.modalKey || item.href, {
+              message: "Cada ítem del recorregut ha de tenir modalKey o href",
+            }),
+        )
+        .optional(),
       altimetria: z
         .object({
           label: z.string(),

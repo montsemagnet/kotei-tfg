@@ -30,6 +30,11 @@ rutaMobil:
 recorregutLabel: "El recorregut"
 recorregutDescripcio: "Track, vol aeri i perfil d'elevació per situar el trajecte Sau–Tavertet."
 recorregutGif: "/images/itineraris/sau-tavertet/conexion-ruta.gif"
+recorregutIndex:
+  - label: "Context de l'itinerari"
+    modalKey: marc-geologic-regional
+    modalLabel: "Marc geològic regional"
+    numbered: false
 introLabel: "Introducció a l'itinerari"
 paradesLabel: "Parades"
 intro:
@@ -111,6 +116,35 @@ dadesCapes:
         modalKey: socol-esquema-processos
       - label: "Paleogeografia: de l'Ordovicià a la coberta eocena"
         modalKey: socol-paleogeografia
+  - titol: "Discordança i cobertora paleògena continental"
+    paragrafs:
+      - "Damunt del sòcol paleozoic erosionat es van dipositar els sediments continentals del Paleogen. El contacte entre aquests dos conjunts és una discordança, que reflecteix un llarg interval de temps no representat en el registre geològic."
+      - "De més antiga a més moderna, aquesta cobertora inclou la formació Mediona, amb predomini de lutites vermelles i paleosòls; la formació Vilanova de Sau, amb lutites, gresos i conglomerats dipositats en sistemes al·luvials; i la formació Romagats, dominada per conglomerats i gresos d'ambients més propers als relleus que aportaven els sediments."
+      - "Aquestes unitats, que observarem a les parades de l'itinerari, enregistren l'etapa continental anterior a l'arribada del mar eocè."
+    ampliacionsTitol: "Per saber-ne més"
+    ampliacions:
+      - label: "Discordança erosiva"
+        modalKey: cobertora-discordanca-erosiva
+      - label: "Esquema dels processos geològics de la cobertora continental"
+        modalKey: cobertora-esquema-processos
+      - label: "Eocè: Cobertura del Sòcol"
+        modalKey: cobertora-eoce-cobertura
+  - titol: "Cobertora paleògena marina"
+    paragrafs:
+      - "Durant l'Eocè mitjà, l'avanç del mar sobre els terrenys continentals va donar lloc a la cobertora paleògena marina."
+      - "Al sector de Tavertet, aquesta transgressió queda registrada en la formació Tavertet, situada damunt de la formació Romagats i constituïda principalment per calcàries sorrenques amb abundants nummulits. Aquests fòssils testimonien una plataforma marina poc profunda."
+      - "La successió continua amb les margues de Coll de Malla i els gresos de Folgueroles, que reflecteixen l'evolució posterior dels ambients marins. Les calcàries de Tavertet formen el tram superior, de tons grisosos, dels cingles i contrasten amb els materials continentals vermellosos de la base."
+    ampliacionsTitol: "Per saber-ne més"
+    ampliacions:
+      - label: "Esquema dels processos geològics de la cobertora marina"
+        modalKey: cobertora-marina-esquema-processos
+  - titol: "Seqüència temporal de formació de les roques"
+    paragrafs:
+      - "Aquesta animació recull tota la successió de l'itinerari: mostra en quin moment es va formar cada tipus de roca al mapa, des del sòcol paleozoic fins a la coberta eocena."
+    media:
+      publicSrc: "/images/itineraris/sau-tavertet/geologic-temporal.gif"
+      alt: "Animació de la seqüència temporal de formació de cada tipus de roca a l'itinerari Sau–Tavertet"
+      caption: "Elaboració pròpia amb QGIS a partir del Mapa geològic de Catalunya 1:25.000 (ICGC)."
   - titol: ""
   - titol: ""
     hiatus: true
@@ -249,6 +283,104 @@ dadesModals:
         alt: "De la placa Ibèrica a la coberta eocena del sòcol a Sau–Tavertet"
         paragraphs:
           - "Seguim la placa Ibèrica des de la fragmentació de Pangea fins al paisatge actual. La orogènesi alpina aixeca els Pirineus i la serralada Prelitoral, mentre es forma la conca de l'Ebre com a depressió entre aquestes serralades. Inicialment, durant el Paleocè–Eocè, la conca funciona com una badia marina vinculada al mar de Tetis: s'hi dipositen argiles continentals marginals (Formació Mediona) i calcàries amb nummulits en ambients marins somers. A mesura que la conca es continentalitza, els rius que drenen els Pirineus i els relleus catalans l'omplen amb gresos i conglomerats vermells i, finalment, margues i calcàries que construiran les cingleres de Tavertet. Al camp, el resultat d'aquesta història és la coberta eocena que recobreix el sòcol paleozoic."
+  cobertora-discordanca-erosiva:
+    videos:
+      - id: discordanca
+        title: "Hiatus i discordança erosiva (sense registre aflorant, ~250 Ma)"
+        period: "Del Permià a l'inici del Paleogen (~250 Ma sense registre aflorant)"
+        publicSrc: "/videos/itineraris/sau-tavertet/paleogeologia/02.mp4"
+        alt: "Context mundial del hiatus mesozoic sense registre aflorant a Sau–Tavertet"
+        paragraphs:
+          - "El supercontinent Pangea es fragmenta, s'obren l'Atlàntic i l'oceà de Tetis, i la Terra entra en l'era dels dinosaures. Després de l'extinció Permià–Triàsic, es diversifiquen dinosaures, mamífers primitius i aus, mentre al Cretaci s'estenen les plantes amb flor, que transformen els ecosistemes terrestres. El clima és globalment càlid i els canvis més importants venen de la reorganització dels continents i oceans. En el trajecte Sau–Tavertet, d'aquest interval no n'hi ha cap capa aflorant: són gairebé 250 milions d'anys de hiatus, visibles al camp com la discordança erosiva entre el sòcol paleozoic i la coberta eocena. El vídeo mostra el context mundial d'aquest buit: mentre al planeta passava tot això, aquí no en queda registre."
+    sections:
+      - title: "Discordança erosiva als cingles de Tavertet"
+        paragraphs:
+          - "Per sobre del sòcol cristal·lí paleozoic, els sediments terciaris s'hi disposen al damunt mitjançant una discordança erosiva. Primer apareix la capa vermella continental (argiles i gresos vermells), i al damunt una capa grisa d'origen marí (margues i calcàries amb nummulits). Aquest contacte, molt net i espectacular, el podrem observar directament en els cingles de Tavertet durant el recorregut, on la línia de separació entre les roques vermelles de la base i les roques grises superiors és perfectament visible."
+        media:
+          title: "Figura 3. Vista panoràmica dels cingles de Tavertet (SW–NE), amb el contacte entre la capa vermella continental i la capa grisa marina. La línia discontínua marca la base de la Formació Tavertet (discordança erosiva); a la dreta, la traça de la Zona de Falla de Tavertet."
+          publicSrc: "/images/itineraris/sau-tavertet/falla-tavertet.jpg"
+          alt: "Contacte entre la capa vermella continental i la capa grisa marina als cingles de Tavertet, amb la Falla de Tavertet"
+          caption: "Adaptada de Cruset et al. (2026), Fig. 5C."
+  cobertora-eoce-cobertura:
+    videos:
+      - id: cobertura-eocena
+        title: "Eocè: cobertura del sòcol"
+        period: "De la placa Ibèrica a la coberta eocena (230 Ma–actualitat)"
+        publicSrc: "/videos/itineraris/sau-tavertet/paleogeologia/03-iberia-210.mp4"
+        captionsSrc: "/videos/itineraris/sau-tavertet/paleogeologia/03-iberia-210.ca.vtt"
+        alt: "De la placa Ibèrica a la coberta eocena del sòcol a Sau–Tavertet"
+        paragraphs:
+          - "Seguim la placa Ibèrica des de la fragmentació de Pangea fins al paisatge actual. La orogènesi alpina aixeca els Pirineus i la serralada Prelitoral, mentre es forma la conca de l'Ebre com a depressió entre aquestes serralades. Inicialment, durant el Paleocè–Eocè, la conca funciona com una badia marina vinculada al mar de Tetis: s'hi dipositen argiles continentals marginals (Formació Mediona) i calcàries amb nummulits en ambients marins somers. A mesura que la conca es continentalitza, els rius que drenen els Pirineus i els relleus catalans l'omplen amb gresos i conglomerats vermells i, finalment, margues i calcàries que construiran les cingleres de Tavertet. Al camp, el resultat d'aquesta història és la coberta eocena que recobreix el sòcol paleozoic."
+  cobertora-esquema-processos:
+    intro: "Esquema dels processos geològics de la cobertora paleògena continental, des que es reprèn la sedimentació fins a la Formació de Romagats."
+    cronologia:
+      - tipus: periode
+        titol: "PALEOCÈ FINAL–EOCÈ: ES REPRÈN LA SEDIMENTACIÓ"
+      - tipus: producte
+        titol: "P3-Lutites vermelles i paleosòls"
+        categoria: "sedimentaries continentals"
+        text: "Formació de Mediona · Paleocè final, Thanetià, ~59–56 Ma"
+        processos:
+          - "dipòsit en planes fangoses, zones temporalment inundades"
+          - "ambients continentals de baixa energia"
+      - tipus: producte
+        titol: "P5-Gresos, conglomerats i lutites vermelles"
+        categoria: "sedimentaries continentals"
+        text: "Formació de Vilanova de Sau · Eocè inferior, Ilerdià, ~56–47,8 Ma"
+        processos:
+          - "rius, canals, planes d'inundació"
+          - "ventalls al·luvials"
+      - tipus: producte
+        titol: "P6-Conglomerats i gresos vermells"
+        categoria: "sedimentaries continentals"
+        text: "Formació de Romagats · Cuisià–Lutecià inferior"
+        processos:
+          - "transport per cursos fluvials d'alta energia"
+          - "ventalls al·luvials propers als relleus"
+  cobertora-marina-esquema-processos:
+    intro: "Esquema dels processos geològics de la cobertora paleògena marina, des de la transgressió eocena fins als cingles de Tavertet."
+    cronologia:
+      - tipus: periode
+        titol: "TRANSGRESSIÓ MARINA EOCENA"
+        text: "El mar avança sobre la conca continental"
+      - tipus: producte
+        titol: "P7-P8-Gresos, conglomerats i calcàries sorrenques"
+        categoria: "sedimentaries marines"
+        text: "Formació de Tavertet · Lutecià inferior"
+        processos:
+          - "Transició d'ambients continentals a marins somers"
+          - "Sedimentació de sorres i graves a la costa i a la plataforma proximal"
+      - tipus: producte
+        titol: "P9-Calcàries amb nummulits"
+        categoria: "sedimentaries marines carbonatades"
+        text: "Formació de Tavertet · Lutecià inferior"
+        processos:
+          - "Mar de plataforma carbonatada somera"
+          - "Sedimentació de carbonat de calci i fragments bioclàstics"
+          - "Abundància de nummulits i altres invertebrats marins"
+      - tipus: producte
+        titol: "P11-Margues sorrences gris-blavoses, limolites i gresos fins"
+        categoria: "sedimentaries marines"
+        text: "Formació del Coll de Malla · Lutecià mitjà"
+        processos:
+          - "Mar més tranquil i, localment, relativament més profund"
+          - "Sedimentació de fangs carbonatats, llims i sorres fines"
+          - "Progrés de sistemes litorals i deltaics"
+      - tipus: producte
+        titol: "P12-Gresos groguencs o gris-blavosos, amb glauconita"
+        categoria: "sedimentaries deltaiques i marines"
+        text: "Formació de Barcons (equivalent del Gres de Folgueroles) · Lutecià mitjà–superior"
+        processos:
+          - "Progradació de sistemes deltaics i litorals"
+          - "Aportació de sorra cap al centre de la conca"
+      - tipus: proces
+        titol: "Aixecament tectònic i erosió diferencial posteriors"
+      - tipus: producte
+        titol: "P9-P10 Cingles de Tavertet"
+        text: "Relleu actual desenvolupat principalment sobre les calcàries de la Formació de Tavertet."
+        processos:
+          - "Les calcàries més resistents formen els escarpaments"
+          - "Les margues i els gresos més tous s'erosionen amb més facilitat"
   sequencia-geologica-itinerari:
     intro: "Evolució dels materials, ambients sedimentaris i processos geològics observables entre el pantà de Sau i Tavertet."
     outroMedia:

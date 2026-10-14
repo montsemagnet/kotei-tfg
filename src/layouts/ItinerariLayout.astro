@@ -99,7 +99,11 @@ const recorregutItems = [
         },
       ]
     : []),
+  ...(frontmatter.recorregutIndex ?? []),
 ];
+const recorregutModals = (frontmatter.recorregutIndex ?? []).filter(
+  (item) => item.modalKey,
+);
 const hasRecorregut = recorregutItems.length > 0;
 const dadesArticle = frontmatter.dadesArticle ?? [];
 const dadesCapes = frontmatter.dadesCapes ?? [];
@@ -183,10 +187,11 @@ const mapesItems = [
     {
       pageLinks.length > 0 && (
         <nav
-          class="sticky top-0 z-[110] bg-base-100/95 py-3 dark:bg-base-900/95 backdrop-blur-sm"
+          id="itinerari-seccions-nav"
+          class="sticky top-0 z-[90] bg-base-100/95 py-3 dark:bg-base-900/95 backdrop-blur-sm"
           aria-label="Seccions de l'itinerari"
         >
-          <ul class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 px-16 sm:gap-x-8 sm:px-0">
+          <ul class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 pl-24 pr-6 sm:gap-x-8 sm:pl-52 sm:pr-8">
             {pageLinks.map((item) => (
               <li>
                 <a href={item.href} class={pageLinkClass}>
@@ -296,9 +301,7 @@ const mapesItems = [
     <Wrapper variant="standard" class={contentWrapperClass}>
       <div
         id="descripcio-recorregut"
-        data-aos="fade-up"
-        data-aos-duration="1000"
-        class="page-text-content grid scroll-mt-28 grid-cols-1 lg:grid-cols-4 items-start gap-x-6 gap-y-2 mb-12"
+        class="page-text-content grid itinerari-seccio grid-cols-1 lg:grid-cols-4 items-start gap-x-6 gap-y-2 mb-12"
       >
         <div class="min-w-0">
           <Text
@@ -367,6 +370,23 @@ const mapesItems = [
                   items={recorregutItems}
                   ariaLabel={frontmatter.recorregutLabel ?? "El recorregut"}
                 />
+                {
+                  recorregutModals.map((item) => {
+                    if (!item.modalKey) return null;
+                    const subModal = frontmatter.dadesModals?.[item.modalKey];
+                    if (!subModal) return null;
+                    return (
+                      <ItinerariDadaModal
+                        modalId={`itinerari-modal-${item.modalKey}`}
+                        label={item.modalLabel ?? item.label}
+                        intro={subModal.intro}
+                        introMedia={subModal.introMedia}
+                        sections={subModal.sections ?? []}
+                        images={subModal.images}
+                      />
+                    );
+                  })
+                }
               </div>
             </div>
           )
@@ -392,13 +412,13 @@ const mapesItems = [
             return (
               <div
                 id={key === "historia" ? "geologia" : undefined}
-                data-aos="fade-up"
+                data-aos={key === "historia" ? undefined : "fade-up"}
                 data-aos-duration="1000"
                 class:list={[
                   key === "historia" && dadesCapes.length > 0
                     ? "py-4 border-b border-base-200 dark:border-base-800"
                     : "grid grid-cols-1 lg:grid-cols-4 items-start gap-x-6 gap-y-2 py-4 border-b border-base-200 dark:border-base-800",
-                  key === "historia" && "scroll-mt-28",
+                  key === "historia" && "itinerari-seccio",
                 ]}
               >
                 {
@@ -536,9 +556,7 @@ const mapesItems = [
         introTable && (
           <div
             id="parades"
-            data-aos="fade-up"
-            data-aos-duration="1000"
-            class="page-text-content grid scroll-mt-28 grid-cols-1 lg:grid-cols-4 items-start gap-x-6 gap-y-2 mb-12"
+            class="page-text-content grid itinerari-seccio grid-cols-1 lg:grid-cols-4 items-start gap-x-6 gap-y-2 mb-12"
           >
             <div class="min-w-0">
               <Text
@@ -614,9 +632,7 @@ const mapesItems = [
         mapesItems.length > 0 && (
           <div
             id="mapes"
-            data-aos="fade-up"
-            data-aos-duration="1000"
-            class="page-text-content grid scroll-mt-28 grid-cols-1 lg:grid-cols-4 items-start gap-x-6 gap-y-2 mb-12"
+            class="page-text-content grid itinerari-seccio grid-cols-1 lg:grid-cols-4 items-start gap-x-6 gap-y-2 mb-12"
           >
             <div class="min-w-0">
               <Text
@@ -726,7 +742,35 @@ const mapesItems = [
   </section>
 </BaseLayout>
 
+<script>
+  function syncItinerariScrollPadding() {
+    const nav = document.getElementById("itinerari-seccions-nav");
+    if (!nav) return;
+    const padding = `${Math.ceil(nav.getBoundingClientRect().height) + 12}px`;
+    document.documentElement.style.setProperty(
+      "--itinerari-scroll-padding",
+      padding,
+    );
+  }
+
+  syncItinerariScrollPadding();
+  window.addEventListener("resize", syncItinerariScrollPadding);
+  if (typeof ResizeObserver !== "undefined") {
+    const nav = document.getElementById("itinerari-seccions-nav");
+    if (nav) new ResizeObserver(syncItinerariScrollPadding).observe(nav);
+  }
+  document.addEventListener("astro:after-swap", syncItinerariScrollPadding);
+</script>
+
 <style>
+  :global(html) {
+    scroll-padding-top: var(--itinerari-scroll-padding, 6.5rem);
+  }
+
+  .itinerari-seccio {
+    scroll-margin-top: 0;
+  }
+
   .itinerari-title-wrap {
     container-type: inline-size;
   }

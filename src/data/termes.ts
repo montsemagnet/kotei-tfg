@@ -897,6 +897,7 @@ export const termes: Terme[] = [
       "Formació Coll de Malla",
       "Margues del Coll de Malla",
       "margues del Coll de Malla",
+      "margues de Coll de Malla",
       "Formació Margues del Coll de Malla",
       "margues sorrenques blavoses de la Formació Coll de Malla",
       "margues sorrenques blavoses",
@@ -1530,7 +1531,17 @@ export const termes: Terme[] = [
     "definicio": "Període geològic comprès entre 66 i 23 Ma, que inclou el Paleocè, l'Eocè i l'Oligocè. És el període durant el qual es va formar la major part de la cobertura sedimentària visible a Sau–Tavertet.",
     "sinonims": [
       "Paleògen",
-      "paleògens"
+      "paleògens",
+      "paleògena"
+    ]
+  },
+  {
+    "slug": "paleosol",
+    "terme": "Paleosòl",
+    "categoria": "Sedimentologia",
+    "definicio": "Sòl antic conservat dins de la successió sedimentària, format quan una superfície va quedar exposada el temps suficient perquè s'hi desenvolupessin processos edàfics. A la Formació Mediona, els paleosòls s'associen a les lutites vermelles continentals i indiquen pauses en la sedimentació sobre la plana al·luvial.",
+    "sinonims": [
+      "paleosòls"
     ]
   },
   {

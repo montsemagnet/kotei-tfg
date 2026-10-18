@@ -17,6 +17,7 @@ import ItinerariDadesArticle from "@/components/itinerari/ItinerariDadesArticle.
 import ItinerariGeologiaCapes from "@/components/itinerari/ItinerariGeologiaCapes.astro";
 import ItinerariZoom from "@/components/itinerari/ItinerariZoom.astro";
 import GlossariSection from "@/components/global/GlossariSection.astro";
+import ItinerariModalTextSizeControls from "@/components/itinerari/ItinerariModalTextSizeControls.astro";
 import { withBase } from "@/utils/withBase";
 
 const { frontmatter } = Astro.props;
@@ -191,7 +192,7 @@ const mapesItems = [
           class="sticky top-0 z-[90] bg-base-100/95 py-3 dark:bg-base-900/95 backdrop-blur-sm"
           aria-label="Seccions de l'itinerari"
         >
-          <ul class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 pl-24 pr-6 sm:gap-x-8 sm:pl-52 sm:pr-8">
+          <ul class="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-6 gap-y-3 px-8 sm:gap-x-8 lg:px-24">
             {pageLinks.map((item) => (
               <li>
                 <a href={item.href} class={pageLinkClass}>
@@ -204,13 +205,13 @@ const mapesItems = [
       )
     }
     <Wrapper variant="standard" class={heroWrapperClass}>
-      <div id="capcalera" class="mb-8 min-w-0 itinerari-title-wrap scroll-mt-24">
+      <div id="capcalera" class="mb-8 min-w-0 itinerari-title-wrap scroll-mt-24 text-center">
         <Text
           tag="h1"
           variant="textBase"
           data-aos="fade-up"
           data-aos-duration="1000"
-          class="itinerari-page-title dark:text-white text-base-900 font-medium tracking-tighter w-full max-w-none"
+          class="itinerari-page-title dark:text-white text-base-900 font-medium tracking-tighter w-full max-w-none text-center"
         >
           {
             frontmatter.titleParts ? (
@@ -299,6 +300,12 @@ const mapesItems = [
     </Wrapper>
 
     <Wrapper variant="standard" class={contentWrapperClass}>
+      <div
+        id="itinerari-text-size-bar"
+        class="itinerari-text-size-bar sticky z-[80] mb-6 flex justify-end bg-base-100/90 py-2 backdrop-blur-sm dark:bg-base-900/90"
+      >
+        <ItinerariModalTextSizeControls label="Mida del text de l'itinerari" />
+      </div>
       <div
         id="descripcio-recorregut"
         class="page-text-content grid itinerari-seccio grid-cols-1 lg:grid-cols-4 items-start gap-x-6 gap-y-2 mb-12"
@@ -446,9 +453,10 @@ const mapesItems = [
                 }
                 <div
                   class:list={[
-                    "page-text-content min-w-0",
-                    !(key === "historia" && dadesCapes.length > 0) &&
-                      "lg:col-span-3",
+                    "min-w-0",
+                    key === "historia" && dadesCapes.length > 0
+                      ? ""
+                      : "page-text-content lg:col-span-3",
                   ]}
                 >
                   {
@@ -745,30 +753,44 @@ const mapesItems = [
 <script>
   function syncItinerariScrollPadding() {
     const nav = document.getElementById("itinerari-seccions-nav");
-    if (!nav) return;
-    const padding = `${Math.ceil(nav.getBoundingClientRect().height) + 12}px`;
+    const textBar = document.getElementById("itinerari-text-size-bar");
+    const navHeight = nav ? Math.ceil(nav.getBoundingClientRect().height) : 0;
+    const barHeight = textBar
+      ? Math.ceil(textBar.getBoundingClientRect().height)
+      : 0;
+    document.documentElement.style.setProperty(
+      "--itinerari-nav-height",
+      `${navHeight}px`,
+    );
     document.documentElement.style.setProperty(
       "--itinerari-scroll-padding",
-      padding,
+      `${navHeight + barHeight + 12}px`,
     );
   }
 
   syncItinerariScrollPadding();
   window.addEventListener("resize", syncItinerariScrollPadding);
   if (typeof ResizeObserver !== "undefined") {
+    const observer = new ResizeObserver(syncItinerariScrollPadding);
     const nav = document.getElementById("itinerari-seccions-nav");
-    if (nav) new ResizeObserver(syncItinerariScrollPadding).observe(nav);
+    const textBar = document.getElementById("itinerari-text-size-bar");
+    if (nav) observer.observe(nav);
+    if (textBar) observer.observe(textBar);
   }
   document.addEventListener("astro:after-swap", syncItinerariScrollPadding);
 </script>
 
 <style>
   :global(html) {
-    scroll-padding-top: var(--itinerari-scroll-padding, 6.5rem);
+    scroll-padding-top: var(--itinerari-scroll-padding, 8rem);
   }
 
   .itinerari-seccio {
     scroll-margin-top: 0;
+  }
+
+  .itinerari-text-size-bar {
+    top: var(--itinerari-nav-height, 3.5rem);
   }
 
   .itinerari-title-wrap {

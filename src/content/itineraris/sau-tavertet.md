@@ -107,7 +107,6 @@ dadesCapes:
     paragrafs:
       - "El sòcol és la base de roques antigues sobre la qual es van dipositar els sediments del Paleogen que veurem durant l'itinerari. A la zona de Sau, aquest basament aflora al massís de les Guilleries i està format per roques del Paleozoic, com pissarres, esquists i granits."
       - "Durant l'orogènia varisca, també anomenada herciniana, les roques preexistents es van deformar i van experimentar metamorfisme: es van transformar per l'augment de la pressió i la temperatura. En les etapes tardanes d'aquesta orogènia també es van emplaçar magmes que, en refredar-se, van formar roques com els monzogranits i els pòrfirs que observarem a la primera parada."
-      - "Més endavant, l'erosió va desgastar aquests materials i va deixar al descobert el sòcol. Sobre aquesta superfície es van dipositar els sediments paleògens. El contacte entre les roques antigues i els sediments més recents és una discordança erosiva i representa un llarg interval de temps que no ha quedat enregistrat en forma de capes sedimentàries."
     ampliacionsTitol: "Per saber-ne més"
     ampliacions:
       - label: "Les roques del sòcol paleozoic i la seva història"
@@ -118,7 +117,8 @@ dadesCapes:
         modalKey: socol-paleogeografia
   - titol: "Discordança i cobertora paleògena continental"
     paragrafs:
-      - "Damunt del sòcol paleozoic erosionat es van dipositar els sediments continentals del Paleogen. El contacte entre aquests dos conjunts és una discordança, que reflecteix un llarg interval de temps no representat en el registre geològic."
+      - "Durant milions d'anys, el sector va estar sotmès a erosió i exhumació, de manera que no es conserva cap registre dels materials que podrien haver-se dipositat durant aquest interval. Per aquest motiu, els sediments paleògens reposen directament sobre el sòcol paleozoic."
+      - "El contacte entre les roques antigues i els sediments més recents és una discordança erosiva i representa un llarg interval de temps que no ha quedat enregistrat en forma de capes sedimentàries."
       - "De més antiga a més moderna, aquesta cobertora inclou la formació Mediona, amb predomini de lutites vermelles i paleosòls; la formació Vilanova de Sau, amb lutites, gresos i conglomerats dipositats en sistemes al·luvials; i la formació Romagats, dominada per conglomerats i gresos d'ambients més propers als relleus que aportaven els sediments."
       - "Aquestes unitats, que observarem a les parades de l'itinerari, enregistren l'etapa continental anterior a l'arribada del mar eocè."
     ampliacionsTitol: "Per saber-ne més"
@@ -166,7 +166,7 @@ dadesModals:
         paragraphs:
           - "Els materials més antics que afloren a les Guilleries s'han atribuït tradicionalment al Cambroordovicià. Hi predominen roques derivades de sediments fins, com els esquists, entre les quals apareixen nivells d'ortogneissos."
           - "Els ortogneissos són roques metamòrfiques que provenen de roques ígnies preexistents. Per tant, no tots els materials d'aquest conjunt tenen el mateix origen: alguns procedeixen de sediments i d'altres, de magmes que es van emplaçar abans de la deformació i el metamorfisme variscos."
-          - "L'atribució cambroordoviciana d'aquests materials es basa en la comparació amb altres successions geològiques, ja que les roques més transformades no han proporcionat fòssils que permetin datar-les directament."
+          - "L'atribució cambroordoviciana d'aquests materials es basa principalment en la seva posició estratigràfica i en la correlació amb altres successions geològiques. Les roques més transformades no han conservat fòssils que en permetin una datació directa, de manera que cal recórrer als materials que les recobreixen. Per damunt d'aquest conjunt apareix una sèrie volcano-detrítica que conté braquiòpodes fòssils, els quals permeten assignar-li una edat ordoviciana i, per tant, establir una edat mínima per als materials subjacents."
       - title: "La sèrie volcano-detrítica i els braquiòpodes que permeten datar-la"
         paragraphs:
           - "Per damunt d'aquest conjunt es descriu una sèrie volcano-detrítica: una successió que combina materials sedimentaris, formats per fragments d'altres roques, amb materials d'origen volcànic. A les Guilleries hi destaquen les intercalacions de roques volcàniques àcides."
@@ -310,7 +310,9 @@ dadesModals:
         captionsSrc: "/videos/itineraris/sau-tavertet/paleogeologia/03-iberia-210.ca.vtt"
         alt: "De la placa Ibèrica a la coberta eocena del sòcol a Sau–Tavertet"
         paragraphs:
-          - "Seguim la placa Ibèrica des de la fragmentació de Pangea fins al paisatge actual. La orogènesi alpina aixeca els Pirineus i la serralada Prelitoral, mentre es forma la conca de l'Ebre com a depressió entre aquestes serralades. Inicialment, durant el Paleocè–Eocè, la conca funciona com una badia marina vinculada al mar de Tetis: s'hi dipositen argiles continentals marginals (Formació Mediona) i calcàries amb nummulits en ambients marins somers. A mesura que la conca es continentalitza, els rius que drenen els Pirineus i els relleus catalans l'omplen amb gresos i conglomerats vermells i, finalment, margues i calcàries que construiran les cingleres de Tavertet. Al camp, el resultat d'aquesta història és la coberta eocena que recobreix el sòcol paleozoic."
+          - "A l'inici del Paleogen, la zona de Sau formava part d'una depressió sedimentària en desenvolupament, la futura conca de l'Ebre. Els primers sediments dipositats corresponen a argiles vermelles continentals de la Formació Mediona, generades en planes al·luvials i ambients continentals oxidants. Posteriorment, l'erosió dels relleus del sòcol emergits de les Guilleries-Montseny i altres sectors dels Catalànids va aportar quantitats creixents de sorra i graves que van originar els gresos i conglomerats vermells de la Formació Vilanova de Sau, i la Formació Romagats, indicatius de sistemes fluvials i ventalls al·luvials."
+          - "Posteriorment, una transgressió marina associada al mar del Tetis va inundar progressivament la regió. Aquest mar formava part d'un ampli domini oceànic que connectava les àrees que actualment corresponen a la Mediterrània amb les de l'Atlàntic. A mesura que el nivell del mar augmentava i la línia de costa es desplaçava terra endins, els ambients continentals van ser substituïts per ambients costaners i marins. Els primers sediments dipositats durant aquesta invasió marina corresponen a sorres i gresos de la Formació Tavertet, interpretats com a dipòsits litorals i de plataforma molt soma influïts per l'aportació de sediments continentals. Amb la consolidació d'una plataforma marina oberta es van formar les calcàries riques en nummulits, organismes característics de mars càlids i poc profunds. Finalment, la sedimentació de margues de la Formació Coll de Malla indica condicions més tranquil·les i relativament més profundes, amb una menor influència de l'aportació detrítica continental."
+          - "La successió estratigràfica de Sau–Tavertet registra així el pas d'un paisatge continental de tonalitats vermelloses a una plataforma marina somera dominada per la sedimentació carbonatada."
   cobertora-esquema-processos:
     intro: "Esquema dels processos geològics de la cobertora paleògena continental, des que es reprèn la sedimentació fins a la Formació de Romagats."
     cronologia:
@@ -566,45 +568,6 @@ dadesModals:
         paragraphs:
           - "L'itinerari del Pantà de Sau a Tavertet discorre per una de les zones de major complexitat i interès geològic de Catalunya: el punt de trobada entre tres grans unitats estructurals. La zona s'ubica en l'àmbit de la Serralada Transversal Catalana, que actua com a nexe d'unió entre el Prepirineu, al nord-oest, i les Serralades Costaneres Catalanes (Serralada Prelitoral), al sud-est, veure Figura 1, abraçant principalment les comarques de la Garrotxa, Osona i la Selva. Geomorfològicament, el Collsacabra i les Guilleries representen dues unitats contigües però de naturalesa geològica ben diferent, separades precisament per la cinglera que recorrem: a l'oest, les Guilleries amb el seu sòcol paleozoic; a l'est, el Collsacabra amb la seva plataforma sedimentària terciària."
           - "Aquesta posició de «nus geològic» fa que en un espai relatiu reduït es puguin observar roques que cobreixen centenars de milions d'anys d'història de la Terra, des del Cambroordovicià fins al Quaternari recent."
-        embed:
-          title: "Geozona 216: Cingles de Tavertet- El Far"
-          caption: "L'itinerari està catalogat com a geozona al repositori del Departament d'Acció Climàtica, Alimentació i Agenda Rural de la Generalitat de Catalunya. En obrir l'enllaç hi trobareu la fitxa oficial del geotop «Presa de Sau–Tavertet»: descripció del recorregut, mapes geològics, bibliografia i documents associats."
-          link: "https://mediambient.repositori.gencat.cat/bitstream/handle/20.500.14343/2170/2000_Cingles_Tavertet_Far_fitxa_descriptiva.pdf?sequence=1&isAllowed=y"
-          linkLabel: "Veure la fitxa al repositori de la Generalitat"
-        media:
-          title: "Mapa geològic simplificat del trajecte Sau–Tavertet, amb les principals formacions litològiques (FCG, FCTA, FGF, FMV, P) i els punts de referència de l'itinerari."
-          publicSrc: "/images/itineraris/sau-tavertet/mapa-geologic-geotop-generalitat.png"
-          alt: "Mapa geològic simplificat del trajecte Sau–Tavertet amb formacions litològiques i localitats com Sau, Tavertet i Rupit"
-          caption: "Adaptat de la fitxa del geotop Presa de Sau–Tavertet. Generalitat de Catalunya, Departament d'Acció Climàtica, Alimentació i Agenda Rural."
-      - title: "La Conca de l'Ebre i el seu marge oriental"
-        paragraphs:
-          - "Els materials que trobem entre el pantà de Sau i Tavertet formen part del marge sud-est de la Conca terciària de l'Ebre, una gran depressió d'avantpaís creada pel pes dels Pirineus durant el Paleogen. En aquest marge oriental, que inclou la plana d'Osona i el Collsacabra, es van acumular fins a diversos quilòmetres de sediments procedents de les serralades veïnes."
-          - "A mitjan Eocè, la conca funcionava com una badia oberta cap al Golf de Biscaia, amb sistemes al·luvials i fluvio-lacustres que passaven lateralment a margues i calcàries marines de plataforma, tal com il·lustra la Figura 2. En el nostre itinerari aquests ambients es tradueixen en argiles i gresos vermells a la base de la sèrie, i en les calcàries nummulítiques que formen la cornisa dels cingles de Tavertet. Cap a finals de l'Eocè la conca es va aïllar del mar i va evolucionar cap a una gran plana lacustre endorreica."
-        media:
-          title: "Figura 2. Successió paleògena a la conca de Vic: mapa geològic dels principals cossos sedimentaris (esquerra) i relacions entre litofàcies que van rebre el marge oriental de la Conca de l'Ebre (dreta)."
-          publicSrc: "/images/itineraris/sau-tavertet/successio-paleogena-conca-vic.png"
-          alt: "Mapa geològic i secció de litofàcies de la successió paleògena a la conca de Vic, amb complexos escullosos, guixos i dipòsits marins i continentals"
-          caption: "Original de P. Busquets, S. Reguant, A. Barnolas i C. Taberner. Adaptada de l'article «Els marges oriental i meridional al sector català de la Conca de l'Ebre: el Paleocè i l'Eocè», Historia Natural dels Països Catalans (Enciclopèdia Catalana)."
-      - title: "El sòcol paleozoic: les Guilleries com a soterrani"
-        paragraphs:
-          - "Sota els sediments terciaris, el trajecte es recolza sobre un sòcol de roques paleozoiques i cambroordovicianes que aflora espectacularment al Massís de les Guilleries, a l'altre costat del Pantà de Sau. El massís de les Guilleries és constituït per materials metasedimentaris i ígnies d'edat paleozoica: els nivells més antics corresponen al Cambroordovicià i consisteixen en trams pelítics (pissarres i esquists), separats per nivells d'ortogneissos. Per sobre es situa una sèrie volcano-detrítica que ha proporcionat braquiòpodes d'edat Caradoc (Ordovicià superior). Tota la successió va ser deformada i metamorfitzada durant l'orogènia herciniana (Carbonífer), que va donar lloc a la formació de foliacions generalitzades i un metamorfisme que, a les zones més profundes, va assolir les fàcies amfibolítica d'alt grau."
-          - "Posteriorment, durant el Paleozoic tardà, es van produir intrusions granítiques i granitoides lligades a la mateixa orogènia herciniana —els monzogranits i pòrfirs que veurem a la primera parada de l'itinerari. La superfície d'aquest sòcol va quedar arrasada per l'erosió abans del Paleogen, de manera que els sediments terciaris s'hi disposen al damunt mitjançant una discordança erosiva, el contacte espectacular que podrem observar durant el recorregut."
-        mediaItems:
-          - title: "Figura 3. Aflorament del sòcol paleozoic (granitoides hercinians) a la presa de Sau, amb la textura massissa i les fractures característiques del basament cristal·lí."
-            publicSrc: "/images/itineraris/sau-tavertet/socol-presa-sau.png"
-            alt: "Aflorament de granit del sòcol paleozoic a la presa de Sau"
-            caption: "Elaboració pròpia. Presa de Sau, 3 de juny de 2026."
-      - title: "Les dues «històries» que conté el camí"
-        paragraphs:
-          - "En resum, l'itinerari travessa verticalment dos grans capítols de la història geològica del territori:"
-          - "La base (sòcol): roques paleozoiques i cambroordovicianes (~500–300 Ma), formades en contextos de plataforma marina profunda i posteriorment deformades per l'orogènia herciniana. Representen el basament rígid sobre el qual tot s'assenta."
-          - "La cobertura (sediments terciaris): roques de l'Eocè (~50–37 Ma), dipositades en ambients que van del continental al marí i viceversa, en el context de la formació dels Pirineus i el rebliment de la Conca de l'Ebre."
-          - "Entre les dues hi ha un hiatus —un buit en el registre— de gairebé 250 milions d'anys, corresponent al Mesozoic, del qual no hi ha materials representats en la superfície d'aquesta zona. Aquesta absència, visible a la discordança erosiva, és en si mateix un document geològic de primer ordre."
-        media:
-          title: "Figura 4. Esquema simplificat que mostra com el sòcol paleozoic de les Guilleries (~500–300 Ma) queda recobert, en discordança erosiva, pels sediments eocens del marge oriental de la Conca de l'Ebre (~50–37 Ma): a la base, argiles i gresos vermells de ventalls al·luvials i sistemes fluvials; a la part superior, margues i calcàries nummulítiques de plataforma marina poc profunda que formen les cingleres de Tavertet."
-          publicSrc: "/images/itineraris/sau-tavertet/esquema-dues-histories-geologiques.png"
-          alt: "Esquema del sòcol paleozoic de les Guilleries recobert en discordança pels sediments eocens del Collsacabra–Tavertet"
-          caption: "Elaboració pròpia."
   estratigrafia-litologia:
     intro: "Al llarg de l'itinerari, des de la presa del pantà de Sau fins al poble de Tavertet, travessem una columna estratigràfica completa: des del sòcol cristal·lí paleozoic fins als sediments vermells continentals i les roques grises marines de l'Eocè, responsables dels cingles actuals. Les parades P1–P12 segueixen aquest ordre, de més antiga a més moderna. La cartografia local situa la Formació de Romagats entre el Cuisià i el Lutecià inferior, la Formació de Tavertet al Lutecià inferior, la Formació del Coll de Malla al Lutecià mitjà, i la Formació de Folgueroles al Lutecià mitjà–superior."
     sections:

@@ -23,6 +23,15 @@ function getLevelIndex(level: TextSizeLevel): number {
   return TEXT_SIZE_LEVELS.indexOf(level);
 }
 
+function findOwnToolbar(panel: HTMLElement): HTMLElement | null {
+  const toolbars = panel.querySelectorAll("[data-modal-text-size]");
+  for (const toolbar of toolbars) {
+    if (!(toolbar instanceof HTMLElement)) continue;
+    if (toolbar.closest("[data-text-size-enabled]") === panel) return toolbar;
+  }
+  return null;
+}
+
 export function applyPanelTextSize(panel: HTMLElement, level: TextSizeLevel): void {
   if (level === "normal") {
     panel.removeAttribute("data-text-size");
@@ -40,8 +49,8 @@ export function applyPanelTextSize(panel: HTMLElement, level: TextSizeLevel): vo
 }
 
 function syncTextSizeControls(panel: HTMLElement, level: TextSizeLevel): void {
-  const toolbar = panel.querySelector("[data-modal-text-size]");
-  if (!(toolbar instanceof HTMLElement)) return;
+  const toolbar = findOwnToolbar(panel);
+  if (!toolbar) return;
 
   const decrease = toolbar.querySelector("[data-text-size-decrease]");
   const increase = toolbar.querySelector("[data-text-size-increase]");
@@ -61,8 +70,13 @@ function syncTextSizeControls(panel: HTMLElement, level: TextSizeLevel): void {
 }
 
 export function initModalTextSizeControls(panel: HTMLElement): void {
-  const toolbar = panel.querySelector("[data-modal-text-size]");
-  if (!(toolbar instanceof HTMLElement)) return;
+  const toolbar = findOwnToolbar(panel);
+  if (!toolbar) {
+    if (!panel.closest("dialog")) {
+      panel.removeAttribute("data-text-size");
+    }
+    return;
+  }
   if (toolbar.dataset.textSizeBound === "true") return;
   toolbar.dataset.textSizeBound = "true";
 

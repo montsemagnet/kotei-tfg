@@ -109,7 +109,6 @@ export const termes: Terme[] = [
     "categoria": "Estratigrafia",
     "definicio": "Conjunt de roques antigues, sovint metamòrfiques o ígnies, sobre les quals es dipositen materials sedimentaris més moderns. A Sau–Tavertet, el basament paleozoic del granit de la presa actua com a sòcol rígid sobre el qual es recolza la cobertura sedimentària terciària.",
     "sinonims": [
-      "sòcol",
       "basament cristal·lí"
     ]
   },
@@ -972,6 +971,15 @@ export const termes: Terme[] = [
     ]
   },
   {
+    "slug": "granit",
+    "terme": "Granit",
+    "categoria": "Litologia",
+    "definicio": "Roca plutònica formada per la cristal·lització lenta d'un magma en profunditat, composta principalment per quars, feldespats i, sovint, miques. A Sau, els granits del sòcol paleozoic afloren a la presa i al massís de les Guilleries; el tipus més freqüent que s'observa a la primera parada és el monzogranit.",
+    "sinonims": [
+      "granits"
+    ]
+  },
+  {
     "slug": "granitic",
     "terme": "Granític",
     "categoria": "Litologia",
@@ -1457,8 +1465,7 @@ export const termes: Terme[] = [
     "definicio": "Tipus de granitoide amb proporcions equilibrades de quars, feldespat potàssic i plagioclasi, molt freqüent al sòcol hercinià català. El granit de la presa de Sau n'és un exemple ben exposat, amb textura fanerítica i sistema de diàclasis.",
     "sinonims": [
       "monzogranits",
-      "granit hercinià",
-      "granit"
+      "granit hercinià"
     ]
   },
   {
@@ -1833,12 +1840,12 @@ export const termes: Terme[] = [
     ]
   },
   {
-    "slug": "socol-paleozoic",
-    "terme": "Sòcol paleozoic",
+    "slug": "socol",
+    "terme": "Sòcol",
     "categoria": "Estratigrafia",
-    "definicio": "Conjunt de roques paleozoiques —ígnies, metamòrfiques i sedimentàries transformades— que formen la base estructural d'una regió. A Sau–Tavertet, el sòcol granític hercinià suporta la cobertura eocena en discordança erosiva.",
+    "definicio": "Base estructural d'una regió, formada per roques antigues —ígnies, metamòrfiques i sedimentàries transformades— sobre les quals es dipositen materials més moderns. El sòcol pot incloure roques del Paleozoic i també del Mesozoic, encara que en aquest itinerari les mesozoiques no afloren. A Sau–Tavertet, el sòcol que es veu és paleozoic (granític hercinià) i suporta la cobertura eocena en discordança erosiva.",
     "sinonims": [
-      "sòcol",
+      "sòcol paleozoic",
       "sòcol cristal·lí",
       "sòcol cristal·lí paleozoic",
       "basament paleozoic",

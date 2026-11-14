@@ -50,6 +50,14 @@ const { src, title } = Astro.props;
 
   <button
     type="button"
+    class="itinerari-intro__play pointer-events-auto absolute top-1/2 left-1/2 z-50 hidden size-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-0 bg-white/90 text-3xl text-base-900 shadow-lg cursor-pointer"
+    aria-label="Reproduir introducció"
+  >
+    ▶
+  </button>
+
+  <button
+    type="button"
     class="itinerari-intro__skip pointer-events-auto absolute z-50 rounded-full border-0 bg-white/90 px-5 py-2.5 text-sm font-medium uppercase tracking-[0.14em] text-base-900 shadow-lg cursor-pointer transition hover:bg-white"
   >
     Saltar intro
@@ -63,41 +71,58 @@ const { src, title } = Astro.props;
 
     const video = overlay.querySelector("video");
     const skip = overlay.querySelector(".itinerari-intro__skip");
+    const playBtn = overlay.querySelector(".itinerari-intro__play");
     const forceIntro = new URLSearchParams(window.location.search).has("intro");
     const skipIntro = document.documentElement.classList.contains("itinerari-intro-skip");
+
+    const showPlay = () => {
+      if (playBtn instanceof HTMLElement) {
+        playBtn.classList.remove("hidden");
+        playBtn.classList.add("flex");
+      }
+    };
+
+    const hidePlay = () => {
+      if (playBtn instanceof HTMLElement) {
+        playBtn.classList.add("hidden");
+        playBtn.classList.remove("flex");
+      }
+    };
 
     const closeIntro = () => {
       if (video instanceof HTMLVideoElement) {
         video.pause();
         video.currentTime = 0;
       }
+      hidePlay();
       overlay.classList.add("is-done");
       document.documentElement.classList.remove("itinerari-intro-pending");
       document.documentElement.classList.add("itinerari-intro-skip");
     };
 
-    const unmute = () => {
+    const startPlayback = (withSound: boolean) => {
       if (!(video instanceof HTMLVideoElement)) return;
-      video.muted = false;
-      void video.play().catch(() => {});
+      video.playsInline = true;
+      video.muted = !withSound;
+      const playPromise = video.play();
+      if (playPromise) {
+        playPromise
+          .then(() => {
+            hidePlay();
+            if (withSound) video.muted = false;
+          })
+          .catch(() => {
+            if (withSound) {
+              video.muted = true;
+              void video.play().then(hidePlay).catch(showPlay);
+              return;
+            }
+            showPlay();
+          });
+      }
     };
 
-    const tryPlay = async () => {
-      if (!(video instanceof HTMLVideoElement)) return;
-      video.muted = true;
-      try {
-        await video.play();
-      } catch {
-        return;
-      }
-      video.muted = false;
-      try {
-        await video.play();
-      } catch {
-        video.muted = false;
-        void video.play().catch(() => {});
-      }
-    };
+    const tryPlay = () => startPlayback(true);
 
     const replayIntro = () => {
       document.documentElement.classList.remove("itinerari-intro-skip");
@@ -106,15 +131,14 @@ const { src, title } = Astro.props;
       if (!overlay.isConnected) document.body.appendChild(overlay);
       if (video instanceof HTMLVideoElement) {
         video.currentTime = 0;
-        video.muted = false;
-        void video.play().catch(() => {
-          void tryPlay();
-        });
+        startPlayback(true);
       }
     };
 
     if (video instanceof HTMLVideoElement) {
+      video.playsInline = true;
       video.addEventListener("ended", closeIntro);
+      video.addEventListener("playing", hidePlay);
       skip?.addEventListener(
         "click",
         (event) => {
@@ -124,11 +148,17 @@ const { src, title } = Astro.props;
         },
         true,
       );
+      playBtn?.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        startPlayback(true);
+      });
       overlay.addEventListener("click", (event) => {
         if (event.target instanceof Element && event.target.closest(".itinerari-intro__skip")) {
           return;
         }
-        if (video.muted) unmute();
+        if (video.paused) startPlayback(true);
+        else if (video.muted) startPlayback(true);
       });
       document.addEventListener("keydown", (event) => {
         if (!overlay.isConnected || overlay.classList.contains("is-done")) return;
@@ -137,7 +167,7 @@ const { src, title } = Astro.props;
           closeIntro();
           return;
         }
-        if (video.muted && event.key !== "Tab") unmute();
+        if (video.paused || video.muted) startPlayback(true);
       });
       document.addEventListener("click", (event) => {
         if (!(event.target instanceof Element)) return;
@@ -149,9 +179,11 @@ const { src, title } = Astro.props;
       if (skipIntro && !forceIntro) {
         closeIntro();
       } else if (video.readyState >= 2) {
-        void tryPlay();
+        tryPlay();
       } else {
-        video.addEventListener("canplay", () => void tryPlay(), { once: true });
+        video.addEventListener("canplay", tryPlay, { once: true });
+        video.addEventListener("loadeddata", tryPlay, { once: true });
+        video.addEventListener("error", showPlay, { once: true });
       }
     }
   }

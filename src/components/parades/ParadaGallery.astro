@@ -1,6 +1,5 @@
 ---
 import { Image } from "astro:assets";
-import ItinerariModalHeaderActions from "@/components/itinerari/ItinerariModalHeaderActions.astro";
 
 interface Props {
   fotos: { url: ImageMetadata; alt: string }[];
@@ -10,11 +9,16 @@ interface Props {
 const { fotos, galleryId } = Astro.props;
 const overlayCloseClass =
   "parada-gallery-close itinerari-overlay-close text-sm font-medium";
-const galleryGridStyle = `grid-template-columns: repeat(${fotos.length}, minmax(0, 1fr));`;
+const overlayIconClass =
+  "itinerari-overlay-close itinerari-zoom-tool inline-flex size-10 items-center justify-center p-0";
+const hasMany = fotos.length > 1;
 ---
 
 <div data-aos="fade-up" data-aos-duration="1000">
-  <div class="grid gap-2" style={galleryGridStyle}>
+  <div
+    class="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-[repeat(var(--gallery-n),minmax(0,1fr))]"
+    style={`--gallery-n: ${fotos.length};`}
+  >
     {
       fotos.map((foto, index) => (
         <button
@@ -22,6 +26,7 @@ const galleryGridStyle = `grid-template-columns: repeat(${fotos.length}, minmax(
           class="parada-gallery-thumb cursor-pointer overflow-hidden border-0 p-0 bg-transparent"
           data-gallery={galleryId}
           data-index={index}
+          data-full-src={foto.url.src}
           aria-label={`Ampliar foto ${index + 1}: ${foto.alt}`}
         >
           <Image
@@ -38,42 +43,78 @@ const galleryGridStyle = `grid-template-columns: repeat(${fotos.length}, minmax(
 
   <dialog
     id={`gallery-${galleryId}`}
-    class="parada-gallery-dialog fixed inset-0 z-[110] m-0 size-full max-h-none max-w-none border-0 bg-base-950/90 p-4 backdrop:bg-transparent open:flex open:items-center open:justify-center"
+    class="parada-gallery-dialog itinerari-zoom-dialog fixed inset-0 z-[110] m-0 size-full max-h-none max-w-none border-0 bg-black p-3 sm:p-4 backdrop:bg-transparent open:flex open:items-center open:justify-center"
     aria-modal="true"
     data-focus-trap="true"
+    data-gallery-id={galleryId}
+    data-gallery-total={String(fotos.length)}
   >
-    <div class="relative w-full max-w-5xl mx-auto">
-      <button
-        type="button"
-        class="parada-gallery-prev absolute left-4 z-10 rounded-full bg-white/10 px-4 py-2 text-white hover:bg-white/20"
-        aria-label="Foto anterior"
-      >
-        ←
-      </button>
-      <button
-        type="button"
-        class="parada-gallery-next absolute right-4 z-10 rounded-full bg-white/10 px-4 py-2 text-white hover:bg-white/20"
-        aria-label="Foto següent"
-      >
-        →
-      </button>
-      <figure class="max-w-5xl w-full">
-        <div class="relative">
-          <ItinerariModalHeaderActions
-            closeClass={overlayCloseClass}
-            closeLabel="Tancar galeria"
-            showTextSize={false}
-            overlay
-          />
+    <div
+      class="itinerari-zoom-stage relative flex size-full max-h-full max-w-full flex-col"
+      data-text-size-enabled
+    >
+      <div class="absolute top-3 right-3 z-20 flex items-center gap-2 sm:top-4 sm:right-4">
+        <button
+          type="button"
+          class:list={["itinerari-zoom-out", overlayIconClass]}
+          aria-label="Allunyar"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="size-5" aria-hidden="true">
+            <circle cx="11" cy="11" r="6"></circle>
+            <path d="M20 20l-3.2-3.2"></path>
+            <path d="M8 11h6"></path>
+          </svg>
+        </button>
+        <button
+          type="button"
+          class:list={["itinerari-zoom-in", overlayIconClass]}
+          aria-label="Apropar"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="size-5" aria-hidden="true">
+            <circle cx="11" cy="11" r="6"></circle>
+            <path d="M20 20l-3.2-3.2"></path>
+            <path d="M11 8v6M8 11h6"></path>
+          </svg>
+        </button>
+        <button type="button" class={overlayCloseClass} aria-label="Tancar galeria">
+          Tancar
+        </button>
+      </div>
+
+      {
+        hasMany && (
+          <>
+            <button
+              type="button"
+              class="parada-gallery-prev itinerari-overlay-close absolute top-1/2 left-2 z-20 flex size-12 -translate-y-1/2 items-center justify-center p-0 text-2xl sm:left-4"
+              aria-label="Foto anterior"
+            >
+              ←
+            </button>
+            <button
+              type="button"
+              class="parada-gallery-next itinerari-overlay-close absolute top-1/2 right-2 z-20 flex size-12 -translate-y-1/2 items-center justify-center p-0 text-2xl sm:right-4"
+              aria-label="Foto següent"
+            >
+              →
+            </button>
+          </>
+        )
+      }
+
+      <figure class="mt-14 flex min-h-0 flex-1 flex-col">
+        <div class="itinerari-zoom-viewport flex min-h-0 flex-1 items-center justify-center overflow-hidden">
           <img
-            class="parada-gallery-image w-full max-h-[85vh] object-contain mx-auto"
+            class="parada-gallery-image itinerari-zoom-image max-h-full max-w-full object-contain select-none"
             src=""
             alt=""
+            draggable="false"
           />
         </div>
-        <figcaption
-          class="parada-gallery-caption mt-4 text-center text-white text-sm"
-        />
+        <figcaption class="mt-3 max-w-4xl self-center px-16 text-center text-sm text-white">
+          <span class="parada-gallery-counter mr-2 font-medium"></span>
+          <span class="parada-gallery-caption itinerari-zoom-caption"></span>
+        </figcaption>
       </figure>
     </div>
   </dialog>
@@ -82,8 +123,53 @@ const galleryGridStyle = `grid-template-columns: repeat(${fotos.length}, minmax(
 <script>
   import { openDialogFromTrigger } from "@/utils/modalA11y";
 
+  function galleryRoot(dialog: HTMLDialogElement) {
+    return dialog.parentElement;
+  }
+
+  function galleryThumbs(dialog: HTMLDialogElement) {
+    const galleryId = dialog.dataset.galleryId;
+    const root = galleryRoot(dialog);
+    if (!galleryId || !root) return [];
+    return Array.from(
+      root.querySelectorAll(`[data-gallery="${galleryId}"]`),
+    ).filter((el): el is HTMLElement => el instanceof HTMLElement);
+  }
+
+  function updateGalleryImage(dialog: HTMLDialogElement, index: number) {
+    const thumbs = galleryThumbs(dialog);
+    const total = thumbs.length;
+    if (total === 0) return;
+
+    const safeIndex = ((index % total) + total) % total;
+    const thumb = thumbs[safeIndex];
+    const image = dialog.querySelector(".parada-gallery-image");
+    const caption = dialog.querySelector(".parada-gallery-caption");
+    const counter = dialog.querySelector(".parada-gallery-counter");
+    const thumbImg = thumb.querySelector("img");
+
+    if (!(image instanceof HTMLImageElement)) return;
+    if (!(caption instanceof HTMLElement)) return;
+    if (!(thumbImg instanceof HTMLImageElement)) return;
+
+    dialog.dataset.currentIndex = String(safeIndex);
+    image.src = thumb.dataset.fullSrc || thumbImg.currentSrc || thumbImg.src;
+    image.alt = thumbImg.alt;
+    caption.textContent = thumbImg.alt;
+    if (counter instanceof HTMLElement) {
+      counter.textContent = total > 1 ? `${safeIndex + 1} / ${total}` : "";
+    }
+
+    dialog.dispatchEvent(new Event("itinerari-zoom-reset", { bubbles: true }));
+  }
+
+  function stepGallery(dialog: HTMLDialogElement, delta: number) {
+    const current = Number(dialog.dataset.currentIndex ?? 0);
+    updateGalleryImage(dialog, current + delta);
+  }
+
   function initParadaGalleries() {
-    document.querySelectorAll("[data-gallery]").forEach((thumb) => {
+    document.querySelectorAll(".parada-gallery-thumb").forEach((thumb) => {
       if (!(thumb instanceof HTMLElement)) return;
       if (thumb.dataset.bound) return;
       thumb.dataset.bound = "true";
@@ -94,7 +180,7 @@ const galleryGridStyle = `grid-template-columns: repeat(${fotos.length}, minmax(
         const dialog = document.getElementById(`gallery-${galleryId}`);
         if (!(dialog instanceof HTMLDialogElement)) return;
 
-        updateGalleryImage(dialog, galleryId, index);
+        updateGalleryImage(dialog, index);
         openDialogFromTrigger(dialog, thumb);
       });
     });
@@ -104,43 +190,26 @@ const galleryGridStyle = `grid-template-columns: repeat(${fotos.length}, minmax(
       if (dialogEl.dataset.galleryNavBound) return;
       dialogEl.dataset.galleryNavBound = "true";
 
-      const galleryId = dialogEl.id.replace("gallery-", "");
-
       dialogEl.querySelector(".parada-gallery-prev")?.addEventListener("click", () => {
-        const current = Number(dialogEl.dataset.currentIndex ?? 0);
-        const total = dialogEl.querySelectorAll(`[data-gallery="${galleryId}"]`).length;
-        const next = (current - 1 + total) % total;
-        updateGalleryImage(dialogEl, galleryId, next);
+        stepGallery(dialogEl, -1);
       });
 
       dialogEl.querySelector(".parada-gallery-next")?.addEventListener("click", () => {
-        const current = Number(dialogEl.dataset.currentIndex ?? 0);
-        const total = dialogEl.querySelectorAll(`[data-gallery="${galleryId}"]`).length;
-        const next = (current + 1) % total;
-        updateGalleryImage(dialogEl, galleryId, next);
+        stepGallery(dialogEl, 1);
+      });
+
+      dialogEl.addEventListener("keydown", (event) => {
+        if (!dialogEl.open) return;
+        if (event.key === "ArrowLeft") {
+          event.preventDefault();
+          stepGallery(dialogEl, -1);
+        }
+        if (event.key === "ArrowRight") {
+          event.preventDefault();
+          stepGallery(dialogEl, 1);
+        }
       });
     });
-  }
-
-  function updateGalleryImage(
-    dialog: HTMLDialogElement,
-    galleryId: string,
-    index: number,
-  ) {
-    dialog.dataset.currentIndex = String(index);
-    const thumb = document.querySelector(
-      `[data-gallery="${galleryId}"][data-index="${index}"] img`,
-    );
-    const image = dialog.querySelector(".parada-gallery-image");
-    const caption = dialog.querySelector(".parada-gallery-caption");
-
-    if (!(thumb instanceof HTMLImageElement)) return;
-    if (!(image instanceof HTMLImageElement)) return;
-    if (!(caption instanceof HTMLElement)) return;
-
-    image.src = thumb.currentSrc || thumb.src;
-    image.alt = thumb.alt;
-    caption.textContent = thumb.alt;
   }
 
   initParadaGalleries();

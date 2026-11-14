@@ -485,10 +485,12 @@ const parades = defineCollection({
           modalLabel: z.string().optional(),
         })
         .optional(),
+      pinSrc: z.string().optional(),
       materials: z.array(
         z.object({
           nom: z.string(),
-          enllaç: z.string(),
+          enllaç: z.string().optional(),
+          referencia: z.string().optional(),
         }),
       ),
       analisiFlora: analisiFloraSchema(image).optional(),
@@ -499,7 +501,7 @@ const parades = defineCollection({
           resum: z.string().optional(),
           intro: z.string().optional(),
           modalLabel: z.string().optional(),
-          sections: modalContentSchema(image).shape.sections,
+          sections: modalContentSchema(image).shape.sections.optional(),
           /** Diversos modals de geologia (p. ex. Geologia I / II). Si hi ha `parts`, s'usen en lloc de intro+sections. */
           parts: z
             .array(

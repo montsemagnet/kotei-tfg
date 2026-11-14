@@ -40,6 +40,7 @@ export default defineConfig({
           "**/public/mapa-geobotanica/**",
           "**/_dev-mapa-sau-parked/**",
           "**/_tmp-*/**",
+          "**/.tmp-*/**",
         ],
       },
       watch: {
@@ -54,6 +55,7 @@ export default defineConfig({
           "**/mapa-web-geobotanica/**",
           "**/_dev-mapa-sau-parked/**",
           "**/_tmp-*/**",
+          "**/.tmp-*/**",
           "**/src/images/landing/**",
           "**/public/images/landing/**",
           "**/node_modules/**",

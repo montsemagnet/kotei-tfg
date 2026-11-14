@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from "astro:content";
 import ParadaLayout from "@/layouts/ParadaLayout.astro";
+import ParadaFitxaLayout from "@/layouts/ParadaFitxaLayout.astro";
 import { getParadaSlug } from "@/utils/paradaSlug";
 
 export async function getStaticPaths() {
@@ -16,8 +17,9 @@ export async function getStaticPaths() {
 
 const { entry, slug } = Astro.props;
 const { Content } = await render(entry);
+const Layout = entry.data.pinSrc ? ParadaFitxaLayout : ParadaLayout;
 ---
 
-<ParadaLayout frontmatter={entry.data} slug={slug}>
+<Layout frontmatter={entry.data} slug={slug}>
   <Content />
-</ParadaLayout>
+</Layout>

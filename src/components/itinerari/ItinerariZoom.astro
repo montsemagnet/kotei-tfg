@@ -356,6 +356,10 @@ const overlayIconClass =
     document.addEventListener("wheel", onWheel, { passive: false });
     document.addEventListener("dblclick", onDoubleClick);
     document.addEventListener("keydown", onKeyDown);
+    document.addEventListener("itinerari-zoom-reset", (event) => {
+      const dialog = event.target;
+      if (dialog instanceof HTMLDialogElement) resetState(dialog);
+    });
   }
 
   initItinerariZoom();

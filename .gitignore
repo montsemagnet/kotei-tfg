@@ -1,6 +1,7 @@
 node_modules/
 dist/
 .astro/
+.tmp-*/
 video-originals/
 # Export qgis2web pesat (servit en local via http-server; no versionar)
 mapa-web-sau-tavertet/

@@ -1,0 +1,23 @@
+---
+description: Model oficial de pàgina de parada (fitxa P1). No tornar al layout antic.
+alwaysApply: true
+---
+
+# Parades — model de fitxa
+
+La pàgina oficial de cada parada és **`ParadaFitxaLayout`**, com P1 (`/parades/I1-P1/`). Referència de contingut: `src/content/parades/I1-P1.md`. Plantilla buida: `src/content/parades/_PLANTILLA.md.example`.
+
+- **S’activa** amb `pinSrc` a `src/pages/parades/[slug].astro`. Sense `pinSrc` la parada queda al layout antic (`ParadaLayout`) fins que hi hagi GIF.
+- **No** recreïs `/proves/parada-disseny`. **No** tornis `ParadaLayout` a parades noves o migrades. P2–P12 i A1 es migren **una a una** quan l’usuari porta el GIF i revisa el text.
+
+## Què porta la fitxa
+
+Pin (GIF/WebP) + Materials a l’esquerra. Dreta: títol **sense** prefix `P1.` (el fil d’Ariadna sí el conserva) · icona Mapa · Geologia (martell) · Geobotànica (fulla, **només text**, sense modal). Galeria a sota. Un sol modal geologia: **Mode investigador: ON**.
+
+## Camps (YAML)
+
+`pinSrc`: `/images/parades/I1-Pn/pin.webp` (o `.gif`) a `public/`. `coordenades` a l’`alt` del pin. `geologia.resum` + `intro` + `sections` (un modal; **no** `parts`). `geobotanicaText`. `materials` amb `referencia` (`n.1`) i `enllaç` opcional a `/roques/…`. `fotos` (màx. 8). `mapaUrl` opcional. No cal `media` / `videoAeri` / `analisiFlora` a la fitxa.
+
+## Icones
+
+`public/images/parades/ui/{triptic,martell,fulla}.png` — enmarcades. No afegeixis icona de fotos ni modal de geobotànica.

@@ -17,6 +17,7 @@ export async function getStaticPaths() {
 
 const { entry, slug } = Astro.props;
 const { Content } = await render(entry);
+/** Fitxa oficial (P1): pinSrc. La resta resta a ParadaLayout fins a migrar-les. */
 const Layout = entry.data.pinSrc ? ParadaFitxaLayout : ParadaLayout;
 ---
 

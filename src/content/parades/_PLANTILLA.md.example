@@ -1,0 +1,32 @@
+---
+title: "P2. Títol de la parada"
+itinerari: "sau-tavertet"
+ordre: 2
+coordenades: "000000,0 E / 0000000,0 N (ETRS89 UTM 31N)"
+pinSrc: "/images/parades/I1-P2/pin.webp"
+fotos:
+  - url: "/src/images/parades/I1-P2/foto-1.png"
+    alt: "Descripció de la fotografia"
+geologia:
+  modalLabel: "Parada 2. Títol llarg de la parada"
+  resum: |
+    Paràgraf curt a la pàgina (abans del Mode investigador).
+
+    Segon paràgraf opcional.
+  intro: "Text d’obertura del modal (observació de camp)."
+  sections:
+    - title: "Primer bloc"
+      paragraphs:
+        - "Text del bloc."
+      mediaItems:
+        - title: "Figura 1. Peu de foto."
+          publicSrc: "/images/parades/I1-P2/figura-1.png"
+          alt: "Descripció de la figura"
+          caption: "Fotografia: elaboració pròpia."
+mapaUrl: "/mapa-sau-tavertet/"
+materials:
+  - referencia: "2.1"
+    nom: "Nom de la mostra"
+    # enllaç: "/roques/I1-P2-M1"
+geobotanicaText: "Una o dues frases de geobotànica (sense modal)."
+---

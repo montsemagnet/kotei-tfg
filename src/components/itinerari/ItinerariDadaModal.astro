@@ -238,7 +238,7 @@ const panelCloseClass =
                         media={item}
                         zoomId={`${zoomId}-section-${sectionIndex}-items-${itemIndex}`}
                         class="my-0"
-                        fill={section.mediaLayout === "grid"}
+                        fill={section.mediaLayout === "grid" && item.compact !== true}
                       />
                     ))}
                     {

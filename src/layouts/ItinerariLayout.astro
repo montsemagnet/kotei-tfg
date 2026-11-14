@@ -7,6 +7,7 @@ import Text from "@/components/fundations/elements/Text.astro";
 import TitleIconTrigger from "@/components/fundations/elements/TitleIconTrigger.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import ItinerariHeroVideo from "@/components/itinerari/ItinerariHeroVideo.astro";
+import ItinerariIntroOverlay from "@/components/itinerari/ItinerariIntroOverlay.astro";
 import ItinerariSau from "@/components/itinerari/itinerari-sau.astro";
 import ItinerariVideoModal from "@/components/itinerari/ItinerariVideoModal.astro";
 import ItinerariPaleogeologiaModal from "@/components/itinerari/ItinerariPaleogeologiaModal.astro";
@@ -183,6 +184,14 @@ const mapesItems = [
   pageTitle={frontmatter.title}
   description={frontmatter.description}
 >
+  {
+    frontmatter.introCinematica && (
+      <ItinerariIntroOverlay
+        src={withBase(frontmatter.introCinematica.publicSrc)}
+        title={frontmatter.introCinematica.alt}
+      />
+    )
+  }
   <section>
     <div data-text-size-enabled>
     {
@@ -243,6 +252,28 @@ const mapesItems = [
             )
           }
         </Text>
+        {
+          frontmatter.introCinematica && (
+            <button
+              type="button"
+              data-itinerari-intro-replay
+              class="mt-4 inline-flex items-center gap-2 rounded-xl border-0 bg-transparent p-1 text-sm font-medium text-[#1E6B42] transition hover:opacity-80 sm:mt-5 dark:text-accent-400"
+              aria-label={frontmatter.introCinematica.enllacLabel ?? "Vídeo-intro"}
+              title={frontmatter.introCinematica.enllacLabel ?? "Vídeo-intro"}
+            >
+              <img
+                src={withBase("/images/ui/video-intro.png")}
+                alt=""
+                width="40"
+                height="40"
+                class="size-10 sm:size-12"
+              />
+              <span class="hidden uppercase tracking-[0.14em] sm:inline">
+                {frontmatter.introCinematica.enllacLabel ?? "Vídeo-intro"}
+              </span>
+            </button>
+          )
+        }
       </div>
 
         {

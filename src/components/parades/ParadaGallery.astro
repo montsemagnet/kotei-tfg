@@ -12,12 +12,17 @@ const overlayCloseClass =
 const overlayIconClass =
   "itinerari-overlay-close itinerari-zoom-tool inline-flex size-10 items-center justify-center p-0";
 const hasMany = fotos.length > 1;
+const isSingle = fotos.length === 1;
 ---
 
 <div data-aos="fade-up" data-aos-duration="1000">
   <div
-    class="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-[repeat(var(--gallery-n),minmax(0,1fr))]"
-    style={`--gallery-n: ${fotos.length};`}
+    class:list={[
+      "grid gap-2",
+      isSingle
+        ? "max-w-[16rem] grid-cols-1 sm:max-w-[18rem]"
+        : "grid-cols-3 sm:grid-cols-4 lg:grid-cols-8",
+    ]}
   >
     {
       fotos.map((foto, index) => (
@@ -32,8 +37,8 @@ const hasMany = fotos.length > 1;
           <Image
             src={foto.url}
             alt={foto.alt}
-            width={400}
-            height={400}
+            width={240}
+            height={240}
             class="w-full aspect-square object-cover hover:opacity-90 transition-opacity"
           />
         </button>

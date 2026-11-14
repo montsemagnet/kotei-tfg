@@ -5,6 +5,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import ParadaGallery from "@/components/parades/ParadaGallery.astro";
+import ItinerariZoom from "@/components/itinerari/ItinerariZoom.astro";
 import ItinerariDadaModal from "@/components/itinerari/ItinerariDadaModal.astro";
 import ItinerariModalTextSizeControls from "@/components/itinerari/ItinerariModalTextSizeControls.astro";
 import GlossariSection from "@/components/global/GlossariSection.astro";
@@ -45,7 +46,13 @@ const paradaNavLink =
   "uppercase text-base-500 hover:text-base-900 dark:hover:text-white transition-colors inline-flex items-center gap-1";
 
 const geologiaModalId = `parada-geologia-${slug}`;
+const mapaZoomId = `parada-mapa-${slug}`;
 const mapaHref = frontmatter.mapaUrl ? withBase(frontmatter.mapaUrl) : undefined;
+const mapaLabel = frontmatter.mapaLabel ?? "Mapa";
+const mapaDescripcio = frontmatter.mapaDescripcio ?? mapaLabel;
+const mapaIsStaticImage = Boolean(
+  frontmatter.mapaUrl && /\.(png|jpe?g|webp|gif)$/i.test(frontmatter.mapaUrl),
+);
 const geologiaResum = String(frontmatter.geologia?.resum ?? "")
   .split(/\n\s*\n/)
   .map((paragraf) => paragraf.trim())
@@ -223,7 +230,28 @@ const iconImgClass = "size-10";
                 </Text>
               </div>
               {
-                mapaHref ? (
+                mapaHref && mapaIsStaticImage ? (
+                  <ItinerariZoom zoomId={mapaZoomId}>
+                    <button
+                      type="button"
+                      data-itinerari-zoom
+                      data-zoom-badge="off"
+                      data-full-src={mapaHref}
+                      data-alt={mapaDescripcio}
+                      data-caption={mapaDescripcio}
+                      class="mt-1 flex shrink-0 flex-col items-center gap-1 border-0 bg-transparent p-0 text-[#1E6B42] cursor-pointer"
+                      title="Obrir el mapa de la parada"
+                      aria-label={`Ampliar: ${mapaLabel}`}
+                    >
+                      <span class={iconButtonClass}>
+                        <img src={icon("triptic.png")} alt="" width="48" height="48" class={iconImgClass} />
+                      </span>
+                      <span class="text-xs font-medium uppercase tracking-[0.16em]">
+                        {mapaLabel}
+                      </span>
+                    </button>
+                  </ItinerariZoom>
+                ) : mapaHref ? (
                   <a
                     href={mapaHref}
                     target="_blank"
@@ -235,7 +263,7 @@ const iconImgClass = "size-10";
                       <img src={icon("triptic.png")} alt="" width="48" height="48" class={iconImgClass} />
                     </span>
                     <span class="text-xs font-medium uppercase tracking-[0.16em]">
-                      Mapa
+                      {mapaLabel}
                     </span>
                   </a>
                 ) : (
@@ -291,6 +319,8 @@ const iconImgClass = "size-10";
               }
             </section>
 
+            {
+              (frontmatter.geobotanicaText || frontmatter.analisiFlora?.resum) && (
             <section>
               <h2 class="flex items-center gap-3">
                 <span class={iconButtonClass} aria-hidden="true">
@@ -318,6 +348,8 @@ const iconImgClass = "size-10";
                 {geobotanicaResum}
               </Text>
             </section>
+              )
+            }
           </div>
         </div>
 
@@ -344,6 +376,7 @@ const iconImgClass = "size-10";
             `Geologia — ${frontmatter.title}`
           }
           intro={frontmatter.geologia.intro}
+          introMedia={frontmatter.geologia.introMedia}
           sections={frontmatter.geologia.sections ?? []}
         />
       )

@@ -169,8 +169,8 @@ const overlayIconClass =
 
     const thumb = btn.querySelector("img");
     const fullSrc =
-      (thumb instanceof HTMLImageElement ? thumb.currentSrc || thumb.src : "") ||
       btn.dataset.fullSrc ||
+      (thumb instanceof HTMLImageElement ? thumb.currentSrc || thumb.src : "") ||
       "";
     if (!fullSrc) return;
 
@@ -387,11 +387,11 @@ const overlayIconClass =
     cursor: default;
   }
 
-  button[data-itinerari-zoom]:has(img) {
+  button[data-itinerari-zoom]:has(img):not([data-zoom-badge="off"]) {
     position: relative;
   }
 
-  button[data-itinerari-zoom]:has(img)::after {
+  button[data-itinerari-zoom]:has(img):not([data-zoom-badge="off"])::after {
     content: "";
     position: absolute;
     right: 0.6rem;

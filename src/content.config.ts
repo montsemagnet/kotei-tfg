@@ -394,6 +394,16 @@ const itineraris = defineCollection({
           modalLabel: z.string().optional(),
         })
         .optional(),
+      /** Vídeo a pantalla completa en entrar a l'itinerari, amb botó per saltar-lo */
+      introCinematica: z
+        .object({
+          publicSrc: z.string(),
+          alt: z.string(),
+          /** Etiqueta de l'enllaç a la pàgina per tornar a veure l'intro */
+          enllacLabel: z.string().optional(),
+          enllacDescripcio: z.string().optional(),
+        })
+        .optional(),
       /** Fitxer KMZ/KML de la ruta per descarregar i obrir al mòbil */
       rutaMobil: z
         .object({
@@ -471,7 +481,7 @@ const parades = defineCollection({
             alt: z.string(),
           }),
         )
-        .max(8)
+        .max(12)
         .optional(),
       /** Ruta interna (/mapa-…) o URL absoluta (https://…). Ometre si la parada no té mapa. */
       mapaUrl: z.string().optional(),
@@ -500,6 +510,7 @@ const parades = defineCollection({
         .object({
           resum: z.string().optional(),
           intro: z.string().optional(),
+          introMedia: modalContentSchema(image).shape.introMedia,
           modalLabel: z.string().optional(),
           sections: modalContentSchema(image).shape.sections.optional(),
           /** Diversos modals de geologia (p. ex. Geologia I / II). Si hi ha `parts`, s'usen en lloc de intro+sections. */

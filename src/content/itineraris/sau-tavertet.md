@@ -15,6 +15,11 @@ video:
   ambSo: true
   enModal: true
   modalLabel: "Recorregut aeri"
+introCinematica:
+  publicSrc: "/videos/itineraris/sau-tavertet/intro-cingles.mp4"
+  alt: "Vol de dron d'acostament als cingles de Tavertet, introducció a l'itinerari Sau–Tavertet"
+  enllacLabel: "Vídeo-intro"
+  enllacDescripcio: "Vol de dron d'acostament als cingles de Tavertet. Es pot tornar a veure a pantalla completa."
 altimetria:
   label: "Altimetria del trajecte"
   description: "Perfil d'elevació del recorregut des de la Presa de Sau fins a Tavertet: elevació mínima 428 m, mitjana 645 m i màxima 869 m, amb un desnivell positiu acumulat de +614 m."

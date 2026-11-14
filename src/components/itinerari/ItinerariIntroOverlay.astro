@@ -1,0 +1,196 @@
+---
+interface Props {
+  src: string;
+  title: string;
+}
+
+const { src, title } = Astro.props;
+---
+
+<script is:inline>
+  try {
+    const force = /(?:\?|&)intro(?:&|=|$)/.test(location.search);
+    const skipMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let fromParada = false;
+    try {
+      fromParada = new URL(document.referrer).pathname.includes("/parades/");
+    } catch {
+      fromParada = false;
+    }
+    if (!force && (skipMotion || fromParada)) {
+      document.documentElement.classList.add("itinerari-intro-skip");
+    } else {
+      document.documentElement.classList.add("itinerari-intro-pending");
+    }
+  } catch {
+    document.documentElement.classList.add("itinerari-intro-pending");
+  }
+</script>
+
+<div
+  id="itinerari-intro"
+  class="itinerari-intro fixed inset-0 z-[300] bg-black"
+  data-itinerari-intro
+  role="dialog"
+  aria-modal="true"
+  aria-label={title}
+>
+  <video
+    class="itinerari-intro__video pointer-events-none absolute inset-0 size-full bg-black object-contain"
+    src={src}
+    muted
+    autoplay
+    playsinline
+    preload="auto"
+    disablepictureinpicture
+    disableremoteplayback
+    controlslist="nodownload nofullscreen noremoteplayback noplaybackrate"
+  >
+  </video>
+
+  <button
+    type="button"
+    class="itinerari-intro__skip pointer-events-auto absolute z-50 rounded-full border-0 bg-white/90 px-5 py-2.5 text-sm font-medium uppercase tracking-[0.14em] text-base-900 shadow-lg cursor-pointer transition hover:bg-white"
+  >
+    Saltar intro
+  </button>
+</div>
+
+<script>
+  const overlay = document.querySelector("[data-itinerari-intro]");
+  if (overlay instanceof HTMLElement) {
+    document.body.appendChild(overlay);
+
+    const video = overlay.querySelector("video");
+    const skip = overlay.querySelector(".itinerari-intro__skip");
+    const forceIntro = new URLSearchParams(window.location.search).has("intro");
+    const skipIntro = document.documentElement.classList.contains("itinerari-intro-skip");
+
+    const closeIntro = () => {
+      if (video instanceof HTMLVideoElement) {
+        video.pause();
+        video.currentTime = 0;
+      }
+      overlay.classList.add("is-done");
+      document.documentElement.classList.remove("itinerari-intro-pending");
+      document.documentElement.classList.add("itinerari-intro-skip");
+    };
+
+    const unmute = () => {
+      if (!(video instanceof HTMLVideoElement)) return;
+      video.muted = false;
+      void video.play().catch(() => {});
+    };
+
+    const tryPlay = async () => {
+      if (!(video instanceof HTMLVideoElement)) return;
+      video.muted = true;
+      try {
+        await video.play();
+      } catch {
+        return;
+      }
+      video.muted = false;
+      try {
+        await video.play();
+      } catch {
+        video.muted = false;
+        void video.play().catch(() => {});
+      }
+    };
+
+    const replayIntro = () => {
+      document.documentElement.classList.remove("itinerari-intro-skip");
+      document.documentElement.classList.add("itinerari-intro-pending");
+      overlay.classList.remove("is-done");
+      if (!overlay.isConnected) document.body.appendChild(overlay);
+      if (video instanceof HTMLVideoElement) {
+        video.currentTime = 0;
+        video.muted = false;
+        void video.play().catch(() => {
+          void tryPlay();
+        });
+      }
+    };
+
+    if (video instanceof HTMLVideoElement) {
+      video.addEventListener("ended", closeIntro);
+      skip?.addEventListener(
+        "click",
+        (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          closeIntro();
+        },
+        true,
+      );
+      overlay.addEventListener("click", (event) => {
+        if (event.target instanceof Element && event.target.closest(".itinerari-intro__skip")) {
+          return;
+        }
+        if (video.muted) unmute();
+      });
+      document.addEventListener("keydown", (event) => {
+        if (!overlay.isConnected || overlay.classList.contains("is-done")) return;
+        if (event.key === "Escape") {
+          event.preventDefault();
+          closeIntro();
+          return;
+        }
+        if (video.muted && event.key !== "Tab") unmute();
+      });
+      document.addEventListener("click", (event) => {
+        if (!(event.target instanceof Element)) return;
+        if (!event.target.closest("[data-itinerari-intro-replay]")) return;
+        event.preventDefault();
+        replayIntro();
+      });
+
+      if (skipIntro && !forceIntro) {
+        closeIntro();
+      } else if (video.readyState >= 2) {
+        void tryPlay();
+      } else {
+        video.addEventListener("canplay", () => void tryPlay(), { once: true });
+      }
+    }
+  }
+</script>
+
+<style>
+  .itinerari-intro {
+    transition: opacity 0.4s ease;
+  }
+
+  .itinerari-intro.is-done {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .itinerari-intro__skip {
+    top: max(2.5rem, calc(env(safe-area-inset-top, 0px) + 1.5rem));
+    right: max(2.5rem, calc(env(safe-area-inset-right, 0px) + 1.5rem));
+  }
+
+  .itinerari-intro__video::-webkit-media-controls,
+  .itinerari-intro__video::-webkit-media-controls-enclosure,
+  .itinerari-intro__video::-webkit-media-controls-panel,
+  .itinerari-intro__video::-webkit-media-controls-start-playback-button {
+    display: none !important;
+    opacity: 0 !important;
+  }
+
+  :global(html.itinerari-intro-pending body) {
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+
+  :global(html.itinerari-intro-pending body > a),
+  :global(html.itinerari-intro-pending body > div.fixed:not(.itinerari-intro)),
+  :global(html.itinerari-intro-pending astro-dev-toolbar),
+  :global(html.itinerari-intro-pending .skiptranslate) {
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>

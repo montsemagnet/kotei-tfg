@@ -96,10 +96,13 @@ const paradesDisponibles = new Set(
 const paradesMapData = SAU_TAVERTET_PARADES.map((parada) => ({
   svgIds: parada.svgIds,
   slug: parada.slug,
+  num: parada.num,
   label: paradaDisplayLabel(parada),
   preview: resolveParadaPreviewUrl(parada.slug, parada.preview),
   disponible: paradesDisponibles.has(parada.slug),
 }));
+
+const pinIconSrc = publicAssetUrl("/images/parades/ui/pin-mapa.png");
 
 const mapaSvg = fs.existsSync(MAPA_SVG_PATH)
   ? fs
@@ -146,34 +149,6 @@ const mapaSvg = fs.existsSync(MAPA_SVG_PATH)
 </div>
 
 <style>
-  @keyframes parada-spotlight-circle {
-    0%,
-    100% {
-      fill: rgba(187, 247, 208, 0.98);
-      stroke: #15803d;
-      stroke-width: 4;
-    }
-    50% {
-      fill: rgba(74, 222, 128, 1);
-      stroke: #14532d;
-      stroke-width: 5;
-    }
-  }
-
-  @keyframes parada-spotlight-ring {
-    0%,
-    100% {
-      stroke: #22c55e;
-      stroke-width: 4;
-      opacity: 0.85;
-    }
-    50% {
-      stroke: #86efac;
-      stroke-width: 7;
-      opacity: 1;
-    }
-  }
-
   .itinerari-sau-map :global(.parada-hotspot) {
     outline: none;
     pointer-events: all;
@@ -187,131 +162,56 @@ const mapaSvg = fs.existsSync(MAPA_SVG_PATH)
     cursor: help;
   }
 
-  .itinerari-sau-map :global(.parada-ring) {
-    fill: none;
-    pointer-events: none;
-    opacity: 0.25;
-    stroke: #1f5a45;
-    stroke-width: 2;
-  }
-
   .itinerari-sau-map :global(.parada-hit-area) {
-    fill: rgba(31, 90, 69, 0.14);
+    fill: transparent;
     stroke: none;
-    opacity: 1;
+    pointer-events: all;
   }
 
-  .itinerari-sau-map :global(.parada-circle) {
-    fill: rgba(255, 252, 252, 0.88);
-    stroke: #1f5a45;
-    stroke-width: 3;
+  .itinerari-sau-map :global(.parada-pin) {
+    pointer-events: none;
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+    opacity: 0;
+    transform: scale(0.12);
     transition:
-      fill 0.35s ease,
-      stroke 0.35s ease,
-      stroke-width 0.35s ease,
-      opacity 0.35s ease;
+      opacity 0.4s ease,
+      transform 0.4s ease;
   }
 
-  .itinerari-sau-map
-    :global(
-      .parada-hotspot:not(.parada-hotspot--spotlight):not(:hover):not(:focus-visible)
-        .parada-circle
-    ) {
-    stroke-width: 2;
-    opacity: 0.5;
+  .itinerari-sau-map :global(.parada-pin-label) {
+    pointer-events: none;
   }
 
-  .itinerari-sau-map
-    :global(
-      .parada-hotspot--disponible:not(.parada-hotspot--spotlight):not(:hover):not(
-          :focus-visible
-        )
-        .parada-circle
-    ) {
-    fill: rgba(255, 255, 255, 0.38);
-    stroke: #1f5a45;
-  }
-
-  .itinerari-sau-map
-    :global(
-      .parada-hotspot--pendent:not(.parada-hotspot--spotlight):not(:hover):not(
-          :focus-visible
-        )
-        .parada-circle
-    ) {
-    fill: rgba(255, 255, 255, 0.32);
-    stroke: #9ca3af;
-    stroke-dasharray: 6 4;
-  }
-
-  .itinerari-sau-map :global(.parada-hotspot--spotlight .parada-circle) {
-    animation: parada-spotlight-circle 1.1s ease-in-out infinite;
+  .itinerari-sau-map :global(.parada-hotspot--open .parada-pin),
+  .itinerari-sau-map :global(.parada-hotspot:hover .parada-pin),
+  .itinerari-sau-map :global(.parada-hotspot:focus-visible .parada-pin) {
     opacity: 1;
-    stroke-dasharray: none;
+    transform: scale(1);
   }
 
-  .itinerari-sau-map :global(.parada-hotspot--spotlight .parada-ring) {
-    animation: parada-spotlight-ring 1.1s ease-in-out infinite;
+  .itinerari-sau-map :global(.parada-hotspot--pendent.parada-hotspot--open .parada-pin),
+  .itinerari-sau-map :global(.parada-hotspot--pendent:hover .parada-pin),
+  .itinerari-sau-map :global(.parada-hotspot--pendent:focus-visible .parada-pin) {
+    filter: grayscale(0.65);
   }
 
-  .itinerari-sau-map :global(.parada-hotspot--pendent .parada-circle) {
-    stroke-dasharray: 6 4;
-    stroke: #6b7280;
-    fill: rgba(255, 255, 255, 0.65);
+  .itinerari-sau-map :global(.parada-hotspot--pendent .parada-pin-label) {
+    fill: #6b7280;
   }
 
-  .itinerari-sau-map :global(.parada-hotspot--pendent:hover .parada-hit-area),
-  .itinerari-sau-map :global(.parada-hotspot--pendent:focus-visible .parada-hit-area) {
-    fill: rgba(107, 114, 128, 0.2);
-  }
-
-  .itinerari-sau-map :global(.parada-hotspot--disponible:hover .parada-hit-area),
-  .itinerari-sau-map :global(.parada-hotspot--disponible:focus-visible .parada-hit-area) {
-    fill: rgba(31, 90, 69, 0.32);
-  }
-
-  .itinerari-sau-map :global(.parada-hotspot:hover .parada-circle),
-  .itinerari-sau-map :global(.parada-hotspot:focus-visible .parada-circle) {
-    animation: none;
-    fill: rgba(187, 247, 208, 0.98);
-    stroke: #15803d;
-    stroke-width: 4;
-  }
-
-  .itinerari-sau-map :global(.parada-hotspot:hover .parada-ring),
-  .itinerari-sau-map :global(.parada-hotspot:focus-visible .parada-ring) {
-    animation: none;
-    stroke: #16a34a;
-    stroke-width: 6;
-    opacity: 1;
-  }
-
-  .itinerari-sau-map :global(.parada-hotspot--disponible:active .parada-circle) {
-    fill: #86efac;
-    stroke: #14532d;
+  .itinerari-sau-map :global(.parada-hotspot--disponible:active .parada-pin) {
+    transform: scale(0.96);
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .itinerari-sau-map :global(.parada-hotspot--spotlight .parada-circle),
-    .itinerari-sau-map :global(.parada-hotspot--spotlight .parada-ring) {
-      animation: none;
-    }
-
-    .itinerari-sau-map :global(.parada-hotspot--disponible .parada-circle) {
-      fill: rgba(220, 252, 231, 0.95);
-      stroke: #15803d;
-      opacity: 1;
-    }
-
-    .itinerari-sau-map :global(.parada-hotspot--pendent .parada-circle) {
-      fill: rgba(255, 255, 255, 0.75);
-      stroke: #6b7280;
-      opacity: 1;
+    .itinerari-sau-map :global(.parada-pin) {
+      transition: none;
     }
   }
 </style>
 
-<script define:vars={{ paradesMapData, baseUrl: import.meta.env.BASE_URL }}>
+<script define:vars={{ paradesMapData, pinIconSrc, baseUrl: import.meta.env.BASE_URL }}>
   const SVG_NS = "http://www.w3.org/2000/svg";
   const XLINK_NS = "http://www.w3.org/1999/xlink";
 
@@ -335,13 +235,48 @@ const mapaSvg = fs.existsSync(MAPA_SVG_PATH)
     return clone;
   }
 
-  function prepareMarkerElement(el) {
-    el.classList.add("parada-circle");
-    const opacityMatch = el.getAttribute("style")?.match(/opacity:\s*([\d.]+)/);
-    el.removeAttribute("style");
-    if (opacityMatch) {
-      el.setAttribute("opacity", opacityMatch[1]);
-    }
+  function pinLabel(num) {
+    return num === "A" ? "A1" : `P${num}`;
+  }
+
+  function createPinMarker(ellipse, meta) {
+    const cx = parseFloat(ellipse.getAttribute("cx") || "0");
+    const cy = parseFloat(ellipse.getAttribute("cy") || "0");
+    const rx = parseFloat(ellipse.getAttribute("rx") || "80");
+    const width = rx * 1.28;
+    const height = width * (268 / 189);
+    const x = cx - width / 2;
+    const y = cy - height + rx * 0.18;
+
+    const g = document.createElementNS(SVG_NS, "g");
+    g.classList.add("parada-pin");
+    g.setAttribute("pointer-events", "none");
+
+    const image = document.createElementNS(SVG_NS, "image");
+    image.setAttribute("href", pinIconSrc);
+    image.setAttributeNS(XLINK_NS, "href", pinIconSrc);
+    image.setAttribute("x", String(x));
+    image.setAttribute("y", String(y));
+    image.setAttribute("width", String(width));
+    image.setAttribute("height", String(height));
+    image.setAttribute("preserveAspectRatio", "xMidYMid meet");
+    image.classList.add("parada-pin-icon");
+
+    const text = document.createElementNS(SVG_NS, "text");
+    text.textContent = pinLabel(meta.num);
+    text.setAttribute("x", String(cx));
+    text.setAttribute("y", String(y + height * 0.4));
+    text.setAttribute("text-anchor", "middle");
+    text.setAttribute("dominant-baseline", "central");
+    text.setAttribute("font-size", String(Math.round(width * 0.26)));
+    text.setAttribute("font-weight", "700");
+    text.setAttribute("fill", "#1E6B42");
+    text.setAttribute("font-family", "ui-sans-serif, system-ui, sans-serif");
+    text.classList.add("parada-pin-label");
+
+    g.appendChild(image);
+    g.appendChild(text);
+    return g;
   }
 
   function findParadaTarget(svg, svgIds) {
@@ -390,23 +325,21 @@ const mapaSvg = fs.existsSync(MAPA_SVG_PATH)
 
   function wrapParadaHotspot(svg, target, meta) {
     const anchor = buildHotspotAnchor(meta);
-    const ring = cloneEllipseLike(target, "parada-ring");
     const hitArea = cloneEllipseLike(target, "parada-hit-area");
 
     if (hitArea instanceof SVGEllipseElement) {
       const rx = parseFloat(hitArea.getAttribute("rx") || "0");
       const ry = parseFloat(hitArea.getAttribute("ry") || "0");
-      hitArea.setAttribute("rx", String(rx * 1.2));
-      hitArea.setAttribute("ry", String(ry * 1.2));
+      hitArea.setAttribute("rx", String(rx * 1.15));
+      hitArea.setAttribute("ry", String(ry * 1.15));
     }
 
-    if (ring) anchor.appendChild(ring);
     if (hitArea) anchor.appendChild(hitArea);
+    if (target instanceof SVGEllipseElement) {
+      anchor.appendChild(createPinMarker(target, meta));
+    }
 
     target.parentNode?.removeChild(target);
-    prepareMarkerElement(target);
-    anchor.appendChild(target);
-
     getHotspotLayer(svg).appendChild(anchor);
     return anchor;
   }
@@ -438,9 +371,9 @@ const mapaSvg = fs.existsSync(MAPA_SVG_PATH)
       hotspot.setAttribute("tabindex", "0");
     }
 
-    const marker = hotspot.querySelector(".parada-circle");
-    if (marker instanceof SVGGraphicsElement) {
-      prepareMarkerElement(marker);
+    const labelEl = hotspot.querySelector(".parada-pin-label");
+    if (labelEl) {
+      labelEl.textContent = pinLabel(meta.num);
     }
   }
 
@@ -456,12 +389,13 @@ const mapaSvg = fs.existsSync(MAPA_SVG_PATH)
     });
   }
 
-  const paradaSpotlightTimers = new WeakMap();
+  const paradaCycleTimers = new WeakMap();
 
-  function startParadaSpotlight(mapRoot, hotspots) {
-    const existingTimer = paradaSpotlightTimers.get(mapRoot);
-    if (existingTimer) {
-      window.clearInterval(existingTimer);
+  function startParadaCycle(mapRoot, hotspots) {
+    const existing = paradaCycleTimers.get(mapRoot);
+    if (existing) {
+      window.clearTimeout(existing.timeoutId);
+      existing.cleanup?.();
     }
 
     const ordered = hotspots.filter(
@@ -471,22 +405,71 @@ const mapaSvg = fs.existsSync(MAPA_SVG_PATH)
     );
     if (ordered.length === 0) return;
 
+    const closeAll = () => {
+      ordered.forEach((hotspot) => hotspot.classList.remove("parada-hotspot--open"));
+    };
+
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      ordered.forEach((hotspot) => hotspot.classList.remove("parada-hotspot--spotlight"));
+      closeAll();
       return;
     }
 
+    const OPEN_MS = 1400;
+    const CLOSED_MS = 500;
     let index = 0;
+    let paused = false;
+    let timeoutId = 0;
 
-    const highlightNext = () => {
-      ordered.forEach((hotspot) => hotspot.classList.remove("parada-hotspot--spotlight"));
-      ordered[index]?.classList.add("parada-hotspot--spotlight");
-      index = (index + 1) % ordered.length;
+    const schedule = (fn, ms) => {
+      timeoutId = window.setTimeout(fn, ms);
+      paradaCycleTimers.set(mapRoot, { timeoutId, cleanup });
     };
 
-    highlightNext();
-    const timerId = window.setInterval(highlightNext, 1100);
-    paradaSpotlightTimers.set(mapRoot, timerId);
+    const runOpen = () => {
+      if (paused) return;
+      closeAll();
+      ordered[index]?.classList.add("parada-hotspot--open");
+      schedule(runClosed, OPEN_MS);
+    };
+
+    const runClosed = () => {
+      if (paused) return;
+      closeAll();
+      index = (index + 1) % ordered.length;
+      schedule(runOpen, CLOSED_MS);
+    };
+
+    const pause = () => {
+      paused = true;
+      window.clearTimeout(timeoutId);
+      closeAll();
+    };
+
+    const resume = () => {
+      if (!paused) return;
+      paused = false;
+      schedule(runOpen, 280);
+    };
+
+    ordered.forEach((hotspot) => {
+      hotspot.addEventListener("mouseenter", pause);
+      hotspot.addEventListener("focus", pause);
+      hotspot.addEventListener("mouseleave", resume);
+      hotspot.addEventListener("blur", resume);
+    });
+
+    function cleanup() {
+      window.clearTimeout(timeoutId);
+      ordered.forEach((hotspot) => {
+        hotspot.removeEventListener("mouseenter", pause);
+        hotspot.removeEventListener("focus", pause);
+        hotspot.removeEventListener("mouseleave", resume);
+        hotspot.removeEventListener("blur", resume);
+      });
+    }
+
+    paradaCycleTimers.set(mapRoot, { timeoutId, cleanup });
+    runOpen();
   }
 
   function initItinerariSauMap() {
@@ -569,7 +552,7 @@ const mapaSvg = fs.existsSync(MAPA_SVG_PATH)
         hotspot.addEventListener("blur", hidePreview);
       });
 
-      startParadaSpotlight(mapRoot, hotspots);
+      startParadaCycle(mapRoot, hotspots);
     });
   }
 

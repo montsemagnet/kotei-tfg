@@ -48,6 +48,12 @@ const { src, title } = Astro.props;
   >
   </video>
 
+  <p
+    class="itinerari-intro__sound-hint pointer-events-none absolute bottom-8 left-1/2 z-50 hidden -translate-x-1/2 rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-base-900 shadow-lg"
+  >
+    Clica per activar el so
+  </p>
+
   <button
     type="button"
     class="itinerari-intro__play pointer-events-auto absolute top-1/2 left-1/2 z-50 hidden size-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-0 bg-white/90 text-3xl text-base-900 shadow-lg cursor-pointer"
@@ -72,6 +78,7 @@ const { src, title } = Astro.props;
     const video = overlay.querySelector("video");
     const skip = overlay.querySelector(".itinerari-intro__skip");
     const playBtn = overlay.querySelector(".itinerari-intro__play");
+    const soundHint = overlay.querySelector(".itinerari-intro__sound-hint");
     const forceIntro = new URLSearchParams(window.location.search).has("intro");
     const skipIntro = document.documentElement.classList.contains("itinerari-intro-skip");
 
@@ -89,50 +96,62 @@ const { src, title } = Astro.props;
       }
     };
 
+    const showSoundHint = () => {
+      if (soundHint instanceof HTMLElement && video instanceof HTMLVideoElement && video.muted) {
+        soundHint.classList.remove("hidden");
+      }
+    };
+
+    const hideSoundHint = () => {
+      if (soundHint instanceof HTMLElement) soundHint.classList.add("hidden");
+    };
+
     const closeIntro = () => {
       if (video instanceof HTMLVideoElement) {
         video.pause();
         video.currentTime = 0;
       }
       hidePlay();
+      hideSoundHint();
       overlay.classList.add("is-done");
       document.documentElement.classList.remove("itinerari-intro-pending");
       document.documentElement.classList.add("itinerari-intro-skip");
     };
 
-    const startPlayback = (withSound: boolean) => {
+    const enableSound = () => {
       if (!(video instanceof HTMLVideoElement)) return;
-      video.playsInline = true;
-      video.muted = !withSound;
-      const playPromise = video.play();
-      if (playPromise) {
-        playPromise
-          .then(() => {
-            hidePlay();
-            if (withSound) video.muted = false;
-          })
-          .catch(() => {
-            if (withSound) {
-              video.muted = true;
-              void video.play().then(hidePlay).catch(showPlay);
-              return;
-            }
-            showPlay();
-          });
-      }
+      video.removeAttribute("muted");
+      video.muted = false;
+      video.volume = 1;
+      hideSoundHint();
     };
 
-    const tryPlay = () => startPlayback(true);
+    const playMuted = () => {
+      if (!(video instanceof HTMLVideoElement)) return;
+      video.muted = true;
+      video.playsInline = true;
+      void video.play().then(() => {
+        hidePlay();
+        showSoundHint();
+      }).catch(showPlay);
+    };
+
+    const playWithSound = () => {
+      if (!(video instanceof HTMLVideoElement)) return;
+      video.playsInline = true;
+      enableSound();
+      void video.play().then(hidePlay).catch(() => {
+        playMuted();
+      });
+    };
 
     const replayIntro = () => {
       document.documentElement.classList.remove("itinerari-intro-skip");
       document.documentElement.classList.add("itinerari-intro-pending");
       overlay.classList.remove("is-done");
       if (!overlay.isConnected) document.body.appendChild(overlay);
-      if (video instanceof HTMLVideoElement) {
-        video.currentTime = 0;
-        startPlayback(true);
-      }
+      if (video instanceof HTMLVideoElement) video.currentTime = 0;
+      playWithSound();
     };
 
     if (video instanceof HTMLVideoElement) {
@@ -151,14 +170,13 @@ const { src, title } = Astro.props;
       playBtn?.addEventListener("click", (event) => {
         event.preventDefault();
         event.stopPropagation();
-        startPlayback(true);
+        playWithSound();
       });
       overlay.addEventListener("click", (event) => {
         if (event.target instanceof Element && event.target.closest(".itinerari-intro__skip")) {
           return;
         }
-        if (video.paused) startPlayback(true);
-        else if (video.muted) startPlayback(true);
+        playWithSound();
       });
       document.addEventListener("keydown", (event) => {
         if (!overlay.isConnected || overlay.classList.contains("is-done")) return;
@@ -167,7 +185,8 @@ const { src, title } = Astro.props;
           closeIntro();
           return;
         }
-        if (video.paused || video.muted) startPlayback(true);
+        if (event.key === "Tab") return;
+        playWithSound();
       });
       document.addEventListener("click", (event) => {
         if (!(event.target instanceof Element)) return;
@@ -179,10 +198,10 @@ const { src, title } = Astro.props;
       if (skipIntro && !forceIntro) {
         closeIntro();
       } else if (video.readyState >= 2) {
-        tryPlay();
+        playMuted();
       } else {
-        video.addEventListener("canplay", tryPlay, { once: true });
-        video.addEventListener("loadeddata", tryPlay, { once: true });
+        video.addEventListener("canplay", playMuted, { once: true });
+        video.addEventListener("loadeddata", playMuted, { once: true });
         video.addEventListener("error", showPlay, { once: true });
       }
     }

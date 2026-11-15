@@ -15,6 +15,8 @@ interface Props {
   /** Amaga el títol visible (el vídeo ja porta el seu, p. ex. el mapa) */
   hideLabel?: boolean;
   startUnmuted?: boolean;
+  /** En acabar, es queda al darrer fotograma; cal tancar el modal a mà. */
+  holdLastFrame?: boolean;
 }
 
 const {
@@ -28,6 +30,7 @@ const {
   fit = "cover",
   hideLabel = false,
   startUnmuted,
+  holdLastFrame = false,
 } = Astro.props;
 const titleId = `${modalId}-title`;
 const panelCloseClass =
@@ -40,6 +43,7 @@ const panelCloseClass =
   aria-modal="true"
   aria-labelledby={titleId}
   data-focus-trap="true"
+  data-close-on-backdrop={holdLastFrame ? "false" : "true"}
 >
   <div
     class="itinerari-dada-panel relative my-8 w-full max-w-4xl rounded-lg bg-base-100 dark:bg-base-900 p-6 lg:p-10 shadow-xl"
@@ -66,6 +70,7 @@ const panelCloseClass =
       autoplayOnMount={false}
       fit={fit}
       startUnmuted={startUnmuted ?? sound}
+      holdLastFrame={holdLastFrame}
     />
     {
       caption && (

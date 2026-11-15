@@ -16,6 +16,8 @@ interface Props {
   fit?: "cover" | "contain";
   /** En obrir el modal, reprodueix amb so (el clic de l'usuari ho permet) */
   startUnmuted?: boolean;
+  /** En acabar, es queda al darrer fotograma en lloc de tornar al principi. */
+  holdLastFrame?: boolean;
 }
 
 const {
@@ -27,6 +29,7 @@ const {
   captionsSrc,
   fit = "cover",
   startUnmuted = sound,
+  holdLastFrame = false,
 } = Astro.props;
 const captionsHref = captionsSrc ? withBase(captionsSrc) : undefined;
 ---
@@ -38,6 +41,7 @@ const captionsHref = captionsSrc ? withBase(captionsSrc) : undefined;
   data-start-unmuted={startUnmuted ? "true" : "false"}
   data-fullscreen={allowFullscreen ? "true" : "false"}
   data-autoplay-on-mount={autoplayOnMount ? "true" : "false"}
+  data-hold-last-frame={holdLastFrame ? "true" : "false"}
 >
   <video
     class:list={[
@@ -296,9 +300,23 @@ const captionsHref = captionsSrc ? withBase(captionsSrc) : undefined;
       video.pause();
     });
 
+    const freezeLastFrame = () => {
+      if (root.dataset.holdLastFrame !== "true") return;
+      const duration = video.duration;
+      if (!Number.isFinite(duration) || duration <= 0) return;
+      const holdAt = Math.max(0, duration - 0.08);
+      if (Math.abs(video.currentTime - holdAt) > 0.02) {
+        video.currentTime = holdAt;
+      }
+      video.pause();
+    };
+
     video.addEventListener("play", updatePlaybackButton);
     video.addEventListener("pause", updatePlaybackButton);
-    video.addEventListener("ended", updatePlaybackButton);
+    video.addEventListener("ended", () => {
+      freezeLastFrame();
+      updatePlaybackButton();
+    });
 
     const updateFullscreenButton = () => {
       if (!(fullscreenBtn instanceof HTMLButtonElement)) return;

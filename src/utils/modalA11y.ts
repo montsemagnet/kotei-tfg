@@ -104,6 +104,7 @@ function ensureDialogA11yListeners(dialog: HTMLDialogElement): void {
 
   dialog.addEventListener("click", (event) => {
     if (event.target !== dialog) return;
+    if (dialog.dataset.closeOnBackdrop === "false") return;
     if (getNestedOpenDialog(dialog)) return;
     closeDialog();
   });

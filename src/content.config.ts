@@ -481,7 +481,7 @@ const parades = defineCollection({
             alt: z.string(),
           }),
         )
-        .max(12)
+        .max(16)
         .optional(),
       /** Ruta interna (/mapa-…) o URL absoluta (https://…). Ometre si la parada no té mapa. */
       mapaUrl: z.string().optional(),
@@ -493,6 +493,8 @@ const parades = defineCollection({
           alt: z.string(),
           ambSo: z.boolean().optional(),
           modalLabel: z.string().optional(),
+          /** Miniatura sota la icona del mapa. Ruta a public/. */
+          poster: z.string().optional(),
         })
         .optional(),
       pinSrc: z.string().optional(),

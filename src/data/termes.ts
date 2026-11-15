@@ -763,7 +763,9 @@ export const termes: Terme[] = [
     "categoria": "Estructura",
     "definicio": "Orientació preferencial de minerals plans —com les miques— o de bandes en roques metamòrfiques, produïda per pressió durant el metamorfisme. La foliació fa que la roca es trenqui preferentment en plans paral·lels.",
     "sinonims": [
-      "foliacions"
+      "foliacions",
+      "clivatge",
+      "clivatges"
     ]
   },
   {
@@ -1456,7 +1458,10 @@ export const termes: Terme[] = [
     "slug": "meteoritzacio",
     "terme": "Meteorització",
     "categoria": "Geomorfologia",
-    "definicio": "Alteració física i química de les roques a la superfície per agents atmosfèrics, biològics i hídrics. En granits, produeix el sauló i contribueix a l'alteració de l'aflorament i a la formació del sòl."
+    "definicio": "Alteració física i química de les roques a la superfície per agents atmosfèrics, biològics i hídrics. En granits, produeix el sauló i contribueix a l'alteració de l'aflorament i a la formació del sòl.",
+    "sinonims": [
+      "meteorització diferencial"
+    ]
   },
   {
     "slug": "monzogranit",
@@ -1983,6 +1988,231 @@ export const termes: Terme[] = [
     "definicio": "Solc o canal d'erosió profund excavat per l'aigua de pluja sobre materials tous (margues, argiles). Els xaragalls densos donen lloc a paisatges de badlands o «terres dolentes», típics de les franges margoses del Coll de Malla.",
     "sinonims": [
       "xaragalls"
+    ]
+  },
+  {
+    "slug": "acid-clorhidric",
+    "terme": "Àcid clorhídric",
+    "categoria": "Geoquímica",
+    "definicio": "Àcid (HCl) que, diluït, s'utilitza al camp per identificar carbonats: una gota sobre la roca provoca efervescència si hi ha carbonat de calci. A la parada 9, la prova de l'àcid confirma que les calcàries nummulítiques de Tavertet són carbonatades.",
+    "sinonims": [
+      "prova de l'àcid",
+      "prova de l'àcid clorhídric",
+      "àcid clorhídric diluït"
+    ]
+  },
+  {
+    "slug": "aigua-subterrania",
+    "terme": "Aigua subterrània",
+    "categoria": "Geoquímica",
+    "definicio": "Aigua que circula pels porus i les fractures de les roques, per sota de la superfície. A la parada 7, la circulació d'aigua subterrània va mobilitzar el ferro dels sediments vermells i va decolorar part dels estrats després de la sedimentació."
+  },
+  {
+    "slug": "ambient-litoral",
+    "terme": "Ambient litoral",
+    "categoria": "Sedimentologia",
+    "definicio": "Zona de transició entre el continent i el mar, afectada per onatge, marees i corrents, on es redistribueixen sorres i graves. A les parades 7 i 8, els gresos i conglomerats de la base de la Formació Tavertet registren aquest medi de transició durant la transgressió eocena.",
+    "sinonims": [
+      "ambients litorals",
+      "zona litoral",
+      "medi litoral"
+    ]
+  },
+  {
+    "slug": "balma",
+    "terme": "Balma",
+    "categoria": "Geomorfologia",
+    "definicio": "Concavitat o petit abric a la paret d'un cingle, originat per erosió diferencial entre capes de resistència desigual. Als gresos de la parada 8, les balmes i les concavitats marquen els nivells més tous dins el cingle.",
+    "sinonims": [
+      "balmes"
+    ]
+  },
+  {
+    "slug": "calcicola",
+    "terme": "Calcícola",
+    "categoria": "Geobotànica",
+    "definicio": "Planta adaptada a sòls rics en carbonat de calci, típics de calcàries i margues. A Tavertet, les calcàries nummulítiques de les parades 9 i 10 afavoreixen vegetació calcícola, en contrast amb els substrats silícics del sòcol.",
+    "sinonims": [
+      "calcícoles",
+      "plantes calcícoles"
+    ]
+  },
+  {
+    "slug": "calcifuga",
+    "terme": "Calcífuga",
+    "categoria": "Geobotànica",
+    "definicio": "Planta que prefereix sòls pobres en carbonats, sovint àcids o silícics. A la parada 7, els materials vermells continentals poden acollir espècies calcífugues, diferents de les calcícoles de les calcàries marines.",
+    "sinonims": [
+      "calcífugues",
+      "plantes calcífugues"
+    ]
+  },
+  {
+    "slug": "calcita",
+    "terme": "Calcita",
+    "categoria": "Mineralogia",
+    "definicio": "Mineral de carbonat de calci (CaCO₃), principal constituent de les calcàries. A la parada 10 omple diàclasis en forma de veta blanca, precipitada a partir de fluids que circulaven per les fractures."
+  },
+  {
+    "slug": "cimentacio",
+    "terme": "Cimentació",
+    "categoria": "Sedimentologia",
+    "definicio": "Procés diagenètic pel qual minerals precipiten entre els grans d'un sediment i el transformen en roca compacta. La cimentació dóna resistència als gresos de la Formació Barcons, que a la parada 12 protegeixen el cim del turó testimoni.",
+    "sinonims": [
+      "cimentats",
+      "cimentades",
+      "cimentat",
+      "cimentada"
+    ]
+  },
+  {
+    "slug": "efervescencia",
+    "terme": "Efervescència",
+    "categoria": "Geoquímica",
+    "definicio": "Despreniment de bombolles de diòxid de carboni (CO₂) quan l'àcid reacciona amb un carbonat. A la parada 9, l'efervescència de la prova de l'àcid distingeix la calcària nummulítica dels gresos siliciclàstics que no reaccionen."
+  },
+  {
+    "slug": "escorrentia-superficial",
+    "terme": "Escorrentia superficial",
+    "categoria": "Geomorfologia",
+    "definicio": "Aigua de pluja que no s'infiltra i circula per la superfície, arrossegant partícules fines. Sobre les margues de la parada 11 excava solcs i xaragalls i, si la vegetació és escassa, pot originar badlands.",
+    "sinonims": [
+      "escorrentia"
+    ]
+  },
+  {
+    "slug": "estratificacio-encreuada",
+    "terme": "Estratificació encreuada",
+    "categoria": "Sedimentologia",
+    "definicio": "Estructura sedimentària formada per làmines inclinades dins d'un estrat, generades pel desplaçament de dunes o ondulacions de sorra. A la parada 8, als gresos de la Formació Tavertet, és coherent amb un medi litoral afectat per corrents i onatge.",
+    "sinonims": [
+      "estratificació creuada",
+      "làmines inclinades"
+    ]
+  },
+  {
+    "slug": "infiltracio",
+    "terme": "Infiltració",
+    "categoria": "Geomorfologia",
+    "definicio": "Entrada d'aigua al subsòl a través de porus i fractures. A la parada 10, les diàclasis de les calcàries de Tavertet canalitzen la infiltració, afavoreixen la dissolució de la roca i concentren sòl i vegetació."
+  },
+  {
+    "slug": "matriu",
+    "terme": "Matriu",
+    "categoria": "Sedimentologia",
+    "definicio": "Material fi que envolta els clasts o còdols d'una roca detrítica. Als conglomerats de la parada 8, una matriu sorrenca indica transport i retraballament en un medi litoral.",
+    "sinonims": [
+      "matriu sorrenca"
+    ]
+  },
+  {
+    "slug": "minerals-ferromagnesians",
+    "terme": "Minerals ferromagnesians",
+    "categoria": "Mineralogia",
+    "definicio": "Minerals rics en ferro i magnesi, generalment de color fosc (biotita, hornblenda, olivina). Al dic màfic de l'A1 donen la tonalitat fosca, en contrast amb l'aplita, rica en quars i feldespats.",
+    "sinonims": [
+      "ferromagnesians",
+      "minerals femílics"
+    ]
+  },
+  {
+    "slug": "modelat-alveolar",
+    "terme": "Modelat alveolar",
+    "categoria": "Geomorfologia",
+    "definicio": "Conjunt de cavitats petites i agrupades a la superfície de la roca, originades per meteorització diferencial. A la parada 6, el modelat alveolar acompanya els tafonis a la paret de conglomerats i gresos vermells.",
+    "sinonims": [
+      "alveols",
+      "cavitats alveolars"
+    ]
+  },
+  {
+    "slug": "oxids-de-ferro",
+    "terme": "Òxids de ferro",
+    "categoria": "Mineralogia",
+    "definicio": "Minerals formats per ferro i oxigen, sovint amb hidròxids associats, que donen colors grocs, taronja o vermells a les roques. A la parada 10, les franges groguenques de les fractures es poden interpretar com a acumulacions d'òxids i hidròxids de ferro.",
+    "sinonims": [
+      "hidròxids de ferro",
+      "òxids i hidròxids de ferro"
+    ]
+  },
+  {
+    "slug": "permeabilitat",
+    "terme": "Permeabilitat",
+    "categoria": "Sedimentologia",
+    "definicio": "Capacitat d'una roca o sediment de deixar passar fluids a través dels porus connectats. A la parada 7, la permeabilitat de cada estrat condiciona fins on va circular l'aigua subterrània i com es va modificar el color original."
+  },
+  {
+    "slug": "poligenic",
+    "terme": "Poligènic",
+    "categoria": "Sedimentologia",
+    "definicio": "Format per fragments de litologies diverses, procedents de diverses àrees font. Els còdols poligènics dels conglomerats de la parada 8 mostren que els sediments venien de relleus amb roques diferents.",
+    "sinonims": [
+      "poligènics",
+      "poligènica",
+      "còdols poligènics"
+    ]
+  },
+  {
+    "slug": "porositat",
+    "terme": "Porositat",
+    "categoria": "Sedimentologia",
+    "definicio": "Proporció de buits (porus) dins d'una roca o sediment, que poden ser ocupats per aigua o aire. A la parada 7, la porositat dels gresos vermells va permetre la circulació d'aigua i la redistribució del ferro que donava el color."
+  },
+  {
+    "slug": "rebliment",
+    "terme": "Rebliment",
+    "categoria": "Estructura",
+    "definicio": "Ompliment d'una fractura o cavitat per minerals o sediments posteriors a la roca encaixant. A la parada 10, el rebliment de calcita d'una diàclasi registra una etapa de circulació de fluids després de la formació de la calcària.",
+    "sinonims": [
+      "reblertes",
+      "reblerts",
+      "reblerta"
+    ]
+  },
+  {
+    "slug": "retraballament-sedimentari",
+    "terme": "Retraballament sedimentari",
+    "categoria": "Sedimentologia",
+    "definicio": "Remobilització i redistribució de sediments ja dipositats per corrents, onatge o altres processos. A la parada 8, el retraballament litoral va reorganitzar materials continentals a la base de la Formació Tavertet.",
+    "sinonims": [
+      "retraballament"
+    ]
+  },
+  {
+    "slug": "siliciclastic",
+    "terme": "Siliciclàstic",
+    "categoria": "Litologia",
+    "definicio": "Sediment o roca formada per fragments rics en sílice (quars, feldespats, fragments de roca), sense carbonat predominant. A la parada 9, els gresos siliciclàstics no reaccionen a la prova de l'àcid, a diferència de les calcàries nummulítiques.",
+    "sinonims": [
+      "siliciclàstics",
+      "gresos siliciclàstics"
+    ]
+  },
+  {
+    "slug": "tafoni",
+    "terme": "Tafoni",
+    "categoria": "Geomorfologia",
+    "definicio": "Cavitats d'erosió arrodonides, de dimensions centimètriques a mètriques, desenvolupades a parets rocoses per meteorització diferencial, humitat i, de vegades, cristal·lització de sals. A la parada 6 es veuen als conglomerats i gresos vermells de la Formació Romagats.",
+    "sinonims": [
+      "tafonis"
+    ]
+  },
+  {
+    "slug": "talus",
+    "terme": "Talús",
+    "categoria": "Geomorfologia",
+    "definicio": "Vessant inclinat de materials solts o de roca alterada, sovint al peu d'un cingle o d'una capa més resistent. A la parada 11, les margues del Coll de Malla formen talussos suaus, poc definits, per la seva baixa resistència a l'erosió.",
+    "sinonims": [
+      "talussos"
+    ]
+  },
+  {
+    "slug": "veta",
+    "terme": "Veta",
+    "categoria": "Estructura",
+    "definicio": "Cos tabular de mineral que omple una fractura de la roca. A la parada 10, una veta blanca de calcita reomple una diàclasi de les calcàries eocenes de Tavertet.",
+    "sinonims": [
+      "vetes"
     ]
   }
 ];

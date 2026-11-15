@@ -51,14 +51,14 @@ export const SAU_TAVERTET_PARADES: SauTavertetParada[] = [
   {
     num: 6,
     slug: "I1-P6",
-    label: "Conglomerats, Formació Romagats",
+    label: "Tafonis",
     preview: "/images/parades/I1-P6-hover.jpg",
     svgIds: ["I1-P6", "P6", "Parada6"],
   },
   {
     num: 7,
     slug: "I1-P7",
-    label: "Gresos vermells i grisos: contacte amb la Formació Tavertet",
+    label: "Del continent al mar",
     preview: "/images/parades/I1-P7-hover.jpg",
     svgIds: ["I1-P7", "P7", "Parada7"],
   },
@@ -72,7 +72,7 @@ export const SAU_TAVERTET_PARADES: SauTavertetParada[] = [
   {
     num: 9,
     slug: "I1-P9",
-    label: "Calcàries amb nummulits de la Formació Tavertet",
+    label: "Formació Tavertet i ambient de deposició",
     preview: "/images/parades/I1-P9-hover.jpg",
     svgIds: ["I1-P9", "P9", "Parada9"],
   },
@@ -93,14 +93,14 @@ export const SAU_TAVERTET_PARADES: SauTavertetParada[] = [
   {
     num: 12,
     slug: "I1-P12",
-    label: "Gresos de la Formació Barcons",
+    label: "Els gresos i la formació del turó testimoni",
     preview: "/images/parades/I1-P12-hover.jpg",
     svgIds: ["I1-P12", "P12", "Parada12"],
   },
   {
     num: "A",
     slug: "I1-A1",
-    label: "Afloraments metamòrfics",
+    label: "Afloraments auxiliars del sòcol paleozoic",
     preview: "/images/parades/I1-A1-hover.jpg",
     svgIds: ["I1-A1", "A1", "ParadaA1"],
   },

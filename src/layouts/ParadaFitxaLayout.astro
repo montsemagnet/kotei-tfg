@@ -7,6 +7,7 @@ import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import ParadaGallery from "@/components/parades/ParadaGallery.astro";
 import ItinerariZoom from "@/components/itinerari/ItinerariZoom.astro";
 import ItinerariDadaModal from "@/components/itinerari/ItinerariDadaModal.astro";
+import ItinerariVideoModal from "@/components/itinerari/ItinerariVideoModal.astro";
 import ItinerariModalTextSizeControls from "@/components/itinerari/ItinerariModalTextSizeControls.astro";
 import GlossariSection from "@/components/global/GlossariSection.astro";
 import { withBase } from "@/utils/withBase";
@@ -53,10 +54,25 @@ const mapaDescripcio = frontmatter.mapaDescripcio ?? mapaLabel;
 const mapaIsStaticImage = Boolean(
   frontmatter.mapaUrl && /\.(png|jpe?g|webp|gif)$/i.test(frontmatter.mapaUrl),
 );
+const videoAeriModalId = `parada-aeri-${slug}`;
+const videoAeriPoster = frontmatter.videoAeri?.poster
+  ? withBase(frontmatter.videoAeri.poster)
+  : undefined;
 const geologiaResum = String(frontmatter.geologia?.resum ?? "")
   .split(/\n\s*\n/)
   .map((paragraf) => paragraf.trim())
-  .filter(Boolean);
+  .filter(Boolean)
+  .map((paragraf) =>
+    paragraf
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>"),
+  );
+const hasGeologiaModal = Boolean(
+  frontmatter.geologia?.sections?.length ||
+    frontmatter.geologia?.parts?.length,
+);
 const geobotanicaResum =
   frontmatter.geobotanicaText ??
   frontmatter.analisiFlora?.resum ??
@@ -229,6 +245,7 @@ const iconImgClass = "size-10";
                   {titolParada}
                 </Text>
               </div>
+              <div class="mt-1 flex shrink-0 flex-col items-center gap-3">
               {
                 mapaHref && mapaIsStaticImage ? (
                   <ItinerariZoom zoomId={mapaZoomId}>
@@ -239,7 +256,7 @@ const iconImgClass = "size-10";
                       data-full-src={mapaHref}
                       data-alt={mapaDescripcio}
                       data-caption={mapaDescripcio}
-                      class="mt-1 flex shrink-0 flex-col items-center gap-1 border-0 bg-transparent p-0 text-[#1E6B42] cursor-pointer"
+                      class="flex flex-col items-center gap-1 border-0 bg-transparent p-0 text-[#1E6B42] cursor-pointer"
                       title="Obrir el mapa de la parada"
                       aria-label={`Ampliar: ${mapaLabel}`}
                     >
@@ -256,7 +273,7 @@ const iconImgClass = "size-10";
                     href={mapaHref}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="mt-1 flex shrink-0 flex-col items-center gap-1 text-[#1E6B42] no-underline"
+                    class="flex flex-col items-center gap-1 text-[#1E6B42] no-underline"
                     title="Obrir el mapa de la parada"
                   >
                     <span class={iconButtonClass}>
@@ -267,7 +284,7 @@ const iconImgClass = "size-10";
                     </span>
                   </a>
                 ) : (
-                  <span class="mt-1 flex shrink-0 flex-col items-center gap-1 opacity-40" aria-hidden="true">
+                  <span class="flex flex-col items-center gap-1 opacity-40" aria-hidden="true">
                     <span class={iconButtonClass}>
                       <img src={icon("triptic.png")} alt="" width="48" height="48" class={iconImgClass} />
                     </span>
@@ -277,6 +294,42 @@ const iconImgClass = "size-10";
                   </span>
                 )
               }
+              {
+                frontmatter.videoAeri && videoAeriPoster && (
+                  <button
+                    type="button"
+                    data-video-modal-target={videoAeriModalId}
+                    class="flex flex-col items-center gap-1 border-0 bg-transparent p-0 text-[#1E6B42] cursor-pointer"
+                    title={frontmatter.videoAeri.modalLabel ?? "Obrir el vídeo aeri"}
+                    aria-haspopup="dialog"
+                    aria-label={`Obrir: ${frontmatter.videoAeri.modalLabel ?? "Vista aèria de la parada"}`}
+                  >
+                    <span class="relative size-16 overflow-hidden rounded-2xl border border-base-200 bg-white shadow-sm transition hover:border-[#1E6B42]/40 hover:shadow-md dark:border-base-700 dark:bg-base-900">
+                      <img
+                        src={videoAeriPoster}
+                        alt=""
+                        width="64"
+                        height="64"
+                        class="size-full object-cover"
+                      />
+                      <span class="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/30">
+                        <svg
+                          class="size-5 text-white drop-shadow"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                          aria-hidden="true"
+                        >
+                          <path d="M8 5.14v13.72L19 12 8 5.14z" />
+                        </svg>
+                      </span>
+                    </span>
+                    <span class="text-xs font-medium uppercase tracking-[0.16em]">
+                      Vídeo
+                    </span>
+                  </button>
+                )
+              }
+              </div>
             </header>
 
             <section class="mt-12 lg:mt-20">
@@ -300,11 +353,11 @@ const iconImgClass = "size-10";
               </h2>
               <div class="mt-4 space-y-4 text-lg leading-relaxed text-base-500 dark:text-base-400 md:text-xl">
                 {geologiaResum.map((paragraf) => (
-                  <p>{paragraf}</p>
+                  <p set:html={paragraf} />
                 ))}
               </div>
               {
-                frontmatter.geologia && (
+                hasGeologiaModal && (
                   <p class="mt-5">
                     <button
                       type="button"
@@ -368,7 +421,7 @@ const iconImgClass = "size-10";
     </div>
 
     {
-      frontmatter.geologia && (
+      hasGeologiaModal && (
         <ItinerariDadaModal
           modalId={geologiaModalId}
           label={
@@ -378,6 +431,18 @@ const iconImgClass = "size-10";
           intro={frontmatter.geologia.intro}
           introMedia={frontmatter.geologia.introMedia}
           sections={frontmatter.geologia.sections ?? []}
+        />
+      )
+    }
+    {
+      frontmatter.videoAeri && (
+        <ItinerariVideoModal
+          modalId={videoAeriModalId}
+          label={frontmatter.videoAeri.modalLabel ?? "Vista aèria de la parada"}
+          src={frontmatter.videoAeri.publicSrc}
+          title={frontmatter.videoAeri.alt}
+          sound={frontmatter.videoAeri.ambSo ?? true}
+          allowFullscreen
         />
       )
     }

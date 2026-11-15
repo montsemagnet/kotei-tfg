@@ -164,23 +164,27 @@ export function linkTermes(
   text: string,
   linkedSlugs: Set<string> = new Set(),
 ): string {
-  const markdownLink =
-    /\[([^\]]+)\]\((https?:\/\/[^)\s]+|#modal:[a-z0-9-]+)\)/g;
+  const markdownMark =
+    /\[([^\]]+)\]\((https?:\/\/[^)\s]+|#modal:[a-z0-9-]+)\)|\*\*(.+?)\*\*/g;
   let output = "";
   let lastIndex = 0;
-  let linkMatch: RegExpExecArray | null;
+  let markMatch: RegExpExecArray | null;
 
-  while ((linkMatch = markdownLink.exec(text)) !== null) {
-    output += linkTermesPlain(text.slice(lastIndex, linkMatch.index), linkedSlugs);
-    const label = linkMatch[1];
-    const href = linkMatch[2];
-    if (href.startsWith("#modal:")) {
-      const modalId = `itinerari-modal-${href.slice("#modal:".length)}`;
-      output += `<button type="button" class="${termLinkClass} bg-transparent p-0 font-[inherit]" data-modal-target="${escapeHtml(modalId)}" aria-haspopup="dialog">${escapeHtml(label)}</button>`;
+  while ((markMatch = markdownMark.exec(text)) !== null) {
+    output += linkTermesPlain(text.slice(lastIndex, markMatch.index), linkedSlugs);
+    if (markMatch[3]) {
+      output += `<strong>${linkTermesPlain(markMatch[3], linkedSlugs)}</strong>`;
     } else {
-      output += `<a href="${escapeHtml(href)}" class="${termLinkClass}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)}</a>`;
+      const label = markMatch[1];
+      const href = markMatch[2];
+      if (href.startsWith("#modal:")) {
+        const modalId = `itinerari-modal-${href.slice("#modal:".length)}`;
+        output += `<button type="button" class="${termLinkClass} bg-transparent p-0 font-[inherit]" data-modal-target="${escapeHtml(modalId)}" aria-haspopup="dialog">${escapeHtml(label)}</button>`;
+      } else {
+        output += `<a href="${escapeHtml(href)}" class="${termLinkClass}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)}</a>`;
+      }
     }
-    lastIndex = linkMatch.index + linkMatch[0].length;
+    lastIndex = markMatch.index + markMatch[0].length;
   }
 
   output += linkTermesPlain(text.slice(lastIndex), linkedSlugs);

@@ -154,7 +154,7 @@
        rx="109.784"
        ry="109.78436" />
     <ellipse
-       style="opacity:0.476879;fill:#fffcfc;fill-opacity:1;fill-rule:evenodd"
+       style="display:none;opacity:0.476879;fill:#fffcfc;fill-opacity:1;fill-rule:evenodd"
        id="I1-A1"
        cx="2705.4846"
        cy="649.42645"

@@ -14,11 +14,25 @@ import { withBase } from "@/utils/withBase";
 import { getParadaSlug } from "@/utils/paradaSlug";
 
 const { frontmatter, slug } = Astro.props;
-const titolParada = String(frontmatter.title ?? "").replace(/^P\d+\.\s*/i, "");
+const titolParada = String(frontmatter.title ?? "").replace(
+  /^(P\d+|A\d+)\.\s*/i,
+  "",
+);
 const icon = (name: string) => withBase(`/images/parades/ui/${name}`);
 const pinSrc = frontmatter.pinSrc
   ? withBase(frontmatter.pinSrc)
   : undefined;
+const pinCodi =
+  String(frontmatter.title ?? "").match(/^(P\d+|A\d+)/i)?.[0] ?? "";
+const pinAmbEtiqueta = Boolean(
+  frontmatter.pinSrc && /\/parades\/ui\/pin\.(gif|webp|png|svg)$/i.test(frontmatter.pinSrc),
+);
+const pinCoordsMatch = String(frontmatter.coordenades ?? "").match(
+  /([\d.,]+\s*E)\s*\/\s*([\d.,]+\s*N)/i,
+);
+const pinCoordsLinies = pinCoordsMatch
+  ? [pinCoordsMatch[1], pinCoordsMatch[2]]
+  : [];
 
 const itinerariEntry = await getEntry("itineraris", frontmatter.itinerari);
 const itinerariTitle = itinerariEntry?.data.title ?? "Itinerari";
@@ -178,10 +192,48 @@ const iconImgClass = "size-10";
           )
         }
 
-        <div class="grid items-start gap-8 lg:grid-cols-[minmax(16rem,38%)_minmax(0,1fr)] lg:gap-12">
+        <div
+          class:list={[
+            "grid items-start gap-8",
+            pinAmbEtiqueta
+              ? "lg:grid-cols-[20rem_minmax(0,1fr)] lg:gap-5"
+              : "lg:grid-cols-[minmax(16rem,38%)_minmax(0,1fr)] lg:gap-12",
+          ]}
+        >
           <div class="flex flex-col gap-8">
             {
-              pinSrc && (
+              pinSrc && pinAmbEtiqueta ? (
+                <div class="relative mx-auto w-[20rem] lg:mx-0">
+                  <img
+                    src={pinSrc}
+                    alt={`Localització de la parada ${pinCodi}: ${frontmatter.coordenades}`}
+                    width="236"
+                    height="279"
+                    class="mx-auto w-full"
+                  />
+                  {pinCodi && (
+                    <span
+                      class:list={[
+                        "pointer-events-none absolute left-1/2 top-[33%] -translate-x-1/2 -translate-y-1/2 font-medium leading-none tracking-tight text-black",
+                        pinCodi.length > 2 ? "text-[5.75rem]" : "text-[8rem]",
+                      ]}
+                      aria-hidden="true"
+                    >
+                      {pinCodi}
+                    </span>
+                  )}
+                  {pinCoordsLinies.length > 0 && (
+                    <span
+                      class="pointer-events-none absolute left-1/2 top-[56%] -translate-x-1/2 text-center text-[1rem] leading-tight tabular-nums text-base-800"
+                      aria-hidden="true"
+                    >
+                      {pinCoordsLinies.map((linia) => (
+                        <span class="block whitespace-nowrap">{linia}</span>
+                      ))}
+                    </span>
+                  )}
+                </div>
+              ) : pinSrc ? (
                 <img
                   src={pinSrc}
                   alt={`Localització de la parada: ${frontmatter.coordenades}`}
@@ -189,11 +241,16 @@ const iconImgClass = "size-10";
                   height="590"
                   class="mx-auto w-full max-w-[22rem] lg:max-w-none"
                 />
-              )
+              ) : null
             }
             {
               frontmatter.materials?.length > 0 && (
-                <section class="text-center lg:text-left">
+                <section
+                  class:list={[
+                    "text-center lg:text-left",
+                    pinAmbEtiqueta && "lg:pl-[14%]",
+                  ]}
+                >
                   <Text
                     tag="h2"
                     variant="displayMD"
@@ -228,7 +285,7 @@ const iconImgClass = "size-10";
           </div>
 
           <div class="page-text-content flex min-w-0 flex-col gap-8">
-            <header class="flex items-start justify-center gap-6 text-center lg:justify-start lg:gap-8 lg:text-left">
+            <header class="flex items-center justify-between gap-5 text-center lg:text-left">
               <div class="min-w-0">
                 <Text
                   tag="p"
@@ -332,7 +389,11 @@ const iconImgClass = "size-10";
               </div>
             </header>
 
-            <section class="mt-12 lg:mt-20">
+            <section
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              class="mt-12 lg:mt-20"
+            >
               <h2 class="flex items-center gap-3">
                 <span class={iconButtonClass} aria-hidden="true">
                   <img
@@ -374,7 +435,7 @@ const iconImgClass = "size-10";
 
             {
               (frontmatter.geobotanicaText || frontmatter.analisiFlora?.resum) && (
-            <section>
+            <section data-aos="fade-up" data-aos-duration="1000">
               <h2 class="flex items-center gap-3">
                 <span class={iconButtonClass} aria-hidden="true">
                   <img

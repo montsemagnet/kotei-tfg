@@ -456,7 +456,7 @@ export const termes: Terme[] = [
     "slug": "dic",
     "terme": "Dic",
     "categoria": "Litologia",
-    "definicio": "Cos ígni tabular que talla les roques encaixants aprofitant fractures o zones de debilitat. Es forma quan un magma penetra una esquerda i s'hi refreda. Als afloraments de Mas Novell (A1) s'observen dics d'aplita i dics màfics que travessen les pissarres paleozoiques.",
+    "definicio": "Cos ígni tabular que talla les roques encaixants aprofitant fractures o zones de debilitat. Es forma quan un magma penetra una esquerda i s'hi refreda. Als afloraments de Mas Novell s'observen dics d'aplita i dics màfics que travessen les pissarres paleozoiques.",
     "sinonims": [
       "dics",
       "dic ígni",
@@ -467,7 +467,7 @@ export const termes: Terme[] = [
     "slug": "dic-d-aplita",
     "terme": "Dic d'aplita",
     "categoria": "Litologia",
-    "definicio": "Dic de composició clara, ric en quars i feldespats i de gra fi, format per un magma silícic que es consolida dins d'una fractura. A l'aflorament auxiliar A1 es veu a l'entorn de Mas Novell, tallant les roques metamòrfiques del sòcol.",
+    "definicio": "Dic de composició clara, ric en quars i feldespats i de gra fi, format per un magma silícic que es consolida dins d'una fractura. A l'entorn de Mas Novell es veu tallant les roques metamòrfiques del sòcol.",
     "sinonims": [
       "dics d'aplita",
       "aplita"
@@ -477,7 +477,7 @@ export const termes: Terme[] = [
     "slug": "dic-mafic",
     "terme": "Dic màfic",
     "categoria": "Litologia",
-    "definicio": "Dic de tonalitat fosca, ric en minerals ferromagnesians (ferro i magnesi), format a partir d'un magma més bàsic que l'aplita. A l'A1 contrasta amb el dic d'aplita i evidencia magmes de composició diferent que van circular per fractures del sòcol.",
+    "definicio": "Dic de tonalitat fosca, ric en minerals ferromagnesians (ferro i magnesi), format a partir d'un magma més bàsic que l'aplita. A Mas Novell contrasta amb el dic d'aplita i evidencia magmes de composició diferent que van circular per fractures del sòcol.",
     "sinonims": [
       "dics màfics"
     ]
@@ -1274,7 +1274,7 @@ export const termes: Terme[] = [
     "slug": "metamorfisme-regional",
     "terme": "Metamorfisme regional",
     "categoria": "Metamorfisme",
-    "definicio": "Metamorfisme que afecta grans volums de l'escorça, associat a orogènies, amb pressió i temperatura elevades. A les Guilleries i als afloraments de l'A1 va originar la foliació de pissarres i fil·lites durant l'orogènia herciniana.",
+    "definicio": "Metamorfisme que afecta grans volums de l'escorça, associat a orogènies, amb pressió i temperatura elevades. A les Guilleries va originar la foliació de pissarres i fil·lites durant l'orogènia herciniana.",
     "sinonims": [
       "metamorfisme regional hercinià"
     ]
@@ -1283,7 +1283,7 @@ export const termes: Terme[] = [
     "slug": "fil-lites-pigallades",
     "terme": "Fil·lites pigallades",
     "categoria": "Litologia",
-    "definicio": "Roques metamòrfiques de gra fi, amb foliació i petites taques fosques (porfiroblasts) originades per metamorfisme de contacte sobre un metamorfisme regional previ. Deriven de sediments argilosos; a l'A1 afloren amb pissarres pigallades a l'entorn de Mas Novell.",
+    "definicio": "Roques metamòrfiques de gra fi, amb foliació i petites taques fosques (porfiroblasts) originades per metamorfisme de contacte sobre un metamorfisme regional previ. Deriven de sediments argilosos; afloren amb pissarres pigallades a l'entorn de Mas Novell.",
     "sinonims": [
       "fil·lite pigallada",
       "pissarres pigallades",
@@ -1294,7 +1294,7 @@ export const termes: Terme[] = [
     "slug": "porfiroblast",
     "terme": "Porfiroblast",
     "categoria": "Metamorfisme",
-    "definicio": "Cristall o agregat mineral que creix durant el metamorfisme, sovint més gros que la matriu de la roca. A les pissarres pigallades de l'A1, les pigues fosques són porfiroblasts formats per metamorfisme tèrmic.",
+    "definicio": "Cristall o agregat mineral que creix durant el metamorfisme, sovint més gros que la matriu de la roca. A les pissarres pigallades de Mas Novell, les pigues fosques són porfiroblasts formats per metamorfisme tèrmic.",
     "sinonims": [
       "porfiroblasts"
     ]
@@ -1303,7 +1303,7 @@ export const termes: Terme[] = [
     "slug": "recristal-litzacio-mineral",
     "terme": "Recristal·lització mineral",
     "categoria": "Metamorfisme",
-    "definicio": "Formació de cristalls nous en estat sòlid per efecte de temperatura i, sovint, de pressió, sense que la roca arribi a fondre's. És el mecanisme del metamorfisme de contacte a les pissarres de l'A1.",
+    "definicio": "Formació de cristalls nous en estat sòlid per efecte de temperatura i, sovint, de pressió, sense que la roca arribi a fondre's. És el mecanisme del metamorfisme de contacte a les pissarres de Mas Novell.",
     "sinonims": [
       "recristal·lització"
     ]
@@ -2109,7 +2109,7 @@ export const termes: Terme[] = [
     "slug": "minerals-ferromagnesians",
     "terme": "Minerals ferromagnesians",
     "categoria": "Mineralogia",
-    "definicio": "Minerals rics en ferro i magnesi, generalment de color fosc (biotita, hornblenda, olivina). Al dic màfic de l'A1 donen la tonalitat fosca, en contrast amb l'aplita, rica en quars i feldespats.",
+    "definicio": "Minerals rics en ferro i magnesi, generalment de color fosc (biotita, hornblenda, olivina). Al dic màfic de Mas Novell donen la tonalitat fosca, en contrast amb l'aplita, rica en quars i feldespats.",
     "sinonims": [
       "ferromagnesians",
       "minerals femílics"

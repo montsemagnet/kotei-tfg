@@ -69,5 +69,5 @@ mapaUrl: /images/parades/I1-A1/mapa-parada-a1.png
 mapaLabel: Mapa
 mapaDescripcio: Mapa dels afloraments auxiliars del sòcol paleozoic (A1)
 materials: []
-pinSrc: /images/parades/I1-A1/pin.webp
+pinSrc: /images/parades/ui/pin.svg
 ---

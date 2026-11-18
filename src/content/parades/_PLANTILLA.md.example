@@ -3,7 +3,7 @@ title: "P2. Títol de la parada"
 itinerari: "sau-tavertet"
 ordre: 2
 coordenades: "000000,0 E / 0000000,0 N (ETRS89 UTM 31N)"
-pinSrc: "/images/parades/I1-P2/pin.webp"
+pinSrc: "/images/parades/ui/pin.svg"
 fotos:
   - url: "/src/images/parades/I1-P2/foto-1.png"
     alt: "Descripció de la fotografia"

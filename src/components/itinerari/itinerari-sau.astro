@@ -236,7 +236,7 @@ const mapaSvg = fs.existsSync(MAPA_SVG_PATH)
   }
 
   function pinLabel(num) {
-    return num === "A" ? "A1" : `P${num}`;
+    return `P${num}`;
   }
 
   function createPinMarker(ellipse, meta) {

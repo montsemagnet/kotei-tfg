@@ -99,10 +99,6 @@ intro:
           slug: "I1-P12"
           material: "Els gresos i la formació del turó testimoni"
           edat: "Eocè mitjà, Lutecià mitjà–superior. Origen marí litoral o de plataforma soma: sorres dipositades per corrents i onatge; equivalent lateral del Gres de Folgueroles."
-        - parada: "A1"
-          slug: "I1-A1"
-          material: "Afloraments auxiliars del sòcol paleozoic"
-          edat: "Paleozoic. Sòcol hercinià: metamorfisme regional i de contacte, amb dics d'aplita i màfics. Parada auxiliar, fora de l'itinerari docent principal."
 dades:
   mapa: "Mapa interactiu de l'itinerari geològic Sau–Tavertet (QGIS, capes geològiques i temàtiques)"
   historia: ""
@@ -213,7 +209,7 @@ dadesModals:
               - tipus: proces
                 titol: "Desenvolupament de pissarrositat i foliació metamòrfica"
               - tipus: producte
-                titol: "A1-Pissarres / fil·lites"
+                titol: "Pissarres / fil·lites"
                 categoria: "metamòrfica"
           - titol: "Fusió parcial en profunditat"
             items:
@@ -235,7 +231,7 @@ dadesModals:
               - tipus: proces
                 titol: "calor del plutó granític a les roques encaixants"
               - tipus: producte
-                titol: "A1-Pissarres pigallades"
+                titol: "Pissarres pigallades"
                 categoria: "metamòrfica de contacte"
           - titol: "Pulsos magmàtics tardans"
             items:
@@ -425,7 +421,7 @@ dadesModals:
               - tipus: proces
                 titol: "Desenvolupament de pissarrositat i foliació metamòrfica"
               - tipus: producte
-                titol: "A1-Pissarres / fil·lites"
+                titol: "Pissarres / fil·lites"
                 categoria: "metamòrfica"
           - titol: "Fusió parcial en profunditat"
             items:
@@ -447,7 +443,7 @@ dadesModals:
               - tipus: proces
                 titol: "calor del plutó granític a les roques encaixants"
               - tipus: producte
-                titol: "A1-Pissarres pigallades"
+                titol: "Pissarres pigallades"
                 categoria: "metamòrfica de contacte"
           - titol: "Pulsos magmàtics tardans"
             items:
@@ -678,7 +674,6 @@ dadesModals:
             - cells: ["P10", "Capa grisa", "Superfície estructural amb diàclasis", "Estructures en coberta sedimentària · Lutecià"]
             - cells: ["P11", "Capa grisa", "Margues de la Formació Coll de Malla", "Fons marí fangós · Lutecià mitjà"]
             - cells: ["P12", "Capa grisa", "Gresos de la Formació Barcons", "Arenes marines / de platja; cingles i cornises · Lutecià mitjà–superior"]
-            - cells: ["A1", "Sòcol hercinià (auxiliar)", "Afloraments metamòrfics", "Pissarres pigallades i dics · Paleozoic"]
   tectonica-estructures:
     sections:
       - title: "Arquitectura general del bloc de Tavertet"

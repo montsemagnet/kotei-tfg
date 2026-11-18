@@ -1,6 +1,6 @@
 export type SauTavertetParada = {
-  /** Número de parada (1–12) o «A» per l'alforament auxiliar */
-  num: number | "A";
+  /** Número de parada (1–12) */
+  num: number;
   /** Slug de la col·lecció parades, p.ex. I1-P1 */
   slug: string;
   /** Nom geològic (llegenda del mapa) */
@@ -97,16 +97,8 @@ export const SAU_TAVERTET_PARADES: SauTavertetParada[] = [
     preview: "/images/parades/I1-P12-hover.jpg",
     svgIds: ["I1-P12", "P12", "Parada12"],
   },
-  {
-    num: "A",
-    slug: "I1-A1",
-    label: "Afloraments auxiliars del sòcol paleozoic",
-    preview: "/images/parades/I1-A1-hover.jpg",
-    svgIds: ["I1-A1", "A1", "ParadaA1"],
-  },
 ];
 
 export function paradaDisplayLabel(parada: SauTavertetParada): string {
-  const prefix = parada.num === "A" ? "A1" : `P${parada.num}`;
-  return `${prefix}. ${parada.label}`;
+  return `P${parada.num}. ${parada.label}`;
 }

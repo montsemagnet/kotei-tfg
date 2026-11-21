@@ -168,21 +168,6 @@ maxResolution:28.00446615226196,
                 interactive: false,
     title: 'Sentit de moviment<br />\
     <img src="styles/legend/Sentitdemoviment_7_0.png" /> 6105 Sentit de moviment de material desplaçat (pendent màxim)<br />' });
-var format_ElementsAntrpicsiZonesModificades_8 = new ol.format.GeoJSON();
-var features_ElementsAntrpicsiZonesModificades_8 = format_ElementsAntrpicsiZonesModificades_8.readFeatures(json_ElementsAntrpicsiZonesModificades_8, 
-            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
-var jsonSource_ElementsAntrpicsiZonesModificades_8 = new ol.source.Vector({
-    attributions: ' ',
-});
-jsonSource_ElementsAntrpicsiZonesModificades_8.addFeatures(features_ElementsAntrpicsiZonesModificades_8);
-var lyr_ElementsAntrpicsiZonesModificades_8 = new ol.layer.Vector({
-                declutter: false,
-                source:jsonSource_ElementsAntrpicsiZonesModificades_8, 
-                style: style_ElementsAntrpicsiZonesModificades_8,
-                popuplayertitle: 'Elements Antròpics i Zones Modificades',
-                interactive: false,
-    title: 'Elements Antròpics i Zones Modificades<br />\
-    <img src="styles/legend/ElementsAntrpicsiZonesModificades_8_0.png" /> Aoh<br />' });
 var format_Cabussaments_9 = new ol.format.GeoJSON();
 var features_Cabussaments_9 = format_Cabussaments_9.readFeatures(json_Cabussaments_9, 
             {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
@@ -199,25 +184,6 @@ var lyr_Cabussaments_9 = new ol.layer.Vector({
     title: 'Cabussaments<br />\
     <img src="styles/legend/Cabussaments_9_0.png" /> 1111 Cabussament de l\'estratificació<br />\
     <img src="styles/legend/Cabussaments_9_1.png" /> 1121 Cabussament de la foliació regional varisca<br />' });
-var format_Extraccions_10 = new ol.format.GeoJSON();
-var features_Extraccions_10 = format_Extraccions_10.readFeatures(json_Extraccions_10, 
-            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
-var jsonSource_Extraccions_10 = new ol.source.Vector({
-    attributions: ' ',
-});
-jsonSource_Extraccions_10.addFeatures(features_Extraccions_10);
-var lyr_Extraccions_10 = new ol.layer.Vector({
-                declutter: false,
-                source:jsonSource_Extraccions_10,
-maxResolution:28.00446615226196,
- minResolution:0.00028004466152261963,
-
-                style: style_Extraccions_10,
-                popuplayertitle: 'Extraccions',
-                interactive: false,
-    title: 'Extraccions<br />\
-    <img src="styles/legend/Extraccions_10_0.png" /> 2401 Extracció a cel obert<br />\
-    <img src="styles/legend/Extraccions_10_1.png" /> 2403 Extracció en galeria<br />' });
 var format_TipusiNaturalesaLitolgica_11 = new ol.format.GeoJSON();
 var features_TipusiNaturalesaLitolgica_11 = format_TipusiNaturalesaLitolgica_11.readFeatures(json_TipusiNaturalesaLitolgica_11, 
             {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
@@ -284,23 +250,8 @@ var lyr_ToponimiaiNomsgeogrfics_14 = new ol.layer.Vector({
                 source:jsonSource_ToponimiaiNomsgeogrfics_14, 
                 style: style_ToponimiaiNomsgeogrfics_14,
                 popuplayertitle: 'Toponimia i Noms geogràfics',
-                interactive: false,
-    title: 'Toponimia i Noms geogràfics<br />\
-    <img src="styles/legend/ToponimiaiNomsgeogrfics_14_0.png" /> [1] Elevacions del terreny en general (massís, serra, turó, muntanya, cim...) <br />\
-    <img src="styles/legend/ToponimiaiNomsgeogrfics_14_1.png" /> [2] Depressions del terreny en general (circ, coll, vall, conca, congost, pas...) <br />\
-    <img src="styles/legend/ToponimiaiNomsgeogrfics_14_2.png" /> [3] Altres elements de relleu terrestre (espadat, pla, cova...) <br />\
-    <img src="styles/legend/ToponimiaiNomsgeogrfics_14_3.png" /> [4] Indrets i paratges (camp, partida, bosc, paratges en general...) <br />\
-    <img src="styles/legend/ToponimiaiNomsgeogrfics_14_4.png" /> [5] Cursos d’aigua (riu, riera, torrent, canal, rec, naixement de riu, font...) <br />\
-    <img src="styles/legend/ToponimiaiNomsgeogrfics_14_5.png" /> [6] Masses d’aigua (llac, estany, aiguamoll, badia, cala, pantà, bassa, dipòsit, pou...) <br />\
-    <img src="styles/legend/ToponimiaiNomsgeogrfics_14_6.png" /> [8] Vies de comunicació i transport (carretera, camí, ferrocarril, transport per cable...) <br />\
-    <img src="styles/legend/ToponimiaiNomsgeogrfics_14_7.png" /> [9] Caps de municipi (o d’altres entitats politicoadministratives)<br />\
-    <img src="styles/legend/ToponimiaiNomsgeogrfics_14_8.png" /> [10] Altres ens de poblament concentrat (poble, veïnat, barriada, urbanització...) <br />\
-    <img src="styles/legend/ToponimiaiNomsgeogrfics_14_9.png" /> [11] Components de trama urbana (barri, carrer, plaça...) <br />\
-    <img src="styles/legend/ToponimiaiNomsgeogrfics_14_10.png" /> [12] Poblament disseminat, indústria (casa, mas, bloc d\'apartaments, granja, hivernacle, fàbrica, central d’energia, mina, salina, abocador...)<br />\
-    <img src="styles/legend/ToponimiaiNomsgeogrfics_14_11.png" /> [13] Serveis comunitaris (administració, comerç, docència, sanitat, esport, lleure...) <br />\
-    <img src="styles/legend/ToponimiaiNomsgeogrfics_14_12.png" /> [14] Elements d’interès historicocultural (castell, monument, monestir, església...) <br />\
-    <img src="styles/legend/ToponimiaiNomsgeogrfics_14_13.png" /> [15] Estructures annexes a transport i obres hidràuliques (aeroport, peatge, pont, túnel, port, moll, escullera, presa...) <br />\
-    <img src="styles/legend/ToponimiaiNomsgeogrfics_14_14.png" /> [17] Referències a termes municipals (o altres entitats politicoadministratives)<br />' });
+                interactive: false
+            });
 var format_Carbesdenivell_15 = new ol.format.GeoJSON();
 var features_Carbesdenivell_15 = format_Carbesdenivell_15.readFeatures(json_Carbesdenivell_15, 
             {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
@@ -445,22 +396,8 @@ var lyr_ParadesP_21 = new ol.layer.Vector({
                 source:jsonSource_ParadesP_21, 
                 style: style_ParadesP_21,
                 popuplayertitle: 'Parades-P',
-                interactive: true,
-    title: 'Parades-P<br />\
-    <img src="styles/legend/ParadesP_21_0.png" /> A1. Pissarrres del Cambrordovicià<br />\
-    <img src="styles/legend/ParadesP_21_1.png" /> P1. Monzogranit i pòrfirs<br />\
-    <img src="styles/legend/ParadesP_21_2.png" /> P10. Superfície estructural amb diàclasis<br />\
-    <img src="styles/legend/ParadesP_21_3.png" /> P11. Margues, Fm. Coll de Malla<br />\
-    <img src="styles/legend/ParadesP_21_4.png" /> P12. Gresos, Fm. Barcons<br />\
-    <img src="styles/legend/ParadesP_21_5.png" /> P2. Cantera de Sauló<br />\
-    <img src="styles/legend/ParadesP_21_6.png" /> P3. Argiles del Paleocè, Fm. Mediona<br />\
-    <img src="styles/legend/ParadesP_21_7.png" /> P4. Dipòsits de vessant (Quaternari)<br />\
-    <img src="styles/legend/ParadesP_21_8.png" /> P5. Gresos i conglomerats vermells, Fm. Vilanova de Sau<br />\
-    <img src="styles/legend/ParadesP_21_9.png" /> P6.Conglomerats, Fm. Romagats<br />\
-    <img src="styles/legend/ParadesP_21_10.png" /> P7. Gresos grisos i vermells, Fm. Tavertet<br />\
-    <img src="styles/legend/ParadesP_21_11.png" /> P8. Gresos grisos, Fm. Tavertet<br />\
-    <img src="styles/legend/ParadesP_21_12.png" /> P9. Calcàries amb nummulits, Fm. Tavertet<br />\
-    <img src="styles/legend/ParadesP_21_13.png" /> <br />' });
+                interactive: true
+            });
 var format_RutaSauTaveret_22 = new ol.format.GeoJSON();
 var features_RutaSauTaveret_22 = format_RutaSauTaveret_22.readFeatures(json_RutaSauTaveret_22, 
             {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
@@ -473,23 +410,7 @@ var lyr_RutaSauTaveret_22 = new ol.layer.Vector({
                 source:jsonSource_RutaSauTaveret_22, 
                 style: style_RutaSauTaveret_22,
                 popuplayertitle: 'Ruta Sau-Taveret',
-                interactive: true,
-                title: '<img src="styles/legend/RutaSauTaveret_22.png" /> Ruta Sau-Taveret'
-            });
-var format_Afloraments_23 = new ol.format.GeoJSON();
-var features_Afloraments_23 = format_Afloraments_23.readFeatures(json_Afloraments_23, 
-            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
-var jsonSource_Afloraments_23 = new ol.source.Vector({
-    attributions: ' ',
-});
-jsonSource_Afloraments_23.addFeatures(features_Afloraments_23);
-var lyr_Afloraments_23 = new ol.layer.Vector({
-                declutter: false,
-                source:jsonSource_Afloraments_23, 
-                style: style_Afloraments_23,
-                popuplayertitle: 'Afloraments ',
-                interactive: true,
-                title: '<img src="styles/legend/Afloraments_23.png" /> Afloraments '
+                interactive: true
             });
 var format_Noms_24 = new ol.format.GeoJSON();
 var features_Noms_24 = format_Noms_24.readFeatures(json_Noms_24, 
@@ -503,19 +424,17 @@ var lyr_Noms_24 = new ol.layer.Vector({
                 source:jsonSource_Noms_24, 
                 style: style_Noms_24,
                 popuplayertitle: 'Noms ',
-                interactive: true,
-                title: '<img src="styles/legend/Noms_24.png" /> Noms '
+                interactive: true
             });
 var group_ITINERARISAUTAVERTET = new ol.layer.Group({
-                                layers: [lyr_ParadesP_21,lyr_RutaSauTaveret_22,lyr_Afloraments_23,lyr_Noms_24,],
-                                fold: 'close',
-                                title: 'ITINERARI SAU TAVERTET'});
+                                layers: [lyr_ToponimiaiNomsgeogrfics_14,lyr_ParadesP_21,lyr_RutaSauTaveret_22,lyr_Noms_24,]
+                            });
 var group_TOPOGRAFIA = new ol.layer.Group({
-                                layers: [lyr_ToponimiaiNomsgeogrfics_14,lyr_Carbesdenivell_15,lyr_Contruccions_16,lyr_HidrografiaPoligons_17,lyr_Xarxaviria_18,lyr_HidrografiaLniesRieresiRius_19,lyr_Cobertesdelsl_20,],
+                                layers: [lyr_Carbesdenivell_15,lyr_Contruccions_16,lyr_HidrografiaPoligons_17,lyr_Xarxaviria_18,lyr_HidrografiaLniesRieresiRius_19,lyr_Cobertesdelsl_20,],
                                 fold: 'close',
                                 title: 'TOPOGRAFIA'});
 var group_CAPESGEOLOGIQUES = new ol.layer.Group({
-                                layers: [lyr_LitologiadelScolPaleozoiciMesozoic_2,lyr_DipsitsQuaternarisiMaterialsSuperficials_3,lyr_ContactesGeneralsiIntrusius_4,lyr_ContactesDiscordantsiEsllavissaments_5,lyr_GeomorfolgicadeVessants_6,lyr_Sentitdemoviment_7,lyr_ElementsAntrpicsiZonesModificades_8,lyr_Cabussaments_9,lyr_Extraccions_10,lyr_TipusiNaturalesaLitolgica_11,lyr_Zonesconsideradesdinteresgeologic_12,lyr_Falles_13,],
+                                layers: [lyr_LitologiadelScolPaleozoiciMesozoic_2,lyr_DipsitsQuaternarisiMaterialsSuperficials_3,lyr_ContactesGeneralsiIntrusius_4,lyr_ContactesDiscordantsiEsllavissaments_5,lyr_GeomorfolgicadeVessants_6,lyr_Sentitdemoviment_7,lyr_Cabussaments_9,lyr_TipusiNaturalesaLitolgica_11,lyr_Zonesconsideradesdinteresgeologic_12,lyr_Falles_13,],
                                 fold: 'open',
                                 title: 'CAPES GEOLÒGIQUES'});
 var group_FONS = new ol.layer.Group({
@@ -523,7 +442,7 @@ var group_FONS = new ol.layer.Group({
                                 fold: 'close',
                                 title: 'FONS'});
 
-lyr_Ortofotomapa3_0.setVisible(false);lyr_Relleu_1.setVisible(false);lyr_LitologiadelScolPaleozoiciMesozoic_2.setVisible(false);lyr_DipsitsQuaternarisiMaterialsSuperficials_3.setVisible(false);lyr_ContactesGeneralsiIntrusius_4.setVisible(false);lyr_ContactesDiscordantsiEsllavissaments_5.setVisible(false);lyr_GeomorfolgicadeVessants_6.setVisible(false);lyr_Sentitdemoviment_7.setVisible(false);lyr_ElementsAntrpicsiZonesModificades_8.setVisible(false);lyr_Cabussaments_9.setVisible(false);lyr_Extraccions_10.setVisible(false);lyr_TipusiNaturalesaLitolgica_11.setVisible(false);lyr_Zonesconsideradesdinteresgeologic_12.setVisible(false);lyr_Falles_13.setVisible(false);lyr_ToponimiaiNomsgeogrfics_14.setVisible(true);lyr_Carbesdenivell_15.setVisible(true);lyr_Contruccions_16.setVisible(true);lyr_HidrografiaPoligons_17.setVisible(true);lyr_Xarxaviria_18.setVisible(false);lyr_HidrografiaLniesRieresiRius_19.setVisible(false);lyr_Cobertesdelsl_20.setVisible(false);lyr_ParadesP_21.setVisible(true);lyr_RutaSauTaveret_22.setVisible(true);lyr_Afloraments_23.setVisible(false);lyr_Noms_24.setVisible(true);
+lyr_Ortofotomapa3_0.setVisible(false);lyr_Relleu_1.setVisible(false);lyr_LitologiadelScolPaleozoiciMesozoic_2.setVisible(false);lyr_DipsitsQuaternarisiMaterialsSuperficials_3.setVisible(false);lyr_ContactesGeneralsiIntrusius_4.setVisible(false);lyr_ContactesDiscordantsiEsllavissaments_5.setVisible(false);lyr_GeomorfolgicadeVessants_6.setVisible(false);lyr_Sentitdemoviment_7.setVisible(false);lyr_Cabussaments_9.setVisible(false);lyr_TipusiNaturalesaLitolgica_11.setVisible(false);lyr_Zonesconsideradesdinteresgeologic_12.setVisible(false);lyr_Falles_13.setVisible(false);lyr_ToponimiaiNomsgeogrfics_14.setVisible(true);lyr_Carbesdenivell_15.setVisible(true);lyr_Contruccions_16.setVisible(true);lyr_HidrografiaPoligons_17.setVisible(true);lyr_Xarxaviria_18.setVisible(false);lyr_HidrografiaLniesRieresiRius_19.setVisible(false);lyr_Cobertesdelsl_20.setVisible(false);lyr_ParadesP_21.setVisible(true);lyr_RutaSauTaveret_22.setVisible(true);lyr_Noms_24.setVisible(true);
 var layersList = [group_FONS,group_TOPOGRAFIA,group_CAPESGEOLOGIQUES,group_ITINERARISAUTAVERTET];
 lyr_LitologiadelScolPaleozoiciMesozoic_2.set('fieldAliases', {'fid': 'fid', 'IDABS': 'IDABS', 'CODI_CAS': 'CODI_CAS', 'DESCRIPCIO': 'Descripció', 'ERA': 'Era', 'PERIODE': 'Període', 'EPOCA': 'Època', 'EDAT': 'Edat', 'OBS_EDAT': 'OBS_EDAT', 'MET': 'MET', 'EDAT_MET': 'EDAT_MET', 'ordre_lleg': 'ordre_lleg', 'Categoria': 'Categoria', });
 lyr_DipsitsQuaternarisiMaterialsSuperficials_3.set('fieldAliases', {'fid': 'fid', 'IDABS': 'IDABS', 'CODI_CAS': 'CODI_CAS', 'DESCRIPCIO': 'Descripció', 'TIPUS_DIP': 'Tipus_DIP', 'ERA': 'Era', 'PERIODE': 'Període', 'EPOCA': 'Època', 'EDAT': 'Edat', });
@@ -531,9 +450,7 @@ lyr_ContactesGeneralsiIntrusius_4.set('fieldAliases', {'fid': 'fid', 'CODI_CAS':
 lyr_ContactesDiscordantsiEsllavissaments_5.set('fieldAliases', {'fid': 'fid', 'CODI_CAS': 'CODI_CAS', 'DESCRIPCIO': 'DESCRIPCIO', });
 lyr_GeomorfolgicadeVessants_6.set('fieldAliases', {'fid': 'fid', 'CODI_CAS': 'CODI_CAS', 'DESCRIPCIO': 'DESCRIPCIO', });
 lyr_Sentitdemoviment_7.set('fieldAliases', {'fid': 'fid', 'CODI_CAS': 'CODI_CAS', 'DESCRIPCIO': 'DESCRIPCIO', });
-lyr_ElementsAntrpicsiZonesModificades_8.set('fieldAliases', {'fid': 'fid', 'IDABS': 'IDABS', 'CODI_CAS': 'CODI_CAS', 'DESCRIPCIO': 'DESCRIPCIO', 'EDAT': 'EDAT', });
 lyr_Cabussaments_9.set('fieldAliases', {'fid': 'fid', 'CODI_CAS': 'CODI_CAS', 'DESCRIPCIO': 'DESCRIPCIO', 'DIR': 'DIR', 'INCLIN': 'INCLIN', });
-lyr_Extraccions_10.set('fieldAliases', {'fid': 'fid', 'CODI_CAS': 'CODI_CAS', 'DESCRIPCIO': 'DESCRIPCIO', 'OBS': 'OBS', });
 lyr_TipusiNaturalesaLitolgica_11.set('fieldAliases', {'fid': 'fid', 'IDABS': 'IDABS', 'CODI_CAS': 'CODI_CAS', 'DESCRIPCIO': 'Descripció', 'ERA': 'ERA', 'PERIODE': 'PERIODE', 'EPOCA': 'EPOCA', 'EDAT': 'EDAT', 'OBS_EDAT': 'OBS_EDAT', 'MET': 'MET', 'EDAT_MET': 'EDAT_MET', 'ordre_lleg': 'ordre_lleg', 'Categoria': 'Categoria', });
 lyr_Zonesconsideradesdinteresgeologic_12.set('fieldAliases', {'fid': 'fid', 'AMENAC_ANT': 'AMENAC_ANT', 'AMENAC_NAT': 'AMENAC_NAT', 'ANY_DIAGN': 'ANY_DIAGN', 'CATEGORIA': 'CATEGORIA', 'CODI': 'CODI', 'CODI_GEOZO': 'CODI_GEOZO', 'CONT_GEOL': 'CONT_GEOL', 'DESCRIPCIO': 'Descripció', 'DOMINI': 'DOMINI', 'DOMINI_MEC': 'DOMINI_MEC', 'EV_EST_CON': 'EV_EST_CON', 'FITXA_DESC': 'FITXA_DESC', 'FITXA_DIAG': 'FITXA_DIAG', 'FITXA_RESU': 'FITXA_RESU', 'IMPACT_ANT': 'IMPACT_ANT', 'IMPACT_NAT': 'IMPACT_NAT', 'INT_CIENT': 'INT_CIENT', 'INT_DIDACT': 'INT_DIDACT', 'INT_TURIST': 'INT_TURIST', 'NOM_ESPAI': 'Nom espai', 'NOM_GEOZON': 'NOM_GEOZON', 'N_GEOTOPS': 'N_GEOTOPS', 'OBJECTID': 'OBJECTID', 'PROCES_GEO': 'PROCES_GEO', 'R_DEG_ANT': 'R_DEG_ANT', 'R_DEG_NAT': 'R_DEG_NAT', 'S_DEG_ANT': 'S_DEG_ANT', 'S_DEG_NAT': 'S_DEG_NAT', 'TEMPS_GEOL': 'TEMPS_GEOL', 'TIPUS_ESPA': 'TIPUS_ESPA', 'TIPUS_INTE': 'TIPUS_INTE', 'TIPUS_ROCA': 'TIPUS_ROCA', 'UNITAT_REP': 'UNITAT_REP', });
 lyr_Falles_13.set('fieldAliases', {'fid': 'fid', 'CODI_CAS': 'CODI_CAS', 'DESCRIPCIO': 'DESCRIPCIO', });
@@ -545,7 +462,6 @@ lyr_Xarxaviria_18.set('fieldAliases', {'fid': 'fid', 'id': 'id', 'tipus': 'tipus
 lyr_HidrografiaLniesRieresiRius_19.set('fieldAliases', {'fid': 'fid', 'id': 'id', 'tipus': 'tipus', 'entorn': 'entorn', 'estat': 'estat', 'terreny': 'terreny', 'nom': 'nom', });
 lyr_ParadesP_21.set('fieldAliases', {'fid': 'fid', 'Nom': 'Nom', 'Descripcio2': 'Descripcio2', });
 lyr_RutaSauTaveret_22.set('fieldAliases', {'fid': 'fid', 'NOM': 'NOM', 'DESCRIPCIO': 'DESCRIPCIO', 'longuitud': 'longuitud', });
-lyr_Afloraments_23.set('fieldAliases', {'fid': 'fid', 'ele': 'ele', 'time': 'time', 'name': 'name', 'latitud_final': 'latitud_final', 'longuitud_final': 'longuitud_final', 'Parada': 'Parada', });
 lyr_Noms_24.set('fieldAliases', {'fid': 'fid', 'Nom': 'Nom', });
 lyr_LitologiadelScolPaleozoiciMesozoic_2.set('fieldImages', {'fid': 'TextEdit', 'IDABS': 'TextEdit', 'CODI_CAS': 'TextEdit', 'DESCRIPCIO': 'TextEdit', 'ERA': 'TextEdit', 'PERIODE': 'TextEdit', 'EPOCA': 'TextEdit', 'EDAT': 'TextEdit', 'OBS_EDAT': 'TextEdit', 'MET': 'TextEdit', 'EDAT_MET': 'TextEdit', 'ordre_lleg': 'TextEdit', 'Categoria': 'TextEdit', });
 lyr_DipsitsQuaternarisiMaterialsSuperficials_3.set('fieldImages', {'fid': 'TextEdit', 'IDABS': 'TextEdit', 'CODI_CAS': 'TextEdit', 'DESCRIPCIO': 'TextEdit', 'TIPUS_DIP': 'TextEdit', 'ERA': 'TextEdit', 'PERIODE': 'TextEdit', 'EPOCA': 'TextEdit', 'EDAT': 'TextEdit', });
@@ -553,9 +469,7 @@ lyr_ContactesGeneralsiIntrusius_4.set('fieldImages', {'fid': 'TextEdit', 'CODI_C
 lyr_ContactesDiscordantsiEsllavissaments_5.set('fieldImages', {'fid': 'TextEdit', 'CODI_CAS': 'TextEdit', 'DESCRIPCIO': 'TextEdit', });
 lyr_GeomorfolgicadeVessants_6.set('fieldImages', {'fid': 'TextEdit', 'CODI_CAS': 'TextEdit', 'DESCRIPCIO': 'TextEdit', });
 lyr_Sentitdemoviment_7.set('fieldImages', {'fid': 'TextEdit', 'CODI_CAS': 'TextEdit', 'DESCRIPCIO': 'TextEdit', });
-lyr_ElementsAntrpicsiZonesModificades_8.set('fieldImages', {'fid': 'TextEdit', 'IDABS': 'TextEdit', 'CODI_CAS': 'TextEdit', 'DESCRIPCIO': 'TextEdit', 'EDAT': 'TextEdit', });
 lyr_Cabussaments_9.set('fieldImages', {'fid': 'Hidden', 'CODI_CAS': 'Hidden', 'DESCRIPCIO': 'Hidden', 'DIR': 'Hidden', 'INCLIN': 'Hidden', });
-lyr_Extraccions_10.set('fieldImages', {'fid': 'TextEdit', 'CODI_CAS': 'TextEdit', 'DESCRIPCIO': 'TextEdit', 'OBS': 'TextEdit', });
 lyr_TipusiNaturalesaLitolgica_11.set('fieldImages', {'fid': 'TextEdit', 'IDABS': 'TextEdit', 'CODI_CAS': 'TextEdit', 'DESCRIPCIO': 'TextEdit', 'ERA': 'TextEdit', 'PERIODE': 'TextEdit', 'EPOCA': 'TextEdit', 'EDAT': 'TextEdit', 'OBS_EDAT': 'TextEdit', 'MET': 'TextEdit', 'EDAT_MET': 'TextEdit', 'ordre_lleg': 'TextEdit', 'Categoria': 'TextEdit', });
 lyr_Zonesconsideradesdinteresgeologic_12.set('fieldImages', {'fid': 'TextEdit', 'AMENAC_ANT': 'TextEdit', 'AMENAC_NAT': 'TextEdit', 'ANY_DIAGN': 'TextEdit', 'CATEGORIA': 'TextEdit', 'CODI': 'TextEdit', 'CODI_GEOZO': 'TextEdit', 'CONT_GEOL': 'TextEdit', 'DESCRIPCIO': 'TextEdit', 'DOMINI': 'TextEdit', 'DOMINI_MEC': 'TextEdit', 'EV_EST_CON': 'TextEdit', 'FITXA_DESC': 'TextEdit', 'FITXA_DIAG': 'TextEdit', 'FITXA_RESU': 'TextEdit', 'IMPACT_ANT': 'TextEdit', 'IMPACT_NAT': 'TextEdit', 'INT_CIENT': 'TextEdit', 'INT_DIDACT': 'TextEdit', 'INT_TURIST': 'TextEdit', 'NOM_ESPAI': 'TextEdit', 'NOM_GEOZON': 'TextEdit', 'N_GEOTOPS': 'Range', 'OBJECTID': 'TextEdit', 'PROCES_GEO': 'TextEdit', 'R_DEG_ANT': 'TextEdit', 'R_DEG_NAT': 'TextEdit', 'S_DEG_ANT': 'TextEdit', 'S_DEG_NAT': 'TextEdit', 'TEMPS_GEOL': 'TextEdit', 'TIPUS_ESPA': 'TextEdit', 'TIPUS_INTE': 'TextEdit', 'TIPUS_ROCA': 'TextEdit', 'UNITAT_REP': 'TextEdit', });
 lyr_Falles_13.set('fieldImages', {'fid': 'TextEdit', 'CODI_CAS': 'TextEdit', 'DESCRIPCIO': 'TextEdit', });
@@ -567,7 +481,6 @@ lyr_Xarxaviria_18.set('fieldImages', {'fid': '', 'id': 'TextEdit', 'tipus': 'Tex
 lyr_HidrografiaLniesRieresiRius_19.set('fieldImages', {'fid': '', 'id': 'TextEdit', 'tipus': 'TextEdit', 'entorn': 'TextEdit', 'estat': 'TextEdit', 'terreny': 'TextEdit', 'nom': 'TextEdit', });
 lyr_ParadesP_21.set('fieldImages', {'fid': 'TextEdit', 'Nom': 'TextEdit', 'Descripcio2': 'TextEdit', });
 lyr_RutaSauTaveret_22.set('fieldImages', {'fid': 'TextEdit', 'NOM': 'TextEdit', 'DESCRIPCIO': 'TextEdit', 'longuitud': 'TextEdit', });
-lyr_Afloraments_23.set('fieldImages', {'fid': 'TextEdit', 'ele': 'TextEdit', 'time': 'DateTime', 'name': 'TextEdit', 'latitud_final': 'TextEdit', 'longuitud_final': 'TextEdit', 'Parada': 'TextEdit', });
 lyr_Noms_24.set('fieldImages', {'fid': 'TextEdit', 'Nom': 'TextEdit', });
 lyr_LitologiadelScolPaleozoiciMesozoic_2.set('fieldLabels', {'fid': 'hidden field', 'IDABS': 'hidden field', 'CODI_CAS': 'inline label - visible with data', 'DESCRIPCIO': 'inline label - visible with data', 'ERA': 'inline label - visible with data', 'PERIODE': 'inline label - visible with data', 'EPOCA': 'inline label - visible with data', 'EDAT': 'inline label - visible with data', 'OBS_EDAT': 'hidden field', 'MET': 'hidden field', 'EDAT_MET': 'hidden field', 'ordre_lleg': 'hidden field', 'Categoria': 'inline label - visible with data', });
 lyr_DipsitsQuaternarisiMaterialsSuperficials_3.set('fieldLabels', {'fid': 'hidden field', 'IDABS': 'hidden field', 'CODI_CAS': 'inline label - visible with data', 'DESCRIPCIO': 'inline label - visible with data', 'TIPUS_DIP': 'inline label - visible with data', 'ERA': 'inline label - visible with data', 'PERIODE': 'inline label - visible with data', 'EPOCA': 'inline label - visible with data', 'EDAT': 'inline label - visible with data', });
@@ -575,9 +488,7 @@ lyr_ContactesGeneralsiIntrusius_4.set('fieldLabels', {'fid': 'no label', 'CODI_C
 lyr_ContactesDiscordantsiEsllavissaments_5.set('fieldLabels', {'fid': 'no label', 'CODI_CAS': 'no label', 'DESCRIPCIO': 'no label', });
 lyr_GeomorfolgicadeVessants_6.set('fieldLabels', {'fid': 'no label', 'CODI_CAS': 'inline label - always visible', 'DESCRIPCIO': 'no label', });
 lyr_Sentitdemoviment_7.set('fieldLabels', {'fid': 'no label', 'CODI_CAS': 'no label', 'DESCRIPCIO': 'no label', });
-lyr_ElementsAntrpicsiZonesModificades_8.set('fieldLabels', {'fid': 'no label', 'IDABS': 'no label', 'CODI_CAS': 'no label', 'DESCRIPCIO': 'no label', 'EDAT': 'no label', });
 lyr_Cabussaments_9.set('fieldLabels', {'fid': 'hidden field', 'CODI_CAS': 'hidden field', 'DESCRIPCIO': 'hidden field', 'DIR': 'hidden field', 'INCLIN': 'hidden field', });
-lyr_Extraccions_10.set('fieldLabels', {'fid': 'no label', 'CODI_CAS': 'no label', 'DESCRIPCIO': 'no label', 'OBS': 'no label', });
 lyr_TipusiNaturalesaLitolgica_11.set('fieldLabels', {'fid': 'hidden field', 'IDABS': 'hidden field', 'CODI_CAS': 'hidden field', 'DESCRIPCIO': 'header label - visible with data', 'ERA': 'hidden field', 'PERIODE': 'hidden field', 'EPOCA': 'hidden field', 'EDAT': 'hidden field', 'OBS_EDAT': 'hidden field', 'MET': 'hidden field', 'EDAT_MET': 'hidden field', 'ordre_lleg': 'hidden field', 'Categoria': 'hidden field', });
 lyr_Zonesconsideradesdinteresgeologic_12.set('fieldLabels', {'fid': 'hidden field', 'AMENAC_ANT': 'hidden field', 'AMENAC_NAT': 'hidden field', 'ANY_DIAGN': 'hidden field', 'CATEGORIA': 'hidden field', 'CODI': 'hidden field', 'CODI_GEOZO': 'hidden field', 'CONT_GEOL': 'hidden field', 'DESCRIPCIO': 'header label - visible with data', 'DOMINI': 'hidden field', 'DOMINI_MEC': 'hidden field', 'EV_EST_CON': 'hidden field', 'FITXA_DESC': 'hidden field', 'FITXA_DIAG': 'hidden field', 'FITXA_RESU': 'hidden field', 'IMPACT_ANT': 'hidden field', 'IMPACT_NAT': 'hidden field', 'INT_CIENT': 'hidden field', 'INT_DIDACT': 'hidden field', 'INT_TURIST': 'hidden field', 'NOM_ESPAI': 'header label - visible with data', 'NOM_GEOZON': 'hidden field', 'N_GEOTOPS': 'hidden field', 'OBJECTID': 'hidden field', 'PROCES_GEO': 'hidden field', 'R_DEG_ANT': 'hidden field', 'R_DEG_NAT': 'hidden field', 'S_DEG_ANT': 'hidden field', 'S_DEG_NAT': 'hidden field', 'TEMPS_GEOL': 'hidden field', 'TIPUS_ESPA': 'hidden field', 'TIPUS_INTE': 'hidden field', 'TIPUS_ROCA': 'hidden field', 'UNITAT_REP': 'hidden field', });
 lyr_Falles_13.set('fieldLabels', {'fid': 'no label', 'CODI_CAS': 'no label', 'DESCRIPCIO': 'no label', });
@@ -589,7 +500,6 @@ lyr_Xarxaviria_18.set('fieldLabels', {'fid': 'no label', 'id': 'no label', 'tipu
 lyr_HidrografiaLniesRieresiRius_19.set('fieldLabels', {'fid': 'no label', 'id': 'no label', 'tipus': 'no label', 'entorn': 'hidden field', 'estat': 'no label', 'terreny': 'no label', 'nom': 'no label', });
 lyr_ParadesP_21.set('fieldLabels', {'fid': 'no label', 'Nom': 'no label', 'Descripcio2': 'no label', });
 lyr_RutaSauTaveret_22.set('fieldLabels', {'fid': 'no label', 'NOM': 'no label', 'DESCRIPCIO': 'no label', 'longuitud': 'no label', });
-lyr_Afloraments_23.set('fieldLabels', {'fid': 'no label', 'ele': 'no label', 'time': 'no label', 'name': 'header label - visible with data', 'latitud_final': 'no label', 'longuitud_final': 'no label', 'Parada': 'header label - visible with data', });
 lyr_Noms_24.set('fieldLabels', {'fid': 'no label', 'Nom': 'no label', });
 lyr_Noms_24.on('precompose', function(evt) {
     evt.context.globalCompositeOperation = 'normal';

@@ -12,6 +12,7 @@ import ItinerariModalTextSizeControls from "@/components/itinerari/ItinerariModa
 import GlossariSection from "@/components/global/GlossariSection.astro";
 import { withBase } from "@/utils/withBase";
 import { getParadaSlug } from "@/utils/paradaSlug";
+import { createTermeLinkTracker, linkTermes } from "@/utils/linkTermes";
 
 const { frontmatter, slug } = Astro.props;
 const titolParada = String(frontmatter.title ?? "").replace(
@@ -72,17 +73,11 @@ const videoAeriModalId = `parada-aeri-${slug}`;
 const videoAeriPoster = frontmatter.videoAeri?.poster
   ? withBase(frontmatter.videoAeri.poster)
   : undefined;
+const geologiaLinkedSlugs = createTermeLinkTracker();
 const geologiaResum = String(frontmatter.geologia?.resum ?? "")
   .split(/\n\s*\n/)
   .map((paragraf) => paragraf.trim())
-  .filter(Boolean)
-  .map((paragraf) =>
-    paragraf
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>"),
-  );
+  .filter(Boolean);
 const hasGeologiaModal = Boolean(
   frontmatter.geologia?.sections?.length ||
     frontmatter.geologia?.parts?.length,
@@ -414,7 +409,7 @@ const iconImgClass = "size-10";
               </h2>
               <div class="mt-4 space-y-4 text-lg leading-relaxed text-base-500 dark:text-base-400 md:text-xl">
                 {geologiaResum.map((paragraf) => (
-                  <p set:html={paragraf} />
+                  <p set:html={linkTermes(paragraf, geologiaLinkedSlugs)} />
                 ))}
               </div>
               {

@@ -16,21 +16,21 @@ export const SAU_TAVERTET_PARADES: SauTavertetParada[] = [
   {
     num: 1,
     slug: "I1-P1",
-    label: "Monzogranit i pòrfirs",
+    label: "Els granits de Sau",
     preview: "/images/parades/I1-P1-hover.jpg",
     svgIds: ["I1-P1", "P1", "Parada1"],
   },
   {
     num: 2,
     slug: "I1-P2",
-    label: "Cantera de Sauló",
+    label: "Antiga pedrera de sauló",
     preview: "/images/parades/I1-P2-hover.jpg",
     svgIds: ["I1-P2", "P2", "Parada2"],
   },
   {
     num: 3,
     slug: "I1-P3",
-    label: "Argiles del Paleocè, Formació Mediona",
+    label: "Els primers sediments paleògens: Formació Mediona",
     preview: "/images/parades/I1-P3-hover.jpg",
     svgIds: ["I1-P3", "P3", "Parada3"],
   },
@@ -51,7 +51,7 @@ export const SAU_TAVERTET_PARADES: SauTavertetParada[] = [
   {
     num: 6,
     slug: "I1-P6",
-    label: "Tafonis",
+    label: "Conglomerats de la Formació Romagats",
     preview: "/images/parades/I1-P6-hover.jpg",
     svgIds: ["I1-P6", "P6", "Parada6"],
   },

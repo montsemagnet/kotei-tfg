@@ -5,7 +5,6 @@
 @source not "../../public/mapa-parada-11-12";
 @source not "../../mapa-web-sau-tavertet";
 @source not "../../mapa-web-geobotanica";
-@source not "../../_tmp-p7";
 @import "./itinerari-modal-text-size.css";
 @plugin "@tailwindcss/forms";
 @plugin "@tailwindcss/typography";

@@ -53,15 +53,15 @@ intro:
       rows:
         - parada: "P1"
           slug: "I1-P1"
-          material: "Monzogranit i pòrfirs"
+          material: "Els granits de Sau"
           edat: "Carbonífer superior–Permià inicial (aprox. 310–280 Ma). Origen magmàtic: refredament lent de magma en profunditat; no marí."
         - parada: "P2"
           slug: "I1-P2"
-          material: "Cantera de Sauló"
+          material: "Antiga pedrera de sauló"
           edat: "Quaternari (2,58 Ma–actualitat). Origen superficial: alteració química del granit fins a formar sorra; no marí."
         - parada: "P3"
           slug: "I1-P3"
-          material: "Argiles del Paleocè, Formació Mediona"
+          material: "Els primers sediments paleògens: Formació Mediona"
           edat: "Paleocè superior, Thanetià (aprox. 59–56 Ma). Origen continental: sediments fins dipositats en planes al·luvials humides i petits llacs; no marí."
         - parada: "P4"
           slug: "I1-P4"
@@ -73,7 +73,7 @@ intro:
           edat: "Eocè inferior, Ilerdià (aprox. 56–47,8 Ma). Origen continental: dipòsits fluvials i de cons al·luvials; no marí."
         - parada: "P6"
           slug: "I1-P6"
-          material: "Tafonis"
+          material: "Conglomerats de la Formació Romagats"
           edat: "Eocè, Cuisià–Lutecià inferior. Origen continental: conglomerats dipositats en ventalls al·luvials per fluxos d'aigua carregats de sediments; no marí."
         - parada: "P7"
           slug: "I1-P7"
@@ -574,10 +574,10 @@ dadesModals:
     sections:
       - title: "De la base cristal·lina al farciment terciari (P1–P2)"
         subsections:
-          - title: "P1 – Monzogranit i pòrfirs"
+          - title: "P1 – Els granits de Sau"
             paragraphs:
               - "A la presa de Sau veiem el sòcol cristal·lí sobre el qual es recolzen tots els materials sedimentaris del Collsacabra. Es tracta de monzogranit i pòrfirs paleozoics, similars a les roques que afloren al massís de les Guilleries: granitoides intensament fracturats que constitueixen el «continent» antic sobre el qual, molt més tard, es va formar la Conca de l'Ebre."
-          - title: "P2 – Cantera de Sauló"
+          - title: "P2 – Antiga pedrera de sauló"
             paragraphs:
               - "A la cantera de Sauló s'observa el sauló —regòlit granític alterat del sòcol— juntament amb blocs arrodonits i materials d'extracció. Aquesta parada permet veure de prop la textura de la roca mare i els processos d'alteració superficial quaternària sobre el basament hercinià."
         mediaAfterSubsection: 0
@@ -590,7 +590,7 @@ dadesModals:
         paragraphs:
           - "Per sobre del sòcol cristal·lí, en discordança erosiva, s'hi disposa un primer paquet de sediments de color vermell, d'origen continental. Són argiles i gresos dipositats en rius, llacunes i planes d'inundació, en un paisatge fluvial càlid anterior a la invasió marina."
         subsections:
-          - title: "P3 – Argiles del Paleocè, Formació Mediona"
+          - title: "P3 – Els primers sediments paleògens: Formació Mediona"
             paragraphs:
               - "A la P3 es pot observar el nivell d'argiles vermelles de la Formació de Mediona: materials fins, plàstics quan s'humitegen, amb tonalitats rogenques degudes als òxids de ferro. Representen antics llacs i depressions on es decantava el material més fi dels sistemes fluvials."
           - title: "P4 – Dipòsits de vessant (Quaternari)"
@@ -599,7 +599,7 @@ dadesModals:
           - title: "P5 – Gresos i conglomerats vermells, Formació Vilanova de Sau"
             paragraphs:
               - "A la P5 afloren gresos i conglomerats vermells de la Formació de Vilanova de Sau: arenes i còdols cimentats en tonalitats rogenques, dipositats en canals de riu i ventalls al·luvials dins la capa vermella continental."
-          - title: "P6 – Tafonis"
+          - title: "P6 – Conglomerats de la Formació Romagats"
             paragraphs:
               - "A la P6 apareixen conglomerats de la Formació de Romagats, amb clasts millor seleccionats i cimentació més compacta, que marquen la continuïtat del farciment continental abans de la transició cap als ambients de la capa grisa."
       - title: "Discordança erosiva als cingles de Tavertet"
@@ -662,12 +662,12 @@ dadesModals:
             - "Material"
             - "Origen / ambient"
           rows:
-            - cells: ["P1", "Sòcol hercinià", "Monzogranit i pòrfirs", "Continent paleozoic antic · Paleozoic (310–280 Ma)"]
-            - cells: ["P2", "Alteració superficial", "Cantera de Sauló", "Regòlit granític quaternari · Quaternari"]
-            - cells: ["P3", "Capa vermella", "Argiles del Paleocè, Formació Mediona", "Plans d'inundació fluvials · Paleocè (66–56 Ma)"]
+            - cells: ["P1", "Sòcol hercinià", "Els granits de Sau", "Continent paleozoic antic · Paleozoic (310–280 Ma)"]
+            - cells: ["P2", "Alteració superficial", "Antiga pedrera de sauló", "Regòlit granític quaternari · Quaternari"]
+            - cells: ["P3", "Capa vermella", "Els primers sediments paleògens: Formació Mediona", "Plans d'inundació fluvials · Paleocè (66–56 Ma)"]
             - cells: ["P4", "Quaternari", "Dipòsits de vessant (Quaternari)", "Despullament i transport per aigua · Quaternari (2,6 Ma–actualitat)"]
             - cells: ["P5", "Capa vermella", "Gresos i conglomerats vermells, Formació Vilanova de Sau", "Canals de riu i ventalls al·luvials · Eocè inferior (56–47 Ma)"]
-            - cells: ["P6", "Capa vermella", "Conglomerats, Formació Romagats", "Sistemes fluvials continentals · Cuisià–Lutecià inferior"]
+            - cells: ["P6", "Capa vermella", "Conglomerats de la Formació Romagats", "Sistemes fluvials continentals · Cuisià–Lutecià inferior"]
             - cells: ["P7", "Capa grisa", "Gresos vermells i grisos: contacte amb la Formació Tavertet", "Transició continental–marina · Lutecià inferior"]
             - cells: ["P8", "Capa grisa", "Gresos de la Formació Tavertet", "Platja o mar poc profund · Lutecià inferior"]
             - cells: ["P9", "Capa grisa", "Calcàries amb nummulits de la Formació Tavertet", "Mar eocè poc profund · Lutecià inferior"]

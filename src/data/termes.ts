@@ -23,7 +23,10 @@ export const termes: Terme[] = [
     "categoria": "Geomorfologia",
     "definicio": "Canvis físics i químics que pateix la roca a la superfície per l'acció de l'aigua, el vent, les variacions tèrmiques i els organismes vius. Amb el temps, aquesta alteració contribueix a formar el regòlit i a modificar l'aspecte i la resistència de les afloraments.",
     "sinonims": [
-      "meteorització superficial"
+      "meteorització superficial",
+      "alteració in situ",
+      "alteració",
+      "in situ"
     ]
   },
   {
@@ -48,7 +51,32 @@ export const termes: Terme[] = [
     "slug": "ambient-de-baixa-energia",
     "terme": "Ambient de baixa energia",
     "categoria": "Sedimentologia",
-    "definicio": "Medi sedimentari on l'onatge i els corrents són febles, de manera que s'hi acumula lentament sediment fi (llim, fang i argila). Les margues del Coll de Malla de la parada 11 es van dipositar en un ambient d'aquest tipus, a la plataforma marina somera de la Conca de l'Ebre."
+    "definicio": "Medi sedimentari on l'onatge i els corrents són febles, de manera que s'hi acumula lentament sediment fi (llim, fang i argila). Les margues del Coll de Malla de la parada 11 es van dipositar en un ambient d'aquest tipus, a la plataforma marina somera de la Conca de l'Ebre.",
+    "sinonims": [
+      "menor energia",
+      "condicions de menor energia",
+      "baixa energia"
+    ]
+  },
+  {
+    "slug": "ambient-continental-alluvial",
+    "terme": "Ambient continental al·luvial",
+    "categoria": "Sedimentologia",
+    "definicio": "Medi terrestre on els rius i riuades dipositen sediments en planes i ventalls, sense influència marina directa. La Formació Vilanova de Sau es va formar en aquest ambient durant l'Eocè, amb gresos i conglomerats vermells.",
+    "sinonims": [
+      "ambients continentals",
+      "ambient continental"
+    ]
+  },
+  {
+    "slug": "energia-del-transport",
+    "terme": "Energia del transport",
+    "categoria": "Sedimentologia",
+    "definicio": "Capacitat d'un corrent d'aigua per moure sediments: com més energia, més grossos són els fragments que pot arrossegar. Les sorres originen gresos; les graves i còdols, conglomerats, com a la Formació Vilanova de Sau.",
+    "sinonims": [
+      "més energètica",
+      "més energètic"
+    ]
   },
   {
     "slug": "aportacio-detritica",
@@ -59,6 +87,15 @@ export const termes: Terme[] = [
       "aportacions detrítiques",
       "aport detritic",
       "aport detrític"
+    ]
+  },
+  {
+    "slug": "arid",
+    "terme": "Àrid",
+    "categoria": "Litologia",
+    "definicio": "Material granular —sorra, grava o sauló— usat en construcció, especialment com a component del formigó. A l'antiga pedrera de la parada 2, el sauló es va explotar com a àrid per a la fabricació del formigó de la presa de Sau.",
+    "sinonims": [
+      "àrids"
     ]
   },
   {
@@ -77,6 +114,16 @@ export const termes: Terme[] = [
     "definicio": "Cavitat vertical o molt inclinada desenvolupada per dissolució o col·lapse en terrenys solubles, especialment calcàries. En zones càrstiques com les del voltant de Tavertet, els avencs testimonien l'acció de l'aigua subterrània sobre les roques carbonatades.",
     "sinonims": [
       "avencs"
+    ]
+  },
+  {
+    "slug": "avinguda",
+    "terme": "Avinguda",
+    "categoria": "Sedimentologia",
+    "definicio": "Episodi de cabal elevat en un curs d'aigua, capaç de transportar graves i còdols. Els conglomerats de la Formació Romagats es van formar en avingudes d'alta energia al peu dels relleus, a les zones proximals dels ventalls al·luvials.",
+    "sinonims": [
+      "avingudes",
+      "avingudes d'aigua"
     ]
   },
   {
@@ -216,7 +263,8 @@ export const termes: Terme[] = [
     "categoria": "Litologia",
     "definicio": "Roca sedimentària formada majoritàriament per carbonat càlcic (calcita o aragonita), sovint d'origen biogènic o químic en ambients marins. Les calcàries solen ser resistents a l'erosió i poden originar cingleres i relleus marcats, com als cingles de Tavertet.",
     "sinonims": [
-      "calcàries"
+      "calcàries",
+      "nivells calcaris"
     ]
   },
   {
@@ -255,7 +303,11 @@ export const termes: Terme[] = [
     "slug": "cambroordovicia",
     "terme": "Cambroordovicià",
     "categoria": "Cronologia",
-    "definicio": "Interval geològic que agrupa el Cambrià i l'Ordovicià (541–443 Ma), corresponent als primers períodes del Paleozoic amb vida complexa ja diversificada. Al massís de les Guilleries afloren materials cambroordovicianes que formen part del sòcol més antic de la zona."
+    "definicio": "Interval geològic que agrupa el Cambrià i l'Ordovicià (541–443 Ma), corresponent als primers períodes del Paleozoic amb vida complexa ja diversificada. Al massís de les Guilleries afloren materials cambroordovicians que formen part del sòcol més antic de la zona.",
+    "sinonims": [
+      "cambroordovicians",
+      "cambroordovicianes"
+    ]
   },
   {
     "slug": "capa-grisa",
@@ -305,7 +357,19 @@ export const termes: Terme[] = [
     "categoria": "Sedimentologia",
     "definicio": "Fragment de roca o mineral incorporat a un sediment o a una roca sedimentària. Als conglomerats vermells suprajacents al granit de Sau hi ha clasts de roques metamòrfiques derivades de l'erosió del sòcol paleozoic.",
     "sinonims": [
-      "clasts"
+      "clasts",
+      "fragments de roca"
+    ]
+  },
+  {
+    "slug": "cinglera",
+    "terme": "Cinglera",
+    "categoria": "Geomorfologia",
+    "definicio": "Paret rocosa vertical o molt inclinada, sovint formada per capes resistents a l'erosió. Als cingles de Tavertet, gresos i calcàries eocenes formen la cinglera; al seu peu s'acumulen dipòsits de vessant amb fragments d'aquestes roques i de conglomerats de les Guilleries.",
+    "sinonims": [
+      "cingleres",
+      "cingle",
+      "cingles"
     ]
   },
   {
@@ -349,7 +413,8 @@ export const termes: Terme[] = [
     "categoria": "Estratigrafia",
     "definicio": "Representació gràfica i ordenada de les unitats litològiques d'una zona, de la més antiga a la més recent. Permet visualitzar l'empilement de formacions, els contactes entre elles i els buits del registre geològic.",
     "sinonims": [
-      "columna litològica"
+      "columna litològica",
+      "successió geològica"
     ]
   },
   {
@@ -389,7 +454,18 @@ export const termes: Terme[] = [
     "categoria": "Estratigrafia",
     "definicio": "Superfície o límit que separa dues unitats litològiques o estructurals diferents. Observar un contacte in situ —per exemple, entre granit i pòrfir a la presa de Sau— permet interpretar relacions temporals i processos geològics.",
     "sinonims": [
-      "contacte litològic"
+      "contacte litològic",
+      "contacte nítid"
+    ]
+  },
+  {
+    "slug": "condicions-oxidants",
+    "terme": "Condicions oxidants",
+    "categoria": "Sedimentologia",
+    "definicio": "Ambient amb disponibilitat d'oxigen, on el ferro s'oxida i dóna colors vermells, grocs o taronges als sediments. El color vermell de la Formació Mediona s'associa a òxids de ferro formats o transformats en aquestes condicions.",
+    "sinonims": [
+      "oxidants",
+      "oxidant"
     ]
   },
   {
@@ -410,7 +486,9 @@ export const termes: Terme[] = [
     "categoria": "Geomorfologia",
     "definicio": "Ressalt o balcó rocos resistent que sobresurt en un vessant per erosió diferencial. Les cornises marquen sovint canvis litològics o nivells estructurals i poden condicionar la vegetació rupícola.",
     "sinonims": [
-      "cornises"
+      "cornises",
+      "ressalt",
+      "ressalts"
     ]
   },
   {
@@ -429,6 +507,12 @@ export const termes: Terme[] = [
     ]
   },
   {
+    "slug": "cristal-litzacio-de-sals",
+    "terme": "Cristal·lització de sals",
+    "categoria": "Geomorfologia",
+    "definicio": "Formació de cristalls de sals dins dels porus de la roca quan l'aigua s'evapora. L'expansió dels cristalls ajuda a disgregar la superfície i afavoreix tafonis i modelat alveolar, com a la paret de conglomerats de la parada 6."
+  },
+  {
     "slug": "despullament",
     "terme": "Despullament",
     "categoria": "Geomorfologia",
@@ -440,7 +524,8 @@ export const termes: Terme[] = [
     "categoria": "Estructura",
     "definicio": "Fractura de l'escorça o de la roca sense desplaçament apreciable entre els marges del pla de falla. Al granit de la presa de Sau, les diàclasis controlen l'estabilitat de l'aflorament i, sovint, la circulació de fluids i la formació de filons.",
     "sinonims": [
-      "diàclasis"
+      "diàclasis",
+      "xarxa de diàclasis"
     ]
   },
   {
@@ -539,7 +624,9 @@ export const termes: Terme[] = [
     "sinonims": [
       "eocèniques",
       "eocena",
-      "eocenes"
+      "eocenes",
+      "mar eocè",
+      "Eocè mitjà"
     ]
   },
   {
@@ -550,6 +637,16 @@ export const termes: Terme[] = [
     "sinonims": [
       "equínids",
       "eriçó de mar"
+    ]
+  },
+  {
+    "slug": "erosio",
+    "terme": "Erosió",
+    "categoria": "Geomorfologia",
+    "definicio": "Desgast i transport de materials de la superfície terrestre per l'aigua, el vent, el gel o la gravetat. El sauló, ja desagregat, és fàcilment erosionable i es pot arrossegar després de pluges intenses.",
+    "sinonims": [
+      "erosionable",
+      "erosionables"
     ]
   },
   {
@@ -586,6 +683,26 @@ export const termes: Terme[] = [
     "definicio": "Disposició dels materials sedimentaris en capes o estrats paral·lels, que reflecteixen canvis en el medi de dipòsit al llarg del temps. L'estratificació és la base per reconstruir l'ordre cronològic relatiu de les roques sedimentàries.",
     "sinonims": [
       "estrats"
+    ]
+  },
+  {
+    "slug": "cimentacio",
+    "terme": "Cimentació",
+    "categoria": "Sedimentologia",
+    "definicio": "Procés pel qual els grans d'un sediment queden units per un ciment mineral precipitat als porus. Transforma sorres soltes en gresos, com els de la Formació Tavertet a la parada 8.",
+    "sinonims": [
+      "cimentats",
+      "cimentades",
+      "ciment"
+    ]
+  },
+  {
+    "slug": "duna",
+    "terme": "Duna",
+    "categoria": "Sedimentologia",
+    "definicio": "Acumulació de sorra amb forma de monticle o cresta, moguda pel vent o pels corrents d'aigua. El desplaçament de dunes subaquàtiques genera estratificació encreuada als gresos de la Formació Tavertet.",
+    "sinonims": [
+      "dunes"
     ]
   },
   {
@@ -695,6 +812,15 @@ export const termes: Terme[] = [
     ]
   },
   {
+    "slug": "formigo",
+    "terme": "Formigó",
+    "categoria": "Litologia",
+    "definicio": "Material de construcció format per àrids, ciment i aigua, que s'endureix en compactar-se. El formigó de la presa de Sau va utilitzar sauló de l'entorn com a àrid.",
+    "sinonims": [
+      "formigons"
+    ]
+  },
+  {
     "slug": "friable",
     "terme": "Friable",
     "categoria": "Litologia",
@@ -746,6 +872,17 @@ export const termes: Terme[] = [
     "definicio": "Sediment format per fragments de roca de mida superior a 2 mm, incloent còdols i blocs. Les graves indiquen transport per corrents d'alta energia, com rius de muntanya o ventalls al·luvials. Quan es cimenten, formen conglomerats.",
     "sinonims": [
       "graves"
+    ]
+  },
+  {
+    "slug": "groller",
+    "terme": "Groller",
+    "categoria": "Sedimentologia",
+    "definicio": "Qualificatiu de sediments de mida gran (graves, còdols, blocs), en contrast amb els fins (llims i argiles). Els conglomerats de la Formació Vilanova de Sau registren transport de materials grollers per corrents d'alta energia.",
+    "sinonims": [
+      "grollers",
+      "materials grollers",
+      "materials més grollers"
     ]
   },
   {
@@ -1025,7 +1162,8 @@ export const termes: Terme[] = [
     "sinonims": [
       "gresos",
       "nivells de gresos",
-      "sorres consolidades"
+      "sorres consolidades",
+      "gresos de gra fi"
     ]
   },
   {
@@ -1041,7 +1179,8 @@ export const termes: Terme[] = [
     "definicio": "Interval de temps no representat en el registre sedimentari per falta de dipòsit o per erosió. Entre el sòcol paleozoic i la cobertura eocena de Sau–Tavertet hi ha un hiatus de gairebé tot el Mesozoic.",
     "sinonims": [
       "buit estratigràfic",
-      "hiat"
+      "hiat",
+      "salt en el temps geològic"
     ]
   },
   {
@@ -1155,6 +1294,16 @@ export const termes: Terme[] = [
     "definicio": "Pis de l'Eocè mitjà (aproximadament 47,8–41,2 Ma). Al Collsacabra, les calcàries de Tavertet són principalment lutecianes i queden per sota de les margues del Coll de Malla, que marquen la transició cap al Bartonià.",
     "sinonims": [
       "lutecianes"
+    ]
+  },
+  {
+    "slug": "unicel-lular",
+    "terme": "Unicel·lular",
+    "categoria": "Paleontologia",
+    "definicio": "Organisme format per una sola cèl·lula. Els nummulits són unicel·lulars, tot i que la seva closca calcària pot arribar a diversos mil·límetres i es veu a simple vista a les calcàries de Tavertet.",
+    "sinonims": [
+      "unicel·lulars",
+      "organismes marins unicel·lulars"
     ]
   },
   {
@@ -1333,6 +1482,17 @@ export const termes: Terme[] = [
     ]
   },
   {
+    "slug": "roca-competent",
+    "terme": "Roca competent",
+    "categoria": "Litologia",
+    "definicio": "Roca resistent a l'erosió i a la deformació, que tendeix a formar ressalts i cingleres. Els conglomerats de la Formació Romagats són competents i expliquen els ressalts vermells de la cinglera de Tavertet.",
+    "sinonims": [
+      "roques competents",
+      "competents",
+      "competent"
+    ]
+  },
+  {
     "slug": "roca-volcanica",
     "terme": "Roca volcànica",
     "categoria": "Litologia",
@@ -1460,7 +1620,27 @@ export const termes: Terme[] = [
     "categoria": "Geomorfologia",
     "definicio": "Alteració física i química de les roques a la superfície per agents atmosfèrics, biològics i hídrics. En granits, produeix el sauló i contribueix a l'alteració de l'aflorament i a la formació del sòl.",
     "sinonims": [
-      "meteorització diferencial"
+      "meteorització diferencial",
+      "disgregació",
+      "disgreguen"
+    ]
+  },
+  {
+    "slug": "humectacio-i-assecatge",
+    "terme": "Humectació i assecatge",
+    "categoria": "Geomorfologia",
+    "definicio": "Cicles d'humitat i sequedat a la superfície de la roca, que inflen i contrauen minerals i sals i afavoreixen la disgregació. A la parada 6 contribueixen a formar tafonis i modelat alveolar als conglomerats de Romagats.",
+    "sinonims": [
+      "cicles d'humectació i assecatge"
+    ]
+  },
+  {
+    "slug": "mineral",
+    "terme": "Mineral",
+    "categoria": "Mineralogia",
+    "definicio": "Sòlid natural, inorgànic i cristal·lí, amb composició química definida. El granit de Sau està format principalment per quars, feldespats i miques; l'alteració d'aquests minerals origina el sauló.",
+    "sinonims": [
+      "minerals"
     ]
   },
   {
@@ -1492,6 +1672,50 @@ export const termes: Terme[] = [
     ]
   },
   {
+    "slug": "sediment-carbonatat",
+    "terme": "Sediment carbonatat",
+    "categoria": "Sedimentologia",
+    "definicio": "Sediment ric en carbonat de calci, procedent de closques, esquelets o precipitació química. Juntament amb els nummulits, el sediment carbonatat va originar les calcàries de la Formació Tavertet a la part superior de la cinglera.",
+    "sinonims": [
+      "sediments carbonatats"
+    ]
+  },
+  {
+    "slug": "carbonat-de-calci",
+    "terme": "Carbonat de calci",
+    "categoria": "Mineralogia",
+    "definicio": "Compost químic (CaCO₃) que forma calcita, closques i moltes roques carbonatades. Les margues són una barreja d'argila i carbonat de calci; les calcàries de Tavertet n'estan fetes gairebé del tot."
+  },
+  {
+    "slug": "sediments-fins",
+    "terme": "Sediments fins",
+    "categoria": "Sedimentologia",
+    "definicio": "Partícules de mida petita (argila i llim) que l'aigua pot transportar en suspensió i que, en ambients tranquils, decanten al fons. El predomini de sediments fins a la Formació Coll de Malla indica una plataforma marina de menor energia que les calcàries de Tavertet.",
+    "sinonims": [
+      "partícules fines",
+      "sediment fi"
+    ]
+  },
+  {
+    "slug": "suspensio",
+    "terme": "Suspensió",
+    "categoria": "Sedimentologia",
+    "definicio": "Transport de partícules fines (argila i llim) que resten disperses dins de l'aigua sense sedimentar de seguida. Quan l'energia del medi baixa, aquestes partícules poden decantar-se i acumular-se, com a les margues de la Formació Coll de Malla.",
+    "sinonims": [
+      "en suspensió"
+    ]
+  },
+  {
+    "slug": "decantacio",
+    "terme": "Decantació",
+    "categoria": "Sedimentologia",
+    "definicio": "Procés pel qual les partícules en suspensió cauen i s'acumulen al fons quan el moviment de l'aigua és suficientment feble. A la Formació Coll de Malla, la decantació de fangs i sediment carbonatat va originar les margues.",
+    "sinonims": [
+      "decantar-se",
+      "decantar"
+    ]
+  },
+  {
     "slug": "orogenesi-alpina",
     "terme": "Orogènesi alpina",
     "categoria": "Tectònica",
@@ -1509,7 +1733,9 @@ export const termes: Terme[] = [
       "orogènia herciniana",
       "herciniana",
       "col·lisió varisca",
-      "col·lisió herciniana"
+      "col·lisió herciniana",
+      "varisc",
+      "varisca"
     ]
   },
   {
@@ -1591,6 +1817,17 @@ export const termes: Terme[] = [
     ]
   },
   {
+    "slug": "pedrera",
+    "terme": "Pedrera",
+    "categoria": "Camp",
+    "definicio": "Excavació on s'extreu roca o àrids. A la parada 2, l'antiga pedrera de sauló testimonia l'explotació del granit alterat per a la construcció de la presa de Sau.",
+    "sinonims": [
+      "pedreres",
+      "cantera",
+      "canteres"
+    ]
+  },
+  {
     "slug": "permia",
     "terme": "Permià",
     "categoria": "Cronologia",
@@ -1634,7 +1871,9 @@ export const termes: Terme[] = [
     "definicio": "Zona submarina relativament poc profunda que voreja els continents, on s'acumulen fangs, llims i sorres amb onatge i corrents variables. Les margues del Coll de Malla es van dipositar en una plataforma marina somera i de baixa energia al marge de la Conca de l'Ebre.",
     "sinonims": [
       "plataforma marina somera",
-      "plataformes marines"
+      "plataformes marines",
+      "mar càlid i poc profund",
+      "mar poc profund"
     ]
   },
   {
@@ -1761,6 +2000,18 @@ export const termes: Terme[] = [
     ]
   },
   {
+    "slug": "registre-sedimentari",
+    "terme": "Registre sedimentari",
+    "categoria": "Estratigrafia",
+    "definicio": "Conjunt de sediments i roques sedimentàries conservats que documenten un interval de temps. Si falta dipòsit o s'ha erosionat, hi ha un hiatus: a Sau–Tavertet, entre el sòcol paleozoic i la Formació Mediona falten més de 200 milions d'anys."
+  },
+  {
+    "slug": "sedimentacio-continental",
+    "terme": "Sedimentació continental",
+    "categoria": "Sedimentologia",
+    "definicio": "Acumulació de sediments en ambients terrestres (rius, planes al·luvials, llacs), sense influència marina directa. La Formació Mediona n'és un exemple: argiles i lutites vermelles anteriors a l'arribada del mar eocè."
+  },
+  {
     "slug": "semigraben",
     "terme": "Semigraben",
     "categoria": "Tectònica",
@@ -1798,6 +2049,16 @@ export const termes: Terme[] = [
     "terme": "Serralades Costaneres Catalanes",
     "categoria": "Geografia geològica",
     "definicio": "Conjunt de serralades paral·leles a la costa catalana —Prelitoral, Litoral i zones intermèdies— que delimiten la Depressió Prelitoral. Des del Collsacabra s'observa la seva relació amb la conca de l'Ebre i els Pirineus."
+  },
+  {
+    "slug": "sienita",
+    "terme": "Sienita",
+    "categoria": "Litologia",
+    "definicio": "Roca plutònica rica en feldespat potàssic i pobre en quars, sovint de color vermellós. Als conglomerats de la Formació Romagats (parada 6) hi ha còdols de sienita vermella, restes de relleus paleozoics erosionats durant l'Eocè.",
+    "sinonims": [
+      "sienita vermella",
+      "fragments de sienita"
+    ]
   },
   {
     "slug": "siluria",
@@ -1869,6 +2130,16 @@ export const termes: Terme[] = [
     ]
   },
   {
+    "slug": "sorra",
+    "terme": "Sorra",
+    "categoria": "Sedimentologia",
+    "definicio": "Sediment de grans de mida entre 0,062 i 2 mm, format principalment per quars i altres minerals resistents. Quan es cimenta origina gresos, com els de la Formació Vilanova de Sau.",
+    "sinonims": [
+      "sorres",
+      "sorres fines"
+    ]
+  },
+  {
     "slug": "superficie-estructural",
     "terme": "Superfície estructural",
     "categoria": "Geomorfologia",
@@ -1892,7 +2163,8 @@ export const termes: Terme[] = [
     "definicio": "Avenç del mar sobre zones abans continentals o de menor profunditat, de manera que s'hi dipositen sediments marins damunt materials més proximals o continentals. Durant l'Eocè, una transgressió marina va afectar bona part de la Conca de l'Ebre i va permetre la sedimentació de calcàries amb nummulits de la Formació Tavertet.",
     "sinonims": [
       "transgressions marines",
-      "transgressió"
+      "transgressió",
+      "avanç progressiu del mar"
     ]
   },
   {
@@ -1933,9 +2205,35 @@ export const termes: Terme[] = [
     "categoria": "Geomorfologia",
     "definicio": "Relleu aïllat que resta com a testimoni d'una superfície o paquet de materials més extens erosionat al voltant. El Turó del Castell és un turó testimoni on una barra de gresos protegeix les margues subjacents i manté la morfologia cònica sobre l'embassament de Sau.",
     "sinonims": [
-      "turons testimoni",
-      "Turó del Castell",
+      "turons testimoni"
+    ]
+  },
+  {
+    "slug": "turo-del-castell",
+    "terme": "Turó del Castell",
+    "categoria": "Geografia geològica",
+    "definicio": "Relleu aïllat a Tavertet, al peu de la cinglera, format per margues de la Formació Coll de Malla coronades per gresos. És un turó testimoni: l'erosió diferencial ha individualitzat aquest relleu respecte a l'altiplà del Collsacabra.",
+    "sinonims": [
       "turó del Castell"
+    ]
+  },
+  {
+    "slug": "costa",
+    "terme": "Costa",
+    "categoria": "Sedimentologia",
+    "definicio": "Franja on el continent contacta amb el mar. Els gresos de la part alta del turó del Castell indiquen un ambient de sedimentació més proper a la costa que les margues de la Formació Coll de Malla, amb aigua més energètica i més sorra.",
+    "sinonims": [
+      "propers a la costa",
+      "properes a la costa"
+    ]
+  },
+  {
+    "slug": "reticula",
+    "terme": "Retícula",
+    "categoria": "Estructura",
+    "definicio": "Xarxa de línies que s'entrecreuen. Al cim del turó del Castell, les diàclasis formen una retícula gairebé rectangular, ben visible des de l'aire, que divideix els gresos en blocs.",
+    "sinonims": [
+      "retícula gairebé rectangular"
     ]
   },
   {
@@ -1959,7 +2257,17 @@ export const termes: Terme[] = [
     "categoria": "Sedimentologia",
     "definicio": "Acumulació de sediments en forma de ventall al peu d'un vessant o sortida de canyons, on el corrent perd energia bruscament. Durant l'Eocè inferior, els ventalls al·luvials van contribuir a dipositar materials vermells a la base de la seqüència del Collsacabra.",
     "sinonims": [
-      "ventalls al·luvials"
+      "ventalls al·luvials",
+      "sistema de ventalls al·luvials"
+    ]
+  },
+  {
+    "slug": "vessant",
+    "terme": "Vessant",
+    "categoria": "Geomorfologia",
+    "definicio": "Pendent d'un relleu per on l'aigua, la gravetat i l'erosió desplacen materials cap avall. Al llarg del camí Sau–Tavertet, al peu dels vessants s'acumulen dipòsits de fragments caiguts de la cinglera.",
+    "sinonims": [
+      "vessants"
     ]
   },
   {
@@ -2015,7 +2323,22 @@ export const termes: Terme[] = [
     "sinonims": [
       "ambients litorals",
       "zona litoral",
-      "medi litoral"
+      "medi litoral",
+      "sedimentació litoral",
+      "litorals"
+    ]
+  },
+  {
+    "slug": "ambient-mari",
+    "terme": "Ambient marí",
+    "categoria": "Sedimentologia",
+    "definicio": "Medi de sedimentació sota la influència del mar, des de la costa fins a la plataforma. A Tavertet, els gresos i calcàries de la Formació Tavertet registren l'entrada del mar eocè després dels sediments vermells continentals.",
+    "sinonims": [
+      "ambients marins",
+      "marins",
+      "sedimentació marina",
+      "sediments marins",
+      "marina"
     ]
   },
   {
@@ -2086,15 +2409,49 @@ export const termes: Terme[] = [
     "categoria": "Sedimentologia",
     "definicio": "Estructura sedimentària formada per làmines inclinades dins d'un estrat, generades pel desplaçament de dunes o ondulacions de sorra. A la parada 8, als gresos de la Formació Tavertet, és coherent amb un medi litoral afectat per corrents i onatge.",
     "sinonims": [
-      "estratificació creuada",
-      "làmines inclinades"
+      "estratificació creuada"
     ]
+  },
+  {
+    "slug": "ondulacio",
+    "terme": "Ondulació",
+    "categoria": "Sedimentologia",
+    "definicio": "Petit relleu ondulat a la superfície d'un fons sorrenc, format per corrents o onatge. Juntament amb les dunes, les ondulacions de sorra generen làmines inclinades que poden conservar-se com a estratificació encreuada.",
+    "sinonims": [
+      "ondulacions",
+      "ondulacions de sorra"
+    ]
+  },
+  {
+    "slug": "onatge",
+    "terme": "Onatge",
+    "categoria": "Sedimentologia",
+    "definicio": "Moviment de les onades a la zona litoral, capaç de remoure i redistribuir sorres i graves. Als gresos de la Formació Tavertet, l'estratificació encreuada és coherent amb un medi afectat per corrents i onatge."
   },
   {
     "slug": "infiltracio",
     "terme": "Infiltració",
     "categoria": "Geomorfologia",
-    "definicio": "Entrada d'aigua al subsòl a través de porus i fractures. A la parada 10, les diàclasis de les calcàries de Tavertet canalitzen la infiltració, afavoreixen la dissolució de la roca i concentren sòl i vegetació."
+    "definicio": "Entrada d'aigua al subsòl a través de porus i fractures. A la parada 10, les diàclasis de les calcàries de Tavertet canalitzen la infiltració, afavoreixen la dissolució de la roca i concentren sòl i vegetació.",
+    "sinonims": [
+      "infiltració de l'aigua"
+    ]
+  },
+  {
+    "slug": "fractura",
+    "terme": "Fractura",
+    "categoria": "Estructura",
+    "definicio": "Ruptura de la roca. Si no hi ha desplaçament relatiu entre els dos costats, s'anomena diàclasi; si n'hi ha, falla. A la superfície estructural de Tavertet, una xarxa de fractures divideix les calcàries en blocs i concentra sòl i vegetació.",
+    "sinonims": [
+      "fractures",
+      "xarxa de fractures"
+    ]
+  },
+  {
+    "slug": "sol",
+    "terme": "Sòl",
+    "categoria": "Geobotànica",
+    "definicio": "Capa superficial de materials alterats on arrelen les plantes. A la superfície calcària de Tavertet, el sòl s'acumula en quantitats petites al llarg de les diàclasis, i per això la vegetació s'alinea amb la xarxa de fractures."
   },
   {
     "slug": "matriu",
@@ -2213,6 +2570,15 @@ export const termes: Terme[] = [
     "definicio": "Cos tabular de mineral que omple una fractura de la roca. A la parada 10, una veta blanca de calcita reomple una diàclasi de les calcàries eocenes de Tavertet.",
     "sinonims": [
       "vetes"
+    ]
+  },
+  {
+    "slug": "zona-proximal",
+    "terme": "Zona proximal",
+    "categoria": "Sedimentologia",
+    "definicio": "Part d'un ventall al·luvial més propera als relleus d'origen, on predominen sediments grollers (conglomerats). La Formació Romagats s'interpreta com a dipòsits de zones proximals, a prop de les àrees que aportaven els còdols.",
+    "sinonims": [
+      "zones proximals"
     ]
   }
 ];
